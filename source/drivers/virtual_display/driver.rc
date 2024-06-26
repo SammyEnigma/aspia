@@ -15,31 +15,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
+// This file based on IddSampleDriver.
+// URL: https://github.com/microsoft/Windows-driver-samples/tree/main/video/IndirectDisplay
+// Copyright (c) Microsoft Corporation
+//
 
-#ifndef HOST_INPUT_INJECTOR_MAC_H
-#define HOST_INPUT_INJECTOR_MAC_H
+#include <Windows.h>
+#include <ntverp.h>
 
-#include "host/input_injector.h"
+#define VER_FILETYPE                VFT_DLL
+#define VER_FILESUBTYPE             VFT_UNKNOWN
+#define VER_FILEDESCRIPTION_STR     "Aspia UMDF Indirect Display Driver"
+#define VER_INTERNALNAME_STR        "Aspia Virtual Display"
+#define VER_ORIGINALFILENAME_STR    "aspia_virtual_display.dll"
 
-namespace host {
-
-class InputInjectorMac final : public InputInjector
-{
-public:
-    InputInjectorMac();
-    ~InputInjectorMac();
-
-    // InputInjector implementation.
-    void setScreenOffset(const base::Point& offset) final;
-    void setBlockInput(bool enable) final;
-    void injectKeyEvent(const proto::KeyEvent& event) final;
-    void injectMouseEvent(const proto::MouseEvent& event) final;
-    void injectTouchEvent(const proto::TouchEvent& event) final;
-
-private:
-    DISALLOW_COPY_AND_ASSIGN(InputInjectorMac);
-};
-
-} // namespace host
-
-#endif // HOST_INPUT_INJECTOR_MAC_H
+#include "common.ver"
