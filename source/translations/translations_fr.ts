@@ -341,47 +341,47 @@ Routers added: %4</source>
 <context>
     <name>Client</name>
     <message>
-        <location filename="../client/main.cc" line="45"/>
+        <location filename="../client/main.cc" line="43"/>
         <source>Incorrect value for &quot;%1&quot;. Possible values: %2.</source>
         <translation>Valeur incorrecte pour &quot;%1&quot;. Valeurs possibles: %2.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="301"/>
+        <location filename="../client/main.cc" line="299"/>
         <source>Connecting to router %1...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="306"/>
+        <location filename="../client/main.cc" line="304"/>
         <source>Connection to router %1 established.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="315"/>
+        <location filename="../client/main.cc" line="313"/>
         <source>Disconnected from router %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="327"/>
+        <location filename="../client/main.cc" line="325"/>
         <source>Network error: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="365"/>
+        <location filename="../client/main.cc" line="363"/>
         <source>Remote computer address.</source>
         <translation>Adresse de l ordinateur distant.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="560"/>
+        <location filename="../client/main.cc" line="558"/>
         <source>Connection parameters to the router are not specified.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="573"/>
+        <location filename="../client/main.cc" line="571"/>
         <source>Incorrect data for connecting to the router.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="620"/>
+        <location filename="../client/main.cc" line="618"/>
         <source>Invalid master password.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -390,27 +390,27 @@ Routers added: %4</source>
         <translation type="vanished">Port de l ordinateur distant.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="369"/>
+        <location filename="../client/main.cc" line="367"/>
         <source>Name of host.</source>
         <translation>Nom de l hôte.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="373"/>
+        <location filename="../client/main.cc" line="371"/>
         <source>Name of user.</source>
         <translation>Nom de l utilisateur.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="377"/>
+        <location filename="../client/main.cc" line="375"/>
         <source>Password of user.</source>
         <translation>Mot de passe de l utilisateur.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="381"/>
+        <location filename="../client/main.cc" line="379"/>
         <source>Display name when connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="385"/>
+        <location filename="../client/main.cc" line="383"/>
         <source>Session type. Possible values: desktop, file-transfer, system-info, text-chat.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -431,32 +431,32 @@ Routers added: %4</source>
         <translation type="vanished">Taux de compression. Valeurs possibles: 1-22.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="390"/>
+        <location filename="../client/main.cc" line="388"/>
         <source>Enable or disable audio. Possible values: 0 or 1.</source>
         <translation>Active ou désactive le son. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="394"/>
+        <location filename="../client/main.cc" line="392"/>
         <source>Enable or disable cursor shape. Possible values: 0 or 1.</source>
         <translation>Active ou désactive la forme du curseur. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="398"/>
+        <location filename="../client/main.cc" line="396"/>
         <source>Enable or disable cursor position. Possible values: 0 or 1.</source>
         <translation>Active ou désactive la position du curseur. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="402"/>
+        <location filename="../client/main.cc" line="400"/>
         <source>Enable or disable clipboard. Possible values: 0 or 1.</source>
         <translation>Active ou désactive le presse-papiers. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="406"/>
+        <location filename="../client/main.cc" line="404"/>
         <source>Enable or disable desktop effects. Possible values: 0 or 1.</source>
         <translation>Active ou désactive les effets de bureau. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="410"/>
+        <location filename="../client/main.cc" line="408"/>
         <source>Enable or disable desktop wallpaper. Possible values: 0 or 1.</source>
         <translation>Active ou désactive le fond d&apos;écran. Valeurs possibles: 0 ou 1.</translation>
     </message>
@@ -469,17 +469,17 @@ Routers added: %4</source>
         <translation type="vanished">Efface le presse-papiers lors de la déconnexion. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="414"/>
+        <location filename="../client/main.cc" line="412"/>
         <source>Lock computer at disconnect. Possible values: 0 or 1.</source>
         <translation>Verrouiller l ordinateur lors de la déconnexion. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="418"/>
+        <location filename="../client/main.cc" line="416"/>
         <source>Block remote input. Possible values: 0 or 1.</source>
         <translation>Blocage de l accès à distance. Valeurs possibles: 0 ou 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="422"/>
+        <location filename="../client/main.cc" line="420"/>
         <source>Router address.</source>
         <translation>Adresse du routeur.</translation>
     </message>
@@ -488,17 +488,17 @@ Routers added: %4</source>
         <translation type="vanished">Port du routeur.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="426"/>
+        <location filename="../client/main.cc" line="424"/>
         <source>Router name of user.</source>
         <translation>Nom d utilisateur du routeur.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="430"/>
+        <location filename="../client/main.cc" line="428"/>
         <source>Router password of user.</source>
         <translation>Mot de passe de l utilisateur du routeur.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="434"/>
+        <location filename="../client/main.cc" line="432"/>
         <source>Aspia Client</source>
         <translation>Client Aspia</translation>
     </message>
@@ -5896,12 +5896,12 @@ Routers added: %4</source>
 <context>
     <name>client::LocalGroupWidget</name>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="108"/>
-        <source>Status update</source>
-        <translation type="unfinished"></translation>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="81"/>
+        <source>Status update...</source>
+        <translation type="unfinished">Etat de la mise a jour...</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="389"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="356"/>
         <source>%n child group(s)</source>
         <translation type="unfinished">
             <numerusform>%n groupe(s) enfant</numerusform>
@@ -5909,7 +5909,7 @@ Routers added: %4</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="394"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="358"/>
         <source>%n child computer(s)</source>
         <translation type="unfinished">
             <numerusform>%n ordinateur(s) enfant</numerusform>
@@ -5917,12 +5917,12 @@ Routers added: %4</source>
         </translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="504"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="449"/>
         <source>Online</source>
         <translation type="unfinished">En ligne</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="504"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="449"/>
         <source>Offline</source>
         <translation type="unfinished">Hors ligne</translation>
     </message>

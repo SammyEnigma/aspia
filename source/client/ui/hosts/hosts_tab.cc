@@ -600,8 +600,8 @@ void HostsTab::onSwitchContent(Sidebar::Item::Type type)
     {
         case Sidebar::Item::Type::LOCAL_GROUP:
         {
-            local_group_widget_->showGroup(ui.sidebar->currentGroupId());
             switchContent(local_group_widget_);
+            local_group_widget_->showGroup(ui.sidebar->currentGroupId());
         }
         break;
 
@@ -620,8 +620,8 @@ void HostsTab::onSwitchContent(Sidebar::Item::Type type)
 
         case Sidebar::Item::Type::ROUTER_GROUP:
         {
-            router_group_widget_->showGroup(ui.sidebar->currentGroupId());
             switchContent(router_group_widget_);
+            router_group_widget_->showGroup(ui.sidebar->currentGroupId());
         }
         break;
     }
