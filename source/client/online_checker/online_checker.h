@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QList>
 
+#include "base/scoped_qpointer.h"
 #include "client/config.h"
 #include "client/online_checker/online_checker_direct.h"
 #include "client/online_checker/online_checker_router.h"
@@ -52,8 +53,8 @@ private slots:
     void onRouterCheckerFinished();
 
 private:
-    OnlineCheckerDirect* direct_checker_ = nullptr;
-    OnlineCheckerRouter* router_checker_ = nullptr;
+    base::ScopedQPointer<OnlineCheckerDirect> direct_checker_;
+    base::ScopedQPointer<OnlineCheckerRouter> router_checker_;
 
     OnlineCheckerRouter::ComputerList router_computers_;
     OnlineCheckerDirect::ComputerList direct_computers_;

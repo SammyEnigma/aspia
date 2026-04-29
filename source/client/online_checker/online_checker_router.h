@@ -21,10 +21,11 @@
 
 #include <QSet>
 #include <QQueue>
-#include <QTimer>
 
 #include "client/config.h"
 #include "client/router_connection.h"
+
+class QTimer;
 
 namespace base {
 class Location;
@@ -57,7 +58,7 @@ private:
 
     qint64 current_request_id_ = 0;
     QSet<qint64> routers_;
-    QTimer timer_;
+    QTimer* timer_ = nullptr;
 
     ComputerList computers_;
 };

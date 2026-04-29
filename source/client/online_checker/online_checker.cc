@@ -38,18 +38,10 @@ OnlineChecker::~OnlineChecker()
     LOG(INFO) << "Dtor";
 
     if (router_checker_)
-    {
-        router_checker_->disconnect();
-        router_checker_->deleteLater();
-        router_checker_ = nullptr;
-    }
+        router_checker_->disconnect(this);
 
     if (direct_checker_)
-    {
-        direct_checker_->disconnect();
-        direct_checker_->deleteLater();
-        direct_checker_ = nullptr;
-    }
+        direct_checker_->disconnect(this);
 }
 
 //--------------------------------------------------------------------------------------------------

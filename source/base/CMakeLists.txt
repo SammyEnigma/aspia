@@ -48,6 +48,7 @@ list(APPEND SOURCE_BASE
     power_controller.h
     scoped_clear_last_error.cc
     scoped_clear_last_error.h
+    scoped_qpointer.h
     serialization.cc
     serialization.h
     service.h

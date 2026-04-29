@@ -18,6 +18,8 @@
 
 #include "client/online_checker/online_checker_router.h"
 
+#include <QTimer>
+
 #include "base/location.h"
 #include "base/logging.h"
 #include "base/peer/host_id.h"
@@ -33,12 +35,13 @@ const std::chrono::seconds kTimeout { 30 };
 //--------------------------------------------------------------------------------------------------
 OnlineCheckerRouter::OnlineCheckerRouter(const ComputerList& computers, QObject* parent)
     : QObject(parent),
+      timer_(new QTimer(this)),
       computers_(computers)
 {
     LOG(INFO) << "Ctor";
 
-    timer_.setSingleShot(true);
-    connect(&timer_, &QTimer::timeout, this, [this]() { onFinished(FROM_HERE); });
+    timer_->setSingleShot(true);
+    connect(timer_, &QTimer::timeout, this, [this]() { onFinished(FROM_HERE); });
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,7 +53,7 @@ OnlineCheckerRouter::~OnlineCheckerRouter()
 //--------------------------------------------------------------------------------------------------
 void OnlineCheckerRouter::start()
 {
-    timer_.start(kTimeout);
+    timer_->start(kTimeout);
 
     if (computers_.isEmpty())
     {
