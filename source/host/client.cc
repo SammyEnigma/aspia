@@ -287,8 +287,7 @@ void Client::onUdpErrorOccurred()
     udp_probe_.pending = false;
 
     udp_channel_->disconnect();
-    udp_channel_->deleteLater();
-    udp_channel_ = nullptr;
+    udp_channel_.reset();
 
     // If the UDP was already working and then dropped, switch to TCP and try to reconnect.
     if (was_connected)
@@ -443,8 +442,7 @@ void Client::startUdpHolePunching()
         }
 
         stun_peer_->disconnect();
-        stun_peer_->deleteLater();
-        stun_peer_ = nullptr;
+        stun_peer_.reset();
 
         startDirectUdp(socket, address, port);
     });
@@ -455,8 +453,7 @@ void Client::startUdpHolePunching()
         CCHECK(stun_peer_);
 
         stun_peer_->disconnect();
-        stun_peer_->deleteLater();
-        stun_peer_ = nullptr;
+        stun_peer_.reset();
 
         // STUN failed, retry if attempts remain.
         if (hole_punching_attempt_ < kMaxHolePunchingAttempts)

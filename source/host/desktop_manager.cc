@@ -419,8 +419,7 @@ void DesktopManager::onIpcNewConnection()
     ipc_channel_->setParent(this);
 
     ipc_server_->disconnect();
-    ipc_server_->deleteLater();
-    ipc_server_ = nullptr;
+    ipc_server_.reset();
 
     LOG(INFO) << "Control IPC channel is connected:" << ipc_channel_->channelName()
               << "(client_count:" << client_count_ << ")";
@@ -519,15 +518,13 @@ void DesktopManager::dettach(const base::Location& location)
     if (ipc_server_)
     {
         ipc_server_->disconnect();
-        ipc_server_->deleteLater();
-        ipc_server_ = nullptr;
+        ipc_server_.reset();
     }
 
     if (ipc_channel_)
     {
         ipc_channel_->disconnect();
-        ipc_channel_->deleteLater();
-        ipc_channel_ = nullptr;
+        ipc_channel_.reset();
     }
 
     session_id_ = base::kInvalidSessionId;

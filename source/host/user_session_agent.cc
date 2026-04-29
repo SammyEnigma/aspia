@@ -166,8 +166,7 @@ void UserSessionAgent::onIpcDisconnected()
     if (ipc_channel_)
     {
         ipc_channel_->disconnect(this);
-        ipc_channel_->deleteLater();
-        ipc_channel_ = nullptr;
+        ipc_channel_.reset();
     }
 
     emit sig_statusChanged(Status::DISCONNECTED_FROM_SERVICE);
@@ -342,14 +341,9 @@ void UserSessionAgent::onDisconnectEvent(const proto::user::DisconnectEvent& eve
     {
         clipboard_->clearClipboard();
         clipboard_->disconnect(this);
-        clipboard_->deleteLater();
-        clipboard_ = nullptr;
+        clipboard_.reset();
 
-        if (clipboard_file_transfer_)
-        {
-            clipboard_file_transfer_->deleteLater();
-            clipboard_file_transfer_ = nullptr;
-        }
+        clipboard_file_transfer_.reset();
     }
 
     emit sig_clientListChanged(clients_);

@@ -24,6 +24,7 @@
 
 #include <optional>
 
+#include "base/scoped_qpointer.h"
 #include "base/session_id.h"
 #include "host/client.h"
 #include "proto/desktop_control.h"
@@ -83,8 +84,8 @@ private:
     void readTaskManager(const proto::task_manager::ClientToHost& message);
 
     QTime dettach_time_;
-    base::IpcServer* ipc_server_ = nullptr;
-    base::IpcChannel* ipc_channel_ = nullptr;
+    base::ScopedQPointer<base::IpcServer> ipc_server_;
+    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
     QTimer* fake_capture_timer_ = nullptr;
     QTimer* overflow_timer_ = nullptr;
 

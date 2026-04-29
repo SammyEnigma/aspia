@@ -48,7 +48,8 @@ class ScopedQPointer
 public:
     ScopedQPointer() noexcept = default;
 
-    explicit ScopedQPointer(T* ptr) noexcept : ptr_(ptr)
+    explicit ScopedQPointer(T* ptr) noexcept
+        : ptr_(ptr)
     {
         // Nothing
     }

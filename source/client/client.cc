@@ -82,8 +82,7 @@ Client::Client(QObject* parent)
         {
             CLOG(INFO) << "Destroy channel";
             tcp_channel_->disconnect();
-            tcp_channel_->deleteLater();
-            tcp_channel_ = nullptr;
+            tcp_channel_.reset();
         }
     });
 
@@ -337,8 +336,7 @@ void Client::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
             emit sig_statusChanged(Status::LEGACY_HOST);
 
             tcp_channel_->disconnect();
-            tcp_channel_->deleteLater();
-            tcp_channel_ = nullptr;
+            tcp_channel_.reset();
 
             is_legacy_mode_ = true;
             state_ = State::CREATED;
@@ -355,8 +353,7 @@ void Client::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
     if (tcp_channel_)
     {
         tcp_channel_->disconnect();
-        tcp_channel_->deleteLater();
-        tcp_channel_ = nullptr;
+        tcp_channel_.reset();
     }
 
     if (!session_state_->isAutoReconnect())
@@ -431,8 +428,7 @@ void Client::onUdpErrorOccurred()
     CCHECK(udp_channel_);
     udp_ready_ = false;
     udp_channel_->disconnect();
-    udp_channel_->deleteLater();
-    udp_channel_ = nullptr;
+    udp_channel_.reset();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -507,8 +503,7 @@ void Client::onRouterConnectionOffer(const proto::router::ConnectionOffer& offer
             router_ = nullptr;
 
             relay_peer_->disconnect();
-            relay_peer_->deleteLater();
-            relay_peer_ = nullptr;
+            relay_peer_.reset();
 
             delayedReconnect();
         }
@@ -546,8 +541,7 @@ void Client::onRelayConnectionReady()
     tcp_channel_->setParent(this);
 
     relay_peer_->disconnect();
-    relay_peer_->deleteLater();
-    relay_peer_ = nullptr;
+    relay_peer_.reset();
 
     if (router_)
     {
@@ -568,8 +562,7 @@ void Client::onRelayConnectionError()
     CHECK(relay_peer_);
 
     relay_peer_->disconnect();
-    relay_peer_->deleteLater();
-    relay_peer_ = nullptr;
+    relay_peer_.reset();
 
     if (router_)
     {
@@ -745,8 +738,7 @@ void Client::connectToUdp(
     if (udp_channel_)
     {
         udp_channel_->disconnect();
-        udp_channel_->deleteLater();
-        udp_channel_ = nullptr;
+        udp_channel_.reset();
         udp_ready_ = false;
     }
 
@@ -840,8 +832,7 @@ void Client::startUdpHolePunching(const PendingUdp& context, const QString& stun
     if (stun_peer_)
     {
         stun_peer_->disconnect();
-        stun_peer_->deleteLater();
-        stun_peer_ = nullptr;
+        stun_peer_.reset();
     }
 
     stun_peer_ = new base::StunPeer(this);
@@ -855,8 +846,7 @@ void Client::startUdpHolePunching(const PendingUdp& context, const QString& stun
         qintptr socket = stun_peer_->takeSocket();
 
         stun_peer_->disconnect();
-        stun_peer_->deleteLater();
-        stun_peer_ = nullptr;
+        stun_peer_.reset();
 
         PendingUdp request = std::move(*pending_udp_context_);
         pending_udp_context_.reset();
@@ -870,8 +860,7 @@ void Client::startUdpHolePunching(const PendingUdp& context, const QString& stun
         CCHECK(pending_udp_context_.has_value());
 
         stun_peer_->disconnect();
-        stun_peer_->deleteLater();
-        stun_peer_ = nullptr;
+        stun_peer_.reset();
 
         // Fall back to direct connect without hole punching.
         connectToUdp(*pending_udp_context_);

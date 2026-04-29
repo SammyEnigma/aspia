@@ -306,8 +306,7 @@ void Service::onUpdateCheckedFinished(const QByteArray& result)
     while (false);
 
     update_checker_->disconnect(this);
-    update_checker_->deleteLater();
-    update_checker_ = nullptr;
+    update_checker_.reset();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -317,8 +316,7 @@ void Service::onFileDownloaderError(int error_code)
     CHECK(update_downloader_);
 
     update_downloader_->disconnect(this);
-    update_downloader_->deleteLater();
-    update_downloader_ = nullptr;
+    update_downloader_.reset();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -371,8 +369,7 @@ void Service::onFileDownloaderCompleted()
 #endif // defined(Q_OS_WINDOWS)
 
     update_downloader_->disconnect(this);
-    update_downloader_->deleteLater();
-    update_downloader_ = nullptr;
+    update_downloader_.reset();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -889,8 +886,7 @@ void Service::disconnectFromRouter(const base::Location& location)
 
     LOG(INFO) << "Disconnected from router from" << location;
     router_manager_->disconnect(this);
-    router_manager_->deleteLater();
-    router_manager_ = nullptr;
+    router_manager_.reset();
 }
 
 //--------------------------------------------------------------------------------------------------

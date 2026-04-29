@@ -23,6 +23,7 @@
 
 #include <optional>
 
+#include "base/scoped_qpointer.h"
 #include "base/shared_pointer.h"
 #include "base/net/tcp_channel.h"
 #include "base/peer/host_id.h"
@@ -85,7 +86,7 @@ private:
     void hostIdRequest();
     base::User createOneTimeUser() const;
 
-    base::TcpChannel* tcp_channel_ = nullptr;
+    base::ScopedQPointer<base::TcpChannel> tcp_channel_;
     base::RelayPeerManager* peer_manager_ = nullptr;
     QTimer* reconnect_timer_ = nullptr;
 

@@ -124,8 +124,7 @@ void DesktopClient::dettach()
     if (ipc_channel_)
     {
         ipc_channel_->disconnect(); // Disconnect all signals.
-        ipc_channel_->deleteLater();
-        ipc_channel_ = nullptr;
+        ipc_channel_.reset();
     }
 
     dettach_time_ = QTime::currentTime();
@@ -268,8 +267,7 @@ void DesktopClient::onIpcNewConnection()
     ipc_channel_->setParent(this);
 
     ipc_server_->disconnect();
-    ipc_server_->deleteLater();
-    ipc_server_ = nullptr;
+    ipc_server_.reset();
 
     connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &DesktopClient::onIpcDisconnected);
     connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &DesktopClient::onIpcMessageReceived);

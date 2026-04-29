@@ -21,6 +21,7 @@
 
 #include <QTime>
 
+#include "base/scoped_qpointer.h"
 #include "base/service.h"
 #include "host/system_settings.h"
 #include "proto/router_peer.h"
@@ -119,7 +120,7 @@ private:
     QFileSystemWatcher* settings_watcher_ = nullptr;
     SystemSettings settings_;
 
-    RouterManager* router_manager_ = nullptr;
+    base::ScopedQPointer<RouterManager> router_manager_;
     base::TcpServer* tcp_server_ = nullptr;
 
     DesktopManager* desktop_manager_ = nullptr;
@@ -128,8 +129,8 @@ private:
     QList<PendingConfirmation> pending_confirmation_;
     QList<Client*> clients_;
 
-    common::UpdateChecker* update_checker_ = nullptr;
-    common::HttpFileDownloader* update_downloader_ = nullptr;
+    base::ScopedQPointer<common::UpdateChecker> update_checker_;
+    base::ScopedQPointer<common::HttpFileDownloader> update_downloader_;
 
     Q_DISABLE_COPY_MOVE(Service)
 };

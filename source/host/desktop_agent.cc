@@ -342,8 +342,7 @@ void DesktopAgent::onClientConfigured()
         if (audio_capturer_)
         {
             audio_capturer_->disconnect();
-            audio_capturer_->deleteLater();
-            audio_capturer_ = nullptr;
+            audio_capturer_.reset();
         }
         audio_encoder_.reset();
     }
@@ -836,8 +835,7 @@ void DesktopAgent::selectCapturer(base::ScreenCapturer::Error last_error)
     if (screen_capturer_)
     {
         screen_capturer_->disconnect();
-        screen_capturer_->deleteLater();
-        screen_capturer_ = nullptr;
+        screen_capturer_.reset();
     }
 
 #if defined(Q_OS_WINDOWS)

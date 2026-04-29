@@ -21,6 +21,7 @@
 
 #include <QObject>
 
+#include "base/scoped_qpointer.h"
 #include "base/session_id.h"
 
 class QTimer;
@@ -92,8 +93,8 @@ private:
     base::SessionId session_id_ = base::kInvalidSessionId;
     bool is_console_ = true;
 
-    base::IpcServer* ipc_server_ = nullptr;
-    base::IpcChannel* ipc_channel_ = nullptr;
+    base::ScopedQPointer<base::IpcServer> ipc_server_;
+    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
 
     QTimer* restart_timer_ = nullptr;
     QTimer* attach_timer_ = nullptr;

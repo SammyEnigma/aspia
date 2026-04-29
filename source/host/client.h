@@ -28,6 +28,7 @@
 #include "base/logging.h"
 #include "base/crypto/key_pair.h"
 #include "base/net/tcp_channel.h"
+#include "base/scoped_qpointer.h"
 #include "proto/peer.h"
 
 class QTimer;
@@ -128,7 +129,7 @@ private:
 
     Features features_ = FEATURE_NONE;
     base::TcpChannel* tcp_channel_ = nullptr;
-    base::UdpChannel* udp_channel_ = nullptr;
+    base::ScopedQPointer<base::UdpChannel> udp_channel_;
     UdpState udp_state_ = UdpState::DISCONNECTED;
 
     struct PendingUdp
@@ -137,7 +138,7 @@ private:
         QByteArray iv;
     };
 
-    base::StunPeer* stun_peer_ = nullptr;
+    base::ScopedQPointer<base::StunPeer> stun_peer_;
     std::optional<PendingUdp> pending_udp_context_;
 
     UdpConnectPhase udp_phase_ = UdpConnectPhase::NONE;

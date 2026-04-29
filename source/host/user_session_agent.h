@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QVector>
 
+#include "base/scoped_qpointer.h"
 #include "base/serialization.h"
 #include "proto/user.h"
 
@@ -108,9 +109,9 @@ private:
     void sendServiceMessage();
     void sendNetworkMessage(quint8 net_channel_id, const QByteArray& buffer);
 
-    common::ClipboardMonitor* clipboard_ = nullptr;
-    common::ClipboardFileTransfer* clipboard_file_transfer_ = nullptr;
-    base::IpcChannel* ipc_channel_ = nullptr;
+    base::ScopedQPointer<common::ClipboardMonitor> clipboard_;
+    base::ScopedQPointer<common::ClipboardFileTransfer> clipboard_file_transfer_;
+    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
 
     base::Parser<proto::user::ServiceToUser> incoming_message_;
     base::Serializer<proto::user::UserToService> outgoing_message_;

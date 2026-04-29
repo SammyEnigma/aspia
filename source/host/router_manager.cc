@@ -165,8 +165,7 @@ void RouterManager::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
     if (tcp_channel_)
     {
         tcp_channel_->disconnect();
-        tcp_channel_->deleteLater();
-        tcp_channel_ = nullptr;
+        tcp_channel_.reset();
     }
 
     routerStateChanged(proto::user::RouterState::FAILED);
