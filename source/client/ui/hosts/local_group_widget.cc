@@ -447,8 +447,7 @@ void LocalGroupWidget::Item::setConnectTime(qint64 connect_time)
 void LocalGroupWidget::Item::setOnlineStatus(bool online)
 {
     setText(kColumnStatus, online ? tr("Online") : tr("Offline"));
-    setIcon(kColumnName, QIcon(online ? ":/img/computer-online.svg"
-                                      : ":/img/computer-offline.svg"));
+    setIcon(kColumnName, QIcon(online ? ":/img/computer-online.svg" : ":/img/computer-offline.svg"));
 }
 
 //--------------------------------------------------------------------------------------------------

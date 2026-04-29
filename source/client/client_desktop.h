@@ -22,9 +22,10 @@
 #include "base/serialization.h"
 #include "base/desktop/mouse_cursor.h"
 #include "client/client.h"
-#include "client/input_event_filter.h"
 #include "common/clipboard_file_transfer.h"
 #include "common/clipboard_monitor.h"
+#include "proto/desktop_clipboard.h"
+#include "proto/desktop_input.h"
 #include "proto/desktop_legacy.h"
 #include "proto/desktop_control.h"
 #include "proto/desktop_cursor.h"
@@ -162,7 +163,16 @@ private:
     common::ClipboardMonitor* clipboard_monitor_ = nullptr;
     common::ClipboardFileTransfer* clipboard_file_transfer_ = nullptr;
 
-    InputEventFilter input_event_filter_;
+    qint32 last_pos_x_ = 0;
+    qint32 last_pos_y_ = 0;
+    quint32 last_mask_ = 0;
+
+    int send_mouse_count_ = 0;
+    int drop_mouse_count_ = 0;
+    int send_key_count_ = 0;
+    int send_text_count_ = 0;
+    int read_clipboard_count_ = 0;
+    int send_clipboard_count_ = 0;
 
     QTimer* webm_video_encode_timer_ = nullptr;
     std::unique_ptr<base::WebmVideoEncoder> webm_video_encoder_;

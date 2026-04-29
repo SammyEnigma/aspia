@@ -86,8 +86,6 @@ void ClientDesktop::onStarted()
 
     repeated_timer_->start();
 
-    input_event_filter_.setClipboardEnabled(desktop_config_.clipboard());
-
     clipboard_monitor_ = new common::ClipboardMonitor(this);
     connect(clipboard_monitor_, &common::ClipboardMonitor::sig_clipboardEvent,
             this, &ClientDesktop::onClipboardEvent);
@@ -300,7 +298,6 @@ void ClientDesktop::onDesktopConfigChanged(const proto::control::Config& config)
         cursor_decoder_.reset();
     }
 
-    input_event_filter_.setClipboardEnabled(desktop_config_.clipboard());
     sendConfig(desktop_config_);
 }
 
@@ -447,8 +444,7 @@ void ClientDesktop::onRecordingChanged(bool enable, const QString& file_path)
 //--------------------------------------------------------------------------------------------------
 void ClientDesktop::onKeyEvent(const proto::input::KeyEvent& event)
 {
-    if (!input_event_filter_.keyEvent(event))
-        return;
+    ++send_key_count_;
 
     if (isLegacy())
     {
@@ -467,8 +463,7 @@ void ClientDesktop::onKeyEvent(const proto::input::KeyEvent& event)
 //--------------------------------------------------------------------------------------------------
 void ClientDesktop::onTextEvent(const proto::input::TextEvent& event)
 {
-    if (!input_event_filter_.textEvent(event))
-        return;
+    ++send_text_count_;
 
     if (isLegacy())
     {
@@ -487,8 +482,23 @@ void ClientDesktop::onTextEvent(const proto::input::TextEvent& event)
 //--------------------------------------------------------------------------------------------------
 void ClientDesktop::onMouseEvent(const proto::input::MouseEvent& event)
 {
-    if (!input_event_filter_.mouseEvent(event))
+    qint32 delta_x = std::abs(event.x() - last_pos_x_);
+    qint32 delta_y = std::abs(event.y() - last_pos_y_);
+
+    if (delta_x <= 1 && delta_y <= 1 && event.mask() == last_mask_)
+    {
+        ++drop_mouse_count_;
         return;
+    }
+
+    static const quint32 kWheelMask =
+        proto::input::MouseEvent::WHEEL_DOWN | proto::input::MouseEvent::WHEEL_UP;
+
+    last_pos_x_ = event.x();
+    last_pos_y_ = event.y();
+    last_mask_ = event.mask() & ~kWheelMask;
+
+    ++send_mouse_count_;
 
     if (isLegacy())
     {
@@ -597,12 +607,12 @@ void ClientDesktop::onMetricsRequest()
     metrics.video_capturer_type = video_capturer_type_;
     metrics.video_encoder_type = video_encoding_;
     metrics.fps = fps_;
-    metrics.send_mouse = input_event_filter_.sendMouseCount();
-    metrics.drop_mouse = input_event_filter_.dropMouseCount();
-    metrics.send_key   = input_event_filter_.sendKeyCount();
-    metrics.send_text  = input_event_filter_.sendTextCount();
-    metrics.read_clipboard = input_event_filter_.readClipboardCount();
-    metrics.send_clipboard = input_event_filter_.sendClipboardCount();
+    metrics.send_mouse = send_mouse_count_;
+    metrics.drop_mouse = drop_mouse_count_;
+    metrics.send_key   = send_key_count_;
+    metrics.send_text  = send_text_count_;
+    metrics.read_clipboard = read_clipboard_count_;
+    metrics.send_clipboard = send_clipboard_count_;
     metrics.cursor_shape_count = cursor_shape_count_;
     metrics.cursor_pos_count   = cursor_pos_count_;
 
@@ -629,8 +639,10 @@ void ClientDesktop::onSwitchSession(quint32 session_id)
 //--------------------------------------------------------------------------------------------------
 void ClientDesktop::onClipboardEvent(const proto::clipboard::Event& event)
 {
-    if (!input_event_filter_.sendClipboardEvent(event))
+    if (!desktop_config_.clipboard())
         return;
+
+    ++send_clipboard_count_;
 
     if (event.mime_type() == common::Clipboard::kMimeTypeFileList.toStdString() &&
         !file_clipboard_supported_)
@@ -968,8 +980,11 @@ void ClientDesktop::readClipboardEvent(const proto::clipboard::Event& event)
         return;
     }
 
-    if (clipboard_monitor_ && input_event_filter_.readClipboardEvent(event))
+    if (clipboard_monitor_ && desktop_config_.clipboard())
+    {
+        ++read_clipboard_count_;
         clipboard_monitor_->injectClipboardEvent(event);
+    }
 }
 
 //--------------------------------------------------------------------------------------------------

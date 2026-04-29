@@ -43,8 +43,6 @@ list(APPEND SOURCE_CLIENT_CORE
     file_transfer.h
     file_transfer_queue_builder.cc
     file_transfer_queue_builder.h
-    input_event_filter.cc
-    input_event_filter.h
     master_password.cc
     master_password.h
     router_connection.cc
