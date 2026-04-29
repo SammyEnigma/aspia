@@ -122,8 +122,7 @@ void RouterConnection::onDisconnectFromRouter()
     if (tcp_channel_)
     {
         tcp_channel_->disconnect();
-        tcp_channel_->deleteLater();
-        tcp_channel_ = nullptr;
+        tcp_channel_.reset();
     }
 
     setStatus(Status::OFFLINE);
@@ -390,8 +389,7 @@ void RouterConnection::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code
     if (tcp_channel_)
     {
         tcp_channel_->disconnect();
-        tcp_channel_->deleteLater();
-        tcp_channel_ = nullptr;
+        tcp_channel_.reset();
     }
 
     emit sig_errorOccurred(config_.router_id, error_code);

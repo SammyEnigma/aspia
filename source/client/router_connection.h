@@ -22,6 +22,7 @@
 #include <QObject>
 
 #include "base/net/tcp_channel.h"
+#include "base/scoped_qpointer.h"
 #include "client/config.h"
 
 class QTimer;
@@ -114,7 +115,7 @@ private:
     void sendMessage(quint8 channel_id, const QByteArray& data);
 
     RouterConfig config_;
-    base::TcpChannel* tcp_channel_ = nullptr;
+    base::ScopedQPointer<base::TcpChannel> tcp_channel_;
     QTimer* reconnect_timer_ = nullptr;
     Status status_ = Status::OFFLINE;
 

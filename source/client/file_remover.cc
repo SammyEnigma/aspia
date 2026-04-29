@@ -73,7 +73,7 @@ void FileRemover::start()
             emit sig_errorOccurred(QString(), error_code, ACTION_ABORT);
         }
 
-        queue_builder_->deleteLater();
+        queue_builder_.reset();
     });
 
     // Start building a list of objects for deletion.
@@ -85,7 +85,7 @@ void FileRemover::stop()
 {
     LOG(INFO) << "File remover stop";
 
-    delete queue_builder_;
+    queue_builder_.reset();
     tasks_.clear();
 
     onFinished(FROM_HERE);

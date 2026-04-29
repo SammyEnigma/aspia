@@ -26,6 +26,7 @@
 #include <QTimer>
 
 #include "base/location.h"
+#include "base/scoped_qpointer.h"
 #include "common/file_task_factory.h"
 #include "proto/file_transfer.h"
 
@@ -205,7 +206,7 @@ private:
 
     // The map contains available actions for the error and the current action.
     QMap<Error::Type, Error::Action> actions_;
-    QPointer<FileTransferQueueBuilder> queue_builder_;
+    base::ScopedQPointer<FileTransferQueueBuilder> queue_builder_;
     TaskList tasks_;
 
     qint64 total_size_ = 0;

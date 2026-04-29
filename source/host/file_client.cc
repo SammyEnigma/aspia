@@ -202,8 +202,7 @@ void FileClient::onIpcNewConnection()
     ipc_channel_->setParent(this);
 
     ipc_server_->disconnect(this);
-    ipc_server_->deleteLater();
-    ipc_server_ = nullptr;
+    ipc_server_.reset();
 
     connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &FileClient::onIpcDisconnected);
     connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &FileClient::onIpcMessageReceived);

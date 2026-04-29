@@ -180,7 +180,7 @@ void FileTransfer::start()
             onError(Error::Type::QUEUE, proto::file_transfer::ERROR_CODE_UNKNOWN);
         }
 
-        queue_builder_->deleteLater();
+        queue_builder_.reset();
     });
 
     speed_update_timer_->start(Milliseconds(1000));
@@ -196,7 +196,7 @@ void FileTransfer::stop()
 
     if (queue_builder_)
     {
-        delete queue_builder_;
+        queue_builder_.reset();
         onFinished(FROM_HERE);
     }
     else

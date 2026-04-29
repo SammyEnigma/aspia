@@ -320,11 +320,7 @@ void LocalGroupWidget::onOnlineCheckerFinished()
 {
     LOG(INFO) << "Online checker finished";
 
-    if (online_checker_)
-    {
-        online_checker_->deleteLater();
-        online_checker_ = nullptr;
-    }
+    online_checker_.reset();
 
     status_check_label_->setVisible(false);
 }
@@ -399,8 +395,7 @@ void LocalGroupWidget::stopOnlineChecker()
     {
         LOG(INFO) << "Stop online checker";
         online_checker_->disconnect(this);
-        online_checker_->deleteLater();
-        online_checker_ = nullptr;
+        online_checker_.reset();
     }
 
     clearOnlineStatuses();

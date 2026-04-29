@@ -19,6 +19,7 @@
 #ifndef HOST_FILE_CLIENT_H
 #define HOST_FILE_CLIENT_H
 
+#include "base/scoped_qpointer.h"
 #include "base/session_id.h"
 #include "host/client.h"
 
@@ -56,7 +57,7 @@ private:
     void onStarted(const base::Location& location, bool has_user);
     void onError(const base::Location& location);
 
-    base::IpcServer* ipc_server_ = nullptr;
+    base::ScopedQPointer<base::IpcServer> ipc_server_;
     base::IpcChannel* ipc_channel_ = nullptr;
 
     const base::SessionId session_id_;

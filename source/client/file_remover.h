@@ -24,6 +24,7 @@
 #include <QQueue>
 
 #include "base/location.h"
+#include "base/scoped_qpointer.h"
 #include "common/file_task_factory.h"
 #include "proto/file_transfer.h"
 
@@ -95,7 +96,7 @@ private:
     void onFinished(const base::Location& location);
 
     QPointer<common::FileTaskFactory> task_factory_;
-    QPointer<FileRemoveQueueBuilder> queue_builder_;
+    base::ScopedQPointer<FileRemoveQueueBuilder> queue_builder_;
 
     TaskList tasks_;
 

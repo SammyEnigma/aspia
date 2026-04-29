@@ -24,6 +24,7 @@
 #include <QPoint>
 #include <QPointer>
 
+#include "base/scoped_qpointer.h"
 #include "client/online_checker/online_checker.h"
 #include "client/ui/hosts/content_widget.h"
 #include "ui_local_group_widget.h"
@@ -144,7 +145,7 @@ private:
     QLabel* status_computers_label_ = nullptr;
     QLabel* status_check_label_ = nullptr;
 
-    QPointer<OnlineChecker> online_checker_;
+    base::ScopedQPointer<OnlineChecker> online_checker_;
 
     Q_DISABLE_COPY_MOVE(LocalGroupWidget)
 };
