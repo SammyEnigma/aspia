@@ -19,7 +19,6 @@
 #ifndef BASE_SCOPED_QPOINTER_H
 #define BASE_SCOPED_QPOINTER_H
 
-#include <QObject>
 #include <QPointer>
 
 #include <type_traits>
@@ -40,11 +39,12 @@ namespace base {
 // receivers as usual. Call disconnect() manually before reset() if this matters (typical reasons:
 // the object lives in another thread and is actively emitting, or there are external subscribers
 // that must stop receiving signals immediately).
+//
+// T may be forward-declared at the point of member declaration; the underlying QPointer<T>
+// requires T to derive from QObject, but the check is deferred until the type is actually used.
 template <typename T>
 class ScopedQPointer
 {
-    static_assert(std::is_base_of_v<QObject, T>, "T must derive from QObject");
-
 public:
     ScopedQPointer() noexcept = default;
 
