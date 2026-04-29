@@ -166,7 +166,7 @@ private:
     qint32 last_pos_y_ = 0;
     quint32 last_mask_ = 0;
 
-    QTimer* webm_video_encode_timer_ = nullptr;
+    base::ScopedQPointer<QTimer> webm_video_encode_timer_;
     std::unique_ptr<base::WebmVideoEncoder> webm_video_encoder_;
     std::unique_ptr<base::WebmFileWriter> webm_file_writer_;
 

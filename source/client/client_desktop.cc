@@ -426,11 +426,7 @@ void ClientDesktop::onRecordingChanged(bool enable, const QString& file_path)
 
         video_recording->set_action(proto::user::VideoRecording::ACTION_STOPPED);
 
-        if (webm_video_encode_timer_)
-        {
-            webm_video_encode_timer_->deleteLater();
-            webm_video_encode_timer_ = nullptr;
-        }
+        webm_video_encode_timer_.reset();
         webm_video_encoder_.reset();
         webm_file_writer_.reset();
     }

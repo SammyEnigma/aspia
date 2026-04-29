@@ -385,8 +385,7 @@ void TcpChannelNG::init()
         session_type_  = authenticator_->sessionType();
 
         authenticator_->disconnect();
-        authenticator_->deleteLater();
-        authenticator_ = nullptr;
+        authenticator_.reset();
 
         authenticated_ = true;
         emit sig_authenticated();

@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QList>
 
+#include "base/scoped_qpointer.h"
 #include "base/serialization.h"
 #include "base/session_id.h"
 #include "base/peer/host_id.h"
@@ -106,7 +107,7 @@ private:
     void sendMessage();
 
     base::IpcServer* ipc_server_ = nullptr;
-    base::IpcChannel* ipc_channel_ = nullptr;
+    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
     QTimer* attach_timer_ = nullptr;
     QTimer* dettach_timer_ = nullptr;
     QTimer* startup_timer_ = nullptr;

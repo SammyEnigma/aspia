@@ -20,6 +20,7 @@
 #define CLIENT_UI_HOSTS_ROUTER_WIDGET_H
 
 #include "base/peer/user.h"
+#include "base/scoped_qpointer.h"
 #include "client/config.h"
 #include "client/router_connection.h"
 #include "client/ui/hosts/content_widget.h"
@@ -150,7 +151,7 @@ private:
     Ui::RouterWidget ui;
 
     RouterConfig config_;
-    RouterConnection* connection_ = nullptr;
+    base::ScopedQPointer<RouterConnection> connection_;
     RouterConnection::Status status_ = RouterConnection::Status::OFFLINE;
 
     common::StatusDialog* status_dialog_ = nullptr;

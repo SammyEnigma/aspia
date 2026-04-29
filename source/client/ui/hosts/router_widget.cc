@@ -349,11 +349,7 @@ RouterWidget::~RouterWidget()
     LOG(INFO) << "Dtor";
 
     if (connection_)
-    {
-        connection_->disconnect();
-        connection_->deleteLater();
-        connection_ = nullptr;
-    }
+        connection_->disconnect(this);
 }
 
 //--------------------------------------------------------------------------------------------------

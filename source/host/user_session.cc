@@ -777,8 +777,7 @@ void UserSession::dettach(const base::Location& location)
     if (ipc_channel_)
     {
         ipc_channel_->disconnect(this);
-        ipc_channel_->deleteLater();
-        ipc_channel_ = nullptr;
+        ipc_channel_.reset();
     }
 
     startup_timer_->stop();

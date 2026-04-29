@@ -26,6 +26,7 @@
 #include <asio/ip/tcp.hpp>
 #include <asio/steady_timer.hpp>
 
+#include "base/scoped_qpointer.h"
 #include "base/shared_pointer.h"
 #include "base/net/tcp_channel.h"
 #include "base/peer/authenticator.h"
@@ -227,7 +228,7 @@ private:
     bool authenticated_ = false;
     bool paused_ = true;
 
-    Authenticator* authenticator_ = nullptr;
+    ScopedQPointer<Authenticator> authenticator_;
     std::unique_ptr<StreamEncryptor> encryptor_;
     std::unique_ptr<StreamDecryptor> decryptor_;
 
