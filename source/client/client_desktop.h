@@ -166,13 +166,6 @@ private:
     qint32 last_pos_y_ = 0;
     quint32 last_mask_ = 0;
 
-    int send_mouse_count_ = 0;
-    int drop_mouse_count_ = 0;
-    int send_key_count_ = 0;
-    int send_text_count_ = 0;
-    int read_clipboard_count_ = 0;
-    int send_clipboard_count_ = 0;
-
     QTimer* webm_video_encode_timer_ = nullptr;
     std::unique_ptr<base::WebmVideoEncoder> webm_video_encoder_;
     std::unique_ptr<base::WebmFileWriter> webm_file_writer_;
@@ -186,6 +179,12 @@ private:
     qint64 audio_packet_count_ = 0;
     qint64 audio_pause_count_ = 0;
     qint64 audio_resume_count_ = 0;
+    int send_mouse_count_ = 0;
+    int drop_mouse_count_ = 0;
+    int send_key_count_ = 0;
+    int send_text_count_ = 0;
+    int read_clipboard_count_ = 0;
+    int send_clipboard_count_ = 0;
     quint32 video_capturer_type_ = 0;
     TimePoint start_time_;
     TimePoint fps_time_;
