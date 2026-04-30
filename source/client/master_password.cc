@@ -30,6 +30,8 @@ namespace {
 
 const char kSaltPropertyName[] = "master_password_salt";
 const char kVerifierPropertyName[] = "master_password_verifier";
+const char kVersionPropertyName[] = "master_password_version";
+const quint32 kCurrentVersion = 1;
 const int kSaltSize = 32;
 const int kVerifierPayloadSize = 32;
 
@@ -111,11 +113,15 @@ bool changeKeyAndReencrypt(const QByteArray& new_key, const QByteArray& new_salt
     bool ok;
     if (new_salt.isEmpty() && new_verifier.isEmpty())
     {
-        ok = db.removeProperty(kSaltPropertyName) && db.removeProperty(kVerifierPropertyName);
+        ok = db.removeProperty(kSaltPropertyName) &&
+             db.removeProperty(kVerifierPropertyName) &&
+             db.removeProperty(kVersionPropertyName);
     }
     else
     {
-        ok = db.setProperty(kSaltPropertyName, new_salt) && db.setProperty(kVerifierPropertyName, new_verifier);
+        ok = db.setProperty(kSaltPropertyName, new_salt) &&
+             db.setProperty(kVerifierPropertyName, new_verifier) &&
+             db.setProperty(kVersionPropertyName, kCurrentVersion);
     }
 
     if (!ok)
@@ -168,7 +174,8 @@ bool MasterPassword::isSet()
         return false;
 
     return db.hasProperty(kSaltPropertyName) &&
-           db.hasProperty(kVerifierPropertyName);
+           db.hasProperty(kVerifierPropertyName) &&
+           db.hasProperty(kVersionPropertyName);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -184,6 +191,7 @@ bool MasterPassword::unlock(const QString& password)
 
     QVariant salt_value = db.property(kSaltPropertyName);
     QVariant verifier_value = db.property(kVerifierPropertyName);
+    QVariant version_value = db.property(kVersionPropertyName);
 
     QByteArray salt = salt_value.toByteArray();
     QByteArray verifier = verifier_value.toByteArray();
@@ -191,6 +199,13 @@ bool MasterPassword::unlock(const QString& password)
     if (salt.isEmpty() || verifier.isEmpty())
     {
         LOG(ERROR) << "Master password is not set";
+        return false;
+    }
+
+    quint32 version = version_value.toUInt();
+    if (version != kCurrentVersion)
+    {
+        LOG(ERROR) << "Unsupported master password version:" << version;
         return false;
     }
 
