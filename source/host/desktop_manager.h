@@ -26,9 +26,10 @@
 
 class QTimer;
 
-namespace base {
 class IpcChannel;
 class IpcServer;
+
+namespace base {
 class Location;
 } // namespace base
 
@@ -73,11 +74,11 @@ private slots:
     void onRestartTimeout();
     void onAttachTimeout();
 
-    // Slots for base::IpcServer.
+    // Slots for IpcServer.
     void onIpcNewConnection();
     void onIpcErrorOccurred();
 
-    // Slots for base::IpcChannel.
+    // Slots for IpcChannel.
     void onIpcDisconnected();
     void onIpcMessageReceived(quint32 channel_id, const QByteArray& buffer, bool reliable);
 
@@ -91,8 +92,8 @@ private:
     base::SessionId session_id_ = base::kInvalidSessionId;
     bool is_console_ = true;
 
-    ScopedQPointer<base::IpcServer> ipc_server_;
-    ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<IpcServer> ipc_server_;
+    ScopedQPointer<IpcChannel> ipc_channel_;
 
     QTimer* restart_timer_ = nullptr;
     QTimer* attach_timer_ = nullptr;

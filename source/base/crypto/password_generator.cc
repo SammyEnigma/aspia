@@ -21,8 +21,6 @@
 #include <algorithm>
 #include <random>
 
-namespace base {
-
 const quint32 PasswordGenerator::kDefaultCharacters = UPPER_CASE | LOWER_CASE | DIGITS;
 const qsizetype PasswordGenerator::kDefaultLength = 8;
 
@@ -85,5 +83,3 @@ QString PasswordGenerator::result() const
 
     return result;
 }
-
-} // namespace base

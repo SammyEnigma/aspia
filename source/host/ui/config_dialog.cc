@@ -209,12 +209,12 @@ ConfigDialog::ConfigDialog(QWidget* parent)
     });
 
     ui.combobox_onetime_pass_chars->addItem(tr("Letters and digits"),
-        base::PasswordGenerator::LOWER_CASE | base::PasswordGenerator::UPPER_CASE |
-        base::PasswordGenerator::DIGITS);
+        PasswordGenerator::LOWER_CASE | PasswordGenerator::UPPER_CASE |
+        PasswordGenerator::DIGITS);
     ui.combobox_onetime_pass_chars->addItem(tr("Letters"),
-        base::PasswordGenerator::UPPER_CASE | base::PasswordGenerator::LOWER_CASE);
+        PasswordGenerator::UPPER_CASE | PasswordGenerator::LOWER_CASE);
     ui.combobox_onetime_pass_chars->addItem(tr("Digits"),
-        base::PasswordGenerator::DIGITS);
+        PasswordGenerator::DIGITS);
 
     connect(ui.combobox_onetime_pass_chars, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this]()

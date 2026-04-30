@@ -32,9 +32,7 @@
 #include "proto/desktop_screen.h"
 #include "proto/desktop_video.h"
 
-namespace base {
 class IpcChannel;
-} // namespace base
 
 class DesktopAgentClient final : public QObject
 {
@@ -94,7 +92,7 @@ private:
     void readOverflow(proto::desktop::Overflow::State state);
     void sendCapabilities();
 
-    base::IpcChannel* ipc_channel_ = nullptr;
+    IpcChannel* ipc_channel_ = nullptr;
 
     proto::desktop::Overflow::State overflow_state_ = proto::desktop::Overflow::STATE_NONE;
     std::optional<proto::control::Config> config_;

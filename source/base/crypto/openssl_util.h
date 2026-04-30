@@ -29,8 +29,6 @@ struct evp_cipher_ctx_st;
 struct evp_pkey_ctx_st;
 struct evp_pkey_st;
 
-namespace base {
-
 struct BIGNUM_CTX_Deleter
 {
     void operator()(bignum_ctx* bignum_ctx);
@@ -75,7 +73,5 @@ enum class CipherMode
 };
 
 EVP_CIPHER_CTX_ptr createCipher(CipherType type, CipherMode mode, const QByteArray& key, int iv_size);
-
-} // namespace base
 
 #endif // BASE_CRYPTO_OPENSSL_UTIL_H

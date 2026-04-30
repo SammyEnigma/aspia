@@ -24,8 +24,6 @@
 
 #include <optional>
 
-namespace base {
-
 class DataCryptor
 {
 public:
@@ -47,7 +45,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DataCryptor)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_DATA_CRYPTOR_H

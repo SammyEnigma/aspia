@@ -43,8 +43,8 @@ QByteArray decryptSecret(const proto::relay::PeerToRelay& message, const Session
         return QByteArray();
     }
 
-    std::unique_ptr<base::StreamDecryptor> decryptor =
-        base::StreamDecryptor::createForChaCha20Poly1305(key.first, key.second);
+    std::unique_ptr<StreamDecryptor> decryptor =
+        StreamDecryptor::createForChaCha20Poly1305(key.first, key.second);
     if (!decryptor)
     {
         LOG(ERROR) << "Decryptor not created";

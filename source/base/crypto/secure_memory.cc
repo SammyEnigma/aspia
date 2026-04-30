@@ -20,8 +20,6 @@
 
 #include <openssl/crypto.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void memZero(void* data, size_t data_size)
 {
@@ -55,5 +53,3 @@ void memZero(QByteArray* str)
 
     memZero(str->data(), str->size());
 }
-
-} // namespace base

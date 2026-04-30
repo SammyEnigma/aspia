@@ -21,8 +21,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 namespace {
 
 const QByteArray kKey =
@@ -412,5 +410,3 @@ TEST(DatagramCryptorTest, InvalidIvSize)
     EXPECT_EQ(DatagramEncryptor::createForChaCha20Poly1305(kKey, short_iv), nullptr);
     EXPECT_EQ(DatagramDecryptor::createForChaCha20Poly1305(kKey, short_iv), nullptr);
 }
-
-} // namespace base

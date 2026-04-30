@@ -23,8 +23,6 @@
 #include <qt_windows.h>
 #include <wincrypt.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // static
 bool OSCrypt::encryptString(const QString& plaintext, QByteArray* ciphertext)
@@ -72,5 +70,3 @@ bool OSCrypt::decryptString(const QByteArray& ciphertext, QString* plaintext)
     LocalFree(output.pbData);
     return true;
 }
-
-} // namespace base

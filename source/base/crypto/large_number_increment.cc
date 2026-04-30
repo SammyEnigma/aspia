@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void largeNumberIncrement(quint8* buffer, size_t buffer_size)
 {
@@ -70,5 +68,3 @@ void largeNumberIncrement(QByteArray* buffer)
     DCHECK(buffer);
     largeNumberIncrement(reinterpret_cast<quint8*>(buffer->data()), buffer->size());
 }
-
-} // namespace base

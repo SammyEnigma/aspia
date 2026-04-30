@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class OSCrypt
 {
 public:
@@ -35,7 +33,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(OSCrypt)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_OS_CRYPT_H

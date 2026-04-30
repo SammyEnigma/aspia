@@ -89,11 +89,11 @@ bool SystemSettings::createPasswordHash(const QString& password, QByteArray* has
     if (password.isEmpty() || !hash || !salt)
         return false;
 
-    QByteArray salt_temp = base::Random::byteArray(kPasswordHashSaltSize);
+    QByteArray salt_temp = Random::byteArray(kPasswordHashSaltSize);
     if (salt_temp.isEmpty())
         return false;
 
-    QByteArray hash_temp = base::PasswordHash::hash(base::PasswordHash::SCRYPT, password, salt_temp);
+    QByteArray hash_temp = PasswordHash::hash(PasswordHash::SCRYPT, password, salt_temp);
     if (hash_temp.isEmpty())
         return false;
 
@@ -118,7 +118,7 @@ bool SystemSettings::isValidPassword(const QString& password)
         return false;
 
     QByteArray verifiable_password_hash =
-        base::PasswordHash::hash(base::PasswordHash::SCRYPT, password, password_hash_salt);
+        PasswordHash::hash(PasswordHash::SCRYPT, password, password_hash_salt);
     if (verifiable_password_hash.isEmpty())
         return false;
 
@@ -227,7 +227,7 @@ std::unique_ptr<UserList> SystemSettings::userList() const
 
     QByteArray seed_key = settings_.value(kSeedKey).toByteArray();
     if (seed_key.isEmpty())
-        seed_key = base::Random::byteArray(64);
+        seed_key = Random::byteArray(64);
 
     users->setSeedKey(seed_key);
     return users;
@@ -258,7 +258,7 @@ void SystemSettings::setUserList(const UserList& users)
 
     QByteArray seed_key = users.seedKey();
     if (seed_key.isEmpty())
-        seed_key = base::Random::byteArray(64);
+        seed_key = Random::byteArray(64);
 
     settings_.setValue(kSeedKey, seed_key);
 }
@@ -385,14 +385,14 @@ void SystemSettings::setOneTimePasswordLength(int length)
 //--------------------------------------------------------------------------------------------------
 quint32 SystemSettings::oneTimePasswordCharacters() const
 {
-    quint32 kDefaultValue = base::PasswordGenerator::DIGITS | base::PasswordGenerator::LOWER_CASE |
-        base::PasswordGenerator::UPPER_CASE;
+    quint32 kDefaultValue = PasswordGenerator::DIGITS | PasswordGenerator::LOWER_CASE |
+        PasswordGenerator::UPPER_CASE;
 
     quint32 value = settings_.value(kOneTimePasswordCharacters, kDefaultValue).toUInt();
 
-    if (!(value & base::PasswordGenerator::DIGITS) &&
-        !(value & base::PasswordGenerator::LOWER_CASE) &&
-        !(value & base::PasswordGenerator::UPPER_CASE))
+    if (!(value & PasswordGenerator::DIGITS) &&
+        !(value & PasswordGenerator::LOWER_CASE) &&
+        !(value & PasswordGenerator::UPPER_CASE))
     {
         value = kDefaultValue;
     }

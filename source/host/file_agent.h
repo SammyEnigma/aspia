@@ -24,9 +24,7 @@
 #include "base/serialization.h"
 #include "proto/file_transfer.h"
 
-namespace base {
 class IpcChannel;
-} // namespace base
 
 class FileWorker;
 
@@ -47,7 +45,7 @@ private slots:
     void onIpcMessageReceived(quint32 channel_id, const QByteArray& buffer, bool reliable);
 
 private:
-    base::IpcChannel* ipc_channel_ = nullptr;
+    IpcChannel* ipc_channel_ = nullptr;
     FileWorker* worker_ = nullptr;
 
     base::Parser<proto::file_transfer::Request> request_;

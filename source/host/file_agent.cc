@@ -44,12 +44,12 @@ void FileAgent::start(const QString& channel_id)
 {
     LOG(INFO) << "Starting (channel_id:" << channel_id << ")";
 
-    ipc_channel_ = new base::IpcChannel(this);
+    ipc_channel_ = new IpcChannel(this);
 
-    connect(ipc_channel_, &base::IpcChannel::sig_connected, this, &FileAgent::onIpcConnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &FileAgent::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_errorOccurred, this, &FileAgent::onIpcErrorOccurred);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &FileAgent::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_connected, this, &FileAgent::onIpcConnected);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &FileAgent::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_errorOccurred, this, &FileAgent::onIpcErrorOccurred);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &FileAgent::onIpcMessageReceived);
 
     ipc_channel_->connectTo(channel_id);
 }

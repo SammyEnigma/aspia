@@ -36,13 +36,13 @@ const int kVerifierPayloadSize = 32;
 //--------------------------------------------------------------------------------------------------
 QByteArray deriveKey(const QString& password, const QByteArray& salt)
 {
-    return base::PasswordHash::hash(base::PasswordHash::ARGON2ID, password, salt);
+    return PasswordHash::hash(PasswordHash::ARGON2ID, password, salt);
 }
 
 //--------------------------------------------------------------------------------------------------
 std::optional<QByteArray> makeVerifier(const QByteArray& key)
 {
-    return base::DataCryptor(key).encrypt(base::Random::byteArray(kVerifierPayloadSize));
+    return DataCryptor(key).encrypt(Random::byteArray(kVerifierPayloadSize));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ bool checkVerifier(const QByteArray& key, const QByteArray& verifier)
 {
     // ChaCha20-Poly1305 is an AEAD cipher: successful decryption (i.e. valid auth tag)
     // is itself the proof that the key is correct. The plaintext content does not matter.
-    return base::DataCryptor(key).decrypt(verifier).has_value();
+    return DataCryptor(key).decrypt(verifier).has_value();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ bool changeKeyAndReencrypt(const QByteArray& new_key, const QByteArray& new_salt
         return false;
     }
 
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
     QByteArray old_key = cryptor.key();
 
     // Read decrypted data with the current key.
@@ -199,7 +199,7 @@ bool MasterPassword::unlock(const QString& password)
         return false;
     }
 
-    base::DataCryptor::instance().setKey(key);
+    DataCryptor::instance().setKey(key);
     return true;
 }
 
@@ -219,7 +219,7 @@ bool MasterPassword::setNew(const QString& new_password)
         return false;
     }
 
-    QByteArray salt = base::Random::byteArray(kSaltSize);
+    QByteArray salt = Random::byteArray(kSaltSize);
     CHECK(!salt.isEmpty());
 
     QByteArray new_key = deriveKey(new_password, salt);
@@ -243,7 +243,7 @@ bool MasterPassword::change(const QString& current_password, const QString& new_
     if (!unlock(current_password))
         return false;
 
-    QByteArray salt = base::Random::byteArray(kSaltSize);
+    QByteArray salt = Random::byteArray(kSaltSize);
     CHECK(!salt.isEmpty());
 
     QByteArray new_key = deriveKey(new_password, salt);

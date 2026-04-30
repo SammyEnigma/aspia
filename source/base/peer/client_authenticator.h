@@ -70,12 +70,12 @@ private:
     QString password_;
     QString display_name_;
 
-    base::BigNum N_;
-    base::BigNum g_;
-    base::BigNum s_;
-    base::BigNum B_;
-    base::BigNum a_;
-    base::BigNum A_;
+    BigNum N_;
+    BigNum g_;
+    BigNum s_;
+    BigNum B_;
+    BigNum a_;
+    BigNum A_;
 
     Q_DISABLE_COPY_MOVE(ClientAuthenticator)
 };

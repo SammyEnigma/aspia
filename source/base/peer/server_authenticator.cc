@@ -76,14 +76,14 @@ bool ServerAuthenticator::setPrivateKey(const QByteArray& private_key)
         return false;
     }
 
-    key_pair_ = base::KeyPair::fromPrivateKey(private_key);
+    key_pair_ = KeyPair::fromPrivateKey(private_key);
     if (!key_pair_.isValid())
     {
         CLOG(ERROR) << "Failed to load private key. Perhaps the key is incorrect";
         return false;
     }
 
-    encrypt_iv_ = base::Random::byteArray(kIvSize);
+    encrypt_iv_ = Random::byteArray(kIvSize);
     if (encrypt_iv_.isEmpty())
     {
         CLOG(ERROR) << "An empty IV is not valid";
@@ -334,7 +334,7 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
                 return;
             }
 
-            session_key_ = base::GenericHash::hash(base::GenericHash::Type::BLAKE2s256, temp);
+            session_key_ = GenericHash::hash(GenericHash::Type::BLAKE2s256, temp);
             if (session_key_.isEmpty())
             {
                 finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
@@ -415,7 +415,7 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
         if (seed_key.isEmpty())
         {
             CLOG(INFO) << "Empty seed key. Using random 64 bytes";
-            seed_key = base::Random::byteArray(64);
+            seed_key = Random::byteArray(64);
         }
 
         if (user.isValid())
@@ -432,13 +432,13 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
         {
             session_types_ = user.sessions;
 
-            std::optional<base::SrpMath::NgPair> Ng_pair = base::SrpMath::pairByGroup(user.group);
+            std::optional<SrpMath::NgPair> Ng_pair = SrpMath::pairByGroup(user.group);
             if (Ng_pair.has_value())
             {
-                N_ = base::BigNum::fromStdString(Ng_pair->first);
-                g_ = base::BigNum::fromStdString(Ng_pair->second);
-                s_ = base::BigNum::fromByteArray(user.salt);
-                v_ = base::BigNum::fromByteArray(user.verifier);
+                N_ = BigNum::fromStdString(Ng_pair->first);
+                g_ = BigNum::fromStdString(Ng_pair->second);
+                s_ = BigNum::fromByteArray(user.salt);
+                v_ = BigNum::fromByteArray(user.verifier);
                 break;
             }
             else
@@ -449,19 +449,19 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
 
         session_types_ = 0;
 
-        base::GenericHash hash(base::GenericHash::BLAKE2b512);
+        GenericHash hash(GenericHash::BLAKE2b512);
         hash.addData(seed_key);
         hash.addData(user_name_.toUtf8());
 
-        N_ = base::BigNum::fromStdString(base::SrpMath::kNgPair_8192.first);
-        g_ = base::BigNum::fromStdString(base::SrpMath::kNgPair_8192.second);
-        s_ = base::BigNum::fromByteArray(hash.result());
-        v_ = base::SrpMath::calc_v(user_name_, seed_key, s_, N_, g_);
+        N_ = BigNum::fromStdString(SrpMath::kNgPair_8192.first);
+        g_ = BigNum::fromStdString(SrpMath::kNgPair_8192.second);
+        s_ = BigNum::fromByteArray(hash.result());
+        v_ = SrpMath::calc_v(user_name_, seed_key, s_, N_, g_);
     }
     while (false);
 
-    b_ = base::BigNum::fromByteArray(base::Random::byteArray(128)); // 1024 bits.
-    B_ = base::SrpMath::calc_B(b_, N_, g_, v_);
+    b_ = BigNum::fromByteArray(Random::byteArray(128)); // 1024 bits.
+    B_ = SrpMath::calc_B(b_, N_, g_, v_);
 
     if (!N_.isValid() || !g_.isValid() || !s_.isValid() || !B_.isValid())
     {
@@ -470,7 +470,7 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
     }
 
     internal_state_ = InternalState::SEND_SERVER_KEY_EXCHANGE;
-    encrypt_iv_ = base::Random::byteArray(kIvSize);
+    encrypt_iv_ = Random::byteArray(kIvSize);
 
     proto::key_exchange::SrpServerKeyExchange server_key_exchange;
 
@@ -498,7 +498,7 @@ void ServerAuthenticator::onClientKeyExchange(const QByteArray& buffer)
         return;
     }
 
-    A_ = base::BigNum::fromStdString(client_key_exchange.a());
+    A_ = BigNum::fromStdString(client_key_exchange.a());
     decrypt_iv_ = QByteArray::fromStdString(client_key_exchange.iv());
 
     if (!A_.isValid() || decrypt_iv_.isEmpty())
@@ -520,7 +520,7 @@ void ServerAuthenticator::onClientKeyExchange(const QByteArray& buffer)
         case proto::key_exchange::ENCRYPTION_AES256_GCM:
         case proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305:
         {
-            base::GenericHash hash(base::GenericHash::BLAKE2s256);
+            GenericHash hash(GenericHash::BLAKE2s256);
 
             if (!session_key_.isEmpty())
                 hash.addData(session_key_);
@@ -617,14 +617,14 @@ void ServerAuthenticator::onSessionResponse(const QByteArray& buffer)
 //--------------------------------------------------------------------------------------------------
 QByteArray ServerAuthenticator::createSrpKey()
 {
-    if (!base::SrpMath::verify_A_mod_N(A_, N_))
+    if (!SrpMath::verify_A_mod_N(A_, N_))
     {
-        CLOG(ERROR) << "base::SrpMath::verify_A_mod_N failed";
+        CLOG(ERROR) << "SrpMath::verify_A_mod_N failed";
         return QByteArray();
     }
 
-    base::BigNum u = base::SrpMath::calc_u(A_, B_, N_);
-    base::BigNum server_key = base::SrpMath::calcServerKey(A_, v_, u, b_, N_);
+    BigNum u = SrpMath::calc_u(A_, B_, N_);
+    BigNum server_key = SrpMath::calcServerKey(A_, v_, u, b_, N_);
 
     return server_key.toByteArray();
 }

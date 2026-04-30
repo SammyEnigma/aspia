@@ -428,7 +428,7 @@ bool Service::start()
     if (seed_key.isEmpty())
     {
         LOG(INFO) << "Empty seed key. New key is generated";
-        seed_key = base::Random::byteArray(64);
+        seed_key = Random::byteArray(64);
         settings.setSeedKey(seed_key);
     }
 

@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(BigNumTest, Conversions)
 {
     QByteArray hex = "00DF8CB233BD5EDF263CA842B91BC2B61AAEB92313B41CCBDEEB659EDDEAA53591D47EC559"
@@ -30,10 +28,8 @@ TEST(BigNumTest, Conversions)
 
     EXPECT_EQ(salt.size(), 64);
 
-    base::BigNum salt_bn = base::BigNum::fromByteArray(salt);
+    BigNum salt_bn = BigNum::fromByteArray(salt);
     std::string salt_str = salt_bn.toStdString();
 
     EXPECT_EQ(salt_str.size(), 63);
 }
-
-} // namespace base

@@ -84,14 +84,14 @@ private:
     // Bitmask of allowed session types.
     quint32 session_types_ = 0;
 
-    base::KeyPair key_pair_;
-    base::BigNum N_;
-    base::BigNum g_;
-    base::BigNum v_;
-    base::BigNum s_;
-    base::BigNum b_;
-    base::BigNum B_;
-    base::BigNum A_;
+    KeyPair key_pair_;
+    BigNum N_;
+    BigNum g_;
+    BigNum v_;
+    BigNum s_;
+    BigNum b_;
+    BigNum B_;
+    BigNum A_;
 
     Q_DISABLE_COPY_MOVE(ServerAuthenticator)
 };

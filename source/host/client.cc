@@ -489,14 +489,14 @@ void Client::startDirectUdp(qintptr socket, const QString& address, quint16 port
 
     PendingUdp context;
 
-    context.key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
+    context.key_pair = KeyPair::create(KeyPair::Type::X25519);
     if (!context.key_pair.isValid())
     {
         CLOG(ERROR) << "Failed to create UDP key pair";
         return;
     }
 
-    context.iv = base::Random::byteArray(12);
+    context.iv = Random::byteArray(12);
     if (context.iv.isEmpty())
     {
         CLOG(ERROR) << "Unable to create IV for UDP";
@@ -564,18 +564,18 @@ void Client::readDirectUdpReply(const proto::peer::DirectUdpReply& reply)
         return;
     }
 
-    std::unique_ptr<base::DatagramEncryptor> encryptor;
-    std::unique_ptr<base::DatagramDecryptor> decryptor;
+    std::unique_ptr<DatagramEncryptor> encryptor;
+    std::unique_ptr<DatagramDecryptor> decryptor;
 
     if (encryption == proto::key_exchange::ENCRYPTION_AES256_GCM)
     {
-        encryptor = base::DatagramEncryptor::createForAes256Gcm(session_key, context.iv);
-        decryptor = base::DatagramDecryptor::createForAes256Gcm(session_key, host_iv);
+        encryptor = DatagramEncryptor::createForAes256Gcm(session_key, context.iv);
+        decryptor = DatagramDecryptor::createForAes256Gcm(session_key, host_iv);
     }
     else if (encryption == proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305)
     {
-        encryptor = base::DatagramEncryptor::createForChaCha20Poly1305(session_key, context.iv);
-        decryptor = base::DatagramDecryptor::createForChaCha20Poly1305(session_key, host_iv);
+        encryptor = DatagramEncryptor::createForChaCha20Poly1305(session_key, context.iv);
+        decryptor = DatagramDecryptor::createForChaCha20Poly1305(session_key, host_iv);
     }
     else
     {

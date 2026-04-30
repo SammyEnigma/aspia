@@ -94,10 +94,10 @@ void SessionLegacyHost::readHostIdRequest(const proto::router::legacy::HostIdReq
     if (host_id_request.type() == proto::router::legacy::HostIdRequest::NEW_ID)
     {
         // Generate new key.
-        std::string key = base::Random::string(kHostKeySize);
+        std::string key = Random::string(kHostKeySize);
 
         // Calculate hash for key.
-        key_hash = base::GenericHash::hash(base::GenericHash::Type::BLAKE2b512, key);
+        key_hash = GenericHash::hash(GenericHash::Type::BLAKE2b512, key);
 
         if (!database.addHost(key_hash))
         {
@@ -110,7 +110,7 @@ void SessionLegacyHost::readHostIdRequest(const proto::router::legacy::HostIdReq
     else if (host_id_request.type() == proto::router::legacy::HostIdRequest::EXISTING_ID)
     {
         // Using existing key.
-        key_hash = base::GenericHash::hash(base::GenericHash::Type::BLAKE2b512, host_id_request.key());
+        key_hash = GenericHash::hash(GenericHash::Type::BLAKE2b512, host_id_request.key());
     }
     else
     {

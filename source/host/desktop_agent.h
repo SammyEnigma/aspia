@@ -31,13 +31,14 @@
 #include "proto/desktop_input.h"
 #include "proto/desktop_video.h"
 
+class IpcChannel;
+
 namespace base {
 class AudioCapturerWrapper;
 class AudioEncoder;
 class CursorEncoder;
 class DesktopEnvironment;
 class DesktopResizer;
-class IpcChannel;
 class ScaleReducer;
 class VideoEncoder;
 } // namespace base
@@ -89,7 +90,7 @@ private:
     void encodeAudio(const proto::audio::Packet& packet);
 
     // Control channel between service and agent.
-    base::IpcChannel* ipc_channel_ = nullptr;
+    IpcChannel* ipc_channel_ = nullptr;
 
     QList<DesktopAgentClient*> clients_;
 

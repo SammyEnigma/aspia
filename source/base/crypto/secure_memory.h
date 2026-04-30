@@ -22,13 +22,9 @@
 #include <QByteArray>
 #include <string>
 
-namespace base {
-
 void memZero(void* data, size_t data_size);
 void memZero(std::string* str);
 void memZero(std::u16string* str);
 void memZero(QByteArray* str);
-
-} // namespace base
 
 #endif // BASE_CRYPTO_SECURE_MEMORY_H

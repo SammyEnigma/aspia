@@ -22,8 +22,6 @@
 
 #include <openssl/evp.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 GenericHash::GenericHash(Type type)
 {
@@ -142,5 +140,3 @@ void GenericHash::reset()
     int ret = EVP_DigestInit(ctxt_, md_);
     CHECK_EQ(ret, 1);
 }
-
-} // namespace base

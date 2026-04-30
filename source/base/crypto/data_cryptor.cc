@@ -25,8 +25,6 @@
 
 #include <openssl/evp.h>
 
-namespace base {
-
 namespace {
 
 const size_t kKeySize = 32; // 256 bits, 32 bytes.
@@ -240,5 +238,3 @@ DataCryptor& DataCryptor::instance()
     static thread_local DataCryptor cryptor;
     return cryptor;
 }
-
-} // namespace base

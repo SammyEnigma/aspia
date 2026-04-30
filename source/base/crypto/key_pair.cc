@@ -22,8 +22,6 @@
 
 #include <openssl/evp.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 KeyPair::KeyPair() = default;
 
@@ -242,5 +240,3 @@ QByteArray KeyPair::sessionKey(const QByteArray& peer_public_key) const
 
     return session_key;
 }
-
-} // namespace base

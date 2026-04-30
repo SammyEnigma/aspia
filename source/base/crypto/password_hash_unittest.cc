@@ -21,8 +21,6 @@
 #include <gtest/gtest.h>
 #include <QString>
 
-namespace base {
-
 TEST(PasswordHashTest, Scrypt)
 {
     struct TestData
@@ -64,5 +62,3 @@ TEST(PasswordHashTest, Scrypt)
         }
     }
 }
-
-} // namespace base

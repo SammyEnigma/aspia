@@ -35,9 +35,10 @@ typedef struct _ENetHost ENetHost;
 typedef struct _ENetPeer ENetPeer;
 typedef struct _ENetPacket ENetPacket;
 
-namespace base {
 class DatagramDecryptor;
 class DatagramEncryptor;
+
+namespace base {
 class Location;
 } // namespace base
 
@@ -67,8 +68,8 @@ public:
 
     void setPaused(bool enable);
 
-    void setEncryptor(std::unique_ptr<base::DatagramEncryptor> encryptor);
-    void setDecryptor(std::unique_ptr<base::DatagramDecryptor> decryptor);
+    void setEncryptor(std::unique_ptr<DatagramEncryptor> encryptor);
+    void setDecryptor(std::unique_ptr<DatagramDecryptor> decryptor);
 
     qint64 pendingBytes() const;
 
@@ -130,8 +131,8 @@ private:
     ScopedENetPeer peer_;
     int update_timer_id_ = 0;
 
-    std::unique_ptr<base::DatagramEncryptor> encryptor_;
-    std::unique_ptr<base::DatagramDecryptor> decryptor_;
+    std::unique_ptr<DatagramEncryptor> encryptor_;
+    std::unique_ptr<DatagramDecryptor> decryptor_;
 
     quint64 send_counter_ = 0;
     AntiReplayWindow replay_window_;

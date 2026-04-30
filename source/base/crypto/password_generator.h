@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class PasswordGenerator
 {
 public:
@@ -53,7 +51,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(PasswordGenerator)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_PASSWORD_GENERATOR_H

@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(KeyPair, SessionKey)
 {
     KeyPair side1 = KeyPair::create(KeyPair::Type::X25519);
@@ -89,5 +87,3 @@ TEST(KeyPair, Multiple)
         EXPECT_TRUE(public_key == pair.publicKey());
     }
 }
-
-} // namespace base

@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(LargeNumberIncrementTest, Test)
 {
     QByteArray number1 = QByteArray::fromHex("0000000000000000");
@@ -44,5 +42,3 @@ TEST(LargeNumberIncrementTest, Test)
 
     EXPECT_EQ(number2, result2);
 }
-
-} // namespace base

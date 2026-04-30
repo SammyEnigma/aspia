@@ -422,8 +422,8 @@ void DesktopManager::onIpcNewConnection()
     LOG(INFO) << "Control IPC channel is connected:" << ipc_channel_->channelName()
               << "(client_count:" << client_count_ << ")";
 
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &DesktopManager::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &DesktopManager::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &DesktopManager::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &DesktopManager::onIpcMessageReceived);
 
     attach_timer_->stop();
     ipc_channel_->setPaused(false);
@@ -478,12 +478,12 @@ void DesktopManager::attach(const base::Location& location, base::SessionId sess
     LOG(INFO) << "Attach to session" << session_id << "from" << location;
 
     attach_timer_->start();
-    ipc_server_ = new base::IpcServer(this);
+    ipc_server_ = new IpcServer(this);
 
-    connect(ipc_server_, &base::IpcServer::sig_newConnection, this, &DesktopManager::onIpcNewConnection);
-    connect(ipc_server_, &base::IpcServer::sig_errorOccurred, this, &DesktopManager::onIpcErrorOccurred);
+    connect(ipc_server_, &IpcServer::sig_newConnection, this, &DesktopManager::onIpcNewConnection);
+    connect(ipc_server_, &IpcServer::sig_errorOccurred, this, &DesktopManager::onIpcErrorOccurred);
 
-    QString ipc_channel_name = base::IpcServer::createUniqueId();
+    QString ipc_channel_name = IpcServer::createUniqueId();
 
     if (!ipc_server_->start(ipc_channel_name))
     {

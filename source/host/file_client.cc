@@ -202,8 +202,8 @@ void FileClient::onIpcNewConnection()
     ipc_server_->disconnect(this);
     ipc_server_.reset();
 
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &FileClient::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &FileClient::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &FileClient::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &FileClient::onIpcMessageReceived);
 
     onStarted(FROM_HERE, true);
 }
@@ -237,7 +237,7 @@ void FileClient::onStart()
         return;
     }
 
-    QString ipc_channel_id = base::IpcServer::createUniqueId();
+    QString ipc_channel_id = IpcServer::createUniqueId();
 
 #if defined(Q_OS_WINDOWS)
     base::ScopedHandle session_token;
@@ -384,10 +384,10 @@ bool FileClient::startIpcServer(const QString& ipc_channel_name)
         return false;
     }
 
-    ipc_server_ = new base::IpcServer(this);
+    ipc_server_ = new IpcServer(this);
 
-    connect(ipc_server_, &base::IpcServer::sig_newConnection, this, &FileClient::onIpcNewConnection);
-    connect(ipc_server_, &base::IpcServer::sig_errorOccurred, this, &FileClient::onIpcErrorOccurred);
+    connect(ipc_server_, &IpcServer::sig_newConnection, this, &FileClient::onIpcNewConnection);
+    connect(ipc_server_, &IpcServer::sig_errorOccurred, this, &FileClient::onIpcErrorOccurred);
 
     if (!ipc_server_->start(ipc_channel_name))
     {

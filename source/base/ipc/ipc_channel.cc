@@ -30,8 +30,6 @@
 #include "base/win/scoped_object.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 namespace {
 
 const int kWriteQueueReservedSize = 64;
@@ -57,37 +55,37 @@ quint32 makeInstanceId()
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionId clientSessionId(PipeHandle pipe_handle)
+base::SessionId clientSessionId(PipeHandle pipe_handle)
 {
 #if defined(Q_OS_WINDOWS)
-    ULONG session_id = kInvalidSessionId;
+    ULONG session_id = base::kInvalidSessionId;
     if (!GetNamedPipeClientSessionId(pipe_handle, &session_id))
     {
         PLOG(ERROR) << "GetNamedPipeClientSessionId failed";
-        return kInvalidSessionId;
+        return base::kInvalidSessionId;
     }
 
     return session_id;
 #else
     Q_UNUSED(pipe_handle)
-    return kInvalidSessionId;
+    return base::kInvalidSessionId;
 #endif
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionId serverSessionId(PipeHandle pipe_handle)
+base::SessionId serverSessionId(PipeHandle pipe_handle)
 {
 #if defined(Q_OS_WINDOWS)
-    ULONG session_id = kInvalidSessionId;
+    ULONG session_id = base::kInvalidSessionId;
     if (!GetNamedPipeServerSessionId(pipe_handle, &session_id))
     {
         PLOG(ERROR) << "GetNamedPipeServerSessionId failed";
-        return kInvalidSessionId;
+        return base::kInvalidSessionId;
     }
 
     return session_id;
 #else
-    return kInvalidSessionId;
+    return base::kInvalidSessionId;
 #endif
 }
 
@@ -97,7 +95,7 @@ SessionId serverSessionId(PipeHandle pipe_handle)
 IpcChannel::IpcChannel(QObject* parent)
     : QObject(parent),
       instance_id_(makeInstanceId()),
-      stream_(AsioEventDispatcher::ioContext())
+      stream_(base::AsioEventDispatcher::ioContext())
 {
     // Nothing
 }
@@ -203,7 +201,7 @@ bool IpcChannel::connectAttempt()
 
 #if defined(Q_OS_WINDOWS)
     const DWORD flags = SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION | FILE_FLAG_OVERLAPPED;
-    ScopedHandle handle;
+    base::ScopedHandle handle;
 
     while (true)
     {
@@ -216,7 +214,7 @@ bool IpcChannel::connectAttempt()
 
         if (error_code != ERROR_PIPE_BUSY)
         {
-            CLOG(ERROR) << "Failed to connect to the named pipe:" << SystemError::toString(error_code)
+            CLOG(ERROR) << "Failed to connect to the named pipe:" << base::SystemError::toString(error_code)
                         << "(channel" << channel_name_ << ")";
             return false;
         }
@@ -287,7 +285,7 @@ void IpcChannel::disconnectFrom()
 }
 
 //--------------------------------------------------------------------------------------------------
-void IpcChannel::onErrorOccurred(const Location& location, const std::error_code& error_code)
+void IpcChannel::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
 {
     CLOG(ERROR) << "Error in IPC channel" << channel_name_ << ":" << error_code << "(from" << location << ")";
     disconnectFrom();
@@ -444,5 +442,3 @@ void IpcChannel::doReadData()
         doReadHeader();
     });
 }
-
-} // namespace base

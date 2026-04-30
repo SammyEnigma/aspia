@@ -112,7 +112,7 @@ int removeService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 bool generateKeys(QByteArray* private_key, QByteArray* public_key)
 {
-    base::KeyPair key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
+    KeyPair key_pair = KeyPair::create(KeyPair::Type::X25519);
     if (!key_pair.isValid())
     {
         std::cout << "Failed to generate keys" << std::endl;
@@ -264,7 +264,7 @@ int createConfig(QTextStream& out)
     }
 
     out << "Generate seed key..." << Qt::endl;
-    QByteArray seed_key = base::Random::byteArray(64);
+    QByteArray seed_key = Random::byteArray(64);
     if (seed_key.isEmpty())
         out << "Unable to generate seed key" << Qt::endl;
 

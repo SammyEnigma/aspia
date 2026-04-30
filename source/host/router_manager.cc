@@ -109,7 +109,7 @@ void RouterManager::onUserListChanged()
     {
         LOG(INFO) << "One-time password is enabled";
 
-        base::PasswordGenerator generator;
+        PasswordGenerator generator;
         generator.setCharacters(settings.oneTimePasswordCharacters());
         generator.setLength(settings.oneTimePasswordLength());
 

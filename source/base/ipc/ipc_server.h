@@ -27,10 +27,10 @@
 #include <array>
 #include <memory>
 
-namespace base {
-
 class IpcChannel;
+namespace base {
 class Location;
+} // namespace base
 
 class IpcServer final : public QObject
 {
@@ -54,7 +54,7 @@ signals:
 private:
     bool runListener(size_t index);
     void onNewConnection(size_t index, IpcChannel* channel);
-    void onErrorOccurred(const Location& location);
+    void onErrorOccurred(const base::Location& location);
 
     asio::io_context& io_context_;
     QString channel_name_;
@@ -71,7 +71,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(IpcServer)
 };
-
-} // namespace base
 
 #endif // BASE_IPC_IPC_SERVER_H

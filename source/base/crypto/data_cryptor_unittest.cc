@@ -22,8 +22,6 @@
 
 #include <QByteArray>
 
-namespace base {
-
 TEST(DataCryptorTest, EncryptDecrypt)
 {
     const QByteArray key = QByteArray::fromHex("1ce26794165a808ec425684e9384c27c22499512a513da8b455bd39746dc5014");
@@ -74,5 +72,3 @@ TEST(DataCryptorTest, Passthrough)
     ASSERT_TRUE(decrypted.has_value());
     ASSERT_EQ(*decrypted, message);
 }
-
-} // namespace base

@@ -26,7 +26,7 @@ namespace relay {
 //--------------------------------------------------------------------------------------------------
 SessionKey::SessionKey() = default;
 
-SessionKey::SessionKey(base::KeyPair&& key_pair, QByteArray&& iv)
+SessionKey::SessionKey(KeyPair&& key_pair, QByteArray&& iv)
     : key_pair_(std::move(key_pair)),
       iv_(std::move(iv))
 {
@@ -60,11 +60,11 @@ SessionKey::~SessionKey() = default;
 // static
 SessionKey SessionKey::create()
 {
-    base::KeyPair key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
+    KeyPair key_pair = KeyPair::create(KeyPair::Type::X25519);
     if (!key_pair.isValid())
         return SessionKey();
 
-    QByteArray iv = base::Random::byteArray(12);
+    QByteArray iv = Random::byteArray(12);
     if (iv.isEmpty())
         return SessionKey();
 
@@ -96,7 +96,7 @@ QByteArray SessionKey::sessionKey(const std::string& peer_public_key) const
     if (temp.isEmpty())
         return QByteArray();
 
-    return base::GenericHash::hash(base::GenericHash::Type::BLAKE2s256, temp);
+    return GenericHash::hash(GenericHash::Type::BLAKE2s256, temp);
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -30,9 +30,10 @@
 
 class QTimer;
 
-namespace base {
 class IpcChannel;
 class IpcServer;
+
+namespace base {
 class Location;
 } // namespace base
 
@@ -104,8 +105,8 @@ private:
     void dettach(const base::Location& location);
     void sendMessage();
 
-    base::IpcServer* ipc_server_ = nullptr;
-    ScopedQPointer<base::IpcChannel> ipc_channel_;
+    IpcServer* ipc_server_ = nullptr;
+    ScopedQPointer<IpcChannel> ipc_channel_;
     QTimer* attach_timer_ = nullptr;
     QTimer* dettach_timer_ = nullptr;
     QTimer* startup_timer_ = nullptr;

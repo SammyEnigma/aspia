@@ -26,8 +26,6 @@
 
 #include "base/crypto/big_num.h"
 
-namespace base {
-
 // This class implements primitives to perform authorization using SRP algorithm.
 class SrpMath
 {
@@ -83,7 +81,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(SrpMath)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_SRP_MATH_H

@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(GenericHashTest, Blake2b512)
 {
     struct TestData
@@ -111,5 +109,3 @@ TEST(GenericHashTest, Blake2s256)
         }
     }
 }
-
-} // namespace base

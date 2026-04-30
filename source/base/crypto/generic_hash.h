@@ -24,8 +24,6 @@
 struct evp_md_ctx_st;
 struct evp_md_st;
 
-namespace base {
-
 class GenericHash
 {
 public:
@@ -61,7 +59,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(GenericHash)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_GENERIC_HASH_H

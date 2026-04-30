@@ -23,8 +23,6 @@
 
 #include "base/crypto/openssl_util.h"
 
-namespace base {
-
 class BigNum
 {
 public:
@@ -96,7 +94,5 @@ private:
 
     Q_DISABLE_COPY(BigNum)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_BIG_NUM_H

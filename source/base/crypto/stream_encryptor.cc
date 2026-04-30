@@ -23,8 +23,6 @@
 
 #include <openssl/evp.h>
 
-namespace base {
-
 namespace {
 
 const qint64 kKeySize = 32; // 256 bits, 32 bytes.
@@ -148,5 +146,3 @@ bool StreamEncryptor::encrypt(const void* in, qint64 in_size, const void* aad, q
     largeNumberIncrement(&iv_);
     return true;
 }
-
-} // namespace base

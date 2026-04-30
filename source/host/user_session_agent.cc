@@ -59,12 +59,12 @@ void UserSessionAgent::onConnectToService()
     QString channel_name = HostStorage().channelIdForUI();
     LOG(INFO) << "Starting user session agent (channel_name:" << channel_name << ")";
 
-    ipc_channel_ = new base::IpcChannel(this);
+    ipc_channel_ = new IpcChannel(this);
 
-    connect(ipc_channel_, &base::IpcChannel::sig_connected, this, &UserSessionAgent::onIpcConnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &UserSessionAgent::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_errorOccurred, this, &UserSessionAgent::onIpcErrorOccurred);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &UserSessionAgent::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_connected, this, &UserSessionAgent::onIpcConnected);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &UserSessionAgent::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_errorOccurred, this, &UserSessionAgent::onIpcErrorOccurred);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &UserSessionAgent::onIpcMessageReceived);
 
     ipc_channel_->connectTo(channel_name);
 }

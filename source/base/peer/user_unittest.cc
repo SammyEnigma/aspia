@@ -193,7 +193,7 @@ TEST(user_test, create_two_users_different_salts)
     EXPECT_TRUE(user1.isValid());
     EXPECT_TRUE(user2.isValid());
 
-    // base::Random salt should differ between users.
+    // Random salt should differ between users.
     EXPECT_NE(user1.salt, user2.salt);
 }
 

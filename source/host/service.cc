@@ -335,7 +335,7 @@ void Service::onFileDownloaderCompleted()
         QDir().mkpath(file_path);
 
         QString file_name =
-            "/aspia_host_" + QString::fromLatin1(base::Random::byteArray(16).toHex()) + ".msi";
+            "/aspia_host_" + QString::fromLatin1(Random::byteArray(16).toHex()) + ".msi";
 
         file_path = QDir::toNativeSeparators(file_path.append(file_name));
 

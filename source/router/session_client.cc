@@ -146,7 +146,7 @@ void SessionClient::readConnectionRequest(const proto::router::ConnectionRequest
     offer_credentials->mutable_key()->Swap(&credentials->key);
 
     proto::relay::PeerToRelay::Secret secret;
-    secret.set_random_data(base::Random::string(16));
+    secret.set_random_data(Random::string(16));
     secret.set_client_address(address().toString().toStdString());
     secret.set_client_user_name(userName().toStdString());
     secret.set_host_address(session->address().toString().toStdString());

@@ -42,21 +42,21 @@ bool verifyNg(std::string_view N, std::string_view g)
     {
         case 512: // 4096 bit
         {
-            if (N != base::SrpMath::kNgPair_4096.first || g != base::SrpMath::kNgPair_4096.second)
+            if (N != SrpMath::kNgPair_4096.first || g != SrpMath::kNgPair_4096.second)
                 return false;
         }
         break;
 
         case 768: // 6144 bit
         {
-            if (N != base::SrpMath::kNgPair_6144.first || g != base::SrpMath::kNgPair_6144.second)
+            if (N != SrpMath::kNgPair_6144.first || g != SrpMath::kNgPair_6144.second)
                 return false;
         }
         break;
 
         case 1024: // 8192 bit
         {
-            if (N != base::SrpMath::kNgPair_8192.first || g != base::SrpMath::kNgPair_8192.second)
+            if (N != SrpMath::kNgPair_8192.first || g != SrpMath::kNgPair_8192.second)
                 return false;
         }
         break;
@@ -249,14 +249,14 @@ void ClientAuthenticator::sendClientHello()
 
     if (!peer_public_key_.isEmpty())
     {
-        encrypt_iv_ = base::Random::byteArray(kIvSize);
+        encrypt_iv_ = Random::byteArray(kIvSize);
         if (encrypt_iv_.isEmpty())
         {
             finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
             return;
         }
 
-        base::KeyPair key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
+        KeyPair key_pair = KeyPair::create(KeyPair::Type::X25519);
         if (!key_pair.isValid())
         {
             finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
@@ -270,7 +270,7 @@ void ClientAuthenticator::sendClientHello()
             return;
         }
 
-        session_key_ = base::GenericHash::hash(base::GenericHash::Type::BLAKE2s256, temp);
+        session_key_ = GenericHash::hash(GenericHash::Type::BLAKE2s256, temp);
         if (session_key_.isEmpty())
         {
             finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
@@ -385,25 +385,25 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
         return false;
     }
 
-    N_ = base::BigNum::fromStdString(server_key_exchange.number());
-    g_ = base::BigNum::fromStdString(server_key_exchange.generator());
-    s_ = base::BigNum::fromStdString(server_key_exchange.salt());
-    B_ = base::BigNum::fromStdString(server_key_exchange.b());
+    N_ = BigNum::fromStdString(server_key_exchange.number());
+    g_ = BigNum::fromStdString(server_key_exchange.generator());
+    s_ = BigNum::fromStdString(server_key_exchange.salt());
+    B_ = BigNum::fromStdString(server_key_exchange.b());
     decrypt_iv_ = QByteArray::fromStdString(server_key_exchange.iv());
 
-    a_ = base::BigNum::fromByteArray(base::Random::byteArray(128)); // 1024 bits.
-    A_ = base::SrpMath::calc_A(a_, N_, g_);
-    encrypt_iv_ = base::Random::byteArray(kIvSize);
+    a_ = BigNum::fromByteArray(Random::byteArray(128)); // 1024 bits.
+    A_ = SrpMath::calc_A(a_, N_, g_);
+    encrypt_iv_ = Random::byteArray(kIvSize);
 
-    if (!base::SrpMath::verify_B_mod_N(B_, N_))
+    if (!SrpMath::verify_B_mod_N(B_, N_))
     {
         CLOG(ERROR) << "Invalid B or N";
         return false;
     }
 
-    base::BigNum u = base::SrpMath::calc_u(A_, B_, N_);
-    base::BigNum x = base::SrpMath::calc_x(s_, username_, password_);
-    base::BigNum key = base::SrpMath::calcClientKey(N_, B_, g_, x, a_, u);
+    BigNum u = SrpMath::calc_u(A_, B_, N_);
+    BigNum x = SrpMath::calc_x(s_, username_, password_);
+    BigNum key = SrpMath::calcClientKey(N_, B_, g_, x, a_, u);
     if (!key.isValid())
     {
         CLOG(ERROR) << "Empty encryption key generated";
@@ -411,7 +411,7 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
     }
 
     // AES256-GCM and ChaCha20-Poly1305 requires 256 bit key.
-    base::GenericHash hash(base::GenericHash::BLAKE2s256);
+    GenericHash hash(GenericHash::BLAKE2s256);
 
     if (!session_key_.isEmpty())
         hash.addData(session_key_);

@@ -25,8 +25,6 @@
 #include <openssl/kdf.h>
 #include <openssl/params.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -137,5 +135,3 @@ QByteArray PasswordHash::hash(Type type, const QString& password, const QByteArr
 {
     return hashT<const QByteArray, QByteArray>(type, password, salt);
 }
-
-} // namespace base

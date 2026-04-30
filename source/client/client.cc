@@ -740,14 +740,14 @@ void Client::connectToUdp(
         udp_ready_ = false;
     }
 
-    base::KeyPair client_key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
+    KeyPair client_key_pair = KeyPair::create(KeyPair::Type::X25519);
     if (!client_key_pair.isValid())
     {
         CLOG(ERROR) << "Failed to create host UDP key pair";
         return;
     }
 
-    QByteArray client_iv = base::Random::byteArray(12);
+    QByteArray client_iv = Random::byteArray(12);
     if (client_iv.isEmpty())
     {
         CLOG(ERROR) << "Unable to create IV for UDP";
@@ -773,18 +773,18 @@ void Client::connectToUdp(
         return;
     }
 
-    std::unique_ptr<base::DatagramEncryptor> encryptor;
-    std::unique_ptr<base::DatagramDecryptor> decryptor;
+    std::unique_ptr<DatagramEncryptor> encryptor;
+    std::unique_ptr<DatagramDecryptor> decryptor;
 
     if (encryption == proto::key_exchange::ENCRYPTION_AES256_GCM)
     {
-        encryptor = base::DatagramEncryptor::createForAes256Gcm(session_key, client_iv);
-        decryptor = base::DatagramDecryptor::createForAes256Gcm(session_key, context.iv);
+        encryptor = DatagramEncryptor::createForAes256Gcm(session_key, client_iv);
+        decryptor = DatagramDecryptor::createForAes256Gcm(session_key, context.iv);
     }
     else
     {
-        encryptor = base::DatagramEncryptor::createForChaCha20Poly1305(session_key, client_iv);
-        decryptor = base::DatagramDecryptor::createForChaCha20Poly1305(session_key, context.iv);
+        encryptor = DatagramEncryptor::createForChaCha20Poly1305(session_key, client_iv);
+        decryptor = DatagramDecryptor::createForChaCha20Poly1305(session_key, context.iv);
     }
 
     if (!encryptor || !decryptor)

@@ -327,18 +327,18 @@ void TcpChannelNG::init()
     {
         if (authenticator_->encryption() == proto::key_exchange::ENCRYPTION_AES256_GCM)
         {
-            encryptor_ = base::StreamEncryptor::createForAes256Gcm(
+            encryptor_ = StreamEncryptor::createForAes256Gcm(
                 authenticator_->sessionKey(), authenticator_->encryptIv());
-            decryptor_ = base::StreamDecryptor::createForAes256Gcm(
+            decryptor_ = StreamDecryptor::createForAes256Gcm(
                 authenticator_->sessionKey(), authenticator_->decryptIv());
         }
         else
         {
             CDCHECK_EQ(authenticator_->encryption(), proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305);
 
-            encryptor_ = base::StreamEncryptor::createForChaCha20Poly1305(
+            encryptor_ = StreamEncryptor::createForChaCha20Poly1305(
                 authenticator_->sessionKey(), authenticator_->encryptIv());
-            decryptor_ = base::StreamDecryptor::createForChaCha20Poly1305(
+            decryptor_ = StreamDecryptor::createForChaCha20Poly1305(
                 authenticator_->sessionKey(), authenticator_->decryptIv());
         }
 
@@ -544,7 +544,7 @@ void TcpChannelNG::onMessageReceived()
         }
 
         // Increase the counter of sent packets.
-        base::largeNumberIncrement(&keep_alive_counter_);
+        largeNumberIncrement(&keep_alive_counter_);
 
         // Restart keep alive timer.
         keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;

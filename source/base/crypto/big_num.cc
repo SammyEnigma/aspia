@@ -21,8 +21,6 @@
 #include <openssl/opensslv.h>
 #include <openssl/bn.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 BigNum::BigNum(const quint8* buffer, size_t buffer_size)
 {
@@ -149,5 +147,3 @@ bignum_ctx* BigNum::Context::release()
 {
     return ctx_.release();
 }
-
-} // namespace base

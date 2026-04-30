@@ -99,12 +99,12 @@ QString DesktopClient::attach()
     CCHECK(!ipc_channel_);
     CCHECK(!ipc_server_);
 
-    ipc_server_ = new base::IpcServer(this);
+    ipc_server_ = new IpcServer(this);
 
-    connect(ipc_server_, &base::IpcServer::sig_newConnection, this, &DesktopClient::onIpcNewConnection);
-    connect(ipc_server_, &base::IpcServer::sig_errorOccurred, this, &DesktopClient::onIpcErrorOccurred);
+    connect(ipc_server_, &IpcServer::sig_newConnection, this, &DesktopClient::onIpcNewConnection);
+    connect(ipc_server_, &IpcServer::sig_errorOccurred, this, &DesktopClient::onIpcErrorOccurred);
 
-    QString channel_name = base::IpcServer::createUniqueId();
+    QString channel_name = IpcServer::createUniqueId();
 
     if (!ipc_server_->start(channel_name))
     {
@@ -267,8 +267,8 @@ void DesktopClient::onIpcNewConnection()
     ipc_server_->disconnect();
     ipc_server_.reset();
 
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &DesktopClient::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &DesktopClient::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &DesktopClient::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &DesktopClient::onIpcMessageReceived);
 
     if (capabilities_.has_value())
     {

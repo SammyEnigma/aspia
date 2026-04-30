@@ -39,7 +39,7 @@ const char kConnectionName[] = "client";
 //--------------------------------------------------------------------------------------------------
 ComputerConfig readComputer(const QSqlQuery& query)
 {
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
 
     ComputerConfig computer;
     computer.id = query.value(0).toLongLong();
@@ -74,7 +74,7 @@ GroupConfig readGroup(const QSqlQuery& query)
 //--------------------------------------------------------------------------------------------------
 RouterConfig readRouter(const QSqlQuery& query)
 {
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
 
     RouterConfig router;
     router.router_id = query.value(0).toLongLong();
@@ -252,7 +252,7 @@ bool Database::addComputer(ComputerConfig& computer)
         return false;
     }
 
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
 
     const qint64 current_time = QDateTime::currentSecsSinceEpoch();
     computer.create_time = current_time;
@@ -294,7 +294,7 @@ bool Database::modifyComputer(ComputerConfig& computer)
         return false;
     }
 
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
 
     computer.modify_time = QDateTime::currentSecsSinceEpoch();
 
@@ -635,7 +635,7 @@ bool Database::addRouter(RouterConfig& router)
         return false;
     }
 
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
     query.prepare("INSERT INTO routers (id, name, address, session_type, username, password) "
@@ -665,7 +665,7 @@ bool Database::modifyRouter(const RouterConfig& router)
         return false;
     }
 
-    base::DataCryptor& cryptor = base::DataCryptor::instance();
+    DataCryptor& cryptor = DataCryptor::instance();
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
     query.prepare("UPDATE routers SET name=?, address=?, session_type=?, username=?, password=? "

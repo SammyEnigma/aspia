@@ -21,8 +21,6 @@
 
 #include <QByteArray>
 
-namespace base {
-
 class Random
 {
 public:
@@ -41,7 +39,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(Random)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_RANDOM_H

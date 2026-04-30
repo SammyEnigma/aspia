@@ -168,10 +168,10 @@ bool UserSession::start()
         return false;
     }
 
-    ipc_server_ = new base::IpcServer(this);
-    connect(ipc_server_, &base::IpcServer::sig_newConnection, this, &UserSession::onIpcNewConnection);
+    ipc_server_ = new IpcServer(this);
+    connect(ipc_server_, &IpcServer::sig_newConnection, this, &UserSession::onIpcNewConnection);
 
-    QString ipc_channel_name = base::IpcServer::createUniqueId();
+    QString ipc_channel_name = IpcServer::createUniqueId();
 
     HostStorage ipc_storage;
     ipc_storage.setChannelIdForUI(ipc_channel_name);
@@ -440,7 +440,7 @@ void UserSession::onIpcNewConnection()
         return;
     }
 
-    base::IpcChannel* ipc_channel = ipc_server_->nextPendingConnection();
+    IpcChannel* ipc_channel = ipc_server_->nextPendingConnection();
     ipc_channel->setParent(this);
 
     if (ipc_channel_)
@@ -472,8 +472,8 @@ void UserSession::onIpcNewConnection()
 
     ipc_channel_ = ipc_channel;
 
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &UserSession::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &UserSession::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &UserSession::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &UserSession::onIpcMessageReceived);
 
     dettach_timer_->stop();
     attach_timer_->stop();

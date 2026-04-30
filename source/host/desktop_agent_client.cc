@@ -30,13 +30,13 @@
 //--------------------------------------------------------------------------------------------------
 DesktopAgentClient::DesktopAgentClient(QObject* parent)
     : QObject(parent),
-      ipc_channel_(new base::IpcChannel(this))
+      ipc_channel_(new IpcChannel(this))
 {
     CLOG(INFO) << "Ctor";
-    connect(ipc_channel_, &base::IpcChannel::sig_connected, this, &DesktopAgentClient::onIpcConnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &DesktopAgentClient::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_errorOccurred, this, &DesktopAgentClient::onIpcErrorOccurred);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &DesktopAgentClient::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_connected, this, &DesktopAgentClient::onIpcConnected);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &DesktopAgentClient::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_errorOccurred, this, &DesktopAgentClient::onIpcErrorOccurred);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &DesktopAgentClient::onIpcMessageReceived);
 }
 
 //--------------------------------------------------------------------------------------------------

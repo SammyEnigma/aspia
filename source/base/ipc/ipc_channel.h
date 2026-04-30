@@ -32,10 +32,10 @@
 #include "base/logging.h"
 #include "base/session_id.h"
 
-namespace base {
-
 class IpcServer;
+namespace base {
 class Location;
+} // namespace base
 
 class IpcChannel final : public QObject
 {
@@ -78,7 +78,7 @@ private:
     bool connectAttempt();
     void scheduleConnectAttempt(const std::chrono::milliseconds& delay, int count);
     void disconnectFrom();
-    void onErrorOccurred(const Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
     void onMessageReceived();
 
     void doWriteHeader();
@@ -147,7 +147,5 @@ private:
     LOG_DECLARE_CONTEXT(IpcChannel);
     Q_DISABLE_COPY_MOVE(IpcChannel)
 };
-
-} // namespace base
 
 #endif // BASE_IPC_CHANNEL_H

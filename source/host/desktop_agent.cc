@@ -141,7 +141,7 @@ int minCaptureFps()
 //--------------------------------------------------------------------------------------------------
 DesktopAgent::DesktopAgent(QObject* parent)
     : QObject(parent),
-      ipc_channel_(new base::IpcChannel(this)),
+      ipc_channel_(new IpcChannel(this)),
       desktop_environment_(base::DesktopEnvironment::create(this)),
       preferred_capturer_(static_cast<base::ScreenCapturer::Type>(SystemSettings().preferredVideoCapturer())),
       capture_timer_(new QTimer(this)),
@@ -153,10 +153,10 @@ DesktopAgent::DesktopAgent(QObject* parent)
 {
     LOG(INFO) << "Ctor";
 
-    connect(ipc_channel_, &base::IpcChannel::sig_connected, this, &DesktopAgent::onIpcConnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_disconnected, this, &DesktopAgent::onIpcDisconnected);
-    connect(ipc_channel_, &base::IpcChannel::sig_errorOccurred, this, &DesktopAgent::onIpcErrorOccurred);
-    connect(ipc_channel_, &base::IpcChannel::sig_messageReceived, this, &DesktopAgent::onIpcMessageReceived);
+    connect(ipc_channel_, &IpcChannel::sig_connected, this, &DesktopAgent::onIpcConnected);
+    connect(ipc_channel_, &IpcChannel::sig_disconnected, this, &DesktopAgent::onIpcDisconnected);
+    connect(ipc_channel_, &IpcChannel::sig_errorOccurred, this, &DesktopAgent::onIpcErrorOccurred);
+    connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &DesktopAgent::onIpcMessageReceived);
 
     selectCapturer(base::ScreenCapturer::Error::SUCCEEDED);
 

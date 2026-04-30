@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(srp_math_test, test_vector)
 {
     QString I = "alice";
@@ -188,5 +186,3 @@ TEST(srp_math_test, test_vector)
     ASSERT_EQ(client_key_string.size(), sizeof(key_ref_buf));
     ASSERT_EQ(memcmp(client_key_string.c_str(), key_ref_buf, sizeof(key_ref_buf)), 0);
 }
-
-} // namespace base

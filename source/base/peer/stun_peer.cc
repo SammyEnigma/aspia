@@ -190,7 +190,7 @@ void StunPeer::onHostResolved(const QHostInfo& host_info)
     CLOG(INFO) << "Bound UDP socket, STUN server:" << selected << ":" << stun_port_;
 
     // Send the STUN request.
-    transaction_id_ = base::Random::number32();
+    transaction_id_ = Random::number32();
 
     proto::stun::PeerToStun message;
     proto::stun::EndpointRequest* request = message.mutable_endpoint_request();

@@ -410,14 +410,14 @@ void UdpChannel::setPaused(bool enable)
 }
 
 //--------------------------------------------------------------------------------------------------
-void UdpChannel::setEncryptor(std::unique_ptr<base::DatagramEncryptor> encryptor)
+void UdpChannel::setEncryptor(std::unique_ptr<DatagramEncryptor> encryptor)
 {
     encryptor_ = std::move(encryptor);
     onReadyCheck();
 }
 
 //--------------------------------------------------------------------------------------------------
-void UdpChannel::setDecryptor(std::unique_ptr<base::DatagramDecryptor> decryptor)
+void UdpChannel::setDecryptor(std::unique_ptr<DatagramDecryptor> decryptor)
 {
     decryptor_ = std::move(decryptor);
     onReadyCheck();

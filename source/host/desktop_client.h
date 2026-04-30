@@ -34,10 +34,8 @@
 
 class QTimer;
 
-namespace base {
 class IpcChannel;
 class IpcServer;
-} // namespace base
 
 class TaskManager;
 
@@ -82,8 +80,8 @@ private:
     void readTaskManager(const proto::task_manager::ClientToHost& message);
 
     QTime dettach_time_;
-    ScopedQPointer<base::IpcServer> ipc_server_;
-    ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<IpcServer> ipc_server_;
+    ScopedQPointer<IpcChannel> ipc_channel_;
     QTimer* fake_capture_timer_ = nullptr;
     QTimer* overflow_timer_ = nullptr;
 

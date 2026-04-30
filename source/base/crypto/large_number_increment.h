@@ -21,11 +21,7 @@
 
 #include <QByteArray>
 
-namespace base {
-
 void largeNumberIncrement(quint8* buffer, size_t buffer_size);
 void largeNumberIncrement(QByteArray* buffer);
-
-} // namespace base
 
 #endif // BASE_CRYPTO_LARGE_NUMBER_INCREMENT_H

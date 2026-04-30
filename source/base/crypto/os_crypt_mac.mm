@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // static
 bool OSCrypt::encryptString(const QString& plaintext, QByteArray* ciphertext)
@@ -39,5 +37,3 @@ bool OSCrypt::decryptString(const QByteArray& ciphertext, QString* plaintext)
     plaintext->assign(QString::fromUtf8(ciphertext));
     return true;
 }
-
-} // namespace base

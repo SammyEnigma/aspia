@@ -25,9 +25,10 @@
 
 class QTimer;
 
-namespace base {
 class IpcChannel;
 class IpcServer;
+
+namespace base {
 class Location;
 } // namespace base
 
@@ -55,8 +56,8 @@ private:
     void onStarted(const base::Location& location, bool has_user);
     void onError(const base::Location& location);
 
-    ScopedQPointer<base::IpcServer> ipc_server_;
-    base::IpcChannel* ipc_channel_ = nullptr;
+    ScopedQPointer<IpcServer> ipc_server_;
+    IpcChannel* ipc_channel_ = nullptr;
 
     const base::SessionId session_id_;
     QTimer* attach_timer_ = nullptr;

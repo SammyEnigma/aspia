@@ -26,9 +26,7 @@
 #include "base/serialization.h"
 #include "proto/user.h"
 
-namespace base {
 class IpcChannel;
-} // namespace base
 
 class ClipboardFileTransfer;
 class ClipboardMonitor;
@@ -107,7 +105,7 @@ private:
 
     ScopedQPointer<ClipboardMonitor> clipboard_;
     ScopedQPointer<ClipboardFileTransfer> clipboard_file_transfer_;
-    ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<IpcChannel> ipc_channel_;
 
     base::Parser<proto::user::ServiceToUser> incoming_message_;
     base::Serializer<proto::user::UserToService> outgoing_message_;

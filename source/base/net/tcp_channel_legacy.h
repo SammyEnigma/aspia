@@ -34,10 +34,11 @@
 class RelayPeer;
 class TcpServer;
 
+class StreamDecryptor;
+class StreamEncryptor;
+
 namespace base {
 class Location;
-class StreamEncryptor;
-class StreamDecryptor;
 } // namespace base
 
 class TcpChannelLegacy final : public TcpChannel
@@ -231,8 +232,8 @@ private:
     bool paused_ = true;
 
     ScopedQPointer<Authenticator> authenticator_;
-    std::unique_ptr<base::StreamEncryptor> encryptor_;
-    std::unique_ptr<base::StreamDecryptor> decryptor_;
+    std::unique_ptr<StreamEncryptor> encryptor_;
+    std::unique_ptr<StreamDecryptor> decryptor_;
 
     QQueue<WriteTask> write_queue_;
     VariableSizeWriter variable_size_writer_;

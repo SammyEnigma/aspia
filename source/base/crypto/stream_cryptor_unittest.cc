@@ -21,8 +21,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 void testVector(StreamEncryptor* client_encryptor, StreamDecryptor* client_decryptor,
                 StreamEncryptor* host_encryptor, StreamDecryptor* host_decryptor)
 {
@@ -280,5 +278,3 @@ TEST(CryptorChaCha20Poly1305Test, WrongAad)
 
     wrongAad(encryptor.get(), decryptor.get());
 }
-
-} // namespace base

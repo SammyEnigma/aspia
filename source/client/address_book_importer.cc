@@ -298,8 +298,8 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
             if (dialog.exec() != QDialog::Accepted)
                 return false;
 
-            key = base::PasswordHash::hash(
-                base::PasswordHash::SCRYPT,
+            key = PasswordHash::hash(
+                PasswordHash::SCRYPT,
                 dialog.password(),
                 QByteArray::fromStdString(proto_file.hashing_salt()));
             break;
@@ -311,12 +311,12 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
             return false;
     }
 
-    base::DataCryptor cryptor(key);
+    DataCryptor cryptor(key);
 
     std::optional<QByteArray> decrypted = cryptor.decrypt(proto_file.data());
     if (!decrypted.has_value())
     {
-        base::memZero(&key);
+        memZero(&key);
         MsgBox::warning(parent,
             tr("Unable to decrypt the address book with the specified password."));
         return false;
@@ -325,15 +325,15 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
     proto::address_book::Data proto_data;
     if (!base::parse(*decrypted, &proto_data))
     {
-        base::memZero(&*decrypted);
-        base::memZero(&key);
+        memZero(&*decrypted);
+        memZero(&key);
         MsgBox::warning(parent,
             tr("The address book file is corrupted or has an unknown format."));
         return false;
     }
 
-    base::memZero(&*decrypted);
-    base::memZero(&key);
+    memZero(&*decrypted);
+    memZero(&key);
 
     ImportCounters counters;
 

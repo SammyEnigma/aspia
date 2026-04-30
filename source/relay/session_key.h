@@ -41,9 +41,9 @@ public:
     QByteArray iv() const;
 
 private:
-    SessionKey(base::KeyPair&& key_pair, QByteArray&& iv);
+    SessionKey(KeyPair&& key_pair, QByteArray&& iv);
 
-    base::KeyPair key_pair_;
+    KeyPair key_pair_;
     QByteArray iv_;
 
     Q_DISABLE_COPY(SessionKey)

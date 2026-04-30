@@ -24,8 +24,6 @@
 #include <openssl/opensslv.h>
 #include <openssl/bn.h>
 
-namespace base {
-
 namespace {
 
 const quint8 kGroup_1024[] =
@@ -790,5 +788,3 @@ BigNum SrpMath::calc_v(const QString& I, const QByteArray& p, const BigNum& s,
 
     return v;
 }
-
-} // namespace base

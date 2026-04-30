@@ -38,8 +38,6 @@
 #include <asio/local/stream_protocol.hpp>
 #endif // defined(Q_OS_UNIX)
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -98,7 +96,7 @@ bool IpcServer::Listener::listen(asio::io_context& io_context, const QString& ch
 #if defined(Q_OS_WINDOWS)
     QString user_sid;
 
-    if (!userSidString(&user_sid))
+    if (!base::userSidString(&user_sid))
     {
         LOG(ERROR) << "Failed to query the current user SID";
         return false;
@@ -109,7 +107,7 @@ bool IpcServer::Listener::listen(asio::io_context& io_context, const QString& ch
     QString security_descriptor =
         QString("O:%1G:%1D:(A;;GA;;;%1)(A;;GA;;;AU)").arg(user_sid);
 
-    ScopedSd sd = convertSddlToSd(security_descriptor);
+    base::ScopedSd sd = base::convertSddlToSd(security_descriptor);
     if (!sd.get())
     {
         LOG(ERROR) << "Failed to create a security descriptor";
@@ -123,7 +121,7 @@ bool IpcServer::Listener::listen(asio::io_context& io_context, const QString& ch
     security_attributes.lpSecurityDescriptor = sd.get();
     security_attributes.bInheritHandle = FALSE;
 
-    ScopedHandle handle(
+    base::ScopedHandle handle(
         CreateNamedPipeW(qUtf16Printable(channel_path), FILE_FLAG_OVERLAPPED | PIPE_ACCESS_DUPLEX,
             PIPE_TYPE_BYTE | PIPE_READMODE_BYTE | PIPE_REJECT_REMOTE_CLIENTS, PIPE_UNLIMITED_INSTANCES,
             kPipeBufferSize, kPipeBufferSize, kAcceptTimeout, &security_attributes));
@@ -242,7 +240,7 @@ void IpcServer::Listener::onNewConnetion(
 //--------------------------------------------------------------------------------------------------
 IpcServer::IpcServer(QObject* parent)
     : QObject(parent),
-      io_context_(AsioEventDispatcher::ioContext())
+      io_context_(base::AsioEventDispatcher::ioContext())
 {
     for (size_t i = 0; i < listeners_.size(); ++i)
         listeners_[i] = std::make_shared<Listener>(this, i);
@@ -364,10 +362,8 @@ void IpcServer::onNewConnection(size_t index, IpcChannel* channel)
 }
 
 //--------------------------------------------------------------------------------------------------
-void IpcServer::onErrorOccurred(const Location& location)
+void IpcServer::onErrorOccurred(const base::Location& location)
 {
     LOG(ERROR) << "Error in IPC server (channel" << channel_name_ << "from" << location << ")";
     emit sig_errorOccurred();
 }
-
-} // namespace base

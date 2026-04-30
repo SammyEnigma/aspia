@@ -133,7 +133,7 @@ private:
 
     struct PendingUdp
     {
-        base::KeyPair key_pair;
+        KeyPair key_pair;
         QByteArray iv;
     };
 

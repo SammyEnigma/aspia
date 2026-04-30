@@ -21,8 +21,6 @@
 
 #include "base/crypto/openssl_util.h"
 
-namespace base {
-
 class KeyPair
 {
 public:
@@ -48,7 +46,5 @@ private:
 
     Q_DISABLE_COPY(KeyPair)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_KEY_PAIR_H

@@ -23,8 +23,6 @@
 #include <openssl/bn.h>
 #include <openssl/evp.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void BIGNUM_CTX_Deleter::operator()(bignum_ctx* bignum_ctx)
 {
@@ -132,5 +130,3 @@ EVP_CIPHER_CTX_ptr createCipher(CipherType type, CipherMode mode, const QByteArr
 
     return ctx;
 }
-
-} // namespace base

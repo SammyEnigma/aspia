@@ -22,8 +22,6 @@
 
 #include <openssl/rand.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -90,5 +88,3 @@ quint64 Random::number64()
 {
     return generateNumber<quint64>();
 }
-
-} // namespace base

@@ -280,10 +280,10 @@ QByteArray RelayPeer::authenticationMessage(const proto::router::RelayKey& key, 
         return QByteArray();
     }
 
-    base::KeyPair key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
+    KeyPair key_pair = KeyPair::create(KeyPair::Type::X25519);
     if (!key_pair.isValid())
     {
-        CLOG(ERROR) << "base::KeyPair::create failed";
+        CLOG(ERROR) << "KeyPair::create failed";
         return QByteArray();
     }
 
@@ -294,10 +294,10 @@ QByteArray RelayPeer::authenticationMessage(const proto::router::RelayKey& key, 
         return QByteArray();
     }
 
-    QByteArray session_key = base::GenericHash::hash(base::GenericHash::Type::BLAKE2s256, temp);
+    QByteArray session_key = GenericHash::hash(GenericHash::Type::BLAKE2s256, temp);
 
-    std::unique_ptr<base::StreamEncryptor> encryptor =
-        base::StreamEncryptor::createForChaCha20Poly1305(session_key, QByteArray::fromStdString(key.iv()));
+    std::unique_ptr<StreamEncryptor> encryptor =
+        StreamEncryptor::createForChaCha20Poly1305(session_key, QByteArray::fromStdString(key.iv()));
     if (!encryptor)
     {
         CLOG(ERROR) << "createForChaCha20Poly1305 failed";

@@ -23,8 +23,6 @@
 
 #include "base/crypto/openssl_util.h"
 
-namespace base {
-
 // AEAD encryptor for datagrams with explicit counter-based nonce construction. Unlike
 // StreamEncryptor, this class does not maintain internal IV state. The caller provides a counter
 // for each packet, and the nonce is computed as base_iv XOR counter (WireGuard-style).
@@ -59,7 +57,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DatagramEncryptor)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_DATAGRAM_ENCRYPTOR_H

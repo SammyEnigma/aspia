@@ -21,8 +21,6 @@
 
 #include <QByteArray>
 
-namespace base {
-
 class PasswordHash
 {
 public:
@@ -37,7 +35,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(PasswordHash)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_PASSWORD_HASH_H

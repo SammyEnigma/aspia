@@ -22,8 +22,6 @@
 
 #include <openssl/evp.h>
 
-namespace base {
-
 namespace {
 
 const qint64 kKeySize = 32; // 256 bits, 32 bytes.
@@ -159,5 +157,3 @@ void DatagramDecryptor::buildNonce(quint64 counter, quint8* out_nonce) const
         out_nonce[4 + i] ^= static_cast<quint8>(counter >> (56 - i * 8));
     }
 }
-
-} // namespace base

@@ -28,7 +28,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 QString chatHistoryId(const SessionState& session_state)
 {
-    base::GenericHash hash(base::GenericHash::SHA1);
+    GenericHash hash(GenericHash::SHA1);
     hash.addData(session_state.hostAddress().toUtf8());
     hash.addData(session_state.hostUserName().toUtf8());
     hash.addData(session_state.hostPassword().toUtf8());

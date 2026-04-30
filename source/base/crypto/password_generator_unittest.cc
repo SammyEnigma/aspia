@@ -22,8 +22,6 @@
 
 #include <algorithm>
 
-namespace base {
-
 namespace {
 
 bool hasLower(const QString& str)
@@ -165,5 +163,3 @@ TEST(password_generator_test, DISABLED_benchmark)
         EXPECT_EQ(res.length(), 15);
     }
 }
-
-} // namespace base

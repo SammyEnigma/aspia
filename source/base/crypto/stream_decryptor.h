@@ -24,8 +24,6 @@
 
 #include "base/crypto/openssl_util.h"
 
-namespace base {
-
 class StreamDecryptor
 {
     Q_GADGET
@@ -61,7 +59,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(StreamDecryptor)
 };
-
-} // namespace base
 
 #endif // BASE_CRYPTO_STREAM_DECRYPTOR_H
