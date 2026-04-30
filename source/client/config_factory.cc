@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 // static
 proto::control::Config ConfigFactory::defaultDesktopConfig()
@@ -45,5 +43,3 @@ void ConfigFactory::setDefaultDesktopConfig(proto::control::Config* config)
     config->set_block_input(false);
     config->set_lock_at_disconnect(false);
 }
-
-} // namespace client

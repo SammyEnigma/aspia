@@ -28,8 +28,6 @@
 #include "common/file_task_factory.h"
 #include "proto/file_transfer.h"
 
-namespace client {
-
 class FileRemoveQueueBuilder;
 
 class FileRemover final : public QObject
@@ -66,7 +64,6 @@ public:
         QString path_;
         bool is_directory_;
     };
-
 
     using TaskList = QQueue<Task>;
 
@@ -106,8 +103,6 @@ private:
     Q_DISABLE_COPY_MOVE(FileRemover)
 };
 
-} // namespace client
-
-Q_DECLARE_METATYPE(client::FileRemover::Action)
+Q_DECLARE_METATYPE(FileRemover::Action)
 
 #endif // CLIENT_FILE_REMOVER_H

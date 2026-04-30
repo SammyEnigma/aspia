@@ -21,8 +21,6 @@
 
 #include "proto/desktop_control.h"
 
-namespace client {
-
 class ConfigFactory
 {
 public:
@@ -32,7 +30,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(ConfigFactory)
 };
-
-} // namespace client
 
 #endif // CLIENT_CONFIG_FACTORY_H

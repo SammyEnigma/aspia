@@ -32,8 +32,6 @@
 #include <QSqlQuery>
 #include <QVariant>
 
-namespace client {
-
 namespace {
 
 const char kConnectionName[] = "client";
@@ -944,5 +942,3 @@ bool Database::openDatabase()
 
     return true;
 }
-
-} // namespace client

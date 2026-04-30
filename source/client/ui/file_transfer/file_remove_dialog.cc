@@ -129,13 +129,13 @@ void FileRemoveDialog::errorOccurred(const QString& path,
     QAbstractButton* skip_button = nullptr;
     QAbstractButton* skip_all_button = nullptr;
 
-    if (available_actions & client::FileRemover::ACTION_SKIP)
+    if (available_actions & FileRemover::ACTION_SKIP)
         skip_button = dialog->addButton(tr("Skip"), MsgBox::ButtonRole::ActionRole);
 
-    if (available_actions & client::FileRemover::ACTION_SKIP_ALL)
+    if (available_actions & FileRemover::ACTION_SKIP_ALL)
         skip_all_button = dialog->addButton(tr("Skip All"), MsgBox::ButtonRole::ActionRole);
 
-    if (available_actions & client::FileRemover::ACTION_ABORT)
+    if (available_actions & FileRemover::ACTION_ABORT)
         dialog->addButton(tr("Abort"), MsgBox::ButtonRole::ActionRole);
 
     connect(dialog, &MsgBox::buttonClicked, this, [&](QAbstractButton* button)
@@ -144,18 +144,18 @@ void FileRemoveDialog::errorOccurred(const QString& path,
         {
             if (button == skip_button)
             {
-                emit sig_action(client::FileRemover::ACTION_SKIP);
+                emit sig_action(FileRemover::ACTION_SKIP);
                 return;
             }
 
             if (button == skip_all_button)
             {
-                emit sig_action(client::FileRemover::ACTION_SKIP_ALL);
+                emit sig_action(FileRemover::ACTION_SKIP_ALL);
                 return;
             }
         }
 
-        emit sig_action(client::FileRemover::ACTION_ABORT);
+        emit sig_action(FileRemover::ACTION_ABORT);
     });
 
     dialog->exec();

@@ -48,7 +48,7 @@ public:
     ~DesktopSessionWindow() final;
 
     // SessionWindow implementation.
-    client::Client* createClient() final;
+    Client* createClient() final;
 
 public slots:
     void onShowWindow();
@@ -56,7 +56,7 @@ public slots:
     void onScreenListChanged(const proto::screen::ScreenList& screen_list);
     void onCursorPositionChanged(const proto::cursor::Position& position);
     void onTaskManagerChanged(const proto::task_manager::HostToClient& message);
-    void onMetricsChanged(const client::ClientDesktop::Metrics& metrics);
+    void onMetricsChanged(const ClientDesktop::Metrics& metrics);
     void onFrameError(proto::video::ErrorCode error_code);
     void onFrameChanged(const QSize& screen_size, std::shared_ptr<base::Frame> frame);
     void onDrawFrame();

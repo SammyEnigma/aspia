@@ -38,8 +38,6 @@ class UserList;
 class UserResult;
 } // namespace proto::router
 
-namespace client {
-
 class RouterConnection final : public QObject
 {
     Q_OBJECT
@@ -67,7 +65,7 @@ public slots:
     // Generic methods.
     void onConnectToRouter();
     void onDisconnectFromRouter();
-    void onUpdateConfig(const client::RouterConfig& config);
+    void onUpdateConfig(const RouterConfig& config);
 
     // Administrator methods.
     void onRelayListRequest();
@@ -90,7 +88,7 @@ public slots:
 
 signals:
     // Generic signals.
-    void sig_statusChanged(qint64 router_id, client::RouterConnection::Status status);
+    void sig_statusChanged(qint64 router_id, RouterConnection::Status status);
     void sig_errorOccurred(qint64 router_id, base::TcpChannel::ErrorCode error_code);
 
     // Administrator signals.
@@ -121,7 +119,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(RouterConnection)
 };
-
-} // namespace client
 
 #endif // CLIENT_ROUTER_CONNECTION_H

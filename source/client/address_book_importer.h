@@ -24,8 +24,6 @@
 
 class QWidget;
 
-namespace client {
-
 class AddressBookImporter
 {
     Q_DECLARE_TR_FUNCTIONS(AddressBookImporter)
@@ -39,7 +37,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(AddressBookImporter)
 };
-
-} // namespace client
 
 #endif // CLIENT_ADDRESS_BOOK_IMPORTER_H

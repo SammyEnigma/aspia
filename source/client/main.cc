@@ -228,7 +228,7 @@ bool parseBlockRemoteInputValue(const QString& value, proto::control::Config* co
 }
 
 //--------------------------------------------------------------------------------------------------
-bool startSession(const client::ComputerConfig& computer,
+bool startSession(const ComputerConfig& computer,
                   proto::peer::SessionType session_type,
                   const QString& display_name,
                   const proto::control::Config& desktop_config)
@@ -272,21 +272,21 @@ bool startSession(const client::ComputerConfig& computer,
 }
 
 //--------------------------------------------------------------------------------------------------
-void startRouterSession(const client::ComputerConfig& computer,
+void startRouterSession(const ComputerConfig& computer,
                         proto::peer::SessionType session_type,
                         const QString& display_name,
-                        const client::RouterConfig& router_config,
+                        const RouterConfig& router_config,
                         const proto::control::Config& desktop_config)
 {
     QPointer<StatusDialog> status_dialog = new StatusDialog();
     status_dialog->setAttribute(Qt::WA_DeleteOnClose);
 
-    QPointer<client::RouterConnection> router = new client::RouterConnection(router_config);
+    QPointer<RouterConnection> router = new RouterConnection(router_config);
     router->moveToThread(base::GuiApplication::ioThread());
 
-    QObject::connect(router, &client::RouterConnection::sig_statusChanged, qApp,
+    QObject::connect(router, &RouterConnection::sig_statusChanged, qApp,
         [status_dialog, router, computer, session_type, display_name, desktop_config](
-            qint64, client::RouterConnection::Status status)
+            qint64, RouterConnection::Status status)
     {
         if (!router || !status_dialog)
             return;
@@ -295,12 +295,12 @@ void startRouterSession(const client::ComputerConfig& computer,
 
         switch (status)
         {
-            case client::RouterConnection::Status::CONNECTING:
+            case RouterConnection::Status::CONNECTING:
                 status_dialog->addMessage(QApplication::translate("Client",
                     "Connecting to router %1...").arg(address));
                 break;
 
-            case client::RouterConnection::Status::ONLINE:
+            case RouterConnection::Status::ONLINE:
                 status_dialog->addMessage(QApplication::translate("Client",
                     "Connection to router %1 established.").arg(address));
                 router->disconnect(qApp);
@@ -309,14 +309,14 @@ void startRouterSession(const client::ComputerConfig& computer,
                 startSession(computer, session_type, display_name, desktop_config);
                 break;
 
-            case client::RouterConnection::Status::OFFLINE:
+            case RouterConnection::Status::OFFLINE:
                 status_dialog->addMessage(QApplication::translate("Client",
                     "Disconnected from router %1.").arg(address));
                 break;
         }
     }, Qt::QueuedConnection);
 
-    QObject::connect(router, &client::RouterConnection::sig_errorOccurred, qApp,
+    QObject::connect(router, &RouterConnection::sig_errorOccurred, qApp,
         [status_dialog](qint64, base::TcpChannel::ErrorCode error_code)
     {
         if (!status_dialog)
@@ -329,7 +329,7 @@ void startRouterSession(const client::ComputerConfig& computer,
     status_dialog->show();
     status_dialog->activateWindow();
 
-    QMetaObject::invokeMethod(router, &client::RouterConnection::onConnectToRouter, Qt::QueuedConnection);
+    QMetaObject::invokeMethod(router, &RouterConnection::onConnectToRouter, Qt::QueuedConnection);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -457,9 +457,9 @@ int main(int argc, char* argv[])
     {
         LOG(INFO) << "Command line start";
 
-        proto::control::Config desktop_config = client::ConfigFactory::defaultDesktopConfig();
+        proto::control::Config desktop_config = ConfigFactory::defaultDesktopConfig();
         proto::peer::SessionType session_type = proto::peer::SESSION_TYPE_DESKTOP;
-        client::ComputerConfig computer;
+        ComputerConfig computer;
         QString display_name;
 
         computer.address = parser.value(address_option);
@@ -549,7 +549,7 @@ int main(int argc, char* argv[])
         {
             LOG(INFO) << "Relay connection selected";
 
-            client::RouterConfig router_config;
+            RouterConfig router_config;
 
             if (!parser.isSet(router_address_option))
             {
@@ -595,7 +595,7 @@ int main(int argc, char* argv[])
             return 0;
         }
 
-        if (client::MasterPassword::isSet())
+        if (MasterPassword::isSet())
         {
             LOG(INFO) << "Master password is set, prompting user";
 
@@ -608,7 +608,7 @@ int main(int argc, char* argv[])
                     return 0;
                 }
 
-                if (client::MasterPassword::unlock(dialog.password()))
+                if (MasterPassword::unlock(dialog.password()))
                 {
                     LOG(INFO) << "Master password accepted";
                     break;

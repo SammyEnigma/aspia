@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/serialization.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 ClientSystemInfo::ClientSystemInfo(QObject* parent)
     : Client(parent)
@@ -63,5 +61,3 @@ void ClientSystemInfo::onMessageReceived(quint8 channel_id, const QByteArray& bu
 
     emit sig_systemInfo(system_info);
 }
-
-} // namespace client

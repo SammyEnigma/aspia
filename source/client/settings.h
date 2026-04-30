@@ -25,8 +25,6 @@
 #include "proto/desktop_control.h"
 #include "proto/peer.h"
 
-namespace client {
-
 class Settings
 {
 public:
@@ -85,7 +83,5 @@ private:
     QSettings settings_;
     Q_DISABLE_COPY_MOVE(Settings)
 };
-
-} // namespace client
 
 #endif // CLIENT_SETTINGS_H

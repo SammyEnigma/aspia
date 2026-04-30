@@ -33,8 +33,6 @@
 #include "proto/desktop_channel.h"
 #include "proto/desktop_user.h"
 
-namespace client {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -1104,5 +1102,3 @@ void ClientDesktop::setForceReliable(bool enable)
     feedback->set_boolean(enable);
     sendMessage(proto::desktop::CHANNEL_ID_CONTROL, base::serialize(message));
 }
-
-} // namespace client

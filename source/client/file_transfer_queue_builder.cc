@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "common/file_task_factory.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 FileTransferQueueBuilder::FileTransferQueueBuilder(common::FileTask::Target target, QObject* parent)
     : QObject(parent),
@@ -147,5 +145,3 @@ void FileTransferQueueBuilder::onAborted(proto::file_transfer::ErrorCode error_c
 
     emit sig_finished(error_code);
 }
-
-} // namespace client

@@ -39,7 +39,7 @@ public:
     ~ChatSessionWindow() final;
 
     // SessionWindow implementation.
-    client::Client* createClient() final;
+    Client* createClient() final;
 
 public slots:
     void onShowWindow();

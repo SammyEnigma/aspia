@@ -45,8 +45,6 @@ class WebmFileWriter;
 class WebmVideoEncoder;
 } // namespace base
 
-namespace client {
-
 class ClientDesktop final : public Client
 {
     Q_OBJECT
@@ -114,7 +112,7 @@ signals:
     void sig_screenTypeChanged(const proto::screen::ScreenType& screen_type);
     void sig_cursorPositionChanged(const proto::cursor::Position& position);
     void sig_taskManager(const proto::task_manager::HostToClient& message);
-    void sig_metrics(const client::ClientDesktop::Metrics& metrics);
+    void sig_metrics(const ClientDesktop::Metrics& metrics);
     void sig_frameError(proto::video::ErrorCode error_code);
     void sig_frameChanged(const QSize& screen_size, std::shared_ptr<base::Frame> frame);
     void sig_drawFrame();
@@ -207,8 +205,6 @@ private:
     Q_DISABLE_COPY_MOVE(ClientDesktop)
 };
 
-} // namespace client
-
-Q_DECLARE_METATYPE(client::ClientDesktop::Metrics)
+Q_DECLARE_METATYPE(ClientDesktop::Metrics)
 
 #endif // CLIENT_CLIENT_DESKTOP_H

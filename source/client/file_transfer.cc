@@ -22,12 +22,10 @@
 #include "client/file_transfer_queue_builder.h"
 #include "common/file_packet.h"
 
-namespace client {
-
 namespace {
 
-auto g_errorType = qRegisterMetaType<client::FileTransfer::Error::Type>();
-auto g_actionType = qRegisterMetaType<client::FileTransfer::Error::Action>();
+auto g_errorType = qRegisterMetaType<FileTransfer::Error::Type>();
+auto g_actionType = qRegisterMetaType<FileTransfer::Error::Action>();
 
 struct ActionsMap
 {
@@ -555,5 +553,3 @@ FileTransfer::Task& FileTransfer::Task::operator=(Task&& other) noexcept
     size_ = other.size_;
     return *this;
 }
-
-} // namespace client

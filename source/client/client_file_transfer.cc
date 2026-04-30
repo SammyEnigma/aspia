@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "common/file_task_factory.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 ClientFileTransfer::ClientFileTransfer(QObject* parent)
     : Client(parent),
@@ -216,5 +214,3 @@ common::FileTaskFactory* ClientFileTransfer::taskFactory(common::FileTask::Targe
     CDCHECK(task_factory);
     return task_factory;
 }
-
-} // namespace client

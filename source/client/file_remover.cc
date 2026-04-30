@@ -22,11 +22,9 @@
 #include "client/file_remove_queue_builder.h"
 #include "common/file_task_factory.h"
 
-namespace client {
-
 namespace {
 
-auto g_actionType = qRegisterMetaType<client::FileRemover::Action>();
+auto g_actionType = qRegisterMetaType<FileRemover::Action>();
 
 } // namespace
 
@@ -221,5 +219,3 @@ FileRemover::Task& FileRemover::Task::operator=(Task&& other) noexcept
     is_directory_ = other.is_directory_;
     return *this;
 }
-
-} // namespace client

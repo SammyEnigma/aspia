@@ -30,8 +30,6 @@
 #include "proto/router_admin.h"
 #include "proto/router_client.h"
 
-namespace client {
-
 namespace {
 
 const std::chrono::seconds kReconnectTimeout{ 5 };
@@ -510,5 +508,3 @@ void RouterConnection::sendMessage(quint8 channel_id, const QByteArray& data)
 
     tcp_channel_->send(channel_id, data);
 }
-
-} // namespace client

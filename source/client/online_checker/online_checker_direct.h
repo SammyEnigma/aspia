@@ -28,8 +28,6 @@ namespace base {
 class Location;
 } // namespace base
 
-namespace client {
-
 class OnlineCheckerDirect final : public QObject
 {
     Q_OBJECT
@@ -55,7 +53,5 @@ private:
     class Instance;
     QQueue<Instance*> work_queue_;
 };
-
-} // namespace client
 
 #endif // CLIENT_ONLINE_CHECKER_ONLINE_CHECKER_DIRECT_H

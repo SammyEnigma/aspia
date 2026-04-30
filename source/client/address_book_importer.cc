@@ -33,8 +33,6 @@
 #include "common/ui/msg_box.h"
 #include "proto/address_book.h"
 
-namespace client {
-
 namespace {
 
 constexpr int kMaxNameLength = 64;
@@ -370,5 +368,3 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
 
     return true;
 }
-
-} // namespace client

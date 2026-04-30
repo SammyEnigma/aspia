@@ -33,9 +33,7 @@ class UpdateChecker;
 } // namespace common
 
 class ClientTab;
-namespace client {
 struct ComputerConfig;
-} // namespace client
 
 class MainWindow final : public QMainWindow
 {
@@ -62,7 +60,7 @@ private slots:
     void onCloseTab(int index);
     void onSearchTextChanged(const QString& text);
     void onConnect(qint64 computer_id,
-                   const client::ComputerConfig& computer,
+                   const ComputerConfig& computer,
                    proto::peer::SessionType session_type);
 
 private:

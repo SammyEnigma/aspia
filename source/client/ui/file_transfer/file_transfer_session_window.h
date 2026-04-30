@@ -42,7 +42,7 @@ public:
     ~FileTransferSessionWindow() final;
 
     // SessionWindow implementation.
-    client::Client* createClient() final;
+    Client* createClient() final;
 
     QByteArray saveState() const;
     void restoreState(const QByteArray& state);
@@ -66,8 +66,8 @@ signals:
     void sig_fileListRequest(common::FileTask::Target target, const QString& path);
     void sig_createDirectoryRequest(common::FileTask::Target target, const QString& path);
     void sig_renameRequest(common::FileTask::Target target, const QString& old_path, const QString& new_path);
-    void sig_removeRequest(client::FileRemover* remover);
-    void sig_transferRequest(client::FileTransfer* transfer);
+    void sig_removeRequest(FileRemover* remover);
+    void sig_transferRequest(FileTransfer* transfer);
 
 protected:
     // SessionWindow implementation.
@@ -77,18 +77,18 @@ protected:
     void closeEvent(QCloseEvent* event) final;
 
 private slots:
-    void removeItems(FilePanel* sender, const client::FileRemover::TaskList& items);
-    void sendItems(FilePanel* sender, const QList<client::FileTransfer::Item>& items);
+    void removeItems(FilePanel* sender, const FileRemover::TaskList& items);
+    void sendItems(FilePanel* sender, const QList<FileTransfer::Item>& items);
     void receiveItems(FilePanel* sender,
                       const QString& target_folder,
-                      const QList<client::FileTransfer::Item>& items);
+                      const QList<FileTransfer::Item>& items);
     void onPathChanged(FilePanel* sender, const QString& path);
 
 private:
-    void transferItems(client::FileTransfer::Type type,
+    void transferItems(FileTransfer::Type type,
                        const QString& source_path,
                        const QString& target_path,
-                       const QList<client::FileTransfer::Item>& items);
+                       const QList<FileTransfer::Item>& items);
 
     void initPanel(common::FileTask::Target target,
                    const QString& title,

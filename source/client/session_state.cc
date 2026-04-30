@@ -22,8 +22,6 @@
 #include "base/peer/host_id.h"
 #include "build/build_config.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 SessionState::SessionState(const ComputerConfig& computer,
                            proto::peer::SessionType session_type,
@@ -116,5 +114,3 @@ bool SessionState::isReconnecting() const
     std::scoped_lock lock(lock_);
     return reconnecting_;
 }
-
-} // namespace client

@@ -402,7 +402,7 @@ QStringList FileListModel::mimeTypes() const
 //--------------------------------------------------------------------------------------------------
 QMimeData* FileListModel::mimeData(const QModelIndexList& indexes) const
 {
-    QList<client::FileTransfer::Item> file_list;
+    QList<FileTransfer::Item> file_list;
 
     for (const auto& index : indexes)
     {

@@ -47,7 +47,7 @@ LocalGroupDialog::LocalGroupDialog(qint64 group_id, qint64 parent_id, QWidget* p
     {
         setWindowTitle(tr("Edit Group"));
 
-        std::optional<client::GroupConfig> group = client::Database::instance().findGroup(group_id_);
+        std::optional<GroupConfig> group = Database::instance().findGroup(group_id_);
         if (group.has_value())
         {
             ui.edit_name->setText(group->name);
@@ -118,8 +118,8 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
 
     qint64 parent_id = ui.combo_parent_group->currentGroupId();
 
-    QList<client::GroupConfig> groups = client::Database::instance().groupList(parent_id);
-    for (const client::GroupConfig& existing : std::as_const(groups))
+    QList<GroupConfig> groups = Database::instance().groupList(parent_id);
+    for (const GroupConfig& existing : std::as_const(groups))
     {
         if (existing.id != group_id_ && existing.name == name)
         {
@@ -130,13 +130,13 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
         }
     }
 
-    client::GroupConfig group;
+    GroupConfig group;
     group.id = group_id_;
     group.parent_id = parent_id;
     group.name = name;
     group.comment = ui.edit_comment->toPlainText();
 
-    client::Database& db = client::Database::instance();
+    Database& db = Database::instance();
 
     if (group_id_ == -1)
     {

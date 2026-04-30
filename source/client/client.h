@@ -40,8 +40,6 @@ class StunPeer;
 class UdpChannel;
 } // namespace base
 
-namespace client {
-
 class Client : public QObject
 {
     Q_OBJECT
@@ -78,7 +76,7 @@ public:
     Q_ENUM(Status)
 
 signals:
-    void sig_statusChanged(client::Client::Status status, const QVariant& data = QVariant());
+    void sig_statusChanged(Client::Status status, const QVariant& data = QVariant());
     void sig_showSessionWindow();
 
 protected:
@@ -111,7 +109,7 @@ private slots:
     void onUdpErrorOccurred();
     void onUdpMessageReceived(quint8 channel_id, const QByteArray& buffer);
     void onRouterConnectionOffer(const proto::router::ConnectionOffer& offer);
-    void onRouterStatusChanged(qint64 router_id, client::RouterConnection::Status status);
+    void onRouterStatusChanged(qint64 router_id, RouterConnection::Status status);
     void onRelayConnectionReady();
     void onRelayConnectionError();
 
@@ -151,8 +149,6 @@ private:
     bool udp_ready_ = false;
 };
 
-} // namespace client
-
-Q_DECLARE_METATYPE(client::Client::Status)
+Q_DECLARE_METATYPE(Client::Status)
 
 #endif // CLIENT_CLIENT_H

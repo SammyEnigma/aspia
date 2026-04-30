@@ -57,11 +57,11 @@ public:
 
 signals:
     void sig_connect(qint64 computer_id,
-                     const client::ComputerConfig& computer,
+                     const ComputerConfig& computer,
                      proto::peer::SessionType session_type);
 
 private slots:
-    void onRouterStatusChanged(qint64 router_id, client::RouterConnection::Status status);
+    void onRouterStatusChanged(qint64 router_id, RouterConnection::Status status);
     void onSwitchContent(Sidebar::Item::Type type);
     void onSidebarContextMenu(Sidebar::Item::Type type, const QPoint& pos);
     void onCurrentComputerChanged(qint64 computer_id);
@@ -89,12 +89,12 @@ private:
 
     void destroyAllRouterWidgets();
     void destroyRouterWidget(qint64 router_id);
-    RouterWidget* createRouterWidget(const client::RouterConfig& config);
+    RouterWidget* createRouterWidget(const RouterConfig& config);
 
     void editRouter(qint64 router_id);
     void deleteRouter(qint64 router_id);
 
-    bool validateComputerForConnect(const client::ComputerConfig& computer);
+    bool validateComputerForConnect(const ComputerConfig& computer);
 
     Ui::HostsTab ui;
 

@@ -25,8 +25,6 @@
 
 #include <QLocale>
 
-namespace client {
-
 namespace {
 
 const QString kLocaleParam = "locale";
@@ -259,5 +257,3 @@ void Settings::setTabState(const QString& name, const QByteArray& state)
 {
     settings_.setValue(kTabStateParam + "/" + name, state);
 }
-
-} // namespace client

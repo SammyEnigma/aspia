@@ -27,8 +27,6 @@
 
 #include <mutex>
 
-namespace client {
-
 class SessionState
 {
 public:
@@ -73,7 +71,5 @@ private:
     bool auto_reconnect_ = false;
     bool reconnecting_ = false;
 };
-
-} // namespace client
 
 #endif // CLIENT_SHARED_SESSION_STATE_H

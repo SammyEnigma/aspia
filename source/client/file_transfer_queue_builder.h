@@ -21,8 +21,6 @@
 
 #include "client/file_transfer.h"
 
-namespace client {
-
 // The class prepares the task queue to perform the downloading/uploading.
 class FileTransferQueueBuilder final : public QObject
 {
@@ -63,7 +61,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileTransferQueueBuilder)
 };
-
-} // namespace client
 
 #endif // CLIENT_FILE_TRANSFER_QUEUE_BUILDER_H

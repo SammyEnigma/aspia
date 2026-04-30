@@ -29,8 +29,6 @@
 #include "proto/key_exchange.h"
 #include "proto/peer.h"
 
-namespace client {
-
 namespace {
 
 const qsizetype kNumberOfParallelTasks = 30;
@@ -224,5 +222,3 @@ void OnlineCheckerDirect::onFinished(const base::Location& location)
     LOG(INFO) << "Finished (from" << location << ")";
     emit sig_checkerFinished();
 }
-
-} // namespace client

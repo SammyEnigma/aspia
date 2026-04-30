@@ -24,8 +24,6 @@
 #include "base/crypto/random.h"
 #include "client/database.h"
 
-namespace client {
-
 namespace {
 
 const char kSaltPropertyName[] = "master_password_salt";
@@ -265,5 +263,3 @@ bool MasterPassword::clear(const QString& current_password)
 
     return changeKeyAndReencrypt(QByteArray(), QByteArray(), QByteArray());
 }
-
-} // namespace client

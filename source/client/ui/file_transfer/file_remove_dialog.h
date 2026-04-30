@@ -44,7 +44,7 @@ public slots:
 
 signals:
     void sig_stop();
-    void sig_action(client::FileRemover::Action action);
+    void sig_action(FileRemover::Action action);
 
 protected:
     // QDialog implementation.

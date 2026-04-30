@@ -40,11 +40,11 @@ public slots:
     void setCurrentItem(const QString& source_path, const QString& target_path);
     void setCurrentProgress(int total, int current);
     void setCurrentSpeed(qint64 speed);
-    void errorOccurred(const client::FileTransfer::Error& error);
+    void errorOccurred(const FileTransfer::Error& error);
 
 signals:
-    void sig_action(client::FileTransfer::Error::Type error_type,
-                    client::FileTransfer::Error::Action action);
+    void sig_action(FileTransfer::Error::Type error_type,
+                    FileTransfer::Error::Action action);
     void sig_stop();
 
 protected:
@@ -53,7 +53,7 @@ protected:
     void closeEvent(QCloseEvent* event) final;
 
 private:
-    QString errorToMessage(const client::FileTransfer::Error& error);
+    QString errorToMessage(const FileTransfer::Error& error);
     QString speedToString(qint64 speed);
 
     Ui::FileTransferDialog ui;

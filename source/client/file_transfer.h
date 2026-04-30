@@ -30,8 +30,6 @@
 #include "common/file_task_factory.h"
 #include "proto/file_transfer.h"
 
-namespace client {
-
 class FileTransferQueueBuilder;
 
 class FileTransfer final : public QObject
@@ -168,8 +166,8 @@ public:
     void start();
     void stop();
 
-    void setAction(client::FileTransfer::Error::Type error_type,
-                   client::FileTransfer::Error::Action action);
+    void setAction(FileTransfer::Error::Type error_type,
+                   FileTransfer::Error::Action action);
 
 signals:
     void sig_started();
@@ -177,7 +175,7 @@ signals:
     void sig_progressChanged(int total, int current);
     void sig_currentItemChanged(const QString& source_path, const QString& target_path);
     void sig_currentSpeedChanged(qint64 speed);
-    void sig_errorOccurred(const client::FileTransfer::Error& error);
+    void sig_errorOccurred(const FileTransfer::Error& error);
     void sig_doTask(const common::FileTask& task);
 
 private slots:
@@ -226,10 +224,8 @@ private:
     Q_DISABLE_COPY_MOVE(FileTransfer)
 };
 
-} // namespace client
-
-Q_DECLARE_METATYPE(client::FileTransfer::Error::Action)
-Q_DECLARE_METATYPE(client::FileTransfer::Error::Type)
-Q_DECLARE_METATYPE(client::FileTransfer::Error)
+Q_DECLARE_METATYPE(FileTransfer::Error::Action)
+Q_DECLARE_METATYPE(FileTransfer::Error::Type)
+Q_DECLARE_METATYPE(FileTransfer::Error)
 
 #endif // CLIENT_FILE_TRANSFER_H

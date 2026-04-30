@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "common/file_task_factory.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 FileRemoveQueueBuilder::FileRemoveQueueBuilder(common::FileTask::Target target, QObject* parent)
     : QObject(parent),
@@ -114,5 +112,3 @@ void FileRemoveQueueBuilder::onAborted(proto::file_transfer::ErrorCode error_cod
 
     emit sig_finished(error_code);
 }
-
-} // namespace client

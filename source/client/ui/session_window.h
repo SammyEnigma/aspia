@@ -39,30 +39,30 @@ public:
     // Connects to a host.
     // If the username and/or password are not specified in the connection parameters, the
     // authorization dialog will be displayed.
-    bool connectToHost(client::ComputerConfig computer, const QString& display_name);
+    bool connectToHost(ComputerConfig computer, const QString& display_name);
 
-    std::shared_ptr<client::SessionState> sessionState() { return session_state_; }
+    std::shared_ptr<SessionState> sessionState() { return session_state_; }
 
 signals:
     void sig_start();
     void sig_stop();
 
 protected:
-    virtual client::Client* createClient() = 0;
+    virtual Client* createClient() = 0;
     virtual void onInternalReset() = 0;
 
     // QWidget implementation.
     void closeEvent(QCloseEvent* event) override;
 
 public slots:
-    void onStatusChanged(client::Client::Status status, const QVariant& data);
+    void onStatusChanged(Client::Status status, const QVariant& data);
 
 private:
-    void setClientTitle(const client::ComputerConfig& computer, proto::peer::SessionType session_type);
+    void setClientTitle(const ComputerConfig& computer, proto::peer::SessionType session_type);
     void onErrorOccurred(const QString& message);
 
     const proto::peer::SessionType session_type_;
-    std::shared_ptr<client::SessionState> session_state_;
+    std::shared_ptr<SessionState> session_state_;
     StatusDialog* status_dialog_ = nullptr;
 };
 

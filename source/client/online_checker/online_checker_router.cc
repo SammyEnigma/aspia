@@ -24,8 +24,6 @@
 #include "base/logging.h"
 #include "base/peer/host_id.h"
 
-namespace client {
-
 namespace {
 
 const std::chrono::seconds kTimeout { 30 };
@@ -126,5 +124,3 @@ void OnlineCheckerRouter::onFinished(const base::Location& location)
 
     emit sig_checkerFinished();
 }
-
-} // namespace client

@@ -59,9 +59,9 @@ void SearchWidget::search(const QString& query)
 {
     tree_computer_->clear();
 
-    //QList<client::ComputerConfig> results = client::Database::instance().searchComputers(query);
+    //QList<ComputerConfig> results = Database::instance().searchComputers(query);
 
-    //for (const client::ComputerConfig& computer : std::as_const(results))
+    //for (const ComputerConfig& computer : std::as_const(results))
     //    new SearchComputerItem(computer, tree_computer_);
 }
 

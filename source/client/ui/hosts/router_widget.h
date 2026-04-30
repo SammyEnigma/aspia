@@ -50,11 +50,11 @@ public:
     };
     Q_ENUM(TabType)
 
-    explicit RouterWidget(const client::RouterConfig& config, QWidget* parent = nullptr);
+    explicit RouterWidget(const RouterConfig& config, QWidget* parent = nullptr);
     ~RouterWidget() override;
 
     qint64 routerId() const;
-    client::RouterConnection::Status status() const;
+    RouterConnection::Status status() const;
     TabType currentTabType() const;
     bool hasSelectedUser() const;
     bool hasSelectedHost() const;
@@ -78,7 +78,7 @@ public:
 
     void connectToRouter();
     void disconnectFromRouter();
-    void updateConfig(const client::RouterConfig& config);
+    void updateConfig(const RouterConfig& config);
 
     void showStatusDialog();
 
@@ -109,7 +109,7 @@ signals:
     void sig_removeHost(qint64 session_id, bool try_to_uninstall);
     void sig_disconnectRelay(qint64 session_id);
     void sig_disconnectPeer(qint64 relay_entry_id, quint64 peer_session_id);
-    void sig_statusChanged(qint64 router_id, client::RouterConnection::Status status);
+    void sig_statusChanged(qint64 router_id, RouterConnection::Status status);
     void sig_currentTabTypeChanged(qint64 router_id, RouterWidget::TabType tab);
     void sig_currentUserChanged(qint64 router_id);
     void sig_currentHostChanged(qint64 router_id);
@@ -117,10 +117,10 @@ signals:
     void sig_userContextMenu(qint64 router_id, const base::User& user, const QPoint& global_pos);
     void sig_hostContextMenu(qint64 router_id, const QPoint& global_pos, int column);
     void sig_relayContextMenu(qint64 router_id, const QPoint& global_pos, int column);
-    void sig_updateConfig(const client::RouterConfig& config);
+    void sig_updateConfig(const RouterConfig& config);
 
 private slots:
-    void onStatusChanged(qint64 router_id, client::RouterConnection::Status status);
+    void onStatusChanged(qint64 router_id, RouterConnection::Status status);
     void onConnectionErrorOccurred(qint64 router_id, base::TcpChannel::ErrorCode error_code);
     void onTabChanged(int index);
     void onCurrentUserChanged();
@@ -145,9 +145,9 @@ private:
 
     Ui::RouterWidget ui;
 
-    client::RouterConfig config_;
-    base::ScopedQPointer<client::RouterConnection> connection_;
-    client::RouterConnection::Status status_ = client::RouterConnection::Status::OFFLINE;
+    RouterConfig config_;
+    base::ScopedQPointer<RouterConnection> connection_;
+    RouterConnection::Status status_ = RouterConnection::Status::OFFLINE;
 
     StatusDialog* status_dialog_ = nullptr;
 

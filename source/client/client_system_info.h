@@ -22,8 +22,6 @@
 #include "client/client.h"
 #include "proto/system_info.h"
 
-namespace client {
-
 class ClientSystemInfo final : public Client
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ protected:
 private:
     Q_DISABLE_COPY_MOVE(ClientSystemInfo)
 };
-
-} // namespace client
 
 #endif // CLIENT_CLIENT_SYSTEM_INFO_H

@@ -23,8 +23,6 @@
 #include "base/peer/host_id.h"
 #include "client/config.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 OnlineChecker::OnlineChecker(QObject* parent)
     : QObject(parent)
@@ -133,5 +131,3 @@ void OnlineChecker::onRouterCheckerFinished()
     if (direct_finished_ && router_finished_)
         emit sig_checkerFinished();
 }
-
-} // namespace client

@@ -27,8 +27,6 @@
 #include "client/online_checker/online_checker_direct.h"
 #include "client/online_checker/online_checker_router.h"
 
-namespace client {
-
 class OnlineChecker final : public QObject
 {
     Q_OBJECT
@@ -64,7 +62,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(OnlineChecker)
 };
-
-} // namespace client
 
 #endif // CLIENT_ONLINE_CHECKER_ONLINE_CHECKER_H

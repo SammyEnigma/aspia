@@ -106,12 +106,12 @@ bool MasterPasswordDialog::applySet()
     QString new_password = ui.edit_new->text();
     QString confirm = ui.edit_confirm->text();
 
-    if (!client::MasterPassword::isSafePassword(new_password))
+    if (!MasterPassword::isSafePassword(new_password))
     {
         QString unsafe = tr("Password you entered does not meet the security requirements!");
         QString safe = tr("The password must contain lowercase and uppercase characters, "
                           "numbers and should not be shorter than %n characters.",
-                          "", client::MasterPassword::kSafePasswordLength);
+                          "", MasterPassword::kSafePasswordLength);
         QString question = tr("Do you want to enter a different password?");
 
         MsgBox message_box(MsgBox::Warning,
@@ -129,7 +129,7 @@ bool MasterPasswordDialog::applySet()
         return false;
     }
 
-    if (!client::MasterPassword::setNew(new_password))
+    if (!MasterPassword::setNew(new_password))
     {
         MsgBox::warning(this, tr("Unable to set master password."));
         return false;
@@ -151,12 +151,12 @@ bool MasterPasswordDialog::applyChange()
         return false;
     }
 
-    if (!client::MasterPassword::isSafePassword(new_password))
+    if (!MasterPassword::isSafePassword(new_password))
     {
         QString unsafe = tr("Password you entered does not meet the security requirements!");
         QString safe = tr("The password must contain lowercase and uppercase characters, "
                           "numbers and should not be shorter than %n characters.",
-                          "", client::MasterPassword::kSafePasswordLength);
+                          "", MasterPassword::kSafePasswordLength);
         QString question = tr("Do you want to enter a different password?");
 
         MsgBox message_box(MsgBox::Warning,
@@ -174,7 +174,7 @@ bool MasterPasswordDialog::applyChange()
         return false;
     }
 
-    if (!client::MasterPassword::change(current, new_password))
+    if (!MasterPassword::change(current, new_password))
     {
         MsgBox::warning(this, tr("Invalid current password or unable to change it."));
         return false;
@@ -194,7 +194,7 @@ bool MasterPasswordDialog::applyRemove()
         return false;
     }
 
-    if (!client::MasterPassword::clear(current))
+    if (!MasterPassword::clear(current))
     {
         MsgBox::warning(this, tr("Invalid current password or unable to remove it."));
         return false;

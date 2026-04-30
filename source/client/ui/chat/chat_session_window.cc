@@ -26,7 +26,7 @@
 namespace {
 
 //--------------------------------------------------------------------------------------------------
-QString chatHistoryId(const client::SessionState& session_state)
+QString chatHistoryId(const SessionState& session_state)
 {
     base::GenericHash hash(base::GenericHash::SHA1);
     hash.addData(session_state.hostAddress().toUtf8());
@@ -70,19 +70,19 @@ ChatSessionWindow::~ChatSessionWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-client::Client* ChatSessionWindow::createClient()
+Client* ChatSessionWindow::createClient()
 {
     LOG(INFO) << "Create client";
 
     ui->text_chat_widget->setHistoryId(chatHistoryId(*sessionState()));
 
-    client::ClientChat* client = new client::ClientChat();
+    ClientChat* client = new ClientChat();
 
-    connect(this, &ChatSessionWindow::sig_chatMessage, client, &client::ClientChat::onChatMessage,
+    connect(this, &ChatSessionWindow::sig_chatMessage, client, &ClientChat::onChatMessage,
             Qt::QueuedConnection);
-    connect(client, &client::ClientChat::sig_showSessionWindow, this, &ChatSessionWindow::onShowWindow,
+    connect(client, &ClientChat::sig_showSessionWindow, this, &ChatSessionWindow::onShowWindow,
             Qt::QueuedConnection);
-    connect(client, &client::ClientChat::sig_chatMessage, this, &ChatSessionWindow::onChatMessage,
+    connect(client, &ClientChat::sig_chatMessage, this, &ChatSessionWindow::onChatMessage,
             Qt::QueuedConnection);
 
     return client;

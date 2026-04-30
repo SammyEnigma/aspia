@@ -25,8 +25,6 @@
 
 #include "proto/router.h"
 
-namespace client {
-
 struct RouterConfig
 {
     bool isValid() const
@@ -79,7 +77,5 @@ struct GroupConfig
     QString comment;
     bool expanded = false;
 };
-
-} // namespace client
 
 #endif // CLIENT_CONFIG_H

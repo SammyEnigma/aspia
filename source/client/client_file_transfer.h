@@ -26,8 +26,6 @@
 #include "common/file_task_factory.h"
 #include "common/file_worker.h"
 
-namespace client {
-
 class ClientFileTransfer final : public Client
 {
     Q_OBJECT
@@ -44,8 +42,8 @@ public slots:
     void onRenameRequest(common::FileTask::Target target,
                          const QString& old_path,
                          const QString& new_path);
-    void onRemoveRequest(client::FileRemover* remover);
-    void onTransferRequest(client::FileTransfer* transfer);
+    void onRemoveRequest(FileRemover* remover);
+    void onTransferRequest(FileTransfer* transfer);
 
 signals:
     void sig_errorOccurred(proto::file_transfer::ErrorCode error_code);
@@ -84,7 +82,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ClientFileTransfer)
 };
-
-} // namespace client
 
 #endif // CLIENT_CLIENT_FILE_TRANSFER_H

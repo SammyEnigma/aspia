@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/serialization.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 ClientChat::ClientChat(QObject* parent)
     : Client(parent)
@@ -63,5 +61,3 @@ void ClientChat::onMessageReceived(quint8 channel_id, const QByteArray& buffer)
 
     emit sig_chatMessage(chat);
 }
-
-} // namespace client

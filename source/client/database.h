@@ -28,8 +28,6 @@
 
 #include "client/config.h"
 
-namespace client {
-
 class Database
 {
 public:
@@ -81,7 +79,5 @@ private:
 
     bool valid_ = false;
 };
-
-} // namespace client
 
 #endif // CLIENT_DATABASE_H

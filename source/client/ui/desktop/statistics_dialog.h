@@ -32,7 +32,7 @@ public:
     explicit StatisticsDialog(QWidget* parent = nullptr);
     ~StatisticsDialog() final;
 
-    void setMetrics(const client::ClientDesktop::Metrics& metrics);
+    void setMetrics(const ClientDesktop::Metrics& metrics);
 
 signals:
     void sig_metricsRequired();

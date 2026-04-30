@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget* parent)
 {
     LOG(INFO) << "Ctor";
 
-    client::Settings settings;
+    Settings settings;
 
     ui.setupUi(this);
 
@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui.action_large_icons, &QAction::toggled, this, [this](bool enable)
     {
         ui.toolbar->setIconSize(enable ? QSize(32, 32) : QSize(24, 24));
-        client::Settings().setLargeIcons(enable);
+        Settings().setLargeIcons(enable);
     });
 
     // Tab management.
@@ -145,7 +145,7 @@ void MainWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event detected";
 
-    client::Settings settings;
+    Settings settings;
     settings.setWindowGeometry(saveGeometry());
     settings.setWindowState(saveState());
     settings.setToolBarEnabled(ui.action_toolbar->isChecked());
@@ -269,7 +269,7 @@ void MainWindow::onCloseTab(int index)
         active_tab_ = nullptr;
     }
 
-    client::Settings settings;
+    Settings settings;
     settings.setTabState(tab->objectName(), tab->saveState());
 
     ui.tabs->removeTab(index);
@@ -285,7 +285,7 @@ void MainWindow::onSearchTextChanged(const QString& text)
 
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onConnect(qint64 /* computer_id */,
-                           const client::ComputerConfig& computer,
+                           const ComputerConfig& computer,
                            proto::peer::SessionType session_type)
 {
     if (base::isHostId(computer.address) && computer.router_id <= 0)
@@ -302,7 +302,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
     switch (session_type)
     {
         case proto::peer::SESSION_TYPE_DESKTOP:
-            session_window = new DesktopSessionWindow(client::Settings().desktopConfig());
+            session_window = new DesktopSessionWindow(Settings().desktopConfig());
             break;
 
         case proto::peer::SESSION_TYPE_FILE_TRANSFER:
@@ -326,7 +326,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
         return;
 
     session_window->setAttribute(Qt::WA_DeleteOnClose);
-    if (!session_window->connectToHost(computer, client::Settings().displayName()))
+    if (!session_window->connectToHost(computer, Settings().displayName()))
         session_window->close();
 }
 
@@ -338,7 +338,7 @@ void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
     if (!tab->isClosable())
         hideCloseButtonForTab(index);
 
-    client::Settings settings;
+    Settings settings;
     tab->restoreState(settings.tabState(tab->objectName()));
 
     connect(tab, &ClientTab::sig_titleChanged, this, [this, tab](const QString& new_title)

@@ -54,7 +54,7 @@ Application::Application(int& argc, char* argv[])
         }
     });
 
-    client::Settings settings;
+    Settings settings;
 
     if (!hasLocale(settings.locale()))
     {

@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace client {
-
 class MasterPassword
 {
 public:
@@ -41,7 +39,5 @@ private:
     MasterPassword() = delete;
     ~MasterPassword() = delete;
 };
-
-} // namespace client
 
 #endif // CLIENT_MASTER_PASSWORD_H

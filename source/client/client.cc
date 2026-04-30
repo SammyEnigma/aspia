@@ -41,11 +41,9 @@
 #include "base/mac/app_nap_blocker.h"
 #endif // defined(Q_OS_MACOS)
 
-namespace client {
-
 namespace {
 
-auto g_statusType = qRegisterMetaType<client::Client::Status>();
+auto g_statusType = qRegisterMetaType<Client::Status>();
 static const int kReadBufferSize = 2 * 1024 * 1024; // 2 Mb.
 static const int kWriteBufferSize = 2 * 1024 * 1024; // 2 Mb.
 
@@ -869,5 +867,3 @@ void Client::startUdpHolePunching(const PendingUdp& context, const QString& stun
 
     stun_peer_->start(stun_host, stun_port);
 }
-
-} // namespace client

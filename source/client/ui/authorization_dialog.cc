@@ -30,7 +30,7 @@ AuthorizationDialog::AuthorizationDialog(QWidget* parent)
     LOG(INFO) << "Ctor";
     ui.setupUi(this);
 
-    client::Settings settings;
+    Settings settings;
 
     bool is_one_time_password_checked = settings.isOneTimePasswordChecked();
     ui.checkbox_one_time_password->setChecked(is_one_time_password_checked);
@@ -53,7 +53,7 @@ AuthorizationDialog::~AuthorizationDialog()
 {
     LOG(INFO) << "Dtor";
 
-    client::Settings settings;
+    Settings settings;
     settings.setOneTimePasswordChecked(ui.checkbox_one_time_password->isChecked());
 }
 

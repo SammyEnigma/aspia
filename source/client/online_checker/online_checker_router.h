@@ -31,8 +31,6 @@ namespace base {
 class Location;
 } // namespace base
 
-namespace client {
-
 class OnlineCheckerRouter final : public QObject
 {
     Q_OBJECT
@@ -62,7 +60,5 @@ private:
 
     ComputerList computers_;
 };
-
-} // namespace client
 
 #endif // CLIENT_ONLINE_CHECKER_ONLINE_CHECKER_ROUTER_H

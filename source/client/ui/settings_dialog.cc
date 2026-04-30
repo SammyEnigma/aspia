@@ -71,7 +71,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     LOG(INFO) << "Ctor";
     ui.setupUi(this);
 
-    client::Settings settings;
+    Settings settings;
 
     // Router tab.
     reloadRouterList();
@@ -190,7 +190,7 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
     {
         LOG(INFO) << "[ACTION] Accepted by user";
 
-        client::Settings settings;
+        Settings settings;
 
         // Save language.
         QString new_locale = ui.combo_language->currentData().toString();
@@ -270,7 +270,7 @@ void SettingsDialog::onRemoveRouter()
     }
 
     qint64 router_id = item->data(kColumnAddress, kRoleId).toLongLong();
-    client::Database::instance().removeRouter(router_id);
+    Database::instance().removeRouter(router_id);
     reloadRouterList();
 }
 
@@ -293,7 +293,7 @@ void SettingsDialog::onSetOrChangeMasterPassword()
 {
     LOG(INFO) << "[ACTION] Set/change master password";
 
-    MasterPasswordDialog::Mode mode = client::MasterPassword::isSet() ?
+    MasterPasswordDialog::Mode mode = MasterPassword::isSet() ?
         MasterPasswordDialog::Mode::CHANGE : MasterPasswordDialog::Mode::SET;
     MasterPasswordDialog dialog(mode, this);
     dialog.exec();
@@ -315,7 +315,7 @@ void SettingsDialog::onRemoveMasterPassword()
 //--------------------------------------------------------------------------------------------------
 void SettingsDialog::updateMasterPasswordUi()
 {
-    bool is_set = client::MasterPassword::isSet();
+    bool is_set = MasterPassword::isSet();
 
     if (is_set)
     {
@@ -336,8 +336,8 @@ void SettingsDialog::reloadRouterList()
 {
     ui.tree_routers->clear();
 
-    const QList<client::RouterConfig> routers = client::Database::instance().routerList();
-    for (const client::RouterConfig& router : std::as_const(routers))
+    const QList<RouterConfig> routers = Database::instance().routerList();
+    for (const RouterConfig& router : std::as_const(routers))
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui.tree_routers);
         item->setText(kColumnAddress, router.address);

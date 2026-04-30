@@ -22,8 +22,6 @@
 #include "client/file_remover.h"
 #include "proto/file_transfer.h"
 
-namespace client {
-
 // The class prepares the task queue to perform the deletion.
 class FileRemoveQueueBuilder final : public QObject
 {
@@ -56,7 +54,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileRemoveQueueBuilder)
 };
-
-} // namespace client
 
 #endif // CLIENT_FILE_REMOVE_QUEUE_BUILDER_H

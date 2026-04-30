@@ -303,19 +303,19 @@ SystemInfoSessionWindow::~SystemInfoSessionWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-client::Client* SystemInfoSessionWindow::createClient()
+Client* SystemInfoSessionWindow::createClient()
 {
     LOG(INFO) << "Create client";
 
-    client::ClientSystemInfo* client = new client::ClientSystemInfo();
+    ClientSystemInfo* client = new ClientSystemInfo();
 
     connect(this, &SystemInfoSessionWindow::sig_systemInfoRequired,
-            client, &client::ClientSystemInfo::onSystemInfoRequest,
+            client, &ClientSystemInfo::onSystemInfoRequest,
             Qt::QueuedConnection);
-    connect(client, &client::ClientSystemInfo::sig_showSessionWindow,
+    connect(client, &ClientSystemInfo::sig_showSessionWindow,
             this, &SystemInfoSessionWindow::onShowWindow,
             Qt::QueuedConnection);
-    connect(client, &client::ClientSystemInfo::sig_systemInfo,
+    connect(client, &ClientSystemInfo::sig_systemInfo,
             this, &SystemInfoSessionWindow::onSystemInfoChanged,
             Qt::QueuedConnection);
 
