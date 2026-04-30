@@ -18,8 +18,6 @@
 
 #include "base/peer/host_id.h"
 
-namespace base {
-
 const HostId kInvalidHostId = 0;
 
 static_assert(sizeof(HostId) == 8);
@@ -66,5 +64,3 @@ QString hostIdToString(HostId host_id)
 
     return QString::number(host_id);
 }
-
-} // namespace base

@@ -26,19 +26,19 @@
 
 namespace router {
 
-class UserList final : public base::UserListBase
+class UserList final : public UserListBase
 {
 public:
     ~UserList() final;
 
     static std::unique_ptr<UserList> open();
 
-    // base::UserListBase implementation.
-    void add(const base::User& user) final;
-    base::User find(const QString& username) const final;
+    // UserListBase implementation.
+    void add(const User& user) final;
+    User find(const QString& username) const final;
     const QByteArray& seedKey() const final;
     void setSeedKey(const QByteArray& seed_key) final;
-    QVector<base::User> list() const final;
+    QVector<User> list() const final;
 
 private:
     explicit UserList(Database&& db);

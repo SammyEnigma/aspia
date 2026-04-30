@@ -189,7 +189,7 @@ void SessionAdmin::doUserListRequest()
     {
         list->set_error_code("ok");
 
-        QVector<base::User> users = database.userList();
+        QVector<User> users = database.userList();
         for (const auto& user : std::as_const(users))
             list->add_user()->CopyFrom(user.serialize());
     }
@@ -392,14 +392,14 @@ std::string SessionAdmin::addUser(const proto::router::User& user)
 {
     CLOG(INFO) << "User add request:" << user.name();
 
-    base::User new_user = base::User::parseFrom(user);
+    User new_user = User::parseFrom(user);
     if (!new_user.isValid())
     {
         CLOG(ERROR) << "Failed to create user";
         return "internal_error";
     }
 
-    if (!base::User::isValidUserName(new_user.name))
+    if (!User::isValidUserName(new_user.name))
     {
         CLOG(ERROR) << "Invalid user name:" << new_user.name;
         return "invalid_data";
@@ -429,14 +429,14 @@ std::string SessionAdmin::modifyUser(const proto::router::User& user)
         return "invalid_data";
     }
 
-    base::User new_user = base::User::parseFrom(user);
+    User new_user = User::parseFrom(user);
     if (!new_user.isValid())
     {
         CLOG(ERROR) << "Failed to create user";
         return "internal_error";
     }
 
-    if (!base::User::isValidUserName(new_user.name))
+    if (!User::isValidUserName(new_user.name))
     {
         CLOG(ERROR) << "Invalid user name:" << new_user.name;
         return "invalid_data";

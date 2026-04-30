@@ -28,10 +28,10 @@ class RouterUserDialog final : public QDialog
     Q_OBJECT
 
 public:
-    RouterUserDialog(const base::User& user, const QStringList& users, QWidget* parent);
+    RouterUserDialog(const User& user, const QStringList& users, QWidget* parent);
     ~RouterUserDialog() final;
 
-    const base::User& user() const;
+    const User& user() const;
 
 protected:
     // QDialog implementation.
@@ -44,7 +44,7 @@ private:
 
     Ui::RouterUserDialog ui;
 
-    base::User user_;
+    User user_;
     QStringList users_;
     bool account_changed_ = true;
 

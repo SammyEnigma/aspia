@@ -24,8 +24,6 @@
 
 #include "proto/router_admin.h"
 
-namespace base {
-
 class User
 {
 public:
@@ -65,7 +63,5 @@ public:
     quint32 sessions = 0;
     quint32 flags = 0;
 };
-
-} // namespace base
 
 #endif // BASE_PEER_USER_H

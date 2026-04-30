@@ -194,7 +194,7 @@ void SessionClient::readCheckHostStatus(const proto::router::CheckHostStatus& ch
 }
 
 //--------------------------------------------------------------------------------------------------
-Session* SessionClient::sessionByHostId(base::HostId host_id)
+Session* SessionClient::sessionByHostId(HostId host_id)
 {
     QList<Session*> session_list = Service::instance()->sessions();
 

@@ -44,13 +44,13 @@ void HostStorage::setHostKey(const QByteArray& key)
 }
 
 //--------------------------------------------------------------------------------------------------
-base::HostId HostStorage::lastHostId() const
+HostId HostStorage::lastHostId() const
 {
     return impl_.value("host_id").toULongLong();
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostStorage::setLastHostId(base::HostId host_id)
+void HostStorage::setLastHostId(HostId host_id)
 {
     impl_.setValue("host_id", host_id);
     impl_.sync();

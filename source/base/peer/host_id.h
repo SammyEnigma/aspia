@@ -22,8 +22,6 @@
 #include <QMetaType>
 #include <QString>
 
-namespace base {
-
 using HostId = unsigned long long;
 
 extern const HostId kInvalidHostId;
@@ -39,8 +37,6 @@ HostId stringToHostId(const QString& str);
 // If the host ID is |kInvalidHostId|, an empty string is returned.
 QString hostIdToString(HostId host_id);
 
-} // namespace base
-
-Q_DECLARE_METATYPE(base::HostId)
+Q_DECLARE_METATYPE(HostId)
 
 #endif // BASE_PEER_HOST_ID_H

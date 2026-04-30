@@ -23,12 +23,10 @@
 #include "base/serialization.h"
 #include "proto/stun.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 StunServer::StunServer(QObject* parent)
     : QObject(parent),
-      udp_socket_(AsioEventDispatcher::ioContext())
+      udp_socket_(base::AsioEventDispatcher::ioContext())
 {
     LOG(INFO) << "Ctor";
 }
@@ -158,5 +156,3 @@ bool StunServer::doSendAddressReply(quint32 transaction_id, const asio::ip::udp:
 
     return true;
 }
-
-} // namespace base

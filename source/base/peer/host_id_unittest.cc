@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 // isHostId tests.
 
 TEST(host_id_test, is_host_id_valid_digits)
@@ -121,5 +119,3 @@ TEST(host_id_test, invalid_host_id_is_zero)
 {
     EXPECT_EQ(kInvalidHostId, 0ULL);
 }
-
-} // namespace base

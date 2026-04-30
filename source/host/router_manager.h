@@ -32,9 +32,7 @@
 
 class QTimer;
 
-namespace base {
 class RelayPeerManager;
-} // namespace base
 
 class RouterManager final : public QObject
 {
@@ -67,7 +65,7 @@ public slots:
 
 signals:
     void sig_routerStateChanged(const proto::user::RouterState& state);
-    void sig_credentialsChanged(base::HostId host_id, const QString& one_time_password);
+    void sig_credentialsChanged(HostId host_id, const QString& one_time_password);
     void sig_clientConnected();
     void sig_removeHost(bool try_to_uninstall);
 
@@ -82,10 +80,10 @@ private:
     void delayedConnectToRouter();
     void routerStateChanged(proto::user::RouterState::State state);
     void hostIdRequest();
-    base::User createOneTimeUser() const;
+    User createOneTimeUser() const;
 
     ScopedQPointer<TcpChannel> tcp_channel_;
-    base::RelayPeerManager* peer_manager_ = nullptr;
+    RelayPeerManager* peer_manager_ = nullptr;
     QTimer* reconnect_timer_ = nullptr;
 
     QString address_;
@@ -96,9 +94,9 @@ private:
     QString one_time_password_;
     quint32 one_time_sessions_ = 0;
 
-    base::SharedPointer<base::UserListBase> user_list_;
+    base::SharedPointer<UserListBase> user_list_;
 
-    base::HostId host_id_ = base::kInvalidHostId;
+    HostId host_id_ = kInvalidHostId;
     proto::user::RouterState router_state_;
 
     QQueue<ReadyConnection> channels_;

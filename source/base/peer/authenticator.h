@@ -26,8 +26,8 @@
 #include "proto/key_exchange.h"
 
 namespace base {
-
 class Location;
+} // namespace base
 
 class Authenticator : public QObject
 {
@@ -82,7 +82,7 @@ public slots:
 signals:
     void sig_outgoingMessage(const QByteArray& data);
     void sig_keyChanged();
-    void sig_finished(base::Authenticator::ErrorCode error_code);
+    void sig_finished(Authenticator::ErrorCode error_code);
 
 protected:
     LOG_DECLARE_CONTEXT(Authenticator);
@@ -91,7 +91,7 @@ protected:
     virtual void onReceived(const QByteArray& buffer) = 0;
     virtual void onWritten() = 0;
 
-    void finish(const Location& location, ErrorCode error_code);
+    void finish(const base::Location& location, ErrorCode error_code);
     void setPeerVersion(const proto::peer::Version& version);
     void setPeerOsName(const QString& name);
     void setPeerComputerName(const QString& name);
@@ -117,8 +117,6 @@ private:
     QString peer_display_name_;
 };
 
-} // namespace base
-
-Q_DECLARE_METATYPE(base::Authenticator::ErrorCode)
+Q_DECLARE_METATYPE(Authenticator::ErrorCode)
 
 #endif // BASE_PEER_AUTHENTICATOR_H

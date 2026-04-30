@@ -42,7 +42,7 @@ protected:
 private:
     void readConnectionRequest(const proto::router::ConnectionRequest& request);
     void readCheckHostStatus(const proto::router::CheckHostStatus& check_host_status);
-    Session* sessionByHostId(base::HostId host_id);
+    Session* sessionByHostId(HostId host_id);
 
     quint16 stun_port_ = 0;
 

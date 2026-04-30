@@ -85,7 +85,7 @@ void OnlineCheckerRouter::checkNextComputer()
     }
 
     const ComputerConfig& computer = computers_.front();
-    const base::HostId host_id = base::stringToHostId(computer.address);
+    const HostId host_id = stringToHostId(computer.address);
 
     LOG(INFO) << "Checking status for host id" << host_id
               << "(router_id:" << computer.router_id << "computer_id:" << computer.id << ")";

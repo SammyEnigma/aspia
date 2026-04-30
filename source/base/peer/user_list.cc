@@ -18,8 +18,6 @@
 
 #include "base/peer/user_list.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 UserList::UserList() = default;
 
@@ -73,5 +71,3 @@ void UserList::setSeedKey(const QByteArray& seed_key)
 {
     seed_key_ = seed_key;
 }
-
-} // namespace base

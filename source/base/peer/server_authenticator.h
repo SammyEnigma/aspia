@@ -25,8 +25,6 @@
 #include "base/peer/authenticator.h"
 #include "base/peer/user_list_base.h"
 
-namespace base {
-
 class ServerAuthenticator final : public Authenticator
 {
     Q_OBJECT
@@ -42,7 +40,7 @@ public:
     };
 
     // Sets the user list.
-    void setUserList(SharedPointer<UserListBase> user_list);
+    void setUserList(base::SharedPointer<UserListBase> user_list);
 
     // Sets the private key.
     [[nodiscard]] bool setPrivateKey(const QByteArray& private_key);
@@ -67,7 +65,7 @@ private:
     void onSessionResponse(const QByteArray& buffer);
     [[nodiscard]] QByteArray createSrpKey();
 
-    SharedPointer<UserListBase> user_list_;
+    base::SharedPointer<UserListBase> user_list_;
 
     enum class InternalState
     {
@@ -86,18 +84,16 @@ private:
     // Bitmask of allowed session types.
     quint32 session_types_ = 0;
 
-    KeyPair key_pair_;
-    BigNum N_;
-    BigNum g_;
-    BigNum v_;
-    BigNum s_;
-    BigNum b_;
-    BigNum B_;
-    BigNum A_;
+    base::KeyPair key_pair_;
+    base::BigNum N_;
+    base::BigNum g_;
+    base::BigNum v_;
+    base::BigNum s_;
+    base::BigNum b_;
+    base::BigNum B_;
+    base::BigNum A_;
 
     Q_DISABLE_COPY_MOVE(ServerAuthenticator)
 };
-
-} // namespace base
 
 #endif // BASE_PEER_SERVER_AUTHENTICATOR_H

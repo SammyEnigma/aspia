@@ -46,7 +46,7 @@ SessionLegacyHost::~SessionLegacyHost()
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionLegacyHost::hasHostId(base::HostId host_id) const
+bool SessionLegacyHost::hasHostId(HostId host_id) const
 {
     return host_id_list_.contains(host_id);
 }
@@ -118,13 +118,13 @@ void SessionLegacyHost::readHostIdRequest(const proto::router::legacy::HostIdReq
         return;
     }
 
-    base::HostId host_id = base::kInvalidHostId;
+    HostId host_id = kInvalidHostId;
 
     switch (database.hostId(key_hash, &host_id))
     {
         case Database::ErrorCode::SUCCESS:
         {
-            if (host_id != base::kInvalidHostId)
+            if (host_id != kInvalidHostId)
             {
                 host_id_response->set_error_code(proto::router::legacy::HostIdResponse::SUCCESS);
                 host_id_response->set_host_id(host_id);
@@ -158,8 +158,8 @@ void SessionLegacyHost::readHostIdRequest(const proto::router::legacy::HostIdReq
 //--------------------------------------------------------------------------------------------------
 void SessionLegacyHost::readResetHostId(const proto::router::legacy::ResetHostId& reset_host_id)
 {
-    base::HostId host_id = reset_host_id.host_id();
-    if (host_id == base::kInvalidHostId)
+    HostId host_id = reset_host_id.host_id();
+    if (host_id == kInvalidHostId)
     {
         CLOG(ERROR) << "Invalid host ID";
         return;

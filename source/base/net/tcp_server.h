@@ -39,14 +39,14 @@ public:
     explicit TcpServer(QObject* parent = nullptr);
     ~TcpServer();
 
-    void setUserList(base::SharedPointer<base::UserListBase> user_list);
-    base::SharedPointer<base::UserListBase> userList() const { return user_list_; }
+    void setUserList(base::SharedPointer<UserListBase> user_list);
+    base::SharedPointer<UserListBase> userList() const { return user_list_; }
 
     void setPrivateKey(const QByteArray& private_key);
     QByteArray privateKey() const { return private_key_; }
 
     void setAnonymousAccess(
-        base::ServerAuthenticator::AnonymousAccess anonymous_access, quint32 session_types);
+        ServerAuthenticator::AnonymousAccess anonymous_access, quint32 session_types);
 
     void start(quint16 port, const QString& iface = QString());
 
@@ -66,11 +66,11 @@ private:
     asio::ip::tcp::acceptor acceptor_;
     int accept_error_count_ = 0;
 
-    base::SharedPointer<base::UserListBase> user_list_;
+    base::SharedPointer<UserListBase> user_list_;
     QByteArray private_key_;
 
-    base::ServerAuthenticator::AnonymousAccess anonymous_access_ =
-        base::ServerAuthenticator::AnonymousAccess::DISABLE;
+    ServerAuthenticator::AnonymousAccess anonymous_access_ =
+        ServerAuthenticator::AnonymousAccess::DISABLE;
 
     quint32 anonymous_session_types_ = 0;
 

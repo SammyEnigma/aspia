@@ -26,7 +26,7 @@
 #include "proto/peer.h"
 
 //--------------------------------------------------------------------------------------------------
-UserDialog::UserDialog(const base::User& user, const QStringList& exist_names, QWidget* parent)
+UserDialog::UserDialog(const User& user, const QStringList& exist_names, QWidget* parent)
     : QDialog(parent),
       exist_names_(exist_names),
       user_(user)
@@ -36,7 +36,7 @@ UserDialog::UserDialog(const base::User& user, const QStringList& exist_names, Q
 
     if (user.isValid())
     {
-        ui.checkbox_disable_user->setChecked(!(user.flags & base::User::ENABLED));
+        ui.checkbox_disable_user->setChecked(!(user.flags & User::ENABLED));
         ui.edit_username->setText(user.name);
 
         setAccountChanged(false);
@@ -139,7 +139,7 @@ void UserDialog::onButtonBoxClicked(QAbstractButton* button)
             QString username = ui.edit_username->text();
             QString password = ui.edit_password->text();
 
-            if (!base::User::isValidUserName(username))
+            if (!User::isValidUserName(username))
             {
                 LOG(ERROR) << "Invalid user name:" << username;
                 MsgBox::warning(this,
@@ -168,18 +168,18 @@ void UserDialog::onButtonBoxClicked(QAbstractButton* button)
                 return;
             }
 
-            if (!base::User::isValidPassword(password))
+            if (!User::isValidPassword(password))
             {
                 LOG(ERROR) << "Invalid password";
                 MsgBox::warning(this,
                     tr("Password can not be empty and should not exceed %n characters.",
-                       "", base::User::kMaxPasswordLength));
+                       "", User::kMaxPasswordLength));
                 ui.edit_password->selectAll();
                 ui.edit_password->setFocus();
                 return;
             }
 
-            if (!base::User::isSafePassword(password))
+            if (!User::isSafePassword(password))
             {
                 QString unsafe =
                     tr("Password you entered does not meet the security requirements!");
@@ -187,7 +187,7 @@ void UserDialog::onButtonBoxClicked(QAbstractButton* button)
                 QString safe =
                     tr("The password must contain lowercase and uppercase characters, "
                        "numbers and should not be shorter than %n characters.",
-                       "", base::User::kSafePasswordLength);
+                       "", User::kSafePasswordLength);
 
                 QString question = tr("Do you want to enter a different password?");
 
@@ -206,7 +206,7 @@ void UserDialog::onButtonBoxClicked(QAbstractButton* button)
                 }
             }
 
-            user_ = base::User::create(username, password);
+            user_ = User::create(username, password);
             if (!user_.isValid())
             {
                 LOG(ERROR) << "Unable to create user";
@@ -226,7 +226,7 @@ void UserDialog::onButtonBoxClicked(QAbstractButton* button)
 
         quint32 flags = 0;
         if (!ui.checkbox_disable_user->isChecked())
-            flags |= base::User::ENABLED;
+            flags |= User::ENABLED;
 
         user_.sessions = sessions;
         user_.flags = flags;

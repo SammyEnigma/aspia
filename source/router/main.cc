@@ -228,7 +228,7 @@ int createConfig(QTextStream& out)
     const char kUserName[] = "admin";
     const char kPassword[] = "admin";
 
-    base::User user = base::User::create(kUserName, kPassword);
+    User user = User::create(kUserName, kPassword);
     if (!user.isValid())
     {
         out << "Failed to create user." << Qt::endl;
@@ -238,7 +238,7 @@ int createConfig(QTextStream& out)
     out << "User has been created. Adding a user to the database..." << Qt::endl;
 
     user.sessions = proto::router::SESSION_TYPE_ADMIN | proto::router::SESSION_TYPE_CLIENT;
-    user.flags = base::User::ENABLED;
+    user.flags = User::ENABLED;
 
     if (!db.addUser(user))
     {

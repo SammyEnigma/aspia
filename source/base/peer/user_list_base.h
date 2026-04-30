@@ -23,8 +23,6 @@
 
 #include "base/peer/user.h"
 
-namespace base {
-
 class UserListBase
 {
 public:
@@ -36,7 +34,5 @@ public:
     virtual void setSeedKey(const QByteArray& seed_key) = 0;
     virtual QVector<User> list() const = 0;
 };
-
-} // namespace base
 
 #endif // BASE_PEER_USER_LIST_BASE_H

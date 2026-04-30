@@ -47,13 +47,13 @@ std::unique_ptr<UserList> UserList::open()
 }
 
 //--------------------------------------------------------------------------------------------------
-void UserList::add(const base::User& user)
+void UserList::add(const User& user)
 {
     db_.addUser(user);
 }
 
 //--------------------------------------------------------------------------------------------------
-base::User UserList::find(const QString& username) const
+User UserList::find(const QString& username) const
 {
     return db_.findUser(username);
 }
@@ -71,7 +71,7 @@ void UserList::setSeedKey(const QByteArray& seed_key)
 }
 
 //--------------------------------------------------------------------------------------------------
-QVector<base::User> UserList::list() const
+QVector<User> UserList::list() const
 {
     return db_.userList();
 }

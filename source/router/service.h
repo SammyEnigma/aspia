@@ -27,9 +27,7 @@
 #include "base/net/tcp_server_legacy.h"
 #include "router/session.h"
 
-namespace base {
 class StunServer;
-} // namespace base
 
 namespace router {
 
@@ -80,7 +78,7 @@ private slots:
     void onNewConnection();
     void onNewLegacyConnection();
     void onSessionFinished();
-    void onHostIdAssigned(base::HostId host_id);
+    void onHostIdAssigned(HostId host_id);
 
 private:
     bool start();
@@ -88,7 +86,7 @@ private:
 
     TcpServer* tcp_server_ = nullptr;
     TcpServerLegacy* tcp_server_legacy_ = nullptr;
-    base::StunServer* stun_server_ = nullptr;
+    StunServer* stun_server_ = nullptr;
 
     QMap<qint64, Keys> key_pool_;
     QList<Session*> sessions_;

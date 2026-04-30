@@ -34,12 +34,9 @@
 
 class QTimer;
 
-class UdpChannel;
-
-namespace base {
 class RelayPeer;
 class StunPeer;
-} // namespace base
+class UdpChannel;
 
 class Client : public QObject
 {
@@ -138,8 +135,8 @@ private:
     QPointer<RouterConnection> router_ = nullptr;
     ScopedQPointer<TcpChannel> tcp_channel_;
     ScopedQPointer<UdpChannel> udp_channel_;
-    ScopedQPointer<base::RelayPeer> relay_peer_;
-    ScopedQPointer<base::StunPeer> stun_peer_;
+    ScopedQPointer<RelayPeer> relay_peer_;
+    ScopedQPointer<StunPeer> stun_peer_;
 
     std::optional<PendingUdp> pending_udp_context_;
     std::shared_ptr<SessionState> session_state_;

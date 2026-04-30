@@ -22,8 +22,6 @@
 #include "base/net/tcp_channel.h"
 #include "base/peer/relay_peer.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 RelayPeerManager::RelayPeerManager(QObject* parent)
     : QObject(parent)
@@ -114,5 +112,3 @@ void RelayPeerManager::cleanup()
         }
     }
 }
-
-} // namespace base

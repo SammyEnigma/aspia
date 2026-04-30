@@ -33,13 +33,13 @@ public:
     explicit SessionHost(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionHost() final;
 
-    base::HostId hostId() const { return host_id_; }
+    HostId hostId() const { return host_id_; }
 
     void sendConnectionOffer(const proto::router::ConnectionOffer& offer);
     void sendHostCommand(const proto::router::HostCommand& command);
 
 signals:
-    void sig_hostIdAssigned(base::HostId host_id);
+    void sig_hostIdAssigned(HostId host_id);
 
 protected:
     // Session implementation.
@@ -48,7 +48,7 @@ protected:
 private:
     void readHostIdRequest(const proto::router::HostIdRequest& host_id_request);
 
-    base::HostId host_id_ = base::kInvalidHostId;
+    HostId host_id_ = kInvalidHostId;
 
     Q_DISABLE_COPY_MOVE(SessionHost)
 };

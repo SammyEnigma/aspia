@@ -294,7 +294,7 @@ bool Service::start()
 //--------------------------------------------------------------------------------------------------
 void Service::connectToRouter()
 {
-    base::ClientAuthenticator* authenticator = new base::ClientAuthenticator();
+    ClientAuthenticator* authenticator = new ClientAuthenticator();
     authenticator->setIdentify(proto::key_exchange::IDENTIFY_ANONYMOUS);
     authenticator->setPeerPublicKey(router_public_key_);
     authenticator->setSessionType(proto::router::SESSION_TYPE_RELAY);

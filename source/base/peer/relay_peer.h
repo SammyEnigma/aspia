@@ -29,10 +29,10 @@
 #include "proto/router.h"
 #include "proto/router_peer.h"
 
-namespace base {
-
 class Authenticator;
+namespace base {
 class Location;
+} // namespace base
 
 class RelayPeer final : public QObject
 {
@@ -55,7 +55,7 @@ signals:
 
 private:
     void onConnected();
-    void onErrorOccurred(const Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
 
     QByteArray authenticationMessage(const proto::router::RelayKey& key, const std::string& secret);
 
@@ -66,7 +66,7 @@ private:
     quint32 message_size_ = 0;
     QByteArray message_;
 
-    SharedPointer<bool> alive_guard_ { new bool(true) };
+    base::SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::io_context& io_context_;
     asio::ip::tcp::socket socket_;
     asio::ip::tcp::resolver resolver_;
@@ -76,7 +76,5 @@ private:
     LOG_DECLARE_CONTEXT(RelayPeer);
     Q_DISABLE_COPY_MOVE(RelayPeer)
 };
-
-} // namespace base
 
 #endif // BASE_PEER_RELAY_PEER_H

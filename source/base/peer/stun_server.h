@@ -26,8 +26,6 @@
 
 #include "base/shared_pointer.h"
 
-namespace base {
-
 class StunServer final : public QObject
 {
     Q_OBJECT
@@ -44,7 +42,7 @@ private:
     void doReceiveRequest();
     bool doSendAddressReply(quint32 transaction_id, const asio::ip::udp::endpoint& remote_endpoint);
 
-    SharedPointer<bool> alive_guard_ { new bool(true) };
+    base::SharedPointer<bool> alive_guard_ { new bool(true) };
     quint16 port_ = 0;
     asio::ip::udp::socket udp_socket_;
     asio::ip::udp::endpoint remote_endpoint_;
@@ -52,7 +50,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(StunServer)
 };
-
-} // namespace base
 
 #endif // BASE_PEER_STUN_SERVER_H

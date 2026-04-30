@@ -320,7 +320,7 @@ void MainWindow::onCredentialsChanged(const proto::user::Credentials& credential
 
     ui.button_new_password->setEnabled(true);
 
-    bool has_id = credentials.host_id() != base::kInvalidHostId;
+    bool has_id = credentials.host_id() != kInvalidHostId;
 
     ui.edit_id->setEnabled(has_id);
     ui.edit_id->setText(has_id ? QString::number(credentials.host_id()) : tr("Not available"));

@@ -43,7 +43,7 @@ TcpServerLegacy::~TcpServerLegacy()
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpServerLegacy::setUserList(base::SharedPointer<base::UserListBase> user_list)
+void TcpServerLegacy::setUserList(base::SharedPointer<UserListBase> user_list)
 {
     user_list_ = user_list;
     DCHECK(user_list_);
@@ -57,7 +57,7 @@ void TcpServerLegacy::setPrivateKey(const QByteArray& private_key)
 
 //--------------------------------------------------------------------------------------------------
 void TcpServerLegacy::setAnonymousAccess(
-    base::ServerAuthenticator::AnonymousAccess anonymous_access, quint32 session_types)
+    ServerAuthenticator::AnonymousAccess anonymous_access, quint32 session_types)
 {
     anonymous_access_ = anonymous_access;
     anonymous_session_types_ = session_types;
@@ -191,7 +191,7 @@ void TcpServerLegacy::doAccept()
         {
             accept_error_count_ = 0;
 
-            base::ServerAuthenticator* authenticator = new base::ServerAuthenticator();
+            ServerAuthenticator* authenticator = new ServerAuthenticator();
             authenticator->setUserList(user_list_);
 
             if (!private_key_.isEmpty())

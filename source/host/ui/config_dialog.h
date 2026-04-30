@@ -50,7 +50,7 @@ private:
     void setConfigChanged(const base::Location& location, bool changed);
     bool isConfigChanged() const;
     void reloadAll();
-    void reloadUserList(const base::UserList& user_list);
+    void reloadUserList(const UserList& user_list);
 
     Ui::ConfigDialog ui;
 

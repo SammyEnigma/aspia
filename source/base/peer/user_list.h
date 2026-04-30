@@ -21,8 +21,6 @@
 
 #include "base/peer/user_list_base.h"
 
-namespace base {
-
 class UserList final : public UserListBase
 {
 public:
@@ -47,7 +45,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UserList)
 };
-
-} // namespace base
 
 #endif // BASE_PEER_USER_LIST_H

@@ -21,9 +21,7 @@
 
 #include <QSettings>
 
-namespace base {
 class UserList;
-} // namespace peer
 
 class SystemSettings
 {
@@ -55,8 +53,8 @@ public:
     QByteArray routerPublicKey() const;
     void setRouterPublicKey(const QByteArray& key);
 
-    std::unique_ptr<base::UserList> userList() const;
-    void setUserList(const base::UserList& user_list);
+    std::unique_ptr<UserList> userList() const;
+    void setUserList(const UserList& user_list);
 
     QString updateServer() const;
     void setUpdateServer(const QString& server);

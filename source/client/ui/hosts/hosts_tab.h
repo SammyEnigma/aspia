@@ -29,10 +29,7 @@
 
 class QTreeWidgetItem;
 
-namespace base {
 class User;
-} // namespace base
-
 class ContentWidget;
 class LocalGroupWidget;
 class RouterWidget;
@@ -68,7 +65,7 @@ private slots:
     void onConnectAction(QAction* action);
     void onLocalConnect(qint64 computer_id);
     void onLocalComputerContextMenu(qint64 computer_id, const QPoint& pos);
-    void onUserContextMenu(qint64 router_id, const base::User& user, const QPoint& pos);
+    void onUserContextMenu(qint64 router_id, const User& user, const QPoint& pos);
     void onHostContextMenu(qint64 router_id, const QPoint& pos, int column);
     void onRelayContextMenu(qint64 router_id, const QPoint& pos, int column);
     void onAddUserAction();

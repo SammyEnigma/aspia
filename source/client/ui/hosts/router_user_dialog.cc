@@ -26,7 +26,7 @@
 #include <QPushButton>
 
 //--------------------------------------------------------------------------------------------------
-RouterUserDialog::RouterUserDialog(const base::User& user, const QStringList& users, QWidget* parent)
+RouterUserDialog::RouterUserDialog(const User& user, const QStringList& users, QWidget* parent)
     : QDialog(parent),
       user_(user),
       users_(users)
@@ -36,7 +36,7 @@ RouterUserDialog::RouterUserDialog(const base::User& user, const QStringList& us
 
     if (user_.isValid())
     {
-        ui.checkbox_disable->setChecked(!(user_.flags & base::User::ENABLED));
+        ui.checkbox_disable->setChecked(!(user_.flags & User::ENABLED));
         ui.edit_username->setText(user_.name);
 
         setAccountChanged(false);
@@ -91,7 +91,7 @@ RouterUserDialog::~RouterUserDialog()
 }
 
 //--------------------------------------------------------------------------------------------------
-const base::User& RouterUserDialog::user() const
+const User& RouterUserDialog::user() const
 {
     return user_;
 }
@@ -129,7 +129,7 @@ void RouterUserDialog::onButtonBoxClicked(QAbstractButton* button)
     {
         QString username = ui.edit_username->text();
 
-        if (!base::User::isValidUserName(username))
+        if (!User::isValidUserName(username))
         {
             LOG(ERROR) << "Invalid user name:" << username;
             MsgBox::warning(this, tr("The user name can not be empty and can contain only "
@@ -162,23 +162,23 @@ void RouterUserDialog::onButtonBoxClicked(QAbstractButton* button)
 
         QString password = ui.edit_password->text();
 
-        if (!base::User::isValidPassword(password))
+        if (!User::isValidPassword(password))
         {
             LOG(INFO) << "Invalid password";
             MsgBox::warning(this, tr("Password can not be empty and should not exceed %n characters.",
-                "", base::User::kMaxPasswordLength));
+                "", User::kMaxPasswordLength));
 
             ui.edit_password->selectAll();
             ui.edit_password->setFocus();
             return;
         }
 
-        if (!base::User::isSafePassword(password))
+        if (!User::isSafePassword(password))
         {
             QString unsafe = tr("Password you entered does not meet the security requirements!");
             QString safe = tr("The password must contain lowercase and uppercase characters, "
                 "numbers and should not be shorter than %n characters.",
-                "", base::User::kSafePasswordLength);
+                "", User::kSafePasswordLength);
 
             QString question = tr("Do you want to enter a different password?");
 
@@ -200,7 +200,7 @@ void RouterUserDialog::onButtonBoxClicked(QAbstractButton* button)
         qint64 entry_id = user_.entry_id;
 
         // Create new user.
-        user_ = base::User::create(username, password);
+        user_ = User::create(username, password);
 
         // Restore entry ID.
         user_.entry_id = entry_id;
@@ -223,7 +223,7 @@ void RouterUserDialog::onButtonBoxClicked(QAbstractButton* button)
 
     quint32 flags = 0;
     if (!ui.checkbox_disable->isChecked())
-        flags |= base::User::ENABLED;
+        flags |= User::ENABLED;
 
     user_.sessions = sessions;
     user_.flags = flags;

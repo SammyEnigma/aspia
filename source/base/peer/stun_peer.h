@@ -29,8 +29,8 @@ class QSocketNotifier;
 class QTimer;
 
 namespace base {
-
 class Location;
+} // namespace base
 
 class StunPeer final : public QObject
 {
@@ -55,7 +55,7 @@ private:
     void doStop();
     void onHostResolved(const QHostInfo& host_info);
     void onReadyRead();
-    void onErrorOccurred(const Location& location);
+    void onErrorOccurred(const base::Location& location);
 
     QTimer* timer_ = nullptr;
     int number_of_attempts_ = 0;
@@ -74,7 +74,5 @@ private:
     LOG_DECLARE_CONTEXT(StunPeer);
     Q_DISABLE_COPY_MOVE(StunPeer)
 };
-
-} // namespace base
 
 #endif // BASE_PEER_STUN_PEER_H

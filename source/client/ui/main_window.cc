@@ -288,7 +288,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
                            const ComputerConfig& computer,
                            proto::peer::SessionType session_type)
 {
-    if (base::isHostId(computer.address) && computer.router_id <= 0)
+    if (isHostId(computer.address) && computer.router_id <= 0)
     {
         MsgBox::warning(this,
             tr("Connection by ID is specified in the properties of the computer, "

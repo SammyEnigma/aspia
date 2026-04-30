@@ -32,8 +32,8 @@ public:
     QByteArray hostKey() const;
     void setHostKey(const QByteArray& key);
 
-    base::HostId lastHostId() const;
-    void setLastHostId(base::HostId host_id);
+    HostId lastHostId() const;
+    void setLastHostId(HostId host_id);
 
     QString channelIdForUI() const;
     void setChannelIdForUI(const QString& channel_id);

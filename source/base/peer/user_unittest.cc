@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 // ============================================================================
 // isValidUserName
 // ============================================================================
@@ -195,7 +193,7 @@ TEST(user_test, create_two_users_different_salts)
     EXPECT_TRUE(user1.isValid());
     EXPECT_TRUE(user2.isValid());
 
-    // Random salt should differ between users.
+    // base::Random salt should differ between users.
     EXPECT_NE(user1.salt, user2.salt);
 }
 
@@ -362,5 +360,3 @@ TEST(user_test, flags_enabled)
     user.flags = 0;
     EXPECT_EQ(user.flags & User::ENABLED, 0u);
 }
-
-} // namespace base

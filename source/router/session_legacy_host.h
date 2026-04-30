@@ -33,13 +33,13 @@ public:
     explicit SessionLegacyHost(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionLegacyHost() final;
 
-    const QList<base::HostId>& hostIdList() const { return host_id_list_; }
-    bool hasHostId(base::HostId host_id) const;
+    const QList<HostId>& hostIdList() const { return host_id_list_; }
+    bool hasHostId(HostId host_id) const;
 
     void sendConnectionOffer(const proto::router::legacy::ConnectionOffer& offer);
 
 signals:
-    void sig_hostIdAssigned(base::HostId host_id);
+    void sig_hostIdAssigned(HostId host_id);
 
 protected:
     // Session implementation.
@@ -49,7 +49,7 @@ private:
     void readHostIdRequest(const proto::router::legacy::HostIdRequest& host_id_request);
     void readResetHostId(const proto::router::legacy::ResetHostId& reset_host_id);
 
-    QList<base::HostId> host_id_list_;
+    QList<HostId> host_id_list_;
 
     Q_DISABLE_COPY_MOVE(SessionLegacyHost)
 };

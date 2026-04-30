@@ -815,7 +815,7 @@ void HostsTab::deleteRouter(qint64 router_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::onUserContextMenu(qint64 /* router_id */, const base::User& user, const QPoint& pos)
+void HostsTab::onUserContextMenu(qint64 /* router_id */, const User& user, const QPoint& pos)
 {
     QMenu menu;
     if (user.isValid())
@@ -1051,7 +1051,7 @@ bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
             return false;
         }
 
-        if (!base::isHostId(computer.address))
+        if (!isHostId(computer.address))
         {
             MsgBox::warning(this, tr("The computer has an invalid host ID."));
             return false;

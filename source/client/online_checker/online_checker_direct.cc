@@ -90,7 +90,7 @@ void OnlineCheckerDirect::Instance::start()
     LOG(INFO) << "Starting connection to" << address.host() << ":" << address.port()
               << "(computer:" << computer_.id << ")";
 
-    base::ClientAuthenticator* authenticator = new base::ClientAuthenticator();
+    ClientAuthenticator* authenticator = new ClientAuthenticator();
     authenticator->setIdentify(proto::key_exchange::IDENTIFY_SRP);
     authenticator->setUserName(computer_.username);
     authenticator->setPassword(computer_.password);

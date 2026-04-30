@@ -394,9 +394,9 @@ void Client::startUdpHolePunching()
     CLOG(INFO) << "Stun server data:" << stun_host_ << ':' << stun_port_
               << "(attempt" << hole_punching_attempt_ << ")";
 
-    stun_peer_ = new base::StunPeer(this);
+    stun_peer_ = new StunPeer(this);
 
-    connect(stun_peer_, &base::StunPeer::sig_channelReady, this,
+    connect(stun_peer_, &StunPeer::sig_channelReady, this,
         [this](const QString& external_address, quint16 external_port)
     {
         CLOG(INFO) << "External UDP endpoint received:" << external_address << ':' << external_port
@@ -445,7 +445,7 @@ void Client::startUdpHolePunching()
         startDirectUdp(socket, address, port);
     });
 
-    connect(stun_peer_, &base::StunPeer::sig_errorOccurred, this, [this]()
+    connect(stun_peer_, &StunPeer::sig_errorOccurred, this, [this]()
     {
         CLOG(ERROR) << "STUN error (" << udp_phase_ << ")";
         CCHECK(stun_peer_);

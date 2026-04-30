@@ -33,11 +33,11 @@
 
 class QTimer;
 
+class StunPeer;
 class UdpChannel;
 
 namespace base {
 class Location;
-class StunPeer;
 } // namespace base
 
 class Client : public QObject
@@ -137,7 +137,7 @@ private:
         QByteArray iv;
     };
 
-    ScopedQPointer<base::StunPeer> stun_peer_;
+    ScopedQPointer<StunPeer> stun_peer_;
     std::optional<PendingUdp> pending_udp_context_;
 
     UdpConnectPhase udp_phase_ = UdpConnectPhase::NONE;

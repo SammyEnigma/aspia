@@ -98,7 +98,7 @@ void RouterDialog::onButtonBoxClicked(QAbstractButton* button)
     }
 
     QString username = ui.edit_username->text();
-    if (!base::User::isValidUserName(username))
+    if (!User::isValidUserName(username))
     {
         LOG(ERROR) << "Invalid user name entered";
         showError(tr("The user name can not be empty and can contain only"
@@ -109,7 +109,7 @@ void RouterDialog::onButtonBoxClicked(QAbstractButton* button)
     }
 
     QString password = ui.edit_password->text();
-    if (!base::User::isValidPassword(password))
+    if (!User::isValidPassword(password))
     {
         LOG(ERROR) << "Invalid password entered";
         showError(tr("Password cannot be empty."));

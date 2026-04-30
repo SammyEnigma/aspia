@@ -29,15 +29,15 @@
 
 class QTimer;
 
-namespace base {
 class Authenticator;
-class Location;
 class RelayPeer;
+class TcpServer;
+
+namespace base {
+class Location;
 class StreamEncryptor;
 class StreamDecryptor;
 } // namespace base
-
-class TcpServer;
 
 class TcpChannelNG final : public TcpChannel
 {
@@ -45,7 +45,7 @@ class TcpChannelNG final : public TcpChannel
 
 public:
     // Constructor available for client.
-    TcpChannelNG(base::Authenticator* authenticator, QObject* parent = nullptr);
+    TcpChannelNG(Authenticator* authenticator, QObject* parent = nullptr);
     ~TcpChannelNG() final;
 
     // Gets the address of the remote host as a string.
@@ -79,13 +79,13 @@ public:
 
 protected:
     friend class TcpServer;
-    friend class base::RelayPeer;
+    friend class RelayPeer;
 
     // Constructor available for server. An already connected socket is being moved.
-    TcpChannelNG(Type type, asio::ip::tcp::socket&& socket, base::Authenticator* authenticator, QObject* parent);
+    TcpChannelNG(Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent);
 
     // Starts authentication. In the client channel, it starts automatically when a connection is
-    // established. In the server channel, it is started by the base::RelayPeer or TcpServer.
+    // established. In the server channel, it is started by the RelayPeer or TcpServer.
     void doAuthentication() final;
 
 private:
@@ -174,7 +174,7 @@ private:
     bool authenticated_ = false;
     bool paused_ = true;
 
-    ScopedQPointer<base::Authenticator> authenticator_;
+    ScopedQPointer<Authenticator> authenticator_;
     std::unique_ptr<base::StreamEncryptor> encryptor_;
     std::unique_ptr<base::StreamDecryptor> decryptor_;
 

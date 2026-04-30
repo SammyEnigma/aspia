@@ -26,9 +26,7 @@
 
 #include "base/logging.h"
 
-namespace base {
 class RelayPeer;
-} // namespace base
 
 class TcpChannel : public QObject
 {
@@ -134,7 +132,7 @@ protected:
 
     friend class TcpServerLegacy;
     friend class TcpServer;
-    friend class base::RelayPeer;
+    friend class RelayPeer;
 
     virtual void doAuthentication() = 0;
 

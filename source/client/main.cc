@@ -545,7 +545,7 @@ int main(int argc, char* argv[])
             return 1;
         }
 
-        if (base::isHostId(computer.address))
+        if (isHostId(computer.address))
         {
             LOG(INFO) << "Relay connection selected";
 

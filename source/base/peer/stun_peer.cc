@@ -30,8 +30,6 @@
 #include "base/net/net_utils.h"
 #include "proto/stun.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 StunPeer::StunPeer(QObject* parent)
     : QObject(parent),
@@ -192,7 +190,7 @@ void StunPeer::onHostResolved(const QHostInfo& host_info)
     CLOG(INFO) << "Bound UDP socket, STUN server:" << selected << ":" << stun_port_;
 
     // Send the STUN request.
-    transaction_id_ = Random::number32();
+    transaction_id_ = base::Random::number32();
 
     proto::stun::PeerToStun message;
     proto::stun::EndpointRequest* request = message.mutable_endpoint_request();
@@ -297,11 +295,9 @@ void StunPeer::onReadyRead()
 }
 
 //--------------------------------------------------------------------------------------------------
-void StunPeer::onErrorOccurred(const Location& location)
+void StunPeer::onErrorOccurred(const base::Location& location)
 {
     CLOG(ERROR) << "STUN error occurred" << location;
     timer_->stop();
     emit sig_errorOccurred();
 }
-
-} // namespace base

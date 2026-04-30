@@ -44,9 +44,9 @@ QSqlDatabase databaseByName(const QString& connection_name)
 }
 
 //--------------------------------------------------------------------------------------------------
-base::User readUser(const QSqlQuery& query)
+User readUser(const QSqlQuery& query)
 {
-    base::User user;
+    User user;
     user.entry_id = query.value(0).toLongLong();
     user.name = query.value(1).toString();
     user.group = query.value(2).toString();
@@ -268,7 +268,7 @@ bool Database::isValid() const
 }
 
 //--------------------------------------------------------------------------------------------------
-QVector<base::User> Database::userList() const
+QVector<User> Database::userList() const
 {
     if (!isValid())
     {
@@ -284,7 +284,7 @@ QVector<base::User> Database::userList() const
         return {};
     }
 
-    QVector<base::User> users;
+    QVector<User> users;
     while (query.next())
         users.append(readUser(query));
 
@@ -292,7 +292,7 @@ QVector<base::User> Database::userList() const
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Database::addUser(const base::User& user)
+bool Database::addUser(const User& user)
 {
     if (!isValid())
     {
@@ -327,7 +327,7 @@ bool Database::addUser(const base::User& user)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Database::modifyUser(const base::User& user)
+bool Database::modifyUser(const User& user)
 {
     if (!isValid())
     {
@@ -384,12 +384,12 @@ bool Database::removeUser(qint64 entry_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-base::User Database::findUser(const QString& username) const
+User Database::findUser(const QString& username) const
 {
     if (!isValid())
     {
         LOG(ERROR) << "Database is not valid";
-        return base::User::kInvalidUser;
+        return User::kInvalidUser;
     }
 
     QSqlQuery query(databaseByName(connection_name_));
@@ -400,17 +400,17 @@ base::User Database::findUser(const QString& username) const
     if (!query.exec())
     {
         LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return base::User::kInvalidUser;
+        return User::kInvalidUser;
     }
 
     if (!query.next())
-        return base::User::kInvalidUser;
+        return User::kInvalidUser;
 
     return readUser(query);
 }
 
 //--------------------------------------------------------------------------------------------------
-Database::ErrorCode Database::hostId(const QByteArray& key_hash, base::HostId* host_id) const
+Database::ErrorCode Database::hostId(const QByteArray& key_hash, HostId* host_id) const
 {
     if (!isValid())
     {
@@ -430,7 +430,7 @@ Database::ErrorCode Database::hostId(const QByteArray& key_hash, base::HostId* h
         return ErrorCode::UNKNOWN;
     }
 
-    *host_id = base::kInvalidHostId;
+    *host_id = kInvalidHostId;
 
     QSqlQuery query(databaseByName(connection_name_));
     query.prepare(QStringLiteral("SELECT id FROM hosts WHERE key=?"));
@@ -445,7 +445,7 @@ Database::ErrorCode Database::hostId(const QByteArray& key_hash, base::HostId* h
     if (!query.next())
         return ErrorCode::NO_HOST_FOUND;
 
-    *host_id = static_cast<base::HostId>(query.value(0).toLongLong());
+    *host_id = static_cast<HostId>(query.value(0).toLongLong());
     return ErrorCode::SUCCESS;
 }
 

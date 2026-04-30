@@ -40,13 +40,13 @@ const std::chrono::seconds kReconnectTimeout{ 10 };
 //--------------------------------------------------------------------------------------------------
 RouterManager::RouterManager(QObject* parent)
     : QObject(parent),
-      peer_manager_(new base::RelayPeerManager(this)),
+      peer_manager_(new RelayPeerManager(this)),
       reconnect_timer_(new QTimer(this)),
       password_expire_timer_(new QTimer(this))
 {
     LOG(INFO) << "Ctor";
 
-    connect(peer_manager_, &base::RelayPeerManager::sig_newPeerConnected,
+    connect(peer_manager_, &RelayPeerManager::sig_newPeerConnected,
             this, &RouterManager::onNewPeerConnected);
 
     reconnect_timer_->setSingleShot(true);
@@ -209,7 +209,7 @@ void RouterManager::onTcpMessageReceived(quint8 /* channel_id */, const QByteArr
         }
 
         host_id_ = host_id_response.host_id();
-        if (host_id_ == base::kInvalidHostId)
+        if (host_id_ == kInvalidHostId)
         {
             LOG(ERROR) << "Invalid host ID received";
             return;
@@ -239,7 +239,7 @@ void RouterManager::onTcpMessageReceived(quint8 /* channel_id */, const QByteArr
 
         if (connection_offer.error_code() == proto::router::ConnectionOffer::SUCCESS)
         {
-            base::ServerAuthenticator* authenticator = new base::ServerAuthenticator();
+            ServerAuthenticator* authenticator = new ServerAuthenticator();
             authenticator->setUserList(user_list_);
             peer_manager_->addConnectionOffer(connection_offer, authenticator);
         }
@@ -331,7 +331,7 @@ void RouterManager::connectToRouter()
 
     routerStateChanged(proto::user::RouterState::CONNECTING);
 
-    base::ClientAuthenticator* authenticator = new base::ClientAuthenticator();
+    ClientAuthenticator* authenticator = new ClientAuthenticator();
 
     authenticator->setIdentify(proto::key_exchange::IDENTIFY_ANONYMOUS);
     authenticator->setPeerPublicKey(public_key_);
@@ -400,25 +400,25 @@ void RouterManager::hostIdRequest()
 }
 
 //--------------------------------------------------------------------------------------------------
-base::User RouterManager::createOneTimeUser() const
+User RouterManager::createOneTimeUser() const
 {
-    if (host_id_ == base::kInvalidHostId)
+    if (host_id_ == kInvalidHostId)
     {
         LOG(INFO) << "Invalid host ID";
-        return base::User();
+        return User();
     }
 
     if (one_time_password_.isEmpty())
     {
         LOG(INFO) << "No password for one-time user";
-        return base::User();
+        return User();
     }
 
-    QString username = '#' + base::hostIdToString(host_id_);
-    base::User user = base::User::create(username, one_time_password_);
+    QString username = '#' + hostIdToString(host_id_);
+    User user = User::create(username, one_time_password_);
 
     user.sessions = one_time_sessions_;
-    user.flags = base::User::ENABLED;
+    user.flags = User::ENABLED;
 
     LOG(INFO) << "One time user" << username << "created (host_id:" << host_id_
               << "sessions:" << one_time_sessions_ << ")";

@@ -114,7 +114,7 @@ signals:
     void sig_currentUserChanged(qint64 router_id);
     void sig_currentHostChanged(qint64 router_id);
     void sig_currentRelayChanged(qint64 router_id);
-    void sig_userContextMenu(qint64 router_id, const base::User& user, const QPoint& global_pos);
+    void sig_userContextMenu(qint64 router_id, const User& user, const QPoint& global_pos);
     void sig_hostContextMenu(qint64 router_id, const QPoint& global_pos, int column);
     void sig_relayContextMenu(qint64 router_id, const QPoint& global_pos, int column);
     void sig_updateConfig(const RouterConfig& config);

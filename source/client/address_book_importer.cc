@@ -61,7 +61,7 @@ QString combineHostAndPort(const QString& host, quint32 port)
     if (host.isEmpty())
         return QString();
 
-    if (base::isHostId(host))
+    if (isHostId(host))
         return host;
 
     Address address(DEFAULT_HOST_TCP_PORT);
@@ -161,7 +161,7 @@ bool importComputer(const proto::address_book::Computer& proto_computer,
         password = QString::fromStdString(proto_computer.password());
     }
 
-    qint64 effective_router_id = base::isHostId(address) ? router_id : 0;
+    qint64 effective_router_id = isHostId(address) ? router_id : 0;
 
     ComputerConfig config;
     config.group_id = group_id;

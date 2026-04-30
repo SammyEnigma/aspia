@@ -127,7 +127,7 @@ void SessionHost::readHostIdRequest(const proto::router::HostIdRequest& host_id_
     {
         case Database::ErrorCode::SUCCESS:
         {
-            if (host_id_ != base::kInvalidHostId)
+            if (host_id_ != kInvalidHostId)
             {
                 host_id_response->set_error_code("ok");
                 host_id_response->set_host_id(host_id_);

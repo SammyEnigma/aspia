@@ -52,7 +52,7 @@ public:
     const QString& clientAddress() const { return client_address_; }
     const QString& clientUserName() const { return client_user_name_; }
     const QString& hostAddress() const { return host_address_; }
-    base::HostId hostId() const { return host_id_; }
+    HostId hostId() const { return host_id_; }
     std::chrono::seconds idleTime(const TimePoint& current_time) const;
     std::chrono::seconds duration(const TimePoint& current_time) const;
     qint64 bytesTransferred() const { return bytes_transferred_; }
@@ -68,7 +68,7 @@ private:
     QString client_address_;
     QString client_user_name_;
     QString host_address_;
-    base::HostId host_id_ = base::kInvalidHostId;
+    HostId host_id_ = kInvalidHostId;
 
     TimePoint start_time_;
     mutable TimePoint start_idle_time_;

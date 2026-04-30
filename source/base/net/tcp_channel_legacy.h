@@ -31,14 +31,14 @@
 #include "base/net/tcp_channel.h"
 #include "base/peer/authenticator.h"
 
+class RelayPeer;
+class TcpServer;
+
 namespace base {
 class Location;
-class RelayPeer;
 class StreamEncryptor;
 class StreamDecryptor;
 } // namespace base
-
-class TcpServer;
 
 class TcpChannelLegacy final : public TcpChannel
 {
@@ -46,7 +46,7 @@ class TcpChannelLegacy final : public TcpChannel
 
 public:
     // Constructor available for client.
-    TcpChannelLegacy(base::Authenticator* authenticator, QObject* parent = nullptr);
+    TcpChannelLegacy(Authenticator* authenticator, QObject* parent = nullptr);
     ~TcpChannelLegacy() final;
 
     // Gets the address of the remote host as a string.
@@ -80,13 +80,13 @@ public:
 
 protected:
     friend class TcpServerLegacy;
-    friend class base::RelayPeer;
+    friend class RelayPeer;
 
     // Constructor available for server. An already connected socket is being moved.
-    TcpChannelLegacy(Type type, asio::ip::tcp::socket&& socket, base::Authenticator* authenticator, QObject* parent);
+    TcpChannelLegacy(Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent);
 
     // Starts authentication. In the client channel, it starts automatically when a connection is
-    // established. In the server channel, it is started by the base::RelayPeer or TcpServer.
+    // established. In the server channel, it is started by the RelayPeer or TcpServer.
     void doAuthentication() final;
 
     // Disconnects to remote host. The method is not available for an external call.
@@ -198,7 +198,7 @@ private:
 
     void onKeyChanged();
     void onAuthenticatorMessage(const QByteArray& data);
-    void onAuthenticatorFinished(base::Authenticator::ErrorCode error_code);
+    void onAuthenticatorFinished(Authenticator::ErrorCode error_code);
 
     void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
     void onErrorOccurred(const base::Location& location, ErrorCode error_code);
@@ -230,7 +230,7 @@ private:
     bool authenticated_ = false;
     bool paused_ = true;
 
-    ScopedQPointer<base::Authenticator> authenticator_;
+    ScopedQPointer<Authenticator> authenticator_;
     std::unique_ptr<base::StreamEncryptor> encryptor_;
     std::unique_ptr<base::StreamDecryptor> decryptor_;
 

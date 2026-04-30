@@ -196,7 +196,7 @@ void doHostMigrate(const QJsonDocument& doc)
 
     LOG(INFO) << "====== Migrate user list ======";
 
-    std::unique_ptr<base::UserList> user_list = base::UserList::createEmpty();
+    std::unique_ptr<UserList> user_list = UserList::createEmpty();
 
     if (root_object.contains("SeedKey"))
     {
@@ -214,7 +214,7 @@ void doHostMigrate(const QJsonDocument& doc)
         for (int i = 1; i <= user_count; ++i)
         {
             QJsonObject user_object = users_object[QString::number(i)].toObject();
-            base::User user;
+            User user;
 
             LOG(INFO) << "=== USER#" << i << "===";
 

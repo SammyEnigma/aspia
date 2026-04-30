@@ -21,13 +21,11 @@
 #include "base/location.h"
 #include "base/serialization.h"
 
-namespace base {
-
 namespace {
 
 constexpr std::chrono::minutes kTimeout{ 1 };
 
-auto g_errorCodeType = qRegisterMetaType<base::Authenticator::ErrorCode>();
+auto g_errorCodeType = qRegisterMetaType<Authenticator::ErrorCode>();
 
 } // namespace
 
@@ -89,7 +87,7 @@ void Authenticator::onMessageWritten()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Authenticator::finish(const Location& location, ErrorCode error_code)
+void Authenticator::finish(const base::Location& location, ErrorCode error_code)
 {
     timer_->stop();
 
@@ -132,5 +130,3 @@ void Authenticator::setPeerDisplayName(const QString& display_name)
 {
     peer_display_name_ = display_name;
 }
-
-} // namespace base

@@ -127,8 +127,8 @@ void Client::start()
 
     state_ = State::STARTED;
 
-    std::unique_ptr<base::ClientAuthenticator> authenticator =
-        std::make_unique<base::ClientAuthenticator>();
+    std::unique_ptr<ClientAuthenticator> authenticator =
+        std::make_unique<ClientAuthenticator>();
 
     authenticator->setIdentify(proto::key_exchange::IDENTIFY_SRP);
     authenticator->setUserName(session_state_->hostUserName());
@@ -173,10 +173,10 @@ void Client::start()
         connect(router_, &RouterConnection::sig_statusChanged,
                 this, &Client::onRouterStatusChanged, Qt::UniqueConnection);
 
-        relay_peer_ = new base::RelayPeer(authenticator.release(), this);
+        relay_peer_ = new RelayPeer(authenticator.release(), this);
 
-        connect(relay_peer_, &base::RelayPeer::sig_connectionError, this, &Client::onRelayConnectionError);
-        connect(relay_peer_, &base::RelayPeer::sig_connectionReady, this, &Client::onRelayConnectionReady);
+        connect(relay_peer_, &RelayPeer::sig_connectionError, this, &Client::onRelayConnectionError);
+        connect(relay_peer_, &RelayPeer::sig_connectionReady, this, &Client::onRelayConnectionReady);
 
         router_->onConnectionRequest(instanceId(), session_state_->hostId());
     }
@@ -833,9 +833,9 @@ void Client::startUdpHolePunching(const PendingUdp& context, const QString& stun
         stun_peer_.reset();
     }
 
-    stun_peer_ = new base::StunPeer(this);
+    stun_peer_ = new StunPeer(this);
 
-    connect(stun_peer_, &base::StunPeer::sig_channelReady, this,
+    connect(stun_peer_, &StunPeer::sig_channelReady, this,
         [this](const QString& external_address, quint16 external_port)
     {
         CLOG(INFO) << "Client STUN completed:" << external_address << ":" << external_port;
@@ -852,7 +852,7 @@ void Client::startUdpHolePunching(const PendingUdp& context, const QString& stun
         connectToUdp(request, socket, external_address, external_port);
     });
 
-    connect(stun_peer_, &base::StunPeer::sig_errorOccurred, this, [this]()
+    connect(stun_peer_, &StunPeer::sig_errorOccurred, this, [this]()
     {
         CLOG(ERROR) << "Client STUN failed, falling back to direct connect";
         CCHECK(pending_udp_context_.has_value());

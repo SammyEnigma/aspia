@@ -22,8 +22,6 @@
 #include "base/crypto/random.h"
 #include "base/crypto/srp_math.h"
 
-namespace base {
-
 namespace {
 
 const size_t kSaltSize = 64; // In bytes.
@@ -121,7 +119,7 @@ User User::create(const QString& name, const QString& password)
         return User();
     }
 
-    std::optional<SrpMath::NgPair> Ng_pair = SrpMath::pairByGroup(kDefaultGroup);
+    std::optional<base::SrpMath::NgPair> Ng_pair = base::SrpMath::pairByGroup(kDefaultGroup);
     if (!Ng_pair.has_value())
     {
         LOG(ERROR) << "Pair not found for group:" << kDefaultGroup;
@@ -131,12 +129,12 @@ User User::create(const QString& name, const QString& password)
     User user;
     user.name = name;
     user.group = kDefaultGroup;
-    user.salt = Random::byteArray(kSaltSize);
+    user.salt = base::Random::byteArray(kSaltSize);
 
-    BigNum s = BigNum::fromByteArray(user.salt);
-    BigNum N = BigNum::fromStdString(Ng_pair->first);
-    BigNum g = BigNum::fromStdString(Ng_pair->second);
-    BigNum v = SrpMath::calc_v(name, password, s, N, g);
+    base::BigNum s = base::BigNum::fromByteArray(user.salt);
+    base::BigNum N = base::BigNum::fromStdString(Ng_pair->first);
+    base::BigNum g = base::BigNum::fromStdString(Ng_pair->second);
+    base::BigNum v = base::SrpMath::calc_v(name, password, s, N, g);
 
     user.verifier = v.toByteArray();
     if (user.verifier.isEmpty())
@@ -186,5 +184,3 @@ proto::router::User User::serialize() const
 
     return user;
 }
-
-} // namespace base

@@ -31,8 +31,6 @@
 #include "base/crypto/random.h"
 #include "base/crypto/srp_math.h"
 
-namespace base {
-
 namespace {
 
 const size_t kIvSize = 12; // 12 bytes.
@@ -44,21 +42,21 @@ bool verifyNg(std::string_view N, std::string_view g)
     {
         case 512: // 4096 bit
         {
-            if (N != SrpMath::kNgPair_4096.first || g != SrpMath::kNgPair_4096.second)
+            if (N != base::SrpMath::kNgPair_4096.first || g != base::SrpMath::kNgPair_4096.second)
                 return false;
         }
         break;
 
         case 768: // 6144 bit
         {
-            if (N != SrpMath::kNgPair_6144.first || g != SrpMath::kNgPair_6144.second)
+            if (N != base::SrpMath::kNgPair_6144.first || g != base::SrpMath::kNgPair_6144.second)
                 return false;
         }
         break;
 
         case 1024: // 8192 bit
         {
-            if (N != SrpMath::kNgPair_8192.first || g != SrpMath::kNgPair_8192.second)
+            if (N != base::SrpMath::kNgPair_8192.first || g != base::SrpMath::kNgPair_8192.second)
                 return false;
         }
         break;
@@ -242,7 +240,7 @@ void ClientAuthenticator::sendClientHello()
     quint32 encryption = proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305;
 
 #if defined(Q_PROCESSOR_X86)
-    if (CpuidUtil::hasAesNi())
+    if (base::CpuidUtil::hasAesNi())
         encryption |= proto::key_exchange::ENCRYPTION_AES256_GCM;
 #endif
 
@@ -251,14 +249,14 @@ void ClientAuthenticator::sendClientHello()
 
     if (!peer_public_key_.isEmpty())
     {
-        encrypt_iv_ = Random::byteArray(kIvSize);
+        encrypt_iv_ = base::Random::byteArray(kIvSize);
         if (encrypt_iv_.isEmpty())
         {
             finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
             return;
         }
 
-        KeyPair key_pair = KeyPair::create(KeyPair::Type::X25519);
+        base::KeyPair key_pair = base::KeyPair::create(base::KeyPair::Type::X25519);
         if (!key_pair.isValid())
         {
             finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
@@ -272,7 +270,7 @@ void ClientAuthenticator::sendClientHello()
             return;
         }
 
-        session_key_ = GenericHash::hash(GenericHash::Type::BLAKE2s256, temp);
+        session_key_ = base::GenericHash::hash(base::GenericHash::Type::BLAKE2s256, temp);
         if (session_key_.isEmpty())
         {
             finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
@@ -311,7 +309,7 @@ bool ClientAuthenticator::readServerHello(const QByteArray& buffer)
     CLOG(INFO) << "Received: ServerHello (" << buffer.size() << ")";
 
     proto::key_exchange::ServerHello server_hello;
-    if (!parse(buffer, &server_hello))
+    if (!base::parse(buffer, &server_hello))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
@@ -366,7 +364,7 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
     CLOG(INFO) << "Received: ServerKeyExchange (" << buffer.size() << ")";
 
     proto::key_exchange::SrpServerKeyExchange server_key_exchange;
-    if (!parse(buffer, &server_key_exchange))
+    if (!base::parse(buffer, &server_key_exchange))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
@@ -387,25 +385,25 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
         return false;
     }
 
-    N_ = BigNum::fromStdString(server_key_exchange.number());
-    g_ = BigNum::fromStdString(server_key_exchange.generator());
-    s_ = BigNum::fromStdString(server_key_exchange.salt());
-    B_ = BigNum::fromStdString(server_key_exchange.b());
+    N_ = base::BigNum::fromStdString(server_key_exchange.number());
+    g_ = base::BigNum::fromStdString(server_key_exchange.generator());
+    s_ = base::BigNum::fromStdString(server_key_exchange.salt());
+    B_ = base::BigNum::fromStdString(server_key_exchange.b());
     decrypt_iv_ = QByteArray::fromStdString(server_key_exchange.iv());
 
-    a_ = BigNum::fromByteArray(Random::byteArray(128)); // 1024 bits.
-    A_ = SrpMath::calc_A(a_, N_, g_);
-    encrypt_iv_ = Random::byteArray(kIvSize);
+    a_ = base::BigNum::fromByteArray(base::Random::byteArray(128)); // 1024 bits.
+    A_ = base::SrpMath::calc_A(a_, N_, g_);
+    encrypt_iv_ = base::Random::byteArray(kIvSize);
 
-    if (!SrpMath::verify_B_mod_N(B_, N_))
+    if (!base::SrpMath::verify_B_mod_N(B_, N_))
     {
         CLOG(ERROR) << "Invalid B or N";
         return false;
     }
 
-    BigNum u = SrpMath::calc_u(A_, B_, N_);
-    BigNum x = SrpMath::calc_x(s_, username_, password_);
-    BigNum key = SrpMath::calcClientKey(N_, B_, g_, x, a_, u);
+    base::BigNum u = base::SrpMath::calc_u(A_, B_, N_);
+    base::BigNum x = base::SrpMath::calc_x(s_, username_, password_);
+    base::BigNum key = base::SrpMath::calcClientKey(N_, B_, g_, x, a_, u);
     if (!key.isValid())
     {
         CLOG(ERROR) << "Empty encryption key generated";
@@ -413,7 +411,7 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
     }
 
     // AES256-GCM and ChaCha20-Poly1305 requires 256 bit key.
-    GenericHash hash(GenericHash::BLAKE2s256);
+    base::GenericHash hash(base::GenericHash::BLAKE2s256);
 
     if (!session_key_.isEmpty())
         hash.addData(session_key_);
@@ -442,7 +440,7 @@ bool ClientAuthenticator::readSessionChallenge(const QByteArray& buffer)
     CLOG(INFO) << "Received: SessionChallenge (" << buffer.size() << ")";
 
     proto::key_exchange::SessionChallenge challenge;
-    if (!parse(buffer, &challenge))
+    if (!base::parse(buffer, &challenge))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
@@ -464,7 +462,7 @@ bool ClientAuthenticator::readSessionChallenge(const QByteArray& buffer)
                << "os:" << peerOsName() << "cores:" << challenge.cpu_cores()
                << "arch:" << peerArch() << "display_name:" << peerDisplayName() << ")";
 
-    if (peerVersion() < kMinimumSupportedVersion)
+    if (peerVersion() < base::kMinimumSupportedVersion)
     {
         finish(FROM_HERE, ErrorCode::VERSION_ERROR);
         return false;
@@ -485,9 +483,9 @@ void ClientAuthenticator::sendSessionResponse()
     version->set_patch(ASPIA_VERSION_PATCH);
     version->set_revision(GIT_COMMIT_COUNT);
 
-    response.set_os_name(SysInfo::operatingSystemName().toStdString());
-    response.set_computer_name(SysInfo::computerName().toStdString());
-    response.set_cpu_cores(static_cast<quint32>(SysInfo::processorThreads()));
+    response.set_os_name(base::SysInfo::operatingSystemName().toStdString());
+    response.set_computer_name(base::SysInfo::computerName().toStdString());
+    response.set_cpu_cores(static_cast<quint32>(base::SysInfo::processorThreads()));
     response.set_display_name(display_name_.toStdString());
     response.set_arch(QSysInfo::buildCpuArchitecture().toStdString());
 
@@ -496,5 +494,3 @@ void ClientAuthenticator::sendSessionResponse()
     CLOG(INFO) << "Sending: SessionResponse (" << message.size() << ")";
     emit sig_outgoingMessage(message);
 }
-
-} // namespace base

@@ -204,16 +204,16 @@ void SystemSettings::setRouterPublicKey(const QByteArray& key)
 }
 
 //--------------------------------------------------------------------------------------------------
-std::unique_ptr<base::UserList> SystemSettings::userList() const
+std::unique_ptr<UserList> SystemSettings::userList() const
 {
-    std::unique_ptr<base::UserList> users = base::UserList::createEmpty();
+    std::unique_ptr<UserList> users = UserList::createEmpty();
 
     int count = settings_.beginReadArray(kUsers);
     for (int i = 0; i < count; ++i)
     {
         settings_.setArrayIndex(i);
 
-        base::User user;
+        User user;
         user.name     = settings_.value(kUserName).toString();
         user.group    = settings_.value(kUserGroup).toString();
         user.salt     = settings_.value(kUserSalt).toByteArray();
@@ -234,19 +234,19 @@ std::unique_ptr<base::UserList> SystemSettings::userList() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void SystemSettings::setUserList(const base::UserList& users)
+void SystemSettings::setUserList(const UserList& users)
 {
     // Clear the old list of users.
     settings_.remove(kUsers);
 
-    QVector<base::User> list = users.list();
+    QVector<User> list = users.list();
 
     settings_.beginWriteArray(kUsers);
     for (int i = 0; i < list.size(); ++i)
     {
         settings_.setArrayIndex(i);
 
-        const base::User& user = list.at(i);
+        const User& user = list.at(i);
         settings_.setValue(kUserName, user.name);
         settings_.setValue(kUserGroup, user.group);
         settings_.setValue(kUserSalt, user.salt);

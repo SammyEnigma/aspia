@@ -661,7 +661,7 @@ void Service::onRemoveHost(bool try_to_uninstall)
     settings_.sync();
 
     HostStorage storage;
-    storage.setLastHostId(base::kInvalidHostId);
+    storage.setLastHostId(kInvalidHostId);
     storage.setHostKey("");
 
     if (try_to_uninstall)
@@ -840,7 +840,7 @@ void Service::reloadUserList()
     LOG(INFO) << "Reloading user list";
 
     // Read the list of regular users.
-    base::SharedPointer<base::UserListBase> users(settings_.userList().release());
+    base::SharedPointer<UserListBase> users(settings_.userList().release());
 
     if (users->seedKey().isEmpty())
         LOG(ERROR) << "Empty seed key for user list";

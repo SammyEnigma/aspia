@@ -209,13 +209,13 @@ class UserTreeItem final : public QTreeWidgetItem
 
 public:
     explicit UserTreeItem(const proto::router::User& user)
-        : user(base::User::parseFrom(user))
+        : user(User::parseFrom(user))
     {
         setText(0, QString::fromStdString(user.name()));
-        setText(1, user.flags() & base::User::ENABLED ? tr("Yes") : tr("No"));
+        setText(1, user.flags() & User::ENABLED ? tr("Yes") : tr("No"));
         setText(2, sessionsToString(user.sessions()));
 
-        if (user.flags() & base::User::ENABLED)
+        if (user.flags() & User::ENABLED)
             setIcon(0, QIcon(":/img/user.svg"));
         else
             setIcon(0, QIcon(":/img/locked-user.svg"));
@@ -253,7 +253,7 @@ public:
         return list.join(", ");
     }
 
-    base::User user;
+    User user;
 
 private:
     Q_DISABLE_COPY_MOVE(UserTreeItem)
@@ -763,7 +763,7 @@ void RouterWidget::onAddUser()
         names.append(item->user.name);
     }
 
-    RouterUserDialog dialog(base::User(), names, this);
+    RouterUserDialog dialog(User(), names, this);
     if (dialog.exec() != QDialog::Accepted)
     {
         LOG(INFO) << "[ACTION] Add user rejected by user";
@@ -968,7 +968,7 @@ void RouterWidget::onUserContextMenuRequested(const QPoint& pos)
     if (item)
         ui.tree_users->setCurrentItem(item);
 
-    base::User user;
+    User user;
     if (item)
         user = static_cast<UserTreeItem*>(item)->user;
 

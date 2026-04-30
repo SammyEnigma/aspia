@@ -93,7 +93,7 @@ void RouterConnection::onConnectToRouter()
 
     setStatus(Status::CONNECTING);
 
-    base::ClientAuthenticator* authenticator = new base::ClientAuthenticator(this);
+    ClientAuthenticator* authenticator = new ClientAuthenticator(this);
     authenticator->setIdentify(proto::key_exchange::IDENTIFY_SRP);
     authenticator->setSessionType(config_.session_type);
     authenticator->setUserName(config_.username);

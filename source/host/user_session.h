@@ -70,7 +70,7 @@ public:
 public slots:
     bool start();
     void onRouterStateChanged(const proto::user::RouterState& state);
-    void onUpdateCredentials(base::HostId host_id, const QString& password);
+    void onUpdateCredentials(HostId host_id, const QString& password);
     void onClientSwitchSession(base::SessionId session_id);
     void onClientConfirmation(const proto::user::ConfirmationRequest& request);
     void onClientStarted();

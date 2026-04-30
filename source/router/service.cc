@@ -315,7 +315,7 @@ void Service::onSessionFinished()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Service::onHostIdAssigned(base::HostId host_id)
+void Service::onHostIdAssigned(HostId host_id)
 {
     QList<Session*> matched_sessions;
 
@@ -432,7 +432,7 @@ bool Service::start()
         settings.setSeedKey(seed_key);
     }
 
-    base::SharedPointer<base::UserListBase> user_list(UserList::open().release());
+    base::SharedPointer<UserListBase> user_list(UserList::open().release());
     user_list->setSeedKey(seed_key);
 
     tcp_server_ = new TcpServer(this);
@@ -441,7 +441,7 @@ bool Service::start()
     tcp_server_->setPrivateKey(private_key);
     tcp_server_->setUserList(user_list);
     tcp_server_->setAnonymousAccess(
-        base::ServerAuthenticator::AnonymousAccess::ENABLE,
+        ServerAuthenticator::AnonymousAccess::ENABLE,
         proto::router::SESSION_TYPE_HOST | proto::router::SESSION_TYPE_RELAY);
     tcp_server_->start(port, listen_interface);
 
@@ -451,13 +451,13 @@ bool Service::start()
     tcp_server_legacy_->setPrivateKey(private_key);
     tcp_server_legacy_->setUserList(user_list);
     tcp_server_legacy_->setAnonymousAccess(
-        base::ServerAuthenticator::AnonymousAccess::ENABLE,
+        ServerAuthenticator::AnonymousAccess::ENABLE,
         proto::router::SESSION_TYPE_HOST | proto::router::SESSION_TYPE_RELAY);
     tcp_server_legacy_->start(legacy_port, listen_interface);
 
     if (settings.isStunEnabled())
     {
-        stun_server_ = new base::StunServer(this);
+        stun_server_ = new StunServer(this);
         stun_server_->start(settings.stunPort());
     }
 

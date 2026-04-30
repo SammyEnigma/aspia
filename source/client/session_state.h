@@ -42,7 +42,7 @@ public:
     qint64 routerId() const { return computer_.router_id; }
     const QString& computerName() const { return computer_.name; }
     const QString& displayName() const { return display_name_; }
-    base::HostId hostId() const;
+    HostId hostId() const;
     QString hostAddress() const;
     quint16 hostPort() const;
     const QString& hostUserName() const { return computer_.username; }

@@ -43,16 +43,16 @@ namespace {
 class UserTreeItem final : public QTreeWidgetItem
 {
 public:
-    explicit UserTreeItem(const base::User& user)
+    explicit UserTreeItem(const User& user)
         : user_(user)
     {
         updateData();
     }
     ~UserTreeItem() final = default;
 
-    const base::User& user() const { return user_; }
+    const User& user() const { return user_; }
 
-    void setUser(const base::User& user)
+    void setUser(const User& user)
     {
         user_ = user;
         updateData();
@@ -79,7 +79,7 @@ public:
 private:
     void updateData()
     {
-        if (user_.flags & base::User::ENABLED)
+        if (user_.flags & User::ENABLED)
             setIcon(0, QIcon(":/img/user.svg"));
         else
             setIcon(0, QIcon(":/img/locked-user.svg"));
@@ -87,7 +87,7 @@ private:
         setText(0, user_.name);
     }
 
-    base::User user_;
+    User user_;
     Q_DISABLE_COPY_MOVE(UserTreeItem)
 };
 
@@ -379,7 +379,7 @@ void ConfigDialog::onAddUser()
     for (int i = 0; i < ui.tree_users->topLevelItemCount(); ++i)
         exist_names.append(ui.tree_users->topLevelItem(i)->text(0));
 
-    UserDialog dialog(base::User(), exist_names, this);
+    UserDialog dialog(User(), exist_names, this);
     if (dialog.exec() == QDialog::Accepted)
     {
         ui.tree_users->addTopLevelItem(new UserTreeItem(dialog.user()));
@@ -596,7 +596,7 @@ void ConfigDialog::onButtonBoxClicked(QAbstractButton* button)
             settings.setRouterPublicKey(router_public_key);
         }
 
-        std::unique_ptr<base::UserList> user_list = base::UserList::createEmpty();
+        std::unique_ptr<UserList> user_list = UserList::createEmpty();
 
         for (int i = 0; i < ui.tree_users->topLevelItemCount(); ++i)
         {
@@ -769,11 +769,11 @@ void ConfigDialog::reloadAll()
 }
 
 //--------------------------------------------------------------------------------------------------
-void ConfigDialog::reloadUserList(const base::UserList& user_list)
+void ConfigDialog::reloadUserList(const UserList& user_list)
 {
     ui.tree_users->clear();
 
-    QVector<base::User> list = user_list.list();
+    QVector<User> list = user_list.list();
     for (const auto& user : std::as_const(list))
         ui.tree_users->addTopLevelItem(new UserTreeItem(user));
 

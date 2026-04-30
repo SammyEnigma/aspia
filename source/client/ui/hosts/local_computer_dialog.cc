@@ -182,7 +182,7 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
     }
     else
     {
-        if (!base::isHostId(ui.edit_address->text()))
+        if (!isHostId(ui.edit_address->text()))
         {
             MsgBox::warning(this, tr("An invalid host ID was entered."));
             ui.edit_address->setFocus();
@@ -192,7 +192,7 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
     }
 
     QString username = ui.edit_username->text();
-    if (!username.isEmpty() && !base::User::isValidUserName(username))
+    if (!username.isEmpty() && !User::isValidUserName(username))
     {
         MsgBox::warning(this,
             tr("The user name can not be empty and can contain only"

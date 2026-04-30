@@ -27,10 +27,10 @@ class UserDialog final : public QDialog
     Q_OBJECT
 
 public:
-    UserDialog(const base::User& user, const QStringList& exist_names, QWidget* parent);
+    UserDialog(const User& user, const QStringList& exist_names, QWidget* parent);
     ~UserDialog() final;
 
-    base::User user() { return user_; }
+    User user() { return user_; }
 
 protected:
     // QDialog implementation.
@@ -47,7 +47,7 @@ private:
     Ui::UserDialog ui;
 
     QStringList exist_names_;
-    base::User user_;
+    User user_;
     bool account_changed_ = true;
 
     Q_DISABLE_COPY_MOVE(UserDialog)

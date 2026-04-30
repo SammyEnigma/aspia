@@ -46,12 +46,12 @@ public:
     static QString filePath();
 
     bool isValid() const;
-    QVector<base::User> userList() const;
-    bool addUser(const base::User& user);
-    bool modifyUser(const base::User& user);
+    QVector<User> userList() const;
+    bool addUser(const User& user);
+    bool modifyUser(const User& user);
     bool removeUser(qint64 entry_id);
-    base::User findUser(const QString& username) const;
-    ErrorCode hostId(const QByteArray& key_hash, base::HostId* host_id) const;
+    User findUser(const QString& username) const;
+    ErrorCode hostId(const QByteArray& key_hash, HostId* host_id) const;
     bool addHost(const QByteArray& key_hash);
 
 private:

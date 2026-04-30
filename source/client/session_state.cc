@@ -36,15 +36,15 @@ SessionState::SessionState(const ComputerConfig& computer,
 //--------------------------------------------------------------------------------------------------
 bool SessionState::isConnectionByHostId() const
 {
-    return base::isHostId(computer_.address);
+    return isHostId(computer_.address);
 }
 
 //--------------------------------------------------------------------------------------------------
-base::HostId SessionState::hostId() const
+HostId SessionState::hostId() const
 {
-    if (!base::isHostId(computer_.address))
-        return base::kInvalidHostId;
-    return base::stringToHostId(computer_.address);
+    if (!isHostId(computer_.address))
+        return kInvalidHostId;
+    return stringToHostId(computer_.address);
 }
 
 //--------------------------------------------------------------------------------------------------

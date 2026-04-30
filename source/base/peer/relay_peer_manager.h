@@ -29,8 +29,6 @@ class ConnectionOffer;
 
 class TcpChannel;
 
-namespace base {
-
 class Authenticator;
 class RelayPeer;
 
@@ -64,7 +62,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(RelayPeerManager)
 };
-
-} // namespace base
 
 #endif // BASE_PEER_RELAY_PEER_MANAGER_H
