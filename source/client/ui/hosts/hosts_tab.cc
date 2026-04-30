@@ -37,7 +37,6 @@
 #include "client/settings.h"
 #include "client/ui/hosts/content_widget.h"
 #include "client/ui/hosts/sidebar.h"
-#include "client/ui/hosts/local_group_dialog.h"
 #include "client/ui/hosts/local_group_widget.h"
 #include "client/ui/hosts/router_widget.h"
 #include "client/ui/hosts/router_group_widget.h"
@@ -167,9 +166,9 @@ HostsTab::HostsTab(QWidget* parent)
     connect(action_edit_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onEditComputer);
     connect(action_copy_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onCopyComputer);
     connect(action_delete_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onRemoveComputer);
-    connect(action_add_group_, &QAction::triggered, this, &HostsTab::onAddGroupAction);
-    connect(action_edit_group_, &QAction::triggered, this, &HostsTab::onEditGroupAction);
-    connect(action_delete_group_, &QAction::triggered, this, &HostsTab::onDeleteGroupAction);
+    connect(action_add_group_, &QAction::triggered, ui.sidebar, &Sidebar::onAddGroup);
+    connect(action_edit_group_, &QAction::triggered, ui.sidebar, &Sidebar::onEditGroup);
+    connect(action_delete_group_, &QAction::triggered, ui.sidebar, &Sidebar::onRemoveGroup);
     connect(action_add_user_, &QAction::triggered, this, &HostsTab::onAddUserAction);
     connect(action_edit_user_, &QAction::triggered, this, &HostsTab::onEditUserAction);
     connect(action_delete_user_, &QAction::triggered, this, &HostsTab::onDeleteUserAction);
@@ -389,97 +388,6 @@ void HostsTab::onSearchTextChanged(const QString& text)
         switchContent(search_widget_);
         search_widget_->search(text);
     }
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onAddGroupAction()
-{
-    LOG(INFO) << "[ACTION] Add group";
-
-    Sidebar::Item* item = ui.sidebar->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local group item";
-        return;
-    }
-
-    LocalGroupDialog dialog(-1, item->groupId(), this);
-    if (dialog.exec() == LocalGroupDialog::Rejected)
-    {
-        LOG(INFO) << "[ACTION] Rejected by user";
-        return;
-    }
-
-    ui.sidebar->reloadGroups(item->groupId());
-    updateActionsState();
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onEditGroupAction()
-{
-    LOG(INFO) << "[ACTION] Edit group";
-
-    Sidebar::Item* item = ui.sidebar->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local group item";
-        return;
-    }
-
-    if (item->itemType() != Sidebar::Item::LOCAL_GROUP)
-        return;
-
-    Sidebar::LocalGroup* local_group = static_cast<Sidebar::LocalGroup*>(item);
-    if (local_group->groupId() == 0)
-        return;
-
-    LocalGroupDialog dialog(local_group->groupId(), local_group->parentId(), this);
-    if (dialog.exec() == LocalGroupDialog::Rejected)
-    {
-        LOG(INFO) << "[ACTION] Rejected by user";
-        return;
-    }
-
-    ui.sidebar->reloadGroups(item->groupId());
-    updateActionsState();
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onDeleteGroupAction()
-{
-    LOG(INFO) << "[ACTION] Delete group";
-
-    Sidebar::Item* item = ui.sidebar->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local group item";
-        return;
-    }
-
-    if (item->itemType() != Sidebar::Item::Type::LOCAL_GROUP || item->groupId() == 0) // Root group.
-        return;
-
-    Sidebar::LocalGroup* local_group = static_cast<Sidebar::LocalGroup*>(item);
-
-    QString message = tr("Are you sure you want to delete group \"%1\"?").arg(local_group->groupName());
-
-    if (common::MsgBox::question(this, message) == common::MsgBox::No)
-    {
-        LOG(INFO) << "Action is rejected by user";
-        return;
-    }
-
-    qint64 parent_id = local_group->parentId();
-
-    if (!Database::instance().removeGroup(local_group->groupId()))
-    {
-        common::MsgBox::warning(this, tr("Unable to remove group"));
-        LOG(INFO) << "Unable to remove group with id" << local_group->groupId();
-        return;
-    }
-
-    ui.sidebar->reloadGroups(parent_id);
-    updateActionsState();
 }
 
 //--------------------------------------------------------------------------------------------------

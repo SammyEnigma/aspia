@@ -138,6 +138,11 @@ public:
     Router* routerById(qint64 router_id) const;
     QList<qint64> routerIds() const;
 
+public slots:
+    void onAddGroup();
+    void onEditGroup();
+    void onRemoveGroup();
+
 protected:
     bool eventFilter(QObject* watched, QEvent* event) override;
 

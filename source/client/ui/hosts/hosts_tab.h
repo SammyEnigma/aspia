@@ -64,9 +64,6 @@ signals:
 
 private slots:
     void onRouterStatusChanged(qint64 router_id, client::RouterConnection::Status status);
-    void onAddGroupAction();
-    void onEditGroupAction();
-    void onDeleteGroupAction();
     void onSwitchContent(client::Sidebar::Item::Type type);
     void onSidebarContextMenu(client::Sidebar::Item::Type type, const QPoint& pos);
     void onCurrentComputerChanged(qint64 computer_id);

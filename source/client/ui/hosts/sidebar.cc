@@ -32,6 +32,7 @@
 #include "base/logging.h"
 #include "client/config.h"
 #include "client/database.h"
+#include "client/ui/hosts/local_group_dialog.h"
 #include "client/ui/hosts/local_group_widget.h"
 #include "common/ui/msg_box.h"
 
@@ -234,6 +235,94 @@ void Sidebar::setComputerMimeType(const QString& mime_type)
 bool Sidebar::dragging() const
 {
     return dragging_;
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onAddGroup()
+{
+    LOG(INFO) << "[ACTION] Add group";
+
+    Item* item = currentItem();
+    if (!item)
+    {
+        LOG(INFO) << "No current local group item";
+        return;
+    }
+
+    LocalGroupDialog dialog(-1, item->groupId(), this);
+    if (dialog.exec() == LocalGroupDialog::Rejected)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
+
+    reloadGroups(item->groupId());
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onEditGroup()
+{
+    LOG(INFO) << "[ACTION] Edit group";
+
+    Item* item = currentItem();
+    if (!item)
+    {
+        LOG(INFO) << "No current local group item";
+        return;
+    }
+
+    if (item->itemType() != Item::LOCAL_GROUP)
+        return;
+
+    LocalGroup* local_group = static_cast<LocalGroup*>(item);
+    if (local_group->groupId() == 0)
+        return;
+
+    LocalGroupDialog dialog(local_group->groupId(), local_group->parentId(), this);
+    if (dialog.exec() == LocalGroupDialog::Rejected)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
+
+    reloadGroups(item->groupId());
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onRemoveGroup()
+{
+    LOG(INFO) << "[ACTION] Delete group";
+
+    Item* item = currentItem();
+    if (!item)
+    {
+        LOG(INFO) << "No current local group item";
+        return;
+    }
+
+    if (item->itemType() != Item::Type::LOCAL_GROUP || item->groupId() == 0) // Root group.
+        return;
+
+    LocalGroup* local_group = static_cast<LocalGroup*>(item);
+
+    QString message = tr("Are you sure you want to delete group \"%1\"?").arg(local_group->groupName());
+
+    if (common::MsgBox::question(this, message) == common::MsgBox::No)
+    {
+        LOG(INFO) << "Action is rejected by user";
+        return;
+    }
+
+    qint64 parent_id = local_group->parentId();
+
+    if (!Database::instance().removeGroup(local_group->groupId()))
+    {
+        common::MsgBox::warning(this, tr("Unable to remove group"));
+        LOG(INFO) << "Unable to remove group with id" << local_group->groupId();
+        return;
+    }
+
+    reloadGroups(parent_id);
 }
 
 //--------------------------------------------------------------------------------------------------
