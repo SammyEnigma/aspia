@@ -21,11 +21,9 @@
 
 #include "common/clipboard.h"
 
-struct _XDisplay;
-
 class FileDescriptorWatcher;
-
 class XServerClipboard;
+struct _XDisplay;
 
 class ClipboardX11 final : public Clipboard
 {

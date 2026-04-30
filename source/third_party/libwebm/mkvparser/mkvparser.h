@@ -64,9 +64,9 @@ struct EBMLHeader {
   void Init();
 };
 
+class Cluster;
 class Segment;
 class Track;
-class Cluster;
 
 class Block {
   Block(const Block&);

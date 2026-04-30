@@ -26,10 +26,9 @@
 #include "host/user_session_agent.h"
 #include "ui_main_window.h"
 
-class StatusDialog;
 class ChatWidget;
-
 class NotifierWindow;
+class StatusDialog;
 
 class MainWindow final : public QMainWindow
 {

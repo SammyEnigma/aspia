@@ -24,10 +24,9 @@
 
 #include "common/file_task.h"
 
-class QTimer;
-
 class FileDepacketizer;
 class FilePacketizer;
+class QTimer;
 
 class FileWorker final : public QObject
 {

@@ -27,16 +27,13 @@
 #include "base/shared_pointer.h"
 #include "base/net/tcp_channel.h"
 
-class QTimer;
-
 class Authenticator;
+class Location;
+class QTimer;
 class RelayPeer;
-class TcpServer;
-
 class StreamDecryptor;
 class StreamEncryptor;
-
-class Location;
+class TcpServer;
 
 class TcpChannelNG final : public TcpChannel
 {

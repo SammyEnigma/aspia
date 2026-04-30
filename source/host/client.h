@@ -31,12 +31,10 @@
 #include "base/scoped_qpointer.h"
 #include "proto/peer.h"
 
+class Location;
 class QTimer;
-
 class StunPeer;
 class UdpChannel;
-
-class Location;
 
 class Client : public QObject
 {

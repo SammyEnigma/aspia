@@ -28,9 +28,8 @@
 #include "base/shared_pointer.h"
 #include "proto/relay_peer.h"
 
-class QTimer;
-
 class Location;
+class QTimer;
 
 class PendingSession final : public QObject
 {

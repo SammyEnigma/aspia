@@ -35,8 +35,8 @@ class Frame;
 class DesktopConfigDialog;
 class DesktopToolBar;
 class DesktopWidget;
-class SystemInfoSessionWindow;
 class StatisticsDialog;
+class SystemInfoSessionWindow;
 class TaskManagerWindow;
 
 class DesktopSessionWindow final : public SessionWindow

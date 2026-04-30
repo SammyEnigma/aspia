@@ -22,8 +22,8 @@
 #include <QString>
 #include <QVector>
 
-struct _USER_INFO_3;
 struct _LOCALGROUP_INFO_1;
+struct _USER_INFO_3;
 
 class UserEnumerator
 {

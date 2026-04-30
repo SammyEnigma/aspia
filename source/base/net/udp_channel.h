@@ -37,7 +37,6 @@ typedef struct _ENetPacket ENetPacket;
 
 class DatagramDecryptor;
 class DatagramEncryptor;
-
 class Location;
 
 class UdpChannel final : public QObject

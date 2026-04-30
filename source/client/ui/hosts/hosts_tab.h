@@ -27,14 +27,13 @@
 #include "proto/peer.h"
 #include "ui_hosts_tab.h"
 
-class QTreeWidgetItem;
-
-class User;
 class ContentWidget;
 class LocalGroupWidget;
-class RouterWidget;
+class QTreeWidgetItem;
 class RouterGroupWidget;
+class RouterWidget;
 class SearchWidget;
+class User;
 
 class HostsTab : public ClientTab
 {

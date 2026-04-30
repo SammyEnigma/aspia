@@ -25,9 +25,8 @@
 #include "client/config.h"
 #include "client/router_connection.h"
 
-class QTimer;
-
 class Location;
+class QTimer;
 
 class OnlineCheckerRouter final : public QObject
 {

@@ -33,7 +33,6 @@
 #include "client/router_connection.h"
 
 class QTimer;
-
 class RelayPeer;
 class StunPeer;
 class UdpChannel;

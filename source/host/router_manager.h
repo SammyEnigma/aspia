@@ -31,7 +31,6 @@
 #include "proto/user.h"
 
 class QTimer;
-
 class RelayPeerManager;
 
 class RouterManager final : public QObject

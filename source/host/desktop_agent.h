@@ -31,19 +31,16 @@
 #include "proto/desktop_input.h"
 #include "proto/desktop_video.h"
 
-class IpcChannel;
-
+class AudioCapturerWrapper;
 class AudioEncoder;
 class CursorEncoder;
+class DesktopAgentClient;
 class DesktopEnvironment;
 class DesktopResizer;
+class InputInjector;
+class IpcChannel;
 class ScaleReducer;
 class VideoEncoder;
-
-class AudioCapturerWrapper;
-
-class DesktopAgentClient;
-class InputInjector;
 
 class DesktopAgent final : public QObject
 {

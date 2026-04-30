@@ -28,12 +28,10 @@
 #include "base/peer/host_id.h"
 #include "proto/user.h"
 
-class QTimer;
-
 class IpcChannel;
 class IpcServer;
-
 class Location;
+class QTimer;
 
 class UserSession final : public QObject
 {

@@ -26,11 +26,9 @@
 #include "proto/peer.h"
 #include "ui_main_window.h"
 
-class QLineEdit;
-
-class UpdateChecker;
-
 class ClientTab;
+class QLineEdit;
+class UpdateChecker;
 struct ComputerConfig;
 
 class MainWindow final : public QMainWindow

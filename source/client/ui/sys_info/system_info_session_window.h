@@ -29,7 +29,6 @@ class SystemInfoSessionWindow;
 class QHBoxLayout;
 class QTreeWidget;
 class QTreeWidgetItem;
-
 class SysInfoWidget;
 
 class SystemInfoSessionWindow final : public SessionWindow

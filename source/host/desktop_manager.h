@@ -24,12 +24,10 @@
 #include "base/scoped_qpointer.h"
 #include "base/session_id.h"
 
-class QTimer;
-
 class IpcChannel;
 class IpcServer;
-
 class Location;
+class QTimer;
 
 class DesktopManager final : public QObject
 {

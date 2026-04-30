@@ -31,13 +31,11 @@
 #include "base/net/tcp_channel.h"
 #include "base/peer/authenticator.h"
 
+class Location;
 class RelayPeer;
-class TcpServer;
-
 class StreamDecryptor;
 class StreamEncryptor;
-
-class Location;
+class TcpServer;
 
 class TcpChannelLegacy final : public TcpChannel
 {

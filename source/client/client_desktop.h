@@ -33,16 +33,14 @@
 #include "proto/desktop_screen.h"
 #include "proto/task_manager.h"
 
-class QTimer;
-
 class AudioDecoder;
+class AudioPlayer;
 class CursorDecoder;
 class Frame;
+class QTimer;
 class VideoDecoder;
 class WebmFileWriter;
 class WebmVideoEncoder;
-
-class AudioPlayer;
 
 class ClientDesktop final : public Client
 {

@@ -26,10 +26,9 @@
 #include "base/serialization.h"
 #include "proto/user.h"
 
-class IpcChannel;
-
 class ClipboardFileTransfer;
 class ClipboardMonitor;
+class IpcChannel;
 
 namespace proto::clipboard {
 class Event;

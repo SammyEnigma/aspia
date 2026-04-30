@@ -24,9 +24,8 @@
 #include "base/serialization.h"
 #include "proto/file_transfer.h"
 
-class IpcChannel;
-
 class FileWorker;
+class IpcChannel;
 
 class FileAgent final : public QObject
 {

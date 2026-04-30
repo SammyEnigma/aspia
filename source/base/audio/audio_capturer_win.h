@@ -27,9 +27,8 @@
 #include <mmdeviceapi.h>
 #include <wrl/client.h>
 
-class QTimer;
-
 class DefaultAudioDeviceChangeDetector;
+class QTimer;
 
 // An AudioCapturer implementation for Windows by using Windows Audio Session API, a.k.a. WASAPI.
 // It supports up to 8 channels, but treats all layouts as a most commonly used one. E.g. 3.1 and

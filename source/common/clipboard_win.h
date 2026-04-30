@@ -25,10 +25,9 @@
 
 #include "common/clipboard.h"
 
-class MessageWindow;
-
 class FileObject;
 class FileStream;
+class MessageWindow;
 
 class ClipboardWin final : public Clipboard
 {

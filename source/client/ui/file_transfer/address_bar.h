@@ -23,10 +23,9 @@
 
 #include "proto/file_transfer.h"
 
+class AddressBarModel;
 class QLineEdit;
 class QTreeView;
-
-class AddressBarModel;
 
 class AddressBar final : public QComboBox
 {

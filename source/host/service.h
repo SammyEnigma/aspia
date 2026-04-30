@@ -26,15 +26,12 @@
 #include "host/system_settings.h"
 #include "proto/router_peer.h"
 
+class HttpFileDownloader;
+class Location;
 class QFileSystemWatcher;
 class QTimer;
-
 class TcpChannel;
 class TcpServer;
-
-class Location;
-
-class HttpFileDownloader;
 class UpdateChecker;
 
 namespace proto::user {

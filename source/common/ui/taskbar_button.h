@@ -26,7 +26,6 @@
 #include <Shobjidl.h>
 
 class QWindow;
-
 class TaskbarProgress;
 
 class TaskbarButton final : public QObject

@@ -31,7 +31,6 @@
 
 class QLabel;
 class QStatusBar;
-
 struct ComputerConfig;
 
 class LocalGroupWidget : public ContentWidget

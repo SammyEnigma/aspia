@@ -24,11 +24,10 @@
 
 #include "base/logging.h"
 
+class Location;
 class QHostInfo;
 class QSocketNotifier;
 class QTimer;
-
-class Location;
 
 class StunPeer final : public QObject
 {

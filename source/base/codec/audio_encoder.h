@@ -21,10 +21,9 @@
 
 #include "proto/desktop_audio.h"
 
-struct OpusEncoder;
-
 class AudioBus;
 class MultiChannelResampler;
+struct OpusEncoder;
 
 class AudioEncoder
 {

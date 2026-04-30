@@ -29,9 +29,8 @@
 #include "proto/router_relay.h"
 #include "relay/session_key.h"
 
-class QTimer;
-
 class PendingSession;
+class QTimer;
 class Session;
 
 class SessionManager final : public QObject

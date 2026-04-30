@@ -30,9 +30,8 @@
 #include <CoreAudio/CoreAudio.h>
 #include <mach/semaphore.h>
 
-struct PaUtilRingBuffer;
-
 class SimpleThread;
+struct PaUtilRingBuffer;
 
 class AudioOutputMac final : public AudioOutput
 {

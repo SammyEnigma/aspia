@@ -23,12 +23,10 @@
 #include "base/session_id.h"
 #include "host/client.h"
 
-class QTimer;
-
 class IpcChannel;
 class IpcServer;
-
 class Location;
+class QTimer;
 
 class FileClient final : public Client
 {

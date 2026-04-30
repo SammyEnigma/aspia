@@ -32,11 +32,9 @@
 #include "proto/desktop_power.h"
 #include "proto/task_manager.h"
 
-class QTimer;
-
 class IpcChannel;
 class IpcServer;
-
+class QTimer;
 class TaskManager;
 
 class DesktopClient final : public Client
