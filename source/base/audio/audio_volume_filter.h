@@ -21,8 +21,6 @@
 
 #include "base/audio/audio_silence_detector.h"
 
-namespace base {
-
 // A component to modify input audio sample to apply the audio level. This class is used on
 // platforms which returns non-adjusted audio samples, e.g. Windows.
 // This class supports frames with 16 bits per sample only.
@@ -49,7 +47,5 @@ protected:
 private:
     AudioSilenceDetector silence_detector_;
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_VOLUME_FILTER_H

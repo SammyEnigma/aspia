@@ -32,8 +32,6 @@
 #include <mmdeviceapi.h>
 #include <wrl/client.h>
 
-namespace base {
-
 class AudioOutputWin final
     : public AudioOutput,
       public IAudioSessionEvents,
@@ -122,7 +120,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AudioOutputWin)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_OUTPUT_WIN_H

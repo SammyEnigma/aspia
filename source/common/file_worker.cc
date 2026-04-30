@@ -205,9 +205,9 @@ void FileWorker::doFileListRequest(
 
     proto::file_transfer::List* file_list = reply->mutable_file_list();
 
-    for (base::FileEnumerator enumerator(path); !enumerator.isAtEnd(); enumerator.advance())
+    for (FileEnumerator enumerator(path); !enumerator.isAtEnd(); enumerator.advance())
     {
-        const base::FileEnumerator::FileInfo& file_info = enumerator.fileInfo();
+        const FileEnumerator::FileInfo& file_info = enumerator.fileInfo();
         proto::file_transfer::List::Item* item = file_list->add_item();
 
         item->set_name(file_info.name().toStdString());

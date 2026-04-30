@@ -30,8 +30,6 @@ base::PulseAudioSymbolTable* pulseSymbolTable()
 // don't have to link to libpulse, which means our binary will work on systems that don't have it.
 #define LATE(sym) LATESYM_GET(base::PulseAudioSymbolTable, pulseSymbolTable(), sym)
 
-namespace base {
-
 namespace {
 
 class ScopedPaLock
@@ -516,5 +514,3 @@ void AudioOutputPulse::writePlayoutData()
             break;
     }
 }
-
-} // namespace base

@@ -481,7 +481,7 @@ bool Database::addHost(const QByteArray& key_hash)
 // static
 QString Database::databaseDirectory()
 {
-    return base::BasePaths::appDataDir();
+    return BasePaths::appDataDir();
 }
 
 } // namespace router

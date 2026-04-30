@@ -23,8 +23,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 namespace {
 
 // Verifies the common invariants for any directory path returned by BasePaths:
@@ -360,5 +358,3 @@ TEST(BasePathsTest, WindowsAppUserConfigDir)
 }
 
 #endif // defined(Q_OS_WIN)
-
-} // namespace base

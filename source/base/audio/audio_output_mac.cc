@@ -25,8 +25,6 @@
 #include <pthread.h>
 #include <sched.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioOutputMac::AudioOutputMac(const NeedMoreDataCB& need_more_data_cb)
     : AudioOutput(need_more_data_cb)
@@ -639,5 +637,3 @@ OSStatus AudioOutputMac::implOutConverterProc(UInt32* number_data_packets, Audio
 
     return 0;
 }
-
-} // namespace base

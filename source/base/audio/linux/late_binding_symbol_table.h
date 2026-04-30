@@ -24,8 +24,6 @@
 #include <cassert>
 #include <cstring>
 
-namespace base {
-
 using DllHandle = void*;
 const DllHandle kInvalidDllHandle = nullptr;
 
@@ -133,7 +131,7 @@ private:
     extern const char* const                                      \
         ClassName##_kSymbolNames[ClassName##_SYMBOL_TABLE_SIZE];  \
                                                                   \
-    typedef ::base::LateBindingSymbolTable<                       \
+    typedef ::LateBindingSymbolTable<                       \
         ClassName##_SYMBOL_TABLE_SIZE, ClassName##_kDllName,      \
         ClassName##_kSymbolNames>                                 \
         ClassName;
@@ -156,7 +154,5 @@ private:
 // Returns a reference to the given late-binded symbol, with the correct type.
 #define LATESYM_GET(ClassName, inst, sym) \
     (*reinterpret_cast<__typeof__(&sym)>((inst)->symbol(LATESYM_INDEXOF(ClassName, sym))))
-
-} // namespace base
 
 #endif // BASE_AUDIO_LINUX_LATE_BINDING_SYMBOL_TABLE_H

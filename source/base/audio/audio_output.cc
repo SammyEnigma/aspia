@@ -30,8 +30,6 @@
 
 #include <cstring>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioOutput::AudioOutput(const NeedMoreDataCB& need_more_data_cb)
     : need_more_data_cb_(need_more_data_cb)
@@ -89,5 +87,3 @@ void AudioOutput::onDataRequest(qint16* audio_samples, size_t audio_samples_coun
                (audio_samples_count - filled_samples) * sizeof(qint16));
     }
 }
-
-} // namespace base

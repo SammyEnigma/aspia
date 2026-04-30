@@ -110,7 +110,7 @@ void ClientDesktop::onStarted()
 
     clipboard_monitor_->start();
 
-    audio_player_ = base::AudioPlayer::create();
+    audio_player_ = AudioPlayer::create();
 
     if (isLegacy())
         return;

@@ -29,8 +29,6 @@
 #include <asio/high_resolution_timer.hpp>
 #include <pulse/pulseaudio.h>
 
-namespace base {
-
 class SimpleThread;
 
 class AudioOutputPulse final : public AudioOutput
@@ -84,7 +82,5 @@ private:
 
     Q_DISABLE_COPY(AudioOutputPulse)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_OUTPUT_PULSE_H

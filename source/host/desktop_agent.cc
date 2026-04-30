@@ -329,8 +329,8 @@ void DesktopAgent::onClientConfigured()
 
         if (!audio_capturer_)
         {
-            audio_capturer_ = new base::AudioCapturerWrapper(this);
-            connect(audio_capturer_, &base::AudioCapturerWrapper::sig_audioCaptured,
+            audio_capturer_ = new AudioCapturerWrapper(this);
+            connect(audio_capturer_, &AudioCapturerWrapper::sig_audioCaptured,
                     this, &DesktopAgent::encodeAudio, Qt::QueuedConnection);
             audio_capturer_->start();
         }

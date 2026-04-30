@@ -25,8 +25,6 @@
 #include "base/audio/win/scoped_mmcss_registration.h"
 #include "base/win/scoped_com_initializer.h"
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -593,5 +591,3 @@ HRESULT AudioOutputWin::OnPropertyValueChanged(LPCWSTR, const PROPERTYKEY)
 {
     return S_OK;
 }
-
-} // namespace base

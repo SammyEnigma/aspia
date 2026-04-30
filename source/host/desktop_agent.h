@@ -40,9 +40,7 @@ class DesktopResizer;
 class ScaleReducer;
 class VideoEncoder;
 
-namespace base {
 class AudioCapturerWrapper;
-} // namespace base
 
 class DesktopAgentClient;
 class InputInjector;
@@ -98,7 +96,7 @@ private:
     PowerSaveBlocker power_save_blocker_;
     InputInjector* input_injector_ = nullptr;
     ScopedQPointer<ScreenCapturer> screen_capturer_;
-    ScopedQPointer<base::AudioCapturerWrapper> audio_capturer_;
+    ScopedQPointer<AudioCapturerWrapper> audio_capturer_;
     DesktopEnvironment* desktop_environment_ = nullptr;
     std::unique_ptr<DesktopResizer> screen_resizer_;
 

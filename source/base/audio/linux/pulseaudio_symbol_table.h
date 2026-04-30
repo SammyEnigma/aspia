@@ -21,8 +21,6 @@
 
 #include "base/audio/linux/late_binding_symbol_table.h"
 
-namespace base {
-
 // The PulseAudio symbols we need, as an X-Macro list.
 #define PULSE_AUDIO_SYMBOLS_LIST           \
     X(pa_bytes_per_second)                   \
@@ -72,7 +70,5 @@ LATE_BINDING_SYMBOL_TABLE_DECLARE_BEGIN(PulseAudioSymbolTable)
 PULSE_AUDIO_SYMBOLS_LIST
 #undef X
 LATE_BINDING_SYMBOL_TABLE_DECLARE_END(PulseAudioSymbolTable)
-
-} // namespace base
 
 #endif // BASE_AUDIO_LINUX_PULSEAUDIO_SYMBOL_TABLE_H

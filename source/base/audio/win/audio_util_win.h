@@ -26,8 +26,6 @@
 #include <mmdeviceapi.h>
 #include <wrl/client.h>
 
-namespace base {
-
 Microsoft::WRL::ComPtr<IMMDeviceEnumerator> createDeviceEnumerator();
 Microsoft::WRL::ComPtr<IMMDevice> createDevice();
 Microsoft::WRL::ComPtr<IAudioClient> createClient(IMMDevice* audio_device);
@@ -49,7 +47,5 @@ bool fillRenderEndpointBufferWithSilence(IAudioClient* client, IAudioRenderClien
 
 bool isMMCSSSupported();
 bool isDeviceActive(IMMDevice* device);
-
-} // namespace base
 
 #endif // BASE_AUDIO_WIN_AUDIO_UTIL_WIN_H

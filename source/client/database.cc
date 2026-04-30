@@ -169,7 +169,7 @@ Database& Database::instance()
 // static
 QString Database::filePath()
 {
-    QString dir_path = base::BasePaths::appUserDataDir();
+    QString dir_path = BasePaths::appUserDataDir();
     if (dir_path.isEmpty())
         return QString();
 
@@ -885,7 +885,7 @@ QStringList Database::propertyNames() const
 //--------------------------------------------------------------------------------------------------
 bool Database::openDatabase()
 {
-    QString dir_path = base::BasePaths::appUserDataDir();
+    QString dir_path = BasePaths::appUserDataDir();
     if (dir_path.isEmpty())
     {
         LOG(ERROR) << "Invalid directory path";

@@ -31,8 +31,6 @@
 #include "base/logging.h"
 #endif // defined(Q_OS_MACOS)
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // Returns true if the sampling rate is supported by Pepper.
 bool AudioCapturer::isValidSampleRate(int sample_rate)
@@ -62,5 +60,3 @@ std::unique_ptr<AudioCapturer> AudioCapturer::create()
     return nullptr;
 #endif
 }
-
-} // namespace base

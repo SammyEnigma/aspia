@@ -27,8 +27,6 @@
 #include <QDir>
 #endif
 
-namespace base {
-
 // We use the native implementation of getting the list of files in a directory because QDir tries
 // to resolve network location shortcuts when calling methods entryInfoList and entryList. If these
 // network locations are unavailable, this causes large delays in getting the list of files.
@@ -72,7 +70,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileEnumerator)
 };
-
-}  // namespace base
 
 #endif // BASE_FILES_FILE_ENUMERATOR_H

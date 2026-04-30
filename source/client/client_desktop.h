@@ -42,9 +42,7 @@ class VideoDecoder;
 class WebmFileWriter;
 class WebmVideoEncoder;
 
-namespace base {
 class AudioPlayer;
-} // namespace base
 
 class ClientDesktop final : public Client
 {
@@ -157,7 +155,7 @@ private:
     std::unique_ptr<VideoDecoder> video_decoder_;
     std::unique_ptr<CursorDecoder> cursor_decoder_;
     std::unique_ptr<AudioDecoder> audio_decoder_;
-    std::unique_ptr<base::AudioPlayer> audio_player_;
+    std::unique_ptr<AudioPlayer> audio_player_;
     ClipboardMonitor* clipboard_monitor_ = nullptr;
     ClipboardFileTransfer* clipboard_file_transfer_ = nullptr;
 

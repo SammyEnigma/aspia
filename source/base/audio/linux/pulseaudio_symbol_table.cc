@@ -18,12 +18,8 @@
 
 #include "base/audio/linux/pulseaudio_symbol_table.h"
 
-namespace base {
-
 LATE_BINDING_SYMBOL_TABLE_DEFINE_BEGIN(PulseAudioSymbolTable, "libpulse.so.0")
 #define X(sym) LATE_BINDING_SYMBOL_TABLE_DEFINE_ENTRY(PulseAudioSymbolTable, sym)
 PULSE_AUDIO_SYMBOLS_LIST
 #undef X
 LATE_BINDING_SYMBOL_TABLE_DEFINE_END(PulseAudioSymbolTable)
-
-} // namespace base

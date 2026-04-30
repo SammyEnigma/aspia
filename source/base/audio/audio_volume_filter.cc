@@ -18,8 +18,6 @@
 
 #include "base/audio/audio_volume_filter.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioVolumeFilter::AudioVolumeFilter(int silence_threshold)
     : silence_detector_(silence_threshold)
@@ -62,5 +60,3 @@ void AudioVolumeFilter::initialize(int sampling_rate, int channels)
 {
     silence_detector_.reset(sampling_rate, channels);
 }
-
-} // namespace base

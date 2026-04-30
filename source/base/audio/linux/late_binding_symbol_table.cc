@@ -22,8 +22,6 @@
 
 #include <dlfcn.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -92,5 +90,3 @@ bool internalLoadSymbols(DllHandle handle,
     }
     return true;
 }
-
-} // namespace base

@@ -34,7 +34,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 QString oldConfigFilePath()
 {
-    return base::BasePaths::appConfigDir() + "/router.json";
+    return BasePaths::appConfigDir() + "/router.json";
 }
 
 //--------------------------------------------------------------------------------------------------

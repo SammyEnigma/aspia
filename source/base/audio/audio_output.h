@@ -24,8 +24,6 @@
 #include <functional>
 #include <memory>
 
-namespace base {
-
 class AudioOutput : public QObject
 {
     Q_OBJECT
@@ -52,7 +50,5 @@ protected:
 private:
     NeedMoreDataCB need_more_data_cb_;
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_OUTPUT_H

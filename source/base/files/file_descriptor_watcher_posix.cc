@@ -23,8 +23,6 @@
 
 #include <asio/posix/descriptor.hpp>
 
-namespace base {
-
 class FileDescriptorWatcher::Watcher : public asio::posix::descriptor
 {
 public:
@@ -109,5 +107,3 @@ void FileDescriptorWatcher::startWatching(int fd, Mode mode, const Callback& cal
     impl_ = std::make_unique<Watcher>(fd, mode, callback);
     impl_->start();
 }
-
-} // namespace base

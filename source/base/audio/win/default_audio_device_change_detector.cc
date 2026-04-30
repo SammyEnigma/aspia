@@ -23,8 +23,6 @@
 #include <comdef.h>
 #include <unknwn.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DefaultAudioDeviceChangeDetector::DefaultAudioDeviceChangeDetector(
     const Microsoft::WRL::ComPtr<IMMDeviceEnumerator>& enumerator)
@@ -112,5 +110,3 @@ ULONG DefaultAudioDeviceChangeDetector::AddRef() { return 1; }
 
 //--------------------------------------------------------------------------------------------------
 ULONG DefaultAudioDeviceChangeDetector::Release() { return 1; }
-
-} // namespace base

@@ -22,8 +22,6 @@
 #include "base/audio/audio_output.h"
 #include "proto/desktop_audio.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioPlayer::AudioPlayer()
 {
@@ -123,5 +121,3 @@ bool AudioPlayer::init()
 
     return true;
 }
-
-} // namespace base

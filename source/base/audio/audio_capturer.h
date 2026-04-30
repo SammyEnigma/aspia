@@ -26,8 +26,6 @@
 #include <functional>
 #include <memory>
 
-namespace base {
-
 class AudioCapturer : public QObject
 {
     Q_OBJECT
@@ -53,7 +51,5 @@ public:
     // Capturers may choose the number of frames per packet. Returns true on success.
     virtual bool start(const PacketCapturedCallback& callback) = 0;
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_CAPTURER_H

@@ -52,19 +52,19 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 QString hostFilePath()
 {
-    return base::BasePaths::appConfigDir() + "/host.json";
+    return BasePaths::appConfigDir() + "/host.json";
 }
 
 //--------------------------------------------------------------------------------------------------
 QString hostKeyFilePath()
 {
-    return base::BasePaths::appConfigDir() + "/host_key.json";
+    return BasePaths::appConfigDir() + "/host_key.json";
 }
 
 //--------------------------------------------------------------------------------------------------
 QString hostIpcFilePath()
 {
-    return base::BasePaths::appConfigDir() + "/host_ipc.json";
+    return BasePaths::appConfigDir() + "/host_ipc.json";
 }
 
 //--------------------------------------------------------------------------------------------------

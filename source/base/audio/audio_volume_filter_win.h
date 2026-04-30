@@ -25,8 +25,6 @@
 #include <mmdeviceapi.h>
 #include <wrl/client.h>
 
-namespace base {
-
 // An implementation of AudioVolumeFilter for Windows only.
 class AudioVolumeFilterWin final : public AudioVolumeFilter
 {
@@ -45,7 +43,5 @@ protected:
 private:
     Microsoft::WRL::ComPtr<IAudioEndpointVolume> audio_volume_;
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_VOLUME_FILER_WIN_H

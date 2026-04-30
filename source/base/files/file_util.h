@@ -24,15 +24,11 @@
 
 #include <string_view>
 
-namespace base {
-
 bool writeFile(const QString& filename, const void* data, size_t size);
 bool writeFile(const QString& filename, const QByteArray& buffer);
 bool writeFile(const QString& filename, std::string_view buffer);
 
 bool readFile(const QString& filename, QByteArray* buffer);
 bool readFile(const QString& filename, std::string* buffer);
-
-} // namespace base
 
 #endif // BASE_FILES_FILE_UTIL_H

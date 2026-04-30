@@ -29,8 +29,6 @@ namespace proto::audio {
 class Packet;
 } // namespace proto::audio
 
-namespace base {
-
 class AudioOutput;
 
 class AudioPlayer
@@ -56,7 +54,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AudioPlayer)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_PLAYER_H

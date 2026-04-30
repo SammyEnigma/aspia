@@ -22,8 +22,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -72,5 +70,3 @@ QString BasePaths::genericUserDataDir()
 {
     return searchPathDirectory(NSApplicationSupportDirectory, NSUserDomainMask);
 }
-
-} // namespace base

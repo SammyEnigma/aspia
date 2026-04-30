@@ -22,8 +22,6 @@
 
 #include <avrt.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -111,5 +109,3 @@ bool ScopedMMCSSRegistration::isSucceeded() const
 {
     return mmcss_handle_ != nullptr;
 }
-
-} // namespace base

@@ -23,8 +23,9 @@
 
 struct _XDisplay;
 
-namespace base {
 class FileDescriptorWatcher;
+
+namespace base {
 class XServerClipboard;
 } // namespace base
 
@@ -49,7 +50,7 @@ private:
     std::unique_ptr<base::XServerClipboard> x_server_clipboard_;
 
     // Watcher used to handle X11 events from |display_|.
-    std::unique_ptr<base::FileDescriptorWatcher> x_connection_watcher_;
+    std::unique_ptr<FileDescriptorWatcher> x_connection_watcher_;
 
     // Connection to the X server, used by |x_server_clipboard_|. This is created and owned by
     // this class.

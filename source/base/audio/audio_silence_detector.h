@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 // Helper used in audio capturers to detect and drop silent audio packets.
 class AudioSilenceDetector
 {
@@ -55,7 +53,5 @@ private:
     // The count of channels.
     int channels_;
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_SILENCE_DETECTOR_H

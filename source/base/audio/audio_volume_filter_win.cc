@@ -22,8 +22,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioVolumeFilterWin::AudioVolumeFilterWin(int silence_threshold)
     : AudioVolumeFilter(silence_threshold)
@@ -80,5 +78,3 @@ float AudioVolumeFilterWin::audioLevel()
 
     return level;
 }
-
-} // namespace base

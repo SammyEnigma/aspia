@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 // Silence period threshold in seconds. Silence intervals shorter than this value are still encoded
@@ -86,5 +84,3 @@ int AudioSilenceDetector::channels() const
 {
     return channels_;
 }
-
-} // namespace base

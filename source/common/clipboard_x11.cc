@@ -53,10 +53,10 @@ void ClipboardX11::init()
     x_server_clipboard_->init(
         display_, std::bind(&ClipboardX11::onTextData, this, std::placeholders::_1));
 
-    x_connection_watcher_ = std::make_unique<base::FileDescriptorWatcher>();
+    x_connection_watcher_ = std::make_unique<FileDescriptorWatcher>();
     x_connection_watcher_->startWatching(
         ConnectionNumber(display_),
-        base::FileDescriptorWatcher::Mode::WATCH_READ,
+        FileDescriptorWatcher::Mode::WATCH_READ,
         std::bind(&ClipboardX11::pumpXEvents, this));
 
     pumpXEvents();

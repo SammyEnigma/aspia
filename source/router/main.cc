@@ -148,7 +148,7 @@ int generateAndPrintKeys(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 QString publicKeyDirectory()
 {
-    return base::BasePaths::appConfigDir();
+    return BasePaths::appConfigDir();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -257,7 +257,7 @@ int createConfig(QTextStream& out)
     out << "Private and public keys have been successfully generated." << Qt::endl;
     out << "Writing a public key to a file..." << Qt::endl;
 
-    if (!base::writeFile(public_key_file, public_key.toHex()))
+    if (!writeFile(public_key_file, public_key.toHex()))
     {
         out << "Failed to write public key to file: " << public_key_file << Qt::endl;
         return 1;

@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 class ScopedMMCSSRegistration
 {
 public:
@@ -36,7 +34,5 @@ private:
     HANDLE mmcss_handle_ = nullptr;
     Q_DISABLE_COPY_MOVE(ScopedMMCSSRegistration)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_WIN_SCOPED_MMCSS_REGISTRATION_H

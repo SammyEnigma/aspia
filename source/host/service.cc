@@ -339,7 +339,7 @@ void Service::onFileDownloaderCompleted()
 
         file_path = QDir::toNativeSeparators(file_path.append(file_name));
 
-        if (!base::writeFile(file_path, update_downloader_->data()))
+        if (!writeFile(file_path, update_downloader_->data()))
         {
             LOG(ERROR) << "Unable to write file" << file_path;
             break;

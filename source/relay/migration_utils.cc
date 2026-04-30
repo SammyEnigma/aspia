@@ -34,7 +34,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 QString oldConfigFilePath()
 {
-    return base::BasePaths::appConfigDir() + "/relay.json";
+    return BasePaths::appConfigDir() + "/relay.json";
 }
 
 //--------------------------------------------------------------------------------------------------

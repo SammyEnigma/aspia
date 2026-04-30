@@ -24,8 +24,6 @@
 #include <mmdeviceapi.h>
 #include <wrl/client.h>
 
-namespace base {
-
 // An IMMNotificationClient implementation to detect the change of the default audio output device
 // on the system. It registers itself into the input IMMDeviceEnumerator in constructor and
 // unregisters in destructor.
@@ -59,7 +57,5 @@ private:
     bool changed_ = false;
     std::mutex lock_;
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_WIN_DEFAULT_AUDIO_DEVICE_CHANGE_DETECTOR_H

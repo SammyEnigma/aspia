@@ -22,8 +22,6 @@
 #include "base/thread.h"
 #include "proto/desktop_audio.h"
 
-namespace base {
-
 class AudioCapturer;
 
 class AudioCapturerWrapper final : public QObject
@@ -44,12 +42,10 @@ private slots:
     void onAfterThreadRunning();
 
 private:
-    Thread thread_;
+    base::Thread thread_;
     std::unique_ptr<AudioCapturer> capturer_;
 
     Q_DISABLE_COPY_MOVE(AudioCapturerWrapper)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_CAPTURER_WRAPPER_H

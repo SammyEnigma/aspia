@@ -24,8 +24,6 @@
 #include <QDateTime>
 #endif
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -183,5 +181,3 @@ void FileEnumerator::advance()
     ++file_info_.pos_;
 #endif
 }
-
-} // namespace common

@@ -57,7 +57,7 @@ QString currentTime()
 //--------------------------------------------------------------------------------------------------
 QString historyDirectoryPath(const QString& history_id)
 {
-    QString base_path = base::BasePaths::appUserDataDir();
+    QString base_path = BasePaths::appUserDataDir();
     if (base_path.isEmpty())
     {
         LOG(ERROR) << "Unable to get app data directory";

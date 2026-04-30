@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class BasePaths
 {
 public:
@@ -89,7 +87,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(BasePaths)
 };
-
-} // namespace base
 
 #endif // BASE_FILES_BASE_PATHS_H

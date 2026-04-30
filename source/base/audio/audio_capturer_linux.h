@@ -21,8 +21,6 @@
 
 #include "base/audio/audio_capturer.h"
 
-namespace base {
-
 class AudioCapturerLinux final : public AudioCapturer
 {
 public:
@@ -35,7 +33,5 @@ public:
 private:
     Q_DISABLE_COPY(AudioCapturerLinux)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_CAPTURER_LINUX_H

@@ -32,8 +32,6 @@
 
 struct PaUtilRingBuffer;
 
-namespace base {
-
 class SimpleThread;
 
 class AudioOutputMac final : public AudioOutput
@@ -111,7 +109,5 @@ private:
 
     Q_DISABLE_COPY(AudioOutputMac)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_OUTPUT_MAC_H

@@ -24,8 +24,6 @@
 #include <functional>
 #include <memory>
 
-namespace base {
-
 class FileDescriptorWatcher
 {
 public:
@@ -48,7 +46,5 @@ private:
 
     Q_DISABLE_COPY(FileDescriptorWatcher)
 };
-
-} // namespace base
 
 #endif // BASE_FILES_FILE_DESCRIPTOR_WATCHER_POSIX_H

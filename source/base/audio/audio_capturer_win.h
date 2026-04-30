@@ -29,8 +29,6 @@
 
 class QTimer;
 
-namespace base {
-
 class DefaultAudioDeviceChangeDetector;
 
 // An AudioCapturer implementation for Windows by using Windows Audio Session API, a.k.a. WASAPI.
@@ -85,7 +83,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AudioCapturerWin)
 };
-
-} // namespace base
 
 #endif // BASE_AUDIO_AUDIO_CAPTURER_WIN_H

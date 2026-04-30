@@ -20,8 +20,6 @@
 
 #include <QFile>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -84,5 +82,3 @@ bool readFile(const QString& filename, std::string* buffer)
 {
     return readFileT<std::string>(filename, buffer);
 }
-
-} // namespace base

@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioCapturerLinux::AudioCapturerLinux(QObject* parent)
     : AudioCapturer(parent)
@@ -41,5 +39,3 @@ bool AudioCapturerLinux::start(const PacketCapturedCallback& callback)
     NOTIMPLEMENTED();
     return false;
 }
-
-} // namespace base

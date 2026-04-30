@@ -23,8 +23,6 @@
 #include "base/logging.h"
 #include "base/win/scoped_co_mem.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 Microsoft::WRL::ComPtr<IMMDeviceEnumerator> createDeviceEnumerator()
 {
@@ -319,5 +317,3 @@ bool isDeviceActive(IMMDevice* device)
     DWORD state = DEVICE_STATE_DISABLED;
     return SUCCEEDED(device->GetState(&state)) && (state & DEVICE_STATE_ACTIVE);
 }
-
-} // namespace base

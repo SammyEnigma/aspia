@@ -56,8 +56,6 @@ const int kMaxExpectedTimerLag = 30;
 
 }  // namespace
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 AudioCapturerWin::AudioCapturerWin(QObject* parent)
     : AudioCapturer(parent),
@@ -360,5 +358,3 @@ bool AudioCapturer::isSupported()
 {
     return true;
 }
-
-} // namespace base
