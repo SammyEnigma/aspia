@@ -32,8 +32,6 @@
 #include "base/net/udp_channel.h"
 #include "proto/key_exchange.h"
 
-namespace host {
-
 namespace {
 
 const qint64 kProbeIntervalMs = 5000;   // Check every 5 seconds.
@@ -712,5 +710,3 @@ void Client::setUdpState(const base::Location& location, UdpState state)
     CLOG(INFO) << "UDP state changed:" << udp_state_ << "->" << state << "(" << location << ")";
     udp_state_ = state;
 }
-
-} // namespace host

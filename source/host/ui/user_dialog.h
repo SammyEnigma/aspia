@@ -22,8 +22,6 @@
 #include "base/peer/user.h"
 #include "ui_user_dialog.h"
 
-namespace host {
-
 class UserDialog final : public QDialog
 {
     Q_OBJECT
@@ -54,7 +52,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UserDialog)
 };
-
-} // namespace host
 
 #endif // HOST_UI_USER_DIALOG_H

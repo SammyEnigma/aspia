@@ -21,8 +21,6 @@
 
 #include "base/gui_application.h"
 
-namespace host {
-
 class Application final : public base::GuiApplication
 {
     Q_OBJECT
@@ -42,7 +40,5 @@ signals:
 private:
     Q_DISABLE_COPY_MOVE(Application)
 };
-
-} // namespace host
 
 #endif // HOST_UI_APPLICATION_H

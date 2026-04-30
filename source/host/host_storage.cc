@@ -20,8 +20,6 @@
 
 #include "base/xml_settings.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 HostStorage::HostStorage()
     : impl_(base::XmlSettings::format(), QSettings::SystemScope, "aspia", "host_storage")
@@ -94,5 +92,3 @@ void HostStorage::setBootToSafeMode(bool enable)
 {
     impl_.setValue("boot_to_safe_mode", enable);
 }
-
-} // namespace host

@@ -42,8 +42,6 @@
 #include <spawn.h>
 #endif // defined(Q_OS_LINUX)
 
-namespace host {
-
 namespace {
 
 constexpr std::chrono::milliseconds kRestartTimeout { 5000 };
@@ -658,5 +656,3 @@ void DesktopManager::sendMessage(const QByteArray& buffer)
 
     ipc_channel_->send(0, buffer);
 }
-
-} // namespace host

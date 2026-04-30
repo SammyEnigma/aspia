@@ -25,8 +25,6 @@
 #include "base/win/session_info.h"
 #include "host/win/process_monitor.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 TaskManager::TaskManager(QObject* parent)
     : QObject(parent),
@@ -363,5 +361,3 @@ void TaskManager::sendUserList()
 
     emit sig_taskManagerMessage(message);
 }
-
-} // namespace host

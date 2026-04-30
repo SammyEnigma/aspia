@@ -37,8 +37,6 @@ namespace proto::clipboard {
 class Event;
 } // namespace proto::clipboard
 
-namespace host {
-
 class UserSessionAgent final : public QObject
 {
     Q_OBJECT
@@ -86,8 +84,8 @@ public slots:
     void onChat(const proto::chat::Chat& chat);
 
 signals:
-    void sig_statusChanged(host::UserSessionAgent::Status status);
-    void sig_clientListChanged(const host::UserSessionAgent::ClientList& clients);
+    void sig_statusChanged(UserSessionAgent::Status status);
+    void sig_clientListChanged(const UserSessionAgent::ClientList& clients);
     void sig_credentialsChanged(const proto::user::Credentials& credentials);
     void sig_routerStateChanged(const proto::user::RouterState& state);
     void sig_confirmationRequest(const proto::user::ConfirmationRequest& request);
@@ -119,9 +117,7 @@ private:
     Q_DISABLE_COPY_MOVE(UserSessionAgent)
 };
 
-} // namespace host
-
-Q_DECLARE_METATYPE(host::UserSessionAgent::Status)
-Q_DECLARE_METATYPE(host::UserSessionAgent::ClientList)
+Q_DECLARE_METATYPE(UserSessionAgent::Status)
+Q_DECLARE_METATYPE(UserSessionAgent::ClientList)
 
 #endif // HOST_USER_SESSION_AGENT_H

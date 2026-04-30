@@ -25,8 +25,6 @@ namespace base {
 class UserList;
 } // namespace peer
 
-namespace host {
-
 class SystemSettings
 {
     Q_GADGET
@@ -120,7 +118,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SystemSettings)
 };
-
-} // namespace host
 
 #endif // HOST_SYSTEM_SETTINGS_H

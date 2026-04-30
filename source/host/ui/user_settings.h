@@ -21,8 +21,6 @@
 
 #include <QSettings>
 
-namespace host {
-
 class UserSettings
 {
 public:
@@ -47,7 +45,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UserSettings)
 };
-
-} // namespace host
 
 #endif // HOST_UI_USER_SETTINGS_H

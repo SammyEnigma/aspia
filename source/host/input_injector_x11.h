@@ -26,8 +26,6 @@
 #include "base/x11/x11_headers.h"
 #include "host/input_injector.h"
 
-namespace host {
-
 class InputInjectorX11 final : public InputInjector
 {
 public:
@@ -79,7 +77,5 @@ private:
 
     Q_DISABLE_COPY(InputInjectorX11)
 };
-
-} // namespace host
 
 #endif // HOST_INPUT_INJECTOR_X11_H

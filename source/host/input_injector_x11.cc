@@ -22,8 +22,6 @@
 #include "base/x11/x11_headers.h"
 #include "common/keycode_converter.h"
 
-namespace host {
-
 namespace {
 
 // Pixel-to-wheel-ticks conversion ratio used by GTK.
@@ -478,5 +476,3 @@ void InputInjectorX11::releasePressedKeys()
         }
     }
 }
-
-} // namespace host

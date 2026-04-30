@@ -587,7 +587,7 @@ private:
 //
 //   // In .cc file (logging):
 //   CLOG(INFO) << "UDP ready";
-//   // Output: ... host::Client::onUdpReady : 231 [Client#1] UDP ready
+//   // Output: ... Client::onUdpReady : 231 [Client#1] UDP ready
 //
 // Each class has its own counter starting from 1:
 //   [Client#1], [Client#2], [StunPeer#1], [StunPeer#2], ...

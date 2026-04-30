@@ -54,8 +54,6 @@
 #include <shellapi.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -923,5 +921,3 @@ quint32 MainWindow::calcOneTimeSessions()
 
     return sessions;
 }
-
-} // namespace host

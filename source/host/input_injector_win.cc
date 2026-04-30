@@ -25,8 +25,6 @@
 #include "base/win/registry.h"
 #include "common/keycode_converter.h"
 
-namespace host {
-
 namespace {
 
 const quint32 kUsbCodeDelete = 0x07004c;
@@ -448,5 +446,3 @@ void InputInjectorWin::setBlockInputImpl(bool enable)
     block_input_ = enable;
     BlockInput(!!enable);
 }
-
-} // namespace host

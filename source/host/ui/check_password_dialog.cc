@@ -26,8 +26,6 @@
 #include "base/logging.h"
 #include "host/system_settings.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 CheckPasswordDialog::CheckPasswordDialog(QWidget* parent)
     : QDialog(parent)
@@ -80,5 +78,3 @@ void CheckPasswordDialog::onButtonBoxClicked(QAbstractButton* button)
 
     close();
 }
-
-} // namespace host

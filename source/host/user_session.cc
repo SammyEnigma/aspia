@@ -38,8 +38,6 @@
 #include <UserEnv.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 namespace {
 
 #if defined(Q_OS_UNIX)
@@ -799,5 +797,3 @@ void UserSession::sendMessage()
 
     ipc_channel_->send(proto::user::CHANNEL_ID_SERVICE, outgoing_message_.serialize());
 }
-
-} // namespace host

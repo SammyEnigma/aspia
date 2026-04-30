@@ -100,14 +100,14 @@ int hostMain(int argc, char* argv[])
         }
     }
 
-    host::Application::setApplicationVersion(ASPIA_VERSION_STRING);
-    host::Application::setHighDpiScaleFactorRoundingPolicy(
+    Application::setApplicationVersion(ASPIA_VERSION_STRING);
+    Application::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 
-    host::Application application(argc, argv);
-    host::Application::setQuitOnLastWindowClosed(false);
+    Application application(argc, argv);
+    Application::setQuitOnLastWindowClosed(false);
 
-    host::HostUtils::printDebugInfo();
+    HostUtils::printDebugInfo();
 
     QCommandLineOption hidden_option("hidden",
         base::GuiApplication::translate("HostMain", "Launch the application hidden."));
@@ -134,7 +134,7 @@ int hostMain(int argc, char* argv[])
 
     parser.process(application);
 
-    if (!host::HostUtils::integrityCheck())
+    if (!HostUtils::integrityCheck())
     {
         LOG(ERROR) << "Integrity check failed";
 
@@ -160,17 +160,17 @@ int hostMain(int argc, char* argv[])
     }
     else if (parser.isSet(import_option))
     {
-        if (!host::SettingsUtil::importFromFile(parser.value(import_option), parser.isSet(silent_option)))
+        if (!SettingsUtil::importFromFile(parser.value(import_option), parser.isSet(silent_option)))
             return 1;
     }
     else if (parser.isSet(export_option))
     {
-        if (!host::SettingsUtil::exportToFile(parser.value(export_option), parser.isSet(silent_option)))
+        if (!SettingsUtil::exportToFile(parser.value(export_option), parser.isSet(silent_option)))
             return 1;
     }
     else if (parser.isSet(update_option))
     {
-        UpdateDialog dialog(host::SystemSettings().updateServer(), "host");
+        UpdateDialog dialog(SystemSettings().updateServer(), "host");
         dialog.show();
         dialog.activateWindow();
 
@@ -186,18 +186,18 @@ int hostMain(int argc, char* argv[])
         else
 #endif // defined(Q_OS_WINDOWS)
         {
-            host::SystemSettings settings;
+            SystemSettings settings;
             if (settings.passwordProtection())
             {
-                host::CheckPasswordDialog dialog;
-                if (dialog.exec() == host::CheckPasswordDialog::Accepted)
+                CheckPasswordDialog dialog;
+                if (dialog.exec() == CheckPasswordDialog::Accepted)
                 {
-                    host::ConfigDialog().exec();
+                    ConfigDialog().exec();
                 }
             }
             else
             {
-                host::ConfigDialog().exec();
+                ConfigDialog().exec();
             }
         }
     }
@@ -212,9 +212,9 @@ int hostMain(int argc, char* argv[])
         {
             LOG(INFO) << "Application not running yet";
 
-            host::MainWindow window;
-            QObject::connect(&application, &host::Application::sig_activated,
-                             &window, &host::MainWindow::activateHost);
+            MainWindow window;
+            QObject::connect(&application, &Application::sig_activated,
+                             &window, &MainWindow::activateHost);
 
             if (parser.isSet(hidden_option))
             {

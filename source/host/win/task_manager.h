@@ -25,8 +25,6 @@
 
 #include "proto/task_manager.h"
 
-namespace host {
-
 class ProcessMonitor;
 
 class TaskManager final : public QObject
@@ -52,7 +50,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TaskManager)
 };
-
-} // namespace host
 
 #endif // HOST_WIN_TASK_MANAGER_H

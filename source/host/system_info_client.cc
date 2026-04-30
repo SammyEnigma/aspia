@@ -25,8 +25,6 @@
 #include "host/win/system_info.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 SystemInfoClient::SystemInfoClient(base::TcpChannel* tcp_channel, QObject* parent)
     : Client(tcp_channel, parent)
@@ -63,5 +61,3 @@ void SystemInfoClient::onMessage(quint8 channel_id, const QByteArray& buffer)
     send(proto::peer::CHANNEL_ID_0, base::serialize(system_info));
 #endif // defined(Q_OS_WINDOWS)
 }
-
-} // namespace host

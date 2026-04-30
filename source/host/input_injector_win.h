@@ -24,8 +24,6 @@
 #include "host/input_injector.h"
 #include "host/win/touch_injector.h"
 
-namespace host {
-
 class InputInjectorWin final : public InputInjector
 {
     Q_OBJECT
@@ -58,7 +56,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(InputInjectorWin)
 };
-
-} // namespace host
 
 #endif // HOST_INPUT_INJECTOR_WIN_H

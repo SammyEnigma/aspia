@@ -23,8 +23,6 @@
 #include "base/xml_settings.h"
 #include "proto/peer.h"
 
-namespace host {
-
 namespace {
 
 const QString kLocaleParam = "Locale";
@@ -96,5 +94,3 @@ void UserSettings::setOneTimeSessions(quint32 sessions)
 {
     settings_.setValue(kOneTimeSessionsParam, sessions);
 }
-
-} // namespace host

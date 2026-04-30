@@ -29,8 +29,6 @@
 class StatusDialog;
 class ChatWidget;
 
-namespace host {
-
 class NotifierWindow;
 
 class MainWindow final : public QMainWindow
@@ -63,8 +61,8 @@ protected:
     void closeEvent(QCloseEvent* event) final;
 
 private slots:
-    void onStatusChanged(host::UserSessionAgent::Status status);
-    void onClientListChanged(const host::UserSessionAgent::ClientList& clients);
+    void onStatusChanged(UserSessionAgent::Status status);
+    void onClientListChanged(const UserSessionAgent::ClientList& clients);
     void onCredentialsChanged(const proto::user::Credentials& credentials);
     void onRouterStateChanged(const proto::user::RouterState& state);
     void onConfirmationRequest(const proto::user::ConfirmationRequest& request);
@@ -107,7 +105,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(MainWindow)
 };
-
-} // namespace host
 
 #endif // HOST_UI_MAIN_WINDOW_H

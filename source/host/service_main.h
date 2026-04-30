@@ -21,10 +21,6 @@
 
 #include "host/host_export.h"
 
-namespace host {
-
 int HOST_EXPORT hostServiceMain(int& argc, char* argv[]);
-
-} // namespace host
 
 #endif // HOST_SERVICE_MAIN_H

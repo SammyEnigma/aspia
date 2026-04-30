@@ -39,8 +39,6 @@ class IpcChannel;
 class IpcServer;
 } // namespace base
 
-namespace host {
-
 class TaskManager;
 
 class DesktopClient final : public Client
@@ -101,7 +99,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopClient)
 };
-
-} // namespace host
 
 #endif // HOST_DESKTOP_CLIENT_H

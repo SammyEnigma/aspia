@@ -31,8 +31,6 @@
 #include "host/system_settings.h"
 #include "proto/router_host.h"
 
-namespace host {
-
 namespace {
 
 const std::chrono::seconds kReconnectTimeout{ 10 };
@@ -426,5 +424,3 @@ base::User RouterManager::createOneTimeUser() const
               << "sessions:" << one_time_sessions_ << ")";
     return user;
 }
-
-} // namespace host

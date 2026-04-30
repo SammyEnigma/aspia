@@ -21,10 +21,6 @@
 
 #include "base/session_id.h"
 
-namespace host {
-
 bool launchUpdater(base::SessionId session_id);
-
-} // namespace host
 
 #endif // HOST_WIN_UPDATER_LAUNCHER_H

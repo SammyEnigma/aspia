@@ -31,8 +31,6 @@
 #include <qt_windows.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 namespace {
 
 const char kActivateMessage[] = "activate";
@@ -133,5 +131,3 @@ void Application::activate()
     LOG(INFO) << "Sending activate message";
     sendMessage(kActivateMessage);
 }
-
-} // namespace host

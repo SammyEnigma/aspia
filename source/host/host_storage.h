@@ -23,8 +23,6 @@
 
 #include "base/peer/host_id.h"
 
-namespace host {
-
 class HostStorage
 {
 public:
@@ -51,7 +49,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(HostStorage)
 };
-
-} // namespace host
 
 #endif // HOST_HOST_STORAGE_H

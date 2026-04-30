@@ -21,8 +21,6 @@
 
 #include "host/input_injector.h"
 
-namespace host {
-
 class InputInjectorMac final : public InputInjector
 {
 public:
@@ -40,7 +38,5 @@ public:
 private:
     Q_DISABLE_COPY(InputInjectorMac)
 };
-
-} // namespace host
 
 #endif // HOST_INPUT_INJECTOR_MAC_H

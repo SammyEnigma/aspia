@@ -39,8 +39,8 @@ int desktopAgentMain(int& argc, char* argv[])
     base::Application::setApplicationVersion(ASPIA_VERSION_STRING);
     base::Application application(argc, argv);
 
-    host::HostUtils::printDebugInfo(
-        host::HostUtils::INCLUDE_VIDEO_ADAPTERS | host::HostUtils::INCLUDE_WINDOW_STATIONS);
+    HostUtils::printDebugInfo(
+        HostUtils::INCLUDE_VIDEO_ADAPTERS | HostUtils::INCLUDE_WINDOW_STATIONS);
 
     QCommandLineOption channel_id_option("channel_id",
         base::Application::translate("DesktopAgentMain", "IPC channel id."), "channel_id");
@@ -58,7 +58,7 @@ int desktopAgentMain(int& argc, char* argv[])
         return 1;
     }
 
-    host::DesktopAgent desktop_agent;
+    DesktopAgent desktop_agent;
     desktop_agent.start(parser.value(channel_id_option));
 
     return application.exec();

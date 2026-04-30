@@ -27,8 +27,6 @@
 #include "common/desktop_session_constants.h"
 #include "proto/desktop_channel.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 DesktopAgentClient::DesktopAgentClient(QObject* parent)
     : QObject(parent),
@@ -403,5 +401,3 @@ void DesktopAgentClient::sendCapabilities()
     CLOG(INFO) << "Sending:" << *capabilities;
     sendSessionMessage(proto::desktop::CHANNEL_ID_CONTROL, base::serialize(message), true);
 }
-
-} // namespace host

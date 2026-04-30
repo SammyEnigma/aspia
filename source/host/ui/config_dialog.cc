@@ -38,8 +38,6 @@
 #include "host/system_settings.h"
 #include "common/ui/update_dialog.h"
 
-namespace host {
-
 namespace {
 
 class UserTreeItem final : public QTreeWidgetItem
@@ -785,5 +783,3 @@ void ConfigDialog::reloadUserList(const base::UserList& user_list)
     ui.action_modify->setEnabled(false);
     ui.action_delete->setEnabled(false);
 }
-
-} // namespace host

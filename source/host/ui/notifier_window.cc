@@ -36,8 +36,6 @@
 #include <qt_windows.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 namespace {
 
 const int kRightPadding = 10;
@@ -514,5 +512,3 @@ QRect NotifierWindow::currentAvailableRect()
     return primary_screen->availableGeometry();
 #endif
 }
-
-} // namespace host

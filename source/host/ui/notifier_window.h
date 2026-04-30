@@ -22,8 +22,6 @@
 #include "host/user_session_agent.h"
 #include "ui_notifier_window.h"
 
-namespace host {
-
 class NotifierWindow final : public QWidget
 {
     Q_OBJECT
@@ -35,7 +33,7 @@ public:
     QList<quint32> sessions(proto::peer::SessionType session_type);
 
 public slots:
-    void onClientListChanged(const host::UserSessionAgent::ClientList& clients);
+    void onClientListChanged(const UserSessionAgent::ClientList& clients);
     void onLockMouse(bool value);
     void onLockKeyboard(bool value);
     void onPause(bool value);
@@ -75,7 +73,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(NotifierWindow)
 };
-
-} // namespace host
 
 #endif // HOST_UI_NOTIFIER_WINDOW_H

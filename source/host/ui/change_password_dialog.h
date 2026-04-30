@@ -21,8 +21,6 @@
 
 #include "ui_change_password_dialog.h"
 
-namespace host {
-
 class ChangePasswordDialog final : public QDialog
 {
     Q_OBJECT
@@ -44,7 +42,5 @@ private:
     Ui::ChangePasswordDialog ui;
     const Mode mode_;
 };
-
-} // namespace host
 
 #endif // HOST_UI_CHANGE_PASSWORD_DIALOG_H

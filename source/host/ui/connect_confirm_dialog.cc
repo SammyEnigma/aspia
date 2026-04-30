@@ -26,8 +26,6 @@
 #include "base/logging.h"
 #include "common/ui/session_type.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 ConnectConfirmDialog::ConnectConfirmDialog(
     const proto::user::ConfirmationRequest& request, QWidget* parent)
@@ -144,5 +142,3 @@ void ConnectConfirmDialog::updateMessage()
 
     ui.label_msg->setText(message_ + "<br/>" + timeout_string + "<br/><b>" + question_ + "</b>");
 }
-
-} // namespace host

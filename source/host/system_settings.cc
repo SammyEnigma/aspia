@@ -25,8 +25,6 @@
 #include "base/peer/user_list.h"
 #include "build/build_config.h"
 
-namespace host {
-
 namespace {
 
 const size_t kPasswordHashSaltSize = 256;
@@ -504,5 +502,3 @@ void SystemSettings::setUdpAllowed(bool enable)
 {
     settings_.setValue(kAllowUDP, enable);
 }
-
-} // namespace host

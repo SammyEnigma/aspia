@@ -47,8 +47,6 @@
 #include "host/host_storage.h"
 #include "host/system_settings.h"
 
-namespace host {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -715,5 +713,3 @@ void HostUtils::uninstallApplication()
     NOTIMPLEMENTED();
 #endif
 }
-
-} // namespace host

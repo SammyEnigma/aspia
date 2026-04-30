@@ -31,8 +31,6 @@ class IpcServer;
 class Location;
 } // namespace base
 
-namespace host {
-
 class FileClient final : public Client
 {
     Q_OBJECT
@@ -66,7 +64,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileClient)
 };
-
-} // namespace host
 
 #endif // HOST_DESKTOP_MANAGER_H

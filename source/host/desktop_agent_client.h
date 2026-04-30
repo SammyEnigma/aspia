@@ -36,8 +36,6 @@ namespace base {
 class IpcChannel;
 } // namespace base
 
-namespace host {
-
 class DesktopAgentClient final : public QObject
 {
     Q_OBJECT
@@ -115,7 +113,5 @@ private:
     LOG_DECLARE_CONTEXT(DesktopAgentClient);
     Q_DISABLE_COPY_MOVE(DesktopAgentClient)
 };
-
-} // namespace host
 
 #endif // HOST_DESKTOP_AGENT_CLIENT_H

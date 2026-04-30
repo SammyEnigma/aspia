@@ -42,8 +42,6 @@ class ScaleReducer;
 class VideoEncoder;
 } // namespace base
 
-namespace host {
-
 class DesktopAgentClient;
 class InputInjector;
 
@@ -148,7 +146,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopAgent)
 };
-
-} // namespace host
 
 #endif // HOST_DESKTOP_AGENT_H

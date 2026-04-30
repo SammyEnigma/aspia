@@ -48,8 +48,6 @@
 #include "host/input_injector_x11.h"
 #endif // defined(Q_OS_LINUX)
 
-namespace host {
-
 namespace {
 
 constexpr int kDefaultScreenCaptureFps = 24;
@@ -1066,5 +1064,3 @@ void DesktopAgent::encodeAudio(const proto::audio::Packet& packet)
     for (auto* client : std::as_const(clients_))
         client->onAudioData(buffer);
 }
-
-} // namespace host

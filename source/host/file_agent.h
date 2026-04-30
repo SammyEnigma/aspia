@@ -30,8 +30,6 @@ class IpcChannel;
 
 class FileWorker;
 
-namespace host {
-
 class FileAgent final : public QObject
 {
     Q_OBJECT
@@ -57,7 +55,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileAgent)
 };
-
-} // namespace host
 
 #endif // HOST_FILE_AGENT_H

@@ -21,8 +21,6 @@
 
 #include "ui_check_password_dialog.h"
 
-namespace host {
-
 class CheckPasswordDialog final : public QDialog
 {
     Q_OBJECT
@@ -37,7 +35,5 @@ private slots:
 private:
     Ui::CheckPasswordDialog ui;
 };
-
-} // namespace host
 
 #endif // HOST_UI_CHECK_PASSWORD_DIALOG_H

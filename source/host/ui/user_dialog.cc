@@ -25,8 +25,6 @@
 #include "common/ui/session_type.h"
 #include "proto/peer.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 UserDialog::UserDialog(const base::User& user, const QStringList& exist_names, QWidget* parent)
     : QDialog(parent),
@@ -284,5 +282,3 @@ void UserDialog::setAccountChanged(bool changed)
         ui.edit_password_repeat->installEventFilter(this);
     }
 }
-
-} // namespace host

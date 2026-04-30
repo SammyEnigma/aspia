@@ -32,8 +32,6 @@ class IpcServer;
 class Location;
 } // namespace base
 
-namespace host {
-
 class DesktopManager final : public QObject
 {
     Q_OBJECT
@@ -103,7 +101,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopManager)
 };
-
-} // namespace host
 
 #endif // HOST_DESKTOP_MANAGER_H

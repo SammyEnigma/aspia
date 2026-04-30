@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 InputInjectorMac::InputInjectorMac() = default;
 
@@ -63,5 +61,3 @@ void InputInjectorMac::injectTouchEvent(const proto::input::TouchEvent& /* event
 {
     NOTIMPLEMENTED();
 }
-
-} // namespace host

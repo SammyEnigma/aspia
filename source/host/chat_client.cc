@@ -22,8 +22,6 @@
 #include "base/serialization.h"
 #include "base/sys_info.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 ChatClient::ChatClient(base::TcpChannel* tcp_channel, QObject* parent)
     : Client(tcp_channel, parent)
@@ -75,5 +73,3 @@ void ChatClient::onMessage(quint8 channel_id, const QByteArray& buffer)
 
     emit sig_messageReceived(chat);
 }
-
-} // namespace host

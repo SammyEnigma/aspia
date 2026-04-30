@@ -28,12 +28,10 @@
 #include "proto/desktop_file.h"
 #include "proto/desktop_user.h"
 
-namespace host {
-
 namespace {
 
-auto g_statusType = qRegisterMetaType<host::UserSessionAgent::Status>();
-auto g_clientListType = qRegisterMetaType<host::UserSessionAgent::ClientList>();
+auto g_statusType = qRegisterMetaType<UserSessionAgent::Status>();
+auto g_clientListType = qRegisterMetaType<UserSessionAgent::ClientList>();
 
 } // namespace
 
@@ -379,5 +377,3 @@ void UserSessionAgent::sendNetworkMessage(quint8 net_channel_id, const QByteArra
     quint32 channel_id = base::makeUint32(proto::user::CHANNEL_ID_NETWORK, net_channel_id);
     ipc_channel_->send(channel_id, buffer);
 }
-
-} // namespace host

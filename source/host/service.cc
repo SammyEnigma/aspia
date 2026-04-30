@@ -58,8 +58,6 @@
 #include "host/host_utils.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 namespace {
 
 constexpr char kFirewallTcpRuleName[] = "Aspia Host Service (TCP)";
@@ -930,5 +928,3 @@ void Service::checkForUpdates()
     update_checker_->start();
 #endif // defined(Q_OS_WINDOWS)
 }
-
-} // namespace host

@@ -36,8 +36,6 @@ class IpcServer;
 class Location;
 } // namespace base
 
-namespace host {
-
 class UserSession final : public QObject
 {
     Q_OBJECT
@@ -122,7 +120,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UserSession)
 };
-
-} // namespace host
 
 #endif // HOST_USER_SESSION_MANAGER_H

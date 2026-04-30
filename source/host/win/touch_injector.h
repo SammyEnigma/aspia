@@ -25,8 +25,6 @@
 #include "host/win/touch_injector_defines.h"
 #include "proto/desktop_input.h"
 
-namespace host {
-
 class TouchInjector
 {
 public:
@@ -59,7 +57,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TouchInjector)
 };
-
-} // namespace host
 
 #endif // HOST_WIN_TOUCH_INJECTOR_H

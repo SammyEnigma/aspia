@@ -43,8 +43,6 @@
 #include "proto/file_transfer.h"
 #include "proto/user.h"
 
-namespace host {
-
 namespace {
 
 #if defined(Q_OS_LINUX)
@@ -433,5 +431,3 @@ void FileClient::onError(const base::Location& location)
 
     emit sig_finished();
 }
-
-} // namespace host

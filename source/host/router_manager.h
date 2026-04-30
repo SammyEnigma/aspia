@@ -36,8 +36,6 @@ namespace base {
 class RelayPeerManager;
 } // namespace base
 
-namespace host {
-
 class RouterManager final : public QObject
 {
     Q_OBJECT
@@ -107,7 +105,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(RouterManager)
 };
-
-} // namespace host
 
 #endif // HOST_ROUTER_MANAGER_H

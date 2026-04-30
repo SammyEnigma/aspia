@@ -39,7 +39,7 @@ int fileAgentMain(int& argc, char* argv[])
     base::Application::setApplicationVersion(ASPIA_VERSION_STRING);
 
     base::Application application(argc, argv);
-    host::HostUtils::printDebugInfo();
+    HostUtils::printDebugInfo();
 
     QCommandLineOption channel_id_option("channel_id",
         base::Application::translate("FileAgentMain", "IPC channel id."), "channel_id");
@@ -57,7 +57,7 @@ int fileAgentMain(int& argc, char* argv[])
         return 1;
     }
 
-    host::FileAgent file_agent;
+    FileAgent file_agent;
     file_agent.start(parser.value(channel_id_option));
 
     return application.exec();

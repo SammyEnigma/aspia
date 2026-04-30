@@ -39,8 +39,6 @@ class StunPeer;
 class UdpChannel;
 } // namespace base
 
-namespace host {
-
 class Client : public QObject
 {
     Q_OBJECT
@@ -163,8 +161,6 @@ private:
     Q_DISABLE_COPY_MOVE(Client)
 };
 
-} // namespace host
-
-Q_DECLARE_OPERATORS_FOR_FLAGS(host::Client::Features)
+Q_DECLARE_OPERATORS_FOR_FLAGS(Client::Features)
 
 #endif // HOST_CLIENT_H

@@ -46,8 +46,6 @@ namespace proto::chat {
 class Chat;
 } // namespace proto::chat
 
-namespace host {
-
 class Client;
 class DesktopManager;
 class RouterManager;
@@ -132,7 +130,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Service)
 };
-
-} // namespace host
 
 #endif // HOST_SERVICE_H

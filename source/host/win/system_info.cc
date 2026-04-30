@@ -43,8 +43,6 @@
 #include "common/system_info_constants.h"
 #include "host/win/process_monitor.h"
 
-namespace host {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -1096,5 +1094,3 @@ void createSystemInfo(const proto::system_info::SystemInfoRequest& request,
         LOG(ERROR) << "Unknown system info category:" << category;
     }
 }
-
-} // namespace host

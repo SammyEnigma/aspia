@@ -25,8 +25,6 @@
 #include "base/ipc/ipc_channel.h"
 #include "common/file_worker.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 FileAgent::FileAgent(QObject* parent)
     : QObject(parent),
@@ -89,5 +87,3 @@ void FileAgent::onIpcMessageReceived(
     worker_->doRequest(request_.message(), &reply_.newMessage());
     ipc_channel_->send(0, reply_.serialize());
 }
-
-} // namespace host

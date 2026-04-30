@@ -21,11 +21,7 @@
 
 #include "proto/system_info.h"
 
-namespace host {
-
 void createSystemInfo(const proto::system_info::SystemInfoRequest& request,
                       proto::system_info::SystemInfo* system_info);
-
-} // namespace host
 
 #endif // HOST_WIN_SYSTEM_INFO_H

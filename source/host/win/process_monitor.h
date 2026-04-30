@@ -23,8 +23,6 @@
 #include <QMap>
 #include <QString>
 
-namespace host {
-
 class ProcessMonitor
 {
 public:
@@ -79,7 +77,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ProcessMonitor)
 };
-
-} // namespace host
 
 #endif // HOST_WIN_PROCESS_MONITOR_H

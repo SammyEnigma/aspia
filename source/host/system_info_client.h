@@ -23,8 +23,6 @@
 
 #include "host/client.h"
 
-namespace host {
-
 class SystemInfoClient final : public Client
 {
     Q_OBJECT
@@ -40,7 +38,5 @@ protected:
 private:
     Q_DISABLE_COPY_MOVE(SystemInfoClient)
 };
-
-} // namespace host
 
 #endif // HOST_SYSTEM_INFO_CLIENT_H

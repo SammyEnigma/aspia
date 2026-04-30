@@ -27,8 +27,6 @@
 #include "base/xml_settings.h"
 #include "host/system_settings.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 // static
 bool SettingsUtil::importFromFile(const QString& path, bool silent, QWidget* parent)
@@ -177,5 +175,3 @@ bool SettingsUtil::copySettings(const QString& source_path,
 
     return true;
 }
-
-} // namespace host

@@ -21,8 +21,6 @@
 
 #include <QCoreApplication>
 
-namespace host {
-
 class SettingsUtil
 {
     Q_DECLARE_TR_FUNCTIONS(SettingsUtil)
@@ -39,7 +37,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SettingsUtil)
 };
-
-} // namespace host
 
 #endif // HOST_UI_SETTINGS_UTIL_H

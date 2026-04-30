@@ -22,8 +22,6 @@
 #include "host/client.h"
 #include "proto/chat.h"
 
-namespace host {
-
 class ChatClient final : public Client
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ protected:
 private:
     Q_DISABLE_COPY_MOVE(ChatClient)
 };
-
-} // namespace host
 
 #endif // HOST_CHAT_CLIENT_H

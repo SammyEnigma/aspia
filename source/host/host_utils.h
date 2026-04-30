@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace host {
-
 class HostUtils
 {
 public:
@@ -46,7 +44,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(HostUtils)
 };
-
-} // namespace host
 
 #endif // HOST_HOST_UTILS_H

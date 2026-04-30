@@ -27,8 +27,6 @@
 #include "base/logging.h"
 #include "base/win/scoped_object.h"
 
-namespace host {
-
 namespace {
 
 // Name of the default session desktop.
@@ -143,5 +141,3 @@ bool launchUpdater(base::SessionId session_id)
 
     return createProcessWithToken(user_token, command_line);
 }
-
-} // namespace host

@@ -23,8 +23,6 @@
 #include "base/logging.h"
 #include "base/desktop/win/screen_capture_utils.h"
 
-namespace host {
-
 namespace {
 
 const quint32 kMaxSimultaneousTouchCount = 10;
@@ -280,5 +278,3 @@ void TouchInjector::cancelTouchPoints(const proto::input::TouchEvent& event)
         PLOG(ERROR) << "Failed to inject a touch cancel event";
     }
 }
-
-} // namespace host

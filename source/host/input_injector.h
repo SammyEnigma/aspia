@@ -24,8 +24,6 @@
 
 #include "proto/desktop_input.h"
 
-namespace host {
-
 class InputInjector : public QObject
 {
     Q_OBJECT
@@ -45,7 +43,5 @@ public:
     virtual void injectMouseEvent(const proto::input::MouseEvent& event) = 0;
     virtual void injectTouchEvent(const proto::input::TouchEvent& event) = 0;
 };
-
-} // namespace host
 
 #endif // HOST_INPUT_INJECTOR_H

@@ -32,8 +32,6 @@
 #include <Psapi.h>
 #pragma warning(pop)
 
-namespace host {
-
 namespace {
 
 typedef struct {
@@ -593,5 +591,3 @@ void ProcessMonitor::updateTable()
             ++it;
     }
 }
-
-} // namespace host

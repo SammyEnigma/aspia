@@ -26,8 +26,6 @@
 #include "base/logging.h"
 #include "host/system_settings.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 ChangePasswordDialog::ChangePasswordDialog(Mode mode, QWidget* parent)
     : QDialog(parent),
@@ -157,5 +155,3 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
 
     close();
 }
-
-} // namespace host

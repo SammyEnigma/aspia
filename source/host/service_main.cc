@@ -30,13 +30,11 @@
 #include "host/host_storage.h"
 #include "host/service.h"
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 int startService(QTextStream& out)
 {
     std::unique_ptr<base::ServiceController> controller =
-        base::ServiceController::open(host::Service::kName);
+        base::ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -56,7 +54,7 @@ int startService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int stopService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(host::Service::kName);
+    std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -77,14 +75,14 @@ int stopService(QTextStream& out)
 int installService(QTextStream& out)
 {
     std::unique_ptr<base::ServiceController> controller = base::ServiceController::install(
-        host::Service::kName, host::Service::kDisplayName, base::Application::applicationFilePath());
+        Service::kName, Service::kDisplayName, base::Application::applicationFilePath());
     if (!controller)
     {
         out << "Failed to install the service." << Qt::endl;
         return 1;
     }
 
-    controller->setDescription(host::Service::kDescription);
+    controller->setDescription(Service::kDescription);
     out << "The service has been successfully installed." << Qt::endl;
     return 0;
 }
@@ -92,10 +90,10 @@ int installService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int removeService(QTextStream& out)
 {
-    if (base::ServiceController::isRunning(host::Service::kName))
+    if (base::ServiceController::isRunning(Service::kName))
         stopService(out);
 
-    if (!base::ServiceController::remove(host::Service::kName))
+    if (!base::ServiceController::remove(Service::kName))
     {
         out << "Failed to remove the service." << Qt::endl;
         return 1;
@@ -124,7 +122,7 @@ int hostServiceMain(int& argc, char* argv[])
         return 1;
     }
 
-    host::HostUtils::printDebugInfo();
+    HostUtils::printDebugInfo();
 
     QCommandLineOption install_option("install",
         base::Application::translate("ServiceMain", "Install service."));
@@ -168,5 +166,3 @@ int hostServiceMain(int& argc, char* argv[])
 
     return Service().exec(application);
 }
-
-} // namespace host

@@ -21,5 +21,5 @@
 //--------------------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 {
-    return host::hostServiceMain(argc, argv);
+    return hostServiceMain(argc, argv);
 }

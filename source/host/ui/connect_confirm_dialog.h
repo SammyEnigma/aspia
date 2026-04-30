@@ -24,8 +24,6 @@
 #include "proto/user.h"
 #include "ui_connect_confirm_dialog.h"
 
-namespace host {
-
 class ConnectConfirmDialog final : public QDialog
 {
     Q_OBJECT
@@ -51,7 +49,5 @@ private:
     bool auto_accept_ = false;
     int time_seconds_ = 0;
 };
-
-} // namespace host
 
 #endif // HOST_UI_CONNECT_CONFIRM_DIALOG_H

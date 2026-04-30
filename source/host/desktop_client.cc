@@ -39,8 +39,6 @@
 #include "host/win/task_manager.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace host {
-
 //--------------------------------------------------------------------------------------------------
 DesktopClient::DesktopClient(base::TcpChannel* tcp_channel, QObject* parent)
     : Client(tcp_channel, parent),
@@ -496,5 +494,3 @@ void DesktopClient::readTaskManager(const proto::task_manager::ClientToHost& mes
     task_manager_->readMessage(message);
 #endif // defined(Q_OS_WINDOWS)
 }
-
-} // namespace host
