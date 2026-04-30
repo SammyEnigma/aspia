@@ -214,7 +214,7 @@ bool IpcChannel::connectAttempt()
 
         if (error_code != ERROR_PIPE_BUSY)
         {
-            CLOG(ERROR) << "Failed to connect to the named pipe:" << base::SystemError::toString(error_code)
+            CLOG(ERROR) << "Failed to connect to the named pipe:" << SystemError::toString(error_code)
                         << "(channel" << channel_name_ << ")";
             return false;
         }

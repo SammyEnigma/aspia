@@ -183,7 +183,7 @@ bool SafeModeUtil::setSafeModeService(const QString& service_name, bool enable)
         LONG status = key.create(HKEY_LOCAL_MACHINE, key_path, KEY_READ | KEY_WRITE);
         if (status != ERROR_SUCCESS)
         {
-            LOG(ERROR) << "create failed:" << base::SystemError::toString(static_cast<ULONG>(status));
+            LOG(ERROR) << "create failed:" << SystemError::toString(static_cast<ULONG>(status));
             return false;
         }
 
@@ -191,7 +191,7 @@ bool SafeModeUtil::setSafeModeService(const QString& service_name, bool enable)
         if (status != ERROR_SUCCESS)
         {
             LOG(ERROR) << "writeValue failed:"
-                       << base::SystemError::toString(static_cast<ULONG>(status));
+                       << SystemError::toString(static_cast<ULONG>(status));
         }
     }
     else
@@ -206,7 +206,7 @@ bool SafeModeUtil::setSafeModeService(const QString& service_name, bool enable)
         if (status != ERROR_SUCCESS)
         {
             LOG(ERROR) << "RegDeleteTreeW failed:"
-                       << base::SystemError::toString(static_cast<ULONG>(status));
+                       << SystemError::toString(static_cast<ULONG>(status));
             return false;
         }
     }

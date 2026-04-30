@@ -221,7 +221,7 @@ bool shouldCreateLogMessage(LoggingSeverity severity);
   LOG_IF(FATAL, !(condition)) << "Assert failed: " #condition ". "
 
 #define PLOG_STREAM(severity) \
-  COMPACT_LOG_EX_ ## severity(ErrorLogMessage, ::base::SystemError::last()).stream()
+  COMPACT_LOG_EX_ ## severity(ErrorLogMessage, ::SystemError::last()).stream()
 
 #define PLOG(severity) \
   LAZY_STREAM(PLOG_STREAM(severity), LOG_IS_ON(severity))

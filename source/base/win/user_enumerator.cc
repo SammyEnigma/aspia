@@ -32,7 +32,7 @@ UserEnumerator::UserEnumerator()
         MAX_PREFERRED_LENGTH, &entries_read, &total_entries_, nullptr);
     if (error_code != NERR_Success)
     {
-        LOG(ERROR) << "NetUserEnum failed:" << base::SystemError(error_code).toString();
+        LOG(ERROR) << "NetUserEnum failed:" << SystemError(error_code).toString();
         return;
     }
 }
@@ -103,7 +103,7 @@ QVector<std::pair<QString, QString>> UserEnumerator::groups() const
         reinterpret_cast<LPBYTE*>(&group_info), MAX_PREFERRED_LENGTH, &entries_read, &total_entries);
     if (error_code != NERR_Success)
     {
-        LOG(ERROR) << "NetUserGetLocalGroups failed:" << base::SystemError(error_code).toString();
+        LOG(ERROR) << "NetUserGetLocalGroups failed:" << SystemError(error_code).toString();
         return {};
     }
 
@@ -189,7 +189,7 @@ UserGroupEnumerator::UserGroupEnumerator()
         MAX_PREFERRED_LENGTH, &entries_read, &total_entries_, nullptr);
     if (error_code != NERR_Success)
     {
-        LOG(ERROR) << "NetLocalGroupEnum failed:" << base::SystemError(error_code).toString();
+        LOG(ERROR) << "NetLocalGroupEnum failed:" << SystemError(error_code).toString();
         return;
     }
 }

@@ -25,8 +25,6 @@
 #include <cerrno>
 #endif
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 SystemError::SystemError(Code code)
     : code_(code)
@@ -79,5 +77,3 @@ QString SystemError::toString(Code code)
 #error Platform support not implemented
 #endif
 }
-
-} // namespace base

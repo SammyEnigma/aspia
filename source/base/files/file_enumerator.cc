@@ -119,7 +119,7 @@ FileEnumerator::FileEnumerator(const QString& root_path)
     {
         DWORD error_code = GetLastError();
         LOG(ERROR) << "Unable to get file list for" << root_path << ":"
-                   << base::SystemError::toString(error_code);
+                   << SystemError::toString(error_code);
     }
 
     while (find_handle_ != INVALID_HANDLE_VALUE)

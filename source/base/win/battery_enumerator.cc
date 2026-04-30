@@ -95,7 +95,7 @@ bool BatteryEnumerator::isAtEnd() const
         if (error_code != ERROR_NO_MORE_ITEMS)
         {
             LOG(ERROR) << "SetupDiEnumDeviceInfo failed:"
-                       << base::SystemError(error_code).toString();
+                       << SystemError(error_code).toString();
         }
 
         return true;

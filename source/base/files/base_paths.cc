@@ -48,7 +48,7 @@ QString BasePaths::genericConfigDir()
     HRESULT hr = SHGetFolderPathW(nullptr, CSIDL_COMMON_APPDATA, nullptr, SHGFP_TYPE_CURRENT, buffer);
     if (FAILED(hr))
     {
-        LOG(ERROR) << "SHGetFolderPathW failed:" << base::SystemError::toString(hr);
+        LOG(ERROR) << "SHGetFolderPathW failed:" << SystemError::toString(hr);
         return QString();
     }
 
@@ -72,7 +72,7 @@ QString BasePaths::genericUserConfigDir()
     HRESULT hr = SHGetFolderPathW(nullptr, CSIDL_APPDATA, nullptr, SHGFP_TYPE_CURRENT, buffer);
     if (FAILED(hr))
     {
-        LOG(ERROR) << "SHGetFolderPathW failed:" << base::SystemError::toString(hr);
+        LOG(ERROR) << "SHGetFolderPathW failed:" << SystemError::toString(hr);
         return QString();
     }
 
@@ -175,7 +175,7 @@ QString BasePaths::userHome()
     HRESULT hr = SHGetFolderPathW(nullptr, CSIDL_PROFILE, nullptr, SHGFP_TYPE_CURRENT, buffer);
     if (FAILED(hr))
     {
-        LOG(ERROR) << "SHGetFolderPathW failed: " << base::SystemError::toString(hr);
+        LOG(ERROR) << "SHGetFolderPathW failed: " << SystemError::toString(hr);
         return QString();
     }
 

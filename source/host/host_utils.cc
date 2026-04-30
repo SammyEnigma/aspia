@@ -704,7 +704,7 @@ void HostUtils::uninstallApplication()
     const UINT rc = msiEnumRelatedProducts(kUpgradeCode, 0, 0, productCode);
     if (rc != ERROR_SUCCESS)
     {
-        LOG(ERROR) << "MsiEnumRelatedProductsW failed:" << base::SystemError::toString(rc);
+        LOG(ERROR) << "MsiEnumRelatedProductsW failed:" << SystemError::toString(rc);
         return;
     }
 

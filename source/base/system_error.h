@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class SystemError
 {
 public:
@@ -55,7 +53,5 @@ public:
 private:
     Code code_;
 };
-
-} // namespace base
 
 #endif // BASE_SYSTEM_ERROR_H

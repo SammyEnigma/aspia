@@ -62,7 +62,7 @@ bool DeviceEnumerator::isAtEnd() const
         DWORD error_code = GetLastError();
 
         if (error_code != ERROR_NO_MORE_ITEMS)
-            LOG(ERROR) << "SetupDiEnumDeviceInfo failed:" << base::SystemError(error_code).toString();
+            LOG(ERROR) << "SetupDiEnumDeviceInfo failed:" << SystemError(error_code).toString();
         return true;
     }
 
@@ -139,7 +139,7 @@ QString DeviceEnumerator::driverRegistryString(const QString& key_name) const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to read key value:"
-                   << base::SystemError(static_cast<DWORD>(status)).toString();
+                   << SystemError(static_cast<DWORD>(status)).toString();
         return QString();
     }
 
@@ -164,7 +164,7 @@ DWORD DeviceEnumerator::driverRegistryDW(const QString& key_name) const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to read key value"
-                   << base::SystemError(static_cast<DWORD>(status)).toString();
+                   << SystemError(static_cast<DWORD>(status)).toString();
         return 0;
     }
 
@@ -221,7 +221,7 @@ Edid MonitorEnumerator::edid() const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to open registry key:"
-                   << base::SystemError(static_cast<DWORD>(status)).toString();
+                   << SystemError(static_cast<DWORD>(status)).toString();
         return Edid();
     }
 
@@ -230,7 +230,7 @@ Edid MonitorEnumerator::edid() const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to read EDID data from registry:"
-                   << base::SystemError(static_cast<DWORD>(status)).toString();
+                   << SystemError(static_cast<DWORD>(status)).toString();
         return Edid();
     }
 

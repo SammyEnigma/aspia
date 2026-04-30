@@ -64,7 +64,7 @@ ScopedSasPolicy::ScopedSasPolicy()
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "key.create failed:"
-                   << base::SystemError::toString(static_cast<DWORD>(status));
+                   << SystemError::toString(static_cast<DWORD>(status));
         return;
     }
 
@@ -82,7 +82,7 @@ ScopedSasPolicy::ScopedSasPolicy()
         if (status != ERROR_SUCCESS)
         {
             LOG(ERROR) << "key.writeValue failed:"
-                       << base::SystemError::toString(static_cast<DWORD>(status));
+                       << SystemError::toString(static_cast<DWORD>(status));
             key_.close();
         }
     }
@@ -98,7 +98,7 @@ ScopedSasPolicy::~ScopedSasPolicy()
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "key.writeValue failed:"
-                   << base::SystemError::toString(static_cast<DWORD>(status));
+                   << SystemError::toString(static_cast<DWORD>(status));
         return;
     }
 }

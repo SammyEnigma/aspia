@@ -47,7 +47,7 @@ bool addApplication(
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to open registry key:"
-                   << base::SystemError(static_cast<DWORD>(status)).toString();
+                   << SystemError(static_cast<DWORD>(status)).toString();
         return false;
     }
 
