@@ -20,8 +20,6 @@
 
 #include <vector>
 
-namespace base {
-
 namespace  {
 
 //--------------------------------------------------------------------------------------------------
@@ -153,5 +151,3 @@ std::u16string NSStringToUtf16(NSString* nsstring)
         return std::u16string();
     return CFStringRefToUtf16(reinterpret_cast<CFStringRef>(nsstring));
 }
-
-} // namespace base

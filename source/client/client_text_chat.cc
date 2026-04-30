@@ -37,7 +37,7 @@ ClientChat::~ClientChat()
 //--------------------------------------------------------------------------------------------------
 void ClientChat::onChatMessage(const proto::chat::Chat& chat)
 {
-    sendMessage(proto::peer::CHANNEL_ID_0, base::serialize(chat));
+    sendMessage(proto::peer::CHANNEL_ID_0, serialize(chat));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ void ClientChat::onMessageReceived(quint8 channel_id, const QByteArray& buffer)
         return;
 
     proto::chat::Chat chat;
-    if (!base::parse(buffer, &chat))
+    if (!parse(buffer, &chat))
     {
         CLOG(ERROR) << "Unable to parse text chat message";
         return;

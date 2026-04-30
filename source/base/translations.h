@@ -27,8 +27,6 @@
 
 class QTranslator;
 
-namespace base {
-
 class Translations
 {
 public:
@@ -50,7 +48,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Translations)
 };
-
-} // namespace base
 
 #endif // BASE_TRANSLATIONS_H

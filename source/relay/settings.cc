@@ -25,7 +25,7 @@ namespace relay {
 
 //--------------------------------------------------------------------------------------------------
 Settings::Settings()
-    : impl_(base::XmlSettings::format(), QSettings::SystemScope, "aspia", "relay")
+    : impl_(XmlSettings::format(), QSettings::SystemScope, "aspia", "relay")
 {
     // Nothing
 }

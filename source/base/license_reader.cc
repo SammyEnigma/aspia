@@ -25,8 +25,6 @@
 #include "base/win/windows_version.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -438,5 +436,3 @@ void readLicensesInformation(proto::system_info::Licenses* licenses)
     NOTIMPLEMENTED();
 #endif
 }
-
-} // namespace base

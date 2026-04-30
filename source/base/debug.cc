@@ -24,8 +24,6 @@
 #include <qt_windows.h>
 #endif
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 bool isDebuggerPresent()
 {
@@ -73,5 +71,3 @@ void debugBreak()
 #error CPU family support not implemented
 #endif // Q_PROCESSOR_*
 }
-
-} // namespace base

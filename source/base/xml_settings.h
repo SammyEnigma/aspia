@@ -21,8 +21,6 @@
 
 #include <QSettings>
 
-namespace base {
-
 class XmlSettings
 {
 public:
@@ -34,7 +32,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(XmlSettings)
 };
-
-} // namespace base
 
 #endif // BASE_XML_SETTINGS_H

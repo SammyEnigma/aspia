@@ -32,7 +32,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 int startService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(relay::Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(relay::Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -52,7 +52,7 @@ int startService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int stopService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(relay::Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(relay::Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -72,7 +72,7 @@ int stopService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int installService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller = base::ServiceController::install(
+    std::unique_ptr<ServiceController> controller = ServiceController::install(
         relay::Service::kName, relay::Service::kDisplayName, QCoreApplication::applicationFilePath());
     if (!controller)
     {
@@ -88,10 +88,10 @@ int installService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int removeService(QTextStream& out)
 {
-    if (base::ServiceController::isRunning(relay::Service::kName))
+    if (ServiceController::isRunning(relay::Service::kName))
         stopService(out);
 
-    if (!base::ServiceController::remove(relay::Service::kName))
+    if (!ServiceController::remove(relay::Service::kName))
     {
         out << "Failed to remove the service." << Qt::endl;
         return 1;
@@ -130,10 +130,10 @@ int main(int argc, char* argv[])
 
     base::ScopedLogging scoped_logging(logging_settings);
 
-    base::Application::setEventDispatcher(new base::AsioEventDispatcher());
-    base::Application::setApplicationVersion(ASPIA_VERSION_STRING);
+    base::CoreApplication::setEventDispatcher(new AsioEventDispatcher());
+    base::CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
 
-    base::Application application(argc, argv);
+    base::CoreApplication application(argc, argv);
 
     QCommandLineOption create_config_option("create-config", "Creates a configuration.");
     QCommandLineOption install_option("install", "Install service.");
@@ -153,7 +153,7 @@ int main(int argc, char* argv[])
     parser.process(application);
 
     LOG(INFO) << "Version:" << ASPIA_VERSION_STRING << "(arch:" << QSysInfo::buildCpuArchitecture() << ")";
-    LOG(INFO) << "Command line:" << base::Application::arguments();
+    LOG(INFO) << "Command line:" << base::CoreApplication::arguments();
 
     QTextStream out(stdout, QIODevice::WriteOnly);
 

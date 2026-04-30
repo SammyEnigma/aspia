@@ -24,8 +24,6 @@
 #include <malloc.h>
 #endif
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void* alignedAlloc(size_t size, size_t alignment)
 {
@@ -50,5 +48,3 @@ void* alignedAlloc(size_t size, size_t alignment)
     DCHECK_EQ((reinterpret_cast<uintptr_t>(ptr) & (alignment - 1)), 0U);
     return ptr;
 }
-
-} // namespace base

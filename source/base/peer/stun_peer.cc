@@ -197,7 +197,7 @@ void StunPeer::onHostResolved(const QHostInfo& host_info)
     request->set_magic_number(0xA0B1C2D3);
     request->set_transaction_id(transaction_id_);
 
-    QByteArray buffer = base::serialize(message);
+    QByteArray buffer = serialize(message);
     if (buffer.isEmpty())
     {
         onErrorOccurred(FROM_HERE);
@@ -248,7 +248,7 @@ void StunPeer::onReadyRead()
     }
 
     proto::stun::StunToPeer message;
-    if (!base::parse(QByteArray(recv_buffer, received), &message))
+    if (!parse(QByteArray(recv_buffer, received), &message))
     {
         onErrorOccurred(FROM_HERE);
         return;
@@ -295,7 +295,7 @@ void StunPeer::onReadyRead()
 }
 
 //--------------------------------------------------------------------------------------------------
-void StunPeer::onErrorOccurred(const base::Location& location)
+void StunPeer::onErrorOccurred(const Location& location)
 {
     CLOG(ERROR) << "STUN error occurred" << location;
     timer_->stop();

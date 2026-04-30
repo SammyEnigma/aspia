@@ -29,8 +29,6 @@
 #include "base/win/session_info.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -185,7 +183,7 @@ bool PowerController::reboot()
 bool PowerController::logoff()
 {
 #if defined(Q_OS_WINDOWS)
-    DWORD session_id = base::kInvalidSessionId;
+    DWORD session_id = kInvalidSessionId;
     if (!ProcessIdToSessionId(GetCurrentProcessId(), &session_id))
         PLOG(ERROR) << "ProcessIdToSessionId failed";
 
@@ -229,5 +227,3 @@ bool PowerController::lock()
     return false;
 #endif
 }
-
-} // namespace base

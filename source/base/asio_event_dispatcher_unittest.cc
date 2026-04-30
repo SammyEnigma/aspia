@@ -27,8 +27,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 class ED_TestObject : public QObject
 {
 public:
@@ -743,5 +741,3 @@ TEST(SocketTest, EchoClientServer)
 
     SUCCEED();
 }
-
-} // namespace base

@@ -70,7 +70,7 @@ void TaskManager::readMessage(const proto::task_manager::ClientToHost& message)
         {
             case proto::task_manager::ServiceRequest::COMMAND_START:
             {
-                std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(
+                std::unique_ptr<ServiceController> controller = ServiceController::open(
                     QString::fromStdString(message.service_request().name()));
                 if (!controller)
                 {
@@ -90,7 +90,7 @@ void TaskManager::readMessage(const proto::task_manager::ClientToHost& message)
 
             case proto::task_manager::ServiceRequest::COMMAND_STOP:
             {
-                std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(
+                std::unique_ptr<ServiceController> controller = ServiceController::open(
                     QString::fromStdString(message.service_request().name()));
                 if (!controller)
                 {
@@ -122,7 +122,7 @@ void TaskManager::readMessage(const proto::task_manager::ClientToHost& message)
     }
     else if (message.has_user_request())
     {
-        if (message.user_request().session_id() == base::kInvalidSessionId)
+        if (message.user_request().session_id() == kInvalidSessionId)
         {
             LOG(ERROR) << "Invalid session id";
             return;
@@ -297,7 +297,7 @@ void TaskManager::sendUserList()
     for (SessionEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         // Skip services.
-        if (enumerator.sessionId() == base::kServiceSessionId)
+        if (enumerator.sessionId() == kServiceSessionId)
             continue;
 
         SessionInfo session_info(enumerator.sessionId());

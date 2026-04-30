@@ -94,7 +94,7 @@ private:
     QString one_time_password_;
     quint32 one_time_sessions_ = 0;
 
-    base::SharedPointer<UserListBase> user_list_;
+    SharedPointer<UserListBase> user_list_;
 
     HostId host_id_ = kInvalidHostId;
     proto::user::RouterState router_state_;

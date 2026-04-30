@@ -58,7 +58,7 @@ void OnlineChecker::start(const ComputerList& computers)
     if (!router_computers_.isEmpty())
     {
         router_checker_ = new OnlineCheckerRouter(router_computers_);
-        router_checker_->moveToThread(base::GuiApplication::ioThread());
+        router_checker_->moveToThread(GuiApplication::ioThread());
 
         connect(router_checker_, &OnlineCheckerRouter::sig_checkerResult,
                 this, &OnlineChecker::onRouterCheckerResult,
@@ -80,7 +80,7 @@ void OnlineChecker::start(const ComputerList& computers)
         LOG(INFO) << "Computers for DIRECT checking:" << direct_computers_.size();
 
         direct_checker_ = new OnlineCheckerDirect(direct_computers_);
-        direct_checker_->moveToThread(base::GuiApplication::ioThread());
+        direct_checker_->moveToThread(GuiApplication::ioThread());
 
         connect(direct_checker_, &OnlineCheckerDirect::sig_checkerResult,
                 this, &OnlineChecker::onDirectCheckerResult,

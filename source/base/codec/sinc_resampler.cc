@@ -167,10 +167,10 @@ SincResampler::SincResampler(double io_sample_rate_ratio,
       request_frames_(request_frames),
       input_buffer_size_(request_frames_ + kKernelSize),
       // Create input buffers with a 16-byte alignment for SSE optimizations.
-      kernel_storage_(static_cast<float*>(base::alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
-      kernel_pre_sinc_storage_(static_cast<float*>(base::alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
-      kernel_window_storage_(static_cast<float*>(base::alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
-      input_buffer_(static_cast<float*>(base::alignedAlloc(sizeof(float) * input_buffer_size_, 16))),
+      kernel_storage_(static_cast<float*>(alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
+      kernel_pre_sinc_storage_(static_cast<float*>(alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
+      kernel_window_storage_(static_cast<float*>(alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
+      input_buffer_(static_cast<float*>(alignedAlloc(sizeof(float) * input_buffer_size_, 16))),
       r1_(input_buffer_.get()),
       r2_(input_buffer_.get() + kKernelSize / 2)
 {

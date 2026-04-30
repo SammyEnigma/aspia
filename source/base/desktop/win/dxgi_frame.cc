@@ -83,7 +83,7 @@ bool DxgiFrame::prepare(const QSize& size, ScreenCapturer::ScreenId source_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-base::SharedPointer<Frame> DxgiFrame::frame() const
+SharedPointer<Frame> DxgiFrame::frame() const
 {
     DCHECK(frame_);
     return frame_;

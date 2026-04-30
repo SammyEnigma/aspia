@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 const size_t kSmbiosMaxDataSize = 0xFA00; // 64kB
 
 struct SmbiosDump
@@ -126,7 +124,5 @@ struct SmbiosMemoryDeviceTable : public SmbiosTable
 };
 
 #pragma pack(pop)
-
-} // namespace base
 
 #endif // BASE_SMBIOS_H

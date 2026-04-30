@@ -240,7 +240,7 @@ void ClientAuthenticator::sendClientHello()
     quint32 encryption = proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305;
 
 #if defined(Q_PROCESSOR_X86)
-    if (base::CpuidUtil::hasAesNi())
+    if (CpuidUtil::hasAesNi())
         encryption |= proto::key_exchange::ENCRYPTION_AES256_GCM;
 #endif
 
@@ -289,7 +289,7 @@ void ClientAuthenticator::sendClientHello()
     }
 
     // Remove this after support for versions below 3.0.0 ends.
-    if (base::kMinimumSupportedVersion < base::kVersion_3_0_0)
+    if (kMinimumSupportedVersion < kVersion_3_0_0)
     {
         proto::peer::Version* version = client_hello.mutable_version();
         version->set_major(ASPIA_VERSION_MAJOR);
@@ -297,7 +297,7 @@ void ClientAuthenticator::sendClientHello()
         version->set_patch(ASPIA_VERSION_PATCH);
     }
 
-    QByteArray message = base::serialize(client_hello);
+    QByteArray message = serialize(client_hello);
 
     CLOG(INFO) << "Sending: ClientHello (" << message.size() << ")";
     emit sig_outgoingMessage(message);
@@ -309,7 +309,7 @@ bool ClientAuthenticator::readServerHello(const QByteArray& buffer)
     CLOG(INFO) << "Received: ServerHello (" << buffer.size() << ")";
 
     proto::key_exchange::ServerHello server_hello;
-    if (!base::parse(buffer, &server_hello))
+    if (!parse(buffer, &server_hello))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
@@ -352,7 +352,7 @@ void ClientAuthenticator::sendIdentify()
     proto::key_exchange::SrpIdentify identify;
     identify.set_username(username_.toStdString());
 
-    QByteArray message = base::serialize(identify);
+    QByteArray message = serialize(identify);
 
     CLOG(INFO) << "Sending: Identify (" << message.size() << ")";
     emit sig_outgoingMessage(message);
@@ -364,7 +364,7 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
     CLOG(INFO) << "Received: ServerKeyExchange (" << buffer.size() << ")";
 
     proto::key_exchange::SrpServerKeyExchange server_key_exchange;
-    if (!base::parse(buffer, &server_key_exchange))
+    if (!parse(buffer, &server_key_exchange))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
@@ -428,7 +428,7 @@ void ClientAuthenticator::sendClientKeyExchange()
     client_key_exchange.set_a(A_.toStdString());
     client_key_exchange.set_iv(encrypt_iv_.toStdString());
 
-    QByteArray message = base::serialize(client_key_exchange);
+    QByteArray message = serialize(client_key_exchange);
 
     CLOG(INFO) << "Sending: ClientKeyExchange (" << message.size() << ")";
     emit sig_outgoingMessage(message);
@@ -440,7 +440,7 @@ bool ClientAuthenticator::readSessionChallenge(const QByteArray& buffer)
     CLOG(INFO) << "Received: SessionChallenge (" << buffer.size() << ")";
 
     proto::key_exchange::SessionChallenge challenge;
-    if (!base::parse(buffer, &challenge))
+    if (!parse(buffer, &challenge))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
@@ -462,7 +462,7 @@ bool ClientAuthenticator::readSessionChallenge(const QByteArray& buffer)
                << "os:" << peerOsName() << "cores:" << challenge.cpu_cores()
                << "arch:" << peerArch() << "display_name:" << peerDisplayName() << ")";
 
-    if (peerVersion() < base::kMinimumSupportedVersion)
+    if (peerVersion() < kMinimumSupportedVersion)
     {
         finish(FROM_HERE, ErrorCode::VERSION_ERROR);
         return false;
@@ -483,13 +483,13 @@ void ClientAuthenticator::sendSessionResponse()
     version->set_patch(ASPIA_VERSION_PATCH);
     version->set_revision(GIT_COMMIT_COUNT);
 
-    response.set_os_name(base::SysInfo::operatingSystemName().toStdString());
-    response.set_computer_name(base::SysInfo::computerName().toStdString());
-    response.set_cpu_cores(static_cast<quint32>(base::SysInfo::processorThreads()));
+    response.set_os_name(SysInfo::operatingSystemName().toStdString());
+    response.set_computer_name(SysInfo::computerName().toStdString());
+    response.set_cpu_cores(static_cast<quint32>(SysInfo::processorThreads()));
     response.set_display_name(display_name_.toStdString());
     response.set_arch(QSysInfo::buildCpuArchitecture().toStdString());
 
-    QByteArray message = base::serialize(response);
+    QByteArray message = serialize(response);
 
     CLOG(INFO) << "Sending: SessionResponse (" << message.size() << ")";
     emit sig_outgoingMessage(message);

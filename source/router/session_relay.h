@@ -50,8 +50,8 @@ private:
     std::optional<PeerData> peer_data_;
     std::optional<proto::router::RelayStatistics> statistics_;
 
-    base::Parser<proto::router::RelayToRouter> incoming_message_;
-    base::Serializer<proto::router::RouterToRelay> outgoing_message_;
+    Parser<proto::router::RelayToRouter> incoming_message_;
+    Serializer<proto::router::RouterToRelay> outgoing_message_;
 
     Q_DISABLE_COPY_MOVE(SessionRelay)
 };

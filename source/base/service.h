@@ -21,7 +21,7 @@
 
 #include <QString>
 
-#include "base/application.h"
+#include "base/core_application.h"
 
 namespace base {
 
@@ -37,7 +37,7 @@ public:
     Service(const QString& name, QObject* parent);
     virtual ~Service();
 
-    int exec(Application& application);
+    int exec(base::CoreApplication& application);
 
     const QString& name() const { return name_; }
 

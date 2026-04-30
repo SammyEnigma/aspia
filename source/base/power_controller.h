@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 class PowerController
 {
 public:
@@ -34,7 +32,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(PowerController)
 };
-
-} // namespace base
 
 #endif // BASE_POWER_CONTROLLER_H

@@ -27,9 +27,7 @@
 
 class QTimer;
 
-namespace base {
 class Location;
-} // namespace base
 
 class OnlineCheckerRouter final : public QObject
 {
@@ -52,7 +50,7 @@ private slots:
 
 private:
     void checkNextComputer();
-    void onFinished(const base::Location& location);
+    void onFinished(const Location& location);
 
     qint64 current_request_id_ = 0;
     QSet<qint64> routers_;

@@ -70,7 +70,7 @@ public:
     bool isKeyPoolEmpty() const;
 
 protected:
-    // base::Service implementation.
+    // Service implementation.
     void onStart() final;
     void onStop() final;
 

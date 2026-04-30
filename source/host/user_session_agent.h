@@ -107,8 +107,8 @@ private:
     ScopedQPointer<ClipboardFileTransfer> clipboard_file_transfer_;
     ScopedQPointer<IpcChannel> ipc_channel_;
 
-    base::Parser<proto::user::ServiceToUser> incoming_message_;
-    base::Serializer<proto::user::UserToService> outgoing_message_;
+    Parser<proto::user::ServiceToUser> incoming_message_;
+    Serializer<proto::user::UserToService> outgoing_message_;
 
     ClientList clients_;
 

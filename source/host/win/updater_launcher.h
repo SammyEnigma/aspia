@@ -21,6 +21,6 @@
 
 #include "base/session_id.h"
 
-bool launchUpdater(base::SessionId session_id);
+bool launchUpdater(SessionId session_id);
 
 #endif // HOST_WIN_UPDATER_LAUNCHER_H

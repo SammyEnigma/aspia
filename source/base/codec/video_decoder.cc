@@ -50,7 +50,7 @@ bool convertImage(const proto::video::Packet& packet, vpx_image_t* image, Frame*
 
     for (int i = 0; i < packet.dirty_rect_size(); ++i)
     {
-        QRect rect = base::parse(packet.dirty_rect(i));
+        QRect rect = parse(packet.dirty_rect(i));
         if (!frame_rect.contains(rect))
         {
             LOG(ERROR) << "The rectangle is outside the screen area";

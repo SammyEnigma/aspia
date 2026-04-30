@@ -27,8 +27,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 #if defined(Q_OS_WINDOWS)
 const SessionId kInvalidSessionId = 0xFFFFFFFF;
 const SessionId kServiceSessionId = 0;
@@ -104,5 +102,3 @@ const char* sessionStatusToString(quint32 status)
     return "UNKNOWN";
 #endif
 }
-
-} // namespace base

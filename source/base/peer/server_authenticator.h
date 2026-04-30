@@ -40,7 +40,7 @@ public:
     };
 
     // Sets the user list.
-    void setUserList(base::SharedPointer<UserListBase> user_list);
+    void setUserList(SharedPointer<UserListBase> user_list);
 
     // Sets the private key.
     [[nodiscard]] bool setPrivateKey(const QByteArray& private_key);
@@ -65,7 +65,7 @@ private:
     void onSessionResponse(const QByteArray& buffer);
     [[nodiscard]] QByteArray createSrpKey();
 
-    base::SharedPointer<UserListBase> user_list_;
+    SharedPointer<UserListBase> user_list_;
 
     enum class InternalState
     {

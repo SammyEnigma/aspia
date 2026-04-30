@@ -48,8 +48,8 @@ private:
     IpcChannel* ipc_channel_ = nullptr;
     FileWorker* worker_ = nullptr;
 
-    base::Parser<proto::file_transfer::Request> request_;
-    base::Serializer<proto::file_transfer::Reply> reply_;
+    Parser<proto::file_transfer::Request> request_;
+    Serializer<proto::file_transfer::Reply> reply_;
 
     Q_DISABLE_COPY_MOVE(FileAgent)
 };

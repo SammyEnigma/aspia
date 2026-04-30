@@ -39,8 +39,8 @@ public:
     explicit TcpServer(QObject* parent = nullptr);
     ~TcpServer();
 
-    void setUserList(base::SharedPointer<UserListBase> user_list);
-    base::SharedPointer<UserListBase> userList() const { return user_list_; }
+    void setUserList(SharedPointer<UserListBase> user_list);
+    SharedPointer<UserListBase> userList() const { return user_list_; }
 
     void setPrivateKey(const QByteArray& private_key);
     QByteArray privateKey() const { return private_key_; }
@@ -62,11 +62,11 @@ private:
     void doAccept();
     void removePendingChannel(TcpChannel* channel);
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::ip::tcp::acceptor acceptor_;
     int accept_error_count_ = 0;
 
-    base::SharedPointer<UserListBase> user_list_;
+    SharedPointer<UserListBase> user_list_;
     QByteArray private_key_;
 
     ServerAuthenticator::AnonymousAccess anonymous_access_ =

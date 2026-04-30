@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 QByteArray serialize(const google::protobuf::MessageLite& message)
 {
@@ -111,5 +109,3 @@ QRect parse(const proto::video::Rect& rect)
 {
     return QRect(QPoint(rect.x(), rect.y()), QSize(rect.width(), rect.height()));
 }
-
-} // namespace base

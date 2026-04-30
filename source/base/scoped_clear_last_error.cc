@@ -24,8 +24,6 @@
 #include <qt_windows.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScopedClearLastErrorBase::ScopedClearLastErrorBase()
     : last_errno_(errno)
@@ -53,5 +51,3 @@ ScopedClearLastError::~ScopedClearLastError()
     SetLastError(last_error_);
 }
 #endif // defined(Q_OS_WINDOWS)
-
-} // namespace base

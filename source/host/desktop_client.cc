@@ -20,7 +20,7 @@
 
 #include <QTimer>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/logging.h"
 #include "base/power_controller.h"
 #include "base/numeric_utils.h"
@@ -49,7 +49,7 @@ DesktopClient::DesktopClient(TcpChannel* tcp_channel, QObject* parent)
     CLOG(INFO) << "Ctor";
 
 #if defined(Q_OS_WINDOWS)
-    connect(base::Application::instance(), &base::Application::sig_sessionEvent,
+    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_sessionEvent,
             this, &DesktopClient::sendSessionList, Qt::QueuedConnection);
 #endif // defined(Q_OS_WINDOWS)
 
@@ -65,7 +65,7 @@ DesktopClient::DesktopClient(TcpChannel* tcp_channel, QObject* parent)
         proto::video::HostToClient message;
         proto::video::Packet* packet = message.mutable_packet();
         packet->set_error_code(proto::video::ERROR_CODE_TEMPORARY);
-        send(proto::desktop::CHANNEL_ID_VIDEO, base::serialize(message));
+        send(proto::desktop::CHANNEL_ID_VIDEO, serialize(message));
     });
 
     fake_capture_timer_->setInterval(std::chrono::milliseconds(30));
@@ -153,7 +153,7 @@ void DesktopClient::onMessage(quint8 net_channel_id, const QByteArray& buffer)
     if (net_channel_id == proto::desktop::CHANNEL_ID_CONTROL)
     {
         proto::control::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse service message";
             return;
@@ -177,8 +177,8 @@ void DesktopClient::onMessage(quint8 net_channel_id, const QByteArray& buffer)
         {
             CLOG(INFO) << "Received:" << message.switch_session();
 
-            base::SessionId session_id = message.switch_session().session_id();
-            if (session_id == base::kInvalidSessionId || session_id == base::kServiceSessionId)
+            SessionId session_id = message.switch_session().session_id();
+            if (session_id == kInvalidSessionId || session_id == kServiceSessionId)
             {
                 CLOG(ERROR) << "Invalid session id:" << session_id;
                 return;
@@ -212,7 +212,7 @@ void DesktopClient::onMessage(quint8 net_channel_id, const QByteArray& buffer)
     else if (net_channel_id == proto::desktop::CHANNEL_ID_POWER)
     {
         proto::power::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse power message";
             return;
@@ -223,7 +223,7 @@ void DesktopClient::onMessage(quint8 net_channel_id, const QByteArray& buffer)
     else if (net_channel_id == proto::desktop::CHANNEL_ID_TASK_MANAGER)
     {
         proto::task_manager::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse task manager message";
             return;
@@ -233,7 +233,7 @@ void DesktopClient::onMessage(quint8 net_channel_id, const QByteArray& buffer)
     }
     else
     {
-        quint32 channel_id = base::makeUint32(proto::desktop::IPC_CHANNEL_ID_SESSION, net_channel_id);
+        quint32 channel_id = makeUint32(proto::desktop::IPC_CHANNEL_ID_SESSION, net_channel_id);
         if (ipc_channel_)
             ipc_channel_->send(channel_id, buffer);
     }
@@ -245,7 +245,7 @@ void DesktopClient::onBandwidthChanged(qint64 bandwidth)
     proto::desktop::ServiceToAgentClient message;
     proto::desktop::BandwidthChange* bandwidth_change = message.mutable_bandwidth_change();
     bandwidth_change->set_bandwidth(bandwidth);
-    sendIpcServiceMessage(base::serialize(message));
+    sendIpcServiceMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -274,7 +274,7 @@ void DesktopClient::onIpcNewConnection()
     {
         proto::control::ClientToHost message;
         message.mutable_capabilities()->CopyFrom(*capabilities_);
-        sendIpcSessionMessage(proto::desktop::CHANNEL_ID_CONTROL, base::serialize(message));
+        sendIpcSessionMessage(proto::desktop::CHANNEL_ID_CONTROL, serialize(message));
     }
 
     fake_capture_timer_->stop();
@@ -291,8 +291,8 @@ void DesktopClient::onIpcErrorOccurred()
 //--------------------------------------------------------------------------------------------------
 void DesktopClient::onIpcMessageReceived(quint32 channel_id, const QByteArray& buffer, bool reliable)
 {
-    quint16 net_channel_id = base::lowWord(channel_id);
-    quint16 ipc_channel_id = base::highWord(channel_id);
+    quint16 net_channel_id = lowWord(channel_id);
+    quint16 ipc_channel_id = highWord(channel_id);
 
     if (force_reliable_)
         reliable = true;
@@ -334,19 +334,19 @@ void DesktopClient::onOverflowCheck()
     proto::desktop::ServiceToAgentClient message;
     proto::desktop::Overflow* overflow = message.mutable_overflow();
     overflow->set_state(state);
-    sendIpcServiceMessage(base::serialize(message));
+    sendIpcServiceMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
 void DesktopClient::onTaskManagerMessage(const proto::task_manager::HostToClient& message)
 {
-    send(proto::desktop::CHANNEL_ID_TASK_MANAGER, base::serialize(message), true);
+    send(proto::desktop::CHANNEL_ID_TASK_MANAGER, serialize(message), true);
 }
 
 //--------------------------------------------------------------------------------------------------
 void DesktopClient::sendIpcSessionMessage(quint8 net_channel_id, const QByteArray& buffer)
 {
-    quint32 channel_id = base::makeUint32(proto::desktop::IPC_CHANNEL_ID_SESSION, net_channel_id);
+    quint32 channel_id = makeUint32(proto::desktop::IPC_CHANNEL_ID_SESSION, net_channel_id);
 
     if (ipc_channel_)
         ipc_channel_->send(channel_id, buffer);
@@ -355,7 +355,7 @@ void DesktopClient::sendIpcSessionMessage(quint8 net_channel_id, const QByteArra
 //--------------------------------------------------------------------------------------------------
 void DesktopClient::sendIpcServiceMessage(const QByteArray& buffer)
 {
-    quint32 channel_id = base::makeUint32(proto::desktop::IPC_CHANNEL_ID_SERVICE, 0);
+    quint32 channel_id = makeUint32(proto::desktop::IPC_CHANNEL_ID_SERVICE, 0);
     if (ipc_channel_)
         ipc_channel_->send(channel_id, buffer);
 }
@@ -367,8 +367,8 @@ void DesktopClient::sendSessionList()
     proto::control::HostToClient message;
     proto::control::SessionList* session_list = message.mutable_session_list();
 
-    base::SessionId console_session_id = base::activeConsoleSessionId();
-    base::SessionId current_session_id = 0;
+    SessionId console_session_id = activeConsoleSessionId();
+    SessionId current_session_id = 0;
     if (ipc_channel_)
         current_session_id = ipc_channel_->sessionId();
 
@@ -377,7 +377,7 @@ void DesktopClient::sendSessionList()
 
     for (SessionEnumerator it; !it.isAtEnd(); it.advance())
     {
-        if (it.sessionId() == base::kServiceSessionId) // Don't add system session.
+        if (it.sessionId() == kServiceSessionId) // Don't add system session.
             continue;
 
         SessionInfo session_info(it.sessionId());
@@ -393,7 +393,7 @@ void DesktopClient::sendSessionList()
     }
 
     CLOG(INFO) << "Send:" << *session_list;
-    send(proto::desktop::CHANNEL_ID_CONTROL, base::serialize(message));
+    send(proto::desktop::CHANNEL_ID_CONTROL, serialize(message));
 #endif // defined(Q_OS_WINDOWS)
 }
 
@@ -427,11 +427,11 @@ void DesktopClient::readPowerControl(const proto::power::Control& control)
     switch (control.action())
     {
         case proto::power::Control::ACTION_SHUTDOWN:
-            base::PowerController::shutdown();
+            PowerController::shutdown();
             break;
 
         case proto::power::Control::ACTION_REBOOT:
-            base::PowerController::reboot();
+            PowerController::reboot();
             break;
 
         case proto::power::Control::ACTION_REBOOT_SAFE_MODE:
@@ -455,7 +455,7 @@ void DesktopClient::readPowerControl(const proto::power::Control& control)
             }
 
             CLOG(INFO) << "Safe Mode boot enabled successfully";
-            if (!base::PowerController::reboot())
+            if (!PowerController::reboot())
                 CLOG(ERROR) << "Unable to reboot";
 #endif // defined(Q_OS_WINDOWS)
         }
@@ -467,11 +467,11 @@ void DesktopClient::readPowerControl(const proto::power::Control& control)
             proto::power::ClientToHost message;
             message.mutable_power_control()->CopyFrom(control);
 
-            quint32 channel_id = base::makeUint32(
+            quint32 channel_id = makeUint32(
                 proto::desktop::IPC_CHANNEL_ID_SESSION, proto::desktop::CHANNEL_ID_POWER);
 
             if (ipc_channel_)
-                ipc_channel_->send(channel_id, base::serialize(message));
+                ipc_channel_->send(channel_id, serialize(message));
         }
         break;
 

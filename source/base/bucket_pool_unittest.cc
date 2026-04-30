@@ -25,8 +25,6 @@
 #include <iostream>
 #include <vector>
 
-namespace base {
-
 namespace {
 
 constexpr size_t kMaxFreePerBucket = 32;
@@ -398,5 +396,3 @@ TEST(bucket_pool_benchmark, malloc_vs_pool)
 
     std::cout << std::endl;
 }
-
-} // namespace base

@@ -25,9 +25,7 @@ struct _XDisplay;
 
 class FileDescriptorWatcher;
 
-namespace base {
 class XServerClipboard;
-} // namespace base
 
 class ClipboardX11 final : public Clipboard
 {
@@ -47,7 +45,7 @@ private:
     void pumpXEvents();
 
     // Underlying X11 clipboard implementation.
-    std::unique_ptr<base::XServerClipboard> x_server_clipboard_;
+    std::unique_ptr<XServerClipboard> x_server_clipboard_;
 
     // Watcher used to handle X11 events from |display_|.
     std::unique_ptr<FileDescriptorWatcher> x_connection_watcher_;

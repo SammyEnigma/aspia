@@ -140,7 +140,7 @@ DesktopWidget::DesktopWidget(QWidget* parent)
     connect(static_cast<QApplication*>(QApplication::instance()), &QApplication::applicationStateChanged,
             this, [this](Qt::ApplicationState state)
     {
-        LOG(INFO) << "Application state changed:" << state;
+        LOG(INFO) << "base::CoreApplication state changed:" << state;
         if (state != Qt::ApplicationActive)
         {
             releaseKeyboardButtons();
@@ -513,7 +513,7 @@ void DesktopWidget::paintEvent(QPaintEvent* /* event */)
         painter_.fillRect(title_rect, QColor(207, 207, 207));
         painter_.fillRect(message_rect, QColor(255, 255, 255));
 
-        QImage icon = base::GuiApplication::svgImage(":/img/computer.svg", QSize(24, 24));
+        QImage icon = GuiApplication::svgImage(":/img/computer.svg", QSize(24, 24));
         QPoint icon_pos(title_rect.x() + 8, title_rect.y() + (kTitleHeight / 2) - (icon.height() / 2));
 
         title_rect.setLeft(icon_pos.x() + icon.width() + 8);

@@ -44,7 +44,7 @@ public:
     static const char kDescription[];
 
 protected:
-    // base::Service implementation.
+    // Service implementation.
     void onStart() final;
     void onStop() final;
 
@@ -77,8 +77,8 @@ private:
     TcpChannel* tcp_channel_ = nullptr;
     SessionManager* session_manager_ = nullptr;
 
-    base::Parser<proto::router::RouterToRelay> incoming_message_;
-    base::Serializer<proto::router::RelayToRouter> outgoing_message_;
+    Parser<proto::router::RouterToRelay> incoming_message_;
+    Serializer<proto::router::RelayToRouter> outgoing_message_;
 
     int session_count_ = 0;
 

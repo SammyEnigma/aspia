@@ -28,8 +28,6 @@
 #include <cpuid.h>
 #endif // Q_CC_MSVC
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 CpuidUtil::CpuidUtil(int leaf, int subleaf)
 {
@@ -83,7 +81,5 @@ bool CpuidUtil::hasAesNi()
     // Bit 25 of register ECX set to 1 indicates the support of AES instructions.
     return BitSet<quint32>(CpuidUtil(1).ecx()).test(25);
 }
-
-} // namespace base
 
 #endif // defined(Q_PROCESSOR_X86)

@@ -140,12 +140,12 @@ private:
     // Contains kKernelOffsetCount kernels back-to-back, each of size kKernelSize.
     // The kernel offsets are sub-sample shifts of a windowed sinc shifted from
     // 0.0 to 1.0 sample.
-    std::unique_ptr<float[], base::AlignedFreeDeleter> kernel_storage_;
-    std::unique_ptr<float[], base::AlignedFreeDeleter> kernel_pre_sinc_storage_;
-    std::unique_ptr<float[], base::AlignedFreeDeleter> kernel_window_storage_;
+    std::unique_ptr<float[], AlignedFreeDeleter> kernel_storage_;
+    std::unique_ptr<float[], AlignedFreeDeleter> kernel_pre_sinc_storage_;
+    std::unique_ptr<float[], AlignedFreeDeleter> kernel_window_storage_;
 
     // Data from the source is copied into this buffer for each processing pass.
-    std::unique_ptr<float[], base::AlignedFreeDeleter> input_buffer_;
+    std::unique_ptr<float[], AlignedFreeDeleter> input_buffer_;
 
     // Pointers to the various regions inside |input_buffer_|.  See the diagram at
     // the top of the .cc file for more information.

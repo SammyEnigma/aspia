@@ -174,7 +174,7 @@ void RouterManager::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 void RouterManager::onTcpMessageReceived(quint8 /* channel_id */, const QByteArray& buffer)
 {
     proto::router::RouterToHost in_message;
-    if (!base::parse(buffer, &in_message))
+    if (!parse(buffer, &in_message))
     {
         LOG(ERROR) << "Invalid message from router";
         return;
@@ -199,7 +199,7 @@ void RouterManager::onTcpMessageReceived(quint8 /* channel_id */, const QByteArr
 
             // Send host ID request.
             LOG(INFO) << "Send ID request to router";
-            tcp_channel_->send(0, base::serialize(out_message));
+            tcp_channel_->send(0, serialize(out_message));
             return;
         }
         else
@@ -396,7 +396,7 @@ void RouterManager::hostIdRequest()
 
     // Send host ID request.
     LOG(INFO) << "Send ID request to router";
-    tcp_channel_->send(0, base::serialize(message));
+    tcp_channel_->send(0, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------

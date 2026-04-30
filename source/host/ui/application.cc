@@ -77,7 +77,7 @@ bool EventFilter::nativeEventFilter(const QByteArray& event_type, void* message,
 
 //--------------------------------------------------------------------------------------------------
 Application::Application(int& argc, char* argv[])
-    : base::GuiApplication(argc, argv)
+    : GuiApplication(argc, argv)
 {
     LOG(INFO) << "Ctor";
 

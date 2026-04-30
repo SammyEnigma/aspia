@@ -32,9 +32,7 @@ class QTimer;
 class TcpChannel;
 class TcpServer;
 
-namespace base {
 class Location;
-} // namespace base
 
 class HttpFileDownloader;
 class UpdateChecker;
@@ -66,7 +64,7 @@ public:
     static const char kDescription[];
 
 protected:
-    // base::Service implementation.
+    // Service implementation.
     void onStart() final;
     void onStop() final;
 
@@ -108,8 +106,8 @@ private:
     void addFirewallRules();
     void deleteFirewallRules();
     void reloadUserList();
-    void connectToRouter(const base::Location& location);
-    void disconnectFromRouter(const base::Location& location);
+    void connectToRouter(const Location& location);
+    void disconnectFromRouter(const Location& location);
     void checkForUpdates();
 
     QTimer* repeated_timer_ = nullptr;

@@ -32,8 +32,6 @@
 #include <io.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 #if defined(Q_OS_WINDOWS)
 
 namespace {
@@ -446,5 +444,3 @@ QString captureStackTrace(int /* skip_frames */)
 }
 
 #endif // defined(Q_OS_WINDOWS)
-
-} // namespace base

@@ -24,8 +24,6 @@
 #include <qt_windows.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 TEST(ScopedClearLastError, test_no_error)
 {
     errno = 1;
@@ -69,5 +67,3 @@ TEST(ScopedClearLastError, test_error_win)
 }
 
 #endif  // defined(Q_OS_WINDOWS)
-
-} // namespace base

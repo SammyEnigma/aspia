@@ -240,7 +240,7 @@ void IpcServer::Listener::onNewConnetion(
 //--------------------------------------------------------------------------------------------------
 IpcServer::IpcServer(QObject* parent)
     : QObject(parent),
-      io_context_(base::AsioEventDispatcher::ioContext())
+      io_context_(AsioEventDispatcher::ioContext())
 {
     for (size_t i = 0; i < listeners_.size(); ++i)
         listeners_[i] = std::make_shared<Listener>(this, i);
@@ -362,7 +362,7 @@ void IpcServer::onNewConnection(size_t index, IpcChannel* channel)
 }
 
 //--------------------------------------------------------------------------------------------------
-void IpcServer::onErrorOccurred(const base::Location& location)
+void IpcServer::onErrorOccurred(const Location& location)
 {
     LOG(ERROR) << "Error in IPC server (channel" << channel_name_ << "from" << location << ")";
     emit sig_errorOccurred();

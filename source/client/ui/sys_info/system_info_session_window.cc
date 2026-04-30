@@ -333,7 +333,7 @@ void SystemInfoSessionWindow::onShowWindow()
         {
             SysInfoWidgetSummary* summary = static_cast<SysInfoWidgetSummary*>(sys_info_widgets_[i]);
 
-            summary->setClientVersion(base::kCurrentVersion);
+            summary->setClientVersion(kCurrentVersion);
             summary->setHostVersion(sessionState()->hostVersion());
             summary->setRouterVersion(sessionState()->routerVersion());
             break;

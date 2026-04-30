@@ -93,7 +93,7 @@ Client::Client(QObject* parent)
     });
 
 #if defined(Q_OS_MACOS)
-    base::addAppNapBlock();
+    addAppNapBlock();
 #endif // defined(Q_OS_MACOS)
 }
 
@@ -106,7 +106,7 @@ Client::~Client()
     emit sig_statusChanged(Status::STOPPED);
 
 #if defined(Q_OS_MACOS)
-    base::releaseAppNapBlock();
+    releaseAppNapBlock();
 #endif // defined(Q_OS_MACOS)
 }
 
@@ -191,7 +191,7 @@ void Client::start()
         }
 
         // Remove this after support for versions below 3.0.0 ends.
-        if (base::kMinimumSupportedVersion < base::kVersion_3_0_0)
+        if (kMinimumSupportedVersion < kVersion_3_0_0)
         {
             if (is_legacy_mode_)
                 tcp_channel_ = new TcpChannelLegacy(authenticator.release(), this);
@@ -325,7 +325,7 @@ void Client::onTcpConnected()
 void Client::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     // Remove this after support for versions below 3.0.0 ends.
-    if (base::kMinimumSupportedVersion < base::kVersion_3_0_0)
+    if (kMinimumSupportedVersion < kVersion_3_0_0)
     {
         if (error_code == TcpChannel::ErrorCode::REMOTE_HOST_CLOSED && !is_legacy_mode_ &&
             !session_state_->isConnectionByHostId() && !tcp_channel_->isAuthenticated())
@@ -382,7 +382,7 @@ void Client::onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer)
     if (channel_id == proto::peer::CHANNEL_ID_CONTROL)
     {
         proto::peer::HostToClient message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse control message";
             return;
@@ -398,7 +398,7 @@ void Client::onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer)
             proto::peer::BandwidthProbeAck* ask = message.mutable_bandwidth_probe_ack();
             ask->set_dummy(1);
 
-            tcp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, base::serialize(message));
+            tcp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, serialize(message));
         }
         else
         {
@@ -435,7 +435,7 @@ void Client::onUdpMessageReceived(quint8 channel_id, const QByteArray& buffer)
     if (channel_id == proto::peer::CHANNEL_ID_CONTROL)
     {
         proto::peer::HostToClient message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse UDP control message";
             return;
@@ -447,7 +447,7 @@ void Client::onUdpMessageReceived(quint8 channel_id, const QByteArray& buffer)
             proto::peer::BandwidthProbeAck* ask = message.mutable_bandwidth_probe_ack();
             ask->set_dummy(1);
 
-            udp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, base::serialize(message), true);
+            udp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, serialize(message), true);
 
             if (!udp_ready_)
                 udp_ready_ = true;
@@ -587,7 +587,7 @@ void Client::tcpChannelReady()
     const QVersionNumber& host_version = tcp_channel_->peerVersion();
     session_state_->setHostVersion(host_version);
 
-    const QVersionNumber& client_version = base::kCurrentVersion;
+    const QVersionNumber& client_version = kCurrentVersion;
     if (host_version > client_version)
     {
         CLOG(ERROR) << "Version mismatch. Host:" << host_version << "Client:" << client_version;
@@ -819,7 +819,7 @@ void Client::connectToUdp(
         reply->set_port(external_port);
     }
 
-    tcp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, base::serialize(message));
+    tcp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------

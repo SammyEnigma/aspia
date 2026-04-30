@@ -21,8 +21,6 @@
 
 #include <QThread>
 
-namespace base {
-
 class Thread final : public QThread
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ protected:
 private:
     Q_DISABLE_COPY_MOVE(Thread)
 };
-
-} // namespace base
 
 #endif // BASE_THREAD_H

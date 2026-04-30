@@ -21,7 +21,7 @@
 #include <QCommandLineParser>
 #include <QIODevice>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/asio_event_dispatcher.h"
 #include "base/logging.h"
 #include "base/service_controller.h"
@@ -33,8 +33,8 @@
 //--------------------------------------------------------------------------------------------------
 int startService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller =
-        base::ServiceController::open(Service::kName);
+    std::unique_ptr<ServiceController> controller =
+        ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -54,7 +54,7 @@ int startService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int stopService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller = base::ServiceController::open(Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -74,8 +74,8 @@ int stopService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int installService(QTextStream& out)
 {
-    std::unique_ptr<base::ServiceController> controller = base::ServiceController::install(
-        Service::kName, Service::kDisplayName, base::Application::applicationFilePath());
+    std::unique_ptr<ServiceController> controller = ServiceController::install(
+        Service::kName, Service::kDisplayName, base::CoreApplication::applicationFilePath());
     if (!controller)
     {
         out << "Failed to install the service." << Qt::endl;
@@ -90,10 +90,10 @@ int installService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int removeService(QTextStream& out)
 {
-    if (base::ServiceController::isRunning(Service::kName))
+    if (ServiceController::isRunning(Service::kName))
         stopService(out);
 
-    if (!base::ServiceController::remove(Service::kName))
+    if (!ServiceController::remove(Service::kName))
     {
         out << "Failed to remove the service." << Qt::endl;
         return 1;
@@ -111,29 +111,29 @@ int hostServiceMain(int& argc, char* argv[])
 
     base::ScopedLogging scoped_logging(logging_settings);
 
-    base::Application::setEventDispatcher(new base::AsioEventDispatcher());
-    base::Application::setApplicationVersion(ASPIA_VERSION_STRING);
+    base::CoreApplication::setEventDispatcher(new AsioEventDispatcher());
+    base::CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
 
-    base::Application application(argc, argv);
+    base::CoreApplication application(argc, argv);
 
     if (!HostUtils::integrityCheck())
     {
-        LOG(ERROR) << "Integrity check failed. Application stopped";
+        LOG(ERROR) << "Integrity check failed. base::CoreApplication stopped";
         return 1;
     }
 
     HostUtils::printDebugInfo();
 
     QCommandLineOption install_option("install",
-        base::Application::translate("ServiceMain", "Install service."));
+        base::CoreApplication::translate("ServiceMain", "Install service."));
     QCommandLineOption remove_option("remove",
-        base::Application::translate("ServiceMain", "Remove service."));
+        base::CoreApplication::translate("ServiceMain", "Remove service."));
     QCommandLineOption start_option("start",
-        base::Application::translate("ServiceMain", "Start service."));
+        base::CoreApplication::translate("ServiceMain", "Start service."));
     QCommandLineOption stop_option("stop",
-        base::Application::translate("ServiceMain", "Stop service."));
+        base::CoreApplication::translate("ServiceMain", "Stop service."));
     QCommandLineOption hostid_option("host-id",
-        base::Application::translate("ServiceMain", "Get current host id."));
+        base::CoreApplication::translate("ServiceMain", "Get current host id."));
 
     QCommandLineParser parser;
     parser.addOption(install_option);

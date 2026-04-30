@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 // ScopedClearLastError stores and resets the value of thread local error codes
 // (errno, GetLastError()), and restores them in the destructor. This is useful
 // to avoid side effects on these values in instrumentation functions that
@@ -60,7 +58,5 @@ using ScopedClearLastError = ScopedClearLastErrorBase;
 #else
 #error Platform support not implemented
 #endif
-
-} // namespace base
 
 #endif // BASE_SCOPED_CLEAR_LAST_ERROR_H

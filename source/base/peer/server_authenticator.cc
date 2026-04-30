@@ -51,7 +51,7 @@ ServerAuthenticator::~ServerAuthenticator()
 }
 
 //--------------------------------------------------------------------------------------------------
-void ServerAuthenticator::setUserList(base::SharedPointer<UserListBase> user_list)
+void ServerAuthenticator::setUserList(SharedPointer<UserListBase> user_list)
 {
     user_list_ = std::move(user_list);
     CDCHECK(user_list_);
@@ -260,7 +260,7 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
     CLOG(INFO) << "Received: ClientHello (" << buffer.size() << ")";
 
     proto::key_exchange::ClientHello client_hello;
-    if (!base::parse(buffer, &client_hello))
+    if (!parse(buffer, &client_hello))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return;
@@ -349,7 +349,7 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
     bool has_aes_ni = false;
 
 #if defined(Q_PROCESSOR_X86)
-    has_aes_ni = base::CpuidUtil::hasAesNi();
+    has_aes_ni = CpuidUtil::hasAesNi();
 #endif
 
     if ((encryption & proto::key_exchange::ENCRYPTION_AES256_GCM) && has_aes_ni)
@@ -370,7 +370,7 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
     internal_state_ = InternalState::SEND_SERVER_HELLO;
     encryption_ = server_hello.encryption();
 
-    QByteArray message = base::serialize(server_hello);
+    QByteArray message = serialize(server_hello);
 
     CLOG(INFO) << "Sending: ServerHello (" << message.size() << ")";
     emit sig_outgoingMessage(message);
@@ -382,7 +382,7 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
     CLOG(INFO) << "Received: Identify (" << buffer.size() << ")";
 
     proto::key_exchange::SrpIdentify identify;
-    if (!base::parse(buffer, &identify))
+    if (!parse(buffer, &identify))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return;
@@ -480,7 +480,7 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
     server_key_exchange.set_b(B_.toStdString());
     server_key_exchange.set_iv(encrypt_iv_.toStdString());
 
-    QByteArray message = base::serialize(server_key_exchange);
+    QByteArray message = serialize(server_key_exchange);
 
     CLOG(INFO) << "Sending: ServerKeyExchange (" << message.size() << ")";
     emit sig_outgoingMessage(message);
@@ -492,7 +492,7 @@ void ServerAuthenticator::onClientKeyExchange(const QByteArray& buffer)
     CLOG(INFO) << "Received: ClientKeyExchange (" << buffer.size() << ")";
 
     proto::key_exchange::SrpClientKeyExchange client_key_exchange;
-    if (!base::parse(buffer, &client_key_exchange))
+    if (!parse(buffer, &client_key_exchange))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return;
@@ -556,12 +556,12 @@ void ServerAuthenticator::doSessionChallenge()
     version->set_patch(ASPIA_VERSION_PATCH);
     version->set_revision(GIT_COMMIT_COUNT);
 
-    session_challenge.set_os_name(base::SysInfo::operatingSystemName().toStdString());
-    session_challenge.set_computer_name(base::SysInfo::computerName().toStdString());
-    session_challenge.set_cpu_cores(static_cast<quint32>(base::SysInfo::processorThreads()));
+    session_challenge.set_os_name(SysInfo::operatingSystemName().toStdString());
+    session_challenge.set_computer_name(SysInfo::computerName().toStdString());
+    session_challenge.set_cpu_cores(static_cast<quint32>(SysInfo::processorThreads()));
     session_challenge.set_arch(QSysInfo::buildCpuArchitecture().toStdString());
 
-    QByteArray message = base::serialize(session_challenge);
+    QByteArray message = serialize(session_challenge);
 
     CLOG(INFO) << "Sending: SessionChallenge (" << message.size() << ")";
     emit sig_outgoingMessage(message);
@@ -573,7 +573,7 @@ void ServerAuthenticator::onSessionResponse(const QByteArray& buffer)
     CLOG(INFO) << "Received: SessionResponse (" << buffer.size() << ")";
 
     proto::key_exchange::SessionResponse response;
-    if (!base::parse(buffer, &response))
+    if (!parse(buffer, &response))
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return;
@@ -590,13 +590,13 @@ void ServerAuthenticator::onSessionResponse(const QByteArray& buffer)
                << "os:" << peerOsName() << "cores:" << response.cpu_cores()
                << "arch:" << peerArch() << "display_name:" << peerDisplayName() << ")";
 
-    if (peerVersion() < base::kMinimumSupportedVersion)
+    if (peerVersion() < kMinimumSupportedVersion)
     {
         finish(FROM_HERE, ErrorCode::VERSION_ERROR);
         return;
     }
 
-    base::BitSet<quint32> session_type = response.session_type();
+    BitSet<quint32> session_type = response.session_type();
     if (session_type.count() != 1)
     {
         finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);

@@ -20,8 +20,6 @@
 
 #include <cstring>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 SmbiosTableEnumerator::SmbiosTableEnumerator(const QByteArray& smbios_dump)
 {
@@ -357,5 +355,3 @@ quint32 SmbiosMemoryDevice::speed() const
 
     return table_->speed;
 }
-
-} // namespace base

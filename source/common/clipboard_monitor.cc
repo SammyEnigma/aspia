@@ -33,9 +33,9 @@
 namespace {
 
 #if defined(Q_OS_WINDOWS)
-const base::Thread::EventDispatcher kEventDispatcher = base::Thread::QtDispatcher;
+const Thread::EventDispatcher kEventDispatcher = Thread::QtDispatcher;
 #else
-const base::Thread::EventDispatcher kEventDispatcher = base::Thread::AsioDispatcher;
+const Thread::EventDispatcher kEventDispatcher = Thread::AsioDispatcher;
 #endif
 
 } // namespace
@@ -47,9 +47,9 @@ ClipboardMonitor::ClipboardMonitor(QObject* parent)
 {
     LOG(INFO) << "Ctor";
 
-    connect(&thread_, &base::Thread::sig_beforeRunning, this, &ClipboardMonitor::onBeforeThreadRunning,
+    connect(&thread_, &Thread::sig_beforeRunning, this, &ClipboardMonitor::onBeforeThreadRunning,
             Qt::DirectConnection);
-    connect(&thread_, &base::Thread::sig_afterRunning, this, &ClipboardMonitor::onAfterThreadRunning,
+    connect(&thread_, &Thread::sig_afterRunning, this, &ClipboardMonitor::onAfterThreadRunning,
             Qt::DirectConnection);
 }
 

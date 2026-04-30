@@ -49,7 +49,7 @@ void SystemInfoClient::onMessage(quint8 channel_id, const QByteArray& buffer)
 {
 #if defined(Q_OS_WINDOWS)
     proto::system_info::SystemInfoRequest request;
-    if (!base::parse(buffer, &request))
+    if (!parse(buffer, &request))
     {
         CLOG(ERROR) << "Unable to parse system info request";
         return;
@@ -58,6 +58,6 @@ void SystemInfoClient::onMessage(quint8 channel_id, const QByteArray& buffer)
     proto::system_info::SystemInfo system_info;
     createSystemInfo(request, &system_info);
 
-    send(proto::peer::CHANNEL_ID_0, base::serialize(system_info));
+    send(proto::peer::CHANNEL_ID_0, serialize(system_info));
 #endif // defined(Q_OS_WINDOWS)
 }

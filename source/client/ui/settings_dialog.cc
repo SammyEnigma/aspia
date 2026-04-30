@@ -90,7 +90,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
 
     // General tab.
     QString current_locale = settings.locale();
-    Application::LocaleList locale_list = base::GuiApplication::instance()->localeList();
+    Application::LocaleList locale_list = GuiApplication::instance()->localeList();
     for (const auto& locale : std::as_const(locale_list))
     {
         ui.combo_language->addItem(locale.second, locale.first);
@@ -99,10 +99,10 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     }
 
     QString current_theme = settings.theme();
-    QStringList available_themes = base::GuiApplication::instance()->availableThemes();
+    QStringList available_themes = GuiApplication::instance()->availableThemes();
     for (const QString& theme_id : std::as_const(available_themes))
     {
-        ui.combo_theme->addItem(base::GuiApplication::themeName(theme_id), theme_id);
+        ui.combo_theme->addItem(GuiApplication::themeName(theme_id), theme_id);
         if (theme_id == current_theme)
             ui.combo_theme->setCurrentIndex(ui.combo_theme->count() - 1);
     }
@@ -200,7 +200,7 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
         // Save theme.
         QString new_theme = ui.combo_theme->currentData().toString();
         settings.setTheme(new_theme);
-        base::GuiApplication::instance()->setTheme(new_theme);
+        GuiApplication::instance()->setTheme(new_theme);
 
         settings.setDisplayName(ui.edit_display_name->text());
 

@@ -55,7 +55,7 @@ const int kMtu = 1200;
 //
 // Cold-path allocations (ENetHost ~12KB, ENetPeer[] ~400*N, ENetChannel[] ~76*N) and messages
 // larger than 1 MB fall through to std::malloc - too infrequent to justify caching.
-constexpr base::Bucket kENetBuckets[] = {
+constexpr Bucket kENetBuckets[] = {
     { 64,          256 },
     { 128,         512 },
     { 256,          64 },
@@ -73,7 +73,7 @@ constexpr base::Bucket kENetBuckets[] = {
     { 1024 * 1024,   2 },
 };
 
-using ENetPool = base::BucketPool<std::size(kENetBuckets)>;
+using ENetPool = BucketPool<std::size(kENetBuckets)>;
 thread_local ENetPool tls_enet_pool(kENetBuckets);
 
 //--------------------------------------------------------------------------------------------------
@@ -562,7 +562,7 @@ void UdpChannel::processEvents()
 }
 
 //--------------------------------------------------------------------------------------------------
-void UdpChannel::onErrorOccurred(const base::Location& location)
+void UdpChannel::onErrorOccurred(const Location& location)
 {
     CLOG(ERROR) << "Error occurred from" << location.toString();
     close();

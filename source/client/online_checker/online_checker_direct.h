@@ -24,9 +24,7 @@
 
 #include "client/config.h"
 
-namespace base {
 class Location;
-} // namespace base
 
 class OnlineCheckerDirect final : public QObject
 {
@@ -46,7 +44,7 @@ signals:
 
 private:
     void onChecked(qint64 computer_id, bool online);
-    void onFinished(const base::Location& location);
+    void onFinished(const Location& location);
 
     ComputerList pending_queue_;
 

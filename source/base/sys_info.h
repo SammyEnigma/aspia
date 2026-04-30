@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class SysInfo
 {
 public:
@@ -50,7 +48,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(SysInfo)
 };
-
-} // namespace base
 
 #endif // BASE_SYS_INFO_H

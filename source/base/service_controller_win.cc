@@ -22,8 +22,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ServiceControllerWin::ServiceControllerWin(SC_HANDLE sc_manager, SC_HANDLE service)
     : sc_manager_(sc_manager),
@@ -426,5 +424,3 @@ bool ServiceControllerWin::stop()
 
     return is_stopped;
 }
-
-} // namespace base

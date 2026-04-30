@@ -28,9 +28,7 @@
 #include "base/shared_pointer.h"
 #include "base/peer/host_id.h"
 
-namespace base {
 class Location;
-} // namespace base
 
 namespace relay {
 
@@ -62,7 +60,7 @@ signals:
 
 private:
     static void doReadSome(Session* session, int source);
-    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const Location& location, const std::error_code& error_code);
 
     quint64 session_id_ = 0;
     QString client_address_;
@@ -77,7 +75,7 @@ private:
     static const int kNumberOfSides = 2;
     static const int kBufferSize = 8192;
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
 
     asio::ip::tcp::socket socket_[kNumberOfSides];
     std::array<quint8, kBufferSize> buffer_[kNumberOfSides];

@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "base/application.h"
+#include "base/core_application.h"
 
 #include "base/logging.h"
 
@@ -31,11 +31,11 @@
 namespace base {
 
 //--------------------------------------------------------------------------------------------------
-Application::Application(int& argc, char* argv[])
+CoreApplication::CoreApplication(int& argc, char* argv[])
     : QCoreApplication(argc, argv)
 {
 #if defined(Q_OS_WINDOWS)
-    ui_thread_ = std::make_unique<Thread>(base::Thread::QtDispatcher);
+    ui_thread_ = std::make_unique<Thread>(Thread::QtDispatcher);
 
     auto on_window_message =
         [this](UINT message, WPARAM wparam, LPARAM lparam, LRESULT& result) -> bool
@@ -94,9 +94,9 @@ Application::Application(int& argc, char* argv[])
         return false;
     };
 
-    is_service_ = base::currentProcessSessionId() == 0;
+    is_service_ = currentProcessSessionId() == 0;
 
-    connect(ui_thread_.get(), &base::Thread::sig_beforeRunning, this, [this, on_window_message]()
+    connect(ui_thread_.get(), &Thread::sig_beforeRunning, this, [this, on_window_message]()
     {
         LOG(INFO) << "UI thread starting";
 
@@ -109,7 +109,7 @@ Application::Application(int& argc, char* argv[])
 
         if (!is_service_)
         {
-            LOG(INFO) << "Application mode detected";
+            LOG(INFO) << "CoreApplication mode detected";
 
             if (!WTSRegisterSessionNotification(message_window_->hwnd(), NOTIFY_FOR_ALL_SESSIONS))
                 PLOG(ERROR) << "WTSRegisterSessionNotification failed";
@@ -121,7 +121,7 @@ Application::Application(int& argc, char* argv[])
     },
     Qt::DirectConnection);
 
-    connect(ui_thread_.get(), &base::Thread::sig_afterRunning, this, [this]()
+    connect(ui_thread_.get(), &Thread::sig_afterRunning, this, [this]()
     {
         LOG(INFO) << "UI thread stopping";
 
@@ -140,7 +140,7 @@ Application::Application(int& argc, char* argv[])
 }
 
 //--------------------------------------------------------------------------------------------------
-Application::~Application()
+CoreApplication::~CoreApplication()
 {
     LOG(INFO) << "Dtor";
 
@@ -152,9 +152,9 @@ Application::~Application()
 
 //--------------------------------------------------------------------------------------------------
 // static
-Application* Application::instance()
+CoreApplication* CoreApplication::instance()
 {
-    return static_cast<Application*>(QCoreApplication::instance());
+    return static_cast<CoreApplication*>(QCoreApplication::instance());
 }
 
 } // namespace base

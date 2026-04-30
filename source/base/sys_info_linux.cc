@@ -26,8 +26,6 @@
 #include <sys/utsname.h>
 #include <unistd.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 //static
 QString SysInfo::operatingSystemName()
@@ -169,5 +167,3 @@ QByteArray SysInfo::smbiosDump()
     NOTIMPLEMENTED();
     return QByteArray();
 }
-
-} // namespace base

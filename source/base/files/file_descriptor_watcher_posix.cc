@@ -40,7 +40,7 @@ private:
 
 //--------------------------------------------------------------------------------------------------
 FileDescriptorWatcher::Watcher::Watcher(int fd, Mode mode, const Callback& callback)
-    : asio::posix::descriptor(base::AsioEventDispatcher::ioContext()),
+    : asio::posix::descriptor(AsioEventDispatcher::ioContext()),
       callback_(callback)
 {
     DCHECK(callback_);

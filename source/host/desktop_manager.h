@@ -29,9 +29,7 @@ class QTimer;
 class IpcChannel;
 class IpcServer;
 
-namespace base {
 class Location;
-} // namespace base
 
 class DesktopManager final : public QObject
 {
@@ -52,7 +50,7 @@ public:
     static QString filePath();
 
     State state() const { return state_; }
-    base::SessionId sessionId() const { return session_id_; }
+    SessionId sessionId() const { return session_id_; }
 
     void startAgentClient(const QString& ipc_channel_name);
 
@@ -60,7 +58,7 @@ public slots:
     void onClientStarted();
     void onClientFinished();
     void onClientChannelChanged();
-    void onClientSwitchSession(base::SessionId session_id);
+    void onClientSwitchSession(SessionId session_id);
     void onUserPause(bool enable);
     void onUserLockMouse(bool enable);
     void onUserLockKeyboard(bool enable);
@@ -83,13 +81,13 @@ private slots:
     void onIpcMessageReceived(quint32 channel_id, const QByteArray& buffer, bool reliable);
 
 private:
-    void attach(const base::Location& location, base::SessionId session_id);
-    void dettach(const base::Location& location);
+    void attach(const Location& location, SessionId session_id);
+    void dettach(const Location& location);
     bool startProcess(const QString& ipc_channel_name);
     void sendMessage(const QByteArray& buffer);
 
     State state_ = State::DETTACHED;
-    base::SessionId session_id_ = base::kInvalidSessionId;
+    SessionId session_id_ = kInvalidSessionId;
     bool is_console_ = true;
 
     ScopedQPointer<IpcServer> ipc_server_;

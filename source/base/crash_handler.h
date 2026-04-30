@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 // Initializes the symbolizer and installs the platform crash handler.
 // |dump_file_prefix| is used as the leading part of the minidump file name.
 // On Windows an unhandled SEH filter is set that writes a stack trace to the
@@ -37,7 +35,5 @@ void setCrashLogFileDescriptor(int fd);
 // |skip_frames| controls how many innermost frames to skip (defaults to the
 // caller of this function).
 QString captureStackTrace(int skip_frames = 1);
-
-} // namespace base
 
 #endif // BASE_CRASH_HANDLER_H

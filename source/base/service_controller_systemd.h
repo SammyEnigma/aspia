@@ -21,8 +21,6 @@
 
 #include "base/service_controller.h"
 
-namespace base {
-
 class ServiceControllerSystemd final : public ServiceController
 {
 public:
@@ -54,7 +52,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ServiceControllerSystemd)
 };
-
-} // namespace base
 
 #endif // BASE_SERVICE_CONTROLLER_SYSTEMD_H

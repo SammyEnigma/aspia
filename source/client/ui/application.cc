@@ -33,7 +33,7 @@ const char kActivateWindow[] = "activate_window";
 
 //--------------------------------------------------------------------------------------------------
 Application::Application(int& argc, char* argv[])
-    : base::GuiApplication(argc, argv)
+    : GuiApplication(argc, argv)
 {
     LOG(INFO) << "Ctor";
 

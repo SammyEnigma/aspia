@@ -156,7 +156,7 @@ QString agentFilePath()
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-FileClient::FileClient(TcpChannel* tcp_channel, base::SessionId session_id, QObject* parent)
+FileClient::FileClient(TcpChannel* tcp_channel, SessionId session_id, QObject* parent)
     : Client(tcp_channel, parent),
       session_id_(session_id),
       attach_timer_(new QTimer(this))
@@ -359,7 +359,7 @@ void FileClient::onMessage(quint8 tcp_channel_id, const QByteArray& buffer)
     {
         proto::file_transfer::Reply reply;
         reply.set_error_code(proto::file_transfer::ERROR_CODE_NO_LOGGED_ON_USER);
-        send(proto::peer::CHANNEL_ID_0, base::serialize(reply));
+        send(proto::peer::CHANNEL_ID_0, serialize(reply));
         return;
     }
 
@@ -400,7 +400,7 @@ bool FileClient::startIpcServer(const QString& ipc_channel_name)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileClient::onStarted(const base::Location& location, bool has_user)
+void FileClient::onStarted(const Location& location, bool has_user)
 {
     CLOG(INFO) << "File client is started (has user:" << has_user << location << ")";
     has_logged_on_user_ = has_user;
@@ -417,7 +417,7 @@ void FileClient::onStarted(const base::Location& location, bool has_user)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileClient::onError(const base::Location& location)
+void FileClient::onError(const Location& location)
 {
     CLOG(ERROR) << "Error occurred (" << location << ")";
 

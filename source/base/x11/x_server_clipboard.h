@@ -28,8 +28,6 @@
 
 #include "base/x11/x11_headers.h"
 
-namespace base {
-
 class XServerClipboard
 {
 public:
@@ -136,7 +134,5 @@ private:
 
     Q_DISABLE_COPY(XServerClipboard)
 };
-
-} // namespace base
 
 #endif // BASE_X11_X_SERVER_CLIPBOARD_H

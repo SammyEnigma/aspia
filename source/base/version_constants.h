@@ -21,13 +21,9 @@
 
 #include <QVersionNumber>
 
-namespace base {
-
 extern const QVersionNumber kCurrentVersion;
 extern const QVersionNumber kMinimumSupportedVersion;
 extern const QVersionNumber kVersion_2_7_0;
 extern const QVersionNumber kVersion_3_0_0;
-
-} // namespace base
 
 #endif // BASE_VERSION_CONSTANTS_H

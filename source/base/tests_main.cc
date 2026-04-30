@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 
         base::ScopedLogging scoped_logging(logging_settings);
 
-        QCoreApplication::setEventDispatcher(new base::AsioEventDispatcher());
+        QCoreApplication::setEventDispatcher(new AsioEventDispatcher());
         QCoreApplication app(argc, argv);
         ::testing::InitGoogleTest(&argc, argv);
 

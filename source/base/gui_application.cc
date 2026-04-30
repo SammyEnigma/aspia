@@ -45,8 +45,6 @@
 #include <unistd.h>
 #endif // defined(Q_OS_UNIX)
 
-namespace base {
-
 namespace {
 
 const int kDefaultSmallIconSize = 24;
@@ -92,7 +90,7 @@ private:
 //--------------------------------------------------------------------------------------------------
 GuiApplication::GuiApplication(int& argc, char* argv[])
     : QApplication(argc, argv),
-      io_thread_(base::Thread::AsioDispatcher, nullptr)
+      io_thread_(Thread::AsioDispatcher, nullptr)
 {
     LOG(INFO) << "Ctor";
 
@@ -234,7 +232,7 @@ bool GuiApplication::isRunning()
 {
     if (!lock_file_->tryLock())
     {
-        LOG(INFO) << "Application already running";
+        LOG(INFO) << "base::CoreApplication already running";
         return true;
     }
 
@@ -595,5 +593,3 @@ QPalette GuiApplication::createDarkPalette()
 
     return palette;
 }
-
-} // namespace base

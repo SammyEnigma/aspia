@@ -24,8 +24,6 @@
 
 #include <LM.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -168,7 +166,7 @@ QString SysInfo::operatingSystemName()
                            access);
     if (status != ERROR_SUCCESS)
     {
-        LOG(ERROR) << "Unable to open registry key:" << SystemError::toString(status);
+        LOG(ERROR) << "Unable to open registry key:" << base::SystemError::toString(status);
         return QString();
     }
 
@@ -177,7 +175,7 @@ QString SysInfo::operatingSystemName()
     status = key.readValue("ProductName", &value);
     if (status != ERROR_SUCCESS)
     {
-        LOG(ERROR) << "Unable to read registry key:" << SystemError::toString(status);
+        LOG(ERROR) << "Unable to read registry key:" << base::SystemError::toString(status);
         return QString();
     }
 
@@ -423,5 +421,3 @@ QByteArray SysInfo::smbiosDump()
 
     return buffer;
 }
-
-} // namespace base

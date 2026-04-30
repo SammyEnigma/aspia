@@ -27,8 +27,6 @@
 #include <climits>
 #endif
 
-namespace base {
-
 class CpuidUtil
 {
 public:
@@ -54,8 +52,6 @@ private:
     quint32 ecx_ = 0;
     quint32 edx_ = 0;
 };
-
-} // namespace base
 
 #endif // defined(Q_PROCESSOR_X86)
 #endif // BASE_CPUID_UTIL_H

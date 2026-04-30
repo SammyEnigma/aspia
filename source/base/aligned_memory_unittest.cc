@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 #define EXPECT_ALIGNED(ptr, align) \
     EXPECT_EQ(0u, reinterpret_cast<uintptr_t>(ptr) & ((align) - 1))
 
@@ -54,5 +52,3 @@ TEST(aligned_memory_test, scoped_dynamic_allocation)
     EXPECT_TRUE(p.get());
     EXPECT_ALIGNED(p.get(), 8);
 }
-
-} // namespace base

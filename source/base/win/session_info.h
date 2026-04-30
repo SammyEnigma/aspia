@@ -30,12 +30,12 @@ class SessionInfo
     Q_GADGET
 
 public:
-    explicit SessionInfo(base::SessionId session_id);
+    explicit SessionInfo(SessionId session_id);
     ~SessionInfo();
 
     bool isValid() const;
 
-    base::SessionId sessionId() const;
+    SessionId sessionId() const;
 
     enum class ConnectState
     {

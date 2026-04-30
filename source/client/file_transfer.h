@@ -190,7 +190,7 @@ private:
     void doUpdateSpeed();
     void onError(Error::Type type, proto::file_transfer::ErrorCode code, const QString& path = QString());
     void setActionForErrorType(Error::Type error_type, Error::Action action);
-    void onFinished(const base::Location& location);
+    void onFinished(const Location& location);
 
     const Type type_;
     const QString source_path_;

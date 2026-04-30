@@ -31,8 +31,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -448,8 +446,8 @@ void AsioEventDispatcher::interrupt()
 // static
 asio::io_context& AsioEventDispatcher::ioContext()
 {
-    base::AsioEventDispatcher* dispatcher =
-        dynamic_cast<base::AsioEventDispatcher*>(QThread::currentThread()->eventDispatcher());
+    AsioEventDispatcher* dispatcher =
+        dynamic_cast<AsioEventDispatcher*>(QThread::currentThread()->eventDispatcher());
     CHECK(dispatcher);
 
     return dispatcher->io_context_;
@@ -688,5 +686,3 @@ void AsioEventDispatcher::SocketData::cancel()
     std::error_code ignored_error;
     handle.cancel(ignored_error);
 }
-
-} // namespace base

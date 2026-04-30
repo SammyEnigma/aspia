@@ -21,7 +21,7 @@
 
 #include "base/gui_application.h"
 
-class Application final : public base::GuiApplication
+class Application final : public GuiApplication
 {
     Q_OBJECT
 

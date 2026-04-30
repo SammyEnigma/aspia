@@ -84,7 +84,7 @@ AudioBus::AudioBus(int channels, int frames)
     int aligned_frames = 0;
     int size = CalculateMemorySizeInternal(channels, frames, &aligned_frames);
 
-    data_.reset(static_cast<float*>(base::alignedAlloc(size, AudioBus::kChannelAlignment)));
+    data_.reset(static_cast<float*>(alignedAlloc(size, AudioBus::kChannelAlignment)));
 
     BuildChannelData(channels, aligned_frames, data_.get());
 }

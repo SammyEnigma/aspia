@@ -41,7 +41,7 @@ UserSessionAgent::UserSessionAgent(QObject* parent)
 {
     LOG(INFO) << "Ctor";
 #if defined(Q_OS_WINDOWS)
-    // 0x100-0x1FF Application reserved last shutdown range.
+    // 0x100-0x1FF base::CoreApplication reserved last shutdown range.
     if (!SetProcessShutdownParameters(0x100, SHUTDOWN_NORETRY))
         PLOG(ERROR) << "SetProcessShutdownParameters failed";
 #endif // defined(Q_OS_WINDOWS)
@@ -180,15 +180,15 @@ void UserSessionAgent::onIpcErrorOccurred()
 //--------------------------------------------------------------------------------------------------
 void UserSessionAgent::onIpcMessageReceived(quint32 channel_id, const QByteArray& buffer, bool /* reliable */)
 {
-    quint16 net_channel_id = base::lowWord(channel_id);
-    quint16 ipc_channel_id = base::highWord(channel_id);
+    quint16 net_channel_id = lowWord(channel_id);
+    quint16 ipc_channel_id = highWord(channel_id);
 
     if (ipc_channel_id == proto::user::CHANNEL_ID_NETWORK)
     {
         if (net_channel_id == proto::desktop::CHANNEL_ID_CLIPBOARD)
         {
             proto::clipboard::ClientToHost message;
-            if (!base::parse(buffer, &message))
+            if (!parse(buffer, &message))
             {
                 LOG(ERROR) << "Unable to parse clipboard message";
                 return;
@@ -207,7 +207,7 @@ void UserSessionAgent::onIpcMessageReceived(quint32 channel_id, const QByteArray
         else if (net_channel_id == proto::desktop::CHANNEL_ID_USER)
         {
             proto::user::ClientToHost message;
-            if (!base::parse(buffer, &message))
+            if (!parse(buffer, &message))
             {
                 LOG(ERROR) << "Unable to parse user message";
                 return;
@@ -355,7 +355,7 @@ void UserSessionAgent::onClipboardEvent(const proto::clipboard::Event& event)
 
     proto::clipboard::HostToClient message;
     message.mutable_event()->CopyFrom(event);
-    sendNetworkMessage(proto::desktop::CHANNEL_ID_CLIPBOARD, base::serialize(message));
+    sendNetworkMessage(proto::desktop::CHANNEL_ID_CLIPBOARD, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -364,7 +364,7 @@ void UserSessionAgent::sendServiceMessage()
     if (!ipc_channel_)
         return;
 
-    quint32 channel_id = base::makeUint32(proto::user::CHANNEL_ID_SERVICE, 0);
+    quint32 channel_id = makeUint32(proto::user::CHANNEL_ID_SERVICE, 0);
     ipc_channel_->send(channel_id, outgoing_message_.serialize());
 }
 
@@ -374,6 +374,6 @@ void UserSessionAgent::sendNetworkMessage(quint8 net_channel_id, const QByteArra
     if (!ipc_channel_)
         return;
 
-    quint32 channel_id = base::makeUint32(proto::user::CHANNEL_ID_NETWORK, net_channel_id);
+    quint32 channel_id = makeUint32(proto::user::CHANNEL_ID_NETWORK, net_channel_id);
     ipc_channel_->send(channel_id, buffer);
 }

@@ -36,7 +36,7 @@ public:
     static const char* stateToString(WTS_CONNECTSTATE_CLASS state);
 
     WTS_CONNECTSTATE_CLASS state() const;
-    base::SessionId sessionId() const;
+    SessionId sessionId() const;
 
     // A string that contains the name of this session. For example, "services", "console",
     // or "RDP-Tcp#0".

@@ -25,8 +25,6 @@
 #include <QLocale>
 #include <QTranslator>
 
-namespace base {
-
 namespace {
 
 const QString kTranslationsDir = ":/tr/";
@@ -150,5 +148,3 @@ void Translations::removeTranslators()
 
     translator_list_.clear();
 }
-
-} // namespace base

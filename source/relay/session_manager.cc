@@ -100,7 +100,7 @@ QString peerAddress(const asio::ip::tcp::socket& socket)
 //--------------------------------------------------------------------------------------------------
 SessionManager::SessionManager(QObject* parent)
     : QObject(parent),
-      acceptor_(base::AsioEventDispatcher::ioContext()),
+      acceptor_(AsioEventDispatcher::ioContext()),
       idle_timer_(new QTimer(this)),
       stat_timer_(new QTimer(this))
 {

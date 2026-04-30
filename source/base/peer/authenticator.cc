@@ -87,7 +87,7 @@ void Authenticator::onMessageWritten()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Authenticator::finish(const base::Location& location, ErrorCode error_code)
+void Authenticator::finish(const Location& location, ErrorCode error_code)
 {
     timer_->stop();
 
@@ -104,7 +104,7 @@ void Authenticator::finish(const base::Location& location, ErrorCode error_code)
 void Authenticator::setPeerVersion(const proto::peer::Version& version)
 {
     CLOG(INFO) << "Version changed from" << peer_version_ << "to" << version;
-    peer_version_ = base::parse(version);
+    peer_version_ = parse(version);
 }
 
 //--------------------------------------------------------------------------------------------------

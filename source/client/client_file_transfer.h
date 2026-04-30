@@ -78,7 +78,7 @@ private:
     QPointer<FileRemover> remover_;
     QPointer<FileTransfer> transfer_;
 
-    base::SerializerImpl serializer_;
+    SerializerImpl serializer_;
 
     Q_DISABLE_COPY_MOVE(ClientFileTransfer)
 };

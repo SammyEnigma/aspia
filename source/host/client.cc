@@ -55,7 +55,7 @@ QByteArray makeBandwidthProbeData()
     proto::peer::BandwidthProbe* probe = message.mutable_bandwidth_probe();
     probe->set_payload(std::move(payload));
 
-    return base::serialize(message);
+    return serialize(message);
 }
 
 } // namespace
@@ -231,7 +231,7 @@ void Client::onTcpMessageReceived(quint8 tcp_channel_id, const QByteArray& buffe
     }
 
     proto::peer::ClientToHost message;
-    if (!base::parse(buffer, &message))
+    if (!parse(buffer, &message))
     {
         CLOG(ERROR) << "Unable to parse control message";
         return;
@@ -348,7 +348,7 @@ void Client::onUdpMessageReceived(quint8 udp_channel_id, const QByteArray& buffe
     }
 
     proto::peer::ClientToHost message;
-    if (!base::parse(buffer, &message))
+    if (!parse(buffer, &message))
     {
         CLOG(ERROR) << "Unable to parse control message";
         return;
@@ -536,7 +536,7 @@ void Client::startDirectUdp(qintptr socket, const QString& address, quint16 port
     }
 
     CLOG(INFO) << "Sending direct UDP request";
-    tcp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, base::serialize(message));
+    tcp_channel_->send(proto::peer::CHANNEL_ID_CONTROL, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -705,7 +705,7 @@ void Client::checkBandwidth()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Client::setUdpState(const base::Location& location, UdpState state)
+void Client::setUdpState(const Location& location, UdpState state)
 {
     CLOG(INFO) << "UDP state changed:" << udp_state_ << "->" << state << "(" << location << ")";
     udp_state_ = state;

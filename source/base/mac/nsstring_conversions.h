@@ -28,8 +28,6 @@
 class NSString;
 #endif
 
-namespace base {
-
 CFStringRef utf8ToCFStringRef(std::string_view utf8);
 CFStringRef utf16ToCFStringRef(std::u16string_view utf16);
 
@@ -41,7 +39,5 @@ std::u16string CFStringRefToUtf16(CFStringRef ref);
 
 std::string NSStringToUtf8(NSString* nsstring);
 std::u16string NSStringToUtf16(NSString* nsstring);
-
-} // namespace base
 
 #endif // BASE_MAC_NSSTRING_CONVERSIONS_H

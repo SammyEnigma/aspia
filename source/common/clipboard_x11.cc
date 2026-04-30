@@ -49,7 +49,7 @@ void ClipboardX11::init()
         return;
     }
 
-    x_server_clipboard_ = std::make_unique<base::XServerClipboard>();
+    x_server_clipboard_ = std::make_unique<XServerClipboard>();
     x_server_clipboard_->init(
         display_, std::bind(&ClipboardX11::onTextData, this, std::placeholders::_1));
 

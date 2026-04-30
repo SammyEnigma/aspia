@@ -33,9 +33,7 @@ class QTimer;
 class IpcChannel;
 class IpcServer;
 
-namespace base {
 class Location;
-} // namespace base
 
 class UserSession final : public QObject
 {
@@ -62,7 +60,7 @@ public:
     Q_ENUM(AttachReason)
 
     State state() const { return state_; }
-    base::SessionId sessionId() const { return session_id_; }
+    SessionId sessionId() const { return session_id_; }
 
     void sendConnectEvent(quint32 client_id, proto::peer::SessionType session_type,
         const QString& computer_name, const QString& display_name);
@@ -72,7 +70,7 @@ public slots:
     bool start();
     void onRouterStateChanged(const proto::user::RouterState& state);
     void onUpdateCredentials(HostId host_id, const QString& password);
-    void onClientSwitchSession(base::SessionId session_id);
+    void onClientSwitchSession(SessionId session_id);
     void onClientConfirmation(const proto::user::ConfirmationRequest& request);
     void onClientStarted();
     void onClientFinished();
@@ -101,8 +99,8 @@ private slots:
     void onStartupUserCheck();
 
 private:
-    void attach(const base::Location& location, AttachReason reason, base::SessionId session_id);
-    void dettach(const base::Location& location);
+    void attach(const Location& location, AttachReason reason, SessionId session_id);
+    void dettach(const Location& location);
     void sendMessage();
 
     IpcServer* ipc_server_ = nullptr;
@@ -112,12 +110,12 @@ private:
     QTimer* startup_timer_ = nullptr;
 
     State state_ = State::DETTACHED;
-    base::SessionId session_id_ = base::kInvalidSessionId;
+    SessionId session_id_ = kInvalidSessionId;
     bool is_console_ = true;
     int desktop_client_count_ = 0;
 
-    base::Parser<proto::user::UserToService> incoming_message_;
-    base::Serializer<proto::user::ServiceToUser> outgoing_message_;
+    Parser<proto::user::UserToService> incoming_message_;
+    Serializer<proto::user::ServiceToUser> outgoing_message_;
 
     Q_DISABLE_COPY_MOVE(UserSession)
 };

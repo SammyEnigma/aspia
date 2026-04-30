@@ -71,7 +71,7 @@ void resizeBuffer(QByteArray* buffer, qint64 size)
 //--------------------------------------------------------------------------------------------------
 TcpChannelNG::TcpChannelNG(Authenticator* authenticator, QObject* parent)
     : TcpChannel(Type::DIRECT, parent),
-      io_context_(base::AsioEventDispatcher::ioContext()),
+      io_context_(AsioEventDispatcher::ioContext()),
       socket_(io_context_),
       resolver_(std::make_unique<asio::ip::tcp::resolver>(io_context_)),
       authenticator_(authenticator)
@@ -83,7 +83,7 @@ TcpChannelNG::TcpChannelNG(Authenticator* authenticator, QObject* parent)
 TcpChannelNG::TcpChannelNG(
     Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent)
     : TcpChannel(type, parent),
-      io_context_(base::AsioEventDispatcher::ioContext()),
+      io_context_(AsioEventDispatcher::ioContext()),
       socket_(std::move(socket)),
       authenticator_(authenticator)
 {
@@ -433,7 +433,7 @@ void TcpChannelNG::setConnected(bool connected)
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
+void TcpChannelNG::onErrorOccurred(const Location& location, const std::error_code& error_code)
 {
     ErrorCode error = ErrorCode::UNKNOWN;
 
@@ -457,7 +457,7 @@ void TcpChannelNG::onErrorOccurred(const base::Location& location, const std::er
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::onErrorOccurred(const base::Location& location, ErrorCode error_code)
+void TcpChannelNG::onErrorOccurred(const Location& location, ErrorCode error_code)
 {
     CLOG(ERROR) << "Connection finished:" << error_code << "from" << location;
     setConnected(false);

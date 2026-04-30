@@ -22,8 +22,6 @@
 #include <array>
 #include <cstdlib>
 
-namespace base {
-
 // Bucket descriptor for BucketPool. Pairs up a bucket size with its cache cap. |size| is the
 // maximum total allocation (including internal header) for the bucket. |max_free| is the maximum
 // cached blocks before releasing to system.
@@ -161,7 +159,5 @@ private:
     std::array<FreeBlock*, BucketCount> free_lists_ = {};
     std::array<size_t, BucketCount> free_counts_ = {};
 };
-
-} // namespace base
 
 #endif // BASE_BUCKET_POOL_H

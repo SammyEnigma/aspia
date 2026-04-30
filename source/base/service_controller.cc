@@ -28,8 +28,6 @@
 #include "base/service_controller_systemd.h"
 #endif // defined(Q_OS_LINUX)
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // static
 std::unique_ptr<ServiceController> ServiceController::open(const QString& name)
@@ -100,5 +98,3 @@ bool ServiceController::isRunning(const QString& name)
     return false;
 #endif
 }
-
-} // namespace base

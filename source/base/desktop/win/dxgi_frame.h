@@ -38,7 +38,7 @@ public:
     ~DxgiFrame();
 
     // Should not be called if prepare() is not executed or returns false.
-    base::SharedPointer<Frame> frame() const;
+    SharedPointer<Frame> frame() const;
 
 private:
     // Allows DxgiDuplicatorController to access prepare() and context() function as well as
@@ -53,7 +53,7 @@ private:
 
     std::optional<QSize> last_frame_size_;
     ScreenCapturer::ScreenId source_id_ = ScreenCapturer::kFullDesktopScreenId;
-    base::SharedPointer<Frame> frame_;
+    SharedPointer<Frame> frame_;
     Context context_;
 };
 

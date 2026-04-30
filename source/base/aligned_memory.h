@@ -57,8 +57,6 @@
 #include <cstdlib>
 #endif
 
-namespace base {
-
 void* alignedAlloc(size_t size, size_t alignment);
 
 inline void alignedFree(void* ptr)
@@ -78,7 +76,5 @@ struct AlignedFreeDeleter
         alignedFree(ptr);
     }
 };
-
-}  // namespace base
 
 #endif // BASE_ALIGNED_MEMORY_H

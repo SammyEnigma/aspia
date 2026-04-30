@@ -35,8 +35,6 @@
 #include <atomic>
 #include <unordered_map>
 
-namespace base {
-
 class AsioEventDispatcher final : public QAbstractEventDispatcher
 {
     Q_OBJECT
@@ -152,7 +150,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AsioEventDispatcher)
 };
-
-} // namespace base
 
 #endif // BASE_ASIO_EVENT_DISPATCHER_H

@@ -21,10 +21,6 @@
 
 #include "proto/system_info.h"
 
-namespace base {
-
 void readApplicationsInformation(proto::system_info::Applications* applications);
-
-} // namespace base
 
 #endif // BASE_APPLICATIONS_READER_H

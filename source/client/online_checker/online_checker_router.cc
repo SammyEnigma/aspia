@@ -115,7 +115,7 @@ void OnlineCheckerRouter::checkNextComputer()
 }
 
 //--------------------------------------------------------------------------------------------------
-void OnlineCheckerRouter::onFinished(const base::Location& location)
+void OnlineCheckerRouter::onFinished(const Location& location)
 {
     LOG(INFO) << "Finished (" << location << ")";
 

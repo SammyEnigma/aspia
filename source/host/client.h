@@ -36,9 +36,7 @@ class QTimer;
 class StunPeer;
 class UdpChannel;
 
-namespace base {
 class Location;
-} // namespace base
 
 class Client : public QObject
 {
@@ -124,7 +122,7 @@ private:
     void onTcpBandwidthProbeAck();
     void onUdpBandwidthProbeAck();
     void checkBandwidth();
-    void setUdpState(const base::Location& location, UdpState state);
+    void setUdpState(const Location& location, UdpState state);
 
     Features features_ = FEATURE_NONE;
     TcpChannel* tcp_channel_ = nullptr;

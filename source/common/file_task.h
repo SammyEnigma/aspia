@@ -72,7 +72,7 @@ private:
         proto::file_transfer::Reply reply;
     };
 
-    base::SharedPointer<Data> data_;
+    SharedPointer<Data> data_;
 };
 
 Q_DECLARE_METATYPE(FileTask)

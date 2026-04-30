@@ -57,7 +57,7 @@ QStringList endpointsToString(const asio::ip::tcp::resolver::results_type& endpo
 RelayPeer::RelayPeer(Authenticator* authenticator, QObject* parent)
     : QObject(parent),
       authenticator_(authenticator),
-      io_context_(base::AsioEventDispatcher::ioContext()),
+      io_context_(AsioEventDispatcher::ioContext()),
       socket_(io_context_),
       resolver_(io_context_)
 {
@@ -240,7 +240,7 @@ void RelayPeer::onConnected()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RelayPeer::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
+void RelayPeer::onErrorOccurred(const Location& location, const std::error_code& error_code)
 {
     CLOG(ERROR) << "Failed to connect to relay server:" << error_code << "(" << location << ")";
     is_finished_ = true;
@@ -317,5 +317,5 @@ QByteArray RelayPeer::authenticationMessage(const proto::router::RelayKey& key, 
     message.set_public_key(key_pair.publicKey().toStdString());
     message.set_data(std::move(encrypted_secret));
 
-    return base::serialize(message);
+    return serialize(message);
 }

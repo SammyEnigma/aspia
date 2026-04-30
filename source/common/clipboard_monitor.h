@@ -50,7 +50,7 @@ private slots:
     void onAfterThreadRunning();
 
 private:
-    base::Thread thread_;
+    Thread thread_;
     std::unique_ptr<Clipboard> clipboard_;
 
     Q_DISABLE_COPY_MOVE(ClipboardMonitor)

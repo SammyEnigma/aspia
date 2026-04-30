@@ -38,9 +38,7 @@ typedef struct _ENetPacket ENetPacket;
 class DatagramDecryptor;
 class DatagramEncryptor;
 
-namespace base {
 class Location;
-} // namespace base
 
 class UdpChannel final : public QObject
 {
@@ -118,7 +116,7 @@ private:
     void close();
     void sendPunchHole(const ENetAddress& address);
     void processEvents();
-    void onErrorOccurred(const base::Location& location);
+    void onErrorOccurred(const Location& location);
     void onMessageReceived(quint8 channel_id, ScopedENetPacket packet);
     void onReadyCheck();
     void addTxBytes(qint64 bytes_count);

@@ -26,8 +26,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 namespace {
 
 // Helper functions for write -> read roundtrip via QBuffer.
@@ -443,5 +441,3 @@ TEST(xml_settings_test, roundtrip_unicode_value)
     ASSERT_TRUE(roundtrip(original, restored));
     EXPECT_EQ(restored["text"].toString(), QString::fromUtf8(u8"Привет мир"));
 }
-
-} // namespace base

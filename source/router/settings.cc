@@ -38,7 +38,7 @@ bool isValidWhiteListEntry(const QString& entry)
 } // namespace
 //--------------------------------------------------------------------------------------------------
 Settings::Settings()
-    : impl_(base::XmlSettings::format(), QSettings::SystemScope, "aspia", "router")
+    : impl_(XmlSettings::format(), QSettings::SystemScope, "aspia", "router")
 {
     // Nothing
 }

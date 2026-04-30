@@ -78,7 +78,7 @@ private:
     std::unordered_map<quint32, SessionKey> key_pool_;
     quint32 key_counter_ = 0;
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::ip::tcp::acceptor acceptor_;
     QList<PendingSession*> pending_sessions_;
     QList<Session*> active_sessions_;

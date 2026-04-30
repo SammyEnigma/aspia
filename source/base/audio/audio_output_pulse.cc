@@ -20,15 +20,15 @@
 
 #include "base/logging.h"
 
-base::PulseAudioSymbolTable* pulseSymbolTable()
+PulseAudioSymbolTable* pulseSymbolTable()
 {
-    static base::PulseAudioSymbolTable* pulse_symbol_table = new base::PulseAudioSymbolTable();
+    static PulseAudioSymbolTable* pulse_symbol_table = new PulseAudioSymbolTable();
     return pulse_symbol_table;
 }
 
 // Accesses Pulse functions through our late-binding symbol table instead of directly. This way we
 // don't have to link to libpulse, which means our binary will work on systems that don't have it.
-#define LATE(sym) LATESYM_GET(base::PulseAudioSymbolTable, pulseSymbolTable(), sym)
+#define LATE(sym) LATESYM_GET(PulseAudioSymbolTable, pulseSymbolTable(), sym)
 
 namespace {
 

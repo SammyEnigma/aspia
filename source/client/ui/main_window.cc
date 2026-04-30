@@ -108,7 +108,7 @@ MainWindow::MainWindow(QWidget* parent)
     }
 #endif
 
-    connect(base::GuiApplication::instance(), &base::GuiApplication::sig_themeChanged,
+    connect(GuiApplication::instance(), &GuiApplication::sig_themeChanged,
             this, &MainWindow::onAfterThemeChanged);
     onAfterThemeChanged();
 
@@ -177,7 +177,7 @@ void MainWindow::onUpdateCheckedFinished(const QByteArray& result)
         }
         else
         {
-            const QVersionNumber& current_version = base::kCurrentVersion;
+            const QVersionNumber& current_version = kCurrentVersion;
             const QVersionNumber& update_version = update_info.version();
 
             if (update_version > current_version)

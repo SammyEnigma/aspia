@@ -22,8 +22,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 TEST(BitSetTest, Range64)
 {
     EXPECT_EQ(BitSet<quint64>(0).range(0, 63), 0);
@@ -211,5 +209,3 @@ TEST(BitSetTest, Range8)
         }
     }
 }
-
-} // namespace base

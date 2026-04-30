@@ -48,7 +48,7 @@ const QString kTabStateParam = "tab_state";
 
 //--------------------------------------------------------------------------------------------------
 Settings::Settings()
-    : settings_(base::XmlSettings::format(), QSettings::UserScope, "aspia", "client")
+    : settings_(XmlSettings::format(), QSettings::UserScope, "aspia", "client")
 {
     // Nothing
 }

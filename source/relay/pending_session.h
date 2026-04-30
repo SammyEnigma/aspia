@@ -30,9 +30,7 @@
 
 class QTimer;
 
-namespace base {
 class Location;
-} // namespace base
 
 namespace relay {
 
@@ -74,10 +72,10 @@ signals:
 
 private:
     static void doReadMessage(PendingSession* pending_session);
-    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const Location& location, const std::error_code& error_code);
     void onMessage();
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
 
     QString address_;
     TimePoint start_time_;

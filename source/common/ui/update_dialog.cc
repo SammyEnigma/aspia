@@ -203,14 +203,14 @@ void UpdateDialog::onUpdateCheckedFinished(const QByteArray& result)
         {
             LOG(INFO) << "No updates available";
 
-            ui->label_available->setText(base::kCurrentVersion.toString());
+            ui->label_available->setText(kCurrentVersion.toString());
             ui->edit_description->setText(tr("No updates available."));
         }
         else
         {
             const QVersionNumber& update_version = update_info_.version();
 
-            if (update_version > base::kCurrentVersion)
+            if (update_version > kCurrentVersion)
             {
                 LOG(INFO) << "New version available:" << update_version.toString();
 
@@ -226,7 +226,7 @@ void UpdateDialog::onUpdateCheckedFinished(const QByteArray& result)
             {
                 LOG(INFO) << "New version less then current:" << update_version.toString();
 
-                ui->label_available->setText(base::kCurrentVersion.toString());
+                ui->label_available->setText(kCurrentVersion.toString());
                 ui->edit_description->setText(tr("No updates available."));
             }
         }
@@ -245,10 +245,10 @@ void UpdateDialog::initialize()
     ui->setupUi(this);
 
     ui->label_icon->setFixedSize(QSize(32, 32));
-    ui->label_icon->setPixmap(base::GuiApplication::svgPixmap(":/img/restart.svg", QSize(32, 32)));
+    ui->label_icon->setPixmap(GuiApplication::svgPixmap(":/img/restart.svg", QSize(32, 32)));
 
     connect(ui->button_update, &QPushButton::clicked, this, &UpdateDialog::onUpdateNow);
     connect(ui->button_close, &QPushButton::clicked, this, &UpdateDialog::close);
 
-    ui->label_current->setText(base::kCurrentVersion.toString());
+    ui->label_current->setText(kCurrentVersion.toString());
 }

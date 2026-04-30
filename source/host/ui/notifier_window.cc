@@ -123,7 +123,7 @@ NotifierWindow::NotifierWindow(QWidget* parent)
     ui.button_lock_mouse->setCheckable(true);
     ui.button_pause->setCheckable(true);
 
-    connect(base::GuiApplication::instance(), &base::GuiApplication::sig_themeChanged,
+    connect(GuiApplication::instance(), &GuiApplication::sig_themeChanged,
             this, &NotifierWindow::onThemeChanged);
 
     connect(ui.button_hide, &QPushButton::clicked, this, &NotifierWindow::onHideNotifier);
@@ -362,7 +362,7 @@ void NotifierWindow::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
 
-    QPalette palette = base::GuiApplication::palette();
+    QPalette palette = GuiApplication::palette();
 
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setBrush(palette.brush(QPalette::Window));
@@ -445,7 +445,7 @@ void NotifierWindow::onHideNotifier()
 //--------------------------------------------------------------------------------------------------
 void NotifierWindow::onThemeChanged()
 {
-    QString window_color = base::GuiApplication::palette().color(QPalette::Window).name(QColor::HexRgb);
+    QString window_color = GuiApplication::palette().color(QPalette::Window).name(QColor::HexRgb);
 
     ui.tree->setStyleSheet(QString("QTreeWidget {"
                                        "background-color: %1;"

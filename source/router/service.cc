@@ -432,7 +432,7 @@ bool Service::start()
         settings.setSeedKey(seed_key);
     }
 
-    base::SharedPointer<UserListBase> user_list(UserList::open().release());
+    SharedPointer<UserListBase> user_list(UserList::open().release());
     user_list->setSeedKey(seed_key);
 
     tcp_server_ = new TcpServer(this);

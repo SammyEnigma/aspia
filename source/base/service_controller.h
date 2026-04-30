@@ -23,8 +23,6 @@
 
 #include <memory>
 
-namespace base {
-
 class ServiceController
 {
 public:
@@ -51,7 +49,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(ServiceController)
 };
-
-} // namespace base
 
 #endif // BASE_SERVICE_CONTROLLER_H

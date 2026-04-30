@@ -29,8 +29,6 @@
 #include "base/files/file_util.h"
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 const char kSystemdPath[] = "/etc/systemd/system";
@@ -388,5 +386,3 @@ bool ServiceControllerSystemd::stop()
 {
     return runSystemctl({ "stop", unit_name_ });
 }
-
-} // namespace base

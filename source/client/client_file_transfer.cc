@@ -60,7 +60,7 @@ void ClientFileTransfer::onMessageReceived(quint8 channel_id, const QByteArray& 
 
     proto::file_transfer::Reply reply;
 
-    if (!base::parse(buffer, &reply))
+    if (!parse(buffer, &reply))
     {
         CLOG(ERROR) << "Invalid message from host";
         return;

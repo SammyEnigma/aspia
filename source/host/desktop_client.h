@@ -55,7 +55,7 @@ public slots:
     void onUserMessage(quint8 channel_id, const QByteArray& buffer);
 
 signals:
-    void sig_switchSession(base::SessionId session_id);
+    void sig_switchSession(SessionId session_id);
     void sig_userMessage(quint8 channel_id, const QByteArray& buffer);
 
 protected:

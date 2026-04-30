@@ -19,12 +19,8 @@
 #ifndef BASE_DEBUG_H
 #define BASE_DEBUG_H
 
-namespace base {
-
 bool isDebuggerPresent();
 void debugPrint(const char* str);
 void debugBreak();
-
-} // namespace base
 
 #endif // BASE_DEBUG_H

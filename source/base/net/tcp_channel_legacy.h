@@ -37,9 +37,7 @@ class TcpServer;
 class StreamDecryptor;
 class StreamEncryptor;
 
-namespace base {
 class Location;
-} // namespace base
 
 class TcpChannelLegacy final : public TcpChannel
 {
@@ -201,8 +199,8 @@ private:
     void onAuthenticatorMessage(const QByteArray& data);
     void onAuthenticatorFinished(Authenticator::ErrorCode error_code);
 
-    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
-    void onErrorOccurred(const base::Location& location, ErrorCode error_code);
+    void onErrorOccurred(const Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const Location& location, ErrorCode error_code);
 
     void onMessageWritten(quint8 channel_id);
     void onMessageReceived();
@@ -218,7 +216,7 @@ private:
     void onKeepAliveTimer();
     void sendKeepAlive(quint8 flags, const void* data, size_t size);
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::io_context& io_context_;
     asio::ip::tcp::socket socket_;
     std::unique_ptr<asio::ip::tcp::resolver> resolver_;

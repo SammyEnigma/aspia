@@ -25,8 +25,6 @@
 #include <unistd.h>
 #endif
 
-namespace base {
-
 #if defined(Q_OS_WINDOWS)
 using SessionId = unsigned long;
 #elif defined(Q_OS_UNIX)
@@ -41,7 +39,5 @@ extern const SessionId kServiceSessionId;
 SessionId activeConsoleSessionId();
 SessionId currentProcessSessionId();
 const char* sessionStatusToString(quint32 status);
-
-} // namespace base
 
 #endif // BASE_SESSION_ID_H

@@ -21,7 +21,7 @@
 #include <QTimer>
 #include <QThread>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/logging.h"
 #include "base/session_id.h"
 #include "base/win/scoped_com_initializer.h"
@@ -397,7 +397,7 @@ Service::~Service()
 }
 
 //--------------------------------------------------------------------------------------------------
-int Service::exec(Application& application)
+int Service::exec(base::CoreApplication& application)
 {
     LOG(INFO) << "Begin";
 
@@ -430,8 +430,8 @@ int Service::exec(Application& application)
         service_thread->startup_condition.notify_all();
     }
 
-    connect(this, &Service::sig_powerEvent, &application, &Application::sig_powerEvent);
-    connect(this, &Service::sig_sessionEvent, &application, &Application::sig_sessionEvent);
+    connect(this, &Service::sig_powerEvent, &application, &base::CoreApplication::sig_powerEvent);
+    connect(this, &Service::sig_sessionEvent, &application, &base::CoreApplication::sig_sessionEvent);
 
     int ret = application.exec();
     service_thread.reset();

@@ -91,8 +91,8 @@ private:
     std::map<quint64, OutgoingTransfer> outgoing_transfers_;
     quint64 next_transfer_id_ = 1;
     std::array<char, kChunkSize> read_buffer_;
-    base::Parser<proto::file::Message> incoming_message_;
-    base::Serializer<proto::file::Message> outgoing_message_;
+    Parser<proto::file::Message> incoming_message_;
+    Serializer<proto::file::Message> outgoing_message_;
 
     Q_DISABLE_COPY_MOVE(ClipboardFileTransfer)
 };

@@ -62,7 +62,7 @@ public:
     MonitorEnumerator();
     ~MonitorEnumerator() final = default;
 
-    base::Edid edid() const;
+    Edid edid() const;
 
 private:
     Q_DISABLE_COPY_MOVE(MonitorEnumerator)

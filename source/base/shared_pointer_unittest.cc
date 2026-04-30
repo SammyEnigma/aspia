@@ -23,8 +23,6 @@
 #include <string>
 #include <utility>
 
-namespace base {
-
 namespace {
 
 // Helper to track construction/destruction.
@@ -412,5 +410,3 @@ TEST(shared_pointer_test, multiple_copies_ref_count)
     }
     EXPECT_EQ(LifetimeTracker::alive_count, 0);
 }
-
-} // namespace base

@@ -103,7 +103,7 @@ bool SettingsUtil::copySettings(const QString& source_path,
     }
 
     QSettings::SettingsMap settings_map;
-    if (!base::XmlSettings::readFunc(source_file, settings_map))
+    if (!XmlSettings::readFunc(source_file, settings_map))
     {
         LOG(ERROR) << "Failed to read source file:" << source_path;
 
@@ -157,7 +157,7 @@ bool SettingsUtil::copySettings(const QString& source_path,
         return false;
     }
 
-    if (!base::XmlSettings::writeFunc(target_file, settings_map))
+    if (!XmlSettings::writeFunc(target_file, settings_map))
     {
         LOG(ERROR) << "Failed to write destination file:" << target_path;
 

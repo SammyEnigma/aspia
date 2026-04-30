@@ -20,7 +20,7 @@
 
 #include <QCommandLineParser>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/asio_event_dispatcher.h"
 #include "base/logging.h"
 #include "build/version.h"
@@ -35,15 +35,15 @@ int desktopAgentMain(int& argc, char* argv[])
 
     base::ScopedLogging scoped_logging(logging_settings);
 
-    base::Application::setEventDispatcher(new base::AsioEventDispatcher());
-    base::Application::setApplicationVersion(ASPIA_VERSION_STRING);
-    base::Application application(argc, argv);
+    base::CoreApplication::setEventDispatcher(new AsioEventDispatcher());
+    base::CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
+    base::CoreApplication application(argc, argv);
 
     HostUtils::printDebugInfo(
         HostUtils::INCLUDE_VIDEO_ADAPTERS | HostUtils::INCLUDE_WINDOW_STATIONS);
 
     QCommandLineOption channel_id_option("channel_id",
-        base::Application::translate("DesktopAgentMain", "IPC channel id."), "channel_id");
+        base::CoreApplication::translate("DesktopAgentMain", "IPC channel id."), "channel_id");
 
     QCommandLineParser parser;
     parser.addOption(channel_id_option);

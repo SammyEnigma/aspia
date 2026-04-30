@@ -28,9 +28,7 @@ class QHostInfo;
 class QSocketNotifier;
 class QTimer;
 
-namespace base {
 class Location;
-} // namespace base
 
 class StunPeer final : public QObject
 {
@@ -55,7 +53,7 @@ private:
     void doStop();
     void onHostResolved(const QHostInfo& host_info);
     void onReadyRead();
-    void onErrorOccurred(const base::Location& location);
+    void onErrorOccurred(const Location& location);
 
     QTimer* timer_ = nullptr;
     int number_of_attempts_ = 0;

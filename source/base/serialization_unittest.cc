@@ -24,8 +24,6 @@
 
 #include <string>
 
-namespace base {
-
 // ============================================================================
 // Free function: serialize(MessageLite) / parse(QByteArray, T*)
 // ============================================================================
@@ -406,5 +404,3 @@ TEST(serialization_test, serializer_parser_repeated_roundtrip)
                   "file_" + std::to_string(round) + "_0");
     }
 }
-
-} // namespace base

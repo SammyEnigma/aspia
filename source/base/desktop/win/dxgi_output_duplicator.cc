@@ -211,7 +211,7 @@ bool DxgiOutputDuplicator::releaseFrame()
 
 //--------------------------------------------------------------------------------------------------
 bool DxgiOutputDuplicator::duplicate(
-    Context* context, const QPoint& offset, base::SharedPointer<Frame>& target, DxgiCursor* cursor)
+    Context* context, const QPoint& offset, SharedPointer<Frame>& target, DxgiCursor* cursor)
 {
     DCHECK(duplication_);
     DCHECK(texture_);

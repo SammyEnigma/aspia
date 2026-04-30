@@ -123,8 +123,8 @@ void DesktopAgentClient::onIpcDisconnected()
 void DesktopAgentClient::onIpcMessageReceived(
     quint32 channel_id, const QByteArray& buffer, bool /* reliable */)
 {
-    quint16 net_channel_id = base::lowWord(channel_id);
-    quint16 ipc_channel_id = base::highWord(channel_id);
+    quint16 net_channel_id = lowWord(channel_id);
+    quint16 ipc_channel_id = highWord(channel_id);
 
     if (ipc_channel_id == proto::desktop::IPC_CHANNEL_ID_SESSION)
     {
@@ -139,7 +139,7 @@ void DesktopAgentClient::onIpcMessageReceived(
     else if (ipc_channel_id == proto::desktop::IPC_CHANNEL_ID_SERVICE)
     {
         proto::desktop::ServiceToAgentClient message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse ServiceToDesktop message";
             return;
@@ -171,7 +171,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
     if (channel_id == proto::desktop::CHANNEL_ID_INPUT)
     {
         proto::input::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse input message";
             return;
@@ -189,7 +189,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
     else if (channel_id == proto::desktop::CHANNEL_ID_VIDEO)
     {
         proto::video::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse video control message";
             return;
@@ -205,7 +205,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
     else if (channel_id == proto::desktop::CHANNEL_ID_SCREEN)
     {
         proto::screen::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse screen control message";
             return;
@@ -217,7 +217,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
     else if (channel_id == proto::desktop::CHANNEL_ID_AUDIO)
     {
         proto::audio::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse audio control message";
             return;
@@ -229,7 +229,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
     else if (channel_id == proto::desktop::CHANNEL_ID_POWER)
     {
         proto::power::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse power message";
             return;
@@ -241,7 +241,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
     else if (channel_id == proto::desktop::CHANNEL_ID_CONTROL)
     {
         proto::control::ClientToHost message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             CLOG(ERROR) << "Unable to parse control message";
             return;
@@ -257,7 +257,7 @@ void DesktopAgentClient::readSessionMessage(quint8 channel_id, const QByteArray&
 //--------------------------------------------------------------------------------------------------
 void DesktopAgentClient::sendSessionMessage(quint8 net_channel_id, const QByteArray& buffer, bool reliable)
 {
-    quint32 channel_id = base::makeUint32(proto::desktop::IPC_CHANNEL_ID_SESSION, net_channel_id);
+    quint32 channel_id = makeUint32(proto::desktop::IPC_CHANNEL_ID_SESSION, net_channel_id);
     ipc_channel_->send(channel_id, buffer, reliable);
 }
 
@@ -334,11 +334,11 @@ void DesktopAgentClient::readPowerControl(const proto::power::Control& control)
     switch (control.action())
     {
         case proto::power::Control::ACTION_LOGOFF:
-            base::PowerController::logoff();
+            PowerController::logoff();
             break;
 
         case proto::power::Control::ACTION_LOCK:
-            base::PowerController::lock();
+            PowerController::lock();
             break;
 
         default:
@@ -399,5 +399,5 @@ void DesktopAgentClient::sendCapabilities()
 #endif
 
     CLOG(INFO) << "Sending:" << *capabilities;
-    sendSessionMessage(proto::desktop::CHANNEL_ID_CONTROL, base::serialize(message), true);
+    sendSessionMessage(proto::desktop::CHANNEL_ID_CONTROL, serialize(message), true);
 }

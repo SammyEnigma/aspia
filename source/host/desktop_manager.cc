@@ -22,7 +22,7 @@
 #include <QDir>
 #include <QTimer>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/location.h"
 #include "base/logging.h"
 #include "base/serialization.h"
@@ -205,7 +205,7 @@ DesktopManager::DesktopManager(QObject* parent)
 {
     LOG(INFO) << "Ctor";
 
-    connect(base::Application::instance(), &base::Application::sig_sessionEvent,
+    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_sessionEvent,
             this, &DesktopManager::onUserSessionEvent);
 
     restart_timer_->setInterval(kRestartTimeout);
@@ -246,7 +246,7 @@ void DesktopManager::startAgentClient(const QString& ipc_channel_name)
     control->set_utf8_string(ipc_channel_name.toStdString());
 
     LOG(INFO) << "Send command to start IPC connection" << ipc_channel_name;
-    sendMessage(base::serialize(message));
+    sendMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -260,7 +260,7 @@ void DesktopManager::onClientStarted()
 
     if (is_attach_needed)
     {
-        attach(FROM_HERE, base::activeConsoleSessionId());
+        attach(FROM_HERE, activeConsoleSessionId());
         return;
     }
 
@@ -288,11 +288,11 @@ void DesktopManager::onClientChannelChanged()
     proto::desktop::ServiceToAgent message;
     proto::desktop::AgentControl* control = message.mutable_control();
     control->set_command_name("channel_changed");
-    sendMessage(base::serialize(message));
+    sendMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopManager::onClientSwitchSession(base::SessionId session_id)
+void DesktopManager::onClientSwitchSession(SessionId session_id)
 {
     if (!client_count_ || session_id == session_id_)
     {
@@ -314,7 +314,7 @@ void DesktopManager::onUserPause(bool enable)
     control->set_command_name("pause");
     control->set_boolean(enable);
 
-    sendMessage(base::serialize(message));
+    sendMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -326,7 +326,7 @@ void DesktopManager::onUserLockMouse(bool enable)
     control->set_command_name("lock_mouse");
     control->set_boolean(enable);
 
-    sendMessage(base::serialize(message));
+    sendMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -338,7 +338,7 @@ void DesktopManager::onUserLockKeyboard(bool enable)
     control->set_command_name("lock_keyboard");
     control->set_boolean(enable);
 
-    sendMessage(base::serialize(message));
+    sendMessage(serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ void DesktopManager::onUserSessionEvent(quint32 event_type, quint32 session_id)
                 return;
 
             dettach(FROM_HERE);
-            attach(FROM_HERE, base::activeConsoleSessionId());
+            attach(FROM_HERE, activeConsoleSessionId());
         }
         break;
 
@@ -387,7 +387,7 @@ void DesktopManager::onUserSessionEvent(quint32 event_type, quint32 session_id)
 void DesktopManager::onRestartTimeout()
 {
     LOG(INFO) << "Restarting...";
-    base::SessionId session_id = session_id_;
+    SessionId session_id = session_id_;
     dettach(FROM_HERE);
     attach(FROM_HERE, session_id);
 }
@@ -446,7 +446,7 @@ void DesktopManager::onIpcDisconnected()
         return;
 
     dettach(FROM_HERE);
-    attach(FROM_HERE, base::activeConsoleSessionId());
+    attach(FROM_HERE, activeConsoleSessionId());
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -457,7 +457,7 @@ void DesktopManager::onIpcMessageReceived(
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopManager::attach(const base::Location& location, base::SessionId session_id)
+void DesktopManager::attach(const Location& location, SessionId session_id)
 {
     if (state_ != State::DETTACHED)
     {
@@ -473,7 +473,7 @@ void DesktopManager::attach(const base::Location& location, base::SessionId sess
 
     state_ = State::ATTACHING;
     session_id_ = session_id;
-    is_console_ = session_id == base::activeConsoleSessionId();
+    is_console_ = session_id == activeConsoleSessionId();
 
     LOG(INFO) << "Attach to session" << session_id << "from" << location;
 
@@ -503,7 +503,7 @@ void DesktopManager::attach(const base::Location& location, base::SessionId sess
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopManager::dettach(const base::Location& location)
+void DesktopManager::dettach(const Location& location)
 {
     if (state_ == State::DETTACHED)
     {
@@ -525,7 +525,7 @@ void DesktopManager::dettach(const base::Location& location)
         ipc_channel_.reset();
     }
 
-    session_id_ = base::kInvalidSessionId;
+    session_id_ = kInvalidSessionId;
     is_console_ = true;
 
     restart_timer_->stop();
@@ -536,7 +536,7 @@ void DesktopManager::dettach(const base::Location& location)
 //--------------------------------------------------------------------------------------------------
 bool DesktopManager::startProcess(const QString& ipc_channel_name)
 {
-    if (session_id_ == base::kInvalidSessionId)
+    if (session_id_ == kInvalidSessionId)
     {
         LOG(ERROR) << "An attempt was detected to start a process in a INVALID session (session_id:"
                    << session_id_ << ")";
@@ -544,7 +544,7 @@ bool DesktopManager::startProcess(const QString& ipc_channel_name)
     }
 
 #if defined(Q_OS_WINDOWS)
-    if (session_id_ == base::kServiceSessionId)
+    if (session_id_ == kServiceSessionId)
     {
         LOG(ERROR) << "An attempt was detected to start a process in a SERVICES session ("
                    << "session_id:" << session_id_ << ")";

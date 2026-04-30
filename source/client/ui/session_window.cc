@@ -87,7 +87,7 @@ bool SessionWindow::connectToHost(ComputerConfig computer, const QString& displa
     // Create a client instance.
     Client* client = createClient();
 
-    client->moveToThread(base::GuiApplication::ioThread());
+    client->moveToThread(GuiApplication::ioThread());
     client->setSessionState(session_state_);
 
     connect(client, &Client::sig_statusChanged, this, &SessionWindow::onStatusChanged, Qt::QueuedConnection);
@@ -190,7 +190,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
         case Client::Status::VERSION_MISMATCH:
         {
             QString host_version = session_state_->hostVersion().toString();
-            QString client_version = base::kCurrentVersion.toString();
+            QString client_version = kCurrentVersion.toString();
 
             onErrorOccurred(tr("The Host version is newer than the Client version (%1 > %2). "
                                "Please update the application.").arg(host_version, client_version));

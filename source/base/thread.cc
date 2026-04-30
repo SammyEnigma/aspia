@@ -25,8 +25,6 @@
 #include "base/win/scoped_com_initializer.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 Thread::Thread(EventDispatcher dispatcher, QObject* parent)
     : QThread(parent)
@@ -60,5 +58,3 @@ void Thread::run()
     exec();
     emit sig_afterRunning();
 }
-
-} // namespace base

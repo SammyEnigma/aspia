@@ -212,7 +212,7 @@ MonitorEnumerator::MonitorEnumerator()
 }
 
 //--------------------------------------------------------------------------------------------------
-base::Edid MonitorEnumerator::edid() const
+Edid MonitorEnumerator::edid() const
 {
     QString key_path = QString("SYSTEM\\CurrentControlSet\\Enum\\%1\\Device Parameters").arg(deviceID());
 
@@ -222,7 +222,7 @@ base::Edid MonitorEnumerator::edid() const
     {
         LOG(ERROR) << "Unable to open registry key:"
                    << base::SystemError(static_cast<DWORD>(status)).toString();
-        return base::Edid();
+        return Edid();
     }
 
     QByteArray buffer;
@@ -231,10 +231,10 @@ base::Edid MonitorEnumerator::edid() const
     {
         LOG(ERROR) << "Unable to read EDID data from registry:"
                    << base::SystemError(static_cast<DWORD>(status)).toString();
-        return base::Edid();
+        return Edid();
     }
 
-    return base::Edid(buffer);
+    return Edid(buffer);
 }
 
 //--------------------------------------------------------------------------------------------------

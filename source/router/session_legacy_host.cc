@@ -56,14 +56,14 @@ void SessionLegacyHost::sendConnectionOffer(const proto::router::legacy::Connect
 {
     proto::router::legacy::RouterToPeer message;
     message.mutable_connection_offer()->CopyFrom(offer);
-    sendMessage(0, base::serialize(message));
+    sendMessage(0, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
 void SessionLegacyHost::onSessionMessage(quint8 /* channel_id */, const QByteArray& buffer)
 {
     proto::router::legacy::PeerToRouter message;
-    if (!base::parse(buffer, &message))
+    if (!parse(buffer, &message))
     {
         CLOG(ERROR) << "Could not read message from host";
         return;
@@ -152,7 +152,7 @@ void SessionLegacyHost::readHostIdRequest(const proto::router::legacy::HostIdReq
             break;
     }
 
-    sendMessage(0, base::serialize(message));
+    sendMessage(0, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------

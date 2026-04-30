@@ -30,7 +30,7 @@ FrameAligned::FrameAligned(const QSize& size, int stride, quint8* data)
 //--------------------------------------------------------------------------------------------------
 FrameAligned::~FrameAligned()
 {
-    base::alignedFree(data_);
+    alignedFree(data_);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ std::unique_ptr<FrameAligned> FrameAligned::create(const QSize& size, size_t ali
         & ~(static_cast<int>(alignment) - 1);
 
     quint8* data = reinterpret_cast<quint8*>(
-        base::alignedAlloc(static_cast<size_t>(stride) * static_cast<size_t>(size.height()), alignment));
+        alignedAlloc(static_cast<size_t>(stride) * static_cast<size_t>(size.height()), alignment));
     if (!data)
         return nullptr;
 

@@ -23,8 +23,6 @@
 #include "base/bitset.h"
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 const size_t kMinEdidSize = 0x80; // 128 bytes
@@ -527,5 +525,3 @@ bool Edid::standardTimings(int index, int* width, int* height, int* frequency)
 
     return true;
 }
-
-} // namespace base

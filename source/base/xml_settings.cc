@@ -22,8 +22,6 @@
 #include <QRect>
 #include <QXmlStreamReader>
 
-namespace base {
-
 namespace {
 
 const QString kEmptyString;
@@ -331,5 +329,3 @@ bool XmlSettings::writeFunc(QIODevice& device, const QSettings::SettingsMap& map
 
     return !xml.hasError();
 }
-
-} // namespace base

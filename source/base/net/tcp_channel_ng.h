@@ -36,9 +36,7 @@ class TcpServer;
 class StreamDecryptor;
 class StreamEncryptor;
 
-namespace base {
 class Location;
-} // namespace base
 
 class TcpChannelNG final : public TcpChannel
 {
@@ -153,8 +151,8 @@ private:
 
     void init();
     void setConnected(bool connected);
-    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
-    void onErrorOccurred(const base::Location& location, ErrorCode error_code);
+    void onErrorOccurred(const Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const Location& location, ErrorCode error_code);
     void onMessageReceived();
     void addWriteTask(quint8 type, quint8 param, const QByteArray& data);
     void doWrite();
@@ -162,7 +160,7 @@ private:
     void doReadData();
     void onKeepAliveTimer();
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::io_context& io_context_;
     asio::ip::tcp::socket socket_;
     std::unique_ptr<asio::ip::tcp::resolver> resolver_;

@@ -16,26 +16,25 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef BASE_APPLICATION_H
-#define BASE_APPLICATION_H
+#ifndef BASE_CORE_APPLICATION_H
+#define BASE_CORE_APPLICATION_H
 
 #include <QCoreApplication>
 
 class MessageWindow;
+class Thread;
 
 namespace base {
 
-class Thread;
-
-class Application final : public QCoreApplication
+class CoreApplication final : public QCoreApplication
 {
     Q_OBJECT
 
 public:
-    Application(int& argc, char* argv[]);
-    ~Application() final;
+    CoreApplication(int& argc, char* argv[]);
+    ~CoreApplication() final;
 
-    static Application* instance();
+    static CoreApplication* instance();
 
 signals:
     void sig_queryEndSession();
@@ -44,14 +43,14 @@ signals:
 
 private:
 #if defined(Q_OS_WINDOWS)
-    std::unique_ptr<base::Thread> ui_thread_;
+    std::unique_ptr<Thread> ui_thread_;
     std::unique_ptr<MessageWindow> message_window_;
     bool is_service_ = false;
 #endif // defined(Q_OS_WINDOWS)
 
-    Q_DISABLE_COPY_MOVE(Application)
+    Q_DISABLE_COPY_MOVE(CoreApplication)
 };
 
 } // namespace base
 
-#endif // BASE_APPLICATION_H
+#endif // BASE_CORE_APPLICATION_H

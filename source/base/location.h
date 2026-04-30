@@ -23,8 +23,6 @@
 #include <QMetaType>
 #include <QString>
 
-namespace base {
-
 // Location provides basic info where of an object was constructed, or was significantly brought
 // to life.
 class Location
@@ -62,12 +60,10 @@ private:
 // Full source information should be included.
 #define FROM_HERE FROM_HERE_WITH_EXPLICIT_FUNCTION(__func__)
 #define FROM_HERE_WITH_EXPLICIT_FUNCTION(function_name) \
-    ::base::Location::createFromHere(function_name, __FILE__, __LINE__)
+    ::Location::createFromHere(function_name, __FILE__, __LINE__)
 
-} // namespace base
+Q_DECLARE_METATYPE(Location)
 
-Q_DECLARE_METATYPE(base::Location)
-
-QDebug operator<<(QDebug out, const base::Location& location);
+QDebug operator<<(QDebug out, const Location& location);
 
 #endif // BASE_LOCATION_H

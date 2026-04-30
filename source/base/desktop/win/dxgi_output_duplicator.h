@@ -62,7 +62,7 @@ public:
     // this function copies the content to the rectangle of (offset.x(), offset.y()) to
     // (offset.x() + desktop_rect_.width(), offset.y() + desktop_rect_.height()).
     // Returns false in case of a failure.
-    bool duplicate(Context* context, const QPoint& offset, base::SharedPointer<Frame>& target_frame, DxgiCursor* cursor);
+    bool duplicate(Context* context, const QPoint& offset, SharedPointer<Frame>& target_frame, DxgiCursor* cursor);
 
     // Returns the desktop rect covered by this DxgiOutputDuplicator.
     const QRect& desktopRect() const { return desktop_rect_; }

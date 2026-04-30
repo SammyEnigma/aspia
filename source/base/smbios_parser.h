@@ -24,8 +24,6 @@
 
 #include "base/smbios.h"
 
-namespace base {
-
 class SmbiosTableEnumerator
 {
 public:
@@ -100,7 +98,5 @@ private:
     const SmbiosMemoryDeviceTable* table_;
     Q_DISABLE_COPY_MOVE(SmbiosMemoryDevice)
 };
-
-} // namespace base
 
 #endif // BASE_SMBIOS_PARSER_H

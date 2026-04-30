@@ -33,9 +33,7 @@
 #include "base/session_id.h"
 
 class IpcServer;
-namespace base {
 class Location;
-} // namespace base
 
 class IpcChannel final : public QObject
 {
@@ -55,7 +53,7 @@ public:
 
     quint32 instanceId() const { return instance_id_; }
     const QString& channelName() const { return channel_name_; }
-    base::SessionId sessionId() const { return session_id_; }
+    SessionId sessionId() const { return session_id_; }
 
 signals:
     void sig_connected();
@@ -78,7 +76,7 @@ private:
     bool connectAttempt();
     void scheduleConnectAttempt(const std::chrono::milliseconds& delay, int count);
     void disconnectFrom();
-    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const Location& location, const std::error_code& error_code);
     void onMessageReceived();
 
     void doWriteHeader();
@@ -130,7 +128,7 @@ private:
     using WriteQueue = QQueue<WriteTask>;
 
     const quint32 instance_id_;
-    base::SessionId session_id_ = base::kInvalidSessionId;
+    SessionId session_id_ = kInvalidSessionId;
     QString channel_name_;
     Stream stream_;
 

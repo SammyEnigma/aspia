@@ -24,8 +24,6 @@
 #include <algorithm>
 #include <cstring>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // static
 QString SysInfo::processorName()
@@ -135,5 +133,3 @@ QString SysInfo::processorVendor()
     return QString();
 #endif
 }
-
-} // namespace base

@@ -22,8 +22,6 @@
 #include "base/service_controller.h"
 #include "base/win/scoped_object.h"
 
-namespace base {
-
 class ServiceControllerWin final : public ServiceController
 {
 public:
@@ -54,7 +52,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ServiceControllerWin)
 };
-
-} // namespace base
 
 #endif // BASE_SERVICE_CONTROLLER_WIN_H

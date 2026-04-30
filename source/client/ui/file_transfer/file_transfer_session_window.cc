@@ -290,7 +290,7 @@ void FileTransferSessionWindow::removeItems(FilePanel* sender, const FileRemover
     ui->remote_panel->setEnabled(false);
 
     FileRemover* remover = new FileRemover(target, items);
-    remover->moveToThread(base::GuiApplication::ioThread());
+    remover->moveToThread(GuiApplication::ioThread());
 
     connect(remover, &FileRemover::sig_started,
             remove_dialog_, &FileRemoveDialog::start,
@@ -380,7 +380,7 @@ void FileTransferSessionWindow::transferItems(
     ui->remote_panel->setEnabled(false);
 
     FileTransfer* transfer = new FileTransfer(type, source_path, target_path, items);
-    transfer->moveToThread(base::GuiApplication::ioThread());
+    transfer->moveToThread(GuiApplication::ioThread());
 
     connect(transfer, &FileTransfer::sig_started,
             transfer_dialog_, &FileTransferDialog::start,

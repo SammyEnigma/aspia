@@ -55,37 +55,37 @@ quint32 makeInstanceId()
 }
 
 //--------------------------------------------------------------------------------------------------
-base::SessionId clientSessionId(PipeHandle pipe_handle)
+SessionId clientSessionId(PipeHandle pipe_handle)
 {
 #if defined(Q_OS_WINDOWS)
-    ULONG session_id = base::kInvalidSessionId;
+    ULONG session_id = kInvalidSessionId;
     if (!GetNamedPipeClientSessionId(pipe_handle, &session_id))
     {
         PLOG(ERROR) << "GetNamedPipeClientSessionId failed";
-        return base::kInvalidSessionId;
+        return kInvalidSessionId;
     }
 
     return session_id;
 #else
     Q_UNUSED(pipe_handle)
-    return base::kInvalidSessionId;
+    return kInvalidSessionId;
 #endif
 }
 
 //--------------------------------------------------------------------------------------------------
-base::SessionId serverSessionId(PipeHandle pipe_handle)
+SessionId serverSessionId(PipeHandle pipe_handle)
 {
 #if defined(Q_OS_WINDOWS)
-    ULONG session_id = base::kInvalidSessionId;
+    ULONG session_id = kInvalidSessionId;
     if (!GetNamedPipeServerSessionId(pipe_handle, &session_id))
     {
         PLOG(ERROR) << "GetNamedPipeServerSessionId failed";
-        return base::kInvalidSessionId;
+        return kInvalidSessionId;
     }
 
     return session_id;
 #else
-    return base::kInvalidSessionId;
+    return kInvalidSessionId;
 #endif
 }
 
@@ -95,7 +95,7 @@ base::SessionId serverSessionId(PipeHandle pipe_handle)
 IpcChannel::IpcChannel(QObject* parent)
     : QObject(parent),
       instance_id_(makeInstanceId()),
-      stream_(base::AsioEventDispatcher::ioContext())
+      stream_(AsioEventDispatcher::ioContext())
 {
     // Nothing
 }
@@ -285,7 +285,7 @@ void IpcChannel::disconnectFrom()
 }
 
 //--------------------------------------------------------------------------------------------------
-void IpcChannel::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
+void IpcChannel::onErrorOccurred(const Location& location, const std::error_code& error_code)
 {
     CLOG(ERROR) << "Error in IPC channel" << channel_name_ << ":" << error_code << "(from" << location << ")";
     disconnectFrom();

@@ -21,8 +21,6 @@
 
 #include <QByteArray>
 
-namespace base {
-
 class Edid
 {
 public:
@@ -240,7 +238,5 @@ private:
     QByteArray buffer_;
     const Data* edid_ = nullptr;
 };
-
-} // namespace base
 
 #endif // BASE_EDID_H

@@ -282,7 +282,7 @@ void startRouterSession(const ComputerConfig& computer,
     status_dialog->setAttribute(Qt::WA_DeleteOnClose);
 
     QPointer<RouterConnection> router = new RouterConnection(router_config);
-    router->moveToThread(base::GuiApplication::ioThread());
+    router->moveToThread(GuiApplication::ioThread());
 
     QObject::connect(router, &RouterConnection::sig_statusChanged, qApp,
         [status_dialog, router, computer, session_type, display_name, desktop_config](
@@ -353,9 +353,9 @@ int main(int argc, char* argv[])
     LOG(INFO) << "Git branch:" << GIT_CURRENT_BRANCH;
     LOG(INFO) << "Git commit:" << GIT_COMMIT_HASH;
 #endif
-    LOG(INFO) << "OS:" << base::SysInfo::operatingSystemName()
-              << "(version:" << base::SysInfo::operatingSystemVersion()
-              <<  "arch:" << base::SysInfo::operatingSystemArchitecture() << ")";
+    LOG(INFO) << "OS:" << SysInfo::operatingSystemName()
+              << "(version:" << SysInfo::operatingSystemVersion()
+              <<  "arch:" << SysInfo::operatingSystemArchitecture() << ")";
     LOG(INFO) << "Qt version:" << QT_VERSION_STR;
     LOG(INFO) << "Command line:" << application.arguments();
 

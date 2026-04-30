@@ -21,8 +21,6 @@
 
 #include <utility>
 
-namespace base {
-
 template<typename T>
 class SharedPointer
 {
@@ -148,7 +146,5 @@ private:
     T* ptr_;
     int* ref_count_;
 };
-
-} // namespace base
 
 #endif // BASE_SHARED_POINTER_H

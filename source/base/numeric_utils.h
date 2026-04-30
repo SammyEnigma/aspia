@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 inline quint32 makeUint32(quint16 high, quint16 low)
 {
@@ -40,7 +38,5 @@ inline quint16 lowWord(quint32 value)
 {
     return static_cast<quint16>(value & 0xFFFF);
 }
-
-} // namespace base
 
 #endif // BASE_NUMERIC_UTILS_H

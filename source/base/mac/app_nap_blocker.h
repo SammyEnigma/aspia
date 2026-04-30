@@ -19,12 +19,8 @@
 #ifndef BASE_MAC_APP_NAP_BLOCKER_H
 #define BASE_MAC_APP_NAP_BLOCKER_H
 
-namespace base {
-
 void addAppNapBlock();
 void releaseAppNapBlock();
 bool isAppNapBlocked();
-
-} // namespace base
 
 #endif // BASE_MAC_APP_NAP_BLOCKER_H

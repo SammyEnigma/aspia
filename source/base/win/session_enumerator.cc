@@ -86,7 +86,7 @@ WTS_CONNECTSTATE_CLASS SessionEnumerator::state() const
 }
 
 //--------------------------------------------------------------------------------------------------
-base::SessionId SessionEnumerator::sessionId() const
+SessionId SessionEnumerator::sessionId() const
 {
     return info_[current_]->SessionId;
 }

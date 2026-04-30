@@ -71,7 +71,7 @@ void resizeBuffer(QByteArray* buffer, qint64 new_size)
 //--------------------------------------------------------------------------------------------------
 TcpChannelLegacy::TcpChannelLegacy(Authenticator* authenticator, QObject* parent)
     : TcpChannel(Type::DIRECT, parent),
-      io_context_(base::AsioEventDispatcher::ioContext()),
+      io_context_(AsioEventDispatcher::ioContext()),
       socket_(io_context_),
       resolver_(std::make_unique<asio::ip::tcp::resolver>(io_context_)),
       authenticator_(authenticator)
@@ -83,7 +83,7 @@ TcpChannelLegacy::TcpChannelLegacy(Authenticator* authenticator, QObject* parent
 TcpChannelLegacy::TcpChannelLegacy(
     Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent)
     : TcpChannel(type, parent),
-      io_context_(base::AsioEventDispatcher::ioContext()),
+      io_context_(AsioEventDispatcher::ioContext()),
       socket_(std::move(socket)),
       authenticator_(authenticator)
 {
@@ -516,7 +516,7 @@ void TcpChannelLegacy::onAuthenticatorFinished(Authenticator::ErrorCode error_co
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
+void TcpChannelLegacy::onErrorOccurred(const Location& location, const std::error_code& error_code)
 {
     ErrorCode error = ErrorCode::UNKNOWN;
 
@@ -540,7 +540,7 @@ void TcpChannelLegacy::onErrorOccurred(const base::Location& location, const std
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onErrorOccurred(const base::Location& location, ErrorCode error_code)
+void TcpChannelLegacy::onErrorOccurred(const Location& location, ErrorCode error_code)
 {
     CLOG(ERROR) << "Connection finished with error" << error_code << "from" << location;
 
@@ -726,7 +726,7 @@ void TcpChannelLegacy::doWrite()
 
         resizeBuffer(&write_buffer_, source_buffer.size());
 
-        // base::Service data does not need encryption. Copy the source buffer.
+        // Service data does not need encryption. Copy the source buffer.
         memcpy(write_buffer_.data(), source_buffer.data(), source_buffer.size());
     }
 

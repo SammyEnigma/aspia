@@ -21,10 +21,6 @@
 
 #include "proto/system_info.h"
 
-namespace base {
-
 void readLicensesInformation(proto::system_info::Licenses* licenses);
-
-} // namespace base
 
 #endif // BASE_LICENSE_READER_H

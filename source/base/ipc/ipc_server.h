@@ -28,9 +28,7 @@
 #include <memory>
 
 class IpcChannel;
-namespace base {
 class Location;
-} // namespace base
 
 class IpcServer final : public QObject
 {
@@ -54,7 +52,7 @@ signals:
 private:
     bool runListener(size_t index);
     void onNewConnection(size_t index, IpcChannel* channel);
-    void onErrorOccurred(const base::Location& location);
+    void onErrorOccurred(const Location& location);
 
     asio::io_context& io_context_;
     QString channel_name_;

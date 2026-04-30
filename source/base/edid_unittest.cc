@@ -22,8 +22,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 namespace {
 
 // Helper to create a minimal valid EDID block (128 bytes) with correct header and checksum.
@@ -562,5 +560,3 @@ TEST(edid_test, standard_timings_aspect_16_10)
     EXPECT_EQ(height, 1050);
     EXPECT_EQ(frequency, 60);
 }
-
-} // namespace base

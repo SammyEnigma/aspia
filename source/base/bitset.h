@@ -22,8 +22,6 @@
 #include <limits>
 #include <cstddef>
 
-namespace base {
-
 template<typename NumericType>
 class BitSet
 {
@@ -153,7 +151,5 @@ public:
 private:
     NumericType value_ = 0;
 };
-
-} // namespace base
 
 #endif // BASE_BITSET_H

@@ -25,8 +25,6 @@
 
 #import <Foundation/Foundation.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 //static
 QString SysInfo::operatingSystemName()
@@ -153,5 +151,3 @@ QByteArray SysInfo::smbiosDump()
     NOTIMPLEMENTED();
     return QByteArray();
 }
-
-} // namespace base

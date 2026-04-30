@@ -50,7 +50,7 @@ private slots:
     void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
 
 private:
-    void onFinished(const base::Location& location, bool online);
+    void onFinished(const Location& location, bool online);
 
     const ComputerConfig computer_;
 
@@ -119,7 +119,7 @@ void OnlineCheckerDirect::Instance::onTcpErrorOccurred(TcpChannel::ErrorCode /* 
 }
 
 //--------------------------------------------------------------------------------------------------
-void OnlineCheckerDirect::Instance::onFinished(const base::Location& location, bool online)
+void OnlineCheckerDirect::Instance::onFinished(const Location& location, bool online)
 {
     LOG(INFO) << "Finished:" << location;
 
@@ -217,7 +217,7 @@ void OnlineCheckerDirect::onChecked(qint64 computer_id, bool online)
 }
 
 //--------------------------------------------------------------------------------------------------
-void OnlineCheckerDirect::onFinished(const base::Location& location)
+void OnlineCheckerDirect::onFinished(const Location& location)
 {
     LOG(INFO) << "Finished (from" << location << ")";
     emit sig_checkerFinished();

@@ -148,7 +148,7 @@ MainWindow::MainWindow(QWidget* parent)
         emit sig_chat(chat);
     });
 
-    connect(base::GuiApplication::instance(), &base::GuiApplication::sig_themeChanged,
+    connect(GuiApplication::instance(), &GuiApplication::sig_themeChanged,
             this, &MainWindow::onAfterThemeChanged);
 
     onAfterThemeChanged();
@@ -173,7 +173,7 @@ void MainWindow::connectToService()
 
     UserSessionAgent* agent = new UserSessionAgent();
 
-    agent->moveToThread(base::GuiApplication::ioThread());
+    agent->moveToThread(GuiApplication::ioThread());
 
     connect(agent, &UserSessionAgent::sig_statusChanged, this, &MainWindow::onStatusChanged,
             Qt::QueuedConnection);
@@ -480,7 +480,7 @@ void MainWindow::onLanguageChanged(QAction* action)
     {
         const QString theme_id = theme_action->data().toString();
         if (!theme_id.isEmpty())
-            theme_action->setText(base::GuiApplication::themeName(theme_id));
+            theme_action->setText(GuiApplication::themeName(theme_id));
     }
 
     if (notifier_)
@@ -503,7 +503,7 @@ void MainWindow::onThemeChanged(QAction* action)
     if (theme_id.isEmpty())
         return;
 
-    base::GuiApplication::instance()->setTheme(theme_id);
+    GuiApplication::instance()->setTheme(theme_id);
 
     UserSettings user_settings;
     user_settings.setTheme(theme_id);
@@ -756,7 +756,7 @@ void MainWindow::onOneTimeSessionsChanged()
 //--------------------------------------------------------------------------------------------------
 void MainWindow::createLanguageMenu(const QString& current_locale)
 {
-    Application::LocaleList locale_list = base::GuiApplication::instance()->localeList();
+    Application::LocaleList locale_list = GuiApplication::instance()->localeList();
     if (locale_list.isEmpty())
         return;
 
@@ -780,7 +780,7 @@ void MainWindow::createLanguageMenu(const QString& current_locale)
 //--------------------------------------------------------------------------------------------------
 void MainWindow::createThemeMenu(const QString& current_theme)
 {
-    base::GuiApplication* app = base::GuiApplication::instance();
+    GuiApplication* app = GuiApplication::instance();
     const QStringList available_themes = app->availableThemes();
     QActionGroup* theme_group = new QActionGroup(this);
 
@@ -788,7 +788,7 @@ void MainWindow::createThemeMenu(const QString& current_theme)
 
     for (const QString& theme_id : available_themes)
     {
-        QAction* action = new QAction(base::GuiApplication::themeName(theme_id), this);
+        QAction* action = new QAction(GuiApplication::themeName(theme_id), this);
         action->setCheckable(true);
         action->setData(theme_id);
         action->setActionGroup(theme_group);

@@ -513,14 +513,14 @@ void HostUtils::printDebugInfo(quint32 features)
 #endif
     LOG(INFO) << "Qt version:" << QT_VERSION_STR;
     LOG(INFO) << "Command line:" << QCoreApplication::arguments();
-    LOG(INFO) << "OS:" << base::SysInfo::operatingSystemName()
-              << "(version:" << base::SysInfo::operatingSystemVersion()
-              <<  "arch:" << base::SysInfo::operatingSystemArchitecture() << ")";
-    LOG(INFO) << "CPU:" << base::SysInfo::processorName()
-              << "(vendor:" << base::SysInfo::processorVendor()
-              << "packages:" << base::SysInfo::processorPackages()
-              << "cores:" << base::SysInfo::processorCores()
-              << "threads:" << base::SysInfo::processorThreads() << ")";
+    LOG(INFO) << "OS:" << SysInfo::operatingSystemName()
+              << "(version:" << SysInfo::operatingSystemVersion()
+              <<  "arch:" << SysInfo::operatingSystemArchitecture() << ")";
+    LOG(INFO) << "CPU:" << SysInfo::processorName()
+              << "(vendor:" << SysInfo::processorVendor()
+              << "packages:" << SysInfo::processorPackages()
+              << "cores:" << SysInfo::processorCores()
+              << "threads:" << SysInfo::processorThreads() << ")";
 
 #if defined(Q_OS_WINDOWS)
     MEMORYSTATUSEX memory_status;
@@ -599,7 +599,7 @@ void HostUtils::printDebugInfo(quint32 features)
     LOG(INFO) << "Member of admins group:" << (is_user_admin ? "Yes" : "No");
     LOG(INFO) << "Process elevated:" << (isProcessElevated() ? "Yes" : "No");
     LOG(INFO) << "Active console session ID:" << WTSGetActiveConsoleSessionId();
-    LOG(INFO) << "Computer name:" << base::SysInfo::computerName();
+    LOG(INFO) << "Computer name:" << SysInfo::computerName();
 
     if (features & INCLUDE_VIDEO_ADAPTERS)
     {

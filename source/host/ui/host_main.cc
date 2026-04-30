@@ -110,17 +110,17 @@ int hostMain(int argc, char* argv[])
     HostUtils::printDebugInfo();
 
     QCommandLineOption hidden_option("hidden",
-        base::GuiApplication::translate("HostMain", "Launch the application hidden."));
+        GuiApplication::translate("HostMain", "Launch the application hidden."));
     QCommandLineOption export_option("export",
-        base::GuiApplication::translate("HostMain", "Export parameters to file."), "export");
+        GuiApplication::translate("HostMain", "Export parameters to file."), "export");
     QCommandLineOption import_option("import",
-        base::GuiApplication::translate("HostMain", "Import parameters from file."), "import");
+        GuiApplication::translate("HostMain", "Import parameters from file."), "import");
     QCommandLineOption silent_option("silent",
-        base::GuiApplication::translate("HostMain", "Do not display any messages during import and export."));
+        GuiApplication::translate("HostMain", "Do not display any messages during import and export."));
     QCommandLineOption update_option("update",
-        base::GuiApplication::translate("HostMain", "Calling the update check dialog."));
+        GuiApplication::translate("HostMain", "Calling the update check dialog."));
     QCommandLineOption config_option("config",
-        base::GuiApplication::translate("HostMain", "Calling the settings dialog."));
+        GuiApplication::translate("HostMain", "Calling the settings dialog."));
 
     QCommandLineParser parser;
     parser.addOption(hidden_option);

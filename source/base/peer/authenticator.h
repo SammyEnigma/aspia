@@ -25,9 +25,7 @@
 #include "base/logging.h"
 #include "proto/key_exchange.h"
 
-namespace base {
 class Location;
-} // namespace base
 
 class Authenticator : public QObject
 {
@@ -91,7 +89,7 @@ protected:
     virtual void onReceived(const QByteArray& buffer) = 0;
     virtual void onWritten() = 0;
 
-    void finish(const base::Location& location, ErrorCode error_code);
+    void finish(const Location& location, ErrorCode error_code);
     void setPeerVersion(const proto::peer::Version& version);
     void setPeerOsName(const QString& name);
     void setPeerComputerName(const QString& name);

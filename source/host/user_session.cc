@@ -22,7 +22,7 @@
 #include <QDir>
 #include <QTimer>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/location.h"
 #include "base/logging.h"
 #include "base/numeric_utils.h"
@@ -128,7 +128,7 @@ UserSession::UserSession(QObject* parent)
     connect(attach_timer_, &QTimer::timeout, this, [this]() { dettach(FROM_HERE); });
     connect(dettach_timer_, &QTimer::timeout, this, &UserSession::onDettachTimeout);
     connect(startup_timer_, &QTimer::timeout, this, &UserSession::onStartupUserCheck);
-    connect(base::Application::instance(), &base::Application::sig_sessionEvent,
+    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_sessionEvent,
             this, &UserSession::onUserSessionEvent);
 }
 
@@ -186,8 +186,8 @@ bool UserSession::start()
     }
 
     LOG(INFO) << "IPC server for UI is started";
-    base::SessionId session_id = base::activeConsoleSessionId();
-    if (session_id == base::kInvalidSessionId)
+    SessionId session_id = activeConsoleSessionId();
+    if (session_id == kInvalidSessionId)
     {
         LOG(ERROR) << "Unable to get active console session id";
         return false;
@@ -214,7 +214,7 @@ void UserSession::onUpdateCredentials(HostId host_id, const QString& password)
 }
 
 //--------------------------------------------------------------------------------------------------
-void UserSession::onClientSwitchSession(base::SessionId session_id)
+void UserSession::onClientSwitchSession(SessionId session_id)
 {
     if (session_id == session_id_)
         return;
@@ -241,8 +241,8 @@ void UserSession::onClientConfirmation(const proto::user::ConfirmationRequest& r
     {
         LOG(INFO) << "No active GUI process";
 
-        base::SessionId session_id = base::activeConsoleSessionId();
-        if (session_id == base::kInvalidSessionId)
+        SessionId session_id = activeConsoleSessionId();
+        if (session_id == kInvalidSessionId)
         {
             LOG(INFO) << "Reject: invalid console session id";
             emit sig_confirmationReply(request.id(), false);
@@ -346,8 +346,8 @@ void UserSession::onClientFinished()
 
             LOG(INFO) << "Last desktop client is disconnected";
 
-            base::SessionId session_id = base::activeConsoleSessionId();
-            if (session_id_ != session_id && session_id_ != base::kInvalidSessionId)
+            SessionId session_id = activeConsoleSessionId();
+            if (session_id_ != session_id && session_id_ != kInvalidSessionId)
             {
                 dettach(FROM_HERE);
                 attach(FROM_HERE, AttachReason::OTHER, session_id);
@@ -377,7 +377,7 @@ void UserSession::onClientMessage(quint8 net_channel_id, const QByteArray& buffe
     if (!ipc_channel_ || buffer.isEmpty())
         return;
 
-    quint32 channel_id = base::makeUint32(proto::user::CHANNEL_ID_NETWORK, net_channel_id);
+    quint32 channel_id = makeUint32(proto::user::CHANNEL_ID_NETWORK, net_channel_id);
     ipc_channel_->send(channel_id, buffer);
 }
 
@@ -409,14 +409,14 @@ void UserSession::onUserSessionEvent(quint32 status, quint32 session_id)
                 return;
 
             dettach(FROM_HERE);
-            attach(FROM_HERE, AttachReason::OTHER, base::activeConsoleSessionId());
+            attach(FROM_HERE, AttachReason::OTHER, activeConsoleSessionId());
         }
         break;
 
         case WTS_SESSION_LOGON:
         case WTS_SESSION_UNLOCK:
         {
-            if (state_ == State::DETTACHED && is_console_ && session_id == base::activeConsoleSessionId())
+            if (state_ == State::DETTACHED && is_console_ && session_id == activeConsoleSessionId())
                 attach(FROM_HERE, AttachReason::OTHER, session_id);
         }
         break;
@@ -450,13 +450,13 @@ void UserSession::onIpcNewConnection()
         return;
     }
 
-    if (session_id_ == base::kInvalidSessionId)
+    if (session_id_ == kInvalidSessionId)
     {
-        base::SessionId ipc_session_id = ipc_channel->sessionId();
+        SessionId ipc_session_id = ipc_channel->sessionId();
 
         LOG(INFO) << "User GUI started by user with session id" << ipc_session_id;
 
-        if (ipc_session_id != base::activeConsoleSessionId())
+        if (ipc_session_id != activeConsoleSessionId())
         {
             LOG(WARNING) << "Launching GUI is only possible in console session";
             ipc_channel->deleteLater();
@@ -512,8 +512,8 @@ void UserSession::onIpcDisconnected()
 //--------------------------------------------------------------------------------------------------
 void UserSession::onIpcMessageReceived(quint32 channel_id, const QByteArray& buffer, bool /* reliable */)
 {
-    quint16 net_channel_id = base::lowWord(channel_id);
-    quint16 ipc_channel_id = base::highWord(channel_id);
+    quint16 net_channel_id = lowWord(channel_id);
+    quint16 ipc_channel_id = highWord(channel_id);
 
     if (ipc_channel_id == proto::user::CHANNEL_ID_NETWORK)
     {
@@ -620,7 +620,7 @@ void UserSession::onStartupUserCheck()
     // detected missing when a client connects, even though the user is still logged in, and the
     // client will be rejected.
     // Settings > Accounts > Sign-in options > Use my sign-in info to automatically finish...
-    SessionInfo session_info(base::activeConsoleSessionId());
+    SessionInfo session_info(activeConsoleSessionId());
     if (session_info.isValid() && session_info.connectState() == SessionInfo::ConnectState::ACTIVE)
     {
         attach(FROM_HERE, AttachReason::OTHER, session_info.sessionId());
@@ -635,7 +635,7 @@ void UserSession::onStartupUserCheck()
 }
 
 //--------------------------------------------------------------------------------------------------
-void UserSession::attach(const base::Location& location, AttachReason reason, base::SessionId session_id)
+void UserSession::attach(const Location& location, AttachReason reason, SessionId session_id)
 {
     LOG(INFO) << "Attaching to UI process (sid" << session_id << "from" << location << ")";
 
@@ -646,7 +646,7 @@ void UserSession::attach(const base::Location& location, AttachReason reason, ba
     }
 
     state_ = State::ATTACHING;
-    is_console_ = session_id == base::activeConsoleSessionId();
+    is_console_ = session_id == activeConsoleSessionId();
     session_id_ = session_id;
 
     startup_timer_->stop();
@@ -654,14 +654,14 @@ void UserSession::attach(const base::Location& location, AttachReason reason, ba
     attach_timer_->start();
 
 #if defined(Q_OS_WINDOWS)
-    if (session_id == base::kInvalidSessionId)
+    if (session_id == kInvalidSessionId)
     {
         LOG(ERROR) << "An attempt was detected to start a process in a INVALID session";
         dettach(FROM_HERE);
         return;
     }
 
-    if (session_id == base::kServiceSessionId)
+    if (session_id == kServiceSessionId)
     {
         LOG(ERROR) << "An attempt was detected to start a process in a SERVICES session";
         dettach(FROM_HERE);
@@ -762,7 +762,7 @@ void UserSession::attach(const base::Location& location, AttachReason reason, ba
 }
 
 //--------------------------------------------------------------------------------------------------
-void UserSession::dettach(const base::Location& location)
+void UserSession::dettach(const Location& location)
 {
     State state = state_;
 
@@ -779,7 +779,7 @@ void UserSession::dettach(const base::Location& location)
     }
 
     startup_timer_->stop();
-    session_id_ = base::kInvalidSessionId;
+    session_id_ = kInvalidSessionId;
     is_console_ = true;
 
     if (state == State::ATTACHED)

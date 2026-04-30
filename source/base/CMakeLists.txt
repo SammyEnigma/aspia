@@ -19,14 +19,14 @@
 list(APPEND SOURCE_BASE
     aligned_memory.cc
     aligned_memory.h
-    application.cc
-    application.h
     applications_reader.cc
     applications_reader.h
     asio_event_dispatcher.cc
     asio_event_dispatcher.h
     bitset.h
     bucket_pool.h
+    core_application.cc
+    core_application.h
     cpuid_util.cc
     cpuid_util.h
     crash_handler.cc

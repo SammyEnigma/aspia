@@ -96,7 +96,7 @@ Service::Service(QObject* parent)
     connect(user_session_, &UserSession::sig_lockKeyboardChanged, desktop_manager_, &DesktopManager::onUserLockKeyboard);
     connect(desktop_manager_, &DesktopManager::sig_attached, this, &Service::onDesktopManagerAttached);
     connect(tcp_server_, &TcpServer::sig_newConnection, this, &Service::onNewDirectConnection);
-    connect(base::Application::instance(), &base::Application::sig_powerEvent, this, &Service::onPowerEvent);
+    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_powerEvent, this, &Service::onPowerEvent);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ void Service::onUpdateCheckedFinished(const QByteArray& result)
             break;
         }
 
-        const QVersionNumber& current_version = base::kCurrentVersion;
+        const QVersionNumber& current_version = kCurrentVersion;
         const QVersionNumber& update_version = update_info.version();
 
         if (update_version <= current_version)
@@ -680,7 +680,7 @@ void Service::startConfirmation(PendingConfirmation& pending)
     TcpChannel* tcp_channel = pending.tcp_channel;
     tcp_channel->setParent(this);
 
-    const QVersionNumber& host_version = base::kCurrentVersion;
+    const QVersionNumber& host_version = kCurrentVersion;
     if (host_version > tcp_channel->peerVersion())
     {
         LOG(ERROR) << "Version mismatch (host:" << host_version << "client:"
@@ -840,7 +840,7 @@ void Service::reloadUserList()
     LOG(INFO) << "Reloading user list";
 
     // Read the list of regular users.
-    base::SharedPointer<UserListBase> users(settings_.userList().release());
+    SharedPointer<UserListBase> users(settings_.userList().release());
 
     if (users->seedKey().isEmpty())
         LOG(ERROR) << "Empty seed key for user list";
@@ -852,7 +852,7 @@ void Service::reloadUserList()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Service::connectToRouter(const base::Location& location)
+void Service::connectToRouter(const Location& location)
 {
     // Destroy the previous instance.
     disconnectFromRouter(FROM_HERE);
@@ -874,7 +874,7 @@ void Service::connectToRouter(const base::Location& location)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Service::disconnectFromRouter(const base::Location& location)
+void Service::disconnectFromRouter(const Location& location)
 {
     if (!router_manager_)
     {

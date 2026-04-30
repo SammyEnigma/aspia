@@ -338,7 +338,7 @@ void fillMonitors(proto::system_info::SystemInfo* system_info)
 {
     for (MonitorEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
-        base::Edid edid = enumerator.edid();
+        Edid edid = enumerator.edid();
         if (!edid.isValid())
         {
             LOG(INFO) << "No EDID information for monitor";
@@ -375,12 +375,12 @@ void fillMonitors(proto::system_info::SystemInfo* system_info)
 
         switch (edid.inputSignalType())
         {
-            case base::Edid::INPUT_SIGNAL_TYPE_DIGITAL:
+            case Edid::INPUT_SIGNAL_TYPE_DIGITAL:
                 monitor->set_input_signal_type(
                     proto::system_info::Monitors::Monitor::INPUT_SIGNAL_TYPE_DIGITAL);
                 break;
 
-            case base::Edid::INPUT_SIGNAL_TYPE_ANALOG:
+            case Edid::INPUT_SIGNAL_TYPE_ANALOG:
                 monitor->set_input_signal_type(
                     proto::system_info::Monitors::Monitor::INPUT_SIGNAL_TYPE_ANALOG);
                 break;
@@ -391,22 +391,22 @@ void fillMonitors(proto::system_info::SystemInfo* system_info)
 
         quint8 supported_features = edid.featureSupport();
 
-        if (supported_features & base::Edid::FEATURE_SUPPORT_DEFAULT_GTF_SUPPORTED)
+        if (supported_features & Edid::FEATURE_SUPPORT_DEFAULT_GTF_SUPPORTED)
             monitor->set_default_gtf_supported(true);
 
-        if (supported_features & base::Edid::FEATURE_SUPPORT_SUSPEND)
+        if (supported_features & Edid::FEATURE_SUPPORT_SUSPEND)
             monitor->set_suspend_supported(true);
 
-        if (supported_features & base::Edid::FEATURE_SUPPORT_STANDBY)
+        if (supported_features & Edid::FEATURE_SUPPORT_STANDBY)
             monitor->set_standby_supported(true);
 
-        if (supported_features & base::Edid::FEATURE_SUPPORT_ACTIVE_OFF)
+        if (supported_features & Edid::FEATURE_SUPPORT_ACTIVE_OFF)
             monitor->set_active_off_supported(true);
 
-        if (supported_features & base::Edid::FEATURE_SUPPORT_PREFERRED_TIMING_MODE)
+        if (supported_features & Edid::FEATURE_SUPPORT_PREFERRED_TIMING_MODE)
             monitor->set_preferred_timing_mode_supported(true);
 
-        if (supported_features & base::Edid::FEATURE_SUPPORT_SRGB)
+        if (supported_features & Edid::FEATURE_SUPPORT_SRGB)
             monitor->set_srgb_supported(true);
 
         auto add_timing = [&](int width, int height, int freq)
@@ -420,59 +420,59 @@ void fillMonitors(proto::system_info::SystemInfo* system_info)
 
         quint8 estabilished_timings1 = edid.estabilishedTimings1();
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_800X600_60HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_800X600_60HZ)
             add_timing(800, 600, 60);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_800X600_56HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_800X600_56HZ)
             add_timing(800, 600, 56);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_640X480_75HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_640X480_75HZ)
             add_timing(640, 480, 75);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_640X480_72HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_640X480_72HZ)
             add_timing(640, 480, 72);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_640X480_67HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_640X480_67HZ)
             add_timing(640, 480, 67);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_640X480_60HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_640X480_60HZ)
             add_timing(640, 480, 60);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_720X400_88HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_720X400_88HZ)
             add_timing(720, 400, 88);
 
-        if (estabilished_timings1 & base::Edid::ESTABLISHED_TIMINGS_1_720X400_70HZ)
+        if (estabilished_timings1 & Edid::ESTABLISHED_TIMINGS_1_720X400_70HZ)
             add_timing(720, 400, 70);
 
         quint8 estabilished_timings2 = edid.estabilishedTimings2();
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_1280X1024_75HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_1280X1024_75HZ)
             add_timing(1280, 1024, 75);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_1024X768_75HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_1024X768_75HZ)
             add_timing(1024, 768, 75);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_1024X768_70HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_1024X768_70HZ)
             add_timing(1024, 768, 70);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_1024X768_60HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_1024X768_60HZ)
             add_timing(1024, 768, 60);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_1024X768_87HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_1024X768_87HZ)
             add_timing(1024, 768, 87);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_832X624_75HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_832X624_75HZ)
             add_timing(832, 624, 75);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_800X600_75HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_800X600_75HZ)
             add_timing(800, 600, 75);
 
-        if (estabilished_timings2 & base::Edid::ESTABLISHED_TIMINGS_2_800X600_72HZ)
+        if (estabilished_timings2 & Edid::ESTABLISHED_TIMINGS_2_800X600_72HZ)
             add_timing(800, 600, 72);
 
         quint8 manufacturer_timings = edid.manufacturersTimings();
 
-        if (manufacturer_timings & base::Edid::MANUFACTURERS_TIMINGS_1152X870_75HZ)
+        if (manufacturer_timings & Edid::MANUFACTURERS_TIMINGS_1152X870_75HZ)
             add_timing(1152, 870, 75);
 
         for (int index = 0; index < edid.standardTimingsCount(); ++index)
@@ -661,47 +661,47 @@ void fillPowerOptions(proto::system_info::SystemInfo* system_info)
 void fillComputer(proto::system_info::SystemInfo* system_info)
 {
     proto::system_info::Computer* computer = system_info->mutable_computer();
-    computer->set_name(base::SysInfo::computerName().toStdString());
-    computer->set_domain(base::SysInfo::computerDomain().toStdString());
-    computer->set_workgroup(base::SysInfo::computerWorkgroup().toStdString());
-    computer->set_uptime(base::SysInfo::uptime());
+    computer->set_name(SysInfo::computerName().toStdString());
+    computer->set_domain(SysInfo::computerDomain().toStdString());
+    computer->set_workgroup(SysInfo::computerWorkgroup().toStdString());
+    computer->set_uptime(SysInfo::uptime());
 }
 
 //--------------------------------------------------------------------------------------------------
 void fillOperatingSystem(proto::system_info::SystemInfo* system_info)
 {
     proto::system_info::OperatingSystem* operating_system = system_info->mutable_operating_system();
-    operating_system->set_name(base::SysInfo::operatingSystemName().toStdString());
-    operating_system->set_version(base::SysInfo::operatingSystemVersion().toStdString());
-    operating_system->set_arch(base::SysInfo::operatingSystemArchitecture().toStdString());
-    operating_system->set_key(base::SysInfo::operatingSystemKey().toStdString());
-    operating_system->set_install_date(base::SysInfo::operatingSystemInstallDate());
+    operating_system->set_name(SysInfo::operatingSystemName().toStdString());
+    operating_system->set_version(SysInfo::operatingSystemVersion().toStdString());
+    operating_system->set_arch(SysInfo::operatingSystemArchitecture().toStdString());
+    operating_system->set_key(SysInfo::operatingSystemKey().toStdString());
+    operating_system->set_install_date(SysInfo::operatingSystemInstallDate());
 }
 
 //--------------------------------------------------------------------------------------------------
 void fillProcessor(proto::system_info::SystemInfo* system_info)
 {
     proto::system_info::Processor* processor = system_info->mutable_processor();
-    processor->set_vendor(base::SysInfo::processorVendor().toStdString());
-    processor->set_model(base::SysInfo::processorName().toStdString());
-    processor->set_packages(static_cast<quint32>(base::SysInfo::processorPackages()));
-    processor->set_cores(static_cast<quint32>(base::SysInfo::processorCores()));
-    processor->set_threads(static_cast<quint32>(base::SysInfo::processorThreads()));
+    processor->set_vendor(SysInfo::processorVendor().toStdString());
+    processor->set_model(SysInfo::processorName().toStdString());
+    processor->set_packages(static_cast<quint32>(SysInfo::processorPackages()));
+    processor->set_cores(static_cast<quint32>(SysInfo::processorCores()));
+    processor->set_threads(static_cast<quint32>(SysInfo::processorThreads()));
 }
 
 //--------------------------------------------------------------------------------------------------
 void fillBios(proto::system_info::SystemInfo* system_info)
 {
-    for (base::SmbiosTableEnumerator enumerator(base::SysInfo::smbiosDump());
+    for (SmbiosTableEnumerator enumerator(SysInfo::smbiosDump());
          !enumerator.isAtEnd(); enumerator.advance())
     {
-        const base::SmbiosTable* table = enumerator.table();
+        const SmbiosTable* table = enumerator.table();
 
         switch (table->type)
         {
-            case base::SMBIOS_TABLE_TYPE_BIOS:
+            case SMBIOS_TABLE_TYPE_BIOS:
             {
-                base::SmbiosBios bios_table(table);
+                SmbiosBios bios_table(table);
 
                 proto::system_info::Bios* bios = system_info->mutable_bios();
                 bios->set_vendor(bios_table.vendor().toStdString());
@@ -719,16 +719,16 @@ void fillBios(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillMotherboard(proto::system_info::SystemInfo* system_info)
 {
-    for (base::SmbiosTableEnumerator enumerator(base::SysInfo::smbiosDump());
+    for (SmbiosTableEnumerator enumerator(SysInfo::smbiosDump());
          !enumerator.isAtEnd(); enumerator.advance())
     {
-        const base::SmbiosTable* table = enumerator.table();
+        const SmbiosTable* table = enumerator.table();
 
         switch (table->type)
         {
-            case base::SMBIOS_TABLE_TYPE_BASEBOARD:
+            case SMBIOS_TABLE_TYPE_BASEBOARD:
             {
-                base::SmbiosBaseboard baseboard_table(table);
+                SmbiosBaseboard baseboard_table(table);
                 if (!baseboard_table.isValid())
                     continue;
 
@@ -747,16 +747,16 @@ void fillMotherboard(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillMemory(proto::system_info::SystemInfo* system_info)
 {
-    for (base::SmbiosTableEnumerator enumerator(base::SysInfo::smbiosDump());
+    for (SmbiosTableEnumerator enumerator(SysInfo::smbiosDump());
          !enumerator.isAtEnd(); enumerator.advance())
     {
-        const base::SmbiosTable* table = enumerator.table();
+        const SmbiosTable* table = enumerator.table();
 
         switch (table->type)
         {
-            case base::SMBIOS_TABLE_TYPE_MEMORY_DEVICE:
+            case SMBIOS_TABLE_TYPE_MEMORY_DEVICE:
             {
-                base::SmbiosMemoryDevice memory_device_table(table);
+                SmbiosMemoryDevice memory_device_table(table);
                 if (!memory_device_table.isValid())
                     continue;
 
@@ -809,7 +809,7 @@ void fillEventLogs(proto::system_info::SystemInfo* system_info,
     switch (data.type())
     {
         case proto::system_info::EventLogs::Event::TYPE_APPLICATION:
-            log_name = "Application";
+            log_name = "base::CoreApplication";
             break;
 
         case proto::system_info::EventLogs::Event::TYPE_SECURITY:
@@ -879,13 +879,13 @@ void fillEventLogs(proto::system_info::SystemInfo* system_info,
 //--------------------------------------------------------------------------------------------------
 void fillLicensesInfo(proto::system_info::SystemInfo* system_info)
 {
-    base::readLicensesInformation(system_info->mutable_licenses());
+    readLicensesInformation(system_info->mutable_licenses());
 }
 
 //--------------------------------------------------------------------------------------------------
 void fillApplicationsInfo(proto::system_info::SystemInfo* system_info)
 {
-    base::readApplicationsInformation(system_info->mutable_applications());
+    readApplicationsInformation(system_info->mutable_applications());
 }
 
 //--------------------------------------------------------------------------------------------------

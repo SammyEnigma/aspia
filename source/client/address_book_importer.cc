@@ -323,7 +323,7 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
     }
 
     proto::address_book::Data proto_data;
-    if (!base::parse(*decrypted, &proto_data))
+    if (!parse(*decrypted, &proto_data))
     {
         memZero(&*decrypted);
         memZero(&key);

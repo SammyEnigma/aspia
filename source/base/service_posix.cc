@@ -73,7 +73,7 @@ Service::~Service()
 }
 
 //--------------------------------------------------------------------------------------------------
-int Service::exec(Application& application)
+int Service::exec(base::CoreApplication& application)
 {
     LOG(INFO) << "Begin";
 

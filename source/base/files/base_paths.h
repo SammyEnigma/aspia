@@ -27,49 +27,49 @@ public:
     // System-wide configuration directory, shared across all users and applications.
     //   Windows: C:\ProgramData
     //   Linux:   /etc
-    //   MacOS:   /Library/Application Support
+    //   MacOS:   /Library/base::CoreApplication Support
     static QString genericConfigDir();
 
     // Per-user configuration directory, shared across applications.
     //   Windows: C:\Users\<user>\AppData\Roaming
     //   Linux:   /home/<user>/.config
-    //   MacOS:   /Users/<user>/Library/Application Support
+    //   MacOS:   /Users/<user>/Library/base::CoreApplication Support
     static QString genericUserConfigDir();
 
     // System-wide configuration directory dedicated to Aspia (genericConfigDir() + "/aspia").
     //   Windows: C:\ProgramData\aspia
     //   Linux:   /etc/aspia
-    //   MacOS:   /Library/Application Support/aspia
+    //   MacOS:   /Library/base::CoreApplication Support/aspia
     static QString appConfigDir();
 
     // Per-user configuration directory dedicated to Aspia (genericUserConfigDir() + "/aspia").
     //   Windows: C:\Users\<user>\AppData\Roaming\aspia
     //   Linux:   /home/<user>/.config/aspia
-    //   MacOS:   /Users/<user>/Library/Application Support/aspia
+    //   MacOS:   /Users/<user>/Library/base::CoreApplication Support/aspia
     static QString appUserConfigDir();
 
     // System-wide data directory, shared across all users and applications.
     //   Windows: C:\ProgramData
     //   Linux:   /var/lib
-    //   MacOS:   /Library/Application Support
+    //   MacOS:   /Library/base::CoreApplication Support
     static QString genericDataDir();
 
     // Per-user data directory, shared across applications.
     //   Windows: C:\Users\<user>\AppData\Roaming
     //   Linux:   /home/<user>/.local/share
-    //   MacOS:   /Users/<user>/Library/Application Support
+    //   MacOS:   /Users/<user>/Library/base::CoreApplication Support
     static QString genericUserDataDir();
 
     // System-wide data directory dedicated to Aspia (genericDataDir() + "/aspia").
     //   Windows: C:\ProgramData\aspia
     //   Linux:   /var/lib/aspia
-    //   MacOS:   /Library/Application Support/aspia
+    //   MacOS:   /Library/base::CoreApplication Support/aspia
     static QString appDataDir();
 
     // Per-user data directory dedicated to Aspia (genericUserDataDir() + "/aspia").
     //   Windows: C:\Users\<user>\AppData\Roaming\aspia
     //   Linux:   /home/<user>/.local/share/aspia
-    //   MacOS:   /Users/<user>/Library/Application Support/aspia
+    //   MacOS:   /Users/<user>/Library/base::CoreApplication Support/aspia
     static QString appUserDataDir();
 
     // Home directory of the current user.

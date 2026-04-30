@@ -23,8 +23,6 @@
 
 #include <Cocoa/Cocoa.h>
 
-namespace base {
-
 namespace {
 
 class AppNapBlocker
@@ -130,5 +128,3 @@ bool isAppNapBlocked()
 {
     return g_app_nap_blocker.isBlocked();
 }
-
-} // namespace base

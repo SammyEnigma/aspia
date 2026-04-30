@@ -37,7 +37,7 @@ ClientSystemInfo::~ClientSystemInfo()
 //--------------------------------------------------------------------------------------------------
 void ClientSystemInfo::onSystemInfoRequest(const proto::system_info::SystemInfoRequest& request)
 {
-    sendMessage(proto::peer::CHANNEL_ID_0, base::serialize(request));
+    sendMessage(proto::peer::CHANNEL_ID_0, serialize(request));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ void ClientSystemInfo::onMessageReceived(quint8 channel_id, const QByteArray& bu
         return;
 
     proto::system_info::SystemInfo system_info;
-    if (!base::parse(buffer, &system_info))
+    if (!parse(buffer, &system_info))
     {
         CLOG(ERROR) << "Unable to parse system info";
         return;

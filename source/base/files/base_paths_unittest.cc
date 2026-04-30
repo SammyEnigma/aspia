@@ -65,7 +65,7 @@ TEST(BasePathsTest, GenericUserDataDir)
 }
 
 // ============================================================================
-// Application-level directories: must be the corresponding generic path
+// base::CoreApplication-level directories: must be the corresponding generic path
 // with "/aspia" appended.
 // ============================================================================
 
@@ -265,46 +265,46 @@ TEST_F(BasePathsLinuxXdgTest, GenericUserDataDirFallsBackToHomeShareWhenEmpty)
 
 TEST(BasePathsTest, MacOSGenericConfigDir)
 {
-    EXPECT_EQ(BasePaths::genericConfigDir(), "/Library/Application Support");
+    EXPECT_EQ(BasePaths::genericConfigDir(), "/Library/base::CoreApplication Support");
 }
 
 TEST(BasePathsTest, MacOSGenericDataDir)
 {
-    EXPECT_EQ(BasePaths::genericDataDir(), "/Library/Application Support");
+    EXPECT_EQ(BasePaths::genericDataDir(), "/Library/base::CoreApplication Support");
 }
 
 TEST(BasePathsTest, MacOSAppConfigDir)
 {
-    EXPECT_EQ(BasePaths::appConfigDir(), "/Library/Application Support/aspia");
+    EXPECT_EQ(BasePaths::appConfigDir(), "/Library/base::CoreApplication Support/aspia");
 }
 
 TEST(BasePathsTest, MacOSAppDataDir)
 {
-    EXPECT_EQ(BasePaths::appDataDir(), "/Library/Application Support/aspia");
+    EXPECT_EQ(BasePaths::appDataDir(), "/Library/base::CoreApplication Support/aspia");
 }
 
 TEST(BasePathsTest, MacOSGenericUserConfigDir)
 {
     EXPECT_EQ(BasePaths::genericUserConfigDir(),
-              BasePaths::userHome() + "/Library/Application Support");
+              BasePaths::userHome() + "/Library/base::CoreApplication Support");
 }
 
 TEST(BasePathsTest, MacOSGenericUserDataDir)
 {
     EXPECT_EQ(BasePaths::genericUserDataDir(),
-              BasePaths::userHome() + "/Library/Application Support");
+              BasePaths::userHome() + "/Library/base::CoreApplication Support");
 }
 
 TEST(BasePathsTest, MacOSAppUserConfigDir)
 {
     EXPECT_EQ(BasePaths::appUserConfigDir(),
-              BasePaths::userHome() + "/Library/Application Support/aspia");
+              BasePaths::userHome() + "/Library/base::CoreApplication Support/aspia");
 }
 
 TEST(BasePathsTest, MacOSAppUserDataDir)
 {
     EXPECT_EQ(BasePaths::appUserDataDir(),
-              BasePaths::userHome() + "/Library/Application Support/aspia");
+              BasePaths::userHome() + "/Library/base::CoreApplication Support/aspia");
 }
 
 #endif // defined(Q_OS_MACOS)

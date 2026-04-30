@@ -174,7 +174,7 @@ void RouterConnection::onRelayListRequest()
     request->set_dummy(1);
 
     LOG(INFO) << "Sending relay list request";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ void RouterConnection::onHostListRequest()
     request->set_dummy(1);
 
     LOG(INFO) << "Sending host list request";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -207,7 +207,7 @@ void RouterConnection::onUserListRequest()
     message.mutable_user_list_request()->set_dummy(1);
 
     LOG(INFO) << "Sending user list request";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -226,7 +226,7 @@ void RouterConnection::onAddUser(const proto::router::User& user)
 
     LOG(INFO) << "Sending user add request (username:" << user.name()
               << ", entry_id:" << user.entry_id() << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -245,7 +245,7 @@ void RouterConnection::onModifyUser(const proto::router::User& user)
 
     LOG(INFO) << "Sending user modify request (username:" << user.name()
               << ", entry_id:" << user.entry_id() << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -263,7 +263,7 @@ void RouterConnection::onDeleteUser(qint64 entry_id)
     request->mutable_user()->set_entry_id(entry_id);
 
     LOG(INFO) << "Sending user delete request (entry_id:" << entry_id << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -281,7 +281,7 @@ void RouterConnection::onDisconnectHost(qint64 session_id)
     request->set_entry_id(session_id);
 
     LOG(INFO) << "Sending host disconnect request (entry_id:" << session_id << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ void RouterConnection::onRemoveHost(qint64 session_id, bool try_to_uninstall)
 
     LOG(INFO) << "Sending host remove request (entry_id:" << session_id
               << "try_to_uninstall:" << try_to_uninstall << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -320,7 +320,7 @@ void RouterConnection::onDisconnectRelay(qint64 session_id)
     request->set_entry_id(session_id);
 
     LOG(INFO) << "Sending relay disconnect request (entry_id:" << session_id << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -340,7 +340,7 @@ void RouterConnection::onDisconnectPeer(qint64 relay_entry_id, quint64 peer_sess
 
     LOG(INFO) << "Sending peer disconnect request (relay_entry_id:" << relay_entry_id
               << "peer_session_id:" << peer_session_id << ")";
-    sendMessage(proto::router::CHANNEL_ID_ADMIN, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_ADMIN, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ void RouterConnection::onConnectionRequest(qint64 request_id, quint64 host_id)
     request->set_host_id(host_id);
 
     LOG(INFO) << "Sending connection request:" << *request;
-    sendMessage(proto::router::CHANNEL_ID_CLIENT, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_CLIENT, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -364,7 +364,7 @@ void RouterConnection::onCheckHostStatus(qint64 request_id, quint64 host_id)
     request->set_host_id(host_id);
 
     LOG(INFO) << "Sending check host status:" << *request;
-    sendMessage(proto::router::CHANNEL_ID_CLIENT, base::serialize(message));
+    sendMessage(proto::router::CHANNEL_ID_CLIENT, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -410,7 +410,7 @@ void RouterConnection::onTcpMessageReceived(quint8 channel_id, const QByteArray&
         }
 
         proto::router::RouterToAdmin message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             LOG(ERROR) << "Unable to parse admin message";
             return;
@@ -466,7 +466,7 @@ void RouterConnection::onTcpMessageReceived(quint8 channel_id, const QByteArray&
     else if (channel_id == proto::router::CHANNEL_ID_CLIENT)
     {
         proto::router::RouterToClient message;
-        if (!base::parse(buffer, &message))
+        if (!parse(buffer, &message))
         {
             LOG(ERROR) << "Unable to parse client message";
             return;

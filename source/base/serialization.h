@@ -29,8 +29,6 @@
 
 #include <google/protobuf/message_lite.h>
 
-namespace base {
-
 QByteArray serialize(const google::protobuf::MessageLite& message);
 
 template <class T>
@@ -134,7 +132,5 @@ public:
 private:
     T message_;
 };
-
-} // namespace base
 
 #endif // BASE_SERIALIZATION_H

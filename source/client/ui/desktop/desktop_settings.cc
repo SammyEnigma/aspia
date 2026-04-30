@@ -38,7 +38,7 @@ const QString kWaitForHostParam = "Desktop/WaitForHost";
 
 //--------------------------------------------------------------------------------------------------
 DesktopSettings::DesktopSettings()
-    : settings_(base::XmlSettings::format(), QSettings::UserScope, "aspia", "client")
+    : settings_(XmlSettings::format(), QSettings::UserScope, "aspia", "client")
 {
     // Nothing
 }

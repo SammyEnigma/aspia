@@ -24,8 +24,6 @@
 #include "base/win/registry.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -49,7 +47,7 @@ bool addApplication(
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to open registry key:"
-                   << SystemError(static_cast<DWORD>(status)).toString();
+                   << base::SystemError(static_cast<DWORD>(status)).toString();
         return false;
     }
 
@@ -155,5 +153,3 @@ void readApplicationsInformation(proto::system_info::Applications* applications)
     NOTIMPLEMENTED();
 #endif
 }
-
-} // namespace base

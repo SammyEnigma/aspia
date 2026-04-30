@@ -274,7 +274,7 @@ RouterWidget::RouterWidget(const RouterConfig& config, QWidget* parent)
     status_dialog_->hide();
 
     connection_ = new RouterConnection(config);
-    connection_->moveToThread(base::GuiApplication::ioThread());
+    connection_->moveToThread(GuiApplication::ioThread());
 
     connect(connection_, &RouterConnection::sig_statusChanged,
             this, &RouterWidget::onStatusChanged, Qt::QueuedConnection);

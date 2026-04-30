@@ -28,16 +28,14 @@ class QTimer;
 class IpcChannel;
 class IpcServer;
 
-namespace base {
 class Location;
-} // namespace base
 
 class FileClient final : public Client
 {
     Q_OBJECT
 
 public:
-    FileClient(TcpChannel* tcp_channel, base::SessionId session_id, QObject* parent = nullptr);
+    FileClient(TcpChannel* tcp_channel, SessionId session_id, QObject* parent = nullptr);
     ~FileClient() final;
 
 private slots:
@@ -53,13 +51,13 @@ protected:
 
 private:
     bool startIpcServer(const QString& ipc_channel_name);
-    void onStarted(const base::Location& location, bool has_user);
-    void onError(const base::Location& location);
+    void onStarted(const Location& location, bool has_user);
+    void onError(const Location& location);
 
     ScopedQPointer<IpcServer> ipc_server_;
     IpcChannel* ipc_channel_ = nullptr;
 
-    const base::SessionId session_id_;
+    const SessionId session_id_;
     QTimer* attach_timer_ = nullptr;
     bool has_logged_on_user_ = false;
 

@@ -23,8 +23,6 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 
-namespace base {
-
 // RETAIN: ScopedTypeRef should retain the object when it takes ownership.
 // ASSUME: Assume the object already has already been retained. ScopedTypeRef takes over ownership.
 enum class RetainPolicy { RETAIN, ASSUME };
@@ -142,7 +140,5 @@ static ScopedCFTypeRef<T> scopedCF(T cftype)
 {
     return ScopedCFTypeRef<T>(cftype);
 }
-
-} // namespace base
 
 #endif // BASE_MAC_SCOPED_CFTYPEREF_H

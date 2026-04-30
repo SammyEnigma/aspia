@@ -37,7 +37,7 @@ Session::Session(std::pair<asio::ip::tcp::socket, asio::ip::tcp::socket>&& socke
     session_id_ = session_id;
 
     proto::relay::PeerToRelay::Secret secret_message;
-    if (base::parse(secret, &secret_message))
+    if (parse(secret, &secret_message))
     {
         client_address_ = QString::fromStdString(secret_message.client_address());
         client_user_name_ = QString::fromStdString(secret_message.client_user_name());
@@ -139,11 +139,10 @@ void Session::doReadSome(Session* session, int source)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Session::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
+void Session::onErrorOccurred(const Location& location, const std::error_code& error_code)
 {
     CLOG(INFO) << "Connection finished:" << error_code << "from" << location;
     emit sig_finished();
 }
 
 } // namespace relay
-

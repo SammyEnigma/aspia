@@ -26,7 +26,7 @@
 //--------------------------------------------------------------------------------------------------
 StunServer::StunServer(QObject* parent)
     : QObject(parent),
-      udp_socket_(base::AsioEventDispatcher::ioContext())
+      udp_socket_(AsioEventDispatcher::ioContext())
 {
     LOG(INFO) << "Ctor";
 }
@@ -136,7 +136,7 @@ bool StunServer::doSendAddressReply(quint32 transaction_id, const asio::ip::udp:
     endpoint->set_ip_address(remote_endpoint.address().to_string());
     endpoint->set_port(remote_endpoint.port());
 
-    QByteArray reply = base::serialize(message);
+    QByteArray reply = serialize(message);
     if (reply.isEmpty())
     {
         LOG(ERROR) << "Unable to serialize message";

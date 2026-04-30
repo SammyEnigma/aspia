@@ -22,7 +22,7 @@
 #include "base/win/windows_version.h"
 
 //--------------------------------------------------------------------------------------------------
-SessionInfo::SessionInfo(base::SessionId session_id)
+SessionInfo::SessionInfo(SessionId session_id)
 {
     ScopedWtsMemory<WTSINFOEXW> info;
     DWORD bytes_returned;
@@ -50,10 +50,10 @@ bool SessionInfo::isValid() const
 }
 
 //--------------------------------------------------------------------------------------------------
-base::SessionId SessionInfo::sessionId() const
+SessionId SessionInfo::sessionId() const
 {
     if (!isValid())
-        return base::kInvalidSessionId;
+        return kInvalidSessionId;
 
     return info_->Data.WTSInfoExLevel1.SessionId;
 }

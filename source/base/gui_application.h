@@ -33,8 +33,6 @@ class QLockFile;
 class MessageWindow;
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 class GuiApplication : public QApplication
 {
     Q_OBJECT
@@ -89,7 +87,7 @@ private:
     QLockFile* lock_file_ = nullptr;
     QLocalServer* server_ = nullptr;
 
-    base::Thread io_thread_;
+    Thread io_thread_;
     std::unique_ptr<Translations> translations_;
 
     bool is_native_style_ = false;
@@ -101,7 +99,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(GuiApplication)
 };
-
-} // namespace base
 
 #endif // BASE_GUI_APPLICATION_H

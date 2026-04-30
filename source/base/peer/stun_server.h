@@ -42,7 +42,7 @@ private:
     void doReceiveRequest();
     bool doSendAddressReply(quint32 transaction_id, const asio::ip::udp::endpoint& remote_endpoint);
 
-    base::SharedPointer<bool> alive_guard_ { new bool(true) };
+    SharedPointer<bool> alive_guard_ { new bool(true) };
     quint16 port_ = 0;
     asio::ip::udp::socket udp_socket_;
     asio::ip::udp::endpoint remote_endpoint_;

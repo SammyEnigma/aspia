@@ -74,7 +74,7 @@ const QString kAllowUDP = "allow_udp";
 
 //--------------------------------------------------------------------------------------------------
 SystemSettings::SystemSettings()
-    : settings_(base::XmlSettings::format(), QSettings::SystemScope, kOrganization, kApplication)
+    : settings_(XmlSettings::format(), QSettings::SystemScope, kOrganization, kApplication)
 {
     // Nothing
 }

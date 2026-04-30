@@ -90,7 +90,7 @@ private slots:
 private:
     void doNextTask();
     void doCurrentTask();
-    void onFinished(const base::Location& location);
+    void onFinished(const Location& location);
 
     QPointer<FileTaskFactory> task_factory_;
     ScopedQPointer<FileRemoveQueueBuilder> queue_builder_;

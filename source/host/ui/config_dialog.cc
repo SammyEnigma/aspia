@@ -652,7 +652,7 @@ void ConfigDialog::onButtonBoxClicked(QAbstractButton* button)
 }
 
 //--------------------------------------------------------------------------------------------------
-void ConfigDialog::setConfigChanged(const base::Location& location, bool changed)
+void ConfigDialog::setConfigChanged(const Location& location, bool changed)
 {
     LOG(INFO) << "Config changed (from" << location << "changed" << changed << ")";
 

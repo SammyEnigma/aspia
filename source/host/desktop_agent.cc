@@ -21,7 +21,7 @@
 #include <QCoreApplication>
 #include <QTimer>
 
-#include "base/application.h"
+#include "base/core_application.h"
 #include "base/logging.h"
 #include "base/power_controller.h"
 #include "base/audio/audio_capturer_wrapper.h"
@@ -203,14 +203,14 @@ void DesktopAgent::onIpcConnected()
 void DesktopAgent::onIpcDisconnected()
 {
     LOG(ERROR) << "IPC channel is disconnected. Terminate application";
-    base::Application::quit();
+    base::CoreApplication::quit();
 }
 
 //--------------------------------------------------------------------------------------------------
 void DesktopAgent::onIpcErrorOccurred()
 {
     LOG(ERROR) << "Error when connection to IPC server. Terminate application";
-    base::Application::quit();
+    base::CoreApplication::quit();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -218,7 +218,7 @@ void DesktopAgent::onIpcMessageReceived(
     quint32 /* ipc_channel_id */, const QByteArray& buffer, bool /* reliable */)
 {
     proto::desktop::ServiceToAgent message;
-    if (!base::parse(buffer, &message))
+    if (!parse(buffer, &message))
     {
         LOG(ERROR) << "Unable to parse message from service";
         return;
@@ -311,7 +311,7 @@ void DesktopAgent::onClientConfigured()
     if (!vp8_supported && !vp9_supported)
     {
         LOG(ERROR) << "No supported video encodings";
-        base::Application::quit();
+        base::CoreApplication::quit();
         return;
     }
 
@@ -389,7 +389,7 @@ void DesktopAgent::onClientFinished()
 
     if (is_lock_at_disconnect_)
     {
-        if (!base::PowerController::lock())
+        if (!PowerController::lock())
             LOG(ERROR) << "Unable to lock user session";
         else
             LOG(INFO) << "User session locked";
@@ -447,7 +447,7 @@ void DesktopAgent::onSelectScreen(const proto::screen::Screen& screen)
     }
 
     ScreenCapturer::ScreenId screen_id = static_cast<ScreenCapturer::ScreenId>(screen.id());
-    QSize resolution = base::parse(screen.resolution());
+    QSize resolution = parse(screen.resolution());
 
     selectScreen(screen_id, resolution);
 }

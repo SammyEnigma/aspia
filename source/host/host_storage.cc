@@ -22,7 +22,7 @@
 
 //--------------------------------------------------------------------------------------------------
 HostStorage::HostStorage()
-    : impl_(base::XmlSettings::format(), QSettings::SystemScope, "aspia", "host_storage")
+    : impl_(XmlSettings::format(), QSettings::SystemScope, "aspia", "host_storage")
 {
     // Nothing
 }

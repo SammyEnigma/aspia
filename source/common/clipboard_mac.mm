@@ -326,7 +326,7 @@ void ClipboardMac::onClipboardFiles()
         file->set_modify_time(entry.modify_time);
     }
 
-    onData(kMimeTypeFileList, base::serialize(file_list));
+    onData(kMimeTypeFileList, serialize(file_list));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -345,7 +345,7 @@ void ClipboardMac::setDataFiles(const QByteArray& data)
 {
     proto::clipboard::Event::FileList files;
 
-    if (!base::parse(data, &files))
+    if (!parse(data, &files))
     {
         LOG(ERROR) << "Unable to parse file list";
         return;

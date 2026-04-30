@@ -29,7 +29,7 @@ struct _SYSTEM_INFO;
 // This is declared outside OSInfo for syntactic sugar reasons; see the declaration of
 // windowsVersion() below.
 // NOTE: Keep these in order so callers can do things like
-// "if (base::win::windowsVersion() >= base::win::VERSION_VISTA) ...".
+// "if (win::windowsVersion() >= win::VERSION_VISTA) ...".
 //
 // This enum is used in metrics histograms, so they shouldn't be reordered or removed. New values
 // can be added before VERSION_WIN_LAST.

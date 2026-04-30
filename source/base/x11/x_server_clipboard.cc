@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 XServerClipboard::XServerClipboard() = default;
 
@@ -412,5 +410,3 @@ bool XServerClipboard::isSelectionOwner(Atom selection)
 {
     return selections_owned_.find(selection) != selections_owned_.end();
 }
-
-} // namespace base

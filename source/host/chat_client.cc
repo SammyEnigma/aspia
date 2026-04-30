@@ -38,7 +38,7 @@ ChatClient::~ChatClient()
 //--------------------------------------------------------------------------------------------------
 void ChatClient::onSendChat(const proto::chat::Chat& chat)
 {
-    send(proto::peer::CHANNEL_ID_0, base::serialize(chat));
+    send(proto::peer::CHANNEL_ID_0, serialize(chat));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ void ChatClient::onSendStatus(proto::chat::Status_Code code)
     proto::chat::Status* text_chat_status = text_chat.mutable_chat_status();
 
     text_chat_status->set_code(code);
-    text_chat_status->set_source(base::SysInfo::computerName().toStdString());
+    text_chat_status->set_source(SysInfo::computerName().toStdString());
 
     onSendChat(text_chat);
 }
@@ -65,7 +65,7 @@ void ChatClient::onStart()
 void ChatClient::onMessage(quint8 channel_id, const QByteArray& buffer)
 {
     proto::chat::Chat chat;
-    if (!base::parse(buffer, &chat))
+    if (!parse(buffer, &chat))
     {
         CLOG(ERROR) << "Unable to parse chat message";
         return;

@@ -51,7 +51,7 @@ void SessionHost::sendConnectionOffer(const proto::router::ConnectionOffer& offe
 {
     proto::router::RouterToHost message;
     message.mutable_connection_offer()->CopyFrom(offer);
-    sendMessage(0, base::serialize(message));
+    sendMessage(0, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -59,14 +59,14 @@ void SessionHost::sendHostCommand(const proto::router::HostCommand& command)
 {
     proto::router::RouterToHost message;
     message.mutable_host_command()->CopyFrom(command);
-    sendMessage(0, base::serialize(message));
+    sendMessage(0, serialize(message));
 }
 
 //--------------------------------------------------------------------------------------------------
 void SessionHost::onSessionMessage(quint8 channel_id, const QByteArray& buffer)
 {
     proto::router::HostToRouter message;
-    if (!base::parse(buffer, &message))
+    if (!parse(buffer, &message))
     {
         CLOG(ERROR) << "Could not read message from host";
         return;
@@ -150,7 +150,7 @@ void SessionHost::readHostIdRequest(const proto::router::HostIdRequest& host_id_
             break;
     }
 
-    sendMessage(0, base::serialize(message));
+    sendMessage(0, serialize(message));
 }
 
 } // namespace router

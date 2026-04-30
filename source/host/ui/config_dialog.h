@@ -47,7 +47,7 @@ private slots:
     void onButtonBoxClicked(QAbstractButton* button);
 
 private:
-    void setConfigChanged(const base::Location& location, bool changed);
+    void setConfigChanged(const Location& location, bool changed);
     bool isConfigChanged() const;
     void reloadAll();
     void reloadUserList(const UserList& user_list);

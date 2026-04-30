@@ -199,7 +199,7 @@ void PendingSession::doReadMessage(PendingSession* session)
 }
 
 //--------------------------------------------------------------------------------------------------
-void PendingSession::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
+void PendingSession::onErrorOccurred(const Location& location, const std::error_code& error_code)
 {
     CLOG(ERROR) << "Connection error:" << error_code << "from" << location;
     emit sig_failed();

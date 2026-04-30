@@ -33,7 +33,7 @@ const QString kOneTimeSessionsParam = "OneTimeSessions";
 
 //--------------------------------------------------------------------------------------------------
 UserSettings::UserSettings()
-    : settings_(base::XmlSettings::format(), QSettings::UserScope, "aspia", "host")
+    : settings_(XmlSettings::format(), QSettings::UserScope, "aspia", "host")
 {
     // Nothing
 }

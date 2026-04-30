@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 // ============================================================================
 // makeUint32
 // ============================================================================
@@ -121,5 +119,3 @@ TEST(numeric_utils_test, roundtrip_boundary_values)
         EXPECT_EQ(makeUint32(highWord(v), lowWord(v)), v) << "failed for value 0x" << std::hex << v;
     }
 }
-
-} // namespace base

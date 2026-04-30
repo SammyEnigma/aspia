@@ -18,8 +18,6 @@
 
 #include "base/location.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 Location::Location() = default;
 
@@ -58,10 +56,8 @@ Q_NEVER_INLINE Location Location::createFromHere(const char* function_name, cons
     return Location(function_name, file_name, line_number);
 }
 
-} // namespace base
-
 //--------------------------------------------------------------------------------------------------
-QDebug operator<<(QDebug out, const base::Location& location)
+QDebug operator<<(QDebug out, const Location& location)
 {
     return out << location.toString();
 }
