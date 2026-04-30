@@ -203,14 +203,14 @@ void DesktopAgent::onIpcConnected()
 void DesktopAgent::onIpcDisconnected()
 {
     LOG(ERROR) << "IPC channel is disconnected. Terminate application";
-    base::CoreApplication::quit();
+    CoreApplication::quit();
 }
 
 //--------------------------------------------------------------------------------------------------
 void DesktopAgent::onIpcErrorOccurred()
 {
     LOG(ERROR) << "Error when connection to IPC server. Terminate application";
-    base::CoreApplication::quit();
+    CoreApplication::quit();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -311,7 +311,7 @@ void DesktopAgent::onClientConfigured()
     if (!vp8_supported && !vp9_supported)
     {
         LOG(ERROR) << "No supported video encodings";
-        base::CoreApplication::quit();
+        CoreApplication::quit();
         return;
     }
 

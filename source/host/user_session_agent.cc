@@ -41,7 +41,7 @@ UserSessionAgent::UserSessionAgent(QObject* parent)
 {
     LOG(INFO) << "Ctor";
 #if defined(Q_OS_WINDOWS)
-    // 0x100-0x1FF base::CoreApplication reserved last shutdown range.
+    // 0x100-0x1FF Application reserved last shutdown range.
     if (!SetProcessShutdownParameters(0x100, SHUTDOWN_NORETRY))
         PLOG(ERROR) << "SetProcessShutdownParameters failed";
 #endif // defined(Q_OS_WINDOWS)

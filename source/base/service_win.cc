@@ -397,7 +397,7 @@ Service::~Service()
 }
 
 //--------------------------------------------------------------------------------------------------
-int Service::exec(base::CoreApplication& application)
+int Service::exec(CoreApplication& application)
 {
     LOG(INFO) << "Begin";
 
@@ -430,8 +430,8 @@ int Service::exec(base::CoreApplication& application)
         service_thread->startup_condition.notify_all();
     }
 
-    connect(this, &Service::sig_powerEvent, &application, &base::CoreApplication::sig_powerEvent);
-    connect(this, &Service::sig_sessionEvent, &application, &base::CoreApplication::sig_sessionEvent);
+    connect(this, &Service::sig_powerEvent, &application, &CoreApplication::sig_powerEvent);
+    connect(this, &Service::sig_sessionEvent, &application, &CoreApplication::sig_sessionEvent);
 
     int ret = application.exec();
     service_thread.reset();

@@ -62,7 +62,7 @@ SysInfoWidgetEventLogs::SysInfoWidgetEventLogs(QWidget* parent)
     // Hide description column.
     ui.tree->setColumnHidden(5, true);
 
-    ui.combobox_type->addItem(tr("base::CoreApplication"),
+    ui.combobox_type->addItem(tr("Application"),
         static_cast<quint32>(proto::system_info::EventLogs::Event::TYPE_APPLICATION));
     ui.combobox_type->addItem(tr("Security"),
         static_cast<quint32>(proto::system_info::EventLogs::Event::TYPE_SECURITY));

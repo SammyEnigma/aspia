@@ -37,7 +37,7 @@ public:
     Service(const QString& name, QObject* parent);
     virtual ~Service();
 
-    int exec(base::CoreApplication& application);
+    int exec(CoreApplication& application);
 
     const QString& name() const { return name_; }
 

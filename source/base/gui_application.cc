@@ -232,7 +232,7 @@ bool GuiApplication::isRunning()
 {
     if (!lock_file_->tryLock())
     {
-        LOG(INFO) << "base::CoreApplication already running";
+        LOG(INFO) << "Application already running";
         return true;
     }
 

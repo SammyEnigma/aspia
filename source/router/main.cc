@@ -294,10 +294,10 @@ int main(int argc, char* argv[])
 
     base::ScopedLogging scoped_logging(logging_settings);
 
-    base::CoreApplication::setEventDispatcher(new AsioEventDispatcher());
-    base::CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
+    CoreApplication::setEventDispatcher(new AsioEventDispatcher());
+    CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
 
-    base::CoreApplication application(argc, argv);
+    CoreApplication application(argc, argv);
 
     QCommandLineOption install_option("install", "Install service.");
     QCommandLineOption remove_option("remove", "Remove service.");
@@ -319,7 +319,7 @@ int main(int argc, char* argv[])
     parser.process(application);
 
     LOG(INFO) << "Version:" << ASPIA_VERSION_STRING << "(arch:" << QSysInfo::buildCpuArchitecture() << ")";
-    LOG(INFO) << "Command line:" << base::CoreApplication::arguments();
+    LOG(INFO) << "Command line:" << CoreApplication::arguments();
 
     QTextStream out(stdout, QIODevice::WriteOnly);
 

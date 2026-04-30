@@ -28,8 +28,6 @@
 #include "base/win/message_window.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 CoreApplication::CoreApplication(int& argc, char* argv[])
     : QCoreApplication(argc, argv)
@@ -156,5 +154,3 @@ CoreApplication* CoreApplication::instance()
 {
     return static_cast<CoreApplication*>(QCoreApplication::instance());
 }
-
-} // namespace base

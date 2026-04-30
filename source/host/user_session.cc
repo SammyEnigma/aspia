@@ -128,7 +128,7 @@ UserSession::UserSession(QObject* parent)
     connect(attach_timer_, &QTimer::timeout, this, [this]() { dettach(FROM_HERE); });
     connect(dettach_timer_, &QTimer::timeout, this, &UserSession::onDettachTimeout);
     connect(startup_timer_, &QTimer::timeout, this, &UserSession::onStartupUserCheck);
-    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_sessionEvent,
+    connect(CoreApplication::instance(), &CoreApplication::sig_sessionEvent,
             this, &UserSession::onUserSessionEvent);
 }
 

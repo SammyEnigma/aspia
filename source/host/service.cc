@@ -96,7 +96,7 @@ Service::Service(QObject* parent)
     connect(user_session_, &UserSession::sig_lockKeyboardChanged, desktop_manager_, &DesktopManager::onUserLockKeyboard);
     connect(desktop_manager_, &DesktopManager::sig_attached, this, &Service::onDesktopManagerAttached);
     connect(tcp_server_, &TcpServer::sig_newConnection, this, &Service::onNewDirectConnection);
-    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_powerEvent, this, &Service::onPowerEvent);
+    connect(CoreApplication::instance(), &CoreApplication::sig_powerEvent, this, &Service::onPowerEvent);
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -35,14 +35,14 @@ int fileAgentMain(int& argc, char* argv[])
 
     base::ScopedLogging scoped_logging(logging_settings);
 
-    base::CoreApplication::setEventDispatcher(new AsioEventDispatcher());
-    base::CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
+    CoreApplication::setEventDispatcher(new AsioEventDispatcher());
+    CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);
 
-    base::CoreApplication application(argc, argv);
+    CoreApplication application(argc, argv);
     HostUtils::printDebugInfo();
 
     QCommandLineOption channel_id_option("channel_id",
-        base::CoreApplication::translate("FileAgentMain", "IPC channel id."), "channel_id");
+        CoreApplication::translate("FileAgentMain", "IPC channel id."), "channel_id");
 
     QCommandLineParser parser;
     parser.addOption(channel_id_option);

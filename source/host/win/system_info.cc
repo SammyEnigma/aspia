@@ -809,7 +809,7 @@ void fillEventLogs(proto::system_info::SystemInfo* system_info,
     switch (data.type())
     {
         case proto::system_info::EventLogs::Event::TYPE_APPLICATION:
-            log_name = "base::CoreApplication";
+            log_name = "Application";
             break;
 
         case proto::system_info::EventLogs::Event::TYPE_SECURITY:

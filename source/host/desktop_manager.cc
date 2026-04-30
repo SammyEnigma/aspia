@@ -205,7 +205,7 @@ DesktopManager::DesktopManager(QObject* parent)
 {
     LOG(INFO) << "Ctor";
 
-    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_sessionEvent,
+    connect(CoreApplication::instance(), &CoreApplication::sig_sessionEvent,
             this, &DesktopManager::onUserSessionEvent);
 
     restart_timer_->setInterval(kRestartTimeout);

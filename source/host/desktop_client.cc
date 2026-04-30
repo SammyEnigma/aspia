@@ -49,7 +49,7 @@ DesktopClient::DesktopClient(TcpChannel* tcp_channel, QObject* parent)
     CLOG(INFO) << "Ctor";
 
 #if defined(Q_OS_WINDOWS)
-    connect(base::CoreApplication::instance(), &base::CoreApplication::sig_sessionEvent,
+    connect(CoreApplication::instance(), &CoreApplication::sig_sessionEvent,
             this, &DesktopClient::sendSessionList, Qt::QueuedConnection);
 #endif // defined(Q_OS_WINDOWS)
 

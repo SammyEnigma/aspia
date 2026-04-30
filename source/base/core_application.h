@@ -24,8 +24,6 @@
 class MessageWindow;
 class Thread;
 
-namespace base {
-
 class CoreApplication final : public QCoreApplication
 {
     Q_OBJECT
@@ -50,7 +48,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(CoreApplication)
 };
-
-} // namespace base
 
 #endif // BASE_CORE_APPLICATION_H
