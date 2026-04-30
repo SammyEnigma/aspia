@@ -18,8 +18,6 @@
 
 #include "base/win/device.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 Device::~Device()
 {
@@ -53,5 +51,3 @@ bool Device::ioControl(DWORD io_control_code, LPVOID input_buffer, DWORD input_b
     return !!DeviceIoControl(device_, io_control_code, input_buffer, input_buffer_size,
         output_buffer, output_buffer_size, bytes_returned, nullptr);
 }
-
-} // namespace base

@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 // Like ScopedHandle but for GDI objects.
 template<class T, class Traits>
 class ScopedGDIObject
@@ -87,7 +85,5 @@ using ScopedHBITMAP = ScopedGDIObject<HBITMAP, DeleteObjectTraits<HBITMAP>>;
 using ScopedHRGN = ScopedGDIObject<HRGN, DeleteObjectTraits<HRGN>>;
 using ScopedHFONT = ScopedGDIObject<HFONT, DeleteObjectTraits<HFONT>>;
 using ScopedHBRUSH = ScopedGDIObject<HBRUSH, DeleteObjectTraits<HBRUSH>>;
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_GDI_OBJECT_H

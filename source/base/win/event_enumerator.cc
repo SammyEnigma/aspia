@@ -23,8 +23,6 @@
 
 #include <strsafe.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -83,7 +81,7 @@ bool eventLogRecord(HANDLE event_log, DWORD record_offset, QByteArray* record_bu
 
         if (error_code != ERROR_INSUFFICIENT_BUFFER)
         {
-            LOG(ERROR) << "ReadEventLogW failed:" << SystemError(error_code).toString();
+            LOG(ERROR) << "ReadEventLogW failed:" << base::SystemError(error_code).toString();
             return false;
         }
 
@@ -113,19 +111,19 @@ bool eventLogMessageFileDLL(
     QString key_path = QString("SYSTEM\\CurrentControlSet\\Services\\EventLog\\%1\\%2")
         .arg(log_name, source);
 
-    RegistryKey key;
+    RegKey key;
 
     LONG status = key.open(HKEY_LOCAL_MACHINE, key_path, KEY_READ);
     if (status != ERROR_SUCCESS)
     {
-        LOG(ERROR) << "key.open failed:" << SystemError(static_cast<DWORD>(status)).toString();
+        LOG(ERROR) << "key.open failed:" << base::SystemError(static_cast<DWORD>(status)).toString();
         return false;
     }
 
     status = key.readValue("EventMessageFile", message_file);
     if (status != ERROR_SUCCESS)
     {
-        LOG(INFO) << "key.readValue failed:" << SystemError(static_cast<DWORD>(status)).toString();
+        LOG(INFO) << "key.readValue failed:" << base::SystemError(static_cast<DWORD>(status)).toString();
         return false;
     }
 
@@ -396,5 +394,3 @@ EVENTLOGRECORD* EventEnumerator::record() const
 {
     return reinterpret_cast<EVENTLOGRECORD*>(record_buffer_.data());
 }
-
-} // namespace base

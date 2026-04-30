@@ -122,12 +122,12 @@ void Service::onStart()
     {
         storage.setBootToSafeMode(false);
 
-        if (!base::SafeModeUtil::setSafeMode(false))
+        if (!SafeModeUtil::setSafeMode(false))
             LOG(ERROR) << "Failed to turn off boot in safe mode";
         else
             LOG(INFO) << "Safe mode is disabled";
 
-        if (!base::SafeModeUtil::setSafeModeService(kName, false))
+        if (!SafeModeUtil::setSafeModeService(kName, false))
             LOG(ERROR) << "Failed to remove service from boot in Safe Mode";
         else
             LOG(INFO) << "Service removed from safe mode loading";
@@ -351,7 +351,7 @@ void Service::onFileDownloaderCompleted()
         arguments += file_path; // MSI package file.
         arguments += " /qn"; // No UI during the installation process.
 
-        if (!base::createProcess("msiexec", arguments, base::ProcessExecuteMode::ELEVATE))
+        if (!createProcess("msiexec", arguments, ProcessExecuteMode::ELEVATE))
         {
             LOG(ERROR) << "Unable to create update process (cmd:" << arguments << ")";
 

@@ -163,7 +163,7 @@ void UpdateDialog::onUpdateNow()
                 // Basic UI with no modal dialog boxes.
                 arguments += " /qb-!";
 
-                if (base::createProcess("msiexec", arguments, base::ProcessExecuteMode::ELEVATE))
+                if (createProcess("msiexec", arguments, ProcessExecuteMode::ELEVATE))
                 {
                     LOG(INFO) << "msiexec is started";
                     // If the process is successfully launched, then the application is terminated.

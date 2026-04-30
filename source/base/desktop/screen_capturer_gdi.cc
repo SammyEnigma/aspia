@@ -158,7 +158,7 @@ const Frame* ScreenCapturerGdi::captureFrame(Error* error)
     Frame* previous = queue_.previousFrame();
 
     {
-        base::ScopedSelectObject select_object(
+        ScopedSelectObject select_object(
             memory_dc_, static_cast<FrameDib*>(current)->bitmap());
 
         if (!BitBlt(memory_dc_,
@@ -277,7 +277,7 @@ bool ScreenCapturerGdi::prepareCaptureResources()
     // If the display bounds have changed then recreate GDI resources.
     if (desktop_rect != desktop_dc_rect_)
     {
-        LOG(INFO) << "base::Desktop rect changed from" << desktop_dc_rect_ << "to" << desktop_rect;
+        LOG(INFO) << "Desktop rect changed from" << desktop_dc_rect_ << "to" << desktop_rect;
 
         desktop_dc_.close();
         memory_dc_.reset();

@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 template<class T, class Traits>
 class ScopedObject
 {
@@ -153,7 +151,5 @@ public:
 using ScopedHandle = ScopedObject<HANDLE, HandleObjectTraits>;
 using ScopedScHandle = ScopedObject<SC_HANDLE, ScHandleObjectTraits>;
 using ScopedEventLog = ScopedObject<HANDLE, EventLogObjectTraits>;
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_HANDLE_H

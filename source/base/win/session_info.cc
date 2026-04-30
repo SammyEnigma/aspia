@@ -21,10 +21,8 @@
 #include "base/logging.h"
 #include "base/win/windows_version.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
-SessionInfo::SessionInfo(SessionId session_id)
+SessionInfo::SessionInfo(base::SessionId session_id)
 {
     ScopedWtsMemory<WTSINFOEXW> info;
     DWORD bytes_returned;
@@ -52,10 +50,10 @@ bool SessionInfo::isValid() const
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionId SessionInfo::sessionId() const
+base::SessionId SessionInfo::sessionId() const
 {
     if (!isValid())
-        return kInvalidSessionId;
+        return base::kInvalidSessionId;
 
     return info_->Data.WTSInfoExLevel1.SessionId;
 }
@@ -174,7 +172,7 @@ bool SessionInfo::isUserLocked() const
     if (!isValid())
         return false;
 
-    if (base::OSInfo::instance()->version() <= VERSION_WIN7)
+    if (OSInfo::instance()->version() <= VERSION_WIN7)
     {
         // Due to a code defect, the usage of the WTS_SESSIONSTATE_LOCK and WTS_SESSIONSTATE_UNLOCK
         // flags is reversed. That is, WTS_SESSIONSTATE_LOCK indicates that the session is unlocked,
@@ -186,5 +184,3 @@ bool SessionInfo::isUserLocked() const
         return info_->Data.WTSInfoExLevel1.SessionFlags == WTS_SESSIONSTATE_LOCK;
     }
 }
-
-} // namespace base

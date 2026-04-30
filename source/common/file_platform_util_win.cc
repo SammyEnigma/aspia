@@ -50,7 +50,7 @@ QIcon stockIcon(SHSTOCKICONID icon_id)
 
     if (SUCCEEDED(SHGetStockIconInfo(icon_id, SHGSI_ICON | SHGSI_SMALLICON, &icon_info)))
     {
-        base::ScopedHICON icon(icon_info.hIcon);
+        ScopedHICON icon(icon_info.hIcon);
         if (icon.isValid())
             return QPixmap::fromImage(QImage::fromHICON(icon));
     }
@@ -73,7 +73,7 @@ std::pair<QIcon, QString> FilePlatformUtil::fileTypeInfo(const QString& file_nam
                    sizeof(file_info),
                    SHGFI_USEFILEATTRIBUTES | SHGFI_ICON | SHGFI_SMALLICON | SHGFI_TYPENAME);
 
-    base::ScopedHICON icon(file_info.hIcon);
+    ScopedHICON icon(file_info.hIcon);
     if (icon.isValid())
     {
         return std::pair<QIcon, QString>(QPixmap::fromImage(QImage::fromHICON(icon)),

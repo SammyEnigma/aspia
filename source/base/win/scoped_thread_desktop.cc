@@ -20,8 +20,6 @@
 
 #include <utility>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScopedThreadDesktop::ScopedThreadDesktop()
     : initial_(Desktop::threadDesktop())
@@ -69,5 +67,3 @@ bool ScopedThreadDesktop::setThreadDesktop(Desktop&& desktop)
 
     return true;
 }
-
-} // namespace base

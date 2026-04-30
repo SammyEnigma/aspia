@@ -229,7 +229,7 @@ void TaskbarButton::updateOverlayIcon()
 
     HWND hwnd = reinterpret_cast<HWND>(window_->winId());
     const wchar_t* desc = nullptr;
-    base::ScopedHICON icon;
+    ScopedHICON icon;
 
     if (!overlay_description_.isEmpty())
         desc = qUtf16Printable(overlay_description_);

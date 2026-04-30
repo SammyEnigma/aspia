@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScopedCOMInitializer::ScopedCOMInitializer()
 {
@@ -53,5 +51,3 @@ void ScopedCOMInitializer::initialize(COINIT init)
     hr_ = CoInitializeEx(nullptr, init);
     DCHECK_NE(hr_, RPC_E_CHANGED_MODE) << "Invalid COM thread model change";
 }
-
-} // namespace base

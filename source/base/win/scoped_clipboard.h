@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 class ScopedClipboard
 {
 public:
@@ -46,7 +44,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedClipboard)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_CLIPBOARD_H

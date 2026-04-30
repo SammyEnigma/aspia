@@ -24,8 +24,6 @@
 #include "base/session_id.h"
 #include "base/win/scoped_wts_memory.h"
 
-namespace base {
-
 class SessionEnumerator
 {
 public:
@@ -38,7 +36,7 @@ public:
     static const char* stateToString(WTS_CONNECTSTATE_CLASS state);
 
     WTS_CONNECTSTATE_CLASS state() const;
-    SessionId sessionId() const;
+    base::SessionId sessionId() const;
 
     // A string that contains the name of this session. For example, "services", "console",
     // or "RDP-Tcp#0".
@@ -67,7 +65,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SessionEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SESSION_ENUMERATOR_H

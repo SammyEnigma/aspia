@@ -22,8 +22,6 @@
 #include <QStringList>
 #include <qt_windows.h>
 
-namespace base {
-
 class Desktop
 {
 public:
@@ -74,7 +72,5 @@ private:
 
     Q_DISABLE_COPY(Desktop)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_DESKTOP_H

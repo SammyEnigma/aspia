@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class SafeModeUtil
 {
 public:
@@ -32,7 +30,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(SafeModeUtil)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SAFE_MODE_UTIL_H

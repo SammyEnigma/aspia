@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 Desktop::Desktop(Desktop&& other) noexcept
 {
@@ -206,5 +204,3 @@ BOOL CALLBACK Desktop::enumDesktopProc(LPWSTR desktop, LPARAM lparam)
     list->emplace_back(QString::fromWCharArray(desktop));
     return TRUE;
 }
-
-} // namespace base

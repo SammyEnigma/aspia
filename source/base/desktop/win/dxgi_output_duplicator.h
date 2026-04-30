@@ -125,7 +125,7 @@ private:
     QVector<Context*> contexts_;
 
     qint64 num_frames_captured_ = 0;
-    base::Desktop desktop_;
+    Desktop desktop_;
 };
 
 #endif // BASE_DESKTOP_WIN_DXGI_OUTPUT_DUPLICATOR_H

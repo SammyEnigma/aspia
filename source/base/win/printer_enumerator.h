@@ -24,8 +24,6 @@
 
 struct _PRINTER_INFO_2W;
 
-namespace base {
-
 class PrinterEnumerator
 {
 public:
@@ -62,7 +60,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(PrinterEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_PRINTER_ENUMERATOR_H

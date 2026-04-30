@@ -21,8 +21,6 @@
 
 #include "base/win/desktop.h"
 
-namespace base {
-
 class ScopedThreadDesktop
 {
 public:
@@ -53,7 +51,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedThreadDesktop)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_THREAD_DESKTOP_H

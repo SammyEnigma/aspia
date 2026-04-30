@@ -54,9 +54,9 @@ const char kFileTransferAgentFile[] = "aspia_file_agent.exe";
 const wchar_t kDefaultDesktopName[] = L"winsta0\\default";
 
 //--------------------------------------------------------------------------------------------------
-bool createLoggedOnUserToken(DWORD session_id, base::ScopedHandle* token_out)
+bool createLoggedOnUserToken(DWORD session_id, ScopedHandle* token_out)
 {
-    base::ScopedHandle user_token;
+    ScopedHandle user_token;
     if (!WTSQueryUserToken(session_id, user_token.recieve()))
     {
         PLOG(ERROR) << "WTSQueryUserToken failed";
@@ -104,8 +104,8 @@ bool createLoggedOnUserToken(DWORD session_id, base::ScopedHandle* token_out)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool startProcessWithToken(HANDLE token, const QString& command_line, base::ScopedHandle* process,
-    base::ScopedHandle* thread)
+bool startProcessWithToken(HANDLE token, const QString& command_line, ScopedHandle* process,
+    ScopedHandle* thread)
 {
     STARTUPINFOW startup_info;
     memset(&startup_info, 0, sizeof(startup_info));
@@ -240,7 +240,7 @@ void FileClient::onStart()
     QString ipc_channel_id = IpcServer::createUniqueId();
 
 #if defined(Q_OS_WINDOWS)
-    base::ScopedHandle session_token;
+    ScopedHandle session_token;
     if (!createLoggedOnUserToken(session_id_, &session_token))
     {
         CLOG(WARNING) << "createSessionToken failed";
@@ -251,7 +251,7 @@ void FileClient::onStart()
         return;
     }
 
-    base::SessionInfo session_info(session_id_);
+    SessionInfo session_info(session_id_);
     if (!session_info.isValid())
     {
         CLOG(ERROR) << "Unable to get session info";
@@ -280,8 +280,8 @@ void FileClient::onStart()
 
     CLOG(INFO) << "Starting agent process with command line:" << command_line;
 
-    base::ScopedHandle process_handle;
-    base::ScopedHandle thread_handle;
+    ScopedHandle process_handle;
+    ScopedHandle thread_handle;
     if (!startProcessWithToken(session_token, command_line, &process_handle, &thread_handle))
     {
         CLOG(ERROR) << "startProcessWithToken failed";

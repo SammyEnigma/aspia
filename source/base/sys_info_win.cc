@@ -129,32 +129,32 @@ QString digitalProductIdToString(quint8* product_id, size_t product_id_size)
 //static
 QString SysInfo::operatingSystemName()
 {
-    base::OSInfo* os_info = base::OSInfo::instance();
+    OSInfo* os_info = OSInfo::instance();
 
-    if (os_info->version() >= base::VERSION_WIN11)
+    if (os_info->version() >= VERSION_WIN11)
     {
         // Key ProductName in the Windows 11 registry says it's Windows 10.
         // We can't rely on this value.
         switch (os_info->versionType())
         {
-            case base::SUITE_HOME:
+            case SUITE_HOME:
                 return "Windows 11 Home";
-            case base::SUITE_PROFESSIONAL:
+            case SUITE_PROFESSIONAL:
                 return "Windows 11 Pro";
-            case base::SUITE_SERVER:
+            case SUITE_SERVER:
                 return "Windows 11 Server";
-            case base::SUITE_ENTERPRISE:
+            case SUITE_ENTERPRISE:
                 return "Windows 11 Enterprise";
-            case base::SUITE_EDUCATION:
+            case SUITE_EDUCATION:
                 return "Windows 11 Education";
-            case base::SUITE_EDUCATION_PRO:
+            case SUITE_EDUCATION_PRO:
                 return "Windows 11 Education Pro";
             default:
                 return "Windows 11";
         }
     }
 
-    RegistryKey key;
+    RegKey key;
 
     REGSAM access = KEY_READ;
 
@@ -225,7 +225,7 @@ QString SysInfo::operatingSystemDir()
 // static
 QString SysInfo::operatingSystemKey()
 {
-    RegistryKey key;
+    RegKey key;
 
     REGSAM access = KEY_READ;
 
@@ -268,7 +268,7 @@ QString SysInfo::operatingSystemKey()
 // static
 qint64 SysInfo::operatingSystemInstallDate()
 {
-    RegistryKey key;
+    RegKey key;
 
     REGSAM access = KEY_READ;
 

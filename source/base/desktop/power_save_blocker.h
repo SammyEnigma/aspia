@@ -33,7 +33,7 @@ public:
 
 private:
 #if defined(Q_OS_WINDOWS)
-    base::ScopedHandle handle_;
+    ScopedHandle handle_;
 #endif // defined(Q_OS_WINDOWS)
 
     Q_DISABLE_COPY_MOVE(PowerSaveBlocker)

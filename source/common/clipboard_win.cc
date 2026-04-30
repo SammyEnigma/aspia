@@ -113,7 +113,7 @@ bool fileInfo(const QString& path, FileInfo* file_info)
 
     const DWORD flags = file_info->is_directory ? FILE_FLAG_BACKUP_SEMANTICS : FILE_ATTRIBUTE_NORMAL;
 
-    base::ScopedHandle file(CreateFileW(qUtf16Printable(path), GENERIC_READ, FILE_SHARE_READ,
+    ScopedHandle file(CreateFileW(qUtf16Printable(path), GENERIC_READ, FILE_SHARE_READ,
         nullptr, OPEN_EXISTING, flags, nullptr));
     if (!file.isValid())
     {
@@ -260,7 +260,7 @@ void ClipboardWin::init()
         return;
     }
 
-    window_ = std::make_unique<base::MessageWindow>();
+    window_ = std::make_unique<MessageWindow>();
 
     if (!window_->create(std::bind(&ClipboardWin::onMessage,
                                    this,
@@ -350,7 +350,7 @@ void ClipboardWin::onClipboardText()
 
     // Add a scope, so that we keep the clipboard open for as short a time as possible.
     {
-        base::ScopedClipboard clipboard;
+        ScopedClipboard clipboard;
 
         if (!clipboard.init(window_->hwnd()))
         {
@@ -366,7 +366,7 @@ void ClipboardWin::onClipboardText()
         }
 
         {
-            base::ScopedHGLOBAL<wchar_t> text_lock(text_global);
+            ScopedHGLOBAL<wchar_t> text_lock(text_global);
             if (!text_lock.get())
             {
                 PLOG(ERROR) << "Couldn't lock clipboard data";
@@ -391,7 +391,7 @@ void ClipboardWin::onClipboardFiles()
 
     // Add a scope, so that we keep the clipboard open for as short a time as possible.
     {
-        base::ScopedClipboard clipboard;
+        ScopedClipboard clipboard;
 
         if (!clipboard.init(window_->hwnd()))
         {
@@ -490,7 +490,7 @@ void ClipboardWin::setDataText(const QByteArray& data)
     QString text = QString::fromUtf8(data);
     text.replace("\n", "\r\n");
 
-    base::ScopedClipboard clipboard;
+    ScopedClipboard clipboard;
     if (!clipboard.init(window_->hwnd()))
     {
         PLOG(ERROR) << "Couldn't open the clipboard";

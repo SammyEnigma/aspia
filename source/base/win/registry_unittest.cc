@@ -23,8 +23,6 @@
 #include <cstring>
 #include <vector>
 
-namespace base::win {
-
 namespace {
 
 class RegistryTest : public testing::Test
@@ -43,7 +41,7 @@ protected:
     void SetUp() final
     {
         // Create a temporary key.
-        RegistryKey key(HKEY_CURRENT_USER, "", KEY_ALL_ACCESS);
+        RegKey key(HKEY_CURRENT_USER, "", KEY_ALL_ACCESS);
         key.deleteKey(kRootKey);
         ASSERT_NE(ERROR_SUCCESS, key.open(HKEY_CURRENT_USER, kRootKey, KEY_READ));
         ASSERT_EQ(ERROR_SUCCESS, key.create(HKEY_CURRENT_USER, kRootKey, KEY_READ));
@@ -55,7 +53,7 @@ protected:
     void TearDown() final
     {
         // Clean up the temporary key.
-        RegistryKey key(HKEY_CURRENT_USER, "", KEY_SET_VALUE);
+        RegKey key(HKEY_CURRENT_USER, "", KEY_SET_VALUE);
         ASSERT_EQ(ERROR_SUCCESS, key.deleteKey(kRootKey));
         ASSERT_NE(ERROR_SUCCESS, key.open(HKEY_CURRENT_USER, kRootKey, KEY_READ));
     }
@@ -93,7 +91,7 @@ const REGSAM RegistryTest::kRedirectedViewMask;
 
 TEST_F(RegistryTest, ValueTest)
 {
-    RegistryKey key;
+    RegKey key;
 
     QString foo_key(kRootKey);
     foo_key += "\\Foo";
@@ -154,7 +152,7 @@ TEST_F(RegistryTest, ValueTest)
 
 TEST_F(RegistryTest, BigValueIteratorTest)
 {
-    RegistryKey key;
+    RegKey key;
     QString foo_key(kRootKey);
     foo_key += "\\Foo";
     ASSERT_EQ(ERROR_SUCCESS, key.create(HKEY_CURRENT_USER, foo_key, KEY_READ));
@@ -167,7 +165,7 @@ TEST_F(RegistryTest, BigValueIteratorTest)
 
     ASSERT_EQ(ERROR_SUCCESS, key.writeValue(data, data));
 
-    RegistryValueIterator iterator(HKEY_CURRENT_USER, foo_key);
+    RegValueIterator iterator(HKEY_CURRENT_USER, foo_key);
     ASSERT_TRUE(iterator.valid());
     EXPECT_STREQ(data.toStdString().c_str(), iterator.name().toStdString().c_str());
     EXPECT_STREQ(data.toStdString().c_str(), iterator.value().toStdString().c_str());
@@ -179,7 +177,7 @@ TEST_F(RegistryTest, BigValueIteratorTest)
 
 TEST_F(RegistryTest, TruncatedCharTest)
 {
-    RegistryKey key;
+    RegKey key;
     QString foo_key(kRootKey);
     foo_key += "\\Foo";
     ASSERT_EQ(ERROR_SUCCESS, key.create(HKEY_CURRENT_USER, foo_key, KEY_READ));
@@ -194,7 +192,7 @@ TEST_F(RegistryTest, TruncatedCharTest)
     ASSERT_EQ(ERROR_SUCCESS,
         key.writeValue(kName, kData, static_cast<DWORD>(std::size(kData)), REG_BINARY));
 
-    RegistryValueIterator iterator(HKEY_CURRENT_USER, foo_key);
+    RegValueIterator iterator(HKEY_CURRENT_USER, foo_key);
     ASSERT_TRUE(iterator.valid());
     EXPECT_STREQ(kName, iterator.name().toStdString().c_str());
     // ValueSize() is in bytes.
@@ -210,7 +208,7 @@ TEST_F(RegistryTest, TruncatedCharTest)
 
 TEST_F(RegistryTest, RecursiveDelete)
 {
-    RegistryKey key;
+    RegKey key;
     // Create kRootKey->Foo
     //                  \->Bar (TestValue)
     //                     \->Foo (TestValue)
@@ -264,7 +262,7 @@ TEST_F(RegistryTest, DISABLED_Wow64RedirectedFromNative)
     if (!isRedirectorPresent())
         return;
 
-    RegistryKey key;
+    RegKey key;
 
     // Test redirected key access from non-redirected.
     ASSERT_EQ(ERROR_SUCCESS,
@@ -295,7 +293,7 @@ TEST_F(RegistryTest, DISABLED_Wow64RedirectedFromNative)
 // subsequent OpenKey call.
 TEST_F(RegistryTest, SameWowFlags)
 {
-    RegistryKey key;
+    RegKey key;
 
     ASSERT_EQ(ERROR_SUCCESS, key.open(HKEY_LOCAL_MACHINE, "Software", KEY_READ | KEY_WOW64_64KEY));
     ASSERT_EQ(ERROR_SUCCESS, key.openKey("Microsoft", KEY_READ | KEY_WOW64_64KEY));
@@ -308,7 +306,7 @@ TEST_F(RegistryTest, DISABLED_Wow64NativeFromRedirected)
     if (!isRedirectorPresent())
         return;
 
-    RegistryKey key;
+    RegKey key;
 
     // Test non-redirected key access from redirected.
     ASSERT_EQ(ERROR_SUCCESS,
@@ -335,7 +333,7 @@ TEST_F(RegistryTest, DISABLED_Wow64NativeFromRedirected)
 
 TEST_F(RegistryTest, OpenSubKey)
 {
-    RegistryKey key;
+    RegKey key;
     ASSERT_EQ(ERROR_SUCCESS,
               key.open(HKEY_CURRENT_USER, kRootKey, KEY_READ | KEY_CREATE_SUB_KEY));
 
@@ -353,5 +351,3 @@ TEST_F(RegistryTest, OpenSubKey)
 }
 
 } // namespace
-
-} // namespace base::win

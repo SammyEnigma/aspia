@@ -635,7 +635,7 @@ void DesktopSessionWindow::showEvent(QShowEvent* event)
         is_minimized_from_full_screen_ = false;
 
 #if defined(Q_OS_WINDOWS)
-        if (base::windowsVersion() >= base::VERSION_WIN11)
+        if (windowsVersion() >= VERSION_WIN11)
         {
             // In Windows 11, when you maximize a minimized window from full screen, the window does
             // not return to full screen. We force the window to full screen.

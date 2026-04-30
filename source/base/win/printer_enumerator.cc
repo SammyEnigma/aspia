@@ -22,8 +22,6 @@
 #include <qt_windows.h>
 #include <winspool.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 PrinterEnumerator::PrinterEnumerator()
 {
@@ -213,5 +211,3 @@ int PrinterEnumerator::jobsCount() const
 {
     return static_cast<int>(info_[current_].cJobs);
 }
-
-} // namespace base

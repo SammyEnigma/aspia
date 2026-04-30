@@ -24,19 +24,17 @@
 
 #include <vector>
 
-namespace base {
-
-class RegistryKey
+class RegKey
 {
 public:
-    RegistryKey() = default;
-    explicit RegistryKey(HKEY key);
-    RegistryKey(HKEY rootkey, const QString& subkey, REGSAM access);
+    RegKey() = default;
+    explicit RegKey(HKEY key);
+    RegKey(HKEY rootkey, const QString& subkey, REGSAM access);
 
-    RegistryKey(RegistryKey&& other) noexcept;
-    RegistryKey& operator=(RegistryKey&& other) noexcept;
+    RegKey(RegKey&& other) noexcept;
+    RegKey& operator=(RegKey&& other) noexcept;
 
-    ~RegistryKey();
+    ~RegKey();
 
     // True while the key is valid.
     bool isValid() const;
@@ -112,24 +110,24 @@ private:
     HKEY key_ = nullptr;
     REGSAM wow64access_ = 0;
 
-    Q_DISABLE_COPY(RegistryKey)
+    Q_DISABLE_COPY(RegKey)
 };
 
 // Iterates the entries found in a particular folder on the registry.
-class RegistryValueIterator
+class RegValueIterator
 {
 public:
     // Constructs a Registry Value Iterator with default WOW64 access.
-    RegistryValueIterator(HKEY root_key, const QString& folder_key);
+    RegValueIterator(HKEY root_key, const QString& folder_key);
 
     // Constructs a Registry Key Iterator with specific WOW64 access, one of
     // KEY_WOW64_32KEY or KEY_WOW64_64KEY, or 0.
     // Note: |wow64access| should be the same access used to open |root_key|
     // previously, or a predefined key (e.g. HKEY_LOCAL_MACHINE).
     // See http://msdn.microsoft.com/en-us/library/windows/desktop/aa384129.aspx.
-    RegistryValueIterator(HKEY root_key, const QString& folder_key, REGSAM wow64access);
+    RegValueIterator(HKEY root_key, const QString& folder_key, REGSAM wow64access);
 
-    ~RegistryValueIterator();
+    ~RegValueIterator();
 
     DWORD valueCount() const;
 
@@ -165,23 +163,23 @@ private:
     DWORD value_size_;
     DWORD type_;
 
-    Q_DISABLE_COPY_MOVE(RegistryValueIterator)
+    Q_DISABLE_COPY_MOVE(RegValueIterator)
 };
 
-class RegistryKeyIterator
+class RegKeyIterator
 {
 public:
     // Constructs a Registry Key Iterator with default WOW64 access.
-    RegistryKeyIterator(HKEY root_key, const QString& folder_key);
+    RegKeyIterator(HKEY root_key, const QString& folder_key);
 
     // Constructs a Registry Value Iterator with specific WOW64 access, one of
     // KEY_WOW64_32KEY or KEY_WOW64_64KEY, or 0.
     // Note: |wow64access| should be the same access used to open |root_key|
     // previously, or a predefined key (e.g. HKEY_LOCAL_MACHINE).
     // See http://msdn.microsoft.com/en-us/library/windows/desktop/aa384129.aspx.
-    RegistryKeyIterator(HKEY root_key, const QString& folder_key, REGSAM wow64access);
+    RegKeyIterator(HKEY root_key, const QString& folder_key, REGSAM wow64access);
 
-    ~RegistryKeyIterator();
+    ~RegKeyIterator();
 
     DWORD subkeyCount() const;
 
@@ -208,9 +206,7 @@ private:
 
     wchar_t name_[MAX_PATH];
 
-    Q_DISABLE_COPY_MOVE(RegistryKeyIterator)
+    Q_DISABLE_COPY_MOVE(RegKeyIterator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_REGISTRY_H

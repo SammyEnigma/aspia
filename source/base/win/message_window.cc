@@ -22,8 +22,6 @@
 
 #include <atomic>
 
-namespace base {
-
 namespace {
 
 constexpr wchar_t kWindowClassName[] = L"Aspia_MessageWindowClass";
@@ -170,5 +168,3 @@ bool MessageWindow::registerWindowClass(HINSTANCE instance)
     _class_registered = true;
     return true;
 }
-
-} // namespace base

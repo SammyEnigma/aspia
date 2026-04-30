@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 template<class T>
 class ScopedHGLOBAL
 {
@@ -67,7 +65,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedHGLOBAL)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_HGLOBAL_H

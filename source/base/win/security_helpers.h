@@ -25,8 +25,6 @@
 #include <cstdint>
 #include <memory>
 
-namespace base {
-
 template <typename T>
 struct TypedBufferDeleter
 {
@@ -66,7 +64,5 @@ bool initializeComSecurity(const wchar_t* security_descriptor, const wchar_t* ma
 bool userSidString(QString* user_sid);
 
 ScopedSd convertSddlToSd(const QString& sddl);
-
-} // namespace base
 
 #endif // BASE_WIN_SECURITY_HELPERS_H

@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/win/resource_util.h"
 
-namespace base {
-
 namespace {
 
 struct LanguageAndCodePage
@@ -94,7 +92,7 @@ std::unique_ptr<FileVersionInfo> FileVersionInfo::createFileVersionInfoForModule
     void* data;
     size_t version_info_length;
 
-    const bool has_version_resource = base::resourceFromModule(
+    const bool has_version_resource = resourceFromModule(
         module, VS_VERSION_INFO, RT_VERSION, &data, &version_info_length);
     if (!has_version_resource)
         return nullptr;
@@ -284,5 +282,3 @@ QString FileVersionInfo::stringValue(const wchar_t* name)
     else
         return "";
 }
-
-} // namespace base

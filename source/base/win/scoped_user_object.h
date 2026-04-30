@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 // Like ScopedGDIObject but for User objects.
 template<class T, class Traits>
 class ScopedUserObject
@@ -158,7 +156,5 @@ using ScopedHICON = ScopedUserObject<HICON, DestroyIconTraits>;
 using ScopedHCURSOR = ScopedUserObject<HCURSOR, DestroyCursorTraits>;
 using ScopedHACCEL = ScopedUserObject<HACCEL, DestroyAccelTraits>;
 using ScopedHHOOK = ScopedUserObject<HHOOK, DestroyHookTraits>;
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_USER_OBJECT_H

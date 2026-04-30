@@ -87,7 +87,7 @@ bool msProductName(const QString& id, QString* product_name, REGSAM access)
 {
     QString key_path = QString("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\%1").arg(id);
 
-    RegistryKey key;
+    RegKey key;
     LONG status = key.open(HKEY_LOCAL_MACHINE, key_path, access | KEY_READ);
     if (status != ERROR_SUCCESS)
         return false;
@@ -101,7 +101,7 @@ bool msProductName(const QString& id, QString* product_name, REGSAM access)
 
 //--------------------------------------------------------------------------------------------------
 void addMsProduct(proto::system_info::Licenses* message, const QString& product_name,
-    const RegistryKey& key)
+    const RegKey& key)
 {
     DWORD product_id_size = 0;
 
@@ -165,7 +165,7 @@ void addMsProduct(proto::system_info::Licenses* message, const QString& product_
 //--------------------------------------------------------------------------------------------------
 void addMsProducts(proto::system_info::Licenses* message, REGSAM access)
 {
-    RegistryKey key;
+    RegKey key;
 
     // Read MS Windows Key.
     LONG status = key.open(HKEY_LOCAL_MACHINE,
@@ -173,36 +173,36 @@ void addMsProducts(proto::system_info::Licenses* message, REGSAM access)
                            access | KEY_READ);
     if (status == ERROR_SUCCESS)
     {
-        base::OSInfo* os_info = base::OSInfo::instance();
+        OSInfo* os_info = OSInfo::instance();
         QString product_name;
 
-        if (os_info->version() >= base::VERSION_WIN11)
+        if (os_info->version() >= VERSION_WIN11)
         {
             // Key ProductName in the Windows 11 registry says it's Windows 10.
             // We can't rely on this value.
             switch (os_info->versionType())
             {
-                case base::SUITE_HOME:
+                case SUITE_HOME:
                     product_name = "Windows 11 Home";
                     break;
 
-                case base::SUITE_PROFESSIONAL:
+                case SUITE_PROFESSIONAL:
                     product_name = "Windows 11 Pro";
                     break;
 
-                case base::SUITE_SERVER:
+                case SUITE_SERVER:
                     product_name = "Windows 11 Server";
                     break;
 
-                case base::SUITE_ENTERPRISE:
+                case SUITE_ENTERPRISE:
                     product_name = "Windows 11 Enterprise";
                     break;
 
-                case base::SUITE_EDUCATION:
+                case SUITE_EDUCATION:
                     product_name = "Windows 11 Education";
                     break;
 
-                case base::SUITE_EDUCATION_PRO:
+                case SUITE_EDUCATION_PRO:
                     product_name = "Windows 11 Education Pro";
                     break;
 
@@ -230,7 +230,7 @@ void addMsProducts(proto::system_info::Licenses* message, REGSAM access)
     // Enumerate product family.
     for (size_t i = 0; i < _countof(kMsProducts); ++i)
     {
-        RegistryKeyIterator key_iterator(HKEY_LOCAL_MACHINE, kMsProducts[i], access);
+        RegKeyIterator key_iterator(HKEY_LOCAL_MACHINE, kMsProducts[i], access);
 
         // Enumerate product type.
         while (key_iterator.valid())
@@ -238,7 +238,7 @@ void addMsProducts(proto::system_info::Licenses* message, REGSAM access)
             QString key_path =
                 QString("%1\\%2\\Registration").arg(kMsProducts[i], key_iterator.name());
 
-            RegistryKeyIterator sub_key_iterator(HKEY_LOCAL_MACHINE, key_path, access);
+            RegKeyIterator sub_key_iterator(HKEY_LOCAL_MACHINE, key_path, access);
 
             // Enumerate product version.
             while (sub_key_iterator.valid())
@@ -270,19 +270,19 @@ void addVisualStudio(proto::system_info::Licenses* message, REGSAM access)
     static const int kProductKeyLength = 25;
     static const int kGroupLength = 5;
 
-    RegistryKeyIterator key_iterator(HKEY_LOCAL_MACHINE, kVisualStudioPath, access);
+    RegKeyIterator key_iterator(HKEY_LOCAL_MACHINE, kVisualStudioPath, access);
 
     while (key_iterator.valid())
     {
         QString key_path =
             QString("%1\\%2\\Registration").arg(kVisualStudioPath, key_iterator.name());
 
-        RegistryKeyIterator sub_key_iterator(HKEY_LOCAL_MACHINE, key_path, access);
+        RegKeyIterator sub_key_iterator(HKEY_LOCAL_MACHINE, key_path, access);
 
         while (sub_key_iterator.valid())
         {
             QString sub_key_path = QString("%1\\%2").arg(key_path, sub_key_iterator.name());
-            RegistryKey key;
+            RegKey key;
 
             LONG status = key.open(HKEY_LOCAL_MACHINE, sub_key_path, access | KEY_READ);
             if (status == ERROR_SUCCESS)
@@ -326,7 +326,7 @@ void addVisualStudio(proto::system_info::Licenses* message, REGSAM access)
 }
 
 //--------------------------------------------------------------------------------------------------
-void addVMWareProduct(proto::system_info::Licenses* message, const RegistryKey& key)
+void addVMWareProduct(proto::system_info::Licenses* message, const RegKey& key)
 {
     QString product_id;
 
@@ -372,14 +372,14 @@ void addVMWareProducts(proto::system_info::Licenses* message, REGSAM access)
 {
     static const char kKeyPath[] = "Software\\VMware, Inc.";
 
-    RegistryKeyIterator key_iterator(HKEY_LOCAL_MACHINE, kKeyPath, access);
+    RegKeyIterator key_iterator(HKEY_LOCAL_MACHINE, kKeyPath, access);
 
     // Enumerate products types (Workstation, Server, etc).
     while (key_iterator.valid())
     {
         QString sub_key_path = QString("%1\\%2").arg(kKeyPath, key_iterator.name());
 
-        RegistryKeyIterator sub_key_iterator(HKEY_LOCAL_MACHINE, sub_key_path, access);
+        RegKeyIterator sub_key_iterator(HKEY_LOCAL_MACHINE, sub_key_path, access);
 
         while (sub_key_iterator.valid())
         {
@@ -388,7 +388,7 @@ void addVMWareProducts(proto::system_info::Licenses* message, REGSAM access)
                 QString license_key_path =
                     QString("%1\\%2").arg(sub_key_path, sub_key_iterator.name());
 
-                RegistryKey key;
+                RegKey key;
 
                 LONG status = key.open(HKEY_LOCAL_MACHINE, license_key_path, access | KEY_READ);
                 if (status == ERROR_SUCCESS)

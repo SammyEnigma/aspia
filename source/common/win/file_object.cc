@@ -177,7 +177,7 @@ HRESULT FileObject::GetData(FORMATETC* pFormatEtc, STGMEDIUM* pMedium)
         }
 
         {
-            base::ScopedHGLOBAL<BYTE> data(memory);
+            ScopedHGLOBAL<BYTE> data(memory);
 
             memcpy(data.get(), &file_group_descriptor, sizeof(UINT));
             memcpy(data.get() + sizeof(UINT), file_descriptor.get(), sizeof(FILEDESCRIPTORW) * item_count);

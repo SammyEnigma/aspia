@@ -19,8 +19,6 @@
 #include "base/win/registry.h"
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 // RegEnumValue() reports the number of characters from the name that were
@@ -52,14 +50,14 @@ wchar_t* writeInto(std::wstring* str, size_t length_with_null)
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-RegistryKey::RegistryKey(HKEY key)
+RegKey::RegKey(HKEY key)
     : key_(key)
 {
     // Nothing
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryKey::RegistryKey(HKEY rootkey, const QString& subkey, REGSAM access)
+RegKey::RegKey(HKEY rootkey, const QString& subkey, REGSAM access)
 {
     if (rootkey)
     {
@@ -75,7 +73,7 @@ RegistryKey::RegistryKey(HKEY rootkey, const QString& subkey, REGSAM access)
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryKey::RegistryKey(RegistryKey&& other) noexcept
+RegKey::RegKey(RegKey&& other) noexcept
 {
     key_ = other.key_;
     wow64access_ = other.wow64access_;
@@ -85,7 +83,7 @@ RegistryKey::RegistryKey(RegistryKey&& other) noexcept
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryKey& RegistryKey::operator=(RegistryKey&& other) noexcept
+RegKey& RegKey::operator=(RegKey&& other) noexcept
 {
     close();
 
@@ -99,19 +97,19 @@ RegistryKey& RegistryKey::operator=(RegistryKey&& other) noexcept
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryKey::~RegistryKey()
+RegKey::~RegKey()
 {
     close();
 }
 
 //--------------------------------------------------------------------------------------------------
-bool RegistryKey::isValid() const
+bool RegKey::isValid() const
 {
     return (key_ != nullptr);
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::create(HKEY rootkey, const QString& subkey, REGSAM access)
+LONG RegKey::create(HKEY rootkey, const QString& subkey, REGSAM access)
 {
     DWORD disposition_value;
 
@@ -119,7 +117,7 @@ LONG RegistryKey::create(HKEY rootkey, const QString& subkey, REGSAM access)
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::createWithDisposition(HKEY rootkey, const QString& subkey,
+LONG RegKey::createWithDisposition(HKEY rootkey, const QString& subkey,
                                         DWORD* disposition, REGSAM access)
 {
     DCHECK(rootkey && access && disposition);
@@ -146,7 +144,7 @@ LONG RegistryKey::createWithDisposition(HKEY rootkey, const QString& subkey,
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::createKey(const QString& name, REGSAM access)
+LONG RegKey::createKey(const QString& name, REGSAM access)
 {
     DCHECK(access);
 
@@ -174,7 +172,7 @@ LONG RegistryKey::createKey(const QString& name, REGSAM access)
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::open(HKEY rootkey, const QString& subkey, REGSAM access)
+LONG RegKey::open(HKEY rootkey, const QString& subkey, REGSAM access)
 {
     DCHECK(rootkey && access);
 
@@ -192,7 +190,7 @@ LONG RegistryKey::open(HKEY rootkey, const QString& subkey, REGSAM access)
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::openKey(const QString& relative_key_name, REGSAM access)
+LONG RegKey::openKey(const QString& relative_key_name, REGSAM access)
 {
     DCHECK(access);
 
@@ -223,7 +221,7 @@ LONG RegistryKey::openKey(const QString& relative_key_name, REGSAM access)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RegistryKey::close()
+void RegKey::close()
 {
     if (key_)
     {
@@ -234,13 +232,13 @@ void RegistryKey::close()
 }
 
 //--------------------------------------------------------------------------------------------------
-bool RegistryKey::hasValue(const QString& name) const
+bool RegKey::hasValue(const QString& name) const
 {
     return (RegQueryValueExW(key_, qUtf16Printable(name), nullptr, nullptr, nullptr, nullptr) == ERROR_SUCCESS);
 }
 
 //--------------------------------------------------------------------------------------------------
-DWORD RegistryKey::valueCount() const
+DWORD RegKey::valueCount() const
 {
     DWORD count = 0;
     LONG result = RegQueryInfoKeyW(key_, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, &count,
@@ -249,13 +247,13 @@ DWORD RegistryKey::valueCount() const
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::readValue(const QString& name, void* data, DWORD* dsize, DWORD* dtype) const
+LONG RegKey::readValue(const QString& name, void* data, DWORD* dsize, DWORD* dtype) const
 {
     return RegQueryValueExW(key_, qUtf16Printable(name), nullptr, dtype, reinterpret_cast<LPBYTE>(data), dsize);
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::readValueDW(const QString& name, DWORD* out_value) const
+LONG RegKey::readValueDW(const QString& name, DWORD* out_value) const
 {
     DCHECK(out_value);
 
@@ -276,7 +274,7 @@ LONG RegistryKey::readValueDW(const QString& name, DWORD* out_value) const
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::readInt64(const QString& name, qint64* out_value) const
+LONG RegKey::readInt64(const QString& name, qint64* out_value) const
 {
     DCHECK(out_value);
 
@@ -298,7 +296,7 @@ LONG RegistryKey::readInt64(const QString& name, qint64* out_value) const
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::readValueBIN(const QString& name, QByteArray* out_value) const
+LONG RegKey::readValueBIN(const QString& name, QByteArray* out_value) const
 {
     DCHECK(out_value);
 
@@ -320,7 +318,7 @@ LONG RegistryKey::readValueBIN(const QString& name, QByteArray* out_value) const
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::readValue(const QString& name, QString* out_value) const
+LONG RegKey::readValue(const QString& name, QString* out_value) const
 {
     DCHECK(out_value);
 
@@ -367,7 +365,7 @@ LONG RegistryKey::readValue(const QString& name, QString* out_value) const
     return result;
 }
 
-LONG RegistryKey::readValue(const QString& name, std::wstring* out_value) const
+LONG RegKey::readValue(const QString& name, std::wstring* out_value) const
 {
     DCHECK(out_value);
 
@@ -415,7 +413,7 @@ LONG RegistryKey::readValue(const QString& name, std::wstring* out_value) const
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::writeValue(const QString& name, const void* data, DWORD dsize, DWORD dtype)
+LONG RegKey::writeValue(const QString& name, const void* data, DWORD dsize, DWORD dtype)
 {
     DCHECK(data || !dsize);
 
@@ -424,20 +422,20 @@ LONG RegistryKey::writeValue(const QString& name, const void* data, DWORD dsize,
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::writeValue(const QString& name, DWORD in_value)
+LONG RegKey::writeValue(const QString& name, DWORD in_value)
 {
     return writeValue(name, &in_value, static_cast<DWORD>(sizeof(in_value)), REG_DWORD);
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::writeValue(const QString& name, const QString& in_value)
+LONG RegKey::writeValue(const QString& name, const QString& in_value)
 {
     return writeValue(name, qUtf16Printable(in_value),
                       static_cast<DWORD>((in_value.length() + 1) * sizeof(wchar_t)), REG_SZ);
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::deleteKey(const QString& name)
+LONG RegKey::deleteKey(const QString& name)
 {
     DCHECK(key_);
 
@@ -454,7 +452,7 @@ LONG RegistryKey::deleteKey(const QString& name)
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::deleteEmptyKey(const QString& name)
+LONG RegKey::deleteEmptyKey(const QString& name)
 {
     DCHECK(key_);
 
@@ -479,7 +477,7 @@ LONG RegistryKey::deleteEmptyKey(const QString& name)
 }
 
 //--------------------------------------------------------------------------------------------------
-LONG RegistryKey::deleteValue(const QString& value_name)
+LONG RegKey::deleteValue(const QString& value_name)
 {
     DCHECK(key_);
     LONG result = RegDeleteValueW(key_, qUtf16Printable(value_name));
@@ -488,7 +486,7 @@ LONG RegistryKey::deleteValue(const QString& value_name)
 
 //--------------------------------------------------------------------------------------------------
 // static
-LONG RegistryKey::deleteKeyRecurse(HKEY root_key, const QString& name, REGSAM access)
+LONG RegKey::deleteKeyRecurse(HKEY root_key, const QString& name, REGSAM access)
 {
     // First, see if the key can be deleted without having to recurse.
     LONG result = RegDeleteKeyExW(root_key, qUtf16Printable(name), access, 0);
@@ -546,10 +544,10 @@ LONG RegistryKey::deleteKeyRecurse(HKEY root_key, const QString& name, REGSAM ac
     return result;
 }
 
-// RegistryValueIterator ---------------------------------------------------------------------------
+// RegValueIterator ---------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
-RegistryValueIterator::RegistryValueIterator(HKEY root_key, const QString& folder_key,
+RegValueIterator::RegValueIterator(HKEY root_key, const QString& folder_key,
                                              REGSAM wow64access) :
     name_(MAX_PATH, L'\0'),
     value_(MAX_PATH, L'\0')
@@ -558,7 +556,7 @@ RegistryValueIterator::RegistryValueIterator(HKEY root_key, const QString& folde
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryValueIterator::RegistryValueIterator(HKEY root_key, const QString& folder_key) :
+RegValueIterator::RegValueIterator(HKEY root_key, const QString& folder_key) :
     name_(MAX_PATH, '\0'),
     value_(MAX_PATH, L'\0')
 {
@@ -566,7 +564,7 @@ RegistryValueIterator::RegistryValueIterator(HKEY root_key, const QString& folde
 }
 
 //--------------------------------------------------------------------------------------------------
-void RegistryValueIterator::initialize(HKEY root_key, const QString& folder_key, REGSAM wow64access)
+void RegValueIterator::initialize(HKEY root_key, const QString& folder_key, REGSAM wow64access)
 {
     DCHECK_EQ((wow64access & ~kWow64AccessMask), static_cast<REGSAM>(0));
 
@@ -598,14 +596,14 @@ void RegistryValueIterator::initialize(HKEY root_key, const QString& folder_key,
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryValueIterator::~RegistryValueIterator()
+RegValueIterator::~RegValueIterator()
 {
     if (key_)
         RegCloseKey(key_);
 }
 
 //--------------------------------------------------------------------------------------------------
-DWORD RegistryValueIterator::valueCount() const
+DWORD RegValueIterator::valueCount() const
 {
     DWORD count = 0;
     LONG result = RegQueryInfoKeyW(key_, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
@@ -617,20 +615,20 @@ DWORD RegistryValueIterator::valueCount() const
 }
 
 //--------------------------------------------------------------------------------------------------
-bool RegistryValueIterator::valid() const
+bool RegValueIterator::valid() const
 {
     return key_ != nullptr && index_ >= 0;
 }
 
 //--------------------------------------------------------------------------------------------------
-void RegistryValueIterator::operator++()
+void RegValueIterator::operator++()
 {
     --index_;
     read();
 }
 
 //--------------------------------------------------------------------------------------------------
-bool RegistryValueIterator::read()
+bool RegValueIterator::read()
 {
     if (valid())
     {
@@ -680,29 +678,29 @@ bool RegistryValueIterator::read()
     return false;
 }
 
-// RegistryKeyIterator -----------------------------------------------------------------------------
+// RegKeyIterator -----------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
-RegistryKeyIterator::RegistryKeyIterator(HKEY root_key, const QString& folder_key)
+RegKeyIterator::RegKeyIterator(HKEY root_key, const QString& folder_key)
 {
     initialize(root_key, folder_key, 0);
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryKeyIterator::RegistryKeyIterator(HKEY root_key, const QString& folder_key, REGSAM wow64access)
+RegKeyIterator::RegKeyIterator(HKEY root_key, const QString& folder_key, REGSAM wow64access)
 {
     initialize(root_key, folder_key, wow64access);
 }
 
 //--------------------------------------------------------------------------------------------------
-RegistryKeyIterator::~RegistryKeyIterator()
+RegKeyIterator::~RegKeyIterator()
 {
     if (key_)
         RegCloseKey(key_);
 }
 
 //--------------------------------------------------------------------------------------------------
-DWORD RegistryKeyIterator::subkeyCount() const
+DWORD RegKeyIterator::subkeyCount() const
 {
     DWORD count = 0;
     LONG result = RegQueryInfoKeyW(key_, nullptr, nullptr, nullptr, &count, nullptr, nullptr, nullptr,
@@ -714,20 +712,20 @@ DWORD RegistryKeyIterator::subkeyCount() const
 }
 
 //--------------------------------------------------------------------------------------------------
-bool RegistryKeyIterator::valid() const
+bool RegKeyIterator::valid() const
 {
     return key_ != nullptr && index_ >= 0;
 }
 
 //--------------------------------------------------------------------------------------------------
-void RegistryKeyIterator::operator++()
+void RegKeyIterator::operator++()
 {
     --index_;
     read();
 }
 
 //--------------------------------------------------------------------------------------------------
-bool RegistryKeyIterator::read()
+bool RegKeyIterator::read()
 {
     if (valid())
     {
@@ -745,7 +743,7 @@ bool RegistryKeyIterator::read()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RegistryKeyIterator::initialize(HKEY root_key,
+void RegKeyIterator::initialize(HKEY root_key,
                                      const QString& folder_key,
                                      REGSAM wow64access)
 {
@@ -775,6 +773,3 @@ void RegistryKeyIterator::initialize(HKEY root_key,
 
     read();
 }
-
-} // namespace base
-

@@ -51,7 +51,7 @@ const char kExecutableNameForUi[] = "aspia_host.exe";
 const wchar_t kDefaultDesktopName[] = L"winsta0\\default";
 
 //--------------------------------------------------------------------------------------------------
-bool createLoggedOnUserToken(DWORD session_id, base::ScopedHandle* token_out)
+bool createLoggedOnUserToken(DWORD session_id, ScopedHandle* token_out)
 {
     if (!WTSQueryUserToken(session_id, token_out->recieve()))
     {
@@ -249,7 +249,7 @@ void UserSession::onClientConfirmation(const proto::user::ConfirmationRequest& r
             return;
         }
 
-        base::SessionInfo session_info(session_id);
+        SessionInfo session_info(session_id);
         if (!session_info.isValid())
         {
             LOG(ERROR) << "Reject: unable to get session info";
@@ -257,7 +257,7 @@ void UserSession::onClientConfirmation(const proto::user::ConfirmationRequest& r
             return;
         }
 
-        if (session_info.connectState() == base::SessionInfo::ConnectState::ACTIVE)
+        if (session_info.connectState() == SessionInfo::ConnectState::ACTIVE)
         {
             LOG(INFO) << "Reject: user is active, but there is no connection to the GUI";
             emit sig_confirmationReply(request.id(), false);
@@ -489,10 +489,10 @@ void UserSession::onIpcNewConnection()
 void UserSession::onIpcDisconnected()
 {
 #if defined(Q_OS_WINDOWS)
-    base::SessionInfo session_info(session_id_);
+    SessionInfo session_info(session_id_);
     if (session_info.isValid())
     {
-        if (session_info.connectState() == base::SessionInfo::ConnectState::ACTIVE &&
+        if (session_info.connectState() == SessionInfo::ConnectState::ACTIVE &&
             !session_info.isUserLocked())
         {
             // The GUI process terminated while the user was in an active session.
@@ -620,8 +620,8 @@ void UserSession::onStartupUserCheck()
     // detected missing when a client connects, even though the user is still logged in, and the
     // client will be rejected.
     // Settings > Accounts > Sign-in options > Use my sign-in info to automatically finish...
-    base::SessionInfo session_info(base::activeConsoleSessionId());
-    if (session_info.isValid() && session_info.connectState() == base::SessionInfo::ConnectState::ACTIVE)
+    SessionInfo session_info(base::activeConsoleSessionId());
+    if (session_info.isValid() && session_info.connectState() == SessionInfo::ConnectState::ACTIVE)
     {
         attach(FROM_HERE, AttachReason::OTHER, session_info.sessionId());
         return;
@@ -668,7 +668,7 @@ void UserSession::attach(const base::Location& location, AttachReason reason, ba
         return;
     }
 
-    base::SessionInfo session_info(session_id);
+    SessionInfo session_info(session_id);
     if (!session_info.isValid())
     {
         LOG(ERROR) << "Unable to get session info (sid" << session_id << ")";
@@ -683,7 +683,7 @@ void UserSession::attach(const base::Location& location, AttachReason reason, ba
               << "domain:" << session_info.domain()
               << "locked:" << session_info.isUserLocked() << ")";
 
-    base::ScopedHandle user_token;
+    ScopedHandle user_token;
     if (!createLoggedOnUserToken(session_id, &user_token))
     {
         LOG(ERROR) << "Failed to get user token (sid" << session_id << ")";

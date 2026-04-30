@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 class ScopedImpersonator
 {
 public:
@@ -43,7 +41,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedImpersonator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_IMPERSONATOR_H

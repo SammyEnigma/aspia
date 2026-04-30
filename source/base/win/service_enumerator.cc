@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ServiceEnumerator::ServiceEnumerator(Type type)
 {
@@ -258,5 +256,3 @@ QString ServiceEnumerator::startName() const
 
     return QString::fromWCharArray(config->lpServiceStartName);
 }
-
-} // namespace base

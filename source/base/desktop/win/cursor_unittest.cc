@@ -34,7 +34,7 @@ bool convertToMouseShapeAndCompare(unsigned left, unsigned right)
     HMODULE instance = GetModuleHandleW(nullptr);
 
     // Load |left| from the EXE module's resources.
-    base::ScopedHCURSOR cursor(reinterpret_cast<HCURSOR>(
+    ScopedHCURSOR cursor(reinterpret_cast<HCURSOR>(
         LoadImageW(instance, MAKEINTRESOURCEW(left), IMAGE_CURSOR, 0, 0, 0)));
     EXPECT_TRUE(cursor != nullptr);
 
@@ -54,8 +54,8 @@ bool convertToMouseShapeAndCompare(unsigned left, unsigned right)
     EXPECT_TRUE(iinfo.hbmColor);
 
     // Make sure the bitmaps will be freed.
-    base::ScopedHBITMAP scoped_mask(iinfo.hbmMask);
-    base::ScopedHBITMAP scoped_color(iinfo.hbmColor);
+    ScopedHBITMAP scoped_mask(iinfo.hbmMask);
+    ScopedHBITMAP scoped_color(iinfo.hbmColor);
 
     // Get |scoped_color| dimensions.
     BITMAP bitmap_info;

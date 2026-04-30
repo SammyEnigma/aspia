@@ -38,7 +38,7 @@ public:
 private:
     FrameDib(const QSize& size, int stride, quint8* data, HBITMAP bitmap);
 
-    base::ScopedHBITMAP bitmap_;
+    ScopedHBITMAP bitmap_;
 
     Q_DISABLE_COPY_MOVE(FrameDib)
 };

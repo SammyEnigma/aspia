@@ -25,19 +25,17 @@
 #include "base/session_id.h"
 #include "base/win/scoped_wts_memory.h"
 
-namespace base {
-
 class SessionInfo
 {
     Q_GADGET
 
 public:
-    explicit SessionInfo(SessionId session_id);
+    explicit SessionInfo(base::SessionId session_id);
     ~SessionInfo();
 
     bool isValid() const;
 
-    SessionId sessionId() const;
+    base::SessionId sessionId() const;
 
     enum class ConnectState
     {
@@ -74,7 +72,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SessionInfo)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SESSION_INFO_H

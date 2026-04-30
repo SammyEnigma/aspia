@@ -59,7 +59,7 @@ private:
     LONG ref_count_ = 1;
     qint64 file_size_ = 0;
 
-    base::ScopedHandle data_event_;
+    ScopedHandle data_event_;
     QByteArray buffer_;
     bool is_terminated_ = false;
     std::mutex lock_;

@@ -48,7 +48,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 void fillDevices(proto::system_info::SystemInfo* system_info)
 {
-    for (base::DeviceEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (DeviceEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::WindowsDevices::Device* device =
             system_info->mutable_windows_devices()->add_device();
@@ -65,7 +65,7 @@ void fillDevices(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillPrinters(proto::system_info::SystemInfo* system_info)
 {
-    for (base::PrinterEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (PrinterEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::Printers::Printer* printer =
             system_info->mutable_printers()->add_printer();
@@ -128,7 +128,7 @@ void fillNetworkAdapters(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillNetworkShares(proto::system_info::SystemInfo* system_info)
 {
-    for (base::NetShareEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (NetShareEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::NetworkShares::Share* share =
             system_info->mutable_network_shares()->add_share();
@@ -139,7 +139,7 @@ void fillNetworkShares(proto::system_info::SystemInfo* system_info)
         share->set_current_uses(enumerator.currentUses());
         share->set_max_uses(enumerator.maxUses());
 
-        using ShareType = base::NetShareEnumerator::Type;
+        using ShareType = NetShareEnumerator::Type;
 
         switch (enumerator.type())
         {
@@ -176,8 +176,6 @@ void fillNetworkShares(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillServices(proto::system_info::SystemInfo* system_info)
 {
-    using ServiceEnumerator = base::ServiceEnumerator;
-
     for (ServiceEnumerator enumerator(ServiceEnumerator::Type::SERVICES);
          !enumerator.isAtEnd();
          enumerator.advance())
@@ -259,8 +257,6 @@ void fillServices(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillDrivers(proto::system_info::SystemInfo* system_info)
 {
-    using ServiceEnumerator = base::ServiceEnumerator;
-
     for (ServiceEnumerator enumerator(ServiceEnumerator::Type::DRIVERS);
          !enumerator.isAtEnd();
          enumerator.advance())
@@ -340,7 +336,7 @@ void fillDrivers(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillMonitors(proto::system_info::SystemInfo* system_info)
 {
-    for (base::MonitorEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (MonitorEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         base::Edid edid = enumerator.edid();
         if (!edid.isValid())
@@ -557,7 +553,7 @@ void fillEnvironmentVariables(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillVideoAdapters(proto::system_info::SystemInfo* system_info)
 {
-    for (base::VideoAdapterEnumarator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (VideoAdapterEnumarator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::VideoAdapters::Adapter* adapter =
             system_info->mutable_video_adapters()->add_adapter();
@@ -578,15 +574,15 @@ void fillVideoAdapters(proto::system_info::SystemInfo* system_info)
 void fillPowerOptions(proto::system_info::SystemInfo* system_info)
 {
     proto::system_info::PowerOptions* power_options = system_info->mutable_power_options();
-    base::PowerInfo power_info;
+    PowerInfo power_info;
 
     switch (power_info.powerSource())
     {
-        case base::PowerInfo::PowerSource::DC_BATTERY:
+        case PowerInfo::PowerSource::DC_BATTERY:
             power_options->set_power_source(proto::system_info::PowerOptions::POWER_SOURCE_DC_BATTERY);
             break;
 
-        case base::PowerInfo::PowerSource::AC_LINE:
+        case PowerInfo::PowerSource::AC_LINE:
             power_options->set_power_source(proto::system_info::PowerOptions::POWER_SOURCE_AC_LINE);
             break;
 
@@ -596,23 +592,23 @@ void fillPowerOptions(proto::system_info::SystemInfo* system_info)
 
     switch (power_info.batteryStatus())
     {
-        case base::PowerInfo::BatteryStatus::HIGH:
+        case PowerInfo::BatteryStatus::HIGH:
             power_options->set_battery_status(proto::system_info::PowerOptions::BATTERY_STATUS_HIGH);
             break;
 
-        case base::PowerInfo::BatteryStatus::LOW:
+        case PowerInfo::BatteryStatus::LOW:
             power_options->set_battery_status(proto::system_info::PowerOptions::BATTERY_STATUS_LOW);
             break;
 
-        case base::PowerInfo::BatteryStatus::CRITICAL:
+        case PowerInfo::BatteryStatus::CRITICAL:
             power_options->set_battery_status(proto::system_info::PowerOptions::BATTERY_STATUS_CRITICAL);
             break;
 
-        case base::PowerInfo::BatteryStatus::CHARGING:
+        case PowerInfo::BatteryStatus::CHARGING:
             power_options->set_battery_status(proto::system_info::PowerOptions::BATTERY_STATUS_CHARGING);
             break;
 
-        case base::PowerInfo::BatteryStatus::NO_BATTERY:
+        case PowerInfo::BatteryStatus::NO_BATTERY:
             power_options->set_battery_status(proto::system_info::PowerOptions::BATTERY_STATUS_NO_BATTERY);
             break;
 
@@ -624,7 +620,7 @@ void fillPowerOptions(proto::system_info::SystemInfo* system_info)
     power_options->set_full_battery_life_time(power_info.batteryFullLifeTime());
     power_options->set_remaining_battery_life_time(power_info.batteryRemainingLifeTime());
 
-    for (base::BatteryEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (BatteryEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::PowerOptions::Battery* battery = power_options->add_battery();
         battery->set_device_name(enumerator.deviceName().toStdString());
@@ -647,16 +643,16 @@ void fillPowerOptions(proto::system_info::SystemInfo* system_info)
 
         quint32 state = enumerator.state();
 
-        if (state & base::BatteryEnumerator::CHARGING)
+        if (state & BatteryEnumerator::CHARGING)
             append_state(proto::system_info::PowerOptions::Battery::STATE_CHARGING);
 
-        if (state & base::BatteryEnumerator::CRITICAL)
+        if (state & BatteryEnumerator::CRITICAL)
             append_state(proto::system_info::PowerOptions::Battery::STATE_CRITICAL);
 
-        if (state & base::BatteryEnumerator::DISCHARGING)
+        if (state & BatteryEnumerator::DISCHARGING)
             append_state(proto::system_info::PowerOptions::Battery::STATE_DISCHARGING);
 
-        if (state & base::BatteryEnumerator::POWER_ONLINE)
+        if (state & BatteryEnumerator::POWER_ONLINE)
             append_state(proto::system_info::PowerOptions::Battery::STATE_POWER_ONLINE);
     }
 }
@@ -828,7 +824,7 @@ void fillEventLogs(proto::system_info::SystemInfo* system_info,
             return;
     }
 
-    base::EventEnumerator enumerator(log_name, data.record_start(), data.record_count());
+    EventEnumerator enumerator(log_name, data.record_start(), data.record_count());
 
     system_info->mutable_event_logs()->set_type(data.type());
     system_info->mutable_event_logs()->set_total_records(enumerator.count());
@@ -838,27 +834,27 @@ void fillEventLogs(proto::system_info::SystemInfo* system_info,
         proto::system_info::EventLogs::Event::Level level;
         switch (enumerator.type())
         {
-            case base::EventEnumerator::Type::ERR:
+            case EventEnumerator::Type::ERR:
                 level = proto::system_info::EventLogs::Event::LEVEL_ERROR;
                 break;
 
-            case base::EventEnumerator::Type::WARN:
+            case EventEnumerator::Type::WARN:
                 level = proto::system_info::EventLogs::Event::LEVEL_WARNING;
                 break;
 
-            case base::EventEnumerator::Type::INFO:
+            case EventEnumerator::Type::INFO:
                 level = proto::system_info::EventLogs::Event::LEVEL_INFORMATION;
                 break;
 
-            case base::EventEnumerator::Type::AUDIT_SUCCESS:
+            case EventEnumerator::Type::AUDIT_SUCCESS:
                 level = proto::system_info::EventLogs::Event::LEVEL_AUDIT_SUCCESS;
                 break;
 
-            case base::EventEnumerator::Type::AUDIT_FAILURE:
+            case EventEnumerator::Type::AUDIT_FAILURE:
                 level = proto::system_info::EventLogs::Event::LEVEL_AUDIT_FAILURE;
                 break;
 
-            case base::EventEnumerator::Type::SUCCESS:
+            case EventEnumerator::Type::SUCCESS:
                 level = proto::system_info::EventLogs::Event::LEVEL_SUCCESS;
                 break;
 
@@ -910,7 +906,7 @@ void fillOpenFilesInfo(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillLocalUsersInfo(proto::system_info::SystemInfo* system_info)
 {
-    for (base::UserEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (UserEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::LocalUsers::LocalUser* local_user =
             system_info->mutable_local_users()->add_local_user();
@@ -944,7 +940,7 @@ void fillLocalUsersInfo(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillLocalUserGroupsInfo(proto::system_info::SystemInfo* system_info)
 {
-    for (base::UserGroupEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (UserGroupEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::LocalUserGroups::LocalUserGroup* local_group =
             system_info->mutable_local_user_groups()->add_local_user_group();

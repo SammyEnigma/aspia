@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 // Like ScopedHandle but for HDC. Only use this on HDCs returned from GetDC.
 class ScopedGetDC
 {
@@ -102,7 +100,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedCreateDC)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_HDC_H

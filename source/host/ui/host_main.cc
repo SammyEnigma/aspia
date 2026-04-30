@@ -48,7 +48,7 @@ bool waitForValidInputDesktop()
 
     do
     {
-        base::Desktop input_desktop(base::Desktop::inputDesktop());
+        Desktop input_desktop(Desktop::inputDesktop());
         if (input_desktop.isValid())
         {
             if (input_desktop.setThreadDesktop())
@@ -179,7 +179,7 @@ int hostMain(int argc, char* argv[])
     else if (parser.isSet(config_option))
     {
 #if defined(Q_OS_WINDOWS)
-        if (!base::isProcessElevated())
+        if (!isProcessElevated())
         {
             LOG(INFO) << "Process not eleavated";
         }

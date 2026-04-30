@@ -65,8 +65,8 @@ private:
     QRect screen_rect_;
 
     std::unique_ptr<Differ> differ_;
-    base::ScopedGetDC desktop_dc_;
-    base::ScopedCreateDC memory_dc_;
+    ScopedGetDC desktop_dc_;
+    ScopedCreateDC memory_dc_;
 
     FrameQueue<Frame> queue_;
 

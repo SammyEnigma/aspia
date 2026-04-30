@@ -24,8 +24,6 @@
 #include "base/system_error.h"
 #include "base/win/registry.h"
 
-namespace base {
-
 namespace {
 
 constexpr char kClassRootPath[] = "SYSTEM\\CurrentControlSet\\Control\\Class\\";
@@ -64,7 +62,7 @@ bool DeviceEnumerator::isAtEnd() const
         DWORD error_code = GetLastError();
 
         if (error_code != ERROR_NO_MORE_ITEMS)
-            LOG(ERROR) << "SetupDiEnumDeviceInfo failed:" << SystemError(error_code).toString();
+            LOG(ERROR) << "SetupDiEnumDeviceInfo failed:" << base::SystemError(error_code).toString();
         return true;
     }
 
@@ -127,7 +125,7 @@ QString DeviceEnumerator::driverRegistryString(const QString& key_name) const
 {
     QString driver_key_path = driverKeyPath();
 
-    RegistryKey driver_key(HKEY_LOCAL_MACHINE, driver_key_path, KEY_READ);
+    RegKey driver_key(HKEY_LOCAL_MACHINE, driver_key_path, KEY_READ);
     if (!driver_key.isValid())
     {
         PLOG(ERROR) << "Unable to open registry key";
@@ -141,7 +139,7 @@ QString DeviceEnumerator::driverRegistryString(const QString& key_name) const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to read key value:"
-                   << SystemError(static_cast<DWORD>(status)).toString();
+                   << base::SystemError(static_cast<DWORD>(status)).toString();
         return QString();
     }
 
@@ -153,7 +151,7 @@ DWORD DeviceEnumerator::driverRegistryDW(const QString& key_name) const
 {
     QString driver_key_path = driverKeyPath();
 
-    RegistryKey driver_key(HKEY_LOCAL_MACHINE, driver_key_path, KEY_READ);
+    RegKey driver_key(HKEY_LOCAL_MACHINE, driver_key_path, KEY_READ);
     if (!driver_key.isValid())
     {
         DPLOG(ERROR) << "Unable to open registry key";
@@ -166,7 +164,7 @@ DWORD DeviceEnumerator::driverRegistryDW(const QString& key_name) const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to read key value"
-                   << SystemError(static_cast<DWORD>(status)).toString();
+                   << base::SystemError(static_cast<DWORD>(status)).toString();
         return 0;
     }
 
@@ -214,17 +212,17 @@ MonitorEnumerator::MonitorEnumerator()
 }
 
 //--------------------------------------------------------------------------------------------------
-Edid MonitorEnumerator::edid() const
+base::Edid MonitorEnumerator::edid() const
 {
     QString key_path = QString("SYSTEM\\CurrentControlSet\\Enum\\%1\\Device Parameters").arg(deviceID());
 
-    RegistryKey key;
+    RegKey key;
     LONG status = key.open(HKEY_LOCAL_MACHINE, key_path, KEY_READ);
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to open registry key:"
-                   << SystemError(static_cast<DWORD>(status)).toString();
-        return Edid();
+                   << base::SystemError(static_cast<DWORD>(status)).toString();
+        return base::Edid();
     }
 
     QByteArray buffer;
@@ -232,11 +230,11 @@ Edid MonitorEnumerator::edid() const
     if (status != ERROR_SUCCESS)
     {
         LOG(ERROR) << "Unable to read EDID data from registry:"
-                   << SystemError(static_cast<DWORD>(status)).toString();
-        return Edid();
+                   << base::SystemError(static_cast<DWORD>(status)).toString();
+        return base::Edid();
     }
 
-    return Edid(buffer);
+    return base::Edid(buffer);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -275,5 +273,3 @@ quint64 VideoAdapterEnumarator::memorySize() const
 {
     return driverRegistryDW("HardwareInformation.MemorySize");
 }
-
-} // namespace base

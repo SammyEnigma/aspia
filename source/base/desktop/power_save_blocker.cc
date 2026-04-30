@@ -34,7 +34,7 @@ HANDLE createPowerRequest(POWER_REQUEST_TYPE type, const std::wstring_view& desc
     context.Flags = POWER_REQUEST_CONTEXT_SIMPLE_STRING;
     context.Reason.SimpleReasonString = const_cast<wchar_t*>(description.data());
 
-    base::ScopedHandle handle(PowerCreateRequest(&context));
+    ScopedHandle handle(PowerCreateRequest(&context));
     if (!handle.isValid())
     {
         PLOG(ERROR) << "PowerCreateRequest failed";
@@ -54,7 +54,7 @@ HANDLE createPowerRequest(POWER_REQUEST_TYPE type, const std::wstring_view& desc
 // Takes ownership of the |handle|.
 void deletePowerRequest(POWER_REQUEST_TYPE type, HANDLE handle)
 {
-    base::ScopedHandle request_handle(handle);
+    ScopedHandle request_handle(handle);
     if (!request_handle.isValid())
     {
         LOG(ERROR) << "Invalid handle for power request";

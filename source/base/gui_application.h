@@ -29,11 +29,9 @@
 class QLocalServer;
 class QLockFile;
 
-namespace base {
 #if defined(Q_OS_WINDOWS)
 class MessageWindow;
 #endif // defined(Q_OS_WINDOWS)
-} // namespace base
 
 namespace base {
 
@@ -98,7 +96,7 @@ private:
     int small_icon_size_ = 20;
 
 #if defined(Q_OS_WINDOWS)
-    std::unique_ptr<base::MessageWindow> message_window_;
+    std::unique_ptr<MessageWindow> message_window_;
 #endif // defined(Q_OS_WINDOWS)
 
     Q_DISABLE_COPY_MOVE(GuiApplication)

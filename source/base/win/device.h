@@ -23,8 +23,6 @@
 
 #include "base/win/scoped_object.h"
 
-namespace base {
-
 class Device
 {
 public:
@@ -42,7 +40,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Device)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_DEVICE_H

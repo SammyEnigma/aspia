@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 bool resourceFromModule(HMODULE module, int resource_id, const wchar_t* resource_type,
     void** data, size_t* length)
@@ -71,5 +69,3 @@ bool dataResourceFromModule(HMODULE module, int resource_id, void** data, size_t
 {
     return resourceFromModule(module, resource_id, L"BINDATA", data, length);
 }
-
-} // namespace base

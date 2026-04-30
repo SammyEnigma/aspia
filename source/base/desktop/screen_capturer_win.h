@@ -38,7 +38,7 @@ public:
 private:
     void checkScreenType(const wchar_t* desktop_name);
 
-    base::ScopedThreadDesktop desktop_;
+    ScopedThreadDesktop desktop_;
     ScreenType last_screen_type_ = ScreenType::UNKNOWN;
 };
 

@@ -44,7 +44,7 @@ public:
 
 private:
     const Mode mode_;
-    base::ScopedHandle snapshot_;
+    ScopedHandle snapshot_;
     QByteArray table_buffer_;
 
     quint32 num_entries_ = 0;

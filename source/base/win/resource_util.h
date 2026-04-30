@@ -26,8 +26,6 @@
 
 #include <qt_windows.h>
 
-namespace base {
-
 // Function for getting a data resource of the specified |resource_type| from a dll.
 // Some resources are optional, especially in unit tests, so this returns false but doesn't raise
 // an error if the resource can't be loaded.
@@ -38,7 +36,5 @@ bool resourceFromModule(HMODULE module, int resource_id, const wchar_t* resource
 // especially in unit tests, so this returns false but doesn't raise an error if the resource can't
 // be loaded.
 bool dataResourceFromModule(HMODULE module, int resource_id, void** data, size_t* length);
-
-} // namespace base
 
 #endif // BASE_WIN_RESOURCE_UTIL_H

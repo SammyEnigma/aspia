@@ -23,8 +23,6 @@
 #include <qt_windows.h>
 #include <WtsApi32.h>
 
-namespace base {
-
 template <typename T>
 class ScopedWtsMemory
 {
@@ -86,7 +84,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedWtsMemory)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_WTS_MEMORY_H

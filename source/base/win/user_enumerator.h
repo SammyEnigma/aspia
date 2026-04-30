@@ -25,8 +25,6 @@
 struct _USER_INFO_3;
 struct _LOCALGROUP_INFO_1;
 
-namespace base {
-
 class UserEnumerator
 {
 public:
@@ -77,7 +75,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UserGroupEnumerator)
 };
-
-} // base
 
 #endif // BASE_WIN_USER_ENUMERATOR_H

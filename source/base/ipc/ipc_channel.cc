@@ -201,7 +201,7 @@ bool IpcChannel::connectAttempt()
 
 #if defined(Q_OS_WINDOWS)
     const DWORD flags = SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION | FILE_FLAG_OVERLAPPED;
-    base::ScopedHandle handle;
+    ScopedHandle handle;
 
     while (true)
     {

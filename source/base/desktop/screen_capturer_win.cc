@@ -125,14 +125,14 @@ ScreenCapturer::ScreenType screenType(const wchar_t* desktop_name)
         return ScreenCapturer::ScreenType::UNKNOWN;
     }
 
-    base::SessionInfo session_info(session_id);
+    SessionInfo session_info(session_id);
     if (!session_info.isValid())
     {
         LOG(ERROR) << "Unable to get session info";
         return ScreenCapturer::ScreenType::UNKNOWN;
     }
 
-    if (session_info.connectState() == base::SessionInfo::ConnectState::ACTIVE)
+    if (session_info.connectState() == SessionInfo::ConnectState::ACTIVE)
     {
         if (session_info.isUserLocked())
         {
@@ -200,7 +200,7 @@ ScreenCapturerWin::ScreenCapturerWin(Type type, QObject* parent)
 
         LOG(INFO) << "Checking current screen type";
 
-        base::Desktop input_desktop = base::Desktop::inputDesktop();
+        Desktop input_desktop = Desktop::inputDesktop();
         if (!input_desktop.isValid())
         {
             LOG(ERROR) << "Unable to get input desktop";
@@ -236,9 +236,9 @@ ScreenCapturer* ScreenCapturerWin::create(Type preferred_type, Error last_error,
     else if (preferred_type == ScreenCapturer::Type::WIN_DXGI ||
              preferred_type == ScreenCapturer::Type::DEFAULT)
     {
-        if (base::windowsVersion() >= base::VERSION_WIN8)
+        if (windowsVersion() >= VERSION_WIN8)
         {
-            // base::Desktop Duplication API is available in Windows 8+.
+            // Desktop Duplication API is available in Windows 8+.
             std::unique_ptr<ScreenCapturerDxgi> capturer_dxgi =
                 std::make_unique<ScreenCapturerDxgi>();
             if (capturer_dxgi->isSupported())
@@ -273,8 +273,8 @@ MouseCursor* ScreenCapturerWin::mouseCursorFromHCursor(HDC dc, HCURSOR cursor)
     }
 
     // Make sure the bitmaps will be freed.
-    base::ScopedHBITMAP scoped_mask(icon_info.hbmMask);
-    base::ScopedHBITMAP scoped_color(icon_info.hbmColor);
+    ScopedHBITMAP scoped_mask(icon_info.hbmMask);
+    ScopedHBITMAP scoped_color(icon_info.hbmColor);
 
     bool is_color = (icon_info.hbmColor != nullptr);
 
@@ -412,7 +412,7 @@ MouseCursor* ScreenCapturerWin::mouseCursorFromHCursor(HDC dc, HCURSOR cursor)
 void ScreenCapturerWin::switchToInputDesktop()
 {
     // Switch to the desktop receiving user input if different from the current one.
-    base::Desktop input_desktop(base::Desktop::inputDesktop());
+    Desktop input_desktop(Desktop::inputDesktop());
 
     if (!input_desktop.isValid() || desktop_.isSame(input_desktop))
         return;

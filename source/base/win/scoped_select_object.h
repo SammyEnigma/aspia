@@ -23,8 +23,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 // Helper class for deselecting object from DC.
 class ScopedSelectObject
 {
@@ -51,7 +49,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedSelectObject)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_SELECT_OBJECT_H

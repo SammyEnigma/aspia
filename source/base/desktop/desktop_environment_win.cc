@@ -39,7 +39,7 @@ public:
             return;
         }
 
-        base::ScopedHandle user_token;
+        ScopedHandle user_token;
         if (!WTSQueryUserToken(session_id, user_token.recieve()))
         {
             PLOG(ERROR) << "WTSQueryUserToken failed";
@@ -62,7 +62,7 @@ public:
     }
 
 private:
-    base::ScopedImpersonator impersonator_;
+    ScopedImpersonator impersonator_;
     Q_DISABLE_COPY_MOVE(ScopedUserImpersonator)
 };
 

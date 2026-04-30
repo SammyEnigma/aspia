@@ -138,7 +138,7 @@ GuiApplication::GuiApplication(int& argc, char* argv[])
     setStyle(new CustomStyle(nullptr, small_icon_size_));
 
 #if defined(Q_OS_WINDOWS)
-    message_window_ = std::make_unique<base::MessageWindow>();
+    message_window_ = std::make_unique<MessageWindow>();
     bool created = message_window_->create([this](
         UINT message, WPARAM wparam, LPARAM lparam, LRESULT& result)
     {

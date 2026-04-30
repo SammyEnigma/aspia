@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base::win {
-
 TEST(ScopedHandleTest, ScopedHandle)
 {
     // Any illegal error code will do. We just need to test that it is preserved
@@ -31,7 +29,7 @@ TEST(ScopedHandleTest, ScopedHandle)
     HANDLE handle = CreateMutexW(nullptr, false, nullptr);
     // Call SetLastError after creating the handle.
     SetLastError(magic_error);
-    base::ScopedHandle handle_holder(handle);
+    ScopedHandle handle_holder(handle);
     EXPECT_EQ(magic_error, GetLastError());
 
     // Create a new handle and then set LastError again.
@@ -42,10 +40,8 @@ TEST(ScopedHandleTest, ScopedHandle)
 
     // Create a new handle and then set LastError again.
     handle = CreateMutexW(nullptr, false, nullptr);
-    base::ScopedHandle handle_source(handle);
+    ScopedHandle handle_source(handle);
     SetLastError(magic_error);
     handle_holder = std::move(handle_source);
     EXPECT_EQ(magic_error, GetLastError());
 }
-
-} // namespace base::win

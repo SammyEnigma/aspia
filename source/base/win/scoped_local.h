@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <qt_windows.h>
 
-namespace base {
-
 template <typename T>
 class ScopedLocal
 {
@@ -98,7 +96,5 @@ private:
 
     Q_DISABLE_COPY(ScopedLocal)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_LOCAL_H

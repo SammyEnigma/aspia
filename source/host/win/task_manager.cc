@@ -213,7 +213,7 @@ void TaskManager::sendServiceList()
     proto::task_manager::HostToClient message;
     proto::task_manager::ServiceList* service_list = message.mutable_service_list();
 
-    for (base::ServiceEnumerator enumerator(base::ServiceEnumerator::Type::SERVICES);
+    for (ServiceEnumerator enumerator(ServiceEnumerator::Type::SERVICES);
          !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::task_manager::Service* item = service_list->add_service();
@@ -224,23 +224,23 @@ void TaskManager::sendServiceList()
 
         switch (enumerator.startupType())
         {
-            case base::ServiceEnumerator::StartupType::AUTO_START:
+            case ServiceEnumerator::StartupType::AUTO_START:
                 item->set_startup_type(proto::task_manager::Service::STARTUP_TYPE_AUTO_START);
                 break;
 
-            case base::ServiceEnumerator::StartupType::DEMAND_START:
+            case ServiceEnumerator::StartupType::DEMAND_START:
                 item->set_startup_type(proto::task_manager::Service::STARTUP_TYPE_DEMAND_START);
                 break;
 
-            case base::ServiceEnumerator::StartupType::DISABLED:
+            case ServiceEnumerator::StartupType::DISABLED:
                 item->set_startup_type(proto::task_manager::Service::STARTUP_TYPE_DISABLED);
                 break;
 
-            case base::ServiceEnumerator::StartupType::BOOT_START:
+            case ServiceEnumerator::StartupType::BOOT_START:
                 item->set_startup_type(proto::task_manager::Service::STARTUP_TYPE_BOOT_START);
                 break;
 
-            case base::ServiceEnumerator::StartupType::SYSTEM_START:
+            case ServiceEnumerator::StartupType::SYSTEM_START:
                 item->set_startup_type(proto::task_manager::Service::STARTUP_TYPE_SYSTEM_START);
                 break;
 
@@ -251,31 +251,31 @@ void TaskManager::sendServiceList()
 
         switch (enumerator.status())
         {
-            case base::ServiceEnumerator::Status::CONTINUE_PENDING:
+            case ServiceEnumerator::Status::CONTINUE_PENDING:
                 item->set_status(proto::task_manager::Service::STATUS_CONTINUE_PENDING);
                 break;
 
-            case base::ServiceEnumerator::Status::PAUSE_PENDING:
+            case ServiceEnumerator::Status::PAUSE_PENDING:
                 item->set_status(proto::task_manager::Service::STATUS_PAUSE_PENDING);
                 break;
 
-            case base::ServiceEnumerator::Status::PAUSED:
+            case ServiceEnumerator::Status::PAUSED:
                 item->set_status(proto::task_manager::Service::STATUS_PAUSED);
                 break;
 
-            case base::ServiceEnumerator::Status::RUNNING:
+            case ServiceEnumerator::Status::RUNNING:
                 item->set_status(proto::task_manager::Service::STATUS_RUNNING);
                 break;
 
-            case base::ServiceEnumerator::Status::START_PENDING:
+            case ServiceEnumerator::Status::START_PENDING:
                 item->set_status(proto::task_manager::Service::STATUS_START_PENDING);
                 break;
 
-            case base::ServiceEnumerator::Status::STOP_PENDING:
+            case ServiceEnumerator::Status::STOP_PENDING:
                 item->set_status(proto::task_manager::Service::STATUS_STOP_PENDING);
                 break;
 
-            case base::ServiceEnumerator::Status::STOPPED:
+            case ServiceEnumerator::Status::STOPPED:
                 item->set_status(proto::task_manager::Service::STATUS_STOPPED);
                 break;
 
@@ -294,13 +294,13 @@ void TaskManager::sendUserList()
     proto::task_manager::HostToClient message;
     proto::task_manager::UserList* user_list = message.mutable_user_list();
 
-    for (base::SessionEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (SessionEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         // Skip services.
         if (enumerator.sessionId() == base::kServiceSessionId)
             continue;
 
-        base::SessionInfo session_info(enumerator.sessionId());
+        SessionInfo session_info(enumerator.sessionId());
         if (!session_info.isValid())
             continue;
 
@@ -313,43 +313,43 @@ void TaskManager::sendUserList()
 
         switch (session_info.connectState())
         {
-            case base::SessionInfo::ConnectState::ACTIVE:
+            case SessionInfo::ConnectState::ACTIVE:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_ACTIVE);
                 break;
 
-            case base::SessionInfo::ConnectState::CONNECTED:
+            case SessionInfo::ConnectState::CONNECTED:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_CONNECTED);
                 break;
 
-            case base::SessionInfo::ConnectState::CONNECT_QUERY:
+            case SessionInfo::ConnectState::CONNECT_QUERY:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_CONNECT_QUERY);
                 break;
 
-            case base::SessionInfo::ConnectState::SHADOW:
+            case SessionInfo::ConnectState::SHADOW:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_SHADOW);
                 break;
 
-            case base::SessionInfo::ConnectState::DISCONNECTED:
+            case SessionInfo::ConnectState::DISCONNECTED:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_DISCONNECTED);
                 break;
 
-            case base::SessionInfo::ConnectState::IDLE:
+            case SessionInfo::ConnectState::IDLE:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_IDLE);
                 break;
 
-            case base::SessionInfo::ConnectState::LISTEN:
+            case SessionInfo::ConnectState::LISTEN:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_LISTEN);
                 break;
 
-            case base::SessionInfo::ConnectState::RESET:
+            case SessionInfo::ConnectState::RESET:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_RESET);
                 break;
 
-            case base::SessionInfo::ConnectState::DOWN:
+            case SessionInfo::ConnectState::DOWN:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_DOWN);
                 break;
 
-            case base::SessionInfo::ConnectState::INIT:
+            case SessionInfo::ConnectState::INIT:
                 item->set_connect_state(proto::task_manager::User::CONNECT_STATE_INIT);
                 break;
 

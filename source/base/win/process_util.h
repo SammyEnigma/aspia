@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 bool isProcessElevated();
 
 enum class ProcessExecuteMode
@@ -32,7 +30,5 @@ enum class ProcessExecuteMode
 
 bool createProcess(const QString& program, const QString& arguments,
     ProcessExecuteMode mode = ProcessExecuteMode::NORMAL);
-
-} // namespace base
 
 #endif // BASE_WIN_PROCESS_UTIL_H

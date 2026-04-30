@@ -550,7 +550,7 @@ void HostUtils::printDebugInfo(quint32 features)
     }
     else
     {
-        base::SessionInfo session_info(session_id);
+        SessionInfo session_info(session_id);
         if (!session_info.isValid())
         {
             LOG(ERROR) << "Unable to get session info";
@@ -597,7 +597,7 @@ void HostUtils::printDebugInfo(quint32 features)
 
     LOG(INFO) << "Running as user:" << username;
     LOG(INFO) << "Member of admins group:" << (is_user_admin ? "Yes" : "No");
-    LOG(INFO) << "Process elevated:" << (base::isProcessElevated() ? "Yes" : "No");
+    LOG(INFO) << "Process elevated:" << (isProcessElevated() ? "Yes" : "No");
     LOG(INFO) << "Active console session ID:" << WTSGetActiveConsoleSessionId();
     LOG(INFO) << "Computer name:" << base::SysInfo::computerName();
 
@@ -647,15 +647,15 @@ void HostUtils::printDebugInfo(quint32 features)
     {
         LOG(INFO) << "WindowStation list";
         LOG(INFO) << "#####################################################";
-        QStringList windowStations = base::WindowStation::windowStationList();
+        QStringList windowStations = WindowStation::windowStationList();
         for (const auto& window_station_name : std::as_const(windowStations))
         {
             QString desktops;
 
-            base::WindowStation window_station = base::WindowStation::open(window_station_name);
+            WindowStation window_station = WindowStation::open(window_station_name);
             if (window_station.isValid())
             {
-                QStringList list = base::Desktop::desktopList(window_station.get());
+                QStringList list = Desktop::desktopList(window_station.get());
 
                 for (int i = 0; i < list.size(); ++i)
                 {

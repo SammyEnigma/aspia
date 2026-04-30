@@ -22,8 +22,6 @@
 #include <QObject>
 #include <qt_windows.h>
 
-namespace base {
-
 class PowerInfo
 {
     Q_GADGET
@@ -50,7 +48,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(PowerInfo)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_POWER_INFO_H

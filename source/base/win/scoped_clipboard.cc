@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScopedClipboard::~ScopedClipboard()
 {
@@ -105,5 +103,3 @@ HANDLE ScopedClipboard::data(UINT format) const
 
     return GetClipboardData(format);
 }
-
-} // namespace base

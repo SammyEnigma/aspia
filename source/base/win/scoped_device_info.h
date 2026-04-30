@@ -23,8 +23,6 @@
 #include <qt_windows.h>
 #include <SetupAPI.h>
 
-namespace base {
-
 class ScopedDeviceInfo
 {
 public:
@@ -83,7 +81,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedDeviceInfo)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_DEVICE_INFO_H

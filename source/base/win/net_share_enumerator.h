@@ -25,8 +25,6 @@
 #include <qt_windows.h>
 #include <LM.h>
 
-namespace base {
-
 class NetShareEnumerator
 {
     Q_GADGET
@@ -62,7 +60,5 @@ private:
     DWORD total_entries_ = 0;
     DWORD current_pos_ = 0;
 };
-
-} // namespace base
 
 #endif // BASE_WIN_NET_SHARE_ENUMERATOR_H

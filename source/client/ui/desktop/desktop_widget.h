@@ -99,7 +99,7 @@ private:
 
 #if defined(Q_OS_WINDOWS)
     static LRESULT CALLBACK keyboardHookProc(INT code, WPARAM wparam, LPARAM lparam);
-    base::ScopedHHOOK keyboard_hook_;
+    ScopedHHOOK keyboard_hook_;
 #endif // defined(Q_OS_WINDOWS)
 
 #if defined(Q_OS_MACOS)

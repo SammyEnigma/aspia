@@ -26,8 +26,6 @@
 #include "base/win/scoped_local.h"
 #include "base/win/scoped_object.h"
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -187,5 +185,3 @@ bool userSidString(QString* user_sid)
     *user_sid = QString::fromWCharArray(sid_string);
     return true;
 }
-
-} // namespace base::win

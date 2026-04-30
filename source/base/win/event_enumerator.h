@@ -25,8 +25,6 @@
 
 #include "base/win/scoped_object.h"
 
-namespace base {
-
 class EventEnumerator
 {
     Q_GADGET
@@ -62,7 +60,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(EventEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_EVENT_ENUMERATOR_H

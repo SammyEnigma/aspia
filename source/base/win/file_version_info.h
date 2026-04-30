@@ -28,8 +28,6 @@
 struct tagVS_FIXEDFILEINFO;
 typedef tagVS_FIXEDFILEINFO VS_FIXEDFILEINFO;
 
-namespace base {
-
 class FileVersionInfo
 {
 public:
@@ -89,7 +87,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileVersionInfo)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_FILE_VERSION_INFO_H

@@ -23,11 +23,9 @@
 
 #include <objbase.h>
 
-namespace base {
-
 // Simple scoped memory releaser class for COM allocated memory.
 // Example:
-//   base::ScopedCoMem<ITEMIDLIST> file_item;
+//   ScopedCoMem<ITEMIDLIST> file_item;
 //   SHGetSomeInfo(&file_item, ...);
 //   ...
 //   return;  <-- memory released
@@ -75,7 +73,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedCoMem)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_CO_MEM_H

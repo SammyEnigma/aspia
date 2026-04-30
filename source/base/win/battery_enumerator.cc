@@ -24,8 +24,6 @@
 #include <winioctl.h>
 #include <devguid.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -97,7 +95,7 @@ bool BatteryEnumerator::isAtEnd() const
         if (error_code != ERROR_NO_MORE_ITEMS)
         {
             LOG(ERROR) << "SetupDiEnumDeviceInfo failed:"
-                       << SystemError(error_code).toString();
+                       << base::SystemError(error_code).toString();
         }
 
         return true;
@@ -335,5 +333,3 @@ quint32 BatteryEnumerator::state() const
 
     return result;
 }
-
-} // namespace base

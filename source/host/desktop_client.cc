@@ -375,12 +375,12 @@ void DesktopClient::sendSessionList()
     session_list->set_current_session_id(current_session_id);
     session_list->set_console_session_id(console_session_id);
 
-    for (base::SessionEnumerator it; !it.isAtEnd(); it.advance())
+    for (SessionEnumerator it; !it.isAtEnd(); it.advance())
     {
         if (it.sessionId() == base::kServiceSessionId) // Don't add system session.
             continue;
 
-        base::SessionInfo session_info(it.sessionId());
+        SessionInfo session_info(it.sessionId());
         if (!session_info.isValid())
             continue;
 
@@ -389,7 +389,7 @@ void DesktopClient::sendSessionList()
         session->set_user_name(session_info.userName().toStdString());
         session->set_domain_name(session_info.domain().toStdString());
         session->set_is_locked(session_info.isUserLocked());
-        session->set_is_active(session_info.connectState() == base::SessionInfo::ConnectState::ACTIVE);
+        session->set_is_active(session_info.connectState() == SessionInfo::ConnectState::ACTIVE);
     }
 
     CLOG(INFO) << "Send:" << *session_list;
@@ -437,7 +437,7 @@ void DesktopClient::readPowerControl(const proto::power::Control& control)
         case proto::power::Control::ACTION_REBOOT_SAFE_MODE:
         {
 #if defined(Q_OS_WINDOWS)
-            if (!base::SafeModeUtil::setSafeModeService(Service::kName, true))
+            if (!SafeModeUtil::setSafeModeService(Service::kName, true))
             {
                 CLOG(ERROR) << "Failed to add service to start in safe mode";
                 return;
@@ -448,7 +448,7 @@ void DesktopClient::readPowerControl(const proto::power::Control& control)
             HostStorage storage;
             storage.setBootToSafeMode(true);
 
-            if (!base::SafeModeUtil::setSafeMode(true))
+            if (!SafeModeUtil::setSafeMode(true))
             {
                 CLOG(ERROR) << "Failed to enable boot in Safe Mode";
                 return;

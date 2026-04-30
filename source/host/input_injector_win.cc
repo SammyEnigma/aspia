@@ -49,7 +49,7 @@ public:
     static const DWORD kApplications = 2;
 
 private:
-    base::RegistryKey key_;
+    RegKey key_;
     DWORD old_state_ = kNone;
 
     Q_DISABLE_COPY_MOVE(ScopedSasPolicy)

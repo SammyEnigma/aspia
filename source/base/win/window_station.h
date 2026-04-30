@@ -22,8 +22,6 @@
 #include <QStringList>
 #include <qt_windows.h>
 
-namespace base {
-
 class WindowStation
 {
 public:
@@ -53,7 +51,5 @@ private:
 
     Q_DISABLE_COPY(WindowStation)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_WINDOW_STATION_H

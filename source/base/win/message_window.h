@@ -24,8 +24,6 @@
 
 #include <functional>
 
-namespace base {
-
 class MessageWindow
 {
 public:
@@ -55,7 +53,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(MessageWindow)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_MESSAGE_WINDOW_H

@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <objbase.h>
 
-namespace base {
-
 // Initializes COM in the constructor (STA or MTA), and uninitializes COM in the
 // destructor.
 //
@@ -54,7 +52,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScopedCOMInitializer)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_SCOPED_COM_INITIALIZER_H

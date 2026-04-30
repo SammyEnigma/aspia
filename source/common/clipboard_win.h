@@ -25,9 +25,7 @@
 
 #include "common/clipboard.h"
 
-namespace base {
 class MessageWindow;
-} // namespace base
 
 class FileObject;
 class FileStream;
@@ -60,7 +58,7 @@ private:
     bool onMessage(UINT message, WPARAM wParam, LPARAM lParam, LRESULT& result);
 
     // Used to subscribe to WM_CLIPBOARDUPDATE messages.
-    std::unique_ptr<base::MessageWindow> window_;
+    std::unique_ptr<MessageWindow> window_;
     std::unique_ptr<FileObject> file_object_;
     QMap<int, FileStream*> active_streams_;
 

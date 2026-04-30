@@ -24,8 +24,6 @@
 #include "base/edid.h"
 #include "base/win/scoped_device_info.h"
 
-namespace base {
-
 class DeviceEnumerator
 {
 public:
@@ -64,7 +62,7 @@ public:
     MonitorEnumerator();
     ~MonitorEnumerator() final = default;
 
-    Edid edid() const;
+    base::Edid edid() const;
 
 private:
     Q_DISABLE_COPY_MOVE(MonitorEnumerator)
@@ -84,7 +82,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(VideoAdapterEnumarator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_DEVICE_ENUMERATOR_H

@@ -96,7 +96,7 @@ bool IpcServer::Listener::listen(asio::io_context& io_context, const QString& ch
 #if defined(Q_OS_WINDOWS)
     QString user_sid;
 
-    if (!base::userSidString(&user_sid))
+    if (!userSidString(&user_sid))
     {
         LOG(ERROR) << "Failed to query the current user SID";
         return false;
@@ -107,7 +107,7 @@ bool IpcServer::Listener::listen(asio::io_context& io_context, const QString& ch
     QString security_descriptor =
         QString("O:%1G:%1D:(A;;GA;;;%1)(A;;GA;;;AU)").arg(user_sid);
 
-    base::ScopedSd sd = base::convertSddlToSd(security_descriptor);
+    ScopedSd sd = convertSddlToSd(security_descriptor);
     if (!sd.get())
     {
         LOG(ERROR) << "Failed to create a security descriptor";
@@ -121,7 +121,7 @@ bool IpcServer::Listener::listen(asio::io_context& io_context, const QString& ch
     security_attributes.lpSecurityDescriptor = sd.get();
     security_attributes.bInheritHandle = FALSE;
 
-    base::ScopedHandle handle(
+    ScopedHandle handle(
         CreateNamedPipeW(qUtf16Printable(channel_path), FILE_FLAG_OVERLAPPED | PIPE_ACCESS_DUPLEX,
             PIPE_TYPE_BYTE | PIPE_READMODE_BYTE | PIPE_REJECT_REMOTE_CLIENTS, PIPE_UNLIMITED_INSTANCES,
             kPipeBufferSize, kPipeBufferSize, kAcceptTimeout, &security_attributes));

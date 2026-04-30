@@ -24,8 +24,6 @@
 
 #include <strsafe.h>
 
-namespace base {
-
 namespace {
 
 class ScopedWow64FsRedirection
@@ -181,7 +179,7 @@ bool SafeModeUtil::setSafeModeService(const QString& service_name, bool enable)
 
     if (enable)
     {
-        RegistryKey key;
+        RegKey key;
         LONG status = key.create(HKEY_LOCAL_MACHINE, key_path, KEY_READ | KEY_WRITE);
         if (status != ERROR_SUCCESS)
         {
@@ -215,5 +213,3 @@ bool SafeModeUtil::setSafeModeService(const QString& service_name, bool enable)
 
     return true;
 }
-
-} // namespace base

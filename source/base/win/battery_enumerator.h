@@ -25,8 +25,6 @@
 #include "base/win/device.h"
 #include "base/win/scoped_device_info.h"
 
-namespace base {
-
 class BatteryEnumerator
 {
     Q_GADGET
@@ -71,7 +69,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(BatteryEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_WIN_BATTERY_ENUMERATOR_H

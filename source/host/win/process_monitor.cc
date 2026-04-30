@@ -94,7 +94,7 @@ public:
     ScopedPrivilege(const std::wstring& name)
         : name_(name)
     {
-        base::ScopedHandle token;
+        ScopedHandle token;
         if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, token.recieve()))
         {
             PLOG(ERROR) << "OpenProcessToken failed";
@@ -106,7 +106,7 @@ public:
 
     ~ScopedPrivilege()
     {
-        base::ScopedHandle token;
+        ScopedHandle token;
         if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, token.recieve()))
         {
             PLOG(ERROR) << "OpenProcessToken failed";
@@ -156,7 +156,7 @@ private:
 //--------------------------------------------------------------------------------------------------
 QString userNameByHandle(HANDLE process)
 {
-    base::ScopedHandle token;
+    ScopedHandle token;
     if (!OpenProcessToken(process, TOKEN_QUERY, token.recieve()))
     {
         PLOG(ERROR) << "OpenProcessToken failed";
@@ -269,7 +269,7 @@ void updateProcess(ProcessMonitor::ProcessEntry* entry, const OWN_SYSTEM_PROCESS
         quint32 process_id = PtrToUlong(info.UniqueProcessId);
         if (process_id != 0)
         {
-            base::ScopedHandle process(OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, process_id));
+            ScopedHandle process(OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, process_id));
             if (!process.isValid())
             {
                 PLOG(ERROR) << "OpenProcess failed";
@@ -467,7 +467,7 @@ bool ProcessMonitor::endProcess(ProcessId process_id)
 
     ScopedPrivilege debug_privilege(SE_DEBUG_NAME);
 
-    base::ScopedHandle process(OpenProcess(PROCESS_TERMINATE, FALSE, process_id));
+    ScopedHandle process(OpenProcess(PROCESS_TERMINATE, FALSE, process_id));
     if (!process.isValid())
     {
         PLOG(ERROR) << "OpenProcess failed";

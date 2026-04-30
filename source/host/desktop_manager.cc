@@ -57,9 +57,9 @@ const wchar_t kDefaultDesktopName[] = L"winsta0\\default";
 const char kDesktopAgentFile[] = "aspia_desktop_agent.exe";
 
 //--------------------------------------------------------------------------------------------------
-bool copyProcessToken(DWORD desired_access, base::ScopedHandle* token_out)
+bool copyProcessToken(DWORD desired_access, ScopedHandle* token_out)
 {
-    base::ScopedHandle process_token;
+    ScopedHandle process_token;
     if (!OpenProcessToken(GetCurrentProcess(), TOKEN_DUPLICATE | desired_access, process_token.recieve()))
     {
         PLOG(ERROR) << "OpenProcessToken failed";
@@ -77,9 +77,9 @@ bool copyProcessToken(DWORD desired_access, base::ScopedHandle* token_out)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool createPrivilegedToken(base::ScopedHandle* token_out)
+bool createPrivilegedToken(ScopedHandle* token_out)
 {
-    base::ScopedHandle privileged_token;
+    ScopedHandle privileged_token;
     const DWORD desired_access = TOKEN_ADJUST_PRIVILEGES | TOKEN_IMPERSONATE |
         TOKEN_DUPLICATE | TOKEN_QUERY;
 
@@ -114,9 +114,9 @@ bool createPrivilegedToken(base::ScopedHandle* token_out)
 //--------------------------------------------------------------------------------------------------
 // Creates a copy of the current process token for the given |session_id| so it can be used to
 // launch a process in that session.
-bool createSessionToken(DWORD session_id, base::ScopedHandle* token_out)
+bool createSessionToken(DWORD session_id, ScopedHandle* token_out)
 {
-    base::ScopedHandle session_token;
+    ScopedHandle session_token;
     const DWORD desired_access = TOKEN_ADJUST_DEFAULT | TOKEN_ADJUST_SESSIONID |
         TOKEN_ASSIGN_PRIMARY | TOKEN_DUPLICATE | TOKEN_QUERY;
 
@@ -126,14 +126,14 @@ bool createSessionToken(DWORD session_id, base::ScopedHandle* token_out)
         return false;
     }
 
-    base::ScopedHandle privileged_token;
+    ScopedHandle privileged_token;
     if (!createPrivilegedToken(&privileged_token))
     {
         LOG(ERROR) << "createPrivilegedToken failed";
         return false;
     }
 
-    base::ScopedImpersonator impersonator;
+    ScopedImpersonator impersonator;
     if (!impersonator.loggedOnUser(privileged_token))
     {
         LOG(ERROR) << "Failed to impersonate thread";
@@ -159,8 +159,8 @@ bool createSessionToken(DWORD session_id, base::ScopedHandle* token_out)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool startProcessWithToken(HANDLE token, const QString& command_line, base::ScopedHandle* process,
-    base::ScopedHandle* thread)
+bool startProcessWithToken(HANDLE token, const QString& command_line, ScopedHandle* process,
+    ScopedHandle* thread)
 {
     STARTUPINFOW startup_info;
     memset(&startup_info, 0, sizeof(startup_info));
@@ -551,7 +551,7 @@ bool DesktopManager::startProcess(const QString& ipc_channel_name)
         return false;
     }
 
-    base::ScopedHandle session_token;
+    ScopedHandle session_token;
     if (!createSessionToken(session_id_, &session_token))
     {
         LOG(ERROR) << "createSessionToken failed (session_id:" << session_id_ << ")";
@@ -559,8 +559,8 @@ bool DesktopManager::startProcess(const QString& ipc_channel_name)
     }
 
     QString command_line = filePath() + " --channel_id " + ipc_channel_name;
-    base::ScopedHandle process_handle;
-    base::ScopedHandle thread_handle;
+    ScopedHandle process_handle;
+    ScopedHandle thread_handle;
 
     if (!startProcessWithToken(session_token, command_line, &process_handle, &thread_handle))
     {

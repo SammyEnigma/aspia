@@ -100,7 +100,7 @@ Application::Application(int& argc, char* argv[])
     {
         LOG(INFO) << "UI thread starting";
 
-        message_window_ = std::make_unique<base::MessageWindow>();
+        message_window_ = std::make_unique<MessageWindow>();
         if (!message_window_->create(on_window_message))
         {
             LOG(ERROR) << "Couldn't create window";

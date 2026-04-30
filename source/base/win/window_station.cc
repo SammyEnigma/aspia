@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 WindowStation::WindowStation() = default;
 
@@ -181,6 +179,3 @@ BOOL WindowStation::enumWindowStationProc(LPWSTR window_station, LPARAM lparam)
     list->append(QString::fromWCharArray(window_station));
     return TRUE;
 }
-
-
-} // namespace base

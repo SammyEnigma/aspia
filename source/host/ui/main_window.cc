@@ -565,7 +565,7 @@ void MainWindow::onSettings()
     LOG(INFO) << "[ACTION] Settings";
 
 #if defined(Q_OS_WINDOWS)
-    if (!base::isProcessElevated())
+    if (!isProcessElevated())
     {
         LOG(INFO) << "Process not elevated";
 

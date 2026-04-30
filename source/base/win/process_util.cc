@@ -24,8 +24,6 @@
 #include <qt_windows.h>
 #include <shellapi.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 bool isProcessElevated()
 {
@@ -69,5 +67,3 @@ bool createProcess(const QString& program, const QString& arguments, ProcessExec
 
     return true;
 }
-
-} // namespace base

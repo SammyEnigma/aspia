@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/win/session_info.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 SessionEnumerator::SessionEnumerator()
 {
@@ -88,7 +86,7 @@ WTS_CONNECTSTATE_CLASS SessionEnumerator::state() const
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionId SessionEnumerator::sessionId() const
+base::SessionId SessionEnumerator::sessionId() const
 {
     return info_[current_]->SessionId;
 }
@@ -137,5 +135,3 @@ QString SessionEnumerator::farmName() const
 
     return QString::fromWCharArray(info_[current_]->pFarmName);
 }
-
-} // namespace base
