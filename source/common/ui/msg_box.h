@@ -21,8 +21,6 @@
 
 #include <QMessageBox>
 
-namespace common {
-
 class MsgBox : public QMessageBox
 {
     Q_OBJECT
@@ -41,7 +39,5 @@ public:
 
     Q_DISABLE_COPY_MOVE(MsgBox)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_MSG_BOX_H

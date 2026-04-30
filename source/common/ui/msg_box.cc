@@ -20,8 +20,6 @@
 
 #include <QAbstractButton>
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 MsgBox::MsgBox(QWidget* parent)
     : QMessageBox(parent)
@@ -102,4 +100,3 @@ int MsgBox::question(QWidget* parent, const QString& text, StandardButtons butto
     return message_box.exec();
 }
 
-} // namespace common

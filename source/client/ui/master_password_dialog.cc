@@ -116,24 +116,24 @@ bool MasterPasswordDialog::applySet()
                           "", MasterPassword::kSafePasswordLength);
         QString question = tr("Do you want to enter a different password?");
 
-        common::MsgBox message_box(common::MsgBox::Warning,
+        MsgBox message_box(MsgBox::Warning,
                                    tr("Warning"),
                                    QString("<b>%1</b><br/>%2<br/>%3").arg(unsafe, safe, question),
-                                   common::MsgBox::Yes | common::MsgBox::No,
+                                   MsgBox::Yes | MsgBox::No,
                                    this);
-        if (message_box.exec() == common::MsgBox::Yes)
+        if (message_box.exec() == MsgBox::Yes)
             return false;
     }
 
     if (new_password != confirm)
     {
-        common::MsgBox::warning(this, tr("Passwords do not match."));
+        MsgBox::warning(this, tr("Passwords do not match."));
         return false;
     }
 
     if (!MasterPassword::setNew(new_password))
     {
-        common::MsgBox::warning(this, tr("Unable to set master password."));
+        MsgBox::warning(this, tr("Unable to set master password."));
         return false;
     }
 
@@ -149,7 +149,7 @@ bool MasterPasswordDialog::applyChange()
 
     if (current.isEmpty())
     {
-        common::MsgBox::warning(this, tr("Enter the current password."));
+        MsgBox::warning(this, tr("Enter the current password."));
         return false;
     }
 
@@ -161,24 +161,24 @@ bool MasterPasswordDialog::applyChange()
                           "", MasterPassword::kSafePasswordLength);
         QString question = tr("Do you want to enter a different password?");
 
-        common::MsgBox message_box(common::MsgBox::Warning,
+        MsgBox message_box(MsgBox::Warning,
                                    tr("Warning"),
                                    QString("<b>%1</b><br/>%2<br/>%3").arg(unsafe, safe, question),
-                                   common::MsgBox::Yes | common::MsgBox::No,
+                                   MsgBox::Yes | MsgBox::No,
                                    this);
-        if (message_box.exec() == common::MsgBox::Yes)
+        if (message_box.exec() == MsgBox::Yes)
             return false;
     }
 
     if (new_password != confirm)
     {
-        common::MsgBox::warning(this, tr("New passwords do not match."));
+        MsgBox::warning(this, tr("New passwords do not match."));
         return false;
     }
 
     if (!MasterPassword::change(current, new_password))
     {
-        common::MsgBox::warning(this, tr("Invalid current password or unable to change it."));
+        MsgBox::warning(this, tr("Invalid current password or unable to change it."));
         return false;
     }
 
@@ -192,13 +192,13 @@ bool MasterPasswordDialog::applyRemove()
 
     if (current.isEmpty())
     {
-        common::MsgBox::warning(this, tr("Enter the current password."));
+        MsgBox::warning(this, tr("Enter the current password."));
         return false;
     }
 
     if (!MasterPassword::clear(current))
     {
-        common::MsgBox::warning(this, tr("Invalid current password or unable to remove it."));
+        MsgBox::warning(this, tr("Invalid current password or unable to remove it."));
         return false;
     }
 

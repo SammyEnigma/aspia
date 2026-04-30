@@ -21,8 +21,6 @@
 
 #include <QWidget>
 
-namespace common {
-
 class ChatMessage : public QWidget
 {
     Q_OBJECT
@@ -55,7 +53,5 @@ private:
     const Direction direction_;
     time_t timestamp_ = 0;
 };
-
-} // namespace common
 
 #endif // COMMON_UI_CHAT_MESSAGE_H

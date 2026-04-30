@@ -553,9 +553,9 @@ void DesktopToolBar::onPowerControl(QAction* action)
     if (action == ui.action_shutdown)
     {
         LOG(INFO) << "[ACTION] Shutdown";
-        int ret = common::MsgBox::question(
+        int ret = MsgBox::question(
             this, tr("Are you sure you want to shutdown the remote computer?"));
-        if (ret == common::MsgBox::Yes)
+        if (ret == MsgBox::Yes)
         {
             LOG(INFO) << "[ACTION] Shutdown accepted by user";
             emit sig_powerControl(proto::power::Control::ACTION_SHUTDOWN, false);
@@ -568,10 +568,10 @@ void DesktopToolBar::onPowerControl(QAction* action)
     else if (action == ui.action_reboot)
     {
         LOG(INFO) << "[ACTION] Reboot";
-        common::MsgBox message_box(common::MsgBox::Question,
+        MsgBox message_box(MsgBox::Question,
                                 tr("Confirmation"),
                                 tr("Are you sure you want to reboot the remote computer?"),
-                                common::MsgBox::Yes | common::MsgBox::No,
+                                MsgBox::Yes | MsgBox::No,
                                 this);
 
         DesktopSettings settings;
@@ -581,7 +581,7 @@ void DesktopToolBar::onPowerControl(QAction* action)
         wait_checkbox->setChecked(settings.waitForHost());
         message_box.setCheckBox(wait_checkbox);
 
-        if (message_box.exec() == common::MsgBox::Yes)
+        if (message_box.exec() == MsgBox::Yes)
         {
             bool wait = wait_checkbox->isChecked();
             settings.setWaitForHost(wait);
@@ -597,10 +597,10 @@ void DesktopToolBar::onPowerControl(QAction* action)
     else if (action == ui.action_reboot_safe_mode)
     {
         LOG(INFO) << "[ACTION] Reboot (safe mode)";
-        common::MsgBox message_box(common::MsgBox::Question,
+        MsgBox message_box(MsgBox::Question,
                                 tr("Confirmation"),
                                 tr("Are you sure you want to reboot the remote computer in Safe Mode?"),
-                                common::MsgBox::Yes | common::MsgBox::No,
+                                MsgBox::Yes | MsgBox::No,
                                 this);
 
         DesktopSettings settings;
@@ -610,7 +610,7 @@ void DesktopToolBar::onPowerControl(QAction* action)
         wait_checkbox->setChecked(settings.waitForHost());
         message_box.setCheckBox(wait_checkbox);
 
-        if (message_box.exec() == common::MsgBox::Yes)
+        if (message_box.exec() == MsgBox::Yes)
         {
             bool wait = wait_checkbox->isChecked();
             settings.setWaitForHost(wait);
@@ -626,9 +626,9 @@ void DesktopToolBar::onPowerControl(QAction* action)
     else if (action == ui.action_logoff)
     {
         LOG(INFO) << "[ACTION] Logoff";
-        int ret = common::MsgBox::question(
+        int ret = MsgBox::question(
             this, tr("Are you sure you want to end the user session on the remote computer?"));
-        if (ret == common::MsgBox::Yes)
+        if (ret == MsgBox::Yes)
         {
             LOG(INFO) << "[ACTION] Logoff accepted by user";
             emit sig_powerControl(proto::power::Control::ACTION_LOGOFF, false);
@@ -641,9 +641,9 @@ void DesktopToolBar::onPowerControl(QAction* action)
     else if (action == ui.action_lock)
     {
         LOG(INFO) << "[ACTION] Lock";
-        int ret = common::MsgBox::question(
+        int ret = MsgBox::question(
             this, tr("Are you sure you want to lock the user session on the remote computer?"));
-        if (ret == common::MsgBox::Yes)
+        if (ret == MsgBox::Yes)
         {
             LOG(INFO) << "[ACTION] Lock accepted by user";
             emit sig_powerControl(proto::power::Control::ACTION_LOCK, false);

@@ -52,7 +52,7 @@ AddressBar::AddressBar(QWidget* parent)
 
     connect(model_, &AddressBarModel::sig_invalidPathEntered, this, [this]()
     {
-        common::MsgBox::warning(this,
+        MsgBox::warning(this,
                              tr("An incorrect path to the folder was entered."));
     });
 

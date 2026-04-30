@@ -421,8 +421,8 @@ void FilePanel::removeSelected()
     if (items.isEmpty())
         return;
 
-    if (common::MsgBox::question(this,
-            tr("Are you sure you want to delete the selected items?")) != common::MsgBox::Yes)
+    if (MsgBox::question(this,
+            tr("Are you sure you want to delete the selected items?")) != MsgBox::Yes)
         return;
 
     emit sig_removeItems(this, items);
@@ -451,7 +451,7 @@ void FilePanel::sendSelected()
 //--------------------------------------------------------------------------------------------------
 void FilePanel::showError(const QString& message)
 {
-    common::MsgBox::warning(this, message);
+    MsgBox::warning(this, message);
 }
 
 } // namespace client

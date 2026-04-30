@@ -27,8 +27,6 @@
 
 class QWindow;
 
-namespace common {
-
 class TaskbarProgress;
 
 class TaskbarButton final : public QObject
@@ -70,7 +68,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TaskbarButton)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_TASKBAR_BUTTON_H

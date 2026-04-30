@@ -24,12 +24,10 @@
 #include "base/logging.h"
 #include "common/ui/msg_box.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 DownloadDialog::DownloadDialog(const QString& url, QFile& file, QWidget* parent)
     : QDialog(parent),
-      downloader_(std::make_unique<HttpFileDownloader>(url)),
+      downloader_(std::make_unique<common::HttpFileDownloader>(url)),
       file_(file)
 {
     LOG(INFO) << "Ctor";
@@ -42,11 +40,11 @@ DownloadDialog::DownloadDialog(const QString& url, QFile& file, QWidget* parent)
         close();
     });
 
-    connect(downloader_.get(), &HttpFileDownloader::sig_downloadError,
+    connect(downloader_.get(), &common::HttpFileDownloader::sig_downloadError,
             this, &DownloadDialog::onFileDownloaderError);
-    connect(downloader_.get(), &HttpFileDownloader::sig_downloadCompleted,
+    connect(downloader_.get(), &common::HttpFileDownloader::sig_downloadCompleted,
             this, &DownloadDialog::onFileDownloaderCompleted);
-    connect(downloader_.get(), &HttpFileDownloader::sig_downloadProgress,
+    connect(downloader_.get(), &common::HttpFileDownloader::sig_downloadProgress,
             this, &DownloadDialog::onFileDownloaderProgress);
 
     downloader_->start();
@@ -62,7 +60,7 @@ DownloadDialog::~DownloadDialog()
 void DownloadDialog::onFileDownloaderError(int error_code)
 {
     LOG(ERROR) << "Error while downloading update:" << error_code;
-    common::MsgBox::warning(this,
+    MsgBox::warning(this,
                          tr("An error occurred while downloading the update: %1").arg(error_code));
     reject();
     close();
@@ -87,4 +85,3 @@ void DownloadDialog::onFileDownloaderProgress(int percentage)
     ui.progress_bar->setValue(percentage);
 }
 
-} // namespace common

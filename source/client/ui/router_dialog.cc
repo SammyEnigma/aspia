@@ -172,7 +172,7 @@ void RouterDialog::onShowPasswordButtonToggled(bool checked)
 //--------------------------------------------------------------------------------------------------
 void RouterDialog::showError(const QString& message)
 {
-    common::MsgBox::warning(this, message);
+    MsgBox::warning(this, message);
 }
 
 } // namespace client

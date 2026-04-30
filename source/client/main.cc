@@ -39,7 +39,7 @@
 //--------------------------------------------------------------------------------------------------
 void onInvalidValue(const QString& arg, const QString& values)
 {
-    common::MsgBox::warning(nullptr,
+    MsgBox::warning(nullptr,
         QApplication::translate("Client", "Incorrect value for \"%1\". Possible values: %2.").arg(arg, values));
 }
 
@@ -278,7 +278,7 @@ void startRouterSession(const client::ComputerConfig& computer,
                         const client::RouterConfig& router_config,
                         const proto::control::Config& desktop_config)
 {
-    QPointer<common::StatusDialog> status_dialog = new common::StatusDialog();
+    QPointer<StatusDialog> status_dialog = new StatusDialog();
     status_dialog->setAttribute(Qt::WA_DeleteOnClose);
 
     QPointer<client::RouterConnection> router = new client::RouterConnection(router_config);
@@ -556,7 +556,7 @@ int main(int argc, char* argv[])
                 LOG(INFO) << "Router address option not specified";
                 QString message =
                     QApplication::translate("Client", "Connection parameters to the router are not specified.");
-                common::MsgBox::warning(nullptr, message);
+                MsgBox::warning(nullptr, message);
                 return 1;
             }
 
@@ -569,7 +569,7 @@ int main(int argc, char* argv[])
             if (!router_config.isValid())
             {
                 QString message = QApplication::translate("Client", "Incorrect data for connecting to the router.");
-                common::MsgBox::warning(nullptr, message);
+                MsgBox::warning(nullptr, message);
                 return 1;
             }
 
@@ -614,7 +614,7 @@ int main(int argc, char* argv[])
                     break;
                 }
 
-                common::MsgBox::warning(nullptr,
+                MsgBox::warning(nullptr,
                     QApplication::translate("Client", "Invalid master password."));
             }
         }

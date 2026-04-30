@@ -89,7 +89,7 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             if (new_password.isEmpty())
             {
                 LOG(ERROR) << "Password cannot be empty";
-                common::MsgBox::warning(this, tr("Password cannot be empty."));
+                MsgBox::warning(this, tr("Password cannot be empty."));
                 ui.edit_new_pass->selectAll();
                 ui.edit_new_pass->setFocus();
                 return;
@@ -98,7 +98,7 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             if (new_password != new_password_repeat)
             {
                 LOG(ERROR) << "Password entered do not match";
-                common::MsgBox::warning(this, tr("The passwords entered do not match."));
+                MsgBox::warning(this, tr("The passwords entered do not match."));
                 ui.edit_new_pass->selectAll();
                 ui.edit_new_pass->setFocus();
                 return;
@@ -115,7 +115,7 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             if (old_password.isEmpty())
             {
                 LOG(ERROR) << "Old password not entered";
-                common::MsgBox::warning(this, tr("You must enter your old password."));
+                MsgBox::warning(this, tr("You must enter your old password."));
                 ui.edit_old_pass->setFocus();
                 return;
             }
@@ -123,7 +123,7 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             if (!SystemSettings::isValidPassword(old_password))
             {
                 LOG(ERROR) << "Incorrect password entered";
-                common::MsgBox::warning(this, tr("You entered an incorrect old password."));
+                MsgBox::warning(this, tr("You entered an incorrect old password."));
                 ui.edit_old_pass->selectAll();
                 ui.edit_old_pass->setFocus();
                 return;
@@ -132,7 +132,7 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             if (new_password.isEmpty())
             {
                 LOG(ERROR) << "New password cannot be empty";
-                common::MsgBox::warning(this, tr("New password cannot be empty."));
+                MsgBox::warning(this, tr("New password cannot be empty."));
                 ui.edit_new_pass->setFocus();
                 return;
             }
@@ -140,7 +140,7 @@ void ChangePasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             if (new_password != new_password_repeat)
             {
                 LOG(ERROR) << "Password entered do not match";
-                common::MsgBox::warning(this, tr("The passwords entered do not match."));
+                MsgBox::warning(this, tr("The passwords entered do not match."));
                 ui.edit_new_pass->selectAll();
                 ui.edit_new_pass->setFocus();
                 return;

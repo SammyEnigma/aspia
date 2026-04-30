@@ -36,8 +36,6 @@
 #include <vpx/vpx_codec.h>
 #include <zstd.h>
 
-namespace common {
-
 namespace {
 
 const char kGplLink[] = "https://www.gnu.org/licenses/gpl.html";
@@ -230,4 +228,3 @@ AboutDialog::~AboutDialog()
     LOG(INFO) << "Dtor";
 }
 
-} // namespace common

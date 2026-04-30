@@ -271,7 +271,7 @@ RouterWidget::RouterWidget(const RouterConfig& config, QWidget* parent)
     LOG(INFO) << "Ctor";
     ui.setupUi(this);
 
-    status_dialog_ = new common::StatusDialog(this);
+    status_dialog_ = new StatusDialog(this);
     status_dialog_->setWindowFlag(Qt::WindowStaysOnTopHint);
     status_dialog_->hide();
 
@@ -819,13 +819,13 @@ void RouterWidget::onDeleteUser()
     if (entry_id == 1)
     {
         LOG(INFO) << "Unable to delete built-in user";
-        common::MsgBox::warning(this, tr("You cannot delete a built-in user."));
+        MsgBox::warning(this, tr("You cannot delete a built-in user."));
         return;
     }
 
-    if (common::MsgBox::question(this,
+    if (MsgBox::question(this,
             tr("Are you sure you want to delete user \"%1\"?").arg(tree_item->text(0)))
-        != common::MsgBox::Yes)
+        != MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] Delete user rejected by user";
         return;
@@ -845,8 +845,8 @@ void RouterWidget::onDisconnectHost()
         return;
     }
 
-    if (common::MsgBox::question(this, tr("Are you sure you want to disconnect host \"%1\"?")
-        .arg(QString::fromStdString(tree_item->info.computer_name()))) != common::MsgBox::Yes)
+    if (MsgBox::question(this, tr("Are you sure you want to disconnect host \"%1\"?")
+        .arg(QString::fromStdString(tree_item->info.computer_name()))) != MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] Disconnect host rejected by user";
         return;
@@ -865,8 +865,8 @@ void RouterWidget::onDisconnectAllHosts()
         return;
     }
 
-    if (common::MsgBox::question(this,
-            tr("Are you sure you want to disconnect all hosts?")) != common::MsgBox::Yes)
+    if (MsgBox::question(this,
+            tr("Are you sure you want to disconnect all hosts?")) != MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] Disconnect all hosts rejected by user";
         return;
@@ -886,20 +886,20 @@ void RouterWidget::onRemoveHost()
         return;
     }
 
-    common::MsgBox message_box(this);
+    MsgBox message_box(this);
     message_box.setWindowTitle(tr("Confirmation"));
     message_box.setText(tr("Deleting a host will result in all its configuration for connecting "
                            "to the router being deleted. This operation is irreversible. After "
                            "deleting, the host will no longer connect to the router. Are you sure "
                            "you want to do this?"));
-    message_box.setIcon(common::MsgBox::Question);
-    message_box.setStandardButtons(common::MsgBox::Yes | common::MsgBox::No);
+    message_box.setIcon(MsgBox::Question);
+    message_box.setStandardButtons(MsgBox::Yes | MsgBox::No);
 
     QCheckBox* check_box = new QCheckBox(&message_box);
     check_box->setText(tr("Try to uninstall the application (result is not guaranteed)"));
     message_box.setCheckBox(check_box);
 
-    if (message_box.exec() == common::MsgBox::No)
+    if (message_box.exec() == MsgBox::No)
     {
         LOG(INFO) << "[ACTION] Remove host rejected by user";
         return;
@@ -919,8 +919,8 @@ void RouterWidget::onDisconnectRelay()
         return;
     }
 
-    if (common::MsgBox::question(this, tr("Are you sure you want to disconnect relay \"%1\"?")
-        .arg(QString::fromStdString(tree_item->info.ip_address()))) != common::MsgBox::Yes)
+    if (MsgBox::question(this, tr("Are you sure you want to disconnect relay \"%1\"?")
+        .arg(QString::fromStdString(tree_item->info.ip_address()))) != MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] Disconnect relay rejected by user";
         return;
@@ -939,8 +939,8 @@ void RouterWidget::onDisconnectAllRelays()
         return;
     }
 
-    if (common::MsgBox::question(this,
-            tr("Are you sure you want to disconnect all relays?")) != common::MsgBox::Yes)
+    if (MsgBox::question(this,
+            tr("Are you sure you want to disconnect all relays?")) != MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] Disconnect all relays rejected by user";
         return;
@@ -1031,10 +1031,10 @@ void RouterWidget::onPeerContextMenuRequested(const QPoint& pos)
 
     if (selected == disconnect_action)
     {
-        if (common::MsgBox::question(this,
+        if (MsgBox::question(this,
                 tr("Are you sure you want to disconnect peer \"%1\"?")
                     .arg(QString::fromStdString(peer_item->conn.client_user_name())))
-            != common::MsgBox::Yes)
+            != MsgBox::Yes)
         {
             LOG(INFO) << "[ACTION] Disconnect peer rejected by user";
             return;
@@ -1269,7 +1269,7 @@ void RouterWidget::onUserResultReceived(const proto::router::UserResult& result)
         else
             message = QT_TR_NOOP("Unknown error type.");
 
-        common::MsgBox::warning(this, tr(message));
+        MsgBox::warning(this, tr(message));
     }
 
     onUpdateUserList();
@@ -1292,7 +1292,7 @@ void RouterWidget::onHostResultReceived(const proto::router::HostResult& result)
         else
             message = QT_TR_NOOP("Unknown error type.");
 
-        common::MsgBox::warning(this, tr(message));
+        MsgBox::warning(this, tr(message));
     }
 
     onUpdateHostList();
@@ -1315,7 +1315,7 @@ void RouterWidget::onRelayResultReceived(const proto::router::RelayResult& resul
         else
             message = QT_TR_NOOP("Unknown error type.");
 
-        common::MsgBox::warning(this, tr(message));
+        MsgBox::warning(this, tr(message));
     }
 
     onUpdateRelayList();
@@ -1339,7 +1339,7 @@ void RouterWidget::saveHostsToFile()
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         LOG(INFO) << "Unable to open file:" << file.errorString();
-        common::MsgBox::warning(this, tr("Could not open file for writing."));
+        MsgBox::warning(this, tr("Could not open file for writing."));
         return;
     }
 
@@ -1378,7 +1378,7 @@ void RouterWidget::saveHostsToFile()
     if (written <= 0)
     {
         LOG(INFO) << "Unable to write file:" << file.errorString();
-        common::MsgBox::warning(this, tr("Unable to write file."));
+        MsgBox::warning(this, tr("Unable to write file."));
         return;
     }
 }
@@ -1401,7 +1401,7 @@ void RouterWidget::saveRelaysToFile()
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         LOG(INFO) << "Unable to open file:" << file.errorString();
-        common::MsgBox::warning(this, tr("Could not open file for writing."));
+        MsgBox::warning(this, tr("Could not open file for writing."));
         return;
     }
 
@@ -1465,7 +1465,7 @@ void RouterWidget::saveRelaysToFile()
     if (written <= 0)
     {
         LOG(INFO) << "Unable to write file:" << file.errorString();
-        common::MsgBox::warning(this, tr("Unable to write file."));
+        MsgBox::warning(this, tr("Unable to write file."));
         return;
     }
 }

@@ -62,7 +62,7 @@ private:
     std::unique_ptr<QFontMetrics> label_metrics_;
 
 #if defined(Q_OS_WINDOWS)
-    common::TaskbarProgress* taskbar_progress_ = nullptr;
+    TaskbarProgress* taskbar_progress_ = nullptr;
 #endif
 
     bool task_queue_building_ = true;

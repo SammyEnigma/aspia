@@ -34,8 +34,6 @@
 #include "base/win/process_util.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace common {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -56,16 +54,16 @@ UpdateDialog::UpdateDialog(const QString& server, const QString& package, QWidge
 
     ui->label_available->setText(tr("Receiving information..."));
 
-    checker_ = std::make_unique<UpdateChecker>(server, package);
+    checker_ = std::make_unique<common::UpdateChecker>(server, package);
 
-    connect(checker_.get(), &UpdateChecker::sig_checkedFinished,
+    connect(checker_.get(), &common::UpdateChecker::sig_checkedFinished,
             this, &UpdateDialog::onUpdateCheckedFinished);
 
     checker_->start();
 }
 
 //--------------------------------------------------------------------------------------------------
-UpdateDialog::UpdateDialog(const UpdateInfo& update_info, QWidget* parent)
+UpdateDialog::UpdateDialog(const common::UpdateInfo& update_info, QWidget* parent)
     : QDialog(parent),
       ui(std::make_unique<Ui::UpdateDialog>()),
       update_info_(update_info)
@@ -127,9 +125,9 @@ void UpdateDialog::onUpdateNow()
     QString message3 = tr("All unsaved data will be lost.");
     QString question = tr("Continue?");
 
-    if (common::MsgBox::question(this,
+    if (MsgBox::question(this,
             QString("%1<br/><b>%2</b><br/><b>%3</b><br/>%4")
-                .arg(message1, message2, message3, question)) == common::MsgBox::Yes)
+                .arg(message1, message2, message3, question)) == MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] Update confirmed by user";
 
@@ -137,7 +135,7 @@ void UpdateDialog::onUpdateNow()
         if (!file.open())
         {
             LOG(ERROR) << "Unable to open file:" << file.errorString();
-            common::MsgBox::warning(this,
+            MsgBox::warning(this,
                                        tr("An error occurred while installing the update: %1")
                                            .arg(file.errorString()));
         }
@@ -200,7 +198,7 @@ void UpdateDialog::onUpdateCheckedFinished(const QByteArray& result)
     }
     else
     {
-        update_info_ = UpdateInfo::fromXml(result);
+        update_info_ = common::UpdateInfo::fromXml(result);
         if (!update_info_.isValid())
         {
             LOG(INFO) << "No updates available";
@@ -255,4 +253,3 @@ void UpdateDialog::initialize()
     ui->label_current->setText(base::kCurrentVersion.toString());
 }
 
-} // namespace common

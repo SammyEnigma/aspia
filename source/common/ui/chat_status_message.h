@@ -22,8 +22,6 @@
 #include "common/ui/chat_message.h"
 #include "ui_chat_status_message.h"
 
-namespace common {
-
 class ChatStatusMessage final : public ChatMessage
 {
     Q_OBJECT
@@ -39,7 +37,5 @@ public:
 private:
     Ui::ChatStatusMessage ui;
 };
-
-} // namespace common
 
 #endif // COMMON_UI_CHAT_STATUS_MESSAGE_H

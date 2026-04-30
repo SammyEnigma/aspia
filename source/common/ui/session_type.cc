@@ -20,8 +20,6 @@
 
 #include <QCoreApplication>
 
-namespace common {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -104,4 +102,3 @@ QIcon sessionIcon(proto::peer::SessionType session_type)
     }
 }
 
-} // namespace common

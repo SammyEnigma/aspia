@@ -157,7 +157,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     connect(ui.button_check_for_updates, &QPushButton::clicked, this, [this]()
     {
         LOG(INFO) << "[ACTION] Check for updates";
-        common::UpdateDialog(ui.edit_update_server->text(), "client", this).exec();
+        UpdateDialog(ui.edit_update_server->text(), "client", this).exec();
     });
 #else
     ui.tabbar->setTabVisible(ui.tabbar->indexOf(ui.tab_update), false);
@@ -265,8 +265,8 @@ void SettingsDialog::onRemoveRouter()
 
     QString display_name = item->text(kColumnName).isEmpty()
         ? item->text(kColumnAddress) : item->text(kColumnName);
-    if (common::MsgBox::question(this, tr("Are you sure you want to delete router \"%1\"?")
-            .arg(display_name)) != common::MsgBox::Yes)
+    if (MsgBox::question(this, tr("Are you sure you want to delete router \"%1\"?")
+            .arg(display_name)) != MsgBox::Yes)
     {
         return;
     }
@@ -279,7 +279,7 @@ void SettingsDialog::onRemoveRouter()
 //--------------------------------------------------------------------------------------------------
 void SettingsDialog::showError(const QString& message)
 {
-    common::MsgBox::warning(this, message);
+    MsgBox::warning(this, message);
 }
 
 //--------------------------------------------------------------------------------------------------

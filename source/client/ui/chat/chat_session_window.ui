@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="common::ChatWidget" name="text_chat_widget" native="true"/>
+    <widget class="ChatWidget" name="text_chat_widget" native="true"/>
    </item>
   </layout>
   <action name="action_save">
@@ -96,7 +96,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>common::ChatWidget</class>
+   <class>ChatWidget</class>
    <extends>QWidget</extends>
    <header>common/ui/chat_widget.h</header>
    <container>1</container>

@@ -28,15 +28,13 @@ namespace Ui {
 class UpdateDialog;
 } // namespace Ui
 
-namespace common {
-
 class UpdateDialog final : public QDialog
 {
     Q_OBJECT
 
 public:
     UpdateDialog(const QString& server, const QString& package, QWidget* parent = nullptr);
-    UpdateDialog(const UpdateInfo& update_info, QWidget* parent = nullptr);
+    UpdateDialog(const common::UpdateInfo& update_info, QWidget* parent = nullptr);
     ~UpdateDialog() final;
 
 protected:
@@ -52,14 +50,12 @@ private:
     void initialize();
 
     std::unique_ptr<Ui::UpdateDialog> ui;
-    UpdateInfo update_info_;
+    common::UpdateInfo update_info_;
 
-    std::unique_ptr<UpdateChecker> checker_;
+    std::unique_ptr<common::UpdateChecker> checker_;
     bool checker_finished_ = true;
 
     Q_DISABLE_COPY_MOVE(UpdateDialog)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_UPDATE_DIALOG_H

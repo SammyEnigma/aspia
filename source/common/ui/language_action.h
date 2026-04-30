@@ -21,8 +21,6 @@
 
 #include <QAction>
 
-namespace common {
-
 class LanguageAction final : public QAction
 {
 public:
@@ -41,7 +39,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(LanguageAction)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_LANGUAGE_ACTION_H

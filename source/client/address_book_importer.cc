@@ -265,7 +265,7 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
     QFile file(file_path);
     if (!file.open(QIODevice::ReadOnly))
     {
-        common::MsgBox::warning(parent,
+        MsgBox::warning(parent,
             tr("Unable to open file \"%1\": %2").arg(file_path, file.errorString()));
         return false;
     }
@@ -275,14 +275,14 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
 
     if (buffer.isEmpty())
     {
-        common::MsgBox::warning(parent, tr("Selected file is empty."));
+        MsgBox::warning(parent, tr("Selected file is empty."));
         return false;
     }
 
     proto::address_book::File proto_file;
     if (!proto_file.ParseFromArray(buffer.constData(), buffer.size()))
     {
-        common::MsgBox::warning(parent,
+        MsgBox::warning(parent,
             tr("The address book file is corrupted or has an unknown format."));
         return false;
     }
@@ -308,7 +308,7 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
         }
 
         default:
-            common::MsgBox::warning(parent,
+            MsgBox::warning(parent,
                 tr("The address book file is encrypted with an unsupported encryption type."));
             return false;
     }
@@ -319,7 +319,7 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
     if (!decrypted.has_value())
     {
         base::memZero(&key);
-        common::MsgBox::warning(parent,
+        MsgBox::warning(parent,
             tr("Unable to decrypt the address book with the specified password."));
         return false;
     }
@@ -329,7 +329,7 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
     {
         base::memZero(&*decrypted);
         base::memZero(&key);
-        common::MsgBox::warning(parent,
+        MsgBox::warning(parent,
             tr("The address book file is corrupted or has an unknown format."));
         return false;
     }
@@ -353,11 +353,11 @@ bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
 
     if (counters.groups == 0 && counters.computers == 0 && counters.routers == 0)
     {
-        common::MsgBox::information(parent, tr("Nothing was imported."));
+        MsgBox::information(parent, tr("Nothing was imported."));
         return false;
     }
 
-    common::MsgBox::information(parent,
+    MsgBox::information(parent,
         tr("Import completed successfully.\n"
            "Groups added: %1\n"
            "Computers added: %2\n"

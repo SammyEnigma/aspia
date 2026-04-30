@@ -24,9 +24,6 @@
 #include "common/http_file_downloader.h"
 #include "ui_download_dialog.h"
 
-namespace common {
-
-
 class DownloadDialog final : public QDialog
 {
     Q_OBJECT
@@ -43,12 +40,10 @@ private slots:
 private:
     Ui::DownloadDialog ui;
 
-    std::unique_ptr<HttpFileDownloader> downloader_ = nullptr;
+    std::unique_ptr<common::HttpFileDownloader> downloader_ = nullptr;
     QFile& file_;
 
     Q_DISABLE_COPY_MOVE(DownloadDialog)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_DOWNLOAD_DIALOG_H

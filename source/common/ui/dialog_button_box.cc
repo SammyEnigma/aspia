@@ -22,8 +22,6 @@
 #include <QEvent>
 #include <QShowEvent>
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 DialogButtonBox::DialogButtonBox(QWidget* parent)
     : QDialogButtonBox(parent)
@@ -107,4 +105,3 @@ void DialogButtonBox::translateButtons()
     }
 }
 
-} // namespace common

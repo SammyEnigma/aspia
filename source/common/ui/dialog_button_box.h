@@ -21,8 +21,6 @@
 
 #include <QDialogButtonBox>
 
-namespace common {
-
 class DialogButtonBox : public QDialogButtonBox
 {
     Q_OBJECT
@@ -44,7 +42,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DialogButtonBox)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_DIALOG_BUTTON_BOX_H

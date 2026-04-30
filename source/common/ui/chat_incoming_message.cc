@@ -21,8 +21,6 @@
 #include <QLocale>
 #include <QTime>
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 ChatIncomingMessage::ChatIncomingMessage(QWidget* parent)
     : ChatMessage(ChatMessage::Direction::INCOMING, parent)
@@ -66,4 +64,3 @@ QString ChatIncomingMessage::messageTime() const
     return ui.label_time->text();
 }
 
-} // namespace common

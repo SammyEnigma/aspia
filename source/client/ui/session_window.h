@@ -26,9 +26,7 @@
 
 #include <QWidget>
 
-namespace common {
 class StatusDialog;
-} // namespace common
 
 namespace client {
 
@@ -67,7 +65,7 @@ private:
 
     const proto::peer::SessionType session_type_;
     std::shared_ptr<SessionState> session_state_;
-    common::StatusDialog* status_dialog_ = nullptr;
+    StatusDialog* status_dialog_ = nullptr;
 };
 
 } // namespace client

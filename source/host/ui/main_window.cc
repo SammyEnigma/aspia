@@ -129,12 +129,12 @@ MainWindow::MainWindow(QWidget* parent)
         emit sig_updateCredentials(proto::user::CredentialsRequest::NEW_PASSWORD);
     });
 
-    chat_widget_ = new common::ChatWidget();
+    chat_widget_ = new ChatWidget();
     chat_widget_->setWindowFlag(Qt::WindowStaysOnTopHint);
     chat_widget_->setHistoryId(QString());
     chat_widget_->setChatEnabled(false);
 
-    connect(chat_widget_, &common::ChatWidget::sig_sendMessage,
+    connect(chat_widget_, &ChatWidget::sig_sendMessage,
             this, [this](const proto::chat::Message& message)
     {
         proto::chat::Chat chat;
@@ -142,7 +142,7 @@ MainWindow::MainWindow(QWidget* parent)
         emit sig_chat(chat);
     });
 
-    connect(chat_widget_, &common::ChatWidget::sig_sendStatus,
+    connect(chat_widget_, &ChatWidget::sig_sendStatus,
             this, [this](const proto::chat::Status& status)
     {
         proto::chat::Chat chat;
@@ -399,10 +399,10 @@ void MainWindow::onRouterStateChanged(const proto::user::RouterState& state)
 
     if (!status_dialog_)
     {
-        status_dialog_ = new common::StatusDialog(this);
+        status_dialog_ = new StatusDialog(this);
 
         connect(ui.button_status, &QPushButton::clicked,
-                status_dialog_, &common::StatusDialog::show);
+                status_dialog_, &StatusDialog::show);
     }
 
     status_dialog_->addMessage(status);
@@ -466,7 +466,7 @@ void MainWindow::realClose()
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onLanguageChanged(QAction* action)
 {
-    QString new_locale = static_cast<common::LanguageAction*>(action)->locale();
+    QString new_locale = static_cast<LanguageAction*>(action)->locale();
 
     LOG(INFO) << "[ACTION] Language changed:" << new_locale;
 
@@ -687,7 +687,7 @@ void MainWindow::onHelp()
 void MainWindow::onAbout()
 {
     LOG(INFO) << "[ACTION] About";
-    common::AboutDialog(tr("Aspia Host"), this).exec();
+    AboutDialog(tr("Aspia Host"), this).exec();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -703,10 +703,10 @@ void MainWindow::onExit()
 
     LOG(INFO) << "[ACTION] Exit";
 
-    if (common::MsgBox::question(this,
+    if (MsgBox::question(this,
             tr("If you exit from Aspia, it will not be possible to connect to this computer until "
                "you turn on the computer or Aspia again manually. Do you really want to exit the "
-               "application?")) == common::MsgBox::Yes)
+               "application?")) == MsgBox::Yes)
     {
         LOG(INFO) << "[ACTION] User confirmed exit";
         if (!notifier_)
@@ -766,8 +766,8 @@ void MainWindow::createLanguageMenu(const QString& current_locale)
 
     for (const auto& locale : std::as_const(locale_list))
     {
-        common::LanguageAction* action_language =
-            new common::LanguageAction(locale.first, locale.second, this);
+        LanguageAction* action_language =
+            new LanguageAction(locale.first, locale.second, this);
 
         action_language->setActionGroup(language_group);
         action_language->setCheckable(true);

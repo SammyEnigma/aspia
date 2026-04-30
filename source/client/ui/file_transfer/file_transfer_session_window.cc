@@ -121,7 +121,7 @@ void FileTransferSessionWindow::onShowWindow()
 void FileTransferSessionWindow::onErrorOccurred(proto::file_transfer::ErrorCode error_code)
 {
     LOG(ERROR) << "Session error:" << error_code;
-    common::MsgBox::warning(this,
+    MsgBox::warning(this,
                                 tr("Session error: %1").arg(fileErrorToString(error_code)));
     close();
 }

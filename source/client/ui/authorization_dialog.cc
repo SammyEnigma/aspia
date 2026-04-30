@@ -161,7 +161,7 @@ void AuthorizationDialog::onButtonBoxClicked(QAbstractButton* button)
             if (ui.edit_username->text().isEmpty())
             {
                 LOG(ERROR) << "Empty user name";
-                common::MsgBox::warning(this, tr("Username cannot be empty."));
+                MsgBox::warning(this, tr("Username cannot be empty."));
                 return;
             }
         }
@@ -169,7 +169,7 @@ void AuthorizationDialog::onButtonBoxClicked(QAbstractButton* button)
         if (ui.edit_password->text().isEmpty())
         {
             LOG(ERROR) << "Empty password";
-            common::MsgBox::warning(this, tr("Password cannot be empty."));
+            MsgBox::warning(this, tr("Password cannot be empty."));
             return;
         }
 

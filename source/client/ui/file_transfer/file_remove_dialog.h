@@ -58,7 +58,7 @@ private:
     bool stopped_ = false;
 
 #if defined(Q_OS_WINDOWS)
-    common::TaskbarProgress* taskbar_progress_ = nullptr;
+    TaskbarProgress* taskbar_progress_ = nullptr;
 #endif // defined(Q_OS_WINDOWS)
 
     Q_DISABLE_COPY_MOVE(FileRemoveDialog)

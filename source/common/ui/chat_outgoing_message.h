@@ -22,8 +22,6 @@
 #include "common/ui/chat_message.h"
 #include "ui_chat_outgoing_message.h"
 
-namespace common {
-
 class ChatOutgoingMessage final : public ChatMessage
 {
     Q_OBJECT
@@ -42,7 +40,5 @@ protected:
 private:
     Ui::ChatOutgoingMessage ui;
 };
-
-} // namespace common
 
 #endif // COMMON_UI_CHAT_OUTGOING_MESSAGE_H

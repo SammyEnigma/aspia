@@ -25,8 +25,6 @@
 #include <QPushButton>
 #include <QTime>
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 StatusDialog::StatusDialog(QWidget* parent)
     : QDialog(parent),
@@ -83,4 +81,3 @@ void StatusDialog::closeEvent(QCloseEvent* event)
     QDialog::closeEvent(event);
 }
 
-} // namespace common

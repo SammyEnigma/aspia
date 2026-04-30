@@ -29,8 +29,6 @@ namespace Ui {
 class ChatWidget;
 } // namespace Ui
 
-namespace common {
-
 class ChatWidget final : public QWidget
 {
     Q_OBJECT
@@ -87,7 +85,5 @@ private:
     QVector<HistoryMessage> history_messages_;
     QTimer* status_clear_timer_;
 };
-
-} // namespace common
 
 #endif // COMMON_UI_CHAT_WIDGET_H

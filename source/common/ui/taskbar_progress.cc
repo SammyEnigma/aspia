@@ -18,8 +18,6 @@
 
 #include "common/ui/taskbar_progress.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 TaskbarProgress::TaskbarProgress(QObject *parent)
     : QObject(parent)
@@ -139,4 +137,3 @@ void TaskbarProgress::stop()
     }
 }
 
-} // namespace common

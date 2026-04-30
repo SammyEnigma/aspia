@@ -30,8 +30,6 @@
 #include "base/win/scoped_user_object.h"
 #include "common/ui/taskbar_progress.h"
 
-namespace common {
-
 namespace {
 
 const int TaskbarButtonCreated = QEvent::registerEventType();
@@ -255,4 +253,3 @@ void TaskbarButton::updateOverlayIcon()
     }
 }
 
-} // namespace common

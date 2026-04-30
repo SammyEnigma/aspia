@@ -138,7 +138,7 @@ int hostMain(int argc, char* argv[])
     {
         LOG(ERROR) << "Integrity check failed";
 
-        common::MsgBox::warning(nullptr,
+        MsgBox::warning(nullptr,
             QApplication::translate("Host", "Application integrity check failed. Components are "
                                             "missing or damaged."));
         return 1;
@@ -152,7 +152,7 @@ int hostMain(int argc, char* argv[])
 
         if (!parser.isSet(silent_option))
         {
-            common::MsgBox::warning(nullptr,
+            MsgBox::warning(nullptr,
                 QApplication::translate("Host", "Export and import parameters can not be specified together."));
         }
 
@@ -170,7 +170,7 @@ int hostMain(int argc, char* argv[])
     }
     else if (parser.isSet(update_option))
     {
-        common::UpdateDialog dialog(host::SystemSettings().updateServer(), "host");
+        UpdateDialog dialog(host::SystemSettings().updateServer(), "host");
         dialog.show();
         dialog.activateWindow();
 

@@ -185,7 +185,7 @@ void MainWindow::onUpdateCheckedFinished(const QByteArray& result)
             if (update_version > current_version)
             {
                 LOG(INFO) << "New version available:" << update_version.toString();
-                common::UpdateDialog(update_info, this).exec();
+                UpdateDialog(update_info, this).exec();
             }
         }
     }
@@ -225,7 +225,7 @@ void MainWindow::onHelp()
 void MainWindow::onAbout()
 {
     LOG(INFO) << "[ACTION] About clicked";
-    common::AboutDialog(tr("Aspia Client"), this).exec();
+    AboutDialog(tr("Aspia Client"), this).exec();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -292,7 +292,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
 {
     if (base::isHostId(computer.address) && computer.router_id <= 0)
     {
-        common::MsgBox::warning(this,
+        MsgBox::warning(this,
             tr("Connection by ID is specified in the properties of the computer, "
                "but the router is not configured. Check the parameters of the "
                "router in the properties of the address book."));

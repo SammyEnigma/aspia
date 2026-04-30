@@ -92,14 +92,14 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
     QString name = ui.edit_name->text();
     if (name.length() < kMinNameLength)
     {
-        common::MsgBox::warning(this, tr("Name cannot be empty."));
+        MsgBox::warning(this, tr("Name cannot be empty."));
         ui.edit_name->setFocus();
         return;
     }
 
     if (name.length() > kMaxNameLength)
     {
-        common::MsgBox::warning(this,
+        MsgBox::warning(this,
             tr("Too long name. The maximum length of the name is %n characters.",
                "", kMaxNameLength));
         ui.edit_name->setFocus();
@@ -110,7 +110,7 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
     QString comment = ui.edit_comment->toPlainText();
     if (comment.length() > kMaxCommentLength)
     {
-        common::MsgBox::warning(this,
+        MsgBox::warning(this,
             tr("Too long comment. The maximum length of the comment is %n characters.",
                "", kMaxCommentLength));
         ui.edit_comment->setFocus();
@@ -125,7 +125,7 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
     {
         if (existing.id != group_id_ && existing.name == name)
         {
-            common::MsgBox::warning(this,
+            MsgBox::warning(this,
                 tr("A group with this name already exists in the selected parent group."));
             ui.edit_name->setFocus();
             return;
@@ -144,7 +144,7 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
     {
         if (!db.addGroup(group))
         {
-            common::MsgBox::warning(this, tr("Unable to add group"));
+            MsgBox::warning(this, tr("Unable to add group"));
             LOG(INFO) << "Unable to add group to database";
             return;
         }
@@ -153,7 +153,7 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
     {
         if (!db.modifyGroup(group))
         {
-            common::MsgBox::warning(this, tr("Unable to modify group"));
+            MsgBox::warning(this, tr("Unable to modify group"));
             LOG(INFO) << "Unable to modify group in database";
             return;
         }

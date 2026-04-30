@@ -328,7 +328,7 @@ void LocalGroupWidget::onCopyComputer()
     std::optional<ComputerConfig> computer = db.findComputer(item->computerId());
     if (!computer.has_value())
     {
-        common::MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
+        MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
         return;
     }
 
@@ -336,7 +336,7 @@ void LocalGroupWidget::onCopyComputer()
 
     if (!db.addComputer(*computer))
     {
-        common::MsgBox::warning(this, tr("Failed to add the computer to the local database."));
+        MsgBox::warning(this, tr("Failed to add the computer to the local database."));
         return;
     }
 
@@ -368,7 +368,7 @@ void LocalGroupWidget::onRemoveComputer()
 
     QString message = tr("Are you sure you want to delete computer \"%1\"?").arg(item->computerName());
 
-    if (common::MsgBox::question(this, message) == common::MsgBox::No)
+    if (MsgBox::question(this, message) == MsgBox::No)
     {
         LOG(INFO) << "Action is rejected by user";
         return;
@@ -378,7 +378,7 @@ void LocalGroupWidget::onRemoveComputer()
 
     if (!Database::instance().removeComputer(computer_id))
     {
-        common::MsgBox::warning(this, tr("Unable to remove computer"));
+        MsgBox::warning(this, tr("Unable to remove computer"));
         LOG(INFO) << "Unable to remove computer with id" << computer_id;
         return;
     }

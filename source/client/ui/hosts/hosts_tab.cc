@@ -511,7 +511,7 @@ void HostsTab::onConnectAction(QAction* action)
         std::optional<ComputerConfig> found = Database::instance().findComputer(item->computerId());
         if (!found.has_value())
         {
-            common::MsgBox::warning(this,
+            MsgBox::warning(this,
                 tr("Failed to retrieve computer information from the local database."));
             return;
         }
@@ -558,7 +558,7 @@ void HostsTab::onLocalConnect(qint64 computer_id)
     std::optional<ComputerConfig> computer = Database::instance().findComputer(computer_id);
     if (!computer.has_value())
     {
-        common::MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
+        MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
         return;
     }
 
@@ -806,7 +806,7 @@ void HostsTab::deleteRouter(qint64 router_id)
     }
 
     QString message = tr("Are you sure you want to delete router \"%1\"?").arg(existing->display_name);
-    if (common::MsgBox::question(this, message) == common::MsgBox::No)
+    if (MsgBox::question(this, message) == MsgBox::No)
     {
         LOG(INFO) << "Action is rejected by user";
         return;
@@ -1048,14 +1048,14 @@ bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
         std::optional<RouterConfig> router = Database::instance().findRouter(computer.router_id);
         if (!router.has_value())
         {
-            common::MsgBox::warning(this, tr("The router associated with this computer has been deleted. "
+            MsgBox::warning(this, tr("The router associated with this computer has been deleted. "
                 "Edit the computer to select another router or switch to direct connection."));
             return false;
         }
 
         if (!base::isHostId(computer.address))
         {
-            common::MsgBox::warning(this, tr("The computer has an invalid host ID."));
+            MsgBox::warning(this, tr("The computer has an invalid host ID."));
             return false;
         }
     }
@@ -1064,7 +1064,7 @@ bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
         base::Address address = base::Address::fromString(computer.address, DEFAULT_HOST_TCP_PORT);
         if (!address.isValid())
         {
-            common::MsgBox::warning(this, tr("The computer has an incorrect address."));
+            MsgBox::warning(this, tr("The computer has an incorrect address."));
             return false;
         }
     }

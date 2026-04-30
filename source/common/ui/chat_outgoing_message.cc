@@ -21,8 +21,6 @@
 #include <QLocale>
 #include <QTime>
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 ChatOutgoingMessage::ChatOutgoingMessage(QWidget* parent)
     : ChatMessage(ChatMessage::Direction::OUTGOING, parent)
@@ -61,4 +59,3 @@ void ChatOutgoingMessage::resizeEvent(QResizeEvent* /* event */)
     adjustSize();
 }
 
-} // namespace common

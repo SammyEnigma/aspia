@@ -427,7 +427,7 @@
     </widget>
    </item>
    <item>
-    <widget class="common::DialogButtonBox" name="buttonbox">
+    <widget class="DialogButtonBox" name="buttonbox">
      <property name="standardButtons">
       <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
      </property>
@@ -437,7 +437,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>common::DialogButtonBox</class>
+   <class>DialogButtonBox</class>
    <extends>QDialogButtonBox</extends>
    <header>common/ui/dialog_button_box.h</header>
   </customwidget>

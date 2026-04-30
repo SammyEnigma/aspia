@@ -28,10 +28,7 @@
 
 class QLabel;
 class QStatusBar;
-
-namespace common {
 class StatusDialog;
-} // namespace common
 
 namespace proto::router {
 class HostResult;
@@ -154,7 +151,7 @@ private:
     base::ScopedQPointer<RouterConnection> connection_;
     RouterConnection::Status status_ = RouterConnection::Status::OFFLINE;
 
-    common::StatusDialog* status_dialog_ = nullptr;
+    StatusDialog* status_dialog_ = nullptr;
 
     QLabel* status_label_ = nullptr;
 

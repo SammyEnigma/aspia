@@ -316,7 +316,7 @@ void Sidebar::onRemoveGroup()
 
     QString message = tr("Are you sure you want to delete group \"%1\"?").arg(local_group->groupName());
 
-    if (common::MsgBox::question(this, message) == common::MsgBox::No)
+    if (MsgBox::question(this, message) == MsgBox::No)
     {
         LOG(INFO) << "Action is rejected by user";
         return;
@@ -326,7 +326,7 @@ void Sidebar::onRemoveGroup()
 
     if (!Database::instance().removeGroup(local_group->groupId()))
     {
-        common::MsgBox::warning(this, tr("Unable to remove group"));
+        MsgBox::warning(this, tr("Unable to remove group"));
         LOG(INFO) << "Unable to remove group with id" << local_group->groupId();
         return;
     }
@@ -497,7 +497,7 @@ bool Sidebar::onDrop(QDropEvent* event)
         {
             if (existing.id != source_group->groupId() && existing.name == source_group->groupName())
             {
-                common::MsgBox::warning(tree_widget_,
+                MsgBox::warning(tree_widget_,
                     tr("A group with this name already exists in the selected parent group."));
                 restoreSelection();
                 return true;
@@ -507,7 +507,7 @@ bool Sidebar::onDrop(QDropEvent* event)
         // Update the group's parent in the database.
         if (!Database::instance().moveGroup(source_group->groupId(), target_item->groupId()))
         {
-            common::MsgBox::warning(tree_widget_,
+            MsgBox::warning(tree_widget_,
                 tr("Failed to move the group."));
             restoreSelection();
             return true;
@@ -563,7 +563,7 @@ bool Sidebar::onDrop(QDropEvent* event)
         {
             if (existing.name == computer_item->computerName())
             {
-                common::MsgBox::warning(tree_widget_,
+                MsgBox::warning(tree_widget_,
                     tr("A computer with this name already exists in the selected group."));
                 restoreSelection();
                 return true;
@@ -583,7 +583,7 @@ bool Sidebar::onDrop(QDropEvent* event)
 
         if (!Database::instance().modifyComputer(*computer))
         {
-            common::MsgBox::warning(tree_widget_,
+            MsgBox::warning(tree_widget_,
                 tr("Failed to move the computer to the selected group."));
             restoreSelection();
             return true;

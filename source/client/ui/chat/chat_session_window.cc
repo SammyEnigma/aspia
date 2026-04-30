@@ -48,7 +48,7 @@ ChatSessionWindow::ChatSessionWindow(QWidget* parent)
     LOG(INFO) << "Ctor";
     ui->setupUi(this);
 
-    connect(ui->text_chat_widget, &common::ChatWidget::sig_sendMessage,
+    connect(ui->text_chat_widget, &ChatWidget::sig_sendMessage,
             this, [this](const proto::chat::Message& message)
     {
         proto::chat::Chat chat;
@@ -56,7 +56,7 @@ ChatSessionWindow::ChatSessionWindow(QWidget* parent)
         emit sig_chatMessage(chat);
     });
 
-    connect(ui->text_chat_widget, &common::ChatWidget::sig_sendStatus,
+    connect(ui->text_chat_widget, &ChatWidget::sig_sendStatus,
             this, [this](const proto::chat::Status& status)
     {
         proto::chat::Chat chat;

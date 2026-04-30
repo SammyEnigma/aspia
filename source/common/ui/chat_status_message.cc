@@ -21,8 +21,6 @@
 #include <QLocale>
 #include <QTime>
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 ChatStatusMessage::ChatStatusMessage(QWidget* parent)
     : ChatMessage(ChatMessage::Direction::STATUS, parent)
@@ -51,4 +49,3 @@ QString ChatStatusMessage::messageTime() const
     return QString();
 }
 
-} // namespace common

@@ -147,7 +147,7 @@
     </widget>
    </item>
    <item>
-    <widget class="common::DialogButtonBox" name="button_box">
+    <widget class="DialogButtonBox" name="button_box">
      <property name="standardButtons">
       <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
      </property>
@@ -158,7 +158,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>common::DialogButtonBox</class>
+   <class>DialogButtonBox</class>
    <extends>QDialogButtonBox</extends>
    <header>common/ui/dialog_button_box.h</header>
   </customwidget>

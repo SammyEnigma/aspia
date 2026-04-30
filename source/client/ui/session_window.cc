@@ -35,11 +35,11 @@ SessionWindow::SessionWindow(proto::peer::SessionType session_type, QWidget* par
     LOG(INFO) << "Ctor";
 
     // Create a dialog to display the connection status.
-    status_dialog_ = new common::StatusDialog(this);
+    status_dialog_ = new StatusDialog(this);
     status_dialog_->setWindowFlag(Qt::WindowStaysOnTopHint);
 
     // After closing the status dialog, close the session window.
-    connect(status_dialog_, &common::StatusDialog::finished, this, &SessionWindow::close);
+    connect(status_dialog_, &StatusDialog::finished, this, &SessionWindow::close);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -211,7 +211,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
 //--------------------------------------------------------------------------------------------------
 void SessionWindow::setClientTitle(const ComputerConfig& computer, proto::peer::SessionType session_type)
 {
-    QString session_name = common::sessionName(session_type);
+    QString session_name = sessionName(session_type);
     QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
 
     setWindowTitle(QString("%1 - %2").arg(computer_name, session_name));

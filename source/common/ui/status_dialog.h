@@ -25,8 +25,6 @@ namespace Ui {
 class StatusDialog;
 } // namespace Ui
 
-namespace common {
-
 class StatusDialog final : public QDialog
 {
     Q_OBJECT
@@ -48,7 +46,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(StatusDialog)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_STATUS_DIALOG_H

@@ -53,7 +53,7 @@ public:
           display_name_(client.display_name),
           computer_name_(client.computer_name)
     {
-        setIcon(0, common::sessionIcon(session_type_));
+        setIcon(0, sessionIcon(session_type_));
 
         if (display_name_.isEmpty())
         {

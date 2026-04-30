@@ -44,7 +44,7 @@ FileRemoveDialog::FileRemoveDialog(QWidget* parent)
     connect(ui.button_box, &QDialogButtonBox::clicked, this, &FileRemoveDialog::close);
 
 #if defined(Q_OS_WINDOWS)
-    common::TaskbarButton* button = new common::TaskbarButton(this);
+    TaskbarButton* button = new TaskbarButton(this);
     button->setWindow(parent->windowHandle());
 
     taskbar_progress_ = button->progress();
@@ -122,25 +122,25 @@ void FileRemoveDialog::errorOccurred(const QString& path,
         message = tr("Failed to delete \"%1\": %2.").arg(path, fileErrorToString(error_code));
     }
 
-    QPointer<common::MsgBox> dialog(new common::MsgBox(this));
+    QPointer<MsgBox> dialog(new MsgBox(this));
 
     dialog->setWindowTitle(tr("Warning"));
-    dialog->setIcon(common::MsgBox::Warning);
+    dialog->setIcon(MsgBox::Warning);
     dialog->setText(message);
 
     QAbstractButton* skip_button = nullptr;
     QAbstractButton* skip_all_button = nullptr;
 
     if (available_actions & FileRemover::ACTION_SKIP)
-        skip_button = dialog->addButton(tr("Skip"), common::MsgBox::ButtonRole::ActionRole);
+        skip_button = dialog->addButton(tr("Skip"), MsgBox::ButtonRole::ActionRole);
 
     if (available_actions & FileRemover::ACTION_SKIP_ALL)
-        skip_all_button = dialog->addButton(tr("Skip All"), common::MsgBox::ButtonRole::ActionRole);
+        skip_all_button = dialog->addButton(tr("Skip All"), MsgBox::ButtonRole::ActionRole);
 
     if (available_actions & FileRemover::ACTION_ABORT)
-        dialog->addButton(tr("Abort"), common::MsgBox::ButtonRole::ActionRole);
+        dialog->addButton(tr("Abort"), MsgBox::ButtonRole::ActionRole);
 
-    connect(dialog, &common::MsgBox::buttonClicked, this, [&](QAbstractButton* button)
+    connect(dialog, &MsgBox::buttonClicked, this, [&](QAbstractButton* button)
     {
         if (button != nullptr)
         {

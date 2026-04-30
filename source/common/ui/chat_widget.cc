@@ -42,8 +42,6 @@
 #include "common/ui/chat_status_message.h"
 #include "ui_chat_widget.h"
 
-namespace common {
-
 namespace {
 
 const int kMaxMessageLength = 2048;
@@ -512,7 +510,7 @@ void ChatWidget::onSendMessage()
     if (message.length() > kMaxMessageLength)
     {
         LOG(ERROR) << "Too long message:" << message.length();
-        common::MsgBox::warning(this,
+        MsgBox::warning(this,
                              tr("The message is too long. The maximum message length is %n "
                                 "characters.", "", kMaxMessageLength));
         return;
@@ -577,7 +575,7 @@ void ChatWidget::onSaveChat()
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         LOG(ERROR) << "Unable to open file:" << file.errorString();
-        common::MsgBox::warning(this,
+        MsgBox::warning(this,
                              tr("Could not open file for writing."));
         return;
     }
@@ -651,4 +649,3 @@ void ChatWidget::onUpdateSize()
     list_messages->scrollToBottom();
 }
 
-} // namespace common

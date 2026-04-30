@@ -267,7 +267,7 @@ SystemInfoSessionWindow::SystemInfoSessionWindow(QWidget* parent)
                             file_path,
                             &error_string))
         {
-            common::MsgBox::warning(
+            MsgBox::warning(
                 this, tr("Failed to save file: %1").arg(error_string));
         }
     });

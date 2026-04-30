@@ -21,8 +21,6 @@
 
 #include <QObject>
 
-namespace common {
-
 class TaskbarProgress final : public QObject
 {
     Q_OBJECT
@@ -70,7 +68,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TaskbarProgress)
 };
-
-} // namespace common
 
 #endif // COMMON_UI_TASKBAR_PROGRESS_H

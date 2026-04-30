@@ -26,10 +26,8 @@
 #include "host/user_session_agent.h"
 #include "ui_main_window.h"
 
-namespace common {
 class StatusDialog;
 class ChatWidget;
-} // namespace common
 
 namespace host {
 
@@ -102,9 +100,9 @@ private:
     QSystemTrayIcon tray_icon_;
     QMenu tray_menu_;
     QPointer<NotifierWindow> notifier_;
-    common::ChatWidget* chat_widget_ = nullptr;
+    ChatWidget* chat_widget_ = nullptr;
 
-    common::StatusDialog* status_dialog_ = nullptr;
+    StatusDialog* status_dialog_ = nullptr;
     proto::user::RouterState::State last_state_ = proto::user::RouterState::DISABLED;
 
     Q_DISABLE_COPY_MOVE(MainWindow)

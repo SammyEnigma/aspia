@@ -64,7 +64,7 @@ void CheckPasswordDialog::onButtonBoxClicked(QAbstractButton* button)
         {
             LOG(INFO) << "Invalid password entered";
 
-            common::MsgBox::warning(this, tr("You entered an incorrect password."));
+            MsgBox::warning(this, tr("You entered an incorrect password."));
             ui.edit_pass->selectAll();
             ui.edit_pass->setFocus();
             return;

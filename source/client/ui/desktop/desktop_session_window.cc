@@ -976,7 +976,7 @@ void DesktopSessionWindow::onTakeScreenshot()
     if (!image.save(file_path, format))
     {
         LOG(ERROR) << "Unable to save image";
-        common::MsgBox::warning(this, tr("Could not save image"));
+        MsgBox::warning(this, tr("Could not save image"));
     }
     else
     {
