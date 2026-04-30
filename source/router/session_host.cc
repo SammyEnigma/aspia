@@ -25,8 +25,6 @@
 #include "router/database.h"
 #include "router/service.h"
 
-namespace router {
-
 namespace {
 
 const size_t kHostKeySize = 512;
@@ -152,5 +150,3 @@ void SessionHost::readHostIdRequest(const proto::router::HostIdRequest& host_id_
 
     sendMessage(0, serialize(message));
 }
-
-} // namespace router

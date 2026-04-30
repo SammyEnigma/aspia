@@ -16,22 +16,20 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef ROUTER_USER_LIST_H
-#define ROUTER_USER_LIST_H
+#ifndef ROUTER_ROUTER_USER_LIST_H
+#define ROUTER_ROUTER_USER_LIST_H
 
 #include <memory>
 
 #include "base/peer/user_list_base.h"
 #include "router/database.h"
 
-namespace router {
-
-class UserList final : public UserListBase
+class RouterUserList final : public UserListBase
 {
 public:
-    ~UserList() final;
+    ~RouterUserList() final;
 
-    static std::unique_ptr<UserList> open();
+    static std::unique_ptr<RouterUserList> open();
 
     // UserListBase implementation.
     void add(const User& user) final;
@@ -41,14 +39,12 @@ public:
     QVector<User> list() const final;
 
 private:
-    explicit UserList(Database&& db);
+    explicit RouterUserList(Database&& db);
 
     Database db_;
     QByteArray seed_key_;
 
-    Q_DISABLE_COPY_MOVE(UserList)
+    Q_DISABLE_COPY_MOVE(RouterUserList)
 };
 
-} // namespace router
-
-#endif // ROUTER_USER_LIST_H
+#endif // ROUTER_ROUTER_USER_LIST_H

@@ -27,8 +27,6 @@
 #include "base/net/tcp_channel.h"
 #include "proto/router.h"
 
-namespace router {
-
 class Database;
 
 class Session : public QObject
@@ -73,7 +71,5 @@ private:
     TcpChannel* tcp_channel_ = nullptr;
     QHostAddress address_;
 };
-
-} // namespace router
 
 #endif // ROUTER_SESSION_H

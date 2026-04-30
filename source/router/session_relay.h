@@ -23,8 +23,6 @@
 #include "proto/router_relay.h"
 #include "router/session.h"
 
-namespace router {
-
 class SessionRelay final : public Session
 {
     Q_OBJECT
@@ -55,7 +53,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SessionRelay)
 };
-
-} // namespace router
 
 #endif // ROUTER_SESSION_RELAY_H

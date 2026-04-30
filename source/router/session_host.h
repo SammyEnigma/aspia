@@ -23,8 +23,6 @@
 #include "proto/router_host.h"
 #include "router/session.h"
 
-namespace router {
-
 class SessionHost final : public Session
 {
     Q_OBJECT
@@ -52,7 +50,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SessionHost)
 };
-
-} // namespace router
 
 #endif // ROUTER_SESSION_HOST_H

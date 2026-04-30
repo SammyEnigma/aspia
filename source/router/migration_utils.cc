@@ -27,8 +27,6 @@
 #include "base/files/base_paths.h"
 #include "router/settings.h"
 
-namespace router {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -182,5 +180,3 @@ void doMigration()
         }
     }
 }
-
-} // namespace router

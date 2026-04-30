@@ -29,8 +29,6 @@
 
 class StunServer;
 
-namespace router {
-
 class SessionHost;
 class SessionRelay;
 
@@ -101,7 +99,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Service)
 };
-
-} // namespace router
 
 #endif // ROUTER_SERVICE_H

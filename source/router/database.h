@@ -24,8 +24,6 @@
 #include "base/peer/host_id.h"
 #include "base/peer/user.h"
 
-namespace router {
-
 class Database
 {
 public:
@@ -62,7 +60,5 @@ private:
 
     Q_DISABLE_COPY(Database)
 };
-
-} // namespace router
 
 #endif // ROUTER_DATABASE_H

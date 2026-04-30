@@ -24,8 +24,6 @@
 #include "base/crypto/random.h"
 #include "router/database.h"
 
-namespace router {
-
 namespace {
 
 const size_t kHostKeySize = 512;
@@ -183,5 +181,3 @@ void SessionLegacyHost::readResetHostId(const proto::router::legacy::ResetHostId
 
     CLOG(ERROR) << "Host ID" << host_id << "is NOT found in list";
 }
-
-} // namespace router

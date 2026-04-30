@@ -16,25 +16,23 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "router/user_list.h"
+#include "router/router_user_list.h"
 
 #include "base/logging.h"
 
-namespace router {
-
 //--------------------------------------------------------------------------------------------------
-UserList::UserList(Database&& db)
+RouterUserList::RouterUserList(Database&& db)
     : db_(std::move(db))
 {
     // Nothing
 }
 
 //--------------------------------------------------------------------------------------------------
-UserList::~UserList() = default;
+RouterUserList::~RouterUserList() = default;
 
 //--------------------------------------------------------------------------------------------------
 // static
-std::unique_ptr<UserList> UserList::open()
+std::unique_ptr<RouterUserList> RouterUserList::open()
 {
     Database db = Database::open();
     if (!db.isValid())
@@ -43,37 +41,35 @@ std::unique_ptr<UserList> UserList::open()
         return nullptr;
     }
 
-    return std::unique_ptr<UserList>(new UserList(std::move(db)));
+    return std::unique_ptr<RouterUserList>(new RouterUserList(std::move(db)));
 }
 
 //--------------------------------------------------------------------------------------------------
-void UserList::add(const User& user)
+void RouterUserList::add(const User& user)
 {
     db_.addUser(user);
 }
 
 //--------------------------------------------------------------------------------------------------
-User UserList::find(const QString& username) const
+User RouterUserList::find(const QString& username) const
 {
     return db_.findUser(username);
 }
 
 //--------------------------------------------------------------------------------------------------
-const QByteArray& UserList::seedKey() const
+const QByteArray& RouterUserList::seedKey() const
 {
     return seed_key_;
 }
 
 //--------------------------------------------------------------------------------------------------
-void UserList::setSeedKey(const QByteArray& seed_key)
+void RouterUserList::setSeedKey(const QByteArray& seed_key)
 {
     seed_key_ = seed_key;
 }
 
 //--------------------------------------------------------------------------------------------------
-QVector<User> UserList::list() const
+QVector<User> RouterUserList::list() const
 {
     return db_.userList();
 }
-
-} // namespace router

@@ -30,8 +30,6 @@
 #include <QSqlQuery>
 #include <QVariant>
 
-namespace router {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -483,5 +481,3 @@ QString Database::databaseDirectory()
 {
     return BasePaths::appDataDir();
 }
-
-} // namespace router

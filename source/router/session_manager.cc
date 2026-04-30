@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/serialization.h"
 
-namespace router {
-
 //--------------------------------------------------------------------------------------------------
 SessionManager::SessionManager(TcpChannel* channel, QObject* parent)
     : SessionClient(channel, parent)
@@ -50,5 +48,3 @@ void SessionManager::onSessionMessage(quint8 channel_id, const QByteArray& buffe
 
     // TODO
 }
-
-} // namespace router

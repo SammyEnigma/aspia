@@ -22,8 +22,6 @@
 #include <QSettings>
 #include <QStringList>
 
-namespace router {
-
 class Settings
 {
 public:
@@ -80,7 +78,5 @@ private:
 
     QSettings impl_;
 };
-
-} // namespace router
 
 #endif // ROUTER_SETTINGS_H

@@ -32,9 +32,7 @@
 #include "router/session_manager.h"
 #include "router/session_relay.h"
 #include "router/settings.h"
-#include "router/user_list.h"
-
-namespace router {
+#include "router/router_user_list.h"
 
 namespace {
 
@@ -432,7 +430,7 @@ bool Service::start()
         settings.setSeedKey(seed_key);
     }
 
-    SharedPointer<UserListBase> user_list(UserList::open().release());
+    SharedPointer<UserListBase> user_list(RouterUserList::open().release());
     user_list->setSeedKey(seed_key);
 
     tcp_server_ = new TcpServer(this);
@@ -563,5 +561,3 @@ void Service::addSession(TcpChannel* channel, bool is_legacy)
 //--------------------------------------------------------------------------------------------------
 // static
 Service* Service::instance_ = nullptr;
-
-} // namespace router

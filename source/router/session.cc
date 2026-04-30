@@ -20,8 +20,6 @@
 
 #include "base/net/tcp_channel.h"
 
-namespace router {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -123,5 +121,3 @@ void Session::onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer)
 {
     onSessionMessage(channel_id, buffer);
 }
-
-} // namespace router

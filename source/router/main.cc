@@ -40,7 +40,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 int startService(QTextStream& out)
 {
-    std::unique_ptr<ServiceController> controller = ServiceController::open(router::Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -60,7 +60,7 @@ int startService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int stopService(QTextStream& out)
 {
-    std::unique_ptr<ServiceController> controller = ServiceController::open(router::Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -81,14 +81,14 @@ int stopService(QTextStream& out)
 int installService(QTextStream& out)
 {
     std::unique_ptr<ServiceController> controller = ServiceController::install(
-        router::Service::kName, router::Service::kDisplayName, QCoreApplication::applicationFilePath());
+        Service::kName, Service::kDisplayName, QCoreApplication::applicationFilePath());
     if (!controller)
     {
         out << "Failed to install the service." << Qt::endl;
         return 1;
     }
 
-    controller->setDescription(router::Service::kDescription);
+    controller->setDescription(Service::kDescription);
     out << "The service has been successfully installed." << Qt::endl;
     return 0;
 }
@@ -96,10 +96,10 @@ int installService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int removeService(QTextStream& out)
 {
-    if (ServiceController::isRunning(router::Service::kName))
+    if (ServiceController::isRunning(Service::kName))
         stopService(out);
 
-    if (!ServiceController::remove(router::Service::kName))
+    if (!ServiceController::remove(Service::kName))
     {
         out << "Failed to remove the service." << Qt::endl;
         return 1;
@@ -156,7 +156,7 @@ int createConfig(QTextStream& out)
 {
     out << "Creation of initial configuration started." << Qt::endl;
 
-    router::Settings settings;
+    Settings settings;
     QString settings_file_path = settings.filePath();
 
     out << "Settings file path: " << settings_file_path << Qt::endl;
@@ -212,10 +212,10 @@ int createConfig(QTextStream& out)
         out << "Public key does not exist yet." << Qt::endl;
     }
 
-    router::Database db = router::Database::create();
+    Database db = Database::create();
     if (!db.isValid())
     {
-        db = router::Database::open();
+        db = Database::open();
         if (db.isValid())
             out << "Database already exists. Continuation is impossible." << Qt::endl;
         else
@@ -336,5 +336,5 @@ int main(int argc, char* argv[])
     else if (parser.isSet(stop_option))
         return stopService(out);
 
-    return router::Service().exec(application);
+    return Service().exec(application);
 }

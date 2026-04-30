@@ -27,8 +27,6 @@
 #include "router/session_legacy_host.h"
 #include "router/session_relay.h"
 
-namespace router {
-
 //--------------------------------------------------------------------------------------------------
 SessionAdmin::SessionAdmin(TcpChannel* channel, QObject* parent)
     : SessionManager(channel, parent)
@@ -480,5 +478,3 @@ std::string SessionAdmin::deleteUser(const proto::router::User& user)
 
     return "ok";
 }
-
-} // namespace router

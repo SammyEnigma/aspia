@@ -22,8 +22,6 @@
 #include "proto/router_admin.h"
 #include "router/session_manager.h"
 
-namespace router {
-
 class SessionAdmin final : public SessionManager
 {
     Q_OBJECT
@@ -51,7 +49,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SessionAdmin)
 };
-
-} // namespace router
 
 #endif // ROUTER_SESSION_ADMIN_H

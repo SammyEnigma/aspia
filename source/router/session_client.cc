@@ -28,8 +28,6 @@
 #include "router/session_legacy_host.h"
 #include "router/session_relay.h"
 
-namespace router {
-
 //--------------------------------------------------------------------------------------------------
 SessionClient::SessionClient(TcpChannel* channel, QObject* parent)
     : Session(channel, parent)
@@ -214,5 +212,3 @@ Session* SessionClient::sessionByHostId(HostId host_id)
 
     return nullptr;
 }
-
-} // namespace router

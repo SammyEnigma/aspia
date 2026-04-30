@@ -21,8 +21,6 @@
 
 #include "router/session_client.h"
 
-namespace router {
-
 class SessionManager : public SessionClient
 {
     Q_OBJECT
@@ -38,7 +36,5 @@ protected:
 private:
     Q_DISABLE_COPY_MOVE(SessionManager)
 };
-
-} // namespace router
 
 #endif // ROUTER_SESSION_MANAGER_H

@@ -22,8 +22,6 @@
 #include "base/serialization.h"
 #include "router/service.h"
 
-namespace router {
-
 //--------------------------------------------------------------------------------------------------
 SessionRelay::SessionRelay(TcpChannel* channel, QObject* parent)
     : Session(channel, parent)
@@ -88,5 +86,3 @@ void SessionRelay::readKeyPool(const proto::router::RelayKeyPool& key_pool)
     for (int i = 0; i < key_pool.key_size(); ++i)
         service->addKey(sessionId(), key_pool.key(i));
 }
-
-} // namespace router

@@ -19,11 +19,7 @@
 #ifndef ROUTER_MIGRATION_UTILS_H
 #define ROUTER_MIGRATION_UTILS_H
 
-namespace router {
-
 bool isMigrationNeeded();
 void doMigration();
-
-} // namespace router
 
 #endif // ROUTER_MIGRATION_UTILS_H

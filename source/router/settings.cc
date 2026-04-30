@@ -23,8 +23,6 @@
 #include "base/net/net_utils.h"
 #include "build/build_config.h"
 
-namespace router {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -266,5 +264,3 @@ Settings::WhiteList Settings::whiteList(const QString& key) const
 
     return result;
 }
-
-} // namespace router
