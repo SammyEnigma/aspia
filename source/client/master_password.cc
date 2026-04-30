@@ -42,23 +42,9 @@ QByteArray deriveKey(const QString& password, const QByteArray& salt)
 }
 
 //--------------------------------------------------------------------------------------------------
-QByteArray makeVerifier(const QByteArray& key)
+std::optional<QByteArray> makeVerifier(const QByteArray& key)
 {
-    QByteArray payload = base::Random::byteArray(kVerifierPayloadSize);
-    if (payload.isEmpty())
-    {
-        LOG(ERROR) << "Unable to generate verifier payload";
-        return {};
-    }
-
-    base::DataCryptor cryptor(key);
-    std::optional<QByteArray> out = cryptor.encrypt(payload);
-    if (!out.has_value())
-    {
-        LOG(ERROR) << "Unable to encrypt verifier";
-        return {};
-    }
-    return *out;
+    return base::DataCryptor(key).encrypt(base::Random::byteArray(kVerifierPayloadSize));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -66,8 +52,7 @@ bool checkVerifier(const QByteArray& key, const QByteArray& verifier)
 {
     // ChaCha20-Poly1305 is an AEAD cipher: successful decryption (i.e. valid auth tag)
     // is itself the proof that the key is correct. The plaintext content does not matter.
-    base::DataCryptor cryptor(key);
-    return cryptor.decrypt(verifier).has_value();
+    return base::DataCryptor(key).decrypt(verifier).has_value();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -237,18 +222,14 @@ bool MasterPassword::setNew(const QString& new_password)
     }
 
     QByteArray salt = base::Random::byteArray(kSaltSize);
-    if (salt.isEmpty())
-    {
-        LOG(ERROR) << "Unable to generate salt";
-        return false;
-    }
+    CHECK(!salt.isEmpty());
 
     QByteArray new_key = deriveKey(new_password, salt);
-    QByteArray verifier = makeVerifier(new_key);
-    if (verifier.isEmpty())
+    std::optional<QByteArray> verifier = makeVerifier(new_key);
+    if (!verifier.has_value())
         return false;
 
-    return changeKeyAndReencrypt(new_key, salt, verifier);
+    return changeKeyAndReencrypt(new_key, salt, *verifier);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -265,18 +246,14 @@ bool MasterPassword::change(const QString& current_password, const QString& new_
         return false;
 
     QByteArray salt = base::Random::byteArray(kSaltSize);
-    if (salt.isEmpty())
-    {
-        LOG(ERROR) << "Unable to generate salt";
-        return false;
-    }
+    CHECK(!salt.isEmpty());
 
     QByteArray new_key = deriveKey(new_password, salt);
-    QByteArray verifier = makeVerifier(new_key);
-    if (verifier.isEmpty())
+    std::optional<QByteArray> verifier = makeVerifier(new_key);
+    if (!verifier.has_value())
         return false;
 
-    return changeKeyAndReencrypt(new_key, salt, verifier);
+    return changeKeyAndReencrypt(new_key, salt, *verifier);
 }
 
 //--------------------------------------------------------------------------------------------------
