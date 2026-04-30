@@ -30,6 +30,8 @@
 
 #include "base/logging.h"
 #include "client/database.h"
+#include "client/ui/hosts/local_computer_dialog.h"
+#include "common/ui/msg_box.h"
 
 namespace client {
 
@@ -163,12 +165,6 @@ void LocalGroupWidget::showGroup(qint64 group_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::setOnlineCheckEnabled(bool enable)
-{
-    online_check_enabled_ = enable;
-}
-
-//--------------------------------------------------------------------------------------------------
 void LocalGroupWidget::setConnectTime(qint64 computer_id, qint64 connect_time)
 {
     const int count = ui.tree_computer->topLevelItemCount();
@@ -181,6 +177,12 @@ void LocalGroupWidget::setConnectTime(qint64 computer_id, qint64 connect_time)
             break;
         }
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::setOnlineCheckEnabled(bool enable)
+{
+    online_check_enabled_ = enable;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -250,6 +252,149 @@ void LocalGroupWidget::detach(QStatusBar* statusbar)
 
     statusbar->removeWidget(status_check_label_);
     status_check_label_->setParent(this);
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::onAddComputer()
+{
+    LOG(INFO) << "[ACTION] Add computer";
+
+    if (current_group_id_ < 0)
+    {
+        LOG(INFO) << "No current group";
+        return;
+    }
+
+    LocalComputerDialog dialog(-1, current_group_id_, this);
+    if (dialog.exec() == LocalComputerDialog::Rejected)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
+
+    qint64 new_id = dialog.computerId();
+    showGroup(current_group_id_);
+    setCurrentComputer(new_id);
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::onEditComputer()
+{
+    LOG(INFO) << "[ACTION] Edit computer";
+
+    Item* item = currentItem();
+    if (!item)
+    {
+        LOG(INFO) << "No current local item";
+        return;
+    }
+
+    qint64 computer_id = item->computerId();
+
+    LocalComputerDialog dialog(computer_id, item->groupId(), this);
+    if (dialog.exec() == LocalComputerDialog::Rejected)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
+
+    std::optional<ComputerConfig> updated = Database::instance().findComputer(computer_id);
+    if (!updated.has_value())
+    {
+        // Row disappeared while the dialog was open - fall back to a full reload.
+        showGroup(current_group_id_);
+        return;
+    }
+
+    Item* refreshed = findItemByComputerId(computer_id);
+    if (refreshed)
+        refreshed->updateFrom(*updated);
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::onCopyComputer()
+{
+    LOG(INFO) << "[ACTION] Copy computer";
+
+    Item* item = currentItem();
+    if (!item)
+    {
+        LOG(INFO) << "No current local item";
+        return;
+    }
+
+    Database& db = Database::instance();
+
+    std::optional<ComputerConfig> computer = db.findComputer(item->computerId());
+    if (!computer.has_value())
+    {
+        common::MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
+        return;
+    }
+
+    computer->name += " " + tr("(copy)");
+
+    if (!db.addComputer(*computer))
+    {
+        common::MsgBox::warning(this, tr("Failed to add the computer to the local database."));
+        return;
+    }
+
+    showGroup(current_group_id_);
+    setCurrentComputer(computer->id);
+
+    LocalComputerDialog(computer->id, computer->group_id, this).exec();
+
+    std::optional<ComputerConfig> updated = db.findComputer(computer->id);
+    if (!updated.has_value())
+        return;
+
+    Item* refreshed = findItemByComputerId(computer->id);
+    if (refreshed)
+        refreshed->updateFrom(*updated);
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::onRemoveComputer()
+{
+    LOG(INFO) << "[ACTION] Delete computer";
+
+    Item* item = currentItem();
+    if (!item)
+    {
+        LOG(INFO) << "No current local item";
+        return;
+    }
+
+    QString message = tr("Are you sure you want to delete computer \"%1\"?").arg(item->computerName());
+
+    if (common::MsgBox::question(this, message) == common::MsgBox::No)
+    {
+        LOG(INFO) << "Action is rejected by user";
+        return;
+    }
+
+    qint64 computer_id = item->computerId();
+
+    if (!Database::instance().removeComputer(computer_id))
+    {
+        common::MsgBox::warning(this, tr("Unable to remove computer"));
+        LOG(INFO) << "Unable to remove computer with id" << computer_id;
+        return;
+    }
+
+    int row = ui.tree_computer->indexOfTopLevelItem(item);
+    delete ui.tree_computer->takeTopLevelItem(row);
+
+    int count = ui.tree_computer->topLevelItemCount();
+    if (count > 0)
+    {
+        int next_row = qMin(row, count - 1);
+        ui.tree_computer->setCurrentItem(ui.tree_computer->topLevelItem(next_row));
+        ui.tree_computer->setFocus();
+    }
+
+    updateStatusLabels();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -414,20 +559,34 @@ void LocalGroupWidget::clearOnlineStatuses()
 }
 
 //--------------------------------------------------------------------------------------------------
-LocalGroupWidget::Item::Item(const ComputerConfig& computer, QTreeWidget* parent)
-    : QTreeWidgetItem(parent),
-      computer_(computer)
+LocalGroupWidget::Item* LocalGroupWidget::findItemByComputerId(qint64 computer_id) const
 {
-    QString single_line_comment = computer.comment;
-    single_line_comment.replace('\n', ' ').replace('\r', ' ');
+    const int count = ui.tree_computer->topLevelItemCount();
+    for (int i = 0; i < count; ++i)
+    {
+        Item* item = static_cast<Item*>(ui.tree_computer->topLevelItem(i));
+        if (item->computerId() == computer_id)
+            return item;
+    }
+    return nullptr;
+}
 
-    setText(kColumnName, computer.name);
-    setText(kColumnAddress, computer.address);
-    setText(kColumnComment, single_line_comment);
-    setToolTip(kColumnComment, computer.comment);
-    setText(kColumnCreated, formatTimestamp(computer.create_time));
-    setText(kColumnModified, formatTimestamp(computer.modify_time));
-    setText(kColumnConnect, formatTimestamp(computer.connect_time));
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::setCurrentComputer(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    ui.tree_computer->setCurrentItem(item);
+    ui.tree_computer->setFocus();
+}
+
+//--------------------------------------------------------------------------------------------------
+LocalGroupWidget::Item::Item(const ComputerConfig& computer, QTreeWidget* parent)
+    : QTreeWidgetItem(parent)
+{
+    updateFrom(computer);
     setIcon(kColumnName, QIcon(":/img/computer.svg"));
 }
 
@@ -450,6 +609,23 @@ void LocalGroupWidget::Item::clearOnlineStatus()
 {
     setText(kColumnStatus, QString());
     setIcon(kColumnName, QIcon(":/img/computer.svg"));
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::Item::updateFrom(const ComputerConfig& computer)
+{
+    computer_ = computer;
+
+    QString single_line_comment = computer.comment;
+    single_line_comment.replace('\n', ' ').replace('\r', ' ');
+
+    setText(kColumnName, computer.name);
+    setText(kColumnAddress, computer.address);
+    setText(kColumnComment, single_line_comment);
+    setToolTip(kColumnComment, computer.comment);
+    setText(kColumnCreated, formatTimestamp(computer.create_time));
+    setText(kColumnModified, formatTimestamp(computer.modify_time));
+    setText(kColumnConnect, formatTimestamp(computer.connect_time));
 }
 
 //--------------------------------------------------------------------------------------------------

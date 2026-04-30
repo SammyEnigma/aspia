@@ -249,6 +249,7 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
             LOG(INFO) << "Unable to add computer to database";
             return;
         }
+        computer_id_ = computer.id;
     }
     else
     {

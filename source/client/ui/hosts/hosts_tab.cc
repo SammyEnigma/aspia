@@ -36,7 +36,6 @@
 #include "client/database.h"
 #include "client/settings.h"
 #include "client/ui/hosts/content_widget.h"
-#include "client/ui/hosts/local_computer_dialog.h"
 #include "client/ui/hosts/sidebar.h"
 #include "client/ui/hosts/local_group_dialog.h"
 #include "client/ui/hosts/local_group_widget.h"
@@ -164,10 +163,10 @@ HostsTab::HostsTab(QWidget* parent)
         if (computer_id != -1)
             local_group_widget_->setConnectTime(computer_id, QDateTime::currentSecsSinceEpoch());
     });
-    connect(action_add_computer_, &QAction::triggered, this, &HostsTab::onAddComputerAction);
-    connect(action_edit_computer_, &QAction::triggered, this, &HostsTab::onEditComputerAction);
-    connect(action_copy_computer_, &QAction::triggered, this, &HostsTab::onCopyComputerAction);
-    connect(action_delete_computer_, &QAction::triggered, this, &HostsTab::onDeleteComputerAction);
+    connect(action_add_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onAddComputer);
+    connect(action_edit_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onEditComputer);
+    connect(action_copy_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onCopyComputer);
+    connect(action_delete_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onRemoveComputer);
     connect(action_add_group_, &QAction::triggered, this, &HostsTab::onAddGroupAction);
     connect(action_edit_group_, &QAction::triggered, this, &HostsTab::onEditGroupAction);
     connect(action_delete_group_, &QAction::triggered, this, &HostsTab::onDeleteGroupAction);
@@ -390,116 +389,6 @@ void HostsTab::onSearchTextChanged(const QString& text)
         switchContent(search_widget_);
         search_widget_->search(text);
     }
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onAddComputerAction()
-{
-    LOG(INFO) << "[ACTION] Add computer";
-
-    Sidebar::Item* item = ui.sidebar->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local group item";
-        return;
-    }
-
-    LocalComputerDialog dialog(-1, item->groupId(), this);
-    if (dialog.exec() == LocalComputerDialog::Rejected)
-    {
-        LOG(INFO) << "[ACTION] Rejected by user";
-        return;
-    }
-
-    local_group_widget_->showGroup(ui.sidebar->currentGroupId());
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onEditComputerAction()
-{
-    LOG(INFO) << "[ACTION] Edit computer";
-
-    LocalGroupWidget::Item* item = local_group_widget_->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local item";
-        return;
-    }
-
-    LocalComputerDialog dialog(item->computerId(), item->groupId(), this);
-    if (dialog.exec() == LocalComputerDialog::Rejected)
-    {
-        LOG(INFO) << "[ACTION] Rejected by user";
-        return;
-    }
-
-    local_group_widget_->showGroup(ui.sidebar->currentGroupId());
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onCopyComputerAction()
-{
-    LOG(INFO) << "[ACTION] Copy computer";
-
-    LocalGroupWidget::Item* item = local_group_widget_->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local item";
-        return;
-    }
-
-    Database& db = Database::instance();
-
-    std::optional<ComputerConfig> computer = db.findComputer(item->computerId());
-    if (!computer.has_value())
-    {
-        common::MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
-        return;
-    }
-
-    computer->name += " " + tr("(copy)");
-
-    if (!db.addComputer(*computer))
-    {
-        common::MsgBox::warning(this, tr("Failed to add the computer to the local database."));
-        return;
-    }
-
-    qint64 current_group_id = ui.sidebar->currentGroupId();
-
-    local_group_widget_->showGroup(current_group_id);
-    LocalComputerDialog(computer->id, computer->group_id, this).exec();
-    local_group_widget_->showGroup(current_group_id);
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onDeleteComputerAction()
-{
-    LOG(INFO) << "[ACTION] Delete computer";
-
-    LocalGroupWidget::Item* item = local_group_widget_->currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local item";
-        return;
-    }
-
-    QString message = tr("Are you sure you want to delete computer \"%1\"?").arg(item->computerName());
-
-    if (common::MsgBox::question(this, message) == common::MsgBox::No)
-    {
-        LOG(INFO) << "Action is rejected by user";
-        return;
-    }
-
-    if (!Database::instance().removeComputer(item->computerId()))
-    {
-        common::MsgBox::warning(this, tr("Unable to remove computer"));
-        LOG(INFO) << "Unable to remove computer with id" << item->computerId();
-        return;
-    }
-
-    local_group_widget_->showGroup(ui.sidebar->currentGroupId());
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -58,6 +58,7 @@ public:
         void setConnectTime(qint64 connect_time);
         void setOnlineStatus(bool online);
         void clearOnlineStatus();
+        void updateFrom(const ComputerConfig& computer);
 
         bool operator<(const QTreeWidgetItem& other) const final;
 
@@ -115,6 +116,12 @@ public:
 
     QString mimeType() const { return mime_type_; }
 
+public slots:
+    void onAddComputer();
+    void onEditComputer();
+    void onCopyComputer();
+    void onRemoveComputer();
+
 protected:
     bool eventFilter(QObject* watched, QEvent* event) override;
 
@@ -134,6 +141,8 @@ private:
     void startOnlineChecker();
     void stopOnlineChecker();
     void clearOnlineStatuses();
+    Item* findItemByComputerId(qint64 computer_id) const;
+    void setCurrentComputer(qint64 computer_id);
 
     Ui::LocalGroupWidget ui;
     QString mime_type_;

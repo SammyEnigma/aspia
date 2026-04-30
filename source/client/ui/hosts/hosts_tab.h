@@ -64,10 +64,6 @@ signals:
 
 private slots:
     void onRouterStatusChanged(qint64 router_id, client::RouterConnection::Status status);
-    void onAddComputerAction();
-    void onEditComputerAction();
-    void onCopyComputerAction();
-    void onDeleteComputerAction();
     void onAddGroupAction();
     void onEditGroupAction();
     void onDeleteGroupAction();

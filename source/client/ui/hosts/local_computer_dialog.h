@@ -33,6 +33,8 @@ public:
     LocalComputerDialog(qint64 computer_id, qint64 group_id, QWidget* parent = nullptr);
     ~LocalComputerDialog() override;
 
+    qint64 computerId() const { return computer_id_; }
+
 private slots:
     void onShowPasswordButtonToggled(bool checked);
     void onRouterChanged(int index);
