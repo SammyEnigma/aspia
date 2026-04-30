@@ -54,16 +54,16 @@ Sidebar::Sidebar(QWidget* parent)
 
     layout->addWidget(tree_widget_);
 
+    loadRouters();
+
     GroupConfig local_root_data;
     local_root_data.id = 0;
     local_root_data.parent_id = 0;
     local_root_data.name = tr("Local");
 
-    // Create root groups in the tree.
+    // Create local root after routers so it appears at the bottom.
     local_root_ = new LocalGroup(local_root_data, tree_widget_);
     local_root_->setExpanded(true);
-
-    loadRouters();
 
     // Setup drag-and-drop.
     tree_widget_->setAcceptDrops(true);
@@ -175,6 +175,15 @@ void Sidebar::reloadRouters()
         {
             Router* new_router = new Router(router_config.router_id, name, tree_widget_);
             new_router->setExpanded(true);
+
+            // Keep ordering: routers first, local root last.
+            int local_idx = tree_widget_->indexOfTopLevelItem(local_root_);
+            int router_idx = tree_widget_->indexOfTopLevelItem(new_router);
+            if (router_idx > local_idx)
+            {
+                tree_widget_->takeTopLevelItem(router_idx);
+                tree_widget_->insertTopLevelItem(local_idx, new_router);
+            }
         }
     }
 }
