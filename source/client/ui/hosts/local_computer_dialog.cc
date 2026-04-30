@@ -270,7 +270,7 @@ void LocalComputerDialog::updateAddressLabel()
     if (ui.combo_router->currentData().toLongLong() == 0)
     {
         ui.label_address->setText(tr("Address:"));
-        ui.edit_address->setPlaceholderText(tr("Name or IP address"));
+        ui.edit_address->setPlaceholderText(tr("Computer name or IP address"));
     }
     else
     {

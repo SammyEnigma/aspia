@@ -37,7 +37,11 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="edit_name"/>
+      <widget class="QLineEdit" name="edit_name">
+       <property name="placeholderText">
+        <string>Display name</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -66,14 +70,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>client::GroupComboBox</class>
-   <extends>QComboBox</extends>
-   <header>client/ui/hosts/group_combo_box.h</header>
-  </customwidget>
-  <customwidget>
    <class>common::DialogButtonBox</class>
    <extends>QDialogButtonBox</extends>
    <header>common/ui/dialog_button_box.h</header>
+  </customwidget>
+  <customwidget>
+   <class>client::GroupComboBox</class>
+   <extends>QComboBox</extends>
+   <header>client/ui/hosts/group_combo_box.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -31,6 +31,9 @@
        <property name="maxLength">
         <number>64</number>
        </property>
+       <property name="placeholderText">
+        <string>Computer name or IP address</string>
+       </property>
       </widget>
      </item>
      <item row="1" column="0">
