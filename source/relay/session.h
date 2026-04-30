@@ -30,8 +30,6 @@
 
 class Location;
 
-namespace relay {
-
 class Session final : public QObject
 {
     Q_OBJECT
@@ -83,7 +81,5 @@ private:
     LOG_DECLARE_CONTEXT(Session);
     Q_DISABLE_COPY_MOVE(Session)
 };
-
-} // namespace relay
 
 #endif // RELAY_SESSION_H

@@ -25,8 +25,6 @@
 
 #include "base/location.h"
 
-namespace relay {
-
 namespace {
 
 constexpr std::chrono::seconds kTimeout{ 30 };
@@ -217,5 +215,3 @@ void PendingSession::onMessage()
 
     emit sig_ready(message);
 }
-
-} // namespace relay

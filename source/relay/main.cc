@@ -32,7 +32,7 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 int startService(QTextStream& out)
 {
-    std::unique_ptr<ServiceController> controller = ServiceController::open(relay::Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -52,7 +52,7 @@ int startService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int stopService(QTextStream& out)
 {
-    std::unique_ptr<ServiceController> controller = ServiceController::open(relay::Service::kName);
+    std::unique_ptr<ServiceController> controller = ServiceController::open(Service::kName);
     if (!controller)
     {
         out << "Failed to access the service. Not enough rights or service not installed." << Qt::endl;
@@ -73,14 +73,14 @@ int stopService(QTextStream& out)
 int installService(QTextStream& out)
 {
     std::unique_ptr<ServiceController> controller = ServiceController::install(
-        relay::Service::kName, relay::Service::kDisplayName, QCoreApplication::applicationFilePath());
+        Service::kName, Service::kDisplayName, QCoreApplication::applicationFilePath());
     if (!controller)
     {
         out << "Failed to install the service." << Qt::endl;
         return 1;
     }
 
-    controller->setDescription(relay::Service::kDescription);
+    controller->setDescription(Service::kDescription);
     out << "The service has been successfully installed." << Qt::endl;
     return 0;
 }
@@ -88,10 +88,10 @@ int installService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int removeService(QTextStream& out)
 {
-    if (ServiceController::isRunning(relay::Service::kName))
+    if (ServiceController::isRunning(Service::kName))
         stopService(out);
 
-    if (!ServiceController::remove(relay::Service::kName))
+    if (!ServiceController::remove(Service::kName))
     {
         out << "Failed to remove the service." << Qt::endl;
         return 1;
@@ -104,7 +104,7 @@ int removeService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int createConfig(QTextStream& out)
 {
-    relay::Settings settings;
+    Settings settings;
 
     if (!settings.isEmpty())
     {
@@ -168,5 +168,5 @@ int main(int argc, char* argv[])
     else if (parser.isSet(stop_option))
         return stopService(out);
 
-    return relay::Service().exec(application);
+    return Service().exec(application);
 }

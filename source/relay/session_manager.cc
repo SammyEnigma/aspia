@@ -27,8 +27,6 @@
 #include "relay/session.h"
 #include "relay/settings.h"
 
-namespace relay {
-
 namespace {
 
 const std::chrono::minutes kIdleTimerInterval { 1 };
@@ -467,5 +465,3 @@ void SessionManager::removeSession(Session* session)
     active_sessions_.removeOne(session);
     emit sig_finished();
 }
-
-} // namespace relay

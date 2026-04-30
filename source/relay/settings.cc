@@ -21,8 +21,6 @@
 #include "base/xml_settings.h"
 #include "build/build_config.h"
 
-namespace relay {
-
 //--------------------------------------------------------------------------------------------------
 Settings::Settings()
     : impl_(XmlSettings::format(), QSettings::SystemScope, "aspia", "relay")
@@ -184,5 +182,3 @@ std::chrono::seconds Settings::statisticsInterval() const
 {
     return std::chrono::seconds(impl_.value("statistics_interval", 5).toInt());
 }
-
-} // namespace relay

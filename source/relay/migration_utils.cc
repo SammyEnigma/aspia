@@ -27,8 +27,6 @@
 #include "base/files/base_paths.h"
 #include "relay/settings.h"
 
-namespace relay {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -188,5 +186,3 @@ void doMigration()
         }
     }
 }
-
-} // namespace relay

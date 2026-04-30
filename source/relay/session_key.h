@@ -21,8 +21,6 @@
 
 #include "base/crypto/key_pair.h"
 
-namespace relay {
-
 class SessionKey
 {
 public:
@@ -48,7 +46,5 @@ private:
 
     Q_DISABLE_COPY(SessionKey)
 };
-
-} // namespace relay
 
 #endif // RELAY_SESSION_KEY_H

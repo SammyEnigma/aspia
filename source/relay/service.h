@@ -26,8 +26,6 @@
 #include "base/net/tcp_channel.h"
 #include "proto/router_relay.h"
 
-namespace relay {
-
 class SessionManager;
 
 class Service final : public CoreService
@@ -84,7 +82,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Service)
 };
-
-} // namespace relay
 
 #endif // RELAY_SERVICE_H

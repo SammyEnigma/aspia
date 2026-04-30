@@ -22,8 +22,6 @@
 #include <QSettings>
 #include <chrono>
 
-namespace relay {
-
 class Settings
 {
 public:
@@ -69,7 +67,5 @@ public:
 private:
     QSettings impl_;
 };
-
-} // namespace relay
 
 #endif // RELAY_SETTINGS_H

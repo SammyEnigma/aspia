@@ -21,8 +21,6 @@
 #include "base/crypto/generic_hash.h"
 #include "base/crypto/random.h"
 
-namespace relay {
-
 //--------------------------------------------------------------------------------------------------
 SessionKey::SessionKey() = default;
 
@@ -104,5 +102,3 @@ QByteArray SessionKey::iv() const
 {
     return iv_;
 }
-
-} // namespace relay

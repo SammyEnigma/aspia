@@ -19,11 +19,7 @@
 #ifndef RELAY_MIGRATION_UTILS_H
 #define RELAY_MIGRATION_UTILS_H
 
-namespace relay {
-
 bool isMigrationNeeded();
 void doMigration();
-
-} // namespace relay
 
 #endif // RELAY_MIGRATION_UTILS_H

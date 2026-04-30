@@ -29,8 +29,6 @@
 #include "relay/settings.h"
 #include "proto/router.h"
 
-namespace relay {
-
 namespace {
 
 const std::chrono::seconds kReconnectTimeout{ 15 };
@@ -349,5 +347,3 @@ void Service::sendKeyPool(quint32 key_count)
     // Send a message to the router.
     tcp_channel_->send(0, outgoing_message_.serialize());
 }
-
-} // namespace relay

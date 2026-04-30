@@ -32,8 +32,6 @@ class QTimer;
 
 class Location;
 
-namespace relay {
-
 class PendingSession final : public QObject
 {
     Q_OBJECT
@@ -91,7 +89,5 @@ private:
     LOG_DECLARE_CONTEXT(PendingSession);
     Q_DISABLE_COPY_MOVE(PendingSession)
 };
-
-} // namespace relay
 
 #endif // RELAY_PENDING_SESSION_H

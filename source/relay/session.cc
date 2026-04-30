@@ -24,8 +24,6 @@
 
 #include <asio/write.hpp>
 
-namespace relay {
-
 //--------------------------------------------------------------------------------------------------
 Session::Session(std::pair<asio::ip::tcp::socket, asio::ip::tcp::socket>&& sockets,
                  const QByteArray& secret, QObject* parent)
@@ -144,5 +142,3 @@ void Session::onErrorOccurred(const Location& location, const std::error_code& e
     CLOG(INFO) << "Connection finished:" << error_code << "from" << location;
     emit sig_finished();
 }
-
-} // namespace relay

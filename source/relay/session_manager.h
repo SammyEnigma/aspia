@@ -31,8 +31,6 @@
 
 class QTimer;
 
-namespace relay {
-
 class PendingSession;
 class Session;
 
@@ -94,7 +92,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SessionManager)
 };
-
-} // namespace relay
 
 #endif // RELAY_SESSION_MANAGER_H
