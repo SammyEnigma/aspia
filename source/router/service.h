@@ -21,7 +21,7 @@
 
 #include <QList>
 
-#include "base/service.h"
+#include "base/core_service.h"
 #include "base/peer/host_id.h"
 #include "base/net/tcp_server.h"
 #include "base/net/tcp_server_legacy.h"
@@ -34,7 +34,7 @@ namespace router {
 class SessionHost;
 class SessionRelay;
 
-class Service final : public base::Service
+class Service final : public CoreService
 {
     Q_OBJECT
 

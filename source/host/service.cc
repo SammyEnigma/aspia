@@ -75,7 +75,7 @@ const char Service::kDescription[] = "Accepts incoming remote desktop connection
 
 //--------------------------------------------------------------------------------------------------
 Service::Service(QObject* parent)
-    : base::Service(kName, parent),
+    : CoreService(kName, parent),
       repeated_timer_(new QTimer(this)),
       settings_watcher_(new QFileSystemWatcher(this)),
       tcp_server_(new TcpServer(this)),

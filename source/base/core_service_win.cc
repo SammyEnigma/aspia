@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "base/service.h"
+#include "base/core_service.h"
 
 #include <QTimer>
 #include <QThread>
@@ -28,8 +28,6 @@
 #include "base/win/security_helpers.h"
 
 #include <sddl.h>
-
-namespace base {
 
 namespace {
 
@@ -114,7 +112,7 @@ QString serviceStateToString(DWORD state)
 class ServiceThread final : public QThread
 {
 public:
-    ServiceThread(Service* service);
+    ServiceThread(CoreService* service);
     ~ServiceThread();
 
     using EventCallback = std::function<void()>;
@@ -151,7 +149,7 @@ private:
     static DWORD WINAPI serviceControlHandler(
         DWORD control_code, DWORD event_type, LPVOID event_data, LPVOID context);
 
-    Service* service_;
+    CoreService* service_;
 
     SERVICE_STATUS_HANDLE status_handle_ = nullptr;
     SERVICE_STATUS status_;
@@ -167,7 +165,7 @@ private:
 ServiceThread* ServiceThread::self = nullptr;
 
 //--------------------------------------------------------------------------------------------------
-ServiceThread::ServiceThread(Service* service)
+ServiceThread::ServiceThread(CoreService* service)
     : service_(service)
 {
     LOG(INFO) << "Ctor";
@@ -193,7 +191,7 @@ ServiceThread::~ServiceThread()
 //--------------------------------------------------------------------------------------------------
 void ServiceThread::setStatus(DWORD status)
 {
-    LOG(INFO) << "Service status changed:" << serviceStateToString(status);
+    LOG(INFO) << "CoreService status changed:" << serviceStateToString(status);
 
     status_.dwServiceType = SERVICE_WIN32;
     status_.dwControlsAccepted = 0;
@@ -318,7 +316,7 @@ void WINAPI ServiceThread::serviceMain(DWORD /* argc */, LPWSTR* /* argv */)
     }
 
     self->setStatus(SERVICE_START_PENDING);
-    self->doEvent(std::bind(&Service::onStart, self->service_));
+    self->doEvent(std::bind(&CoreService::onStart, self->service_));
     self->setStatus(SERVICE_RUNNING);
 }
 
@@ -371,7 +369,7 @@ DWORD WINAPI ServiceThread::serviceControlHandler(
             if (control_code == SERVICE_CONTROL_STOP)
                 self->setStatus(SERVICE_STOP_PENDING);
 
-            self->doEvent(std::bind(&Service::onStop, self->service_), true);
+            self->doEvent(std::bind(&CoreService::onStop, self->service_), true);
         }
         return NO_ERROR;
 
@@ -383,7 +381,7 @@ DWORD WINAPI ServiceThread::serviceControlHandler(
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-Service::Service(const QString& name, QObject* parent)
+CoreService::CoreService(const QString& name, QObject* parent)
     : QObject(parent),
       name_(name)
 {
@@ -391,13 +389,13 @@ Service::Service(const QString& name, QObject* parent)
 }
 
 //--------------------------------------------------------------------------------------------------
-Service::~Service()
+CoreService::~CoreService()
 {
     LOG(INFO) << "Dtor";
 }
 
 //--------------------------------------------------------------------------------------------------
-int Service::exec(CoreApplication& application)
+int CoreService::exec(CoreApplication& application)
 {
     LOG(INFO) << "Begin";
 
@@ -430,8 +428,8 @@ int Service::exec(CoreApplication& application)
         service_thread->startup_condition.notify_all();
     }
 
-    connect(this, &Service::sig_powerEvent, &application, &CoreApplication::sig_powerEvent);
-    connect(this, &Service::sig_sessionEvent, &application, &CoreApplication::sig_sessionEvent);
+    connect(this, &CoreService::sig_powerEvent, &application, &CoreApplication::sig_powerEvent);
+    connect(this, &CoreService::sig_sessionEvent, &application, &CoreApplication::sig_sessionEvent);
 
     int ret = application.exec();
     service_thread.reset();
@@ -439,5 +437,3 @@ int Service::exec(CoreApplication& application)
     LOG(INFO) << "End";
     return ret;
 }
-
-} // namespace base

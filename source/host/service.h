@@ -22,7 +22,7 @@
 #include <QTime>
 
 #include "base/scoped_qpointer.h"
-#include "base/service.h"
+#include "base/core_service.h"
 #include "host/system_settings.h"
 #include "proto/router_peer.h"
 
@@ -50,7 +50,7 @@ class DesktopManager;
 class RouterManager;
 class UserSession;
 
-class Service final : public base::Service
+class Service final : public CoreService
 {
     Q_OBJECT
 

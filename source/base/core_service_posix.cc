@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "base/service.h"
+#include "base/core_service.h"
 
 #include <QCoreApplication>
 #include <QTimer>
@@ -25,11 +25,9 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
-Service* g_self = nullptr;
+CoreService* g_self = nullptr;
 
 //--------------------------------------------------------------------------------------------------
 QString sigToString(int sig)
@@ -58,7 +56,7 @@ QString sigToString(int sig)
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-Service::Service(const QString& name, QObject* parent)
+CoreService::CoreService(const QString& name, QObject* parent)
     : name_(name)
 {
     LOG(INFO) << "Ctor";
@@ -66,14 +64,14 @@ Service::Service(const QString& name, QObject* parent)
 }
 
 //--------------------------------------------------------------------------------------------------
-Service::~Service()
+CoreService::~CoreService()
 {
     LOG(INFO) << "Dtor";
     g_self = nullptr;
 }
 
 //--------------------------------------------------------------------------------------------------
-int Service::exec(CoreApplication& application)
+int CoreService::exec(CoreApplication& application)
 {
     LOG(INFO) << "Begin";
 
@@ -98,7 +96,7 @@ int Service::exec(CoreApplication& application)
     if (signal(SIGABRT, signalHandler) == SIG_ERR)
         LOG(ERROR) << "Unable to install signal handler for SIGABRT";
 
-    QTimer::singleShot(0, this, &Service::onStart);
+    QTimer::singleShot(0, this, &CoreService::onStart);
 
     LOG(INFO) << "Run message loop";
     int ret = application.exec();
@@ -108,7 +106,7 @@ int Service::exec(CoreApplication& application)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Service::stopHandlerImpl()
+void CoreService::stopHandlerImpl()
 {
     QTimer::singleShot(0, this, [this]()
     {
@@ -120,7 +118,7 @@ void Service::stopHandlerImpl()
 
 //--------------------------------------------------------------------------------------------------
 // static
-void Service::signalHandler(int sig)
+void CoreService::signalHandler(int sig)
 {
     LOG(INFO) << "Signal received: " << sigToString(sig) << " (" << sig << ")";
 
@@ -139,5 +137,3 @@ void Service::signalHandler(int sig)
             break;
     }
 }
-
-} // namespace base

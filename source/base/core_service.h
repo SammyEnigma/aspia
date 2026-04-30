@@ -16,26 +16,24 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef BASE_SERVICE_H
-#define BASE_SERVICE_H
+#ifndef BASE_CORE_SERVICE_H
+#define BASE_CORE_SERVICE_H
 
 #include <QString>
 
 #include "base/core_application.h"
 
-namespace base {
-
 namespace {
 class ServiceThread;
 } // namespace
 
-class Service : public QObject
+class CoreService : public QObject
 {
     Q_OBJECT
 
 public:
-    Service(const QString& name, QObject* parent);
-    virtual ~Service();
+    CoreService(const QString& name, QObject* parent);
+    virtual ~CoreService();
 
     int exec(CoreApplication& application);
 
@@ -59,9 +57,7 @@ private:
 
     QString name_;
 
-    Q_DISABLE_COPY_MOVE(Service)
+    Q_DISABLE_COPY_MOVE(CoreService)
 };
 
-} // namespace base
-
-#endif // BASE_SERVICE_H
+#endif // BASE_CORE_SERVICE_H

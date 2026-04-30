@@ -71,7 +71,7 @@ const char Service::kDescription[] = "Proxies user traffic to bypass NAT.";
 
 //--------------------------------------------------------------------------------------------------
 Service::Service(QObject* parent)
-    : base::Service(Service::kName, parent),
+    : CoreService(Service::kName, parent),
       reconnect_timer_(new QTimer(this))
 {
     LOG(INFO) << "Ctor";

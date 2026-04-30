@@ -27,6 +27,7 @@ list(APPEND SOURCE_BASE
     bucket_pool.h
     core_application.cc
     core_application.h
+    core_service.h
     cpuid_util.cc
     cpuid_util.h
     crash_handler.cc
@@ -51,7 +52,6 @@ list(APPEND SOURCE_BASE
     scoped_qpointer.h
     serialization.cc
     serialization.h
-    service.h
     service_controller.cc
     service_controller.h
     session_id.cc
@@ -75,23 +75,23 @@ list(APPEND SOURCE_BASE
 
 if (WIN32)
     list(APPEND SOURCE_BASE
+        core_service_win.cc
         service_controller_win.cc
         service_controller_win.h
-        service_win.cc
         sys_info_win.cc)
 endif()
 
 if (LINUX)
     list(APPEND SOURCE_BASE
+        core_service_posix.cc
         service_controller_systemd.cc
         service_controller_systemd.h
-        service_posix.cc
         sys_info_linux.cc)
 endif()
 
 if (APPLE)
     list(APPEND SOURCE_BASE
-        service_posix.cc
+        core_service_posix.cc
         sys_info_mac.mm)
 endif()
 

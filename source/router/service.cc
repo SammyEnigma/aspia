@@ -78,7 +78,7 @@ const char Service::kDescription[] =
 
 //--------------------------------------------------------------------------------------------------
 Service::Service(QObject* parent)
-    : base::Service(Service::kName, parent)
+    : CoreService(Service::kName, parent)
 {
     LOG(INFO) << "Ctor";
     instance_ = this;

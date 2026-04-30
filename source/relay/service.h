@@ -22,7 +22,7 @@
 #include <QTimer>
 
 #include "base/serialization.h"
-#include "base/service.h"
+#include "base/core_service.h"
 #include "base/net/tcp_channel.h"
 #include "proto/router_relay.h"
 
@@ -30,7 +30,7 @@ namespace relay {
 
 class SessionManager;
 
-class Service final : public base::Service
+class Service final : public CoreService
 {
     Q_OBJECT
 
