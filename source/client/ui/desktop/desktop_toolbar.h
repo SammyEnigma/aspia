@@ -25,8 +25,6 @@
 #include "proto/peer.h"
 #include "ui_desktop_toolbar.h"
 
-namespace client {
-
 class DesktopToolBar final : public QFrame
 {
     Q_OBJECT
@@ -135,7 +133,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopToolBar)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_DESKTOP_TOOLBAR_H

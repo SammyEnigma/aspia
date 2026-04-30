@@ -21,8 +21,6 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 SessionTab::SessionTab(const QString& title, QWidget* parent)
     : ClientTab(Type::SESSION, "session", parent)
@@ -49,5 +47,3 @@ void SessionTab::detach(QStatusBar* /* statusbar */)
 {
     // Nothing
 }
-
-} // namespace client

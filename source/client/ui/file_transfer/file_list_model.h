@@ -24,8 +24,6 @@
 
 #include "client/file_transfer.h"
 
-namespace client {
-
 class FileListModel final : public QAbstractItemModel
 {
     Q_OBJECT
@@ -101,7 +99,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileListModel)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_LIST_MODEL_H

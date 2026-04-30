@@ -18,8 +18,6 @@
 
 #include "client/ui/client_tab.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 ClientTab::ClientTab(Type type, const QString& object_name, QWidget* parent)
     : QWidget(parent),
@@ -67,5 +65,3 @@ void ClientTab::addActions(ActionRole group, const QList<QAction*>& actions)
 {
     action_groups_.append({ group, actions });
 }
-
-} // namespace client

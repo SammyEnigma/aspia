@@ -22,8 +22,6 @@
 #include <QSettings>
 #include <chrono>
 
-namespace client {
-
 class TaskManagerSettings
 {
 public:
@@ -48,7 +46,5 @@ private:
     QSettings settings_;
     Q_DISABLE_COPY_MOVE(TaskManagerSettings)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_TASK_MANAGER_SETTINGS_H

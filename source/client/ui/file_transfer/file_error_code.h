@@ -23,10 +23,6 @@
 
 #include <QString>
 
-namespace client {
-
 QString fileErrorToString(proto::file_transfer::ErrorCode error_code);
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_ERROR_CODE_H

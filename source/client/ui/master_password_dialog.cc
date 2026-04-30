@@ -26,8 +26,6 @@
 #include <QPushButton>
 #include <QTimer>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 MasterPasswordDialog::MasterPasswordDialog(Mode mode, QWidget* parent)
     : QDialog(parent),
@@ -108,12 +106,12 @@ bool MasterPasswordDialog::applySet()
     QString new_password = ui.edit_new->text();
     QString confirm = ui.edit_confirm->text();
 
-    if (!MasterPassword::isSafePassword(new_password))
+    if (!client::MasterPassword::isSafePassword(new_password))
     {
         QString unsafe = tr("Password you entered does not meet the security requirements!");
         QString safe = tr("The password must contain lowercase and uppercase characters, "
                           "numbers and should not be shorter than %n characters.",
-                          "", MasterPassword::kSafePasswordLength);
+                          "", client::MasterPassword::kSafePasswordLength);
         QString question = tr("Do you want to enter a different password?");
 
         MsgBox message_box(MsgBox::Warning,
@@ -131,7 +129,7 @@ bool MasterPasswordDialog::applySet()
         return false;
     }
 
-    if (!MasterPassword::setNew(new_password))
+    if (!client::MasterPassword::setNew(new_password))
     {
         MsgBox::warning(this, tr("Unable to set master password."));
         return false;
@@ -153,12 +151,12 @@ bool MasterPasswordDialog::applyChange()
         return false;
     }
 
-    if (!MasterPassword::isSafePassword(new_password))
+    if (!client::MasterPassword::isSafePassword(new_password))
     {
         QString unsafe = tr("Password you entered does not meet the security requirements!");
         QString safe = tr("The password must contain lowercase and uppercase characters, "
                           "numbers and should not be shorter than %n characters.",
-                          "", MasterPassword::kSafePasswordLength);
+                          "", client::MasterPassword::kSafePasswordLength);
         QString question = tr("Do you want to enter a different password?");
 
         MsgBox message_box(MsgBox::Warning,
@@ -176,7 +174,7 @@ bool MasterPasswordDialog::applyChange()
         return false;
     }
 
-    if (!MasterPassword::change(current, new_password))
+    if (!client::MasterPassword::change(current, new_password))
     {
         MsgBox::warning(this, tr("Invalid current password or unable to change it."));
         return false;
@@ -196,7 +194,7 @@ bool MasterPasswordDialog::applyRemove()
         return false;
     }
 
-    if (!MasterPassword::clear(current))
+    if (!client::MasterPassword::clear(current))
     {
         MsgBox::warning(this, tr("Invalid current password or unable to remove it."));
         return false;
@@ -204,5 +202,3 @@ bool MasterPasswordDialog::applyRemove()
 
     return true;
 }
-
-} // namespace client

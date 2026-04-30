@@ -24,8 +24,6 @@
 #include "client/file_transfer.h"
 #include "proto/file_transfer.h"
 
-namespace client {
-
 class AddressBarModel;
 class FileListModel;
 
@@ -67,7 +65,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileList)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_LIST_H

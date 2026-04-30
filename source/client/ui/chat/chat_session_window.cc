@@ -23,8 +23,6 @@
 #include "client/client_text_chat.h"
 #include "ui_chat_session_window.h"
 
-namespace client {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -72,19 +70,19 @@ ChatSessionWindow::~ChatSessionWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-Client* ChatSessionWindow::createClient()
+client::Client* ChatSessionWindow::createClient()
 {
     LOG(INFO) << "Create client";
 
     ui->text_chat_widget->setHistoryId(chatHistoryId(*sessionState()));
 
-    ClientChat* client = new ClientChat();
+    client::ClientChat* client = new client::ClientChat();
 
-    connect(this, &ChatSessionWindow::sig_chatMessage, client, &ClientChat::onChatMessage,
+    connect(this, &ChatSessionWindow::sig_chatMessage, client, &client::ClientChat::onChatMessage,
             Qt::QueuedConnection);
-    connect(client, &ClientChat::sig_showSessionWindow, this, &ChatSessionWindow::onShowWindow,
+    connect(client, &client::ClientChat::sig_showSessionWindow, this, &ChatSessionWindow::onShowWindow,
             Qt::QueuedConnection);
-    connect(client, &ClientChat::sig_chatMessage, this, &ChatSessionWindow::onChatMessage,
+    connect(client, &client::ClientChat::sig_chatMessage, this, &ChatSessionWindow::onChatMessage,
             Qt::QueuedConnection);
 
     return client;
@@ -129,5 +127,3 @@ void ChatSessionWindow::onInternalReset()
 {
     // Nothing
 }
-
-} // namespace client

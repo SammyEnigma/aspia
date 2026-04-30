@@ -22,8 +22,6 @@
 
 #include "common/system_info_constants.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 SysInfoWidgetEnvVars::SysInfoWidgetEnvVars(QWidget* parent)
     : SysInfoWidget(parent)
@@ -115,5 +113,3 @@ void SysInfoWidgetEnvVars::onContextMenu(const QPoint& point)
 
     menu.exec(ui.tree->viewport()->mapToGlobal(point));
 }
-
-} // namespace client

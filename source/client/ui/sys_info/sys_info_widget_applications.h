@@ -22,8 +22,6 @@
 #include "client/ui/sys_info/sys_info_widget.h"
 #include "ui_sys_info_widget_applications.h"
 
-namespace client {
-
 class SysInfoWidgetApplications final : public SysInfoWidget
 {
     Q_OBJECT
@@ -44,7 +42,5 @@ private:
     Ui::SysInfoApplications ui;
     int current_column_ = 0;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_APPLICATIONS_H

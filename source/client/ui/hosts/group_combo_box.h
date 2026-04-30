@@ -24,8 +24,6 @@
 
 class QStandardItem;
 
-namespace client {
-
 class GroupComboBox : public QComboBox
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(GroupComboBox)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_GROUP_COMBO_BOX_H

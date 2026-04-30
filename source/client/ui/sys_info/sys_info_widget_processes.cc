@@ -22,8 +22,6 @@
 
 #include "common/system_info_constants.h"
 
-namespace client {
-
 namespace {
 
 class ProcessTreeItem final : public QTreeWidgetItem
@@ -195,5 +193,3 @@ void SysInfoWidgetProcesses::onContextMenu(const QPoint& point)
 
     menu.exec(ui.tree->viewport()->mapToGlobal(point));
 }
-
-} // namespace client

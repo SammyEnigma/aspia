@@ -58,4 +58,3 @@ void ChatOutgoingMessage::resizeEvent(QResizeEvent* /* event */)
 {
     adjustSize();
 }
-

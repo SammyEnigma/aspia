@@ -24,8 +24,6 @@
 #include "client/client_desktop.h"
 #include "ui_statistics_dialog.h"
 
-namespace client {
-
 class StatisticsDialog final : public QDialog
 {
     Q_OBJECT
@@ -34,7 +32,7 @@ public:
     explicit StatisticsDialog(QWidget* parent = nullptr);
     ~StatisticsDialog() final;
 
-    void setMetrics(const ClientDesktop::Metrics& metrics);
+    void setMetrics(const client::ClientDesktop::Metrics& metrics);
 
 signals:
     void sig_metricsRequired();
@@ -49,7 +47,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(StatisticsDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_STATISTICS_DIALOG_H

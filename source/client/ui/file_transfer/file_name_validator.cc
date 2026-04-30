@@ -20,8 +20,6 @@
 
 #include "common/file_platform_util.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 FileNameValidator::FileNameValidator(QObject* parent)
     : QValidator(parent)
@@ -62,5 +60,3 @@ void FileNameValidator::fixup(QString& input) const
             input.remove(*it);
     }
 }
-
-} // namespace client

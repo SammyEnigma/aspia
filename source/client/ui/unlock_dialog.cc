@@ -24,8 +24,6 @@
 
 #include "base/logging.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 UnlockDialog::UnlockDialog(QWidget* parent,
                            const QString& file_path,
@@ -101,5 +99,3 @@ void UnlockDialog::onButtonBoxClicked(QAbstractButton* button)
 
     close();
 }
-
-} // namespace client

@@ -23,8 +23,6 @@
 
 class QAbstractButton;
 
-namespace client {
-
 class AuthorizationDialog final : public QDialog
 {
     Q_OBJECT
@@ -56,7 +54,5 @@ private:
     Ui::AuthorizationDialog ui;
     Q_DISABLE_COPY_MOVE(AuthorizationDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_AUTHORIZATION_DIALOG_H

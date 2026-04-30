@@ -25,8 +25,6 @@
 #include <QTreeView>
 #include <QToolTip>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 AddressBar::AddressBar(QWidget* parent)
     : QComboBox(parent)
@@ -121,5 +119,3 @@ void AddressBar::onPathIndexChanged(const QModelIndex& index)
 
     emit sig_pathChanged(currentPath());
 }
-
-} // namespace client

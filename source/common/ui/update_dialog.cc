@@ -252,4 +252,3 @@ void UpdateDialog::initialize()
 
     ui->label_current->setText(base::kCurrentVersion.toString());
 }
-

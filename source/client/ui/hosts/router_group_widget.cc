@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 RouterGroupWidget::RouterGroupWidget(QWidget* parent)
     : ContentWidget(Type::ROUTER_GROUP, parent)
@@ -54,5 +52,3 @@ void RouterGroupWidget::restoreState(const QByteArray& /* state */)
 {
 
 }
-
-} // namespace client

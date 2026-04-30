@@ -25,8 +25,6 @@
 
 #include "common/system_info_constants.h"
 
-namespace client {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -297,5 +295,3 @@ QString SysInfoWidgetMonitors::inputSignalTypeToString(
             return tr("Unknown");
     }
 }
-
-} // namespace client

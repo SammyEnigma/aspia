@@ -24,8 +24,6 @@
 #include <QFileDialog>
 #include <QTimer>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 RecordSettingsDialog::RecordSettingsDialog(QWidget* parent)
     : QDialog(parent)
@@ -93,5 +91,3 @@ void RecordSettingsDialog::onButtonBoxClicked(QAbstractButton* button)
 
     close();
 }
-
-} // namespace client

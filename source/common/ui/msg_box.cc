@@ -99,4 +99,3 @@ int MsgBox::question(QWidget* parent, const QString& text, StandardButtons butto
     MsgBox message_box(QMessageBox::Question, tr("Confirmation"), text, buttons, parent);
     return message_box.exec();
 }
-

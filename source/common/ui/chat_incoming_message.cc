@@ -63,4 +63,3 @@ QString ChatIncomingMessage::messageTime() const
 {
     return ui.label_time->text();
 }
-

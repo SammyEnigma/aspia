@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "common/file_platform_util.h"
 
-namespace client {
-
 namespace {
 
 const quintptr kComputerItem = 1;
@@ -501,5 +499,3 @@ QString AddressBarModel::sizeToString(qint64 size)
         .arg(static_cast<double>(size) / static_cast<double>(divider), 0, 'g', 4)
         .arg(units);
 }
-
-} // namespace client

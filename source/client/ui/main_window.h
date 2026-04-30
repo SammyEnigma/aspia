@@ -32,10 +32,10 @@ namespace common {
 class UpdateChecker;
 } // namespace common
 
-namespace client {
-
 class ClientTab;
+namespace client {
 struct ComputerConfig;
+} // namespace client
 
 class MainWindow final : public QMainWindow
 {
@@ -86,7 +86,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(MainWindow)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_MAIN_WINDOW_H

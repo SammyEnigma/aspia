@@ -37,15 +37,15 @@
      <property name="handleWidth">
       <number>3</number>
      </property>
-     <widget class="client::FilePanel" name="local_panel" native="true"/>
-     <widget class="client::FilePanel" name="remote_panel" native="true"/>
+     <widget class="FilePanel" name="local_panel" native="true"/>
+     <widget class="FilePanel" name="remote_panel" native="true"/>
     </widget>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>client::FilePanel</class>
+   <class>FilePanel</class>
    <extends>QWidget</extends>
    <header>client/ui/file_transfer/file_panel.h</header>
    <container>1</container>

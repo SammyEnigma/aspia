@@ -24,8 +24,6 @@
 #include <QDateTime>
 #include <QLocale>
 
-namespace client {
-
 namespace {
 
 enum Column
@@ -404,7 +402,7 @@ QStringList FileListModel::mimeTypes() const
 //--------------------------------------------------------------------------------------------------
 QMimeData* FileListModel::mimeData(const QModelIndexList& indexes) const
 {
-    QList<FileTransfer::Item> file_list;
+    QList<client::FileTransfer::Item> file_list;
 
     for (const auto& index : indexes)
     {
@@ -590,5 +588,3 @@ QString FileListModel::timeToString(time_t time)
 {
     return QLocale::system().toString(QDateTime::fromSecsSinceEpoch(time), QLocale::ShortFormat);
 }
-
-} // namespace client

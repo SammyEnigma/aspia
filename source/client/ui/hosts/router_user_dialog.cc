@@ -25,8 +25,6 @@
 #include <QAbstractButton>
 #include <QPushButton>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 RouterUserDialog::RouterUserDialog(const base::User& user, const QStringList& users, QWidget* parent)
     : QDialog(parent),
@@ -304,5 +302,3 @@ QString RouterUserDialog::sessionTypeToString(proto::router::SessionType session
 
     return tr(str);
 }
-
-} // namespace client

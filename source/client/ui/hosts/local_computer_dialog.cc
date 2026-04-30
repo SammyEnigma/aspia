@@ -31,8 +31,6 @@
 #include "client/ui/hosts/group_combo_box.h"
 #include "common/ui/msg_box.h"
 
-namespace client {
-
 namespace {
 
 constexpr int kMaxNameLength = 64;
@@ -52,8 +50,8 @@ LocalComputerDialog::LocalComputerDialog(qint64 computer_id, qint64 group_id, QW
 
     ui.combo_router->addItem(QIcon(":/img/connect.svg"), tr("Without Router"), QVariant::fromValue<qint64>(0));
 
-    QList<RouterConfig> routers = Database::instance().routerList();
-    for (const RouterConfig& router : std::as_const(routers))
+    QList<client::RouterConfig> routers = client::Database::instance().routerList();
+    for (const client::RouterConfig& router : std::as_const(routers))
     {
         ui.combo_router->addItem(QIcon(":/img/stack.svg"), router.displayName(), QVariant::fromValue(router.router_id));
     }
@@ -64,7 +62,7 @@ LocalComputerDialog::LocalComputerDialog(qint64 computer_id, qint64 group_id, QW
     {
         setWindowTitle(tr("Edit Computer"));
 
-        std::optional<ComputerConfig> computer = Database::instance().findComputer(computer_id_);
+        std::optional<client::ComputerConfig> computer = client::Database::instance().findComputer(computer_id_);
         if (computer.has_value())
         {
             ui.edit_name->setText(computer->name);
@@ -217,8 +215,8 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
 
     qint64 group_id = ui.combo_group->currentGroupId();
 
-    QList<ComputerConfig> computers = Database::instance().computerList(group_id);
-    for (const ComputerConfig& existing : std::as_const(computers))
+    QList<client::ComputerConfig> computers = client::Database::instance().computerList(group_id);
+    for (const client::ComputerConfig& existing : std::as_const(computers))
     {
         if (existing.id != computer_id_ && existing.name == name)
         {
@@ -229,7 +227,7 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
         }
     }
 
-    ComputerConfig computer;
+    client::ComputerConfig computer;
     computer.id = computer_id_;
     computer.group_id = group_id;
     computer.router_id = router_id;
@@ -239,7 +237,7 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
     computer.password = ui.edit_password->text();
     computer.comment = ui.edit_comment->toPlainText();
 
-    Database& db = Database::instance();
+    client::Database& db = client::Database::instance();
 
     if (computer_id_ == -1)
     {
@@ -278,5 +276,3 @@ void LocalComputerDialog::updateAddressLabel()
         ui.edit_address->setPlaceholderText(tr("Host ID"));
     }
 }
-
-} // namespace client

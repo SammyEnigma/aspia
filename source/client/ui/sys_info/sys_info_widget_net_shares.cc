@@ -23,8 +23,6 @@
 #include "base/logging.h"
 #include "common/system_info_constants.h"
 
-namespace client {
-
 namespace {
 
 class Item : public QTreeWidgetItem
@@ -179,5 +177,3 @@ void SysInfoWidgetNetShares::onContextMenu(const QPoint& point)
 
     menu.exec(ui.tree->viewport()->mapToGlobal(point));
 }
-
-} // namespace client

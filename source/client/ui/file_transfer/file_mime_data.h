@@ -23,8 +23,6 @@
 
 #include "client/file_transfer.h"
 
-namespace client {
-
 class FileListModel;
 
 class FileMimeData final : public QMimeData
@@ -38,8 +36,8 @@ public:
     void setMimeType(const QString& mime_type);
     QString mimeType() const { return mime_type_; }
 
-    void setFileList(const QList<FileTransfer::Item>& file_list);
-    QList<FileTransfer::Item> fileList() const { return file_list_; }
+    void setFileList(const QList<client::FileTransfer::Item>& file_list);
+    QList<client::FileTransfer::Item> fileList() const { return file_list_; }
 
     void setSource(const FileListModel* source);
     const FileListModel* source() const { return source_; }
@@ -47,11 +45,9 @@ public:
 private:
     const FileListModel* source_;
     QString mime_type_;
-    QList<FileTransfer::Item> file_list_;
+    QList<client::FileTransfer::Item> file_list_;
 
     Q_DISABLE_COPY_MOVE(FileMimeData)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_MIME_DATA_H

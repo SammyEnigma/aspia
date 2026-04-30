@@ -33,8 +33,6 @@ namespace base {
 class User;
 } // namespace base
 
-namespace client {
-
 class ContentWidget;
 class LocalGroupWidget;
 class RouterWidget;
@@ -64,8 +62,8 @@ signals:
 
 private slots:
     void onRouterStatusChanged(qint64 router_id, client::RouterConnection::Status status);
-    void onSwitchContent(client::Sidebar::Item::Type type);
-    void onSidebarContextMenu(client::Sidebar::Item::Type type, const QPoint& pos);
+    void onSwitchContent(Sidebar::Item::Type type);
+    void onSidebarContextMenu(Sidebar::Item::Type type, const QPoint& pos);
     void onCurrentComputerChanged(qint64 computer_id);
     void onConnectAction(QAction* action);
     void onLocalConnect(qint64 computer_id);
@@ -91,12 +89,12 @@ private:
 
     void destroyAllRouterWidgets();
     void destroyRouterWidget(qint64 router_id);
-    RouterWidget* createRouterWidget(const RouterConfig& config);
+    RouterWidget* createRouterWidget(const client::RouterConfig& config);
 
     void editRouter(qint64 router_id);
     void deleteRouter(qint64 router_id);
 
-    bool validateComputerForConnect(const ComputerConfig& computer);
+    bool validateComputerForConnect(const client::ComputerConfig& computer);
 
     Ui::HostsTab ui;
 
@@ -146,7 +144,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(HostsTab)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_HOSTS_TAB_H

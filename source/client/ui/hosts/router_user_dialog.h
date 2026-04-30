@@ -23,8 +23,6 @@
 #include "proto/router.h"
 #include "ui_router_user_dialog.h"
 
-namespace client {
-
 class RouterUserDialog final : public QDialog
 {
     Q_OBJECT
@@ -52,7 +50,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(RouterUserDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_ROUTER_USER_DIALOG_H

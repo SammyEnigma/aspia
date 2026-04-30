@@ -21,8 +21,6 @@
 
 #include <QSettings>
 
-namespace client {
-
 class DesktopSettings
 {
 public:
@@ -59,7 +57,5 @@ private:
     QSettings settings_;
     Q_DISABLE_COPY_MOVE(DesktopSettings)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_DESKTOP_SETTINGS_H

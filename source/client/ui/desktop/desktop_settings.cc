@@ -22,8 +22,6 @@
 
 #include <QStandardPaths>
 
-namespace client {
-
 namespace {
 
 const QString kScaleParam = "Desktop/Scale";
@@ -168,5 +166,3 @@ void DesktopSettings::setWaitForHost(bool enable)
 {
     settings_.setValue(kWaitForHostParam, enable);
 }
-
-} // namespace client

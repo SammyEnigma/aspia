@@ -22,8 +22,6 @@
 #include "client/ui/sys_info/sys_info_widget.h"
 #include "ui_sys_info_widget_power_options.h"
 
-namespace client {
-
 class SysInfoWidgetPowerOptions final : public SysInfoWidget
 {
     Q_OBJECT
@@ -45,7 +43,5 @@ private slots:
 private:
     Ui::SysInfoPowerOptions ui;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_POWER_OPTIONS_H

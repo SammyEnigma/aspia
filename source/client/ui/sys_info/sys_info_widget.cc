@@ -26,8 +26,6 @@
 #include <QTreeWidgetItem>
 #include <QUrl>
 
-namespace client {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -213,5 +211,3 @@ void SysInfoWidget::copyColumn(QTreeWidgetItem* item, int column)
 
     copyTextToClipboard(item->text(column));
 }
-
-} // namespace client

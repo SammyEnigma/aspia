@@ -29,8 +29,6 @@ namespace Ui {
 class FileTransferSessionWindow;
 } // namespace Ui
 
-namespace client {
-
 class FilePanel;
 class FileRemoveDialog;
 class FileTransferDialog;
@@ -44,7 +42,7 @@ public:
     ~FileTransferSessionWindow() final;
 
     // SessionWindow implementation.
-    Client* createClient() final;
+    client::Client* createClient() final;
 
     QByteArray saveState() const;
     void restoreState(const QByteArray& state);
@@ -79,18 +77,18 @@ protected:
     void closeEvent(QCloseEvent* event) final;
 
 private slots:
-    void removeItems(client::FilePanel* sender, const client::FileRemover::TaskList& items);
-    void sendItems(client::FilePanel* sender, const QList<client::FileTransfer::Item>& items);
-    void receiveItems(client::FilePanel* sender,
+    void removeItems(FilePanel* sender, const client::FileRemover::TaskList& items);
+    void sendItems(FilePanel* sender, const QList<client::FileTransfer::Item>& items);
+    void receiveItems(FilePanel* sender,
                       const QString& target_folder,
                       const QList<client::FileTransfer::Item>& items);
-    void onPathChanged(client::FilePanel* sender, const QString& path);
+    void onPathChanged(FilePanel* sender, const QString& path);
 
 private:
-    void transferItems(FileTransfer::Type type,
+    void transferItems(client::FileTransfer::Type type,
                        const QString& source_path,
                        const QString& target_path,
-                       const QList<FileTransfer::Item>& items);
+                       const QList<client::FileTransfer::Item>& items);
 
     void initPanel(common::FileTask::Target target,
                    const QString& title,
@@ -104,7 +102,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileTransferSessionWindow)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_SESSION_WINDOW_H

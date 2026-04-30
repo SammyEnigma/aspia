@@ -28,8 +28,6 @@
 #include <QLineEdit>
 #include <QToolTip>
 
-namespace client {
-
 namespace {
 
 class Editor final : public QLineEdit
@@ -140,5 +138,3 @@ void FileItemDelegate::updateEditorGeometry(QWidget* editor,
 
     edit->setGeometry(option.rect);
 }
-
-} // namespace client

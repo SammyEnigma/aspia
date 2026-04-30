@@ -23,11 +23,7 @@
 
 class QTreeWidget;
 
-namespace client {
-
 QString treeToHtmlString(const QTreeWidget* tree);
 bool treeToHtmlFile(const QTreeWidget* tree, const QString& file_path, QString* error_string = nullptr);
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_TREE_TO_HTML_H

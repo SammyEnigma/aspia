@@ -25,8 +25,6 @@
 
 class QAbstractButton;
 
-namespace client {
-
 class RouterDialog final : public QDialog
 {
     Q_OBJECT
@@ -45,7 +43,5 @@ private:
     Ui::RouterDialog ui;
     qint64 router_id_ = -1;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_ROUTER_DIALOG_H

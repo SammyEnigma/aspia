@@ -26,8 +26,6 @@
 class QTreeWidget;
 class QTreeWidgetItem;
 
-namespace client {
-
 class SysInfoWidget : public QWidget
 {
     Q_OBJECT
@@ -55,7 +53,5 @@ protected:
     void copyRow(QTreeWidgetItem* item);
     void copyColumn(QTreeWidgetItem* item, int column);
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_WIDGET_H

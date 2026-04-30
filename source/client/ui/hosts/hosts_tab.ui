@@ -28,7 +28,7 @@
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
      </property>
-     <widget class="client::Sidebar" name="sidebar">
+     <widget class="Sidebar" name="sidebar">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -50,7 +50,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>client::Sidebar</class>
+   <class>Sidebar</class>
    <extends>QWidget</extends>
    <header>client/ui/hosts/sidebar.h</header>
   </customwidget>

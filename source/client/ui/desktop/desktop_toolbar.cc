@@ -29,8 +29,6 @@
 #include "client/ui/desktop/record_settings_dialog.h"
 #include "client/ui/desktop/select_screen_action.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 DesktopToolBar::DesktopToolBar(QWidget* parent)
     : QFrame(parent)
@@ -933,5 +931,3 @@ void DesktopToolBar::delayedHide()
     if (!ui.action_pin->isChecked() && !hide_timer_->isActive())
         hide_timer_->start(std::chrono::seconds(1));
 }
-
-} // namespace client

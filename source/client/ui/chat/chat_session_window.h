@@ -30,8 +30,6 @@ class ChatSessionWindow;
 
 class QHBoxLayout;
 
-namespace client {
-
 class ChatSessionWindow final : public SessionWindow
 {
     Q_OBJECT
@@ -41,7 +39,7 @@ public:
     ~ChatSessionWindow() final;
 
     // SessionWindow implementation.
-    Client* createClient() final;
+    client::Client* createClient() final;
 
 public slots:
     void onShowWindow();
@@ -58,7 +56,5 @@ private:
     std::unique_ptr<Ui::ChatSessionWindow> ui;
     Q_DISABLE_COPY_MOVE(ChatSessionWindow)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_CHAT_CHAT_SESSION_WINDOW_H

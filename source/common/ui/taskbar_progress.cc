@@ -136,4 +136,3 @@ void TaskbarProgress::stop()
         emit sig_stoppedChanged(stopped_);
     }
 }
-

@@ -22,8 +22,6 @@
 #include <QTreeWidget>
 #include <QXmlStreamWriter>
 
-namespace client {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -165,5 +163,3 @@ bool treeToHtmlFile(const QTreeWidget* tree, const QString& file_path, QString* 
     treeToHtml(tree, &writer);
     return true;
 }
-
-} // namespace client

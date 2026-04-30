@@ -648,4 +648,3 @@ void ChatWidget::onUpdateSize()
 
     list_messages->scrollToBottom();
 }
-

@@ -18,8 +18,6 @@
 
 #include "client/ui/hosts/content_widget.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 ContentWidget::ContentWidget(Type type, QWidget* parent)
     : QWidget(parent),
@@ -36,5 +34,3 @@ ContentWidget::Type ContentWidget::contentType() const
 {
     return type_;
 }
-
-} // namespace client

@@ -26,8 +26,6 @@
 #include "common/ui/taskbar_progress.h"
 #endif
 
-namespace client {
-
 class FileTransferDialog final : public QDialog
 {
     Q_OBJECT
@@ -55,7 +53,7 @@ protected:
     void closeEvent(QCloseEvent* event) final;
 
 private:
-    QString errorToMessage(const FileTransfer::Error& error);
+    QString errorToMessage(const client::FileTransfer::Error& error);
     QString speedToString(qint64 speed);
 
     Ui::FileTransferDialog ui;
@@ -71,7 +69,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileTransferDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_DIALOG_H

@@ -22,8 +22,6 @@
 
 #include "common/system_info_constants.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 SysInfoWidgetDrivers::SysInfoWidgetDrivers(QWidget* parent)
     : SysInfoWidget(parent)
@@ -168,5 +166,3 @@ QString SysInfoWidgetDrivers::startupTypeToString(
             return tr("Unknown");
     }
 }
-
-} // namespace client

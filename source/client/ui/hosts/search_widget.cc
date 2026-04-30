@@ -25,8 +25,6 @@
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 SearchWidget::SearchWidget(QWidget* parent)
     : ContentWidget(Type::SEARCH, parent)
@@ -61,9 +59,9 @@ void SearchWidget::search(const QString& query)
 {
     tree_computer_->clear();
 
-    //QList<ComputerConfig> results = Database::instance().searchComputers(query);
+    //QList<client::ComputerConfig> results = client::Database::instance().searchComputers(query);
 
-    //for (const ComputerConfig& computer : std::as_const(results))
+    //for (const client::ComputerConfig& computer : std::as_const(results))
     //    new SearchComputerItem(computer, tree_computer_);
 }
 
@@ -84,5 +82,3 @@ void SearchWidget::restoreState(const QByteArray& /* state */)
 {
 
 }
-
-} // namespace client

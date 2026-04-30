@@ -227,4 +227,3 @@ AboutDialog::~AboutDialog()
 {
     LOG(INFO) << "Dtor";
 }
-

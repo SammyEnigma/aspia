@@ -20,8 +20,6 @@
 
 #include <QStandardPaths>
 
-namespace client {
-
 namespace {
 
 const QString kWindowStateParam = "TaskManager/WindowState";
@@ -98,5 +96,3 @@ void TaskManagerSettings::setUpdateSpeed(const std::chrono::milliseconds& speed)
 {
     settings_.setValue(kUpdateSpeedParam, static_cast<int>(speed.count()));
 }
-
-} // namespace client

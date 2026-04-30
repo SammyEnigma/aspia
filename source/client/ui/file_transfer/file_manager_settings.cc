@@ -20,8 +20,6 @@
 
 #include "base/xml_settings.h"
 
-namespace client {
-
 namespace {
 
 const QString kWindowGeometryParam = "FileManager/WindowGeometry";
@@ -59,5 +57,3 @@ void FileManagerSettings::setWindowState(const QByteArray& state)
 {
     settings_.setValue(kWindowStateParam, state);
 }
-
-} // namespace client

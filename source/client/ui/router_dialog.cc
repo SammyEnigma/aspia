@@ -31,8 +31,6 @@
 #include "client/database.h"
 #include "proto/router.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 RouterDialog::RouterDialog(qint64 router_id, QWidget* parent)
     : QDialog(parent),
@@ -48,7 +46,7 @@ RouterDialog::RouterDialog(qint64 router_id, QWidget* parent)
 
     if (router_id_ != -1)
     {
-        std::optional<RouterConfig> router = Database::instance().findRouter(router_id_);
+        std::optional<client::RouterConfig> router = client::Database::instance().findRouter(router_id_);
         if (router.has_value())
         {
             ui.edit_name->setText(router->display_name);
@@ -120,7 +118,7 @@ void RouterDialog::onButtonBoxClicked(QAbstractButton* button)
         return;
     }
 
-    RouterConfig data;
+    client::RouterConfig data;
     data.router_id = router_id_;
     data.display_name = ui.edit_name->text();
     data.address = address_text;
@@ -129,7 +127,7 @@ void RouterDialog::onButtonBoxClicked(QAbstractButton* button)
     data.username = username;
     data.password = password;
 
-    Database& db = Database::instance();
+    client::Database& db = client::Database::instance();
 
     if (router_id_ < 0)
     {
@@ -174,5 +172,3 @@ void RouterDialog::showError(const QString& message)
 {
     MsgBox::warning(this, message);
 }
-
-} // namespace client

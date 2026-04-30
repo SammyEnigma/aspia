@@ -25,8 +25,6 @@
 
 class QAbstractButton;
 
-namespace client {
-
 class SettingsDialog final : public QDialog
 {
     Q_OBJECT
@@ -54,7 +52,5 @@ private:
 
     Ui::SettingsDialog ui;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SETTINGS_DIALOG_H

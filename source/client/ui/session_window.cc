@@ -25,8 +25,6 @@
 #include "common/ui/session_type.h"
 #include "common/ui/status_dialog.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 SessionWindow::SessionWindow(proto::peer::SessionType session_type, QWidget* parent)
     : QWidget(parent),
@@ -49,7 +47,7 @@ SessionWindow::~SessionWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionWindow::connectToHost(ComputerConfig computer, const QString& display_name)
+bool SessionWindow::connectToHost(client::ComputerConfig computer, const QString& display_name)
 {
     LOG(INFO) << "Connecting to host";
 
@@ -84,17 +82,17 @@ bool SessionWindow::connectToHost(ComputerConfig computer, const QString& displa
         computer.username = u"#" + computer.address;
     }
 
-    session_state_ = std::make_shared<SessionState>(computer, session_type_, display_name);
+    session_state_ = std::make_shared<client::SessionState>(computer, session_type_, display_name);
 
     // Create a client instance.
-    Client* client = createClient();
+    client::Client* client = createClient();
 
     client->moveToThread(base::GuiApplication::ioThread());
     client->setSessionState(session_state_);
 
-    connect(client, &Client::sig_statusChanged, this, &SessionWindow::onStatusChanged, Qt::QueuedConnection);
-    connect(this, &SessionWindow::sig_start, client, &Client::start, Qt::QueuedConnection);
-    connect(this, &SessionWindow::sig_stop, client, &Client::deleteLater, Qt::QueuedConnection);
+    connect(client, &client::Client::sig_statusChanged, this, &SessionWindow::onStatusChanged, Qt::QueuedConnection);
+    connect(this, &SessionWindow::sig_start, client, &client::Client::start, Qt::QueuedConnection);
+    connect(this, &SessionWindow::sig_stop, client, &client::Client::deleteLater, Qt::QueuedConnection);
 
     LOG(INFO) << "Start client";
     emit sig_start();
@@ -109,33 +107,33 @@ void SessionWindow::closeEvent(QCloseEvent* /* event */)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
+void SessionWindow::onStatusChanged(client::Client::Status status, const QVariant& data)
 {
     LOG(INFO) << "Client status changed:" << status;
 
     switch (status)
     {
-        case Client::Status::STARTED:
+        case client::Client::Status::STARTED:
             status_dialog_->addMessageAndActivate(tr("Session started."));
             break;
 
-        case Client::Status::STOPPED:
+        case client::Client::Status::STOPPED:
             status_dialog_->close();
             break;
 
-        case Client::Status::ROUTER_ERROR:
+        case client::Client::Status::ROUTER_ERROR:
             onErrorOccurred(tr("Error requesting connection via router: %1.").arg(data.toString()));
             break;
 
-        case Client::Status::NO_ROUTER:
+        case client::Client::Status::NO_ROUTER:
             onErrorOccurred(tr("The specified router is unavailable."));
             break;
 
-        case Client::Status::ROUTER_OFFLINE:
+        case client::Client::Status::ROUTER_OFFLINE:
             onErrorOccurred(tr("The specified router is offline."));
             break;
 
-        case Client::Status::HOST_CONNECTING:
+        case client::Client::Status::HOST_CONNECTING:
         {
             if (session_state_->isConnectionByHostId())
             {
@@ -150,7 +148,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
         }
         break;
 
-        case Client::Status::HOST_CONNECTED:
+        case client::Client::Status::HOST_CONNECTED:
         {
             if (session_state_->isConnectionByHostId())
             {
@@ -167,7 +165,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
         }
         break;
 
-        case Client::Status::HOST_DISCONNECTED:
+        case client::Client::Status::HOST_DISCONNECTED:
         {
             if (data.canConvert<base::TcpChannel::ErrorCode>())
             {
@@ -181,15 +179,15 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
         }
         break;
 
-        case Client::Status::WAIT_FOR_HOST:
+        case client::Client::Status::WAIT_FOR_HOST:
             onErrorOccurred(tr("Host is unavailable yet. Waiting to reconnect..."));
             break;
 
-        case Client::Status::WAIT_FOR_HOST_TIMEOUT:
+        case client::Client::Status::WAIT_FOR_HOST_TIMEOUT:
             onErrorOccurred(tr("Timeout waiting for reconnection to host."));
             break;
 
-        case Client::Status::VERSION_MISMATCH:
+        case client::Client::Status::VERSION_MISMATCH:
         {
             QString host_version = session_state_->hostVersion().toString();
             QString client_version = base::kCurrentVersion.toString();
@@ -199,7 +197,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
         }
         break;
 
-        case Client::Status::LEGACY_HOST:
+        case client::Client::Status::LEGACY_HOST:
             onErrorOccurred(tr("Attempting to connect in compatibility mode..."));
             break;
 
@@ -209,7 +207,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::setClientTitle(const ComputerConfig& computer, proto::peer::SessionType session_type)
+void SessionWindow::setClientTitle(const client::ComputerConfig& computer, proto::peer::SessionType session_type)
 {
     QString session_name = sessionName(session_type);
     QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
@@ -225,5 +223,3 @@ void SessionWindow::onErrorOccurred(const QString& message)
 
     status_dialog_->addMessageAndActivate(message);
 }
-
-} // namespace client

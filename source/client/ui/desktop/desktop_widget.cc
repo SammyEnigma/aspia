@@ -36,8 +36,6 @@
 #include <CoreGraphics/CGEventSource.h>
 #endif // defined(Q_OS_MACOS)
 
-namespace client {
-
 namespace {
 
 constexpr quint32 kWheelMask =
@@ -791,5 +789,3 @@ CGEventRef DesktopWidget::keyboardFilterProc(
     return event;
 }
 #endif // defined(Q_OS_MACOS)
-
-} // namespace client

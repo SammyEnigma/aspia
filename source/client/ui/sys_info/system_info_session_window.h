@@ -30,8 +30,6 @@ class QHBoxLayout;
 class QTreeWidget;
 class QTreeWidgetItem;
 
-namespace client {
-
 class SysInfoWidget;
 
 class SystemInfoSessionWindow final : public SessionWindow
@@ -43,7 +41,7 @@ public:
     ~SystemInfoSessionWindow() final;
 
     // SessionWindow implementation.
-    Client* createClient() final;
+    client::Client* createClient() final;
 
 public slots:
     void onShowWindow();
@@ -68,7 +66,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SystemInfoSessionWindow)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYSTEM_INFO_SESSION_WINDOW_H

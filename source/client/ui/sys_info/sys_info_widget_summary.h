@@ -24,8 +24,6 @@
 
 #include <QVersionNumber>
 
-namespace client {
-
 class SysInfoWidgetSummary final : public SysInfoWidget
 {
     Q_OBJECT
@@ -53,7 +51,5 @@ private:
     QString host_version_;
     QString client_version_;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_SUMMARY_H

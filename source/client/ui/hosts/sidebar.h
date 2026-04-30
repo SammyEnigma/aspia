@@ -26,8 +26,8 @@
 #include <QWidget>
 
 namespace client {
-
 struct GroupConfig;
+} // namespace client
 
 class Sidebar : public QWidget
 {
@@ -57,8 +57,8 @@ public:
     class LocalGroup : public Item
     {
     public:
-        LocalGroup(const GroupConfig& group, QTreeWidget* parent);
-        LocalGroup(const GroupConfig& group, QTreeWidgetItem* parent);
+        LocalGroup(const client::GroupConfig& group, QTreeWidget* parent);
+        LocalGroup(const client::GroupConfig& group, QTreeWidgetItem* parent);
 
         qint64 parentId() const { return parent_id_; }
         QString groupName() const { return group_name_; }
@@ -147,8 +147,8 @@ protected:
     bool eventFilter(QObject* watched, QEvent* event) override;
 
 signals:
-    void sig_switchContent(client::Sidebar::Item::Type type);
-    void sig_contextMenu(client::Sidebar::Item::Type type, const QPoint& pos);
+    void sig_switchContent(Sidebar::Item::Type type);
+    void sig_contextMenu(Sidebar::Item::Type type, const QPoint& pos);
     void sig_itemDropped();
 
 private slots:
@@ -181,7 +181,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Sidebar)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_SIDEBAR_H

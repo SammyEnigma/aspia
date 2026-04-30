@@ -30,8 +30,6 @@ namespace Ui {
 class DesktopConfigDialog;
 } // namespace Ui
 
-namespace client {
-
 class DesktopConfigDialog final : public QDialog
 {
     Q_OBJECT
@@ -63,7 +61,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopConfigDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_DESKTOP_CONFIG_DIALOG_H

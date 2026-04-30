@@ -48,4 +48,3 @@ QString ChatStatusMessage::messageTime() const
 {
     return QString();
 }
-

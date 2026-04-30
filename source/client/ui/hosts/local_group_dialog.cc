@@ -26,8 +26,6 @@
 #include "client/ui/hosts/group_combo_box.h"
 #include "common/ui/msg_box.h"
 
-namespace client {
-
 namespace {
 
 constexpr int kMaxNameLength = 64;
@@ -49,7 +47,7 @@ LocalGroupDialog::LocalGroupDialog(qint64 group_id, qint64 parent_id, QWidget* p
     {
         setWindowTitle(tr("Edit Group"));
 
-        std::optional<GroupConfig> group = Database::instance().findGroup(group_id_);
+        std::optional<client::GroupConfig> group = client::Database::instance().findGroup(group_id_);
         if (group.has_value())
         {
             ui.edit_name->setText(group->name);
@@ -120,8 +118,8 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
 
     qint64 parent_id = ui.combo_parent_group->currentGroupId();
 
-    QList<GroupConfig> groups = Database::instance().groupList(parent_id);
-    for (const GroupConfig& existing : std::as_const(groups))
+    QList<client::GroupConfig> groups = client::Database::instance().groupList(parent_id);
+    for (const client::GroupConfig& existing : std::as_const(groups))
     {
         if (existing.id != group_id_ && existing.name == name)
         {
@@ -132,13 +130,13 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
         }
     }
 
-    GroupConfig group;
+    client::GroupConfig group;
     group.id = group_id_;
     group.parent_id = parent_id;
     group.name = name;
     group.comment = ui.edit_comment->toPlainText();
 
-    Database& db = Database::instance();
+    client::Database& db = client::Database::instance();
 
     if (group_id_ == -1)
     {
@@ -161,6 +159,3 @@ void LocalGroupDialog::onButtonBoxClicked(QAbstractButton* button)
 
     accept();
 }
-
-
-} // namespace client

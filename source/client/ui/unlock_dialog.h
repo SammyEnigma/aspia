@@ -23,8 +23,6 @@
 
 #include "ui_unlock_dialog.h"
 
-namespace client {
-
 class UnlockDialog final : public QDialog
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UnlockDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_UNLOCK_DIALOG_H

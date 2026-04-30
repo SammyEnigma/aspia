@@ -23,8 +23,6 @@
 
 class QStatusBar;
 
-namespace client {
-
 class SessionTab : public ClientTab
 {
     Q_OBJECT
@@ -39,7 +37,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(SessionTab)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SESSION_TAB_H

@@ -23,8 +23,6 @@
 
 #include "proto/desktop_screen.h"
 
-namespace client {
-
 class SelectScreenAction final : public QAction
 {
     Q_OBJECT
@@ -68,7 +66,5 @@ private:
     proto::screen::Screen screen_;
     Q_DISABLE_COPY_MOVE(SelectScreenAction)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_SELECT_SCREEN_ACTION_H

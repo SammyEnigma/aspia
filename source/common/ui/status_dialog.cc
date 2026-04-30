@@ -80,4 +80,3 @@ void StatusDialog::closeEvent(QCloseEvent* event)
     LOG(INFO) << "Close event detected";
     QDialog::closeEvent(event);
 }
-

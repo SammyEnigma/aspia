@@ -26,8 +26,6 @@
 
 class QStatusBar;
 
-namespace client {
-
 class ClientTab : public QWidget
 {
     Q_OBJECT
@@ -70,7 +68,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ClientTab)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_CLIENT_TAB_H

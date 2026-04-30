@@ -43,15 +43,13 @@
 #include "client/ui/hosts/search_widget.h"
 #include "client/ui/router_dialog.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 HostsTab::HostsTab(QWidget* parent)
     : ClientTab(Type::HOSTS, "hosts", parent)
 {
     LOG(INFO) << "Ctor";
 
-    if (!Database::instance().isValid())
+    if (!client::Database::instance().isValid())
         LOG(ERROR) << "Failed to open or create book database";
 
     ui.setupUi(this);
@@ -93,7 +91,7 @@ HostsTab::HostsTab(QWidget* parent)
     session_connect_group->addAction(action_chat_connect_);
     session_connect_group->addAction(action_system_info_connect_);
 
-    Settings settings;
+    client::Settings settings;
 
     switch (settings.sessionType())
     {
@@ -157,7 +155,7 @@ HostsTab::HostsTab(QWidget* parent)
     connect(local_group_widget_, &LocalGroupWidget::sig_doubleClicked, this, &HostsTab::onLocalConnect);
     connect(local_group_widget_, &LocalGroupWidget::sig_contextMenu, this, &HostsTab::onLocalComputerContextMenu);
     connect(this, &HostsTab::sig_connect, local_group_widget_,
-            [this](qint64 computer_id, const ComputerConfig&, proto::peer::SessionType)
+            [this](qint64 computer_id, const client::ComputerConfig&, proto::peer::SessionType)
     {
         if (computer_id != -1)
             local_group_widget_->setConnectTime(computer_id, QDateTime::currentSecsSinceEpoch());
@@ -195,8 +193,8 @@ HostsTab::HostsTab(QWidget* parent)
     switchContent(local_group_widget_);
     updateActionsState();
 
-    const QList<RouterConfig> routers = Database::instance().routerList();
-    for (const RouterConfig& router : std::as_const(routers))
+    const QList<client::RouterConfig> routers = client::Database::instance().routerList();
+    for (const client::RouterConfig& router : std::as_const(routers))
     {
         if (router.isValid())
             createRouterWidget(router);
@@ -208,7 +206,7 @@ HostsTab::~HostsTab()
 {
     LOG(INFO) << "Dtor";
     destroyAllRouterWidgets();
-    Settings settings;
+    client::Settings settings;
     settings.setSessionType(defaultSessionType());
 }
 
@@ -332,13 +330,13 @@ bool HostsTab::hasSearchField() const
 void HostsTab::reloadRouters()
 {
     const QList<qint64> old_ids = router_widgets_.keys();
-    const QList<RouterConfig> routers = Database::instance().routerList();
+    const QList<client::RouterConfig> routers = client::Database::instance().routerList();
 
     // Remove widgets for routers that no longer exist.
     for (qint64 id : std::as_const(old_ids))
     {
         bool found = false;
-        for (const RouterConfig& router : std::as_const(routers))
+        for (const client::RouterConfig& router : std::as_const(routers))
         {
             if (router.router_id == id)
             {
@@ -354,7 +352,7 @@ void HostsTab::reloadRouters()
     ui.sidebar->reloadRouters();
 
     // Create new or update existing widgets.
-    for (const RouterConfig& router : std::as_const(routers))
+    for (const client::RouterConfig& router : std::as_const(routers))
     {
         if (!router.isValid())
             continue;
@@ -499,7 +497,7 @@ void HostsTab::onConnectAction(QAction* action)
     else
         return;
 
-    ComputerConfig computer;
+    client::ComputerConfig computer;
     qint64 source_computer_id = -1;
 
     if (current_content_ == local_group_widget_)
@@ -508,7 +506,7 @@ void HostsTab::onConnectAction(QAction* action)
         if (!item)
             return;
 
-        std::optional<ComputerConfig> found = Database::instance().findComputer(item->computerId());
+        std::optional<client::ComputerConfig> found = client::Database::instance().findComputer(item->computerId());
         if (!found.has_value())
         {
             MsgBox::warning(this,
@@ -521,7 +519,7 @@ void HostsTab::onConnectAction(QAction* action)
         if (!validateComputerForConnect(computer))
             return;
 
-        Database::instance().setConnectTime(computer.id, QDateTime::currentSecsSinceEpoch());
+        client::Database::instance().setConnectTime(computer.id, QDateTime::currentSecsSinceEpoch());
         source_computer_id = computer.id;
     }
     else if (current_content_ == router_group_widget_)
@@ -539,7 +537,7 @@ void HostsTab::onConnectAction(QAction* action)
             return;
 
         Sidebar::Router* router = static_cast<Sidebar::Router*>(router_item);
-        std::optional<RouterConfig> router_data = Database::instance().findRouter(router->routerId());
+        std::optional<client::RouterConfig> router_data = client::Database::instance().findRouter(router->routerId());
         if (router_data)
             computer.router_id = router_data->router_id;
         // TODO
@@ -555,7 +553,7 @@ void HostsTab::onConnectAction(QAction* action)
 //--------------------------------------------------------------------------------------------------
 void HostsTab::onLocalConnect(qint64 computer_id)
 {
-    std::optional<ComputerConfig> computer = Database::instance().findComputer(computer_id);
+    std::optional<client::ComputerConfig> computer = client::Database::instance().findComputer(computer_id);
     if (!computer.has_value())
     {
         MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
@@ -565,7 +563,7 @@ void HostsTab::onLocalConnect(qint64 computer_id)
     if (!validateComputerForConnect(*computer))
         return;
 
-    Database::instance().setConnectTime(computer_id, QDateTime::currentSecsSinceEpoch());
+    client::Database::instance().setConnectTime(computer_id, QDateTime::currentSecsSinceEpoch());
 
     emit sig_connect(computer_id, *computer, defaultSessionType());
 }
@@ -710,7 +708,7 @@ proto::peer::SessionType HostsTab::defaultSessionType() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::onRouterStatusChanged(qint64 router_id, RouterConnection::Status status)
+void HostsTab::onRouterStatusChanged(qint64 router_id, client::RouterConnection::Status status)
 {
     Sidebar::Router* router = ui.sidebar->routerById(router_id);
     if (!router)
@@ -718,13 +716,13 @@ void HostsTab::onRouterStatusChanged(qint64 router_id, RouterConnection::Status 
 
     switch (status)
     {
-        case RouterConnection::Status::OFFLINE:
+        case client::RouterConnection::Status::OFFLINE:
             router->setStatus(Sidebar::Router::Status::OFFLINE);
             break;
-        case RouterConnection::Status::CONNECTING:
+        case client::RouterConnection::Status::CONNECTING:
             router->setStatus(Sidebar::Router::Status::CONNECTING);
             break;
-        case RouterConnection::Status::ONLINE:
+        case client::RouterConnection::Status::ONLINE:
             router->setStatus(Sidebar::Router::Status::ONLINE);
             break;
     }
@@ -758,7 +756,7 @@ void HostsTab::destroyRouterWidget(qint64 router_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-RouterWidget* HostsTab::createRouterWidget(const RouterConfig& config)
+RouterWidget* HostsTab::createRouterWidget(const client::RouterConfig& config)
 {
     RouterWidget* widget = new RouterWidget(config, this);
 
@@ -797,8 +795,8 @@ void HostsTab::deleteRouter(qint64 router_id)
 {
     LOG(INFO) << "[ACTION] Delete router" << router_id;
 
-    Database& db = Database::instance();
-    std::optional<RouterConfig> existing = db.findRouter(router_id);
+    client::Database& db = client::Database::instance();
+    std::optional<client::RouterConfig> existing = db.findRouter(router_id);
     if (!existing)
     {
         LOG(ERROR) << "Router not found for id:" << router_id;
@@ -945,7 +943,7 @@ void HostsTab::onImportOldBookAction()
         return;
     }
 
-    if (!AddressBookImporter::import(this, file_path))
+    if (!client::AddressBookImporter::import(this, file_path))
         return;
 
     reloadRouters();
@@ -1033,7 +1031,7 @@ void HostsTab::onRemoveHostAction()
 //--------------------------------------------------------------------------------------------------
 void HostsTab::onOnlineCheckToggled(bool checked)
 {
-    Settings settings;
+    client::Settings settings;
     settings.setOnlineCheckEnabled(checked);
 
     if (local_group_widget_)
@@ -1041,11 +1039,11 @@ void HostsTab::onOnlineCheckToggled(bool checked)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
+bool HostsTab::validateComputerForConnect(const client::ComputerConfig& computer)
 {
     if (computer.router_id != 0)
     {
-        std::optional<RouterConfig> router = Database::instance().findRouter(computer.router_id);
+        std::optional<client::RouterConfig> router = client::Database::instance().findRouter(computer.router_id);
         if (!router.has_value())
         {
             MsgBox::warning(this, tr("The router associated with this computer has been deleted. "
@@ -1071,5 +1069,3 @@ bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
 
     return true;
 }
-
-} // namespace client

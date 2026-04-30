@@ -25,8 +25,6 @@
 
 class QAbstractButton;
 
-namespace client {
-
 class RecordSettingsDialog final : public QDialog
 {
     Q_OBJECT
@@ -41,7 +39,5 @@ private slots:
 private:
     Ui::RecordSettingsDialog ui;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_RECORDING_SETTINGS_DIALOG_H

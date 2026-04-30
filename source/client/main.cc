@@ -233,24 +233,24 @@ bool startSession(const client::ComputerConfig& computer,
                   const QString& display_name,
                   const proto::control::Config& desktop_config)
 {
-    client::SessionWindow* session_window = nullptr;
+    SessionWindow* session_window = nullptr;
 
     switch (session_type)
     {
         case proto::peer::SESSION_TYPE_DESKTOP:
-            session_window = new client::DesktopSessionWindow(desktop_config);
+            session_window = new DesktopSessionWindow(desktop_config);
             break;
 
         case proto::peer::SESSION_TYPE_FILE_TRANSFER:
-            session_window = new client::FileTransferSessionWindow();
+            session_window = new FileTransferSessionWindow();
             break;
 
         case proto::peer::SESSION_TYPE_SYSTEM_INFO:
-            session_window = new client::SystemInfoSessionWindow();
+            session_window = new SystemInfoSessionWindow();
             break;
 
         case proto::peer::SESSION_TYPE_TEXT_CHAT:
-            session_window = new client::ChatSessionWindow();
+            session_window = new ChatSessionWindow();
             break;
 
         default:
@@ -343,10 +343,10 @@ int main(int argc, char* argv[])
 
     base::ScopedLogging scoped_logging(logging_settings);
 
-    client::Application::setHighDpiScaleFactorRoundingPolicy(
+    Application::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 
-    client::Application application(argc, argv);
+    Application application(argc, argv);
 
     LOG(INFO) << "Version:" << ASPIA_VERSION_STRING << "(arch:" << QSysInfo::buildCpuArchitecture() << ")";
 #if defined(GIT_CURRENT_BRANCH) && defined(GIT_COMMIT_HASH)
@@ -451,7 +451,7 @@ int main(int argc, char* argv[])
     parser.addOption(router_password_option);
     parser.process(application);
 
-    std::unique_ptr<client::MainWindow> main_window;
+    std::unique_ptr<MainWindow> main_window;
 
     if (parser.isSet(address_option))
     {
@@ -601,7 +601,7 @@ int main(int argc, char* argv[])
 
             while (true)
             {
-                client::UnlockDialog dialog(nullptr, QString(), QString());
+                UnlockDialog dialog(nullptr, QString(), QString());
                 if (dialog.exec() != QDialog::Accepted)
                 {
                     LOG(INFO) << "Master password unlock cancelled by user";
@@ -619,10 +619,10 @@ int main(int argc, char* argv[])
             }
         }
 
-        main_window.reset(new client::MainWindow());
+        main_window.reset(new MainWindow());
 
-        QObject::connect(&application, &client::Application::sig_windowActivated,
-                         main_window.get(), &client::MainWindow::showAndActivate);
+        QObject::connect(&application, &Application::sig_windowActivated,
+                         main_window.get(), &MainWindow::showAndActivate);
 
         main_window->show();
         main_window->activateWindow();

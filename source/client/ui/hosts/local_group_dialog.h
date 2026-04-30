@@ -23,8 +23,6 @@
 
 #include "ui_local_group_dialog.h"
 
-namespace client {
-
 class LocalGroupDialog : public QDialog
 {
     Q_OBJECT
@@ -43,7 +41,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(LocalGroupDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_LOCAL_GROUP_DIALOG_H

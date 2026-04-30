@@ -43,8 +43,6 @@ namespace base {
 class Frame;
 } // namespace base
 
-namespace client {
-
 class DesktopWidget final : public QWidget
 {
     Q_OBJECT
@@ -134,7 +132,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopWidget)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_DESKTOP_WIDGET_H

@@ -21,8 +21,6 @@
 
 #include <QSettings>
 
-namespace client {
-
 class FileManagerSettings
 {
 public:
@@ -39,7 +37,5 @@ private:
     QSettings settings_;
     Q_DISABLE_COPY_MOVE(FileManagerSettings)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_MANAGER_SETTINGS_H

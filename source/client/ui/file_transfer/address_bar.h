@@ -26,8 +26,6 @@
 class QLineEdit;
 class QTreeView;
 
-namespace client {
-
 class AddressBarModel;
 
 class AddressBar final : public QComboBox
@@ -60,7 +58,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AddressBar)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_ADDRESS_BAR_H

@@ -26,8 +26,6 @@
 #include <QKeyEvent>
 #include <QProxyStyle>
 
-namespace client {
-
 namespace {
 
 class TreeViewProxyStyle final : public QProxyStyle
@@ -216,5 +214,3 @@ void FileList::saveColumnsState()
     else
         file_list_state_ = std::move(state);
 }
-
-} // namespace client

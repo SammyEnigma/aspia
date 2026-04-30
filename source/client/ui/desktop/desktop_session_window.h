@@ -32,8 +32,6 @@ namespace desktop {
 class Frame;
 } // namespace desktop
 
-namespace client {
-
 class DesktopConfigDialog;
 class DesktopToolBar;
 class DesktopWidget;
@@ -50,7 +48,7 @@ public:
     ~DesktopSessionWindow() final;
 
     // SessionWindow implementation.
-    Client* createClient() final;
+    client::Client* createClient() final;
 
 public slots:
     void onShowWindow();
@@ -144,7 +142,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopSessionWindow)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_DESKTOP_SESSION_WINDOW_H

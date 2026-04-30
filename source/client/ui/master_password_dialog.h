@@ -25,8 +25,6 @@
 
 class QAbstractButton;
 
-namespace client {
-
 class MasterPasswordDialog final : public QDialog
 {
     Q_OBJECT
@@ -51,7 +49,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(MasterPasswordDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_MASTER_PASSWORD_DIALOG_H

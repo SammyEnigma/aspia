@@ -22,8 +22,6 @@
 #include "client/ui/sys_info/sys_info_widget.h"
 #include "ui_sys_info_widget_monitors.h"
 
-namespace client {
-
 class SysInfoWidgetMonitors final : public SysInfoWidget
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ private:
 
     Ui::SysInfoMonitors ui;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_MONITORS_H

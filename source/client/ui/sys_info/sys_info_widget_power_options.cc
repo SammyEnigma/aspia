@@ -22,8 +22,6 @@
 
 #include "common/system_info_constants.h"
 
-namespace client {
-
 namespace {
 
 class Item : public QTreeWidgetItem
@@ -308,5 +306,3 @@ QString SysInfoWidgetPowerOptions::batteryStatusToString(
             return tr("Unknown");
     }
 }
-
-} // namespace client

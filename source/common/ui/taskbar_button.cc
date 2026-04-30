@@ -252,4 +252,3 @@ void TaskbarButton::updateOverlayIcon()
         tblist_->SetOverlayIcon(hwnd, nullptr, desc);
     }
 }
-

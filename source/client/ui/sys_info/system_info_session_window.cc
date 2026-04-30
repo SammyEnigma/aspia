@@ -53,8 +53,6 @@
 #include "common/system_info_constants.h"
 #include "ui_system_info_session_window.h"
 
-namespace client {
-
 namespace {
 
 class CategoryItem : public QTreeWidgetItem
@@ -305,19 +303,19 @@ SystemInfoSessionWindow::~SystemInfoSessionWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-Client* SystemInfoSessionWindow::createClient()
+client::Client* SystemInfoSessionWindow::createClient()
 {
     LOG(INFO) << "Create client";
 
-    ClientSystemInfo* client = new ClientSystemInfo();
+    client::ClientSystemInfo* client = new client::ClientSystemInfo();
 
     connect(this, &SystemInfoSessionWindow::sig_systemInfoRequired,
-            client, &ClientSystemInfo::onSystemInfoRequest,
+            client, &client::ClientSystemInfo::onSystemInfoRequest,
             Qt::QueuedConnection);
-    connect(client, &ClientSystemInfo::sig_showSessionWindow,
+    connect(client, &client::ClientSystemInfo::sig_showSessionWindow,
             this, &SystemInfoSessionWindow::onShowWindow,
             Qt::QueuedConnection);
-    connect(client, &ClientSystemInfo::sig_systemInfo,
+    connect(client, &client::ClientSystemInfo::sig_systemInfo,
             this, &SystemInfoSessionWindow::onSystemInfoChanged,
             Qt::QueuedConnection);
 
@@ -430,5 +428,3 @@ void SystemInfoSessionWindow::onRefresh()
         emit sig_systemInfoRequired(request);
     }
 }
-
-} // namespace client

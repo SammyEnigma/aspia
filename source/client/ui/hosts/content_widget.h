@@ -23,8 +23,6 @@
 
 class QStatusBar;
 
-namespace client {
-
 class ContentWidget : public QWidget
 {
     Q_OBJECT
@@ -50,7 +48,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ContentWidget)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_CONTENT_WIDGET_H

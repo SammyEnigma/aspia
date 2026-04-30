@@ -21,8 +21,6 @@
 
 #include <QValidator>
 
-namespace client {
-
 class FileNameValidator final : public QValidator
 {
     Q_OBJECT
@@ -40,7 +38,5 @@ signals:
 private:
     Q_DISABLE_COPY_MOVE(FileNameValidator)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_NAME_VALIDATOR_H

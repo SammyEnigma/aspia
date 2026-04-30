@@ -42,15 +42,13 @@
 #include "common/ui/about_dialog.h"
 #include "common/ui/update_dialog.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     LOG(INFO) << "Ctor";
 
-    Settings settings;
+    client::Settings settings;
 
     ui.setupUi(this);
 
@@ -87,7 +85,7 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui.action_large_icons, &QAction::toggled, this, [this](bool enable)
     {
         ui.toolbar->setIconSize(enable ? QSize(32, 32) : QSize(24, 24));
-        Settings().setLargeIcons(enable);
+        client::Settings().setLargeIcons(enable);
     });
 
     // Tab management.
@@ -147,7 +145,7 @@ void MainWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event detected";
 
-    Settings settings;
+    client::Settings settings;
     settings.setWindowGeometry(saveGeometry());
     settings.setWindowState(saveState());
     settings.setToolBarEnabled(ui.action_toolbar->isChecked());
@@ -271,7 +269,7 @@ void MainWindow::onCloseTab(int index)
         active_tab_ = nullptr;
     }
 
-    Settings settings;
+    client::Settings settings;
     settings.setTabState(tab->objectName(), tab->saveState());
 
     ui.tabs->removeTab(index);
@@ -287,7 +285,7 @@ void MainWindow::onSearchTextChanged(const QString& text)
 
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onConnect(qint64 /* computer_id */,
-                           const ComputerConfig& computer,
+                           const client::ComputerConfig& computer,
                            proto::peer::SessionType session_type)
 {
     if (base::isHostId(computer.address) && computer.router_id <= 0)
@@ -299,24 +297,24 @@ void MainWindow::onConnect(qint64 /* computer_id */,
         return;
     }
 
-    client::SessionWindow* session_window = nullptr;
+    SessionWindow* session_window = nullptr;
 
     switch (session_type)
     {
         case proto::peer::SESSION_TYPE_DESKTOP:
-            session_window = new client::DesktopSessionWindow(Settings().desktopConfig());
+            session_window = new DesktopSessionWindow(client::Settings().desktopConfig());
             break;
 
         case proto::peer::SESSION_TYPE_FILE_TRANSFER:
-            session_window = new client::FileTransferSessionWindow();
+            session_window = new FileTransferSessionWindow();
             break;
 
         case proto::peer::SESSION_TYPE_SYSTEM_INFO:
-            session_window = new client::SystemInfoSessionWindow();
+            session_window = new SystemInfoSessionWindow();
             break;
 
         case proto::peer::SESSION_TYPE_TEXT_CHAT:
-            session_window = new client::ChatSessionWindow();
+            session_window = new ChatSessionWindow();
             break;
 
         default:
@@ -328,7 +326,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
         return;
 
     session_window->setAttribute(Qt::WA_DeleteOnClose);
-    if (!session_window->connectToHost(computer, Settings().displayName()))
+    if (!session_window->connectToHost(computer, client::Settings().displayName()))
         session_window->close();
 }
 
@@ -340,7 +338,7 @@ void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
     if (!tab->isClosable())
         hideCloseButtonForTab(index);
 
-    Settings settings;
+    client::Settings settings;
     tab->restoreState(settings.tabState(tab->objectName()));
 
     connect(tab, &ClientTab::sig_titleChanged, this, [this, tab](const QString& new_title)
@@ -574,5 +572,3 @@ QMenu* MainWindow::menuForActionGroup(ClientTab::ActionRole group) const
             return nullptr;
     }
 }
-
-} // namespace client

@@ -22,8 +22,6 @@
 
 #include <QStandardItemModel>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 GroupComboBox::GroupComboBox(QWidget* parent)
     : QComboBox(parent)
@@ -88,9 +86,9 @@ void GroupComboBox::showPopup()
 void GroupComboBox::addGroupItems(qint64 parent_id, QStandardItem* parent_item, qint64 exclude_id)
 {
     QIcon folder_icon(":/img/folder.svg");
-    QList<GroupConfig> groups = Database::instance().groupList(parent_id);
+    QList<client::GroupConfig> groups = client::Database::instance().groupList(parent_id);
 
-    for (const GroupConfig& group : std::as_const(groups))
+    for (const client::GroupConfig& group : std::as_const(groups))
     {
         if (group.id == exclude_id)
             continue;
@@ -102,5 +100,3 @@ void GroupComboBox::addGroupItems(qint64 parent_id, QStandardItem* parent_item, 
         addGroupItems(group.id, item, exclude_id);
     }
 }
-
-} // namespace client

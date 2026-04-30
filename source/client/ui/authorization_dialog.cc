@@ -23,8 +23,6 @@
 #include "client/settings.h"
 #include <QTimer>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 AuthorizationDialog::AuthorizationDialog(QWidget* parent)
     : QDialog(parent)
@@ -32,7 +30,7 @@ AuthorizationDialog::AuthorizationDialog(QWidget* parent)
     LOG(INFO) << "Ctor";
     ui.setupUi(this);
 
-    Settings settings;
+    client::Settings settings;
 
     bool is_one_time_password_checked = settings.isOneTimePasswordChecked();
     ui.checkbox_one_time_password->setChecked(is_one_time_password_checked);
@@ -55,7 +53,7 @@ AuthorizationDialog::~AuthorizationDialog()
 {
     LOG(INFO) << "Dtor";
 
-    Settings settings;
+    client::Settings settings;
     settings.setOneTimePasswordChecked(ui.checkbox_one_time_password->isChecked());
 }
 
@@ -192,5 +190,3 @@ void AuthorizationDialog::fitSize()
         setFixedHeight(sizeHint().height());
     });
 }
-
-} // namespace client

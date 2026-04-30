@@ -25,8 +25,6 @@
 
 #include <QIcon>
 
-namespace client {
-
 namespace {
 
 const char kActivateWindow[] = "activate_window";
@@ -56,7 +54,7 @@ Application::Application(int& argc, char* argv[])
         }
     });
 
-    Settings settings;
+    client::Settings settings;
 
     if (!hasLocale(settings.locale()))
     {
@@ -86,5 +84,3 @@ void Application::activateWindow()
 {
     sendMessage(kActivateWindow);
 }
-
-} // namespace client

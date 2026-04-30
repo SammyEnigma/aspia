@@ -33,8 +33,6 @@
 #include "client/ui/hosts/local_computer_dialog.h"
 #include "common/ui/msg_box.h"
 
-namespace client {
-
 namespace {
 
 const int kColumnName = 0;
@@ -153,9 +151,9 @@ void LocalGroupWidget::showGroup(qint64 group_id)
 
     ui.tree_computer->clear();
 
-    QList<ComputerConfig> computers = Database::instance().computerList(group_id);
+    QList<client::ComputerConfig> computers = client::Database::instance().computerList(group_id);
 
-    for (const ComputerConfig& computer : std::as_const(computers))
+    for (const client::ComputerConfig& computer : std::as_const(computers))
         new Item(computer, ui.tree_computer);
 
     updateStatusLabels();
@@ -298,7 +296,7 @@ void LocalGroupWidget::onEditComputer()
         return;
     }
 
-    std::optional<ComputerConfig> updated = Database::instance().findComputer(computer_id);
+    std::optional<client::ComputerConfig> updated = client::Database::instance().findComputer(computer_id);
     if (!updated.has_value())
     {
         // Row disappeared while the dialog was open - fall back to a full reload.
@@ -323,9 +321,9 @@ void LocalGroupWidget::onCopyComputer()
         return;
     }
 
-    Database& db = Database::instance();
+    client::Database& db = client::Database::instance();
 
-    std::optional<ComputerConfig> computer = db.findComputer(item->computerId());
+    std::optional<client::ComputerConfig> computer = db.findComputer(item->computerId());
     if (!computer.has_value())
     {
         MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
@@ -345,7 +343,7 @@ void LocalGroupWidget::onCopyComputer()
 
     LocalComputerDialog(computer->id, computer->group_id, this).exec();
 
-    std::optional<ComputerConfig> updated = db.findComputer(computer->id);
+    std::optional<client::ComputerConfig> updated = db.findComputer(computer->id);
     if (!updated.has_value())
         return;
 
@@ -376,7 +374,7 @@ void LocalGroupWidget::onRemoveComputer()
 
     qint64 computer_id = item->computerId();
 
-    if (!Database::instance().removeComputer(computer_id))
+    if (!client::Database::instance().removeComputer(computer_id))
     {
         MsgBox::warning(this, tr("Unable to remove computer"));
         LOG(INFO) << "Unable to remove computer with id" << computer_id;
@@ -492,7 +490,7 @@ void LocalGroupWidget::updateStatusLabels()
 {
     int child_groups_count = 0;
     if (current_group_id_ >= 0)
-        child_groups_count = Database::instance().groupList(current_group_id_).size();
+        child_groups_count = client::Database::instance().groupList(current_group_id_).size();
 
     status_groups_label_->setText(tr("%n child group(s)", "", child_groups_count));
     status_computers_label_->setText(
@@ -504,7 +502,7 @@ void LocalGroupWidget::startOnlineChecker()
 {
     stopOnlineChecker();
 
-    OnlineChecker::ComputerList computers;
+    client::OnlineChecker::ComputerList computers;
 
     for (int i = 0; i < ui.tree_computer->topLevelItemCount(); ++i)
     {
@@ -521,11 +519,11 @@ void LocalGroupWidget::startOnlineChecker()
 
     LOG(INFO) << "Start online checker for" << computers.size() << "computer(s)";
 
-    online_checker_ = new OnlineChecker(this);
+    online_checker_ = new client::OnlineChecker(this);
 
-    connect(online_checker_, &OnlineChecker::sig_checkerResult,
+    connect(online_checker_, &client::OnlineChecker::sig_checkerResult,
             this, &LocalGroupWidget::onOnlineCheckerResult);
-    connect(online_checker_, &OnlineChecker::sig_checkerFinished,
+    connect(online_checker_, &client::OnlineChecker::sig_checkerFinished,
             this, &LocalGroupWidget::onOnlineCheckerFinished);
 
     online_checker_->start(computers);
@@ -583,7 +581,7 @@ void LocalGroupWidget::setCurrentComputer(qint64 computer_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-LocalGroupWidget::Item::Item(const ComputerConfig& computer, QTreeWidget* parent)
+LocalGroupWidget::Item::Item(const client::ComputerConfig& computer, QTreeWidget* parent)
     : QTreeWidgetItem(parent)
 {
     updateFrom(computer);
@@ -612,7 +610,7 @@ void LocalGroupWidget::Item::clearOnlineStatus()
 }
 
 //--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::Item::updateFrom(const ComputerConfig& computer)
+void LocalGroupWidget::Item::updateFrom(const client::ComputerConfig& computer)
 {
     computer_ = computer;
 
@@ -648,5 +646,3 @@ bool LocalGroupWidget::Item::operator<(const QTreeWidgetItem& other) const
 
     return QTreeWidgetItem::operator<(other);
 }
-
-} // namespace client

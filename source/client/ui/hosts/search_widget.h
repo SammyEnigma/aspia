@@ -23,8 +23,6 @@
 
 class QTreeWidget;
 
-namespace client {
-
 class SearchWidget : public ContentWidget
 {
     Q_OBJECT
@@ -43,7 +41,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SearchWidget)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_SEARCH_WIDGET_H

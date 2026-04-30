@@ -24,8 +24,6 @@
 
 #include "proto/file_transfer.h"
 
-namespace client {
-
 class AddressBarModel final : public QAbstractItemModel
 {
     Q_OBJECT
@@ -80,7 +78,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AddressBarModel)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_ADDRESS_BAR_MODEL_H

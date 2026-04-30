@@ -84,4 +84,3 @@ void DownloadDialog::onFileDownloaderProgress(int percentage)
 {
     ui.progress_bar->setValue(percentage);
 }
-

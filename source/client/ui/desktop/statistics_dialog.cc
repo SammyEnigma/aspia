@@ -24,8 +24,6 @@
 
 #include <QTimer>
 
-namespace client {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -78,7 +76,7 @@ StatisticsDialog::~StatisticsDialog()
 }
 
 //--------------------------------------------------------------------------------------------------
-void StatisticsDialog::setMetrics(const ClientDesktop::Metrics& metrics)
+void StatisticsDialog::setMetrics(const client::ClientDesktop::Metrics& metrics)
 {
     for (int i = 0; i < ui.tree->topLevelItemCount(); ++i)
     {
@@ -254,5 +252,3 @@ QString StatisticsDialog::speedToString(qint64 speed)
         .arg(static_cast<double>(speed) / static_cast<double>(divider), 0, 'g', 4)
         .arg(units);
 }
-
-} // namespace client

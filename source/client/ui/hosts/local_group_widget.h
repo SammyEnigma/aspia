@@ -33,8 +33,8 @@ class QLabel;
 class QStatusBar;
 
 namespace client {
-
 struct ComputerConfig;
+} // namespace client
 
 class LocalGroupWidget : public ContentWidget
 {
@@ -47,9 +47,9 @@ public:
     class Item : public QTreeWidgetItem
     {
     public:
-        Item(const ComputerConfig& computer, QTreeWidget* parent);
+        Item(const client::ComputerConfig& computer, QTreeWidget* parent);
 
-        ComputerConfig& computer() { return computer_; }
+        client::ComputerConfig& computer() { return computer_; }
         qint64 computerId() const { return computer_.id; }
         qint64 groupId() const { return computer_.group_id; }
         qint64 routerId() const { return computer_.router_id; }
@@ -58,12 +58,12 @@ public:
         void setConnectTime(qint64 connect_time);
         void setOnlineStatus(bool online);
         void clearOnlineStatus();
-        void updateFrom(const ComputerConfig& computer);
+        void updateFrom(const client::ComputerConfig& computer);
 
         bool operator<(const QTreeWidgetItem& other) const final;
 
     private:
-        ComputerConfig computer_;
+        client::ComputerConfig computer_;
     };
 
     class ComputerMimeData final : public QMimeData
@@ -154,11 +154,9 @@ private:
     QLabel* status_computers_label_ = nullptr;
     QLabel* status_check_label_ = nullptr;
 
-    base::ScopedQPointer<OnlineChecker> online_checker_;
+    base::ScopedQPointer<client::OnlineChecker> online_checker_;
 
     Q_DISABLE_COPY_MOVE(LocalGroupWidget)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_LOCAL_GROUP_WIDGET_H

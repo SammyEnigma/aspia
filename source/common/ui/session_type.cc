@@ -101,4 +101,3 @@ QIcon sessionIcon(proto::peer::SessionType session_type)
             return QIcon();
     }
 }
-

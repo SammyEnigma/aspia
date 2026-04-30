@@ -28,8 +28,6 @@
 #include "base/logging.h"
 #include "client/ui/desktop/task_manager_settings.h"
 
-namespace client {
-
 namespace {
 
 enum ProcessColumn
@@ -961,5 +959,3 @@ void TaskManagerWindow::addUpdateItems(QMenu* parent_menu)
     update_menu->addActions(update_group->actions());
     parent_menu->addAction(ui.action_update);
 }
-
-} // namespace client

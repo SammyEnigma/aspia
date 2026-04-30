@@ -28,8 +28,6 @@ class QHBoxLayout;
 class QLabel;
 class QStatusBar;
 
-namespace client {
-
 class TaskManagerWindow final : public QMainWindow
 {
     Q_OBJECT
@@ -85,7 +83,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TaskManagerWindow)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_DESKTOP_TASK_MANAGER_WINDOW_H

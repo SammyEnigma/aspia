@@ -42,8 +42,6 @@
 #include "common/ui/status_dialog.h"
 #include "proto/router_admin.h"
 
-namespace client {
-
 namespace {
 
 class RelayTreeItem final : public QTreeWidgetItem
@@ -264,7 +262,7 @@ private:
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-RouterWidget::RouterWidget(const RouterConfig& config, QWidget* parent)
+RouterWidget::RouterWidget(const client::RouterConfig& config, QWidget* parent)
     : ContentWidget(Type::ROUTER, parent),
       config_(config)
 {
@@ -275,48 +273,48 @@ RouterWidget::RouterWidget(const RouterConfig& config, QWidget* parent)
     status_dialog_->setWindowFlag(Qt::WindowStaysOnTopHint);
     status_dialog_->hide();
 
-    connection_ = new RouterConnection(config);
+    connection_ = new client::RouterConnection(config);
     connection_->moveToThread(base::GuiApplication::ioThread());
 
-    connect(connection_, &RouterConnection::sig_statusChanged,
+    connect(connection_, &client::RouterConnection::sig_statusChanged,
             this, &RouterWidget::onStatusChanged, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_errorOccurred,
+    connect(connection_, &client::RouterConnection::sig_errorOccurred,
             this, &RouterWidget::onConnectionErrorOccurred, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_relayListReceived,
+    connect(connection_, &client::RouterConnection::sig_relayListReceived,
             this, &RouterWidget::onRelayListReceived, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_hostListReceived,
+    connect(connection_, &client::RouterConnection::sig_hostListReceived,
             this, &RouterWidget::onHostListReceived, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_userListReceived,
+    connect(connection_, &client::RouterConnection::sig_userListReceived,
             this, &RouterWidget::onUserListReceived, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_userResultReceived,
+    connect(connection_, &client::RouterConnection::sig_userResultReceived,
             this, &RouterWidget::onUserResultReceived, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_hostResultReceived,
+    connect(connection_, &client::RouterConnection::sig_hostResultReceived,
             this, &RouterWidget::onHostResultReceived, Qt::QueuedConnection);
-    connect(connection_, &RouterConnection::sig_relayResultReceived,
+    connect(connection_, &client::RouterConnection::sig_relayResultReceived,
             this, &RouterWidget::onRelayResultReceived, Qt::QueuedConnection);
 
     connect(this, &RouterWidget::sig_relayListRequest,
-            connection_, &RouterConnection::onRelayListRequest, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onRelayListRequest, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_hostListRequest,
-            connection_, &RouterConnection::onHostListRequest, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onHostListRequest, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_userListRequest,
-            connection_, &RouterConnection::onUserListRequest, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onUserListRequest, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_addUser,
-            connection_, &RouterConnection::onAddUser, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onAddUser, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_modifyUser,
-            connection_, &RouterConnection::onModifyUser, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onModifyUser, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_deleteUser,
-            connection_, &RouterConnection::onDeleteUser, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onDeleteUser, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_disconnectHost,
-            connection_, &RouterConnection::onDisconnectHost, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onDisconnectHost, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_removeHost,
-            connection_, &RouterConnection::onRemoveHost, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onRemoveHost, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_disconnectRelay,
-            connection_, &RouterConnection::onDisconnectRelay, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onDisconnectRelay, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_disconnectPeer,
-            connection_, &RouterConnection::onDisconnectPeer, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onDisconnectPeer, Qt::QueuedConnection);
     connect(this, &RouterWidget::sig_updateConfig,
-            connection_, &RouterConnection::onUpdateConfig, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onUpdateConfig, Qt::QueuedConnection);
 
     connect(ui.tab, &QTabWidget::currentChanged, this, &RouterWidget::onTabChanged);
     connect(ui.tree_users, &QTreeWidget::itemSelectionChanged,
@@ -359,7 +357,7 @@ qint64 RouterWidget::routerId() const
 }
 
 //--------------------------------------------------------------------------------------------------
-RouterConnection::Status RouterWidget::status() const
+client::RouterConnection::Status RouterWidget::status() const
 {
     return status_;
 }
@@ -484,7 +482,7 @@ void RouterWidget::connectToRouter()
     if (connection_)
     {
         QMetaObject::invokeMethod(
-            connection_, &RouterConnection::onConnectToRouter, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onConnectToRouter, Qt::QueuedConnection);
     }
 }
 
@@ -494,12 +492,12 @@ void RouterWidget::disconnectFromRouter()
     if (connection_)
     {
         QMetaObject::invokeMethod(
-            connection_, &RouterConnection::onDisconnectFromRouter, Qt::QueuedConnection);
+            connection_, &client::RouterConnection::onDisconnectFromRouter, Qt::QueuedConnection);
     }
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterWidget::updateConfig(const RouterConfig& config)
+void RouterWidget::updateConfig(const client::RouterConfig& config)
 {
     config_ = config;
     emit sig_updateConfig(config);
@@ -1073,24 +1071,24 @@ void RouterWidget::onPeerContextMenuRequested(const QPoint& pos)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterWidget::onStatusChanged(qint64 router_id, RouterConnection::Status status)
+void RouterWidget::onStatusChanged(qint64 router_id, client::RouterConnection::Status status)
 {
     status_ = status;
 
     switch (status)
     {
-        case RouterConnection::Status::CONNECTING:
+        case client::RouterConnection::Status::CONNECTING:
             status_dialog_->addMessage(tr("Connecting to router %1...").arg(config_.address));
             break;
-        case RouterConnection::Status::ONLINE:
+        case client::RouterConnection::Status::ONLINE:
             status_dialog_->addMessage(tr("Connection to router %1 established.").arg(config_.address));
             break;
-        case RouterConnection::Status::OFFLINE:
+        case client::RouterConnection::Status::OFFLINE:
             status_dialog_->addMessage(tr("Disconnected from router %1.").arg(config_.address));
             break;
     }
 
-    if (status == RouterConnection::Status::ONLINE)
+    if (status == client::RouterConnection::Status::ONLINE)
     {
         onUpdateRelayList();
         onUpdateHostList();
@@ -1541,5 +1539,3 @@ void RouterWidget::updateRelayStatistics()
             ui.tree_peers->addTopLevelItem(new PeerTreeItem(connection));
     }
 }
-
-} // namespace client

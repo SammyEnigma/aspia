@@ -26,8 +26,6 @@
 #include "common/ui/taskbar_progress.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace client {
-
 class FileRemoveDialog final : public QDialog
 {
     Q_OBJECT
@@ -63,7 +61,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileRemoveDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_DIALOG_H

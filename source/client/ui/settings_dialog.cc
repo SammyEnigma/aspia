@@ -37,8 +37,6 @@
 #include "client/ui/router_dialog.h"
 #include "common/ui/update_dialog.h"
 
-namespace client {
-
 namespace {
 
 const int kColumnAddress     = 0;
@@ -73,7 +71,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     LOG(INFO) << "Ctor";
     ui.setupUi(this);
 
-    Settings settings;
+    client::Settings settings;
 
     // Router tab.
     reloadRouterList();
@@ -192,12 +190,12 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
     {
         LOG(INFO) << "[ACTION] Accepted by user";
 
-        Settings settings;
+        client::Settings settings;
 
         // Save language.
         QString new_locale = ui.combo_language->currentData().toString();
         settings.setLocale(new_locale);
-        client::Application::instance()->setLocale(new_locale);
+        Application::instance()->setLocale(new_locale);
 
         // Save theme.
         QString new_theme = ui.combo_theme->currentData().toString();
@@ -272,7 +270,7 @@ void SettingsDialog::onRemoveRouter()
     }
 
     qint64 router_id = item->data(kColumnAddress, kRoleId).toLongLong();
-    Database::instance().removeRouter(router_id);
+    client::Database::instance().removeRouter(router_id);
     reloadRouterList();
 }
 
@@ -295,7 +293,7 @@ void SettingsDialog::onSetOrChangeMasterPassword()
 {
     LOG(INFO) << "[ACTION] Set/change master password";
 
-    MasterPasswordDialog::Mode mode = MasterPassword::isSet() ?
+    MasterPasswordDialog::Mode mode = client::MasterPassword::isSet() ?
         MasterPasswordDialog::Mode::CHANGE : MasterPasswordDialog::Mode::SET;
     MasterPasswordDialog dialog(mode, this);
     dialog.exec();
@@ -317,7 +315,7 @@ void SettingsDialog::onRemoveMasterPassword()
 //--------------------------------------------------------------------------------------------------
 void SettingsDialog::updateMasterPasswordUi()
 {
-    bool is_set = MasterPassword::isSet();
+    bool is_set = client::MasterPassword::isSet();
 
     if (is_set)
     {
@@ -338,8 +336,8 @@ void SettingsDialog::reloadRouterList()
 {
     ui.tree_routers->clear();
 
-    const QList<RouterConfig> routers = Database::instance().routerList();
-    for (const RouterConfig& router : std::as_const(routers))
+    const QList<client::RouterConfig> routers = client::Database::instance().routerList();
+    for (const client::RouterConfig& router : std::as_const(routers))
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui.tree_routers);
         item->setText(kColumnAddress, router.address);
@@ -352,5 +350,3 @@ void SettingsDialog::reloadRouterList()
 
     updateRouterButtons();
 }
-
-} // namespace client

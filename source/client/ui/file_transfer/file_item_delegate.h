@@ -21,8 +21,6 @@
 
 #include <QStyledItemDelegate>
 
-namespace client {
-
 class FileItemDelegate final : public QStyledItemDelegate
 {
     Q_OBJECT
@@ -48,7 +46,5 @@ signals:
 private:
     Q_DISABLE_COPY_MOVE(FileItemDelegate)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_FILE_TRANSFER_FILE_ITEM_DELEGATE_H

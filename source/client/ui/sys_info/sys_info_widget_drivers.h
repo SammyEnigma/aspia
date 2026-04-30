@@ -22,8 +22,6 @@
 #include "client/ui/sys_info/sys_info_widget.h"
 #include "ui_sys_info_widget_drivers.h"
 
-namespace client {
-
 class SysInfoWidgetDrivers final : public SysInfoWidget
 {
     Q_OBJECT
@@ -48,7 +46,5 @@ private:
     Ui::SysInfoDrivers ui;
     int current_column_ = 0;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_DRIVERS_H

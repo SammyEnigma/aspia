@@ -24,8 +24,6 @@
 #include "base/logging.h"
 #include "ui_desktop_config_dialog.h"
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 DesktopConfigDialog::DesktopConfigDialog(const proto::control::Config& config, QWidget* parent)
     : QDialog(parent),
@@ -139,5 +137,3 @@ void DesktopConfigDialog::onButtonBoxClicked(QAbstractButton* button)
         LOG(INFO) << "[ACTION] Rejected by user";
     }
 }
-
-} // namespace client

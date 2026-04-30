@@ -22,8 +22,6 @@
 #include "client/ui/sys_info/sys_info_widget.h"
 #include "ui_sys_info_widget_net_shares.h"
 
-namespace client {
-
 class SysInfoWidgetNetShares final : public SysInfoWidget
 {
     Q_OBJECT
@@ -43,7 +41,5 @@ private slots:
 private:
     Ui::SysInfoNetShares ui;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_NET_SHARES_H

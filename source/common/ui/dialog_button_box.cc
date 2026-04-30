@@ -104,4 +104,3 @@ void DialogButtonBox::translateButtons()
             button->setText(tr(entry.text));
     }
 }
-

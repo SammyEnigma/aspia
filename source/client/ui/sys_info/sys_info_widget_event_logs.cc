@@ -23,8 +23,6 @@
 #include "base/logging.h"
 #include "common/system_info_constants.h"
 
-namespace client {
-
 namespace {
 
 class EventItem final : public QTreeWidgetItem
@@ -319,5 +317,3 @@ QString SysInfoWidgetEventLogs::levelToString(proto::system_info::EventLogs::Eve
             return tr("Unknown");
     }
 }
-
-} // namespace client

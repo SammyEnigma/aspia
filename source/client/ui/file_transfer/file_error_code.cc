@@ -20,8 +20,6 @@
 
 #include <QCoreApplication>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 QString fileErrorToString(proto::file_transfer::ErrorCode error_code)
 {
@@ -92,5 +90,3 @@ QString fileErrorToString(proto::file_transfer::ErrorCode error_code)
 
     return QCoreApplication::translate("FileError", message);
 }
-
-} // namespace client

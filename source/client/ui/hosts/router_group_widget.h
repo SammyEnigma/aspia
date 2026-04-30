@@ -22,8 +22,6 @@
 #include "client/ui/hosts/content_widget.h"
 #include "ui_router_group_widget.h"
 
-namespace client {
-
 class RouterGroupWidget : public ContentWidget
 {
     Q_OBJECT
@@ -41,7 +39,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(RouterGroupWidget)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_ROUTER_GROUP_WIDGET_H

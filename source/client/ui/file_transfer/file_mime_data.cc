@@ -20,8 +20,6 @@
 
 #include <QUuid>
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 FileMimeData::~FileMimeData() = default;
 
@@ -39,7 +37,7 @@ void FileMimeData::setMimeType(const QString& mime_type)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileMimeData::setFileList(const QList<FileTransfer::Item>& file_list)
+void FileMimeData::setFileList(const QList<client::FileTransfer::Item>& file_list)
 {
     file_list_ = file_list;
     setData(mimeType(), QByteArray());
@@ -50,5 +48,3 @@ void FileMimeData::setSource(const FileListModel* source)
 {
     source_ = source;
 }
-
-} // namespace client

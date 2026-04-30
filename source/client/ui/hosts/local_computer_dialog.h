@@ -23,8 +23,6 @@
 
 #include "ui_local_computer_dialog.h"
 
-namespace client {
-
 class LocalComputerDialog : public QDialog
 {
     Q_OBJECT
@@ -49,7 +47,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(LocalComputerDialog)
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_HOSTS_LOCAL_COMPUTER_DIALOG_H

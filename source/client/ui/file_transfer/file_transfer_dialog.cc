@@ -29,8 +29,6 @@
 #include "common/ui/taskbar_button.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace client {
-
 //--------------------------------------------------------------------------------------------------
 FileTransferDialog::FileTransferDialog(QWidget* parent)
     : QDialog(parent)
@@ -131,7 +129,7 @@ void FileTransferDialog::setCurrentSpeed(qint64 speed)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::errorOccurred(const FileTransfer::Error& error)
+void FileTransferDialog::errorOccurred(const client::FileTransfer::Error& error)
 {
 #if defined(Q_OS_WINDOWS)
     if (taskbar_progress_)
@@ -151,19 +149,19 @@ void FileTransferDialog::errorOccurred(const FileTransfer::Error& error)
 
     const quint32 available_actions = error.availableActions();
 
-    if (available_actions & FileTransfer::Error::ACTION_SKIP)
+    if (available_actions & client::FileTransfer::Error::ACTION_SKIP)
         skip_button = dialog->addButton(tr("Skip"), MsgBox::ButtonRole::ActionRole);
 
-    if (available_actions & FileTransfer::Error::ACTION_SKIP_ALL)
+    if (available_actions & client::FileTransfer::Error::ACTION_SKIP_ALL)
         skip_all_button = dialog->addButton(tr("Skip All"), MsgBox::ButtonRole::ActionRole);
 
-    if (available_actions & FileTransfer::Error::ACTION_REPLACE)
+    if (available_actions & client::FileTransfer::Error::ACTION_REPLACE)
         replace_button = dialog->addButton(tr("Replace"), MsgBox::ButtonRole::ActionRole);
 
-    if (available_actions & FileTransfer::Error::ACTION_REPLACE_ALL)
+    if (available_actions & client::FileTransfer::Error::ACTION_REPLACE_ALL)
         replace_all_button = dialog->addButton(tr("Replace All"), MsgBox::ButtonRole::ActionRole);
 
-    if (available_actions & FileTransfer::Error::ACTION_ABORT)
+    if (available_actions & client::FileTransfer::Error::ACTION_ABORT)
         dialog->addButton(tr("Abort"), MsgBox::ButtonRole::ActionRole);
 
     connect(dialog, &MsgBox::buttonClicked, this, [=, this](QAbstractButton* button)
@@ -172,30 +170,30 @@ void FileTransferDialog::errorOccurred(const FileTransfer::Error& error)
         {
             if (button == skip_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_SKIP);
+                emit sig_action(error.type(), client::FileTransfer::Error::ACTION_SKIP);
                 return;
             }
 
             if (button == skip_all_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_SKIP_ALL);
+                emit sig_action(error.type(), client::FileTransfer::Error::ACTION_SKIP_ALL);
                 return;
             }
 
             if (button == replace_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_REPLACE);
+                emit sig_action(error.type(), client::FileTransfer::Error::ACTION_REPLACE);
                 return;
             }
 
             if (button == replace_all_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_REPLACE_ALL);
+                emit sig_action(error.type(), client::FileTransfer::Error::ACTION_REPLACE_ALL);
                 return;
             }
         }
 
-        emit sig_action(error.type(), FileTransfer::Error::ACTION_ABORT);
+        emit sig_action(error.type(), client::FileTransfer::Error::ACTION_ABORT);
     });
 
     connect(dialog, &MsgBox::finished, dialog, &MsgBox::deleteLater);
@@ -249,41 +247,41 @@ void FileTransferDialog::closeEvent(QCloseEvent* event)
 }
 
 //--------------------------------------------------------------------------------------------------
-QString FileTransferDialog::errorToMessage(const FileTransfer::Error& error)
+QString FileTransferDialog::errorToMessage(const client::FileTransfer::Error& error)
 {
     switch (error.type())
     {
-        case FileTransfer::Error::Type::QUEUE:
+        case client::FileTransfer::Error::Type::QUEUE:
         {
             return tr("An error occurred while building the file queue for copying");
         }
 
-        case FileTransfer::Error::Type::CREATE_DIRECTORY:
+        case client::FileTransfer::Error::Type::CREATE_DIRECTORY:
         {
             return tr("Failed to create directory \"%1\": %2")
                 .arg(error.path(), fileErrorToString(error.code()));
         }
 
-        case FileTransfer::Error::Type::CREATE_FILE:
-        case FileTransfer::Error::Type::ALREADY_EXISTS:
+        case client::FileTransfer::Error::Type::CREATE_FILE:
+        case client::FileTransfer::Error::Type::ALREADY_EXISTS:
         {
             return tr("Failed to create file \"%1\": %2")
                 .arg(error.path(), fileErrorToString(error.code()));
         }
 
-        case FileTransfer::Error::Type::OPEN_FILE:
+        case client::FileTransfer::Error::Type::OPEN_FILE:
         {
             return tr("Failed to open file \"%1\": %2")
                 .arg(error.path(), fileErrorToString(error.code()));
         }
 
-        case FileTransfer::Error::Type::WRITE_FILE:
+        case client::FileTransfer::Error::Type::WRITE_FILE:
         {
             return tr("Failed to write file \"%1\": %2")
                 .arg(error.path(), fileErrorToString(error.code()));
         }
 
-        case FileTransfer::Error::Type::READ_FILE:
+        case client::FileTransfer::Error::Type::READ_FILE:
         {
             return tr("Failed to read file \"%1\": %2")
                 .arg(error.path(), fileErrorToString(error.code()));
@@ -338,5 +336,3 @@ QString FileTransferDialog::speedToString(qint64 speed)
         .arg(static_cast<double>(speed) / static_cast<double>(divider), 0, 'g', 4)
         .arg(units);
 }
-
-} // namespace client

@@ -22,8 +22,6 @@
 #include "client/ui/sys_info/sys_info_widget.h"
 #include "ui_sys_info_widget_local_user_groups.h"
 
-namespace client {
-
 class SysInfoWidgetLocalUserGroups final : public SysInfoWidget
 {
     Q_OBJECT
@@ -43,7 +41,5 @@ private slots:
 private:
     Ui::SysInfoLocalUserGroups ui;
 };
-
-} // namespace client
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_LOCAL_USER_GROUPS_H
