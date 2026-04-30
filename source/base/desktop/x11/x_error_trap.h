@@ -23,8 +23,6 @@
 
 #include "base/x11/x11_headers.h"
 
-namespace base {
-
 // Helper class that registers X Window error handler. Caller can use
 // GetLastErrorAndDisable() to get the last error that was caught, if any.
 class XErrorTrap
@@ -42,7 +40,5 @@ private:
 
     Q_DISABLE_COPY(XErrorTrap)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_X11_X_ERROR_TRAP_H

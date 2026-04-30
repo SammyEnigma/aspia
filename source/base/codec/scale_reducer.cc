@@ -23,8 +23,6 @@
 
 #include <libyuv/scale_argb.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScaleReducer::ScaleReducer(Quality quality)
 {
@@ -143,5 +141,3 @@ QRect ScaleReducer::scaledRect(const QRect& source_rect)
 
     return QRect(QPoint(left - 1, top - 1), QPoint(right + 2, bottom + 2));
 }
-
-} // namespace base

@@ -24,8 +24,6 @@
 
 #include "base/x11/x11_headers.h"
 
-namespace base {
-
 namespace {
 
 const char* eventTypeToString(int event)
@@ -208,5 +206,3 @@ void SharedXDisplay::ignoreXServerGrabs()
         XTestGrabControl(display(), true);
     }
 }
-
-} // namespace base

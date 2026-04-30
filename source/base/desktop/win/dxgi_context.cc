@@ -20,8 +20,6 @@
 
 #include "base/desktop/win/dxgi_duplicator_controller.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DxgiAdapterContext::DxgiAdapterContext() = default;
 
@@ -53,5 +51,3 @@ void DxgiFrameContext::reset()
     controller->unregister(this);
     controller_id = 0;
 }
-
-} // namespace base

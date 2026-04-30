@@ -28,8 +28,6 @@
 
 #include <optional>
 
-namespace base {
-
 class CursorDecoder
 {
 public:
@@ -51,7 +49,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(CursorDecoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_CURSOR_DECODER_H

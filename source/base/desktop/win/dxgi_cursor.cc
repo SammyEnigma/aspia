@@ -18,8 +18,6 @@
 
 #include "base/desktop/win/dxgi_cursor.h"
 
-namespace base {
-
 namespace {
 
 constexpr int kBytesPerPixel = 4;
@@ -156,5 +154,3 @@ QByteArray* DxgiCursor::pointerShapeBuffer()
 {
     return &pointer_shape_;
 }
-
-} // namespace base

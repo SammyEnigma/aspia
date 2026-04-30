@@ -24,8 +24,6 @@
 #include <functional>
 #include <memory>
 
-namespace base {
-
 // SincResampler is a high-quality single-channel sample-rate converter.
 class SincResampler
 {
@@ -159,7 +157,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(SincResampler)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_SINC_RESAMPLER_H

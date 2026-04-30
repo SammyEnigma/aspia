@@ -21,8 +21,6 @@
 
 #include "base/x11/x11_headers.h"
 
-namespace base {
-
 // A cache of Atom. Each Atom object is created on demand.
 class XAtomCache final
 {
@@ -47,7 +45,5 @@ private:
     Atom window_type_normal_ = X11_None;
     Atom icc_profile_ = X11_None;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_X11_X_ATOM_CACHE_H

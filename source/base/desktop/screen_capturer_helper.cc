@@ -20,8 +20,6 @@
 
 #include <cassert>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void ScreenCapturerHelper::clearInvalidRegion()
 {
@@ -114,5 +112,3 @@ void ScreenCapturerHelper::expandToGrid(const QRegion& region, int log_grid_size
         *result += QRect(QPoint(left, top), QPoint(right - 1, bottom - 1));
     }
 }
-
-} // namespace base

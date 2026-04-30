@@ -23,8 +23,6 @@
 
 #include <optional>
 
-namespace base {
-
 class DesktopEnvironment : public QObject
 {
     Q_OBJECT
@@ -53,7 +51,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopEnvironment)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DESKTOP_ENVIRONMENT_H

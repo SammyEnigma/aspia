@@ -24,8 +24,6 @@
 #include <memory>
 #include <vector>
 
-namespace base {
-
 class DxgiDuplicatorController;
 
 // A DxgiOutputContext stores the status of a single DxgiFrame of DxgiOutputDuplicator.
@@ -68,7 +66,5 @@ public:
     std::vector<DxgiAdapterContext> contexts;
     std::shared_ptr<DxgiDuplicatorController> controller;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_CONTEXT_H

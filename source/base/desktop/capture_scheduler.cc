@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 std::chrono::milliseconds CaptureScheduler::updateInterval() const
 {
@@ -61,5 +59,3 @@ std::chrono::milliseconds CaptureScheduler::nextCaptureDelay()
 
     return update_interval_ - diff_time;
 }
-
-} // namespace base

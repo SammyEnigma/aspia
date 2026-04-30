@@ -26,8 +26,6 @@
 
 using Microsoft::WRL::ComPtr;
 
-namespace base {
-
 namespace {
 
 class DxgiDesktopFrame final : public Frame
@@ -101,5 +99,3 @@ DXGI_MAPPED_RECT* DxgiTexture::rect()
 {
     return &rect_;
 }
-
-} // namespace base

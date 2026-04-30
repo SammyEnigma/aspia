@@ -157,7 +157,7 @@ DesktopWidget::~DesktopWidget()
 }
 
 //--------------------------------------------------------------------------------------------------
-base::Frame* DesktopWidget::desktopFrame()
+Frame* DesktopWidget::desktopFrame()
 {
     return frame_.get();
 }
@@ -169,7 +169,7 @@ const QImage& DesktopWidget::desktopImage()
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopWidget::setDesktopFrame(std::shared_ptr<base::Frame> frame)
+void DesktopWidget::setDesktopFrame(std::shared_ptr<Frame> frame)
 {
     frame_ = std::move(frame);
     if (!frame_)

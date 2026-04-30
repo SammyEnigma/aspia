@@ -21,8 +21,6 @@
 
 #include <QRegion>
 
-namespace base {
-
 class Frame
 {
 public:
@@ -78,7 +76,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Frame)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_FRAME_H

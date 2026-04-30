@@ -25,8 +25,6 @@
 
 #include <optional>
 
-namespace base {
-
 class DxgiDuplicatorController;
 
 // A pair of a SharedFrame and a DxgiDuplicatorController::Context for the client of
@@ -40,7 +38,7 @@ public:
     ~DxgiFrame();
 
     // Should not be called if prepare() is not executed or returns false.
-    SharedPointer<Frame> frame() const;
+    base::SharedPointer<Frame> frame() const;
 
 private:
     // Allows DxgiDuplicatorController to access prepare() and context() function as well as
@@ -55,10 +53,8 @@ private:
 
     std::optional<QSize> last_frame_size_;
     ScreenCapturer::ScreenId source_id_ = ScreenCapturer::kFullDesktopScreenId;
-    SharedPointer<Frame> frame_;
+    base::SharedPointer<Frame> frame_;
     Context context_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_FRAME_H

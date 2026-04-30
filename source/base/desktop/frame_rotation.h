@@ -21,8 +21,6 @@
 
 #include "base/desktop/frame.h"
 
-namespace base {
-
 // Represents the rotation of a Frame.
 enum class Rotation
 {
@@ -48,7 +46,5 @@ QSize rotateSize(const QSize& size, Rotation rotation);
 
 // Returns a rotated Rect of |rect|. The |size| represents the size of the Frame which |rect| belongs in.
 QRect rotateRect(const QRect& rect, const QSize& size, Rotation rotation);
-
-} // namespace base
 
 #endif // BASE_DESKTOP_FRAME_ROTATION_H

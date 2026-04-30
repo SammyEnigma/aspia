@@ -18,8 +18,6 @@
 
 #include "base/desktop/screen_capturer_mac.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScreenCapturerMac::ScreenCapturerMac(QObject* parent)
     : ScreenCapturer(ScreenCapturer::Type::MACOSX, parent)
@@ -80,5 +78,3 @@ void ScreenCapturerMac::reset()
 {
     // Nothing
 }
-
-} // namespace base

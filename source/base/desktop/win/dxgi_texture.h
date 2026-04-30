@@ -26,8 +26,6 @@
 #include <d3d11.h>
 #include <dxgi1_2.h>
 
-namespace base {
-
 // A texture copied or mapped from a DXGI_OUTDUPL_FRAME_INFO and IDXGIResource.
 class DxgiTexture
 {
@@ -69,7 +67,5 @@ private:
     QSize desktop_size_;
     std::unique_ptr<Frame> frame_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_TEXTURE_H

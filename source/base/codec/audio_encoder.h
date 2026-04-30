@@ -23,8 +23,6 @@
 
 struct OpusEncoder;
 
-namespace base {
-
 class AudioBus;
 class MultiChannelResampler;
 
@@ -67,7 +65,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AudioEncoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_AUDIO_ENCODER_H

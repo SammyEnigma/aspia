@@ -23,8 +23,6 @@
 
 #include <memory>
 
-namespace base {
-
 class Frame;
 
 class ScaleReducer
@@ -52,7 +50,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScaleReducer)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_SCALE_REDUCER_H

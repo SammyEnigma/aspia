@@ -24,8 +24,6 @@
 #include <QPoint>
 #include <QSize>
 
-namespace base {
-
 class MouseCursor
 {
 public:
@@ -73,9 +71,7 @@ private:
     QPoint dpi_;
 };
 
-} // namespace base
-
-Q_DECLARE_METATYPE(base::MouseCursor)
-Q_DECLARE_METATYPE(std::shared_ptr<base::MouseCursor>)
+Q_DECLARE_METATYPE(MouseCursor)
+Q_DECLARE_METATYPE(std::shared_ptr<MouseCursor>)
 
 #endif // BASE_DESKTOP_MOUSE_CURSOR_H

@@ -18,8 +18,6 @@
 
 #include "base/desktop/screen_capturer.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScreenCapturer::ScreenCapturer(Type type, QObject* parent)
     : QObject(parent),
@@ -33,5 +31,3 @@ ScreenCapturer::Type ScreenCapturer::type() const
 {
     return type_;
 }
-
-} // namespace base

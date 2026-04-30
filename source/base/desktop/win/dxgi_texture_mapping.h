@@ -24,8 +24,6 @@
 #include <d3d11.h>
 #include <dxgi1_2.h>
 
-namespace base {
-
 // A DxgiTexture which directly maps bitmap from IDXGIResource. This class is used when
 // DXGI_OUTDUPL_DESC.DesktopImageInSystemMemory is true. (This usually means the video card shares
 // main memory with CPU, instead of having its own individual memory.)
@@ -46,7 +44,5 @@ protected:
 private:
     IDXGIOutputDuplication* const duplication_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_TEXTURE_MAPPING_H

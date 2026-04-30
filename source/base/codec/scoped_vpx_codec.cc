@@ -23,8 +23,6 @@
 #define VPX_CODEC_DISABLE_COMPAT 1
 #include "vpx/vpx_codec.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void VpxCodecDeleter::operator()(vpx_codec_ctx_t* codec)
 {
@@ -35,5 +33,3 @@ void VpxCodecDeleter::operator()(vpx_codec_ctx_t* codec)
         delete codec;
     }
 }
-
-} // namespace base

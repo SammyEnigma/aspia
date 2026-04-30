@@ -25,8 +25,6 @@
 #include "base/desktop/mouse_cursor.h"
 #include "proto/desktop_cursor.h"
 
-namespace base {
-
 class CursorEncoder
 {
 public:
@@ -43,7 +41,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(CursorEncoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_CURSOR_ENCODER_H

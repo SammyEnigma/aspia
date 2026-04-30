@@ -25,8 +25,6 @@
 
 #include <memory>
 
-namespace base {
-
 // Represents a sequence of audio frames containing frames() audio samples for
 // each of channels() channels. The data is stored as a set of contiguous
 // float arrays with one array per channel. The memory for the arrays is either
@@ -305,7 +303,5 @@ void AudioBus::CopyConvertFromAudioBusToInterleavedTarget(
         }
     }
 }
-
-} // namespace base
 
 #endif // BASE_CODEC_AUDIO_BUS_H

@@ -25,8 +25,6 @@
 
 #include "third_party/libwebm/webmids.hpp"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 WebmFileMuxer::WebmFileMuxer() = default;
 
@@ -188,5 +186,3 @@ bool WebmFileMuxer::writeFrame(std::string_view frame,
 
     return true;
 }
-
-} // namespace base

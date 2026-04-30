@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 namespace {
 
 std::unique_ptr<Frame> createTestFrame(const QRect& rect, int pixels_value)
@@ -69,5 +67,3 @@ TEST(FrameTest, Performance)
         }
     }
 }
-
-} // namespace base

@@ -32,8 +32,6 @@ namespace proto::video {
 class Packet;
 } // namespace proto::video
 
-namespace base {
-
 class Frame;
 
 class WebmVideoEncoder
@@ -59,7 +57,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(WebmVideoEncoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_WEBM_VIDEO_ENCODER_H

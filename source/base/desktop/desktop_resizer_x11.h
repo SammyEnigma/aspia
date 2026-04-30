@@ -21,8 +21,6 @@
 
 #include "base/desktop/desktop_resizer.h"
 
-namespace base {
-
 class DesktopResizerX11 final : public DesktopResizer
 {
 public:
@@ -38,7 +36,5 @@ public:
 private:
     Q_DISABLE_COPY(DesktopResizerX11)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DESKTOP_RESIZER_X11_H

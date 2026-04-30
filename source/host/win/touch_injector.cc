@@ -92,7 +92,7 @@ void convertToPointerTouchInfo(
 {
     // TODO(zijiehe): Use GetFullscreenTopLeft() once
     // https://chromium-review.googlesource.com/c/581951/ is submitted.
-    QPoint top_left = base::ScreenCaptureUtils::fullScreenRect().topLeft();
+    QPoint top_left = ScreenCaptureUtils::fullScreenRect().topLeft();
     if (top_left == QPoint(0, 0))
     {
         convertToPointerTouchInfoImpl(touch_point, pointer_touch_info);

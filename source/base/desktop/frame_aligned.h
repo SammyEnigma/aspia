@@ -23,8 +23,6 @@
 
 #include <memory>
 
-namespace base {
-
 class FrameAligned final : public Frame
 {
 public:
@@ -37,7 +35,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FrameAligned)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_FRAME_ALIGNED_H

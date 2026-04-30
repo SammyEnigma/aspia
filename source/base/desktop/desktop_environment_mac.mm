@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DesktopEnvironmentMac::DesktopEnvironmentMac(QObject* parent)
     : DesktopEnvironment(parent)
@@ -49,5 +47,3 @@ void DesktopEnvironmentMac::revertAll()
 {
     NOTIMPLEMENTED();
 }
-
-} // namespace base

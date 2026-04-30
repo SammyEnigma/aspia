@@ -26,8 +26,6 @@
 #include <chrono>
 #include <thread>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // static
 const char* DxgiDuplicatorController::resultName(DxgiDuplicatorController::Result result)
@@ -197,7 +195,7 @@ DxgiDuplicatorController::Result DxgiDuplicatorController::doDuplicate(
     if (!frame->prepare(selectedDesktopSize(monitor_id), monitor_id))
         return Result::FRAME_PREPARE_FAILED;
 
-    SharedPointer<Frame> shared_frame = frame->frame();
+    base::SharedPointer<Frame> shared_frame = frame->frame();
 
     *shared_frame->updatedRegion() = QRegion();
 
@@ -365,7 +363,7 @@ void DxgiDuplicatorController::setup(Context* context)
 
 //--------------------------------------------------------------------------------------------------
 bool DxgiDuplicatorController::doDuplicateAll(
-    Context* context, SharedPointer<Frame>& target, DxgiCursor* cursor)
+    Context* context, base::SharedPointer<Frame>& target, DxgiCursor* cursor)
 {
     for (size_t i = 0; i < duplicators_.size(); ++i)
     {
@@ -378,7 +376,7 @@ bool DxgiDuplicatorController::doDuplicateAll(
 
 //--------------------------------------------------------------------------------------------------
 bool DxgiDuplicatorController::doDuplicateOne(
-    Context* context, int monitor_id, SharedPointer<Frame>& target, DxgiCursor* cursor)
+    Context* context, int monitor_id, base::SharedPointer<Frame>& target, DxgiCursor* cursor)
 {
     DCHECK(monitor_id >= 0);
 
@@ -457,7 +455,7 @@ QSize DxgiDuplicatorController::selectedDesktopSize(int monitor_id) const
 
 //--------------------------------------------------------------------------------------------------
 bool DxgiDuplicatorController::ensureFrameCaptured(
-    Context* context, SharedPointer<Frame>& target, DxgiCursor* cursor)
+    Context* context, base::SharedPointer<Frame>& target, DxgiCursor* cursor)
 {
     using Clock = std::chrono::steady_clock;
     using TimePoint = std::chrono::time_point<Clock>;
@@ -481,7 +479,7 @@ bool DxgiDuplicatorController::ensureFrameCaptured(
     if (numFramesCaptured() >= frames_to_skip)
         return true;
 
-    SharedPointer<Frame> frame;
+    base::SharedPointer<Frame> frame;
 
     if (target->size().width() >= desktopSize().width() &&
         target->size().height() >= desktopSize().height())
@@ -532,5 +530,3 @@ void DxgiDuplicatorController::translateRect()
     for (auto& duplicator : duplicators_)
         duplicator.translateRect(position);
 }
-
-} // namespace base

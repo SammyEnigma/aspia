@@ -23,8 +23,6 @@
 
 #include <mutex>
 
-namespace base {
-
 // ScreenCapturerHelper is intended to be used by an implementation of the ScreenCapturer interface.
 // It maintains a thread-safe invalid region, and the size of the most recently captured screen, on
 // behalf of the ScreenCapturer that owns it.
@@ -83,7 +81,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScreenCapturerHelper)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_SCREEN_CAPTURER_HELPER_H

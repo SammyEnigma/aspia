@@ -153,21 +153,21 @@ ConfigDialog::ConfigDialog(QWidget* parent)
     });
 
     ui.combo_video_capturer->addItem(
-        tr("Default"), static_cast<quint32>(base::ScreenCapturer::Type::DEFAULT));
+        tr("Default"), static_cast<quint32>(ScreenCapturer::Type::DEFAULT));
 
 #if defined(Q_OS_WINDOWS)
     ui.combo_video_capturer->addItem(
-        "DXGI", static_cast<quint32>(base::ScreenCapturer::Type::WIN_DXGI));
+        "DXGI", static_cast<quint32>(ScreenCapturer::Type::WIN_DXGI));
 
     ui.combo_video_capturer->addItem(
-        "GDI", static_cast<quint32>(base::ScreenCapturer::Type::WIN_GDI));
+        "GDI", static_cast<quint32>(ScreenCapturer::Type::WIN_GDI));
 
 #elif defined(Q_OS_LINUX)
     ui.combo_video_capturer->addItem(
-        "X11", static_cast<quint32>(base::ScreenCapturer::Type::LINUX_X11));
+        "X11", static_cast<quint32>(ScreenCapturer::Type::LINUX_X11));
 #elif defined(Q_OS_MACOS)
     ui.combo_video_capturer->addItem(
-        "MACOSX", static_cast<quint32>(base::ScreenCapturer::Type::MACOSX));
+        "MACOSX", static_cast<quint32>(ScreenCapturer::Type::MACOSX));
 #else
 #error Platform support not implemented
 #endif

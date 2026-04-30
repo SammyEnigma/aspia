@@ -23,8 +23,6 @@
 #include "base/desktop/win/dxgi_duplicator_controller.h"
 #include "base/desktop/win/dxgi_frame.h"
 
-namespace base {
-
 class ScreenCapturerDxgi final : public ScreenCapturerWin
 {
     Q_OBJECT
@@ -68,7 +66,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScreenCapturerDxgi)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_SCREEN_CAPTURER_DXGI_H

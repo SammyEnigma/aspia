@@ -22,8 +22,6 @@
 #include "base/codec/scoped_vpx_codec.h"
 #include "proto/desktop_video.h"
 
-namespace base {
-
 class Frame;
 
 class VideoDecoder
@@ -39,7 +37,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(VideoDecoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_VIDEO_DECODER_H

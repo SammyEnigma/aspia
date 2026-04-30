@@ -27,8 +27,6 @@
 #endif // defined(Q_CC_*)
 #endif // defined(Q_PROCESSOR_X86)
 
-namespace base {
-
 #if defined(Q_PROCESSOR_X86)
 
 //--------------------------------------------------------------------------------------------------
@@ -122,5 +120,3 @@ quint8 diffFullBlock_32bpp_16x16_SSE2(
 }
 
 #endif // defined(Q_PROCESSOR_X86)
-
-} // namespace base

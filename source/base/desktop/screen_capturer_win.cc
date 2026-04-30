@@ -27,8 +27,6 @@
 #include "base/win/session_info.h"
 #include "base/win/windows_version.h"
 
-namespace base {
-
 namespace {
 
 constexpr quint32 RGBA(quint32 r, quint32 g, quint32 b, quint32 a)
@@ -202,7 +200,7 @@ ScreenCapturerWin::ScreenCapturerWin(Type type, QObject* parent)
 
         LOG(INFO) << "Checking current screen type";
 
-        Desktop input_desktop = Desktop::inputDesktop();
+        base::Desktop input_desktop = base::Desktop::inputDesktop();
         if (!input_desktop.isValid())
         {
             LOG(ERROR) << "Unable to get input desktop";
@@ -238,9 +236,9 @@ ScreenCapturer* ScreenCapturerWin::create(Type preferred_type, Error last_error,
     else if (preferred_type == ScreenCapturer::Type::WIN_DXGI ||
              preferred_type == ScreenCapturer::Type::DEFAULT)
     {
-        if (windowsVersion() >= VERSION_WIN8)
+        if (base::windowsVersion() >= base::VERSION_WIN8)
         {
-            // Desktop Duplication API is available in Windows 8+.
+            // base::Desktop Duplication API is available in Windows 8+.
             std::unique_ptr<ScreenCapturerDxgi> capturer_dxgi =
                 std::make_unique<ScreenCapturerDxgi>();
             if (capturer_dxgi->isSupported())
@@ -275,8 +273,8 @@ MouseCursor* ScreenCapturerWin::mouseCursorFromHCursor(HDC dc, HCURSOR cursor)
     }
 
     // Make sure the bitmaps will be freed.
-    ScopedHBITMAP scoped_mask(icon_info.hbmMask);
-    ScopedHBITMAP scoped_color(icon_info.hbmColor);
+    base::ScopedHBITMAP scoped_mask(icon_info.hbmMask);
+    base::ScopedHBITMAP scoped_color(icon_info.hbmColor);
 
     bool is_color = (icon_info.hbmColor != nullptr);
 
@@ -414,7 +412,7 @@ MouseCursor* ScreenCapturerWin::mouseCursorFromHCursor(HDC dc, HCURSOR cursor)
 void ScreenCapturerWin::switchToInputDesktop()
 {
     // Switch to the desktop receiving user input if different from the current one.
-    Desktop input_desktop(Desktop::inputDesktop());
+    base::Desktop input_desktop(base::Desktop::inputDesktop());
 
     if (!input_desktop.isValid() || desktop_.isSame(input_desktop))
         return;
@@ -457,5 +455,3 @@ void ScreenCapturerWin::checkScreenType(const wchar_t* desktop_name)
         LOG(INFO) << "Screen type not changed:" << last_screen_type_;
     }
 }
-
-} // namespace base

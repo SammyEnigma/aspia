@@ -22,8 +22,6 @@
 #include "base/desktop/mouse_cursor.h"
 #include "base/desktop/win/screen_capture_utils.h"
 
-namespace base {
-
 namespace {
 
 const int kMaxTemporaryErrorCount = 3;
@@ -46,7 +44,7 @@ bool screenListFromDeviceNames(const QStringList& device_names,
     for (const auto& screen : std::as_const(gdi_screens.screens))
         max_screen_id = std::max(max_screen_id, screen.id);
 
-    LOG(INFO) << "Device names count:" << device_names.size()
+    LOG(INFO) << "base::Device names count:" << device_names.size()
               << ", GDI count:" << gdi_screens.screens.size()
               << ", max screen id:" << max_screen_id;
 
@@ -67,7 +65,7 @@ bool screenListFromDeviceNames(const QStringList& device_names,
 
         if (!device_found)
         {
-            LOG(ERROR) << "Device" << device_name << "NOT found in list (" << device_index << ")";
+            LOG(ERROR) << "base::Device" << device_name << "NOT found in list (" << device_index << ")";
 
             // devices_names[i] has not been found in gdi_names, so use max_screen_id.
             ++max_screen_id;
@@ -76,7 +74,7 @@ bool screenListFromDeviceNames(const QStringList& device_names,
         }
         else
         {
-            LOG(INFO) << "Device" << device_name << "found in list (" << device_index << ")";
+            LOG(INFO) << "base::Device" << device_name << "found in list (" << device_index << ")";
         }
     }
 
@@ -320,5 +318,3 @@ void ScreenCapturerDxgi::reset()
 {
     frame_.reset();
 }
-
-} // namespace base

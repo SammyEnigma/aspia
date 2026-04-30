@@ -21,8 +21,6 @@
 #include <cassert>
 #include <cstddef>
 
-namespace base {
-
 namespace {
 
 // TODO(sergeyu): This code is not thread safe. Fix it. Bug 2202.

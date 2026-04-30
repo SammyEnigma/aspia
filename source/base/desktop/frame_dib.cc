@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 FrameDib::FrameDib(const QSize& size, int stride, quint8* data, HBITMAP bitmap)
     : Frame(size, stride, data),
@@ -59,5 +57,3 @@ std::unique_ptr<FrameDib> FrameDib::create(const QSize& size, HDC hdc)
     return std::unique_ptr<FrameDib>(new FrameDib(
         size, bytes_per_row, reinterpret_cast<quint8*>(data), bitmap));
 }
-
-} // namespace base

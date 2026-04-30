@@ -105,8 +105,6 @@
 #define CONVOLVE_FUNC Convolve_C
 #endif
 
-namespace base {
-
 constexpr double kPiDouble = 3.14159265358979323846;
 constexpr float kPiFloat = 3.14159265358979323846f;
 
@@ -169,10 +167,10 @@ SincResampler::SincResampler(double io_sample_rate_ratio,
       request_frames_(request_frames),
       input_buffer_size_(request_frames_ + kKernelSize),
       // Create input buffers with a 16-byte alignment for SSE optimizations.
-      kernel_storage_(static_cast<float*>(alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
-      kernel_pre_sinc_storage_(static_cast<float*>(alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
-      kernel_window_storage_(static_cast<float*>(alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
-      input_buffer_(static_cast<float*>(alignedAlloc(sizeof(float) * input_buffer_size_, 16))),
+      kernel_storage_(static_cast<float*>(base::alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
+      kernel_pre_sinc_storage_(static_cast<float*>(base::alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
+      kernel_window_storage_(static_cast<float*>(base::alignedAlloc(sizeof(float) * kKernelStorageSize, 16))),
+      input_buffer_(static_cast<float*>(base::alignedAlloc(sizeof(float) * input_buffer_size_, 16))),
       r1_(input_buffer_.get()),
       r2_(input_buffer_.get() + kKernelSize / 2)
 {
@@ -231,14 +229,14 @@ void SincResampler::InitializeKernel()
         for (int i = 0; i < kKernelSize; ++i)
         {
             const size_t idx = static_cast<size_t>(i + offset_idx * kKernelSize);
-            const float pre_sinc = base::kPiFloat * (i - kKernelSize / 2 - subsample_offset);
+            const float pre_sinc = kPiFloat * (i - kKernelSize / 2 - subsample_offset);
             kernel_pre_sinc_storage_[idx] = pre_sinc;
 
             // Compute Blackman window, matching the offset of the sinc().
             const float x = (i - subsample_offset) / static_cast<float>(kKernelSize);
             const float window =
-                static_cast<float>(kA0 - kA1 * cos(2.0 * base::kPiDouble * x) +
-                                   kA2 * cos(4.0 * base::kPiDouble * x));
+                static_cast<float>(kA0 - kA1 * cos(2.0 * kPiDouble * x) +
+                                   kA2 * cos(4.0 * kPiDouble * x));
         kernel_window_storage_[idx] = window;
 
         // Compute the sinc with offset, then window the sinc() function and store
@@ -465,5 +463,3 @@ float SincResampler::Convolve_NEON(const float* input_ptr, const float* k1,
     return vget_lane_f32(vpadd_f32(m_half, m_half), 0);
 }
 #endif
-
-} // namespace base

@@ -26,8 +26,6 @@
 
 #include <libyuv/convert.h>
 
-namespace base {
-
 namespace {
 
 // Defines the dimension of a macro block.
@@ -264,5 +262,3 @@ bool WebmVideoEncoder::createCodec()
 
     return true;
 }
-
-} // namespace base

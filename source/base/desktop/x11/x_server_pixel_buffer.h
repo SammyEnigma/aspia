@@ -28,8 +28,6 @@
 
 #include "base/x11/x11_headers.h"
 
-namespace base {
-
 class Frame;
 class XAtomCache;
 
@@ -86,7 +84,5 @@ private:
 
     Q_DISABLE_COPY(XServerPixelBuffer)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_X11_X_SERVER_PIXEL_BUFFER_H

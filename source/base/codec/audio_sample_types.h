@@ -44,8 +44,6 @@
 //   * A static method ConvertToDouble() that takes a ValueType sample value and
 //     converts it to the corresponding double value
 
-namespace base {
-
 // For float or double.
 // See also the aliases for commonly used types at the bottom of this file.
 template <typename SampleType>
@@ -209,7 +207,5 @@ using Float64SampleTypeTraits = FloatSampleTypeTraits<double>;
 using UnsignedInt8SampleTypeTraits = FixedSampleTypeTraits<quint8>;
 using SignedInt16SampleTypeTraits = FixedSampleTypeTraits<qint16>;
 using SignedInt32SampleTypeTraits = FixedSampleTypeTraits<qint32>;
-
-} // namespace base
 
 #endif // BASE_CODEC_AUDIO_SAMPLE_TYPES_H

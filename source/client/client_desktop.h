@@ -35,14 +35,15 @@
 
 class QTimer;
 
-namespace base {
 class AudioDecoder;
-class AudioPlayer;
 class CursorDecoder;
 class Frame;
 class VideoDecoder;
 class WebmFileWriter;
 class WebmVideoEncoder;
+
+namespace base {
+class AudioPlayer;
 } // namespace base
 
 class ClientDesktop final : public Client
@@ -114,9 +115,9 @@ signals:
     void sig_taskManager(const proto::task_manager::HostToClient& message);
     void sig_metrics(const ClientDesktop::Metrics& metrics);
     void sig_frameError(proto::video::ErrorCode error_code);
-    void sig_frameChanged(const QSize& screen_size, std::shared_ptr<base::Frame> frame);
+    void sig_frameChanged(const QSize& screen_size, std::shared_ptr<Frame> frame);
     void sig_drawFrame();
-    void sig_mouseCursorChanged(std::shared_ptr<base::MouseCursor> mouse_cursor);
+    void sig_mouseCursorChanged(std::shared_ptr<MouseCursor> mouse_cursor);
     void sig_sessionListChanged(const proto::control::SessionList& sessions);
 
 protected:
@@ -147,15 +148,15 @@ private:
     bool started_ = false;
     bool key_frame_received_ = false;
 
-    std::shared_ptr<base::Frame> desktop_frame_;
+    std::shared_ptr<Frame> desktop_frame_;
     proto::control::Config desktop_config_;
 
     proto::video::Encoding video_encoding_ = proto::video::ENCODING_UNKNOWN;
     proto::audio::Encoding audio_encoding_ = proto::audio::ENCODING_UNKNOWN;
 
-    std::unique_ptr<base::VideoDecoder> video_decoder_;
-    std::unique_ptr<base::CursorDecoder> cursor_decoder_;
-    std::unique_ptr<base::AudioDecoder> audio_decoder_;
+    std::unique_ptr<VideoDecoder> video_decoder_;
+    std::unique_ptr<CursorDecoder> cursor_decoder_;
+    std::unique_ptr<AudioDecoder> audio_decoder_;
     std::unique_ptr<base::AudioPlayer> audio_player_;
     ClipboardMonitor* clipboard_monitor_ = nullptr;
     ClipboardFileTransfer* clipboard_file_transfer_ = nullptr;
@@ -165,8 +166,8 @@ private:
     quint32 last_mask_ = 0;
 
     ScopedQPointer<QTimer> webm_video_encode_timer_;
-    std::unique_ptr<base::WebmVideoEncoder> webm_video_encoder_;
-    std::unique_ptr<base::WebmFileWriter> webm_file_writer_;
+    std::unique_ptr<WebmVideoEncoder> webm_video_encoder_;
+    std::unique_ptr<WebmFileWriter> webm_file_writer_;
 
     using Clock = std::chrono::steady_clock;
     using TimePoint = std::chrono::time_point<Clock>;

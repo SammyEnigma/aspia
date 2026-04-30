@@ -22,8 +22,6 @@
 
 #include <libyuv/compare.h>
 
-namespace base {
-
 namespace {
 
 // Cache size can be in the range from 2 to 30.
@@ -193,5 +191,3 @@ bool CursorEncoder::encode(const MouseCursor& mouse_cursor, proto::cursor::Shape
 
     return true;
 }
-
-} // namespace base

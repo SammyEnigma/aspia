@@ -32,8 +32,6 @@
 #include <dxgiformat.h>
 #include <qt_windows.h>
 
-namespace base {
-
 using Microsoft::WRL::ComPtr;
 
 namespace {
@@ -145,7 +143,7 @@ bool DxgiOutputDuplicator::duplicateOutput()
             // DuplicateOutput may temporarily return E_ACCESSDENIED.
             if (error.Error() == E_ACCESSDENIED && i < kRetryCount)
             {
-                desktop_ = Desktop::inputDesktop();
+                desktop_ = base::Desktop::inputDesktop();
                 if (desktop_.isValid())
                     desktop_.setThreadDesktop();
 
@@ -213,7 +211,7 @@ bool DxgiOutputDuplicator::releaseFrame()
 
 //--------------------------------------------------------------------------------------------------
 bool DxgiOutputDuplicator::duplicate(
-    Context* context, const QPoint& offset, SharedPointer<Frame>& target, DxgiCursor* cursor)
+    Context* context, const QPoint& offset, base::SharedPointer<Frame>& target, DxgiCursor* cursor)
 {
     DCHECK(duplication_);
     DCHECK(texture_);
@@ -519,5 +517,3 @@ void DxgiOutputDuplicator::translateRect(const QPoint& position)
     DCHECK_GE(desktop_rect_.left(), 0);
     DCHECK_GE(desktop_rect_.top(), 0);
 }
-
-} // namespace base

@@ -18,14 +18,12 @@
 
 #include "base/desktop/mouse_cursor.h"
 
-namespace base {
-
 namespace {
 
 void registerMetaTypes()
 {
-    qRegisterMetaType<base::MouseCursor>("base::MouseCursor");
-    qRegisterMetaType<std::shared_ptr<base::MouseCursor>>("std::shared_ptr<base::MouseCursor>");
+    qRegisterMetaType<MouseCursor>("MouseCursor");
+    qRegisterMetaType<std::shared_ptr<MouseCursor>>("std::shared_ptr<MouseCursor>");
 }
 
 struct Registrator
@@ -89,5 +87,3 @@ bool MouseCursor::equals(const MouseCursor& other)
     return size_ == other.size_ && hotspot_ == other.hotspot_ && dpi_ == other.dpi_ &&
            image_ == other.image_;
 }
-
-} // namespace base

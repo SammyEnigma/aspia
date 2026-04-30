@@ -22,8 +22,6 @@
 
 #include <opus.h>
 
-namespace base {
-
 namespace {
 
 // Maximum size of an Opus frame in milliseconds.
@@ -151,5 +149,3 @@ std::unique_ptr<proto::audio::Packet> AudioDecoder::decode(const proto::audio::P
     decoded_data->resize(static_cast<size_t>(buffer_pos));
     return decoded_packet;
 }
-
-} // namespace base

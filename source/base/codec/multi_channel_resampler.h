@@ -25,8 +25,6 @@
 
 #include "base/codec/sinc_resampler.h"
 
-namespace base {
-
 class AudioBus;
 
 // MultiChannelResampler is a multi channel wrapper for SincResampler; allowing
@@ -96,7 +94,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(MultiChannelResampler)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_MULTI_CHANNEL_RESAMPLER_H

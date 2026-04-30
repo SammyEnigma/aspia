@@ -31,8 +31,6 @@
 typedef struct _XDisplay Display;
 typedef union _XEvent XEvent;
 
-namespace base {
-
 // A ref-counted object to store XDisplay connection.
 class SharedXDisplay : public std::enable_shared_from_this<SharedXDisplay>
 {
@@ -80,7 +78,5 @@ private:
 
     Q_DISABLE_COPY(SharedXDisplay)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_X11_SHARED_X_DISPLAY_H

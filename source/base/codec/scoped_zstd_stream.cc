@@ -18,8 +18,6 @@
 
 #include "base/codec/scoped_zstd_stream.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void ZstdCStreamDeleter::operator()(ZSTD_CStream* cstream)
 {
@@ -31,5 +29,3 @@ void ZstdDStreamDeleter::operator()(ZSTD_DStream* dstream)
 {
     ZSTD_freeDStream(dstream);
 }
-
-} // namespace base

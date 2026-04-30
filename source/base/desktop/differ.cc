@@ -25,8 +25,6 @@
 #include <cstring>
 #include <libyuv/cpu_id.h>
 
-namespace base {
-
 namespace {
 
 const int kBlockSize = 16;
@@ -280,5 +278,3 @@ void Differ::calcDirtyRegion(const quint8* prev_image, const quint8* curr_image,
     // the number of rects that we return.
     mergeBlocks(dirty_region);
 }
-
-} // namespace base

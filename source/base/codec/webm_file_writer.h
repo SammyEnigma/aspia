@@ -28,8 +28,6 @@
 #include <memory>
 #include <optional>
 
-namespace base {
-
 class WebmFileMuxer;
 
 class WebmFileWriter
@@ -62,7 +60,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(WebmFileWriter)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_WEBM_FILE_WRITER_H

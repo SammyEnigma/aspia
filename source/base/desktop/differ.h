@@ -23,8 +23,6 @@
 
 #include <memory>
 
-namespace base {
-
 // Class to search for changed regions of the screen.
 class Differ
 {
@@ -58,7 +56,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(Differ)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DIFFER_H

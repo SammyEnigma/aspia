@@ -25,8 +25,6 @@
 #include <cstring>
 #include <memory>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 MultiChannelResampler::MultiChannelResampler(int channels,
                                              double io_sample_rate_ratio,
@@ -163,5 +161,3 @@ void MultiChannelResampler::PrimeWithSilence()
     for (size_t i = 0; i < resamplers_.size(); ++i)
         resamplers_[i]->PrimeWithSilence();
 }
-
-} // namespace base

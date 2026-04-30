@@ -29,8 +29,6 @@
 #include <vpx/vpx_encoder.h>
 #include <vpx/vp8cx.h>
 
-namespace base {
-
 class Frame;
 
 class VideoEncoder
@@ -80,7 +78,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(VideoEncoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_VIDEO_ENCODER_H

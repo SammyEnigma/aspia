@@ -30,8 +30,6 @@
 #warning Not supported platform
 #endif
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DesktopEnvironment::DesktopEnvironment(QObject* parent)
     : QObject(parent)
@@ -126,5 +124,3 @@ void DesktopEnvironment::applyNewSettings()
     if (effects_.has_value() && !*effects_)
         disableEffects();
 }
-
-} // namespace base

@@ -26,8 +26,6 @@
 
 #include <comdef.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 VirtualDisplay::VirtualDisplay()
 {
@@ -130,5 +128,3 @@ void VirtualDisplay::creationCallback(
 
     SetEvent(self->create_event_);
 }
-
-} // namespace base

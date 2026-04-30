@@ -25,8 +25,6 @@
 #include "base/win/scoped_object.h"
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 class PowerSaveBlocker
 {
 public:
@@ -35,12 +33,10 @@ public:
 
 private:
 #if defined(Q_OS_WINDOWS)
-    ScopedHandle handle_;
+    base::ScopedHandle handle_;
 #endif // defined(Q_OS_WINDOWS)
 
     Q_DISABLE_COPY_MOVE(PowerSaveBlocker)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_POWER_SAVE_BLOCKER_H

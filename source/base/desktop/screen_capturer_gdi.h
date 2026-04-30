@@ -22,8 +22,6 @@
 #include "base/desktop/screen_capturer_win.h"
 #include "base/win/scoped_hdc.h"
 
-namespace base {
-
 class Differ;
 class SharedMemoryFactory;
 
@@ -67,8 +65,8 @@ private:
     QRect screen_rect_;
 
     std::unique_ptr<Differ> differ_;
-    ScopedGetDC desktop_dc_;
-    ScopedCreateDC memory_dc_;
+    base::ScopedGetDC desktop_dc_;
+    base::ScopedCreateDC memory_dc_;
 
     FrameQueue<Frame> queue_;
 
@@ -78,7 +76,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ScreenCapturerGdi)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_SCREEN_CAPTURER_GDI_H

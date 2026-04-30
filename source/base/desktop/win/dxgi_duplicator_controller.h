@@ -27,8 +27,6 @@
 #include <d3dcommon.h>
 #include <optional>
 
-namespace base {
-
 // A controller for all the objects we need to call Windows DirectX capture APIs It's a singleton
 // because only one IDXGIOutputDuplication instance per monitor is allowed per application.
 //
@@ -141,10 +139,10 @@ private:
     void setup(Context* context);
 
     // Captures all monitors.
-    bool doDuplicateAll(Context* context, SharedPointer<Frame>& target, DxgiCursor* cursor);
+    bool doDuplicateAll(Context* context, base::SharedPointer<Frame>& target, DxgiCursor* cursor);
 
     // Captures one monitor.
-    bool doDuplicateOne(Context* context, int monitor_id, SharedPointer<Frame>& target, DxgiCursor* cursor);
+    bool doDuplicateOne(Context* context, int monitor_id, base::SharedPointer<Frame>& target, DxgiCursor* cursor);
 
     // The minimum numFramesCaptured() returned by |duplicators_|.
     qint64 numFramesCaptured() const;
@@ -168,7 +166,7 @@ private:
     // the requirement.
     // According to http://crbug.com/682112, dxgi capturer returns a black frame during first
     // several capture attempts.
-    bool ensureFrameCaptured(Context* context, SharedPointer<Frame>& target, DxgiCursor* cursor);
+    bool ensureFrameCaptured(Context* context, base::SharedPointer<Frame>& target, DxgiCursor* cursor);
 
     // Moves |desktop_rect_| and all underlying |duplicators_|, putting top left corner of the
     // desktop at (0, 0). This is necessary because DXGI_OUTPUT_DESC may return negative
@@ -186,7 +184,5 @@ private:
     // A number to indicate how many succeeded duplications have been performed.
     quint32 succeeded_duplications_ = 0;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_DUPLICATOR_CONTROLLER_H

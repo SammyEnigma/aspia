@@ -21,8 +21,6 @@
 
 #include "base/desktop/desktop_environment.h"
 
-namespace base {
-
 class DesktopEnvironmentWin final : public DesktopEnvironment
 {
     Q_OBJECT
@@ -46,7 +44,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopEnvironmentWin)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DESKTOP_ENVIRONMENT_WIN_H

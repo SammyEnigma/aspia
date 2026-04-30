@@ -23,8 +23,6 @@
 #include <utility>
 #include <comdef.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -247,5 +245,3 @@ std::vector<D3dDevice> D3dDevice::enumDevices()
 
     return result;
 }
-
-} // namespace base

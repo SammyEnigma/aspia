@@ -25,8 +25,6 @@
 
 #include <opus.h>
 
-namespace base {
-
 namespace {
 
 // Opus doesn't support 44100 sampling rate so we always resample to 48kHz.
@@ -297,5 +295,3 @@ bool AudioEncoder::encode(const proto::audio::Packet& input_packet, proto::audio
 
     return true;
 }
-
-} // namespace base

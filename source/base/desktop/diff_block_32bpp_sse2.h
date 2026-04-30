@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 #if defined(Q_PROCESSOR_X86)
 
 quint8 diffFullBlock_32bpp_32x32_SSE2(
@@ -32,7 +30,5 @@ quint8 diffFullBlock_32bpp_16x16_SSE2(
     const quint8* image1, const quint8* image2, int bytes_per_row);
 
 #endif // defined(Q_PROCESSOR_X86)
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DIFF_BLOCK_32BPP_SSE2_H

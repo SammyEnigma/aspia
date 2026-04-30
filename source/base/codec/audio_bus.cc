@@ -23,8 +23,6 @@
 
 #include <cstring>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 static bool IsAligned(void* ptr)
 {
@@ -361,5 +359,3 @@ void AudioBus::SwapChannels(int a, int b)
     DCHECK_NE(a, b);
     std::swap(channel_data_[a], channel_data_[b]);
 }
-
-} // namespace base

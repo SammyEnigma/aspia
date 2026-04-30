@@ -25,8 +25,6 @@
 #include <dxgi.h>
 #include <wrl/client.h>
 
-namespace base {
-
 // A wrapper of ID3D11Device and its corresponding context and IDXGIAdapter.
 // This class represents one video card in the system.
 class D3dDevice
@@ -58,7 +56,5 @@ private:
     Microsoft::WRL::ComPtr<IDXGIDevice> dxgi_device_;
     Microsoft::WRL::ComPtr<IDXGIAdapter> dxgi_adapter_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_D3D_DEVICE_H

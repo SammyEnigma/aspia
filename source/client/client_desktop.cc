@@ -400,8 +400,8 @@ void ClientDesktop::onRecordingChanged(bool enable, const QString& file_path)
         video_recording->set_action(proto::user::VideoRecording::ACTION_STARTED);
 
         webm_file_writer_ =
-            std::make_unique<base::WebmFileWriter>(file_path, sessionState()->computerName());
-        webm_video_encoder_ = std::make_unique<base::WebmVideoEncoder>();
+            std::make_unique<WebmFileWriter>(file_path, sessionState()->computerName());
+        webm_video_encoder_ = std::make_unique<WebmVideoEncoder>();
 
         webm_video_encode_timer_ = new QTimer(this);
 
@@ -794,7 +794,7 @@ void ClientDesktop::readVideoPacket(const proto::video::Packet& packet)
     if (video_encoding_ != packet.encoding())
     {
         CLOG(INFO) << "Video encoding changed from" << video_encoding_ << "to" << packet.encoding();
-        video_decoder_ = std::make_unique<base::VideoDecoder>(packet.encoding());
+        video_decoder_ = std::make_unique<VideoDecoder>(packet.encoding());
         video_encoding_ = packet.encoding();
         key_frame_received_ = false;
     }
@@ -837,7 +837,7 @@ void ClientDesktop::readVideoPacket(const proto::video::Packet& packet)
         }
 
         video_capturer_type_ = format.capturer_type();
-        desktop_frame_ = base::FrameAligned::create(video_size, 32);
+        desktop_frame_ = FrameAligned::create(video_size, 32);
 
         emit sig_frameChanged(screen_size, desktop_frame_);
     }
@@ -905,7 +905,7 @@ void ClientDesktop::readAudioPacket(const proto::audio::Packet& packet)
             CLOG(WARNING) << "Unsupported audio encoding:" << packet.encoding();
             return;
         }
-        audio_decoder_ = std::make_unique<base::AudioDecoder>();
+        audio_decoder_ = std::make_unique<AudioDecoder>();
         audio_encoding_ = packet.encoding();
 
         CLOG(INFO) << "Audio encoding changed to:" << audio_encoding_;
@@ -944,10 +944,10 @@ void ClientDesktop::readCursorShape(const proto::cursor::Shape& shape)
     if (!cursor_decoder_)
     {
         CLOG(INFO) << "Cursor decoder initialization";
-        cursor_decoder_ = std::make_unique<base::CursorDecoder>();
+        cursor_decoder_ = std::make_unique<CursorDecoder>();
     }
 
-    std::shared_ptr<base::MouseCursor> mouse_cursor = cursor_decoder_->decode(shape);
+    std::shared_ptr<MouseCursor> mouse_cursor = cursor_decoder_->decode(shape);
     if (!mouse_cursor)
         return;
 

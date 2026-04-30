@@ -58,9 +58,9 @@ public slots:
     void onTaskManagerChanged(const proto::task_manager::HostToClient& message);
     void onMetricsChanged(const ClientDesktop::Metrics& metrics);
     void onFrameError(proto::video::ErrorCode error_code);
-    void onFrameChanged(const QSize& screen_size, std::shared_ptr<base::Frame> frame);
+    void onFrameChanged(const QSize& screen_size, std::shared_ptr<Frame> frame);
     void onDrawFrame();
-    void onMouseCursorChanged(std::shared_ptr<base::MouseCursor> mouse_cursor);
+    void onMouseCursorChanged(std::shared_ptr<MouseCursor> mouse_cursor);
     void onSessionListChanged(const proto::control::SessionList& sessions);
 
 signals:

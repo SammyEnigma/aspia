@@ -26,8 +26,6 @@
 
 #include <iostream>
 
-namespace base {
-
 namespace {
 
 const int kAlignment = 32;
@@ -656,5 +654,3 @@ TEST(scale_reducer_test, benchmark_partial_update_multi_rect)
                   << fps << " fps" << std::endl;
     }
 }
-
-} // namespace base

@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/desktop/frame_aligned.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DxgiFrame::DxgiFrame(std::shared_ptr<DxgiDuplicatorController> controller)
     : context_(std::move(controller))
@@ -85,7 +83,7 @@ bool DxgiFrame::prepare(const QSize& size, ScreenCapturer::ScreenId source_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-SharedPointer<Frame> DxgiFrame::frame() const
+base::SharedPointer<Frame> DxgiFrame::frame() const
 {
     DCHECK(frame_);
     return frame_;
@@ -97,5 +95,3 @@ DxgiFrame::Context* DxgiFrame::context()
     DCHECK(frame_);
     return &context_;
 }
-
-} // namespace base

@@ -24,8 +24,6 @@
 #include "base/logging.h"
 #include "base/codec/webm_file_muxer.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 WebmFileWriter::WebmFileWriter(const QString& path, const QString& name)
     : path_(path),
@@ -232,5 +230,3 @@ void WebmFileWriter::close()
         file_ = nullptr;
     }
 }
-
-} // namespace base

@@ -24,8 +24,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -226,5 +224,3 @@ int ScreenCaptureUtils::screenCount()
 {
     return GetSystemMetrics(SM_CMONITORS);
 }
-
-} // namespace base

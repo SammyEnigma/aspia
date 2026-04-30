@@ -33,14 +33,15 @@
 
 class IpcChannel;
 
-namespace base {
-class AudioCapturerWrapper;
 class AudioEncoder;
 class CursorEncoder;
 class DesktopEnvironment;
 class DesktopResizer;
 class ScaleReducer;
 class VideoEncoder;
+
+namespace base {
+class AudioCapturerWrapper;
 } // namespace base
 
 class DesktopAgentClient;
@@ -72,8 +73,8 @@ private slots:
 
     void onSelectScreen(const proto::screen::Screen& screen);
     void onScreenListChanged(
-        const base::ScreenCapturer::ScreenList& list, base::ScreenCapturer::ScreenId current);
-    void onScreenTypeChanged(base::ScreenCapturer::ScreenType type, const QString& name);
+        const ScreenCapturer::ScreenList& list, ScreenCapturer::ScreenId current);
+    void onScreenTypeChanged(ScreenCapturer::ScreenType type, const QString& name);
     void onPreferredSizeChanged();
     void onKeyFrameRequested();
 
@@ -82,11 +83,11 @@ private slots:
 
 private:
     void startClient(const QString& ipc_channel_name);
-    void selectCapturer(base::ScreenCapturer::Error last_error);
-    base::ScreenCapturer::ScreenId defaultScreen();
-    void selectScreen(base::ScreenCapturer::ScreenId screen_id, const QSize& resolution);
-    void encodeScreen(const base::Frame* frame);
-    void encodeCursor(const base::MouseCursor* cursor);
+    void selectCapturer(ScreenCapturer::Error last_error);
+    ScreenCapturer::ScreenId defaultScreen();
+    void selectScreen(ScreenCapturer::ScreenId screen_id, const QSize& resolution);
+    void encodeScreen(const Frame* frame);
+    void encodeCursor(const MouseCursor* cursor);
     void encodeAudio(const proto::audio::Packet& packet);
 
     // Control channel between service and agent.
@@ -94,15 +95,15 @@ private:
 
     QList<DesktopAgentClient*> clients_;
 
-    base::PowerSaveBlocker power_save_blocker_;
+    PowerSaveBlocker power_save_blocker_;
     InputInjector* input_injector_ = nullptr;
-    ScopedQPointer<base::ScreenCapturer> screen_capturer_;
+    ScopedQPointer<ScreenCapturer> screen_capturer_;
     ScopedQPointer<base::AudioCapturerWrapper> audio_capturer_;
-    base::DesktopEnvironment* desktop_environment_ = nullptr;
-    std::unique_ptr<base::DesktopResizer> screen_resizer_;
+    DesktopEnvironment* desktop_environment_ = nullptr;
+    std::unique_ptr<DesktopResizer> screen_resizer_;
 
-    base::ScreenCapturer::Type preferred_capturer_  = base::ScreenCapturer::Type::DEFAULT;
-    base::ScreenCapturer::ScreenId last_screen_id_ = base::ScreenCapturer::kInvalidScreenId;
+    ScreenCapturer::Type preferred_capturer_  = ScreenCapturer::Type::DEFAULT;
+    ScreenCapturer::ScreenId last_screen_id_ = ScreenCapturer::kInvalidScreenId;
 
     bool vp8_supported_ = false;
     bool vp9_supported_ = false;
@@ -117,12 +118,12 @@ private:
     quint64 frame_count_ = 0;
 
     QTimer* capture_timer_ = nullptr;
-    base::CaptureScheduler capture_scheduler_;
+    CaptureScheduler capture_scheduler_;
 
-    std::unique_ptr<base::ScaleReducer> scale_reducer_;
-    std::unique_ptr<base::VideoEncoder> video_encoder_;
-    std::unique_ptr<base::CursorEncoder> cursor_encoder_;
-    std::unique_ptr<base::AudioEncoder> audio_encoder_;
+    std::unique_ptr<ScaleReducer> scale_reducer_;
+    std::unique_ptr<VideoEncoder> video_encoder_;
+    std::unique_ptr<CursorEncoder> cursor_encoder_;
+    std::unique_ptr<AudioEncoder> audio_encoder_;
 
     base::Serializer<proto::screen::HostToClient> screen_message_;
     base::Serializer<proto::cursor::HostToClient> cursor_message_;

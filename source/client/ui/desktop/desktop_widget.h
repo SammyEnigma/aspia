@@ -39,9 +39,7 @@
 #include <CoreGraphics/CGEventTypes.h>
 #endif // defined(Q_OS_MACOS)
 
-namespace base {
 class Frame;
-} // namespace base
 
 class DesktopWidget final : public QWidget
 {
@@ -51,9 +49,9 @@ public:
     explicit DesktopWidget(QWidget* parent);
     ~DesktopWidget() final;
 
-    base::Frame* desktopFrame();
+    Frame* desktopFrame();
     const QImage& desktopImage();
-    void setDesktopFrame(std::shared_ptr<base::Frame> frame);
+    void setDesktopFrame(std::shared_ptr<Frame> frame);
     void setDesktopFrameError(proto::video::ErrorCode error_code);
     void drawDesktopFrame();
     void setCursorShape(QPixmap&& cursor_shape, const QPoint& hotspot);
@@ -115,7 +113,7 @@ private:
     proto::video::ErrorCode current_error_code_ = proto::video::ERROR_CODE_OK;
     std::unique_ptr<QImage> error_image_;
 
-    std::shared_ptr<base::Frame> frame_;
+    std::shared_ptr<Frame> frame_;
     QImage frame_image_;
 
     bool enable_key_sequenses_ = true;

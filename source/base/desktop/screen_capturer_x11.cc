@@ -25,8 +25,6 @@
 
 #include <dlfcn.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScreenCapturerX11::ScreenCapturerX11(QObject* parent)
     : ScreenCapturer(ScreenCapturer::Type::LINUX_X11, parent)
@@ -392,7 +390,7 @@ void ScreenCapturerX11::initXDamage()
     }
 
     // TODO(lambroslambrou): Disable DAMAGE in situations where it is known to fail, such as when
-    // Desktop Effects are enabled, with graphics drivers (nVidia, ATI) that fail to report DAMAGE
+    // base::Desktop Effects are enabled, with graphics drivers (nVidia, ATI) that fail to report DAMAGE
     // notifications properly.
 
     // Request notifications every time the screen becomes damaged.
@@ -633,5 +631,3 @@ Frame* ScreenCapturerX11::captureFrameImpl()
 
     return frame;
 }
-
-} // namespace base

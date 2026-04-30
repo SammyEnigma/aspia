@@ -24,8 +24,6 @@
 #include <DXGI1_2.h>
 #include <comdef.h>
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DxgiTextureMapping::DxgiTextureMapping(IDXGIOutputDuplication* duplication)
     : duplication_(duplication)
@@ -68,5 +66,3 @@ bool DxgiTextureMapping::doRelease()
 
     return true;
 }
-
-} // namespace base

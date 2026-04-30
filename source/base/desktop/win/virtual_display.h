@@ -28,8 +28,6 @@
 
 #include "base/desktop/win/swdevice_defines.h"
 
-namespace base {
-
 class VirtualDisplay
 {
 public:
@@ -57,7 +55,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(VirtualDisplay)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_VIRTUAL_DISPLAY_H

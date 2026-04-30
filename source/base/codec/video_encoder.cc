@@ -28,8 +28,6 @@
 
 #include <algorithm>
 
-namespace base {
-
 namespace {
 
 const std::chrono::milliseconds kTargetFrameInterval{ 80 };
@@ -615,5 +613,3 @@ void VideoEncoder::clearActiveMap()
 {
     memset(active_map_buffer_.data(), 0, active_map_buffer_.size());
 }
-
-} // namespace base

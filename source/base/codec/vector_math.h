@@ -21,8 +21,6 @@
 
 #include <utility>
 
-namespace base {
-
 // Required alignment for inputs and outputs to all vector math functions
 enum { kRequiredAlignment = 16 };
 
@@ -45,7 +43,5 @@ std::pair<float, float> EWMAAndMaxPower(
     float initial_value, const float src[], int len, float smoothing_factor);
 
 void crossfade(const float src[], int len, float dest[]);
-
-} // namespace base
 
 #endif // BASE_CODEC_VECTOR_MATH_H

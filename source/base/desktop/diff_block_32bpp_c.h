@@ -21,14 +21,10 @@
 
 #include <QtGlobal>
 
-namespace base {
-
 quint8 diffFullBlock_32bpp_32x32_C(
     const quint8* image1, const quint8* image2, int bytes_per_row);
 
 quint8 diffFullBlock_32bpp_16x16_C(
     const quint8* image1, const quint8* image2, int bytes_per_row);
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DIFF_BLOCK_32BPP_C_H

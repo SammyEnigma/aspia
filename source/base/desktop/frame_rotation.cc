@@ -22,8 +22,6 @@
 
 #include <libyuv/rotate_argb.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -133,5 +131,3 @@ void rotateFrame(const Frame& source, const QRect& source_rect, const Rotation& 
         ToLibyuvRotationMode(rotation));
     DCHECK_EQ(result, 0);
 }
-
-} // namespace base

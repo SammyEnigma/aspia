@@ -25,8 +25,6 @@
 #include <qt_windows.h>
 #include <WtsApi32.h>
 
-namespace base {
-
 namespace {
 
 class ScopedUserImpersonator
@@ -41,7 +39,7 @@ public:
             return;
         }
 
-        ScopedHandle user_token;
+        base::ScopedHandle user_token;
         if (!WTSQueryUserToken(session_id, user_token.recieve()))
         {
             PLOG(ERROR) << "WTSQueryUserToken failed";
@@ -64,7 +62,7 @@ public:
     }
 
 private:
-    ScopedImpersonator impersonator_;
+    base::ScopedImpersonator impersonator_;
     Q_DISABLE_COPY_MOVE(ScopedUserImpersonator)
 };
 
@@ -185,5 +183,3 @@ void DesktopEnvironmentWin::revertAll()
         animation_changed_ = false;
     }
 }
-
-} // namespace base

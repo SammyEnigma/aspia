@@ -31,8 +31,6 @@
 #include <vpx/vpx_decoder.h>
 #include <vpx/vp8dx.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -160,5 +158,3 @@ bool VideoDecoder::decode(const proto::video::Packet& packet, Frame* frame)
 
     return convertImage(packet, image, frame);
 }
-
-} // namespace base

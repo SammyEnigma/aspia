@@ -21,8 +21,6 @@
 
 #include "base/desktop/screen_capturer.h"
 
-namespace base {
-
 class ScreenCaptureUtils
 {
 public:
@@ -51,7 +49,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(ScreenCaptureUtils)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_SCREEN_CAPTURE_UTILS_H

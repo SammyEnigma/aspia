@@ -26,8 +26,6 @@
 
 #include <memory>
 
-namespace base {
-
 class MouseCursor;
 
 class ScreenCapturer : public QObject
@@ -100,7 +98,7 @@ public:
     Type type() const;
 
 signals:
-    void sig_screenTypeChanged(base::ScreenCapturer::ScreenType type, const QString& name);
+    void sig_screenTypeChanged(ScreenCapturer::ScreenType type, const QString& name);
     void sig_desktopChanged();
 
 protected:
@@ -174,7 +172,5 @@ FrameType* ScreenCapturer::FrameQueue<FrameType>::previousFrame() const
 {
     return frames_[(current_ + kQueueLength - 1) % kQueueLength].get();
 }
-
-} // namespace base
 
 #endif // BASE_DESKTOP_CAPTURER_H

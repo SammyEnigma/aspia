@@ -21,8 +21,6 @@
 
 #include "base/desktop/screen_capturer.h"
 
-namespace base {
-
 class ScreenCapturerMac final : public ScreenCapturer
 {
 public:
@@ -45,7 +43,5 @@ protected:
 private:
     Q_DISABLE_COPY(ScreenCapturerMac)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_SCREEN_CAPTURER_MAC_H

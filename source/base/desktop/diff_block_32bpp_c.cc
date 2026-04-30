@@ -20,8 +20,6 @@
 
 #include <cstring>
 
-namespace base {
-
 namespace {
 
 const int kBytesPerPixel = 4;
@@ -67,5 +65,3 @@ quint8 diffFullBlock_32bpp_16x16_C(
 
     return 0U;
 }
-
-} // namespace base

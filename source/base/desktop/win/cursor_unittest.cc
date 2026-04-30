@@ -24,8 +24,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 namespace {
 
 // Loads |left| from resources, converts it to a |MouseCursor| instance and
@@ -36,7 +34,7 @@ bool convertToMouseShapeAndCompare(unsigned left, unsigned right)
     HMODULE instance = GetModuleHandleW(nullptr);
 
     // Load |left| from the EXE module's resources.
-    ScopedHCURSOR cursor(reinterpret_cast<HCURSOR>(
+    base::ScopedHCURSOR cursor(reinterpret_cast<HCURSOR>(
         LoadImageW(instance, MAKEINTRESOURCEW(left), IMAGE_CURSOR, 0, 0, 0)));
     EXPECT_TRUE(cursor != nullptr);
 
@@ -56,8 +54,8 @@ bool convertToMouseShapeAndCompare(unsigned left, unsigned right)
     EXPECT_TRUE(iinfo.hbmColor);
 
     // Make sure the bitmaps will be freed.
-    ScopedHBITMAP scoped_mask(iinfo.hbmMask);
-    ScopedHBITMAP scoped_color(iinfo.hbmColor);
+    base::ScopedHBITMAP scoped_mask(iinfo.hbmMask);
+    base::ScopedHBITMAP scoped_color(iinfo.hbmColor);
 
     // Get |scoped_color| dimensions.
     BITMAP bitmap_info;
@@ -85,5 +83,3 @@ TEST(CursorTest, MatchCursors)
     EXPECT_TRUE(convertToMouseShapeAndCompare(IDD_CURSOR2_1BPP, IDD_CURSOR2_32BPP));
     EXPECT_TRUE(convertToMouseShapeAndCompare(IDD_CURSOR3_4BPP, IDD_CURSOR3_32BPP));
 }
-
-} // namespace base

@@ -28,8 +28,6 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -474,5 +472,3 @@ bool XServerPixelBuffer::captureRect(const QRect& rect, Frame* frame)
 
     return true;
 }
-
-} // namespace base

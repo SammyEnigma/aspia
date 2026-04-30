@@ -22,13 +22,11 @@
 
 #include <cstring>
 
-namespace base {
-
 namespace {
 
 void registerMetaTypes()
 {
-    qRegisterMetaType<std::shared_ptr<base::Frame>>("std::shared_ptr<base::Frame>");
+    qRegisterMetaType<std::shared_ptr<Frame>>("std::shared_ptr<Frame>");
 }
 
 struct Registrator
@@ -135,5 +133,3 @@ void Frame::copyFrameInfoFrom(const Frame& other)
     dpi_ = other.dpi_;
     capturer_type_ = other.capturer_type_;
 }
-
-} // namespace base

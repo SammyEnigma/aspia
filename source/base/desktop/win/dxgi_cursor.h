@@ -24,8 +24,6 @@
 #include <dxgi.h>
 #include <dxgi1_2.h>
 
-namespace base {
-
 class DxgiCursor
 {
 public:
@@ -57,7 +55,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DxgiCursor)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_CURSOR_H

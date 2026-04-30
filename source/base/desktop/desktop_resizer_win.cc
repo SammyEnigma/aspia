@@ -23,8 +23,6 @@
 
 #include <qt_windows.h>
 
-namespace base {
-
 namespace {
 
 struct QSizeLess
@@ -303,5 +301,3 @@ void DesktopResizerWin::restoreResulution()
     for (auto it = screens_.cbegin(), it_end = screens_.cend(); it != it_end; ++it)
         restoreResolution(it.key());
 }
-
-} // namespace base

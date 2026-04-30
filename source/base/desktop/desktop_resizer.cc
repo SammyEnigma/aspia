@@ -28,8 +28,6 @@
 #include "base/desktop/desktop_resizer_x11.h"
 #endif // defined(Q_OS_LINUX)
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 // static
 std::unique_ptr<DesktopResizer> DesktopResizer::create()
@@ -43,5 +41,3 @@ std::unique_ptr<DesktopResizer> DesktopResizer::create()
     return nullptr;
 #endif
 }
-
-} // namespace base

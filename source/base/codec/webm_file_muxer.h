@@ -27,8 +27,6 @@
 #include "third_party/libwebm/mkvmuxer.hpp"
 #include "third_party/libwebm/mkvwriter.hpp"
 
-namespace base {
-
 class WebmFileMuxer
 {
 public:
@@ -80,7 +78,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(WebmFileMuxer)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_WEBM_FILE_MUXER_H

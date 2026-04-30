@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <chrono>
 
-namespace base {
-
 class CaptureScheduler
 {
 public:
@@ -47,7 +45,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(CaptureScheduler)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_CAPTURE_SCHEDULER_H

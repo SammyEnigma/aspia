@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DesktopResizerX11::DesktopResizerX11() = default;
 
@@ -53,5 +51,3 @@ void DesktopResizerX11::restoreResulution()
 {
     NOTIMPLEMENTED();
 }
-
-} // namespace base

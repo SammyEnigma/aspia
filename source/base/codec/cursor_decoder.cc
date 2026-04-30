@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 constexpr qsizetype kMinCacheSize = 2;
@@ -188,5 +186,3 @@ int CursorDecoder::takenCursorsFromCache() const
 {
     return taken_from_cache_;
 }
-
-} // namespace base

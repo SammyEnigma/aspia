@@ -28,8 +28,6 @@
 
 #include "base/x11/x11_headers.h"
 
-namespace base {
-
 class ScreenCapturerX11 final
     : public ScreenCapturer,
       public SharedXDisplay::XEventHandler
@@ -134,7 +132,5 @@ private:
 
     Q_DISABLE_COPY(ScreenCapturerX11)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_SCREEN_CAPTURER_X11_H

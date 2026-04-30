@@ -26,15 +26,11 @@ extern "C"
 typedef struct vpx_codec_ctx vpx_codec_ctx_t;
 }
 
-namespace base {
-
 struct VpxCodecDeleter
 {
     void operator()(vpx_codec_ctx_t* codec);
 };
 
 using ScopedVpxCodec = std::unique_ptr<vpx_codec_ctx_t, VpxCodecDeleter>;
-
-} // namespace base
 
 #endif // BASE_CODEC_SCOPED_VPX_CODEC_H

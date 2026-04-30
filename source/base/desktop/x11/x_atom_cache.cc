@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 XAtomCache::XAtomCache(::Display* display)
     : display_(display)

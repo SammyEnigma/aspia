@@ -142,10 +142,10 @@ int minCaptureFps()
 DesktopAgent::DesktopAgent(QObject* parent)
     : QObject(parent),
       ipc_channel_(new IpcChannel(this)),
-      desktop_environment_(base::DesktopEnvironment::create(this)),
-      preferred_capturer_(static_cast<base::ScreenCapturer::Type>(SystemSettings().preferredVideoCapturer())),
+      desktop_environment_(DesktopEnvironment::create(this)),
+      preferred_capturer_(static_cast<ScreenCapturer::Type>(SystemSettings().preferredVideoCapturer())),
       capture_timer_(new QTimer(this)),
-      scale_reducer_(std::make_unique<base::ScaleReducer>(base::ScaleReducer::Quality::HIGH)),
+      scale_reducer_(std::make_unique<ScaleReducer>(ScaleReducer::Quality::HIGH)),
       overflow_timer_(new QTimer(this)),
       default_fps_(defaultCaptureFps()),
       min_fps_(minCaptureFps()),
@@ -158,7 +158,7 @@ DesktopAgent::DesktopAgent(QObject* parent)
     connect(ipc_channel_, &IpcChannel::sig_errorOccurred, this, &DesktopAgent::onIpcErrorOccurred);
     connect(ipc_channel_, &IpcChannel::sig_messageReceived, this, &DesktopAgent::onIpcMessageReceived);
 
-    selectCapturer(base::ScreenCapturer::Error::SUCCEEDED);
+    selectCapturer(ScreenCapturer::Error::SUCCEEDED);
 
     capture_scheduler_.setFps(defaultCaptureFps());
     capture_timer_->setTimerType(Qt::PreciseTimer);
@@ -321,11 +321,11 @@ void DesktopAgent::onClientConfigured()
     LOG(INFO) << "Merged configuration:" << merged_config << "vp8:" << vp8_supported_
               << "vp9:" << vp9_supported_ << "opus:" << opus_supported;
 
-    video_encoder_ = std::make_unique<base::VideoEncoder>(video_encoding_);
+    video_encoder_ = std::make_unique<VideoEncoder>(video_encoding_);
 
     if (merged_config.audio() && opus_supported)
     {
-        audio_encoder_ = std::make_unique<base::AudioEncoder>();
+        audio_encoder_ = std::make_unique<AudioEncoder>();
 
         if (!audio_capturer_)
         {
@@ -349,7 +349,7 @@ void DesktopAgent::onClientConfigured()
     if (merged_config.cursor_shape())
     {
         LOG(INFO) << "Cursor shape enabled. Init cursor encoder";
-        cursor_encoder_ = std::make_unique<base::CursorEncoder>();
+        cursor_encoder_ = std::make_unique<CursorEncoder>();
     }
 
     if (desktop_environment_)
@@ -446,7 +446,7 @@ void DesktopAgent::onSelectScreen(const proto::screen::Screen& screen)
         return;
     }
 
-    base::ScreenCapturer::ScreenId screen_id = static_cast<base::ScreenCapturer::ScreenId>(screen.id());
+    ScreenCapturer::ScreenId screen_id = static_cast<ScreenCapturer::ScreenId>(screen.id());
     QSize resolution = base::parse(screen.resolution());
 
     selectScreen(screen_id, resolution);
@@ -454,7 +454,7 @@ void DesktopAgent::onSelectScreen(const proto::screen::Screen& screen)
 
 //--------------------------------------------------------------------------------------------------
 void DesktopAgent::onScreenListChanged(
-    const base::ScreenCapturer::ScreenList& list, base::ScreenCapturer::ScreenId current)
+    const ScreenCapturer::ScreenList& list, ScreenCapturer::ScreenId current)
 {
     proto::screen::ScreenList* screen_list = screen_message_.newMessage().mutable_screen_list();
     screen_list->set_current_screen(current);
@@ -494,23 +494,23 @@ void DesktopAgent::onScreenListChanged(
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopAgent::onScreenTypeChanged(base::ScreenCapturer::ScreenType type, const QString& name)
+void DesktopAgent::onScreenTypeChanged(ScreenCapturer::ScreenType type, const QString& name)
 {
     proto::screen::ScreenType* screen_type = screen_message_.newMessage().mutable_screen_type();
     screen_type->set_name(name.toStdString());
 
     switch (type)
     {
-        case base::ScreenCapturer::ScreenType::DESKTOP:
+        case ScreenCapturer::ScreenType::DESKTOP:
             screen_type->set_type(proto::screen::ScreenType::TYPE_DESKTOP);
             break;
-        case base::ScreenCapturer::ScreenType::LOCK:
+        case ScreenCapturer::ScreenType::LOCK:
             screen_type->set_type(proto::screen::ScreenType::TYPE_LOCK);
             break;
-        case base::ScreenCapturer::ScreenType::LOGIN:
+        case ScreenCapturer::ScreenType::LOGIN:
             screen_type->set_type(proto::screen::ScreenType::TYPE_LOGIN);
             break;
-        case base::ScreenCapturer::ScreenType::OTHER:
+        case ScreenCapturer::ScreenType::OTHER:
             screen_type->set_type(proto::screen::ScreenType::TYPE_OTHER);
             break;
         default:
@@ -584,31 +584,31 @@ void DesktopAgent::onCaptureScreen()
         LOG(INFO) << "Screen count changed from" << count << "to" << screen_count_;
 
         screen_resizer_.reset();
-        screen_resizer_ = base::DesktopResizer::create();
+        screen_resizer_ = DesktopResizer::create();
 
         screen_count_ = count;
         selectScreen(defaultScreen(), QSize());
     }
 
-    base::ScreenCapturer::Error error;
-    const base::Frame* frame = screen_capturer_->captureFrame(&error);
+    ScreenCapturer::Error error;
+    const Frame* frame = screen_capturer_->captureFrame(&error);
     if (!frame)
     {
         proto::video::ErrorCode error_code;
 
         switch (error)
         {
-            case base::ScreenCapturer::Error::TEMPORARY:
+            case ScreenCapturer::Error::TEMPORARY:
                 error_code = proto::video::ERROR_CODE_TEMPORARY;
                 break;
 
-            case base::ScreenCapturer::Error::PERMANENT:
+            case ScreenCapturer::Error::PERMANENT:
             {
                 error_code = proto::video::ERROR_CODE_PERMANENT;
 
                 QTimer::singleShot(0, this, [this]()
                 {
-                    selectCapturer(base::ScreenCapturer::Error::PERMANENT);
+                    selectCapturer(ScreenCapturer::Error::PERMANENT);
                 });
             }
             break;
@@ -799,7 +799,7 @@ void DesktopAgent::onOverflowCheck()
     {
         LOG(INFO) << "Switching video encoding:" << video_encoding_ << "->" << desired_encoding;
         video_encoding_ = desired_encoding;
-        video_encoder_ = std::make_unique<base::VideoEncoder>(video_encoding_);
+        video_encoder_ = std::make_unique<VideoEncoder>(video_encoding_);
     }
 }
 
@@ -826,7 +826,7 @@ void DesktopAgent::startClient(const QString& ipc_channel_name)
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopAgent::selectCapturer(base::ScreenCapturer::Error last_error)
+void DesktopAgent::selectCapturer(ScreenCapturer::Error last_error)
 {
     LOG(INFO) << "Selecting screen capturer. Preferred capturer:" << preferred_capturer_;
 
@@ -837,9 +837,9 @@ void DesktopAgent::selectCapturer(base::ScreenCapturer::Error last_error)
     }
 
 #if defined(Q_OS_WINDOWS)
-    screen_capturer_ = base::ScreenCapturerWin::create(preferred_capturer_, last_error, this);
+    screen_capturer_ = ScreenCapturerWin::create(preferred_capturer_, last_error, this);
 #elif defined(Q_OS_LINUX)
-    screen_capturer_ = base::ScreenCapturerX11::create(this);
+    screen_capturer_ = ScreenCapturerX11::create(this);
     if (!screen_capturer_)
     {
         LOG(ERROR) << "Unable to create X11 screen capturer";
@@ -857,10 +857,10 @@ void DesktopAgent::selectCapturer(base::ScreenCapturer::Error last_error)
 
     LOG(INFO) << "Selected screen capturer:" << screen_capturer_->type();
 
-    connect(screen_capturer_, &base::ScreenCapturer::sig_screenTypeChanged,
+    connect(screen_capturer_, &ScreenCapturer::sig_screenTypeChanged,
             this, &DesktopAgent::onScreenTypeChanged);
 
-    connect(screen_capturer_, &base::ScreenCapturer::sig_desktopChanged, this, [this]()
+    connect(screen_capturer_, &ScreenCapturer::sig_desktopChanged, this, [this]()
     {
         if (!desktop_environment_)
         {
@@ -871,7 +871,7 @@ void DesktopAgent::selectCapturer(base::ScreenCapturer::Error last_error)
         desktop_environment_->onDesktopChanged();
     });
 
-    if (last_screen_id_ != base::ScreenCapturer::kInvalidScreenId)
+    if (last_screen_id_ != ScreenCapturer::kInvalidScreenId)
     {
         LOG(INFO) << "Restore selected screen:" << last_screen_id_;
         selectScreen(last_screen_id_, QSize());
@@ -879,19 +879,19 @@ void DesktopAgent::selectCapturer(base::ScreenCapturer::Error last_error)
 }
 
 //--------------------------------------------------------------------------------------------------
-base::ScreenCapturer::ScreenId DesktopAgent::defaultScreen()
+ScreenCapturer::ScreenId DesktopAgent::defaultScreen()
 {
     if (!screen_capturer_)
     {
         LOG(ERROR) << "Screen capturer is not initialized";
-        return base::ScreenCapturer::kInvalidScreenId;
+        return ScreenCapturer::kInvalidScreenId;
     }
 
-    base::ScreenCapturer::ScreenList screen_list;
+    ScreenCapturer::ScreenList screen_list;
     if (!screen_capturer_->screenList(&screen_list))
     {
         LOG(ERROR) << "ScreenCapturer::screenList failed";
-        return base::ScreenCapturer::kFullDesktopScreenId;
+        return ScreenCapturer::kFullDesktopScreenId;
     }
 
     for (const auto& screen : std::as_const(screen_list.screens))
@@ -904,11 +904,11 @@ base::ScreenCapturer::ScreenId DesktopAgent::defaultScreen()
     }
 
     LOG(INFO) << "Primary screen NOT found";
-    return base::ScreenCapturer::kFullDesktopScreenId;
+    return ScreenCapturer::kFullDesktopScreenId;
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopAgent::selectScreen(base::ScreenCapturer::ScreenId screen_id, const QSize& resolution)
+void DesktopAgent::selectScreen(ScreenCapturer::ScreenId screen_id, const QSize& resolution)
 {
     if (screen_id == screen_capturer_->currentScreen() && !resolution.isEmpty() && screen_resizer_)
     {
@@ -931,7 +931,7 @@ void DesktopAgent::selectScreen(base::ScreenCapturer::ScreenId screen_id, const 
         last_screen_id_ = screen_id;
     }
 
-    base::ScreenCapturer::ScreenList screen_list;
+    ScreenCapturer::ScreenList screen_list;
     if (!screen_capturer_->screenList(&screen_list))
     {
         LOG(ERROR) << "ScreenCapturer::screenList failed";
@@ -958,7 +958,7 @@ void DesktopAgent::selectScreen(base::ScreenCapturer::ScreenId screen_id, const 
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopAgent::encodeScreen(const base::Frame* frame)
+void DesktopAgent::encodeScreen(const Frame* frame)
 {
     if (!frame || !video_encoder_)
         return;
@@ -995,7 +995,7 @@ void DesktopAgent::encodeScreen(const base::Frame* frame)
             current_size = forced_size_;
     }
 
-    const base::Frame* scaled_frame = scale_reducer_->scaleFrame(frame, current_size);
+    const Frame* scaled_frame = scale_reducer_->scaleFrame(frame, current_size);
     if (!scaled_frame)
     {
         LOG(ERROR) << "No scaled frame";
@@ -1037,7 +1037,7 @@ void DesktopAgent::encodeScreen(const base::Frame* frame)
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopAgent::encodeCursor(const base::MouseCursor* cursor)
+void DesktopAgent::encodeCursor(const MouseCursor* cursor)
 {
     if (!cursor || !cursor_encoder_)
         return;

@@ -25,8 +25,6 @@
 
 #include <vector>
 
-namespace base {
-
 // A container of DxgiOutputDuplicators to duplicate monitors attached to a single video card.
 class DxgiAdapterDuplicator
 {
@@ -55,10 +53,10 @@ public:
 
     // Sequentially calls Duplicate function of all the DxgiOutputDuplicator instances owned by
     // this instance, and writes into |target|.
-    bool duplicate(Context* context, SharedPointer<Frame>& target, DxgiCursor* cursor);
+    bool duplicate(Context* context, base::SharedPointer<Frame>& target, DxgiCursor* cursor);
 
     // Captures one monitor and writes into |target|. |monitor_id| should be between [0, screenCount()).
-    bool duplicateMonitor(Context* context, int monitor_id, SharedPointer<Frame>& target, DxgiCursor* cursor);
+    bool duplicateMonitor(Context* context, int monitor_id, base::SharedPointer<Frame>& target, DxgiCursor* cursor);
 
     // Returns desktop rect covered by this DxgiAdapterDuplicator.
     const QRect& desktopRect() const { return desktop_rect_; }
@@ -93,7 +91,5 @@ private:
     std::vector<DxgiOutputDuplicator> duplicators_;
     QRect desktop_rect_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_ADAPTER_DUPLICATOR_H

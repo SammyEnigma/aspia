@@ -26,8 +26,6 @@
 
 using Microsoft::WRL::ComPtr;
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 DxgiTextureStaging::DxgiTextureStaging(const D3dDevice& device)
     : device_(device)
@@ -151,5 +149,3 @@ bool DxgiTextureStaging::doRelease()
     // This will happen during next CopyFrom call. So this function always returns true.
     return true;
 }
-
-} // namespace base

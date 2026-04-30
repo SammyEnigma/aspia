@@ -20,8 +20,6 @@
 
 #include "base/aligned_memory.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 FrameAligned::FrameAligned(const QSize& size, int stride, quint8* data)
     : Frame(size, stride, data)
@@ -32,7 +30,7 @@ FrameAligned::FrameAligned(const QSize& size, int stride, quint8* data)
 //--------------------------------------------------------------------------------------------------
 FrameAligned::~FrameAligned()
 {
-    alignedFree(data_);
+    base::alignedFree(data_);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -44,11 +42,9 @@ std::unique_ptr<FrameAligned> FrameAligned::create(const QSize& size, size_t ali
         & ~(static_cast<int>(alignment) - 1);
 
     quint8* data = reinterpret_cast<quint8*>(
-        alignedAlloc(static_cast<size_t>(stride) * static_cast<size_t>(size.height()), alignment));
+        base::alignedAlloc(static_cast<size_t>(stride) * static_cast<size_t>(size.height()), alignment));
     if (!data)
         return nullptr;
 
     return std::unique_ptr<FrameAligned>(new FrameAligned(size, stride, data));
 }
-
-} // namespace base

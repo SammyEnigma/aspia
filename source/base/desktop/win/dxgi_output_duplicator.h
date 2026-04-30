@@ -33,8 +33,6 @@
 #include <dxgi1_2.h>
 #include <wrl/client.h>
 
-namespace base {
-
 // Duplicates the content on one IDXGIOutput, i.e. one monitor attached to one video card. None of
 // functions in this class is thread-safe.
 class DxgiOutputDuplicator
@@ -64,7 +62,7 @@ public:
     // this function copies the content to the rectangle of (offset.x(), offset.y()) to
     // (offset.x() + desktop_rect_.width(), offset.y() + desktop_rect_.height()).
     // Returns false in case of a failure.
-    bool duplicate(Context* context, const QPoint& offset, SharedPointer<Frame>& target_frame, DxgiCursor* cursor);
+    bool duplicate(Context* context, const QPoint& offset, base::SharedPointer<Frame>& target_frame, DxgiCursor* cursor);
 
     // Returns the desktop rect covered by this DxgiOutputDuplicator.
     const QRect& desktopRect() const { return desktop_rect_; }
@@ -127,9 +125,7 @@ private:
     QVector<Context*> contexts_;
 
     qint64 num_frames_captured_ = 0;
-    Desktop desktop_;
+    base::Desktop desktop_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_OUTPUT_DUPLICATOR_H

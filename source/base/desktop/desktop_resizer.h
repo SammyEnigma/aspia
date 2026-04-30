@@ -23,8 +23,6 @@
 
 #include <memory>
 
-namespace base {
-
 class DesktopResizer
 {
 public:
@@ -40,7 +38,5 @@ public:
     virtual void restoreResolution(ScreenId screen_id) = 0;
     virtual void restoreResulution() = 0;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DESKTOP_RESIZER_H

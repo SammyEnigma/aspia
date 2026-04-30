@@ -24,8 +24,6 @@
 
 #include <memory>
 
-namespace base {
-
 class SharedMemoryFactory;
 
 class FrameDib final : public Frame
@@ -40,11 +38,9 @@ public:
 private:
     FrameDib(const QSize& size, int stride, quint8* data, HBITMAP bitmap);
 
-    ScopedHBITMAP bitmap_;
+    base::ScopedHBITMAP bitmap_;
 
     Q_DISABLE_COPY_MOVE(FrameDib)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_FRAME_DIB_H

@@ -50,8 +50,6 @@
 #define EWMAAndMaxPower_FUNC EWMAAndMaxPower_C
 #endif
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 void FMAC_C(const float src[], float scale, int len, float dest[])
 {
@@ -331,5 +329,3 @@ void crossfade(const float src[], int len, float dest[])
     for (int i = 0; i < len; ++i, cf_ratio += cf_increment)
         dest[i] = (1.0f - cf_ratio) * src[i] + cf_ratio * dest[i];
 }
-
-} // namespace base

@@ -23,8 +23,6 @@
 
 #include <memory>
 
-namespace base {
-
 struct ZstdCStreamDeleter
 {
     void operator()(ZSTD_CStream* cstream);
@@ -37,7 +35,5 @@ struct ZstdDStreamDeleter
 
 using ScopedZstdCStream = std::unique_ptr<ZSTD_CStream, ZstdCStreamDeleter>;
 using ScopedZstdDStream = std::unique_ptr<ZSTD_DStream, ZstdDStreamDeleter>;
-
-} // namespace base
 
 #endif // BASE_CODEC_SCOPED_ZSTD_STREAM_H

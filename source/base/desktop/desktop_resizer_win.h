@@ -23,8 +23,6 @@
 
 #include "base/desktop/desktop_resizer.h"
 
-namespace base {
-
 class DesktopResizerWin final : public DesktopResizer
 {
 public:
@@ -42,7 +40,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(DesktopResizerWin)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DESKTOP_RESIZER_WIN_H

@@ -21,8 +21,6 @@
 
 #include "base/desktop/desktop_environment.h"
 
-namespace base {
-
 class DesktopEnvironmentMac final : public DesktopEnvironment
 {
 public:
@@ -37,7 +35,5 @@ protected:
 private:
     Q_DISABLE_COPY(DesktopEnvironmentMac)
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_DESKTOP_ENVIRONMENT_MAC_H

@@ -21,8 +21,6 @@
 
 #include <QByteArray>
 
-namespace base {
-
 class ZstdCompress
 {
 public:
@@ -39,7 +37,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(ZstdCompress)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_ZSTD_COMPRESS_H

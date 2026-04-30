@@ -25,8 +25,6 @@
 
 struct OpusDecoder;
 
-namespace base {
-
 class AudioDecoder
 {
 public:
@@ -46,7 +44,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AudioDecoder)
 };
-
-} // namespace base
 
 #endif // BASE_CODEC_AUDIO_DECODER_H

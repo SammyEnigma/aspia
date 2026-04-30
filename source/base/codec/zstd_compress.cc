@@ -23,8 +23,6 @@
 #include "base/logging.h"
 #include "base/codec/scoped_zstd_stream.h"
 
-namespace base {
-
 namespace {
 
 const quint32 kMaxDataSize = 64 * 1024 * 1024; // 64 MB
@@ -159,5 +157,3 @@ QByteArray ZstdCompress::decompress(const QByteArray& source)
 {
     return decompressT(source);
 }
-
-} // namespace base

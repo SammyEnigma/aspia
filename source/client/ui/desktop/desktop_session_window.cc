@@ -368,7 +368,7 @@ void DesktopSessionWindow::onScreenListChanged(const proto::screen::ScreenList& 
 //--------------------------------------------------------------------------------------------------
 void DesktopSessionWindow::onCursorPositionChanged(const proto::cursor::Position& position)
 {
-    base::Frame* frame = desktop_->desktopFrame();
+    Frame* frame = desktop_->desktopFrame();
     if (!frame)
         return;
 
@@ -416,7 +416,7 @@ void DesktopSessionWindow::onFrameError(proto::video::ErrorCode error_code)
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopSessionWindow::onFrameChanged(const QSize& screen_size, std::shared_ptr<base::Frame> frame)
+void DesktopSessionWindow::onFrameChanged(const QSize& screen_size, std::shared_ptr<Frame> frame)
 {
     screen_size_ = screen_size;
     LOG(INFO) << "Screen size changed:" << screen_size_;
@@ -450,9 +450,9 @@ void DesktopSessionWindow::onDrawFrame()
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopSessionWindow::onMouseCursorChanged(std::shared_ptr<base::MouseCursor> mouse_cursor)
+void DesktopSessionWindow::onMouseCursorChanged(std::shared_ptr<MouseCursor> mouse_cursor)
 {
-    QPoint local_dpi(base::MouseCursor::kDefaultDpiX, base::MouseCursor::kDefaultDpiY);
+    QPoint local_dpi(MouseCursor::kDefaultDpiX, MouseCursor::kDefaultDpiY);
     QPoint remote_dpi = mouse_cursor->constDpi();
 
     QWidget* current_window = window();
@@ -836,7 +836,7 @@ void DesktopSessionWindow::onMouseEvent(const proto::input::MouseEvent& event)
         scroll_timer_->stop();
     }
 
-    base::Frame* current_frame = desktop_->desktopFrame();
+    Frame* current_frame = desktop_->desktopFrame();
     if (current_frame)
     {
         const QSize& source_size = current_frame->size();

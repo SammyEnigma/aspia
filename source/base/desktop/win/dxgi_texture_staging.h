@@ -26,8 +26,6 @@
 #include <dxgi1_2.h>
 #include <wrl/client.h>
 
-namespace base {
-
 // A pair of an ID3D11Texture2D and an IDXGISurface. We need an ID3D11Texture2D instance to copy
 // GPU texture to RAM, but an IDXGISurface instance to map the texture into a bitmap buffer. These
 // two instances are pointing to a same object.
@@ -64,7 +62,5 @@ private:
     Microsoft::WRL::ComPtr<ID3D11Texture2D> stage_;
     Microsoft::WRL::ComPtr<IDXGISurface> surface_;
 };
-
-} // namespace base
 
 #endif // BASE_DESKTOP_WIN_DXGI_TEXTURE_STAGING_H
