@@ -201,8 +201,8 @@ InputInjectorWin::~InputInjectorWin()
     setBlockInputImpl(false);
     for (const auto& key : std::as_const(pressed_keys_))
     {
-        int scancode = common::KeycodeConverter::usbKeycodeToNativeKeycode(key);
-        if (scancode != common::KeycodeConverter::invalidNativeKeycode())
+        int scancode = KeycodeConverter::usbKeycodeToNativeKeycode(key);
+        if (scancode != KeycodeConverter::invalidNativeKeycode())
             sendKeyboardScancode(static_cast<WORD>(scancode), KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP);
         else
             LOG(ERROR) << "Invalid key code:" << key;
@@ -246,8 +246,8 @@ void InputInjectorWin::injectKeyEvent(const proto::input::KeyEvent& event)
         pressed_keys_.remove(event.usb_keycode());
     }
 
-    int scancode = common::KeycodeConverter::usbKeycodeToNativeKeycode(event.usb_keycode());
-    if (scancode == common::KeycodeConverter::invalidNativeKeycode())
+    int scancode = KeycodeConverter::usbKeycodeToNativeKeycode(event.usb_keycode());
+    if (scancode == KeycodeConverter::invalidNativeKeycode())
     {
         LOG(ERROR) << "Invalid key code:" << event.usb_keycode();
         return;

@@ -22,8 +22,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 namespace {
 
 static const int kMaxDescriptionLength = 4096;
@@ -123,5 +121,3 @@ UpdateInfo UpdateInfo::fromXml(const QByteArray& buffer)
 
     return update_info;
 }
-
-} // namespace common

@@ -313,10 +313,10 @@ void DesktopAgentClient::readCapabilities(const proto::control::Capabilities& ca
         return false;
     };
 
-    vp8_supported_ = has_flag(capabilities, common::kFlagVideoVP8);
-    vp9_supported_ = has_flag(capabilities, common::kFlagVideoVP9);
-    opus_supported_ = has_flag(capabilities, common::kFlagAudioOpus);
-    file_clipboard_supported_ = has_flag(capabilities, common::kFlagFileClipboard);
+    vp8_supported_ = has_flag(capabilities, kFlagVideoVP8);
+    vp9_supported_ = has_flag(capabilities, kFlagVideoVP9);
+    opus_supported_ = has_flag(capabilities, kFlagAudioOpus);
+    file_clipboard_supported_ = has_flag(capabilities, kFlagFileClipboard);
 
     sendCapabilities();
 }
@@ -373,29 +373,29 @@ void DesktopAgentClient::sendCapabilities()
         flag->set_value(value);
     };
 
-    add_flag(common::kFlagVideoVP8, true);
-    add_flag(common::kFlagVideoVP9, true);
-    add_flag(common::kFlagClipboard, true);
+    add_flag(kFlagVideoVP8, true);
+    add_flag(kFlagVideoVP9, true);
+    add_flag(kFlagClipboard, true);
 
 #if defined(Q_OS_WINDOWS)
-    add_flag(common::kFlagOSWindows, true);
-    add_flag(common::kFlagAudioOpus, true);
-    add_flag(common::kFlagCursorPosition, true);
-    add_flag(common::kFlagCursorShape, true);
-    add_flag(common::kFlagPasteAsKeystrokes, true);
-    add_flag(common::kFlagBlockInput, true);
-    add_flag(common::kFlagDesktopEffects, true);
-    add_flag(common::kFlagDesktopWallpaper, true);
-    add_flag(common::kFlagLockAtDisconnect, true);
-    add_flag(common::kFlagPowerControl, true);
-    add_flag(common::kFlagSelectScreen, true);
-    add_flag(common::kFlagSystemInfo, true);
-    add_flag(common::kFlagTaskManager, true);
-    add_flag(common::kFlagFileClipboard, true);
+    add_flag(kFlagOSWindows, true);
+    add_flag(kFlagAudioOpus, true);
+    add_flag(kFlagCursorPosition, true);
+    add_flag(kFlagCursorShape, true);
+    add_flag(kFlagPasteAsKeystrokes, true);
+    add_flag(kFlagBlockInput, true);
+    add_flag(kFlagDesktopEffects, true);
+    add_flag(kFlagDesktopWallpaper, true);
+    add_flag(kFlagLockAtDisconnect, true);
+    add_flag(kFlagPowerControl, true);
+    add_flag(kFlagSelectScreen, true);
+    add_flag(kFlagSystemInfo, true);
+    add_flag(kFlagTaskManager, true);
+    add_flag(kFlagFileClipboard, true);
 #elif defined(Q_OS_LINUX)
-    add_flag(common::kFlagOSLinux, true);
+    add_flag(kFlagOSLinux, true);
 #elif defined(Q_OS_MACOS)
-    add_flag(common::kFlagOSMacOS, true);
+    add_flag(kFlagOSMacOS, true);
 #else
 #warning Not implemented
 #endif

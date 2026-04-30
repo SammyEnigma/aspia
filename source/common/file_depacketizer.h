@@ -25,8 +25,6 @@
 
 #include "proto/file_transfer.h"
 
-namespace common {
-
 class FileDepacketizer
 {
 public:
@@ -48,7 +46,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileDepacketizer)
 };
-
-} // namespace common
 
 #endif // COMMON_FILE_DEPACKETIZER_H

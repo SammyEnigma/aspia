@@ -24,8 +24,6 @@
 #include "base/win/scoped_hglobal.h"
 #include "common/win/format_enumerator.h"
 
-namespace common {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -313,5 +311,3 @@ HRESULT FileObject::EnumDAdvise(IEnumSTATDATA**)
     NOTIMPLEMENTED();
     return E_NOTIMPL;
 }
-
-} // namespace common

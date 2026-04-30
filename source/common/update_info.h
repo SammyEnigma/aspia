@@ -23,8 +23,6 @@
 #include <QString>
 #include <QVersionNumber>
 
-namespace common {
-
 class UpdateInfo
 {
 public:
@@ -46,7 +44,5 @@ private:
     QString description_;
     QString url_;
 };
-
-} // namespace common
 
 #endif // COMMON_UPDATE_INFO_H

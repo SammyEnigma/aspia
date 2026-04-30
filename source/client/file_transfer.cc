@@ -125,16 +125,16 @@ void FileTransfer::start()
 {
     LOG(INFO) << "File transfer start";
 
-    common::FileTaskFactory* task_factory_local =
-        new common::FileTaskFactory(common::FileTask::Target::LOCAL);
+    FileTaskFactory* task_factory_local =
+        new FileTaskFactory(FileTask::Target::LOCAL);
 
-    connect(task_factory_local, &common::FileTaskFactory::sig_taskDone,
+    connect(task_factory_local, &FileTaskFactory::sig_taskDone,
             this, &FileTransfer::onTaskDone);
 
-    common::FileTaskFactory* task_factory_remote =
-        new common::FileTaskFactory(common::FileTask::Target::REMOTE);
+    FileTaskFactory* task_factory_remote =
+        new FileTaskFactory(FileTask::Target::REMOTE);
 
-    connect(task_factory_remote, &common::FileTaskFactory::sig_taskDone,
+    connect(task_factory_remote, &FileTaskFactory::sig_taskDone,
             this, &FileTransfer::onTaskDone);
 
     if (type_ == Type::DOWNLOADER)
@@ -213,17 +213,17 @@ void FileTransfer::setActionForErrorType(Error::Type error_type, Error::Action a
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransfer::onTaskDone(const common::FileTask& task)
+void FileTransfer::onTaskDone(const FileTask& task)
 {
     if (type_ == Type::DOWNLOADER)
     {
-        if (task.target() == common::FileTask::Target::LOCAL)
+        if (task.target() == FileTask::Target::LOCAL)
         {
             targetReply(task.request(), task.reply());
         }
         else
         {
-            DCHECK_EQ(task.target(), common::FileTask::Target::REMOTE);
+            DCHECK_EQ(task.target(), FileTask::Target::REMOTE);
 
             sourceReply(task.request(), task.reply());
         }
@@ -232,13 +232,13 @@ void FileTransfer::onTaskDone(const common::FileTask& task)
     {
         DCHECK_EQ(type_, Type::UPLOADER);
 
-        if (task.target() == common::FileTask::Target::LOCAL)
+        if (task.target() == FileTask::Target::LOCAL)
         {
             sourceReply(task.request(), task.reply());
         }
         else
         {
-            DCHECK_EQ(task.target(), common::FileTask::Target::REMOTE);
+            DCHECK_EQ(task.target(), FileTask::Target::REMOTE);
 
             targetReply(task.request(), task.reply());
         }
@@ -295,7 +295,7 @@ void FileTransfer::targetReply(
         const qint64 full_task_size = frontTask().size();
         if (full_task_size && total_size_)
         {
-            qint64 packet_size = common::kMaxFilePacketSize;
+            qint64 packet_size = kMaxFilePacketSize;
 
             task_transfered_size_ += packet_size;
 

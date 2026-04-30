@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "common/file_task_factory.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FileTask::FileTask(QPointer<FileTaskFactory> factory,
                    proto::file_transfer::Request&& request,
@@ -66,5 +64,3 @@ void FileTask::onReply(proto::file_transfer::Reply&& reply)
     // Now notify the sender of the reply.
     emit data_->factory->sig_taskDone(*this);
 }
-
-} // namespace common

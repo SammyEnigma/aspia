@@ -29,8 +29,6 @@ namespace base {
 class MessageWindow;
 } // namespace base
 
-namespace common {
-
 class FileObject;
 class FileStream;
 
@@ -68,7 +66,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ClipboardWin)
 };
-
-} // namespace common
 
 #endif // COMMON_CLIPBOARD_WIN_H

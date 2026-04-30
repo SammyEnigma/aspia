@@ -61,7 +61,7 @@ SysInfoWidgetServices::~SysInfoWidgetServices() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetServices::category() const
 {
-    return common::kSystemInfo_Services;
+    return kSystemInfo_Services;
 }
 
 //--------------------------------------------------------------------------------------------------

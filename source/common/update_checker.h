@@ -22,8 +22,6 @@
 #include <QByteArray>
 #include <QThread>
 
-namespace common {
-
 class UpdateChecker final : public QThread
 {
     Q_OBJECT
@@ -45,7 +43,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(UpdateChecker)
 };
-
-} // namespace common
 
 #endif // COMMON_UPDATE_CHECKER_H

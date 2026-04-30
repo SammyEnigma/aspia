@@ -59,7 +59,7 @@ SysInfoWidgetConnections::~SysInfoWidgetConnections() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetConnections::category() const
 {
-    return common::kSystemInfo_Connections;
+    return kSystemInfo_Connections;
 }
 
 //--------------------------------------------------------------------------------------------------

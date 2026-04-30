@@ -35,8 +35,6 @@
 #include <qt_windows.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FileWorker::FileWorker(QObject* parent)
     : QObject(parent),
@@ -425,5 +423,3 @@ void FileWorker::doPacket(
             depacketizer_.reset();
     }
 }
-
-} // namespace common

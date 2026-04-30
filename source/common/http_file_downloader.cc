@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "base/net/curl_util.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 HttpFileDownloader::HttpFileDownloader(const QString& url, QObject* parent)
     : QThread(parent),
@@ -187,5 +185,3 @@ int HttpFileDownloader::progressCallback(
 
     return 0;
 }
-
-} // namespace common

@@ -54,16 +54,16 @@ UpdateDialog::UpdateDialog(const QString& server, const QString& package, QWidge
 
     ui->label_available->setText(tr("Receiving information..."));
 
-    checker_ = std::make_unique<common::UpdateChecker>(server, package);
+    checker_ = std::make_unique<UpdateChecker>(server, package);
 
-    connect(checker_.get(), &common::UpdateChecker::sig_checkedFinished,
+    connect(checker_.get(), &UpdateChecker::sig_checkedFinished,
             this, &UpdateDialog::onUpdateCheckedFinished);
 
     checker_->start();
 }
 
 //--------------------------------------------------------------------------------------------------
-UpdateDialog::UpdateDialog(const common::UpdateInfo& update_info, QWidget* parent)
+UpdateDialog::UpdateDialog(const UpdateInfo& update_info, QWidget* parent)
     : QDialog(parent),
       ui(std::make_unique<Ui::UpdateDialog>()),
       update_info_(update_info)
@@ -198,7 +198,7 @@ void UpdateDialog::onUpdateCheckedFinished(const QByteArray& result)
     }
     else
     {
-        update_info_ = common::UpdateInfo::fromXml(result);
+        update_info_ = UpdateInfo::fromXml(result);
         if (!update_info_.isValid())
         {
             LOG(INFO) << "No updates available";

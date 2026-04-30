@@ -22,8 +22,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 namespace {
 
 // Minimal path name is 2 characters (for example: "/").
@@ -156,5 +154,3 @@ bool FilePlatformUtil::isValidFileName(const QString& file_name)
 
     return true;
 }
-
-} // namespace common

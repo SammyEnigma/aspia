@@ -67,7 +67,7 @@ public:
 
     using TaskList = QQueue<Task>;
 
-    FileRemover(common::FileTask::Target target, const TaskList& items, QObject* parent = nullptr);
+    FileRemover(FileTask::Target target, const TaskList& items, QObject* parent = nullptr);
     ~FileRemover() final;
 
 public slots:
@@ -82,17 +82,17 @@ signals:
     void sig_errorOccurred(const QString& path,
                            proto::file_transfer::ErrorCode error_code,
                            quint32 available_actions);
-    void sig_doTask(const common::FileTask& task);
+    void sig_doTask(const FileTask& task);
 
 private slots:
-    void onTaskDone(const common::FileTask& task);
+    void onTaskDone(const FileTask& task);
 
 private:
     void doNextTask();
     void doCurrentTask();
     void onFinished(const base::Location& location);
 
-    QPointer<common::FileTaskFactory> task_factory_;
+    QPointer<FileTaskFactory> task_factory_;
     base::ScopedQPointer<FileRemoveQueueBuilder> queue_builder_;
 
     TaskList tasks_;

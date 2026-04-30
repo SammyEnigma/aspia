@@ -109,7 +109,7 @@ SysInfoWidgetProcesses::~SysInfoWidgetProcesses() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetProcesses::category() const
 {
-    return common::kSystemInfo_Processes;
+    return kSystemInfo_Processes;
 }
 
 //--------------------------------------------------------------------------------------------------

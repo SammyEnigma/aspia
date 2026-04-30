@@ -18,8 +18,6 @@
 
 #include "common/desktop_session_constants.h"
 
-namespace common {
-
 // Deprectaed.
 const char kSelectScreenExtension[] = "select_screen";
 const char kPreferredSizeExtension[] = "preferred_size";
@@ -60,5 +58,3 @@ const char kFlagSelectScreen[] = "select_screen";
 const char kFlagSystemInfo[] = "system_info";
 const char kFlagTaskManager[] = "task_manager";
 const char kFlagFileClipboard[] = "file_clipboard";
-
-} // namespace common

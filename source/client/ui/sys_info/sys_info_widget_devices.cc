@@ -71,7 +71,7 @@ SysInfoWidgetDevices::~SysInfoWidgetDevices() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetDevices::category() const
 {
-    return common::kSystemInfo_Devices;
+    return kSystemInfo_Devices;
 }
 
 //--------------------------------------------------------------------------------------------------

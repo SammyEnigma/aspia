@@ -284,26 +284,26 @@ void UserSessionAgent::onConnectEvent(const proto::user::ConnectEvent& event)
 
     if (!clipboard_)
     {
-        clipboard_ = new common::ClipboardMonitor(this);
+        clipboard_ = new ClipboardMonitor(this);
 
-        connect(clipboard_, &common::ClipboardMonitor::sig_clipboardEvent,
+        connect(clipboard_, &ClipboardMonitor::sig_clipboardEvent,
                 this, &UserSessionAgent::onClipboardEvent);
 
-        clipboard_file_transfer_ = new common::ClipboardFileTransfer(this);
+        clipboard_file_transfer_ = new ClipboardFileTransfer(this);
 
-        connect(clipboard_, &common::ClipboardMonitor::sig_localFileListChanged,
-                clipboard_file_transfer_, &common::ClipboardFileTransfer::setLocalFileList);
+        connect(clipboard_, &ClipboardMonitor::sig_localFileListChanged,
+                clipboard_file_transfer_, &ClipboardFileTransfer::setLocalFileList);
 
-        connect(clipboard_, &common::ClipboardMonitor::sig_fileDataRequest,
-                clipboard_file_transfer_, &common::ClipboardFileTransfer::requestFileData);
+        connect(clipboard_, &ClipboardMonitor::sig_fileDataRequest,
+                clipboard_file_transfer_, &ClipboardFileTransfer::requestFileData);
 
-        connect(clipboard_file_transfer_, &common::ClipboardFileTransfer::sig_sendMessage,
+        connect(clipboard_file_transfer_, &ClipboardFileTransfer::sig_sendMessage,
                 this, [this](const QByteArray& buffer)
         {
             sendNetworkMessage(proto::desktop::CHANNEL_ID_FILE, buffer);
         });
 
-        connect(clipboard_file_transfer_, &common::ClipboardFileTransfer::sig_fileDataChunk,
+        connect(clipboard_file_transfer_, &ClipboardFileTransfer::sig_fileDataChunk,
                 this, [this](int file_index, const QByteArray& data, bool is_last)
         {
             clipboard_->addFileData(file_index, data, is_last);

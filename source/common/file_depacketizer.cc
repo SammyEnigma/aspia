@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FileDepacketizer::FileDepacketizer(const QString& file_path, std::unique_ptr<QFile> file)
     : file_path_(file_path),
@@ -117,5 +115,3 @@ bool FileDepacketizer::writeNextPacket(const proto::file_transfer::Packet& packe
 
     return true;
 }
-
-} // namespace common

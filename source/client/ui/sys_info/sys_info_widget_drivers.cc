@@ -57,7 +57,7 @@ SysInfoWidgetDrivers::~SysInfoWidgetDrivers() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetDrivers::category() const
 {
-    return common::kSystemInfo_Drivers;
+    return kSystemInfo_Drivers;
 }
 
 //--------------------------------------------------------------------------------------------------

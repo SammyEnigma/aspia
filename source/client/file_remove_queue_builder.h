@@ -28,7 +28,7 @@ class FileRemoveQueueBuilder final : public QObject
     Q_OBJECT
 
 public:
-    explicit FileRemoveQueueBuilder(common::FileTask::Target target, QObject* parent = nullptr);
+    explicit FileRemoveQueueBuilder(FileTask::Target target, QObject* parent = nullptr);
     ~FileRemoveQueueBuilder() final;
 
     // Starts building of the task queue.
@@ -37,17 +37,17 @@ public:
     FileRemover::TaskList takeQueue();
 
 signals:
-    void sig_doTask(const common::FileTask& task);
+    void sig_doTask(const FileTask& task);
     void sig_finished(proto::file_transfer::ErrorCode error_code);
 
 private slots:
-    void onTaskDone(const common::FileTask& task);
+    void onTaskDone(const FileTask& task);
 
 private:
     void doPendingTasks();
     void onAborted(proto::file_transfer::ErrorCode error_code);
 
-    std::unique_ptr<common::FileTaskFactory> task_factory_;
+    std::unique_ptr<FileTaskFactory> task_factory_;
 
     FileRemover::TaskList pending_tasks_;
     FileRemover::TaskList tasks_;

@@ -104,7 +104,7 @@ SysInfoWidgetNetShares::~SysInfoWidgetNetShares() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetNetShares::category() const
 {
-    return common::kSystemInfo_NetworkShares;
+    return kSystemInfo_NetworkShares;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -33,8 +33,6 @@
 #include "common/win/file_object.h"
 #include "common/win/file_stream.h"
 
-namespace common {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -619,5 +617,3 @@ void ClipboardWin::addFileData(int file_index, const QByteArray& data, bool is_l
         active_streams_.erase(it);
     }
 }
-
-} // namespace common

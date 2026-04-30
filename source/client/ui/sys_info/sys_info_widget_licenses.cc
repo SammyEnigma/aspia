@@ -103,7 +103,7 @@ SysInfoWidgetLicenses::~SysInfoWidgetLicenses() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetLicenses::category() const
 {
-    return common::kSystemInfo_Licenses;
+    return kSystemInfo_Licenses;
 }
 
 //--------------------------------------------------------------------------------------------------

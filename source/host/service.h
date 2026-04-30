@@ -35,10 +35,8 @@ class TcpChannel;
 class TcpServer;
 } // namespace base
 
-namespace common {
 class HttpFileDownloader;
 class UpdateChecker;
-} // namespace common
 
 namespace proto::user {
 class RouterState;
@@ -129,8 +127,8 @@ private:
     QList<PendingConfirmation> pending_confirmation_;
     QList<Client*> clients_;
 
-    base::ScopedQPointer<common::UpdateChecker> update_checker_;
-    base::ScopedQPointer<common::HttpFileDownloader> update_downloader_;
+    base::ScopedQPointer<UpdateChecker> update_checker_;
+    base::ScopedQPointer<HttpFileDownloader> update_downloader_;
 
     Q_DISABLE_COPY_MOVE(Service)
 };

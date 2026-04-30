@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 Clipboard::Clipboard(QObject* parent)
     : QObject(parent)
@@ -82,5 +80,3 @@ void Clipboard::addFileData(int /* file_index */, const QByteArray& /* data */, 
 {
     // Default implementation does nothing. Overridden in ClipboardWin.
 }
-
-} // namespace common

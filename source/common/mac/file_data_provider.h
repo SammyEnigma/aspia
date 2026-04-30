@@ -31,8 +31,6 @@
 typedef void NSMutableArray;
 #endif
 
-namespace common {
-
 class FilePromiseWriter;
 
 // Places empty temporary files on NSPasteboard and registers NSFilePresenter
@@ -76,7 +74,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileDataProvider)
 };
-
-} // namespace common
 
 #endif // COMMON_MAC_FILE_DATA_PROVIDER_H

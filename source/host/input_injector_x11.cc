@@ -105,8 +105,8 @@ void InputInjectorX11::setBlockInput(bool /* enable */)
 //--------------------------------------------------------------------------------------------------
 void InputInjectorX11::injectKeyEvent(const proto::input::KeyEvent& event)
 {
-    int keycode = common::KeycodeConverter::usbKeycodeToNativeKeycode(event.usb_keycode());
-    if (keycode == common::KeycodeConverter::invalidNativeKeycode())
+    int keycode = KeycodeConverter::usbKeycodeToNativeKeycode(event.usb_keycode());
+    if (keycode == KeycodeConverter::invalidNativeKeycode())
     {
         LOG(ERROR) << "Invalid key code:" << event.usb_keycode();
         return;

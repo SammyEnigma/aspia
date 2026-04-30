@@ -26,8 +26,6 @@
 
 #include "proto/file_transfer.h"
 
-namespace common {
-
 class FilePlatformUtil
 {
 public:
@@ -49,7 +47,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(FilePlatformUtil)
 };
-
-} // namespace common
 
 #endif // COMMON_FILE_PLATFORM_UTIL_H

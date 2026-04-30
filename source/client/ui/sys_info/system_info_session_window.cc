@@ -127,7 +127,7 @@ SystemInfoSessionWindow::SystemInfoSessionWindow(QWidget* parent)
     }
 
     CategoryItem* summary_category = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/computer.svg", tr("Summary"), common::kSystemInfo_Summary);
+        ":/img/computer.svg", tr("Summary"), kSystemInfo_Summary);
 
     //----------------------------------------------------------------------------------------------
     // HARDWARE
@@ -137,19 +137,19 @@ SystemInfoSessionWindow::SystemInfoSessionWindow(QWidget* parent)
         CategoryItem::Type::ROOT_ITEM, ":/img/folder.svg", tr("Hardware"));
 
     CategoryItem* devices = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/network-card.svg", tr("Devices"), common::kSystemInfo_Devices);
+        ":/img/network-card.svg", tr("Devices"), kSystemInfo_Devices);
 
     CategoryItem* video_adapters = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/video-card.svg", tr("Video Adapters"), common::kSystemInfo_VideoAdapters);
+        ":/img/video-card.svg", tr("Video Adapters"), kSystemInfo_VideoAdapters);
 
     CategoryItem* monitors = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/imac.svg", tr("Monitors"), common::kSystemInfo_Monitors);
+        ":/img/imac.svg", tr("Monitors"), kSystemInfo_Monitors);
 
     CategoryItem* printers = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/printer.svg", tr("Printers"), common::kSystemInfo_Printers);
+        ":/img/printer.svg", tr("Printers"), kSystemInfo_Printers);
 
     CategoryItem* power_options = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/electrical.svg", tr("Power Options"), common::kSystemInfo_PowerOptions);
+        ":/img/electrical.svg", tr("Power Options"), kSystemInfo_PowerOptions);
 
     hardware_category->addChild(devices);
     hardware_category->addChild(video_adapters);
@@ -165,19 +165,19 @@ SystemInfoSessionWindow::SystemInfoSessionWindow(QWidget* parent)
         CategoryItem::Type::ROOT_ITEM, ":/img/folder.svg", tr("Software"));
 
     CategoryItem* applications = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/software.svg", tr("Applications"), common::kSystemInfo_Applications);
+        ":/img/software.svg", tr("Applications"), kSystemInfo_Applications);
 
     CategoryItem* drivers = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/network-card.svg", tr("Drivers"), common::kSystemInfo_Drivers);
+        ":/img/network-card.svg", tr("Drivers"), kSystemInfo_Drivers);
 
     CategoryItem* services = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/gear.svg", tr("Services"), common::kSystemInfo_Services);
+        ":/img/gear.svg", tr("Services"), kSystemInfo_Services);
 
     CategoryItem* processes = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/heart-monitor.svg", tr("Processes"), common::kSystemInfo_Processes);
+        ":/img/heart-monitor.svg", tr("Processes"), kSystemInfo_Processes);
 
     CategoryItem* licenses = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/certificate.svg", tr("Licenses"), common::kSystemInfo_Licenses);
+        ":/img/certificate.svg", tr("Licenses"), kSystemInfo_Licenses);
 
     software_category->addChild(applications);
     software_category->addChild(drivers);
@@ -193,19 +193,19 @@ SystemInfoSessionWindow::SystemInfoSessionWindow(QWidget* parent)
         CategoryItem::Type::ROOT_ITEM, ":/img/folder.svg", tr("Network"));
 
     CategoryItem* network_adapters = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/network-card.svg", tr("Network Adapters"), common::kSystemInfo_NetworkAdapters);
+        ":/img/network-card.svg", tr("Network Adapters"), kSystemInfo_NetworkAdapters);
 
     CategoryItem* routes = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/flow-chart.svg", tr("Routes"), common::kSystemInfo_Routes);
+        ":/img/flow-chart.svg", tr("Routes"), kSystemInfo_Routes);
 
     CategoryItem* connections = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/connected.svg", tr("Connections"), common::kSystemInfo_Connections);
+        ":/img/connected.svg", tr("Connections"), kSystemInfo_Connections);
 
     CategoryItem* network_shares = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/nas.svg", tr("Network Shares"), common::kSystemInfo_NetworkShares);
+        ":/img/nas.svg", tr("Network Shares"), kSystemInfo_NetworkShares);
 
     CategoryItem* open_files = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/nas.svg", tr("Open Files"), common::kSystemInfo_OpenFiles);
+        ":/img/nas.svg", tr("Open Files"), kSystemInfo_OpenFiles);
 
     network_category->addChild(network_adapters);
     network_category->addChild(routes);
@@ -221,16 +221,16 @@ SystemInfoSessionWindow::SystemInfoSessionWindow(QWidget* parent)
         CategoryItem::Type::ROOT_ITEM, ":/img/folder.svg", tr("Operating System"));
 
     CategoryItem* env_vars = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/day-view.svg", tr("Environment Variables"), common::kSystemInfo_EnvironmentVariables);
+        ":/img/day-view.svg", tr("Environment Variables"), kSystemInfo_EnvironmentVariables);
 
     CategoryItem* event_logs = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/log.svg", tr("Event Logs"), common::kSystemInfo_EventLogs);
+        ":/img/log.svg", tr("Event Logs"), kSystemInfo_EventLogs);
 
     CategoryItem* local_users = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/user.svg", tr("Users"), common::kSystemInfo_LocalUsers);
+        ":/img/user.svg", tr("Users"), kSystemInfo_LocalUsers);
 
     CategoryItem* local_user_groups = new CategoryItem(CategoryItem::Type::CATEGORY_ITEM,
-        ":/img/user-account.svg", tr("User Groups"), common::kSystemInfo_LocalUserGroups);
+        ":/img/user-account.svg", tr("User Groups"), kSystemInfo_LocalUserGroups);
 
     os_category->addChild(env_vars);
     os_category->addChild(event_logs);
@@ -329,7 +329,7 @@ void SystemInfoSessionWindow::onShowWindow()
 
     for (int i = 0; i < sys_info_widgets_.size(); ++i)
     {
-        if (sys_info_widgets_[i]->category() == common::kSystemInfo_Summary)
+        if (sys_info_widgets_[i]->category() == kSystemInfo_Summary)
         {
             SysInfoWidgetSummary* summary = static_cast<SysInfoWidgetSummary*>(sys_info_widgets_[i]);
 

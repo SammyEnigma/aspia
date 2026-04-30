@@ -46,8 +46,8 @@ FileTransferSessionWindow::FileTransferSessionWindow(QWidget* parent)
 
     QString mime_type = FileMimeData::createMimeType();
 
-    initPanel(common::FileTask::Target::LOCAL, tr("Local Computer"), mime_type, ui->local_panel);
-    initPanel(common::FileTask::Target::REMOTE, tr("Remote Computer"), mime_type, ui->remote_panel);
+    initPanel(FileTask::Target::LOCAL, tr("Local Computer"), mime_type, ui->local_panel);
+    initPanel(FileTask::Target::REMOTE, tr("Remote Computer"), mime_type, ui->remote_panel);
 
     ui->local_panel->setFocus();
 }
@@ -126,62 +126,62 @@ void FileTransferSessionWindow::onErrorOccurred(proto::file_transfer::ErrorCode 
 
 //--------------------------------------------------------------------------------------------------
 void FileTransferSessionWindow::onDriveList(
-    common::FileTask::Target target, proto::file_transfer::ErrorCode error_code,
+    FileTask::Target target, proto::file_transfer::ErrorCode error_code,
     const proto::file_transfer::DriveList& drive_list)
 {
-    if (target == common::FileTask::Target::LOCAL)
+    if (target == FileTask::Target::LOCAL)
     {
         ui->local_panel->onDriveList(error_code, drive_list);
     }
     else
     {
-        DCHECK_EQ(target, common::FileTask::Target::REMOTE);
+        DCHECK_EQ(target, FileTask::Target::REMOTE);
         ui->remote_panel->onDriveList(error_code, drive_list);
     }
 }
 
 //--------------------------------------------------------------------------------------------------
 void FileTransferSessionWindow::onFileList(
-    common::FileTask::Target target, proto::file_transfer::ErrorCode error_code,
+    FileTask::Target target, proto::file_transfer::ErrorCode error_code,
     const proto::file_transfer::List& file_list)
 {
-    if (target == common::FileTask::Target::LOCAL)
+    if (target == FileTask::Target::LOCAL)
     {
         ui->local_panel->onFileList(error_code, file_list);
     }
     else
     {
-        DCHECK_EQ(target, common::FileTask::Target::REMOTE);
+        DCHECK_EQ(target, FileTask::Target::REMOTE);
         ui->remote_panel->onFileList(error_code, file_list);
     }
 }
 
 //--------------------------------------------------------------------------------------------------
 void FileTransferSessionWindow::onCreateDirectory(
-    common::FileTask::Target target, proto::file_transfer::ErrorCode error_code)
+    FileTask::Target target, proto::file_transfer::ErrorCode error_code)
 {
-    if (target == common::FileTask::Target::LOCAL)
+    if (target == FileTask::Target::LOCAL)
     {
         ui->local_panel->onCreateDirectory(error_code);
     }
     else
     {
-        DCHECK_EQ(target, common::FileTask::Target::REMOTE);
+        DCHECK_EQ(target, FileTask::Target::REMOTE);
         ui->remote_panel->onCreateDirectory(error_code);
     }
 }
 
 //--------------------------------------------------------------------------------------------------
 void FileTransferSessionWindow::onRename(
-    common::FileTask::Target target, proto::file_transfer::ErrorCode error_code)
+    FileTask::Target target, proto::file_transfer::ErrorCode error_code)
 {
-    if (target == common::FileTask::Target::LOCAL)
+    if (target == FileTask::Target::LOCAL)
     {
         ui->local_panel->onRename(error_code);
     }
     else
     {
-        DCHECK_EQ(target, common::FileTask::Target::REMOTE);
+        DCHECK_EQ(target, FileTask::Target::REMOTE);
         ui->remote_panel->onRename(error_code);
     }
 }
@@ -274,16 +274,16 @@ void FileTransferSessionWindow::removeItems(FilePanel* sender, const FileRemover
         ui->remote_panel->setEnabled(true);
     });
 
-    common::FileTask::Target target;
+    FileTask::Target target;
 
     if (sender == ui->local_panel)
     {
-        target = common::FileTask::Target::LOCAL;
+        target = FileTask::Target::LOCAL;
     }
     else
     {
         DCHECK_EQ(sender, ui->remote_panel);
-        target = common::FileTask::Target::REMOTE;
+        target = FileTask::Target::REMOTE;
     }
 
     ui->local_panel->setEnabled(false);
@@ -430,7 +430,7 @@ void FileTransferSessionWindow::onPathChanged(FilePanel* sender, const QString& 
 
 //--------------------------------------------------------------------------------------------------
 void FileTransferSessionWindow::initPanel(
-    common::FileTask::Target target, const QString& title, const QString& mime_type, FilePanel* panel)
+    FileTask::Target target, const QString& title, const QString& mime_type, FilePanel* panel)
 {
     LOG(INFO) << "Init file manager panel (target=" << static_cast<int>(target) << ")";
 

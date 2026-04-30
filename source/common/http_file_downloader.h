@@ -22,8 +22,6 @@
 #include <QByteArray>
 #include <QThread>
 
-namespace common {
-
 class HttpFileDownloader final : public QThread
 {
     Q_OBJECT
@@ -54,7 +52,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(HttpFileDownloader)
 };
-
-} // namespace common
 
 #endif // COMMON_HTTP_FILE_DOWNLOADER_H

@@ -22,8 +22,6 @@
 #include "base/thread.h"
 #include "common/clipboard.h"
 
-namespace common {
-
 class ClipboardMonitor final : public QObject
 {
     Q_OBJECT
@@ -41,7 +39,7 @@ public:
 signals:
     void sig_clipboardEvent(const proto::clipboard::Event& event);
     void sig_fileDataRequest(int file_index);
-    void sig_localFileListChanged(const QVector<common::LocalFileEntry>& files);
+    void sig_localFileListChanged(const QVector<LocalFileEntry>& files);
 
     void sig_injectClipboardEventPrivate(const proto::clipboard::Event& event);
     void sig_clearClipboardPrivate();
@@ -53,11 +51,9 @@ private slots:
 
 private:
     base::Thread thread_;
-    std::unique_ptr<common::Clipboard> clipboard_;
+    std::unique_ptr<Clipboard> clipboard_;
 
     Q_DISABLE_COPY_MOVE(ClipboardMonitor)
 };
-
-} // namespace common
 
 #endif // COMMON_CLIPBOARD_MONITOR_H

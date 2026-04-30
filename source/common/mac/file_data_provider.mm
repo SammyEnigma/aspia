@@ -122,8 +122,6 @@
 // FileDataProvider C++ implementation.
 // ---------------------------------------------------------------------------
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FileDataProvider::FileDataProvider(const proto::clipboard::Event::FileList& files,
                                    FileDataRequestCallback callback)
@@ -228,5 +226,3 @@ void FileDataProvider::onFileRequested(int file_index, FilePromiseWriter* writer
     if (callback_)
         callback_(file_index, writer);
 }
-
-} // namespace common

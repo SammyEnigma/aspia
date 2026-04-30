@@ -59,7 +59,7 @@ SysInfoWidgetLocalUserGroups::~SysInfoWidgetLocalUserGroups() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetLocalUserGroups::category() const
 {
-    return common::kSystemInfo_LocalUserGroups;
+    return kSystemInfo_LocalUserGroups;
 }
 
 //--------------------------------------------------------------------------------------------------

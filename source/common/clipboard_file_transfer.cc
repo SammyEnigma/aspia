@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 ClipboardFileTransfer::ClipboardFileTransfer(QObject* parent)
     : QObject(parent)
@@ -249,5 +247,3 @@ quint64 ClipboardFileTransfer::nextTransferId()
 {
     return next_transfer_id_++;
 }
-
-} // namespace common

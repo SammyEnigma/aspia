@@ -22,13 +22,13 @@
 #include "common/file_task_factory.h"
 
 //--------------------------------------------------------------------------------------------------
-FileRemoveQueueBuilder::FileRemoveQueueBuilder(common::FileTask::Target target, QObject* parent)
+FileRemoveQueueBuilder::FileRemoveQueueBuilder(FileTask::Target target, QObject* parent)
     : QObject(parent),
-      task_factory_(std::make_unique<common::FileTaskFactory>(target))
+      task_factory_(std::make_unique<FileTaskFactory>(target))
 {
     LOG(INFO) << "Ctor";
 
-    connect(task_factory_.get(), &common::FileTaskFactory::sig_taskDone,
+    connect(task_factory_.get(), &FileTaskFactory::sig_taskDone,
             this, &FileRemoveQueueBuilder::onTaskDone);
 }
 
@@ -54,7 +54,7 @@ FileRemover::TaskList FileRemoveQueueBuilder::takeQueue()
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileRemoveQueueBuilder::onTaskDone(const common::FileTask& task)
+void FileRemoveQueueBuilder::onTaskDone(const FileTask& task)
 {
     const proto::file_transfer::Request& request = task.request();
     const proto::file_transfer::Reply& reply = task.reply();

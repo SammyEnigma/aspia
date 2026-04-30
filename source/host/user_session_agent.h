@@ -30,10 +30,8 @@ namespace base {
 class IpcChannel;
 } // namespace base
 
-namespace common {
 class ClipboardFileTransfer;
 class ClipboardMonitor;
-} // namespace common
 
 namespace proto::clipboard {
 class Event;
@@ -109,8 +107,8 @@ private:
     void sendServiceMessage();
     void sendNetworkMessage(quint8 net_channel_id, const QByteArray& buffer);
 
-    base::ScopedQPointer<common::ClipboardMonitor> clipboard_;
-    base::ScopedQPointer<common::ClipboardFileTransfer> clipboard_file_transfer_;
+    base::ScopedQPointer<ClipboardMonitor> clipboard_;
+    base::ScopedQPointer<ClipboardFileTransfer> clipboard_file_transfer_;
     base::ScopedQPointer<base::IpcChannel> ipc_channel_;
 
     base::Parser<proto::user::ServiceToUser> incoming_message_;

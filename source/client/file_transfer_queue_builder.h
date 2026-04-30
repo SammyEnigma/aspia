@@ -27,7 +27,7 @@ class FileTransferQueueBuilder final : public QObject
     Q_OBJECT
 
 public:
-    explicit FileTransferQueueBuilder(common::FileTask::Target target, QObject* parent = nullptr);
+    explicit FileTransferQueueBuilder(FileTask::Target target, QObject* parent = nullptr);
     ~FileTransferQueueBuilder() final;
 
     // Starts building of the task queue.
@@ -40,10 +40,10 @@ public:
 
 signals:
     void sig_finished(proto::file_transfer::ErrorCode error_code);
-    void sig_doTask(const common::FileTask& task);
+    void sig_doTask(const FileTask& task);
 
 private slots:
-    void onTaskDone(const common::FileTask& task);
+    void onTaskDone(const FileTask& task);
 
 private:
     void addPendingTask(const QString& source_dir,
@@ -54,7 +54,7 @@ private:
     void doPendingTasks();
     void onAborted(proto::file_transfer::ErrorCode error_code);
 
-    std::unique_ptr<common::FileTaskFactory> task_factory_;
+    std::unique_ptr<FileTaskFactory> task_factory_;
     FileTransfer::TaskList pending_tasks_;
     FileTransfer::TaskList tasks_;
     qint64 total_size_ = 0;

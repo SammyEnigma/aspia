@@ -19,8 +19,6 @@
 #ifndef COMMON_SYSTEM_INFO_CONSTANTS_H
 #define COMMON_SYSTEM_INFO_CONSTANTS_H
 
-namespace common {
-
 extern const char kSystemInfo_Summary[];
 extern const char kSystemInfo_Devices[];
 extern const char kSystemInfo_VideoAdapters[];
@@ -41,7 +39,5 @@ extern const char kSystemInfo_OpenFiles[];
 extern const char kSystemInfo_LocalUsers[];
 extern const char kSystemInfo_LocalUserGroups[];
 extern const char kSystemInfo_Processes[];
-
-} // namespace common
 
 #endif // COMMON_SYSTEM_INFO_CONSTANTS_H

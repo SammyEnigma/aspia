@@ -59,7 +59,7 @@ SysInfoWidgetEnvVars::~SysInfoWidgetEnvVars() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetEnvVars::category() const
 {
-    return common::kSystemInfo_EnvironmentVariables;
+    return kSystemInfo_EnvironmentVariables;
 }
 
 //--------------------------------------------------------------------------------------------------

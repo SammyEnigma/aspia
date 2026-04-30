@@ -29,14 +29,14 @@ auto g_actionType = qRegisterMetaType<FileRemover::Action>();
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-FileRemover::FileRemover(common::FileTask::Target target, const TaskList& items, QObject* parent)
+FileRemover::FileRemover(FileTask::Target target, const TaskList& items, QObject* parent)
     : QObject(parent),
-      task_factory_(new common::FileTaskFactory(target, this)),
+      task_factory_(new FileTaskFactory(target, this)),
       tasks_(items)
 {
     LOG(INFO) << "Ctor";
 
-    connect(task_factory_, &common::FileTaskFactory::sig_taskDone, this, &FileRemover::onTaskDone);
+    connect(task_factory_, &FileTaskFactory::sig_taskDone, this, &FileRemover::onTaskDone);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ void FileRemover::setAction(Action action)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileRemover::onTaskDone(const common::FileTask& task)
+void FileRemover::onTaskDone(const FileTask& task)
 {
     const proto::file_transfer::Request& request = task.request();
     const proto::file_transfer::Reply& reply = task.reply();

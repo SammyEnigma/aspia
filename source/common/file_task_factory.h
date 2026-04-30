@@ -28,8 +28,6 @@ namespace proto::file_transfer {
 class FilePacket;
 } // namespace proto::file_transfer
 
-namespace common {
-
 class FileTaskFactory final : public QObject
 {
     Q_OBJECT
@@ -52,7 +50,7 @@ public:
     FileTask packet(proto::file_transfer::Packet&& packet);
 
 signals:
-    void sig_taskDone(const common::FileTask& task);
+    void sig_taskDone(const FileTask& task);
 
 private:
     FileTask makeTask(proto::file_transfer::Request&& request);
@@ -61,7 +59,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileTaskFactory)
 };
-
-} // namespace common
 
 #endif // CLIENT_FILE_TASK_FACTORY_H

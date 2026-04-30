@@ -24,8 +24,6 @@
 
 #include <shellapi.h>
 
-namespace common {
-
 namespace {
 
 // Minimal path name is 1 characters.
@@ -194,5 +192,3 @@ bool FilePlatformUtil::isValidFileName(const QString& file_name)
 
     return true;
 }
-
-} // namespace common

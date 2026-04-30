@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FilePromiseWriter::FilePromiseWriter(qint64 file_size)
     : file_size_(file_size)
@@ -119,5 +117,3 @@ bool FilePromiseWriter::writeToDestination(const QString& dest_path)
     file.close();
     return !is_terminated_;
 }
-
-} // namespace common

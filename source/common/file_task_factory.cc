@@ -21,8 +21,6 @@
 #include "base/logging.h"
 #include "proto/file_transfer.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FileTaskFactory::FileTaskFactory(FileTask::Target target, QObject* parent)
     : QObject(parent),
@@ -127,5 +125,3 @@ FileTask FileTaskFactory::makeTask(proto::file_transfer::Request&& request)
 {
     return FileTask(this, std::move(request), target_);
 }
-
-} // namespace common

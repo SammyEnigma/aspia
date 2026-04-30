@@ -157,8 +157,8 @@ private:
     std::unique_ptr<base::CursorDecoder> cursor_decoder_;
     std::unique_ptr<base::AudioDecoder> audio_decoder_;
     std::unique_ptr<base::AudioPlayer> audio_player_;
-    common::ClipboardMonitor* clipboard_monitor_ = nullptr;
-    common::ClipboardFileTransfer* clipboard_file_transfer_ = nullptr;
+    ClipboardMonitor* clipboard_monitor_ = nullptr;
+    ClipboardFileTransfer* clipboard_file_transfer_ = nullptr;
 
     qint32 last_pos_x_ = 0;
     qint32 last_pos_y_ = 0;

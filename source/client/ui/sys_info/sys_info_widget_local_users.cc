@@ -115,7 +115,7 @@ SysInfoWidgetLocalUsers::~SysInfoWidgetLocalUsers() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetLocalUsers::category() const
 {
-    return common::kSystemInfo_LocalUsers;
+    return kSystemInfo_LocalUsers;
 }
 
 //--------------------------------------------------------------------------------------------------

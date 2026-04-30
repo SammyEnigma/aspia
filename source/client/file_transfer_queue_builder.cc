@@ -22,13 +22,13 @@
 #include "common/file_task_factory.h"
 
 //--------------------------------------------------------------------------------------------------
-FileTransferQueueBuilder::FileTransferQueueBuilder(common::FileTask::Target target, QObject* parent)
+FileTransferQueueBuilder::FileTransferQueueBuilder(FileTask::Target target, QObject* parent)
     : QObject(parent),
-      task_factory_(std::make_unique<common::FileTaskFactory>(target))
+      task_factory_(std::make_unique<FileTaskFactory>(target))
 {
     LOG(INFO) << "Ctor";
 
-    connect(task_factory_.get(), &common::FileTaskFactory::sig_taskDone,
+    connect(task_factory_.get(), &FileTaskFactory::sig_taskDone,
             this, &FileTransferQueueBuilder::onTaskDone);
 }
 
@@ -64,7 +64,7 @@ qint64 FileTransferQueueBuilder::totalSize() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferQueueBuilder::onTaskDone(const common::FileTask& task)
+void FileTransferQueueBuilder::onTaskDone(const FileTask& task)
 {
     DCHECK(!tasks_.empty());
 

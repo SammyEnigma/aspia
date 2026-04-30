@@ -23,8 +23,6 @@
 
 #include <shlobj.h>
 
-namespace common {
-
 class FormatEnumerator final : public IEnumFORMATETC
 {
 public:
@@ -47,7 +45,5 @@ private:
     const QVector<FORMATETC> formats_;
     qsizetype index_ = 0;
 };
-
-} // namespace common
 
 #endif // COMMON_WIN_FORMAT_ENUMERATOR_H

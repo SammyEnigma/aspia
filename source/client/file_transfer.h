@@ -176,10 +176,10 @@ signals:
     void sig_currentItemChanged(const QString& source_path, const QString& target_path);
     void sig_currentSpeedChanged(qint64 speed);
     void sig_errorOccurred(const FileTransfer::Error& error);
-    void sig_doTask(const common::FileTask& task);
+    void sig_doTask(const FileTask& task);
 
 private slots:
-    void onTaskDone(const common::FileTask& task);
+    void onTaskDone(const FileTask& task);
 
 private:
     Task& frontTask();
@@ -197,8 +197,8 @@ private:
     const QString target_path_;
     const QList<Item> items_;
 
-    QPointer<common::FileTaskFactory> task_factory_source_;
-    QPointer<common::FileTaskFactory> task_factory_target_;
+    QPointer<FileTaskFactory> task_factory_source_;
+    QPointer<FileTaskFactory> task_factory_target_;
 
     QPointer<QTimer> cancel_timer_ = nullptr;
 

@@ -74,7 +74,7 @@ SysInfoWidgetApplications::~SysInfoWidgetApplications() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetApplications::category() const
 {
-    return common::kSystemInfo_Applications;
+    return kSystemInfo_Applications;
 }
 
 //--------------------------------------------------------------------------------------------------

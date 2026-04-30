@@ -25,8 +25,6 @@
 
 #include "proto/file_transfer.h"
 
-namespace common {
-
 class FilePacketizer
 {
 public:
@@ -51,7 +49,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FilePacketizer)
 };
-
-} // namespace common
 
 #endif // COMMON_FILE_PACKETIZER_H

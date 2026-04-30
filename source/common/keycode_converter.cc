@@ -20,8 +20,6 @@
 
 #include <QKeyEvent>
 
-namespace common {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -111,5 +109,3 @@ quint32 KeycodeConverter::qtKeycodeToUsbKeycode(int qt_keycode)
 
     return invalidUsbKeycode();
 }
-
-} // namespace common

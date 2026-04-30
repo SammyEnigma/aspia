@@ -50,22 +50,22 @@ public:
 public slots:
     void onShowWindow();
     void onErrorOccurred(proto::file_transfer::ErrorCode error_code);
-    void onDriveList(common::FileTask::Target target,
+    void onDriveList(FileTask::Target target,
                      proto::file_transfer::ErrorCode error_code,
                      const proto::file_transfer::DriveList& drive_list);
-    void onFileList(common::FileTask::Target target,
+    void onFileList(FileTask::Target target,
                     proto::file_transfer::ErrorCode error_code,
                     const proto::file_transfer::List& file_list);
-    void onCreateDirectory(common::FileTask::Target target, proto::file_transfer::ErrorCode error_code);
-    void onRename(common::FileTask::Target target, proto::file_transfer::ErrorCode error_code);
+    void onCreateDirectory(FileTask::Target target, proto::file_transfer::ErrorCode error_code);
+    void onRename(FileTask::Target target, proto::file_transfer::ErrorCode error_code);
 
     void refresh();
 
 signals:
-    void sig_driveListRequest(common::FileTask::Target target);
-    void sig_fileListRequest(common::FileTask::Target target, const QString& path);
-    void sig_createDirectoryRequest(common::FileTask::Target target, const QString& path);
-    void sig_renameRequest(common::FileTask::Target target, const QString& old_path, const QString& new_path);
+    void sig_driveListRequest(FileTask::Target target);
+    void sig_fileListRequest(FileTask::Target target, const QString& path);
+    void sig_createDirectoryRequest(FileTask::Target target, const QString& path);
+    void sig_renameRequest(FileTask::Target target, const QString& old_path, const QString& new_path);
     void sig_removeRequest(FileRemover* remover);
     void sig_transferRequest(FileTransfer* transfer);
 
@@ -90,7 +90,7 @@ private:
                        const QString& target_path,
                        const QList<FileTransfer::Item>& items);
 
-    void initPanel(common::FileTask::Target target,
+    void initPanel(FileTask::Target target,
                    const QString& title,
                    const QString& mime_type,
                    FilePanel* panel);

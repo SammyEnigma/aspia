@@ -304,7 +304,7 @@ void FilePanel::onNameChangeRequest(const QString& old_name, const QString& new_
     }
     else if (old_name.compare(new_name, Qt::CaseInsensitive) != 0)
     {
-        if (!common::FilePlatformUtil::isValidFileName(new_name))
+        if (!FilePlatformUtil::isValidFileName(new_name))
         {
             showError(tr("Name contains invalid characters."));
             return;
@@ -323,7 +323,7 @@ void FilePanel::onCreateFolderRequest(const QString& name)
     }
     else
     {
-        if (!common::FilePlatformUtil::isValidFileName(name))
+        if (!FilePlatformUtil::isValidFileName(name))
         {
             showError(tr("Name contains invalid characters."));
             return;

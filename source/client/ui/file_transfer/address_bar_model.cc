@@ -69,7 +69,7 @@ void AddressBarModel::setDriveList(const proto::file_transfer::DriveList& list)
         const proto::file_transfer::DriveList::Item& item = list.item(i);
 
         Drive drive;
-        drive.icon = common::FilePlatformUtil::driveIcon(item.type());
+        drive.icon = FilePlatformUtil::driveIcon(item.type());
         drive.path = normalizePath(QString::fromStdString(item.path()));
         drive.type = item.type();
 
@@ -112,7 +112,7 @@ QModelIndex AddressBarModel::setCurrentPath(const QString& path)
     {
         QString normalized_path = normalizePath(path);
 
-        if (!common::FilePlatformUtil::isValidPath(normalized_path))
+        if (!FilePlatformUtil::isValidPath(normalized_path))
         {
             LOG(ERROR) << "Invalid path entered:" << normalized_path;
             emit sig_invalidPathEntered();

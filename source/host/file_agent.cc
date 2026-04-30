@@ -30,7 +30,7 @@ namespace host {
 //--------------------------------------------------------------------------------------------------
 FileAgent::FileAgent(QObject* parent)
     : QObject(parent),
-      worker_(new common::FileWorker(this))
+      worker_(new FileWorker(this))
 {
     LOG(INFO) << "Ctor";
 }

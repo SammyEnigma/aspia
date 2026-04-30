@@ -148,7 +148,7 @@ SysInfoWidgetEventLogs::~SysInfoWidgetEventLogs() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetEventLogs::category() const
 {
-    return common::kSystemInfo_EventLogs;
+    return kSystemInfo_EventLogs;
 }
 
 //--------------------------------------------------------------------------------------------------

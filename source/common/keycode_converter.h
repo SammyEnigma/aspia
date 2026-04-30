@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace common {
-
 // This structure is used to define the keycode mapping table.
 // It is defined here because the unittests need access to it.
 typedef struct
@@ -65,7 +63,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(KeycodeConverter)
 };
-
-} // namespace common
 
 #endif // COMMON_KEYCODE_CONVERTER_H

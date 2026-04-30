@@ -61,7 +61,7 @@ SysInfoWidgetOpenFiles::~SysInfoWidgetOpenFiles() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetOpenFiles::category() const
 {
-    return common::kSystemInfo_OpenFiles;
+    return kSystemInfo_OpenFiles;
 }
 
 //--------------------------------------------------------------------------------------------------

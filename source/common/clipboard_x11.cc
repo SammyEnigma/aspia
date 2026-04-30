@@ -22,8 +22,6 @@
 #include "base/files/file_descriptor_watcher_posix.h"
 #include "base/x11/x_server_clipboard.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 ClipboardX11::ClipboardX11(QObject* parent)
     : Clipboard(parent)
@@ -92,5 +90,3 @@ void ClipboardX11::pumpXEvents()
         x_server_clipboard_->processXEvent(&event);
     }
 }
-
-} // namespace common

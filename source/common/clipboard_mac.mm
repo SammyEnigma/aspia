@@ -27,8 +27,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-namespace common {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -426,5 +424,3 @@ void ClipboardMac::addFileData(int file_index, const QByteArray& data, bool is_l
     if (is_last)
         active_writers_.erase(it);
 }
-
-} // namespace common

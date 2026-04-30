@@ -110,7 +110,7 @@ SysInfoWidgetNetAdapters::~SysInfoWidgetNetAdapters() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetNetAdapters::category() const
 {
-    return common::kSystemInfo_NetworkAdapters;
+    return kSystemInfo_NetworkAdapters;
 }
 
 //--------------------------------------------------------------------------------------------------

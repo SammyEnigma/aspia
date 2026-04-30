@@ -1011,83 +1011,83 @@ void createSystemInfo(const proto::system_info::SystemInfoRequest& request,
 
     system_info->mutable_footer()->set_category(category);
 
-    if (category == common::kSystemInfo_Summary)
+    if (category == kSystemInfo_Summary)
     {
         fillSummaryInfo(system_info);
     }
-    else if (category == common::kSystemInfo_Devices)
+    else if (category == kSystemInfo_Devices)
     {
         fillDevices(system_info);
     }
-    else if (category == common::kSystemInfo_VideoAdapters)
+    else if (category == kSystemInfo_VideoAdapters)
     {
         fillVideoAdapters(system_info);
     }
-    else if (category == common::kSystemInfo_Monitors)
+    else if (category == kSystemInfo_Monitors)
     {
         fillMonitors(system_info);
     }
-    else if (category == common::kSystemInfo_Printers)
+    else if (category == kSystemInfo_Printers)
     {
         fillPrinters(system_info);
     }
-    else if (category == common::kSystemInfo_PowerOptions)
+    else if (category == kSystemInfo_PowerOptions)
     {
         fillPowerOptions(system_info);
     }
-    else if (category == common::kSystemInfo_Drivers)
+    else if (category == kSystemInfo_Drivers)
     {
         fillDrivers(system_info);
     }
-    else if (category == common::kSystemInfo_Services)
+    else if (category == kSystemInfo_Services)
     {
         fillServices(system_info);
     }
-    else if (category == common::kSystemInfo_EnvironmentVariables)
+    else if (category == kSystemInfo_EnvironmentVariables)
     {
         fillEnvironmentVariables(system_info);
     }
-    else if (category == common::kSystemInfo_EventLogs)
+    else if (category == kSystemInfo_EventLogs)
     {
         fillEventLogs(system_info, request.event_logs_data());
     }
-    else if (category == common::kSystemInfo_NetworkAdapters)
+    else if (category == kSystemInfo_NetworkAdapters)
     {
         fillNetworkAdapters(system_info);
     }
-    else if (category == common::kSystemInfo_Routes)
+    else if (category == kSystemInfo_Routes)
     {
         fillRoutes(system_info);
     }
-    else if (category == common::kSystemInfo_Connections)
+    else if (category == kSystemInfo_Connections)
     {
         fillConnection(system_info);
     }
-    else if (category == common::kSystemInfo_NetworkShares)
+    else if (category == kSystemInfo_NetworkShares)
     {
         fillNetworkShares(system_info);
     }
-    else if (category == common::kSystemInfo_Licenses)
+    else if (category == kSystemInfo_Licenses)
     {
         fillLicensesInfo(system_info);
     }
-    else if (category == common::kSystemInfo_Applications)
+    else if (category == kSystemInfo_Applications)
     {
         fillApplicationsInfo(system_info);
     }
-    else if (category == common::kSystemInfo_OpenFiles)
+    else if (category == kSystemInfo_OpenFiles)
     {
         fillOpenFilesInfo(system_info);
     }
-    else if (category == common::kSystemInfo_LocalUsers)
+    else if (category == kSystemInfo_LocalUsers)
     {
         fillLocalUsersInfo(system_info);
     }
-    else if (category == common::kSystemInfo_LocalUserGroups)
+    else if (category == kSystemInfo_LocalUserGroups)
     {
         fillLocalUserGroupsInfo(system_info);
     }
-    else if (category == common::kSystemInfo_Processes)
+    else if (category == kSystemInfo_Processes)
     {
         fillProcessesInfo(system_info);
     }

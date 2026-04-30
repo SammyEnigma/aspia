@@ -103,7 +103,7 @@ SysInfoWidgetVideoAdapters::~SysInfoWidgetVideoAdapters() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetVideoAdapters::category() const
 {
-    return common::kSystemInfo_VideoAdapters;
+    return kSystemInfo_VideoAdapters;
 }
 
 //--------------------------------------------------------------------------------------------------

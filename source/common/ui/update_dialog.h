@@ -34,7 +34,7 @@ class UpdateDialog final : public QDialog
 
 public:
     UpdateDialog(const QString& server, const QString& package, QWidget* parent = nullptr);
-    UpdateDialog(const common::UpdateInfo& update_info, QWidget* parent = nullptr);
+    UpdateDialog(const UpdateInfo& update_info, QWidget* parent = nullptr);
     ~UpdateDialog() final;
 
 protected:
@@ -50,9 +50,9 @@ private:
     void initialize();
 
     std::unique_ptr<Ui::UpdateDialog> ui;
-    common::UpdateInfo update_info_;
+    UpdateInfo update_info_;
 
-    std::unique_ptr<common::UpdateChecker> checker_;
+    std::unique_ptr<UpdateChecker> checker_;
     bool checker_finished_ = true;
 
     Q_DISABLE_COPY_MOVE(UpdateDialog)

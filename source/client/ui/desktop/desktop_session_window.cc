@@ -328,33 +328,33 @@ void DesktopSessionWindow::onCapabilitiesChanged(const proto::control::Capabilit
         const std::string& name = flag.name();
         bool value = flag.value();
 
-        if (name == common::kFlagOSWindows)
+        if (name == kFlagOSWindows)
             toolbar_->enableCtrlAltDelFeature(true);
-        else if (name == common::kFlagPasteAsKeystrokes)
+        else if (name == kFlagPasteAsKeystrokes)
             toolbar_->enablePasteAsKeystrokesFeature(value);
-        else if (name == common::kFlagAudioOpus)
+        else if (name == kFlagAudioOpus)
             feature_audio_ = value;
-        else if (name == common::kFlagClipboard)
+        else if (name == kFlagClipboard)
             feature_clipboard_ = value;
-        else if (name == common::kFlagCursorShape)
+        else if (name == kFlagCursorShape)
             feature_cursor_shape_ = value;
-        else if (name == common::kFlagCursorPosition)
+        else if (name == kFlagCursorPosition)
             feature_cursor_position_ = value;
-        else if (name == common::kFlagDesktopEffects)
+        else if (name == kFlagDesktopEffects)
             feature_desktop_effects_ = value;
-        else if (name == common::kFlagDesktopWallpaper)
+        else if (name == kFlagDesktopWallpaper)
             feature_desktop_wallpaper_ = value;
-        else if (name == common::kFlagLockAtDisconnect)
+        else if (name == kFlagLockAtDisconnect)
             feature_lock_at_disconnect_ = value;
-        else if (name == common::kFlagBlockInput)
+        else if (name == kFlagBlockInput)
             feature_block_input_ = value;
-        else if (name == common::kFlagPowerControl)
+        else if (name == kFlagPowerControl)
             toolbar_->enablePowerControl(value);
-        else if (name == common::kFlagSelectScreen)
+        else if (name == kFlagSelectScreen)
             toolbar_->enableScreenSelect(value);
-        else if (name == common::kFlagSystemInfo)
+        else if (name == kFlagSystemInfo)
             toolbar_->enableSystemInfo(value);
-        else if (name == common::kFlagTaskManager)
+        else if (name == kFlagTaskManager)
             toolbar_->enableTaskManager(value);
     }
 }

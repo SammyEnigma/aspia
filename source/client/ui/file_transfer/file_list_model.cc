@@ -99,7 +99,7 @@ void sortByTime(T& list, Qt::SortOrder order)
 //--------------------------------------------------------------------------------------------------
 FileListModel::FileListModel(QObject* parent)
     : QAbstractItemModel(parent),
-      dir_icon_(common::FilePlatformUtil::directoryIcon()),
+      dir_icon_(FilePlatformUtil::directoryIcon()),
       dir_type_(tr("Folder"))
 {
     // Nothing
@@ -140,7 +140,7 @@ void FileListModel::setFileList(const proto::file_transfer::List& list)
             file.last_write = item.modification_time();
             file.size       = static_cast<qint64>(item.size());
 
-            std::pair<QIcon, QString> file_info = common::FilePlatformUtil::fileTypeInfo(file.name);
+            std::pair<QIcon, QString> file_info = FilePlatformUtil::fileTypeInfo(file.name);
             file.icon = file_info.first;
             file.type = file_info.second;
 

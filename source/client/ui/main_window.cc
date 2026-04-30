@@ -98,9 +98,9 @@ MainWindow::MainWindow(QWidget* parent)
 #if defined(Q_OS_WINDOWS)
     if (settings.checkUpdates())
     {
-        update_checker_ = std::make_unique<common::UpdateChecker>(settings.updateServer(), "client");
+        update_checker_ = std::make_unique<UpdateChecker>(settings.updateServer(), "client");
 
-        connect(update_checker_.get(), &common::UpdateChecker::sig_checkedFinished,
+        connect(update_checker_.get(), &UpdateChecker::sig_checkedFinished,
                 this, &MainWindow::onUpdateCheckedFinished);
 
         LOG(INFO) << "Start update checker";
@@ -170,7 +170,7 @@ void MainWindow::onUpdateCheckedFinished(const QByteArray& result)
     }
     else
     {
-        common::UpdateInfo update_info = common::UpdateInfo::fromXml(result);
+        UpdateInfo update_info = UpdateInfo::fromXml(result);
         if (!update_info.isValid())
         {
             LOG(INFO) << "No updates available";

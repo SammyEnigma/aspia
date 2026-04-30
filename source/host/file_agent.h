@@ -28,9 +28,7 @@ namespace base {
 class IpcChannel;
 } // namespace base
 
-namespace common {
 class FileWorker;
-} // namespace common
 
 namespace host {
 
@@ -52,7 +50,7 @@ private slots:
 
 private:
     base::IpcChannel* ipc_channel_ = nullptr;
-    common::FileWorker* worker_ = nullptr;
+    FileWorker* worker_ = nullptr;
 
     base::Parser<proto::file_transfer::Request> request_;
     base::Serializer<proto::file_transfer::Reply> reply_;

@@ -30,8 +30,6 @@
 #include "common/clipboard.h"
 #include "proto/desktop_file.h"
 
-namespace common {
-
 class ClipboardFileTransfer final : public QObject
 {
     Q_OBJECT
@@ -98,7 +96,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ClipboardFileTransfer)
 };
-
-} // namespace common
 
 #endif // COMMON_CLIPBOARD_FILE_TRANSFER_H

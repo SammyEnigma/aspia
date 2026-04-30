@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FileStream::FileStream(qint64 file_size)
     : file_size_(file_size),
@@ -267,5 +265,3 @@ HRESULT FileStream::Clone(IStream** /* ppstm */)
 {
     return E_NOTIMPL;
 }
-
-} // namespace common

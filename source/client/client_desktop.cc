@@ -84,25 +84,25 @@ void ClientDesktop::onStarted()
 
     repeated_timer_->start();
 
-    clipboard_monitor_ = new common::ClipboardMonitor(this);
-    connect(clipboard_monitor_, &common::ClipboardMonitor::sig_clipboardEvent,
+    clipboard_monitor_ = new ClipboardMonitor(this);
+    connect(clipboard_monitor_, &ClipboardMonitor::sig_clipboardEvent,
             this, &ClientDesktop::onClipboardEvent);
 
-    clipboard_file_transfer_ = new common::ClipboardFileTransfer(this);
+    clipboard_file_transfer_ = new ClipboardFileTransfer(this);
 
-    connect(clipboard_monitor_, &common::ClipboardMonitor::sig_localFileListChanged,
-            clipboard_file_transfer_, &common::ClipboardFileTransfer::setLocalFileList);
+    connect(clipboard_monitor_, &ClipboardMonitor::sig_localFileListChanged,
+            clipboard_file_transfer_, &ClipboardFileTransfer::setLocalFileList);
 
-    connect(clipboard_monitor_, &common::ClipboardMonitor::sig_fileDataRequest,
-            clipboard_file_transfer_, &common::ClipboardFileTransfer::requestFileData);
+    connect(clipboard_monitor_, &ClipboardMonitor::sig_fileDataRequest,
+            clipboard_file_transfer_, &ClipboardFileTransfer::requestFileData);
 
-    connect(clipboard_file_transfer_, &common::ClipboardFileTransfer::sig_sendMessage,
+    connect(clipboard_file_transfer_, &ClipboardFileTransfer::sig_sendMessage,
             this, [this](const QByteArray& buffer)
     {
         sendMessage(proto::desktop::CHANNEL_ID_FILE, buffer);
     });
 
-    connect(clipboard_file_transfer_, &common::ClipboardFileTransfer::sig_fileDataChunk,
+    connect(clipboard_file_transfer_, &ClipboardFileTransfer::sig_fileDataChunk,
             this, [this](int file_index, const QByteArray& data, bool is_last)
     {
         clipboard_monitor_->addFileData(file_index, data, is_last);
@@ -125,12 +125,12 @@ void ClientDesktop::onStarted()
         flag->set_value(value);
     };
 
-    add_flag(common::kFlagVideoVP8, true);
-    add_flag(common::kFlagVideoVP9, true);
-    add_flag(common::kFlagAudioOpus, true);
+    add_flag(kFlagVideoVP8, true);
+    add_flag(kFlagVideoVP9, true);
+    add_flag(kFlagAudioOpus, true);
 
 #if defined(Q_OS_WINDOWS)
-    add_flag(common::kFlagFileClipboard, true);
+    add_flag(kFlagFileClipboard, true);
 #endif
 
     sendMessage(proto::desktop::CHANNEL_ID_CONTROL, base::serialize(message));
@@ -308,7 +308,7 @@ void ClientDesktop::onCurrentScreenChanged(const proto::screen::Screen& screen)
     {
         proto::legacy::ClientToSession message;
         proto::legacy::Extension* extension = message.mutable_extension();
-        extension->set_name(common::kSelectScreenExtension);
+        extension->set_name(kSelectScreenExtension);
         extension->set_data(screen.SerializeAsString());
         sendMessage(proto::desktop::CHANNEL_ID_LEGACY, base::serialize(message));
     }
@@ -517,7 +517,7 @@ void ClientDesktop::onPowerControl(proto::power::Control::Action action)
         proto::legacy::Extension* extension = message.mutable_extension();
         proto::power::Control power_control;
         power_control.set_action(action);
-        extension->set_name(common::kPowerControlExtension);
+        extension->set_name(kPowerControlExtension);
         extension->set_data(power_control.SerializeAsString());
 
         sendMessage(proto::desktop::CHANNEL_ID_LEGACY, base::serialize(message));
@@ -537,7 +537,7 @@ void ClientDesktop::onTaskManager(const proto::task_manager::ClientToHost& task_
     {
         proto::legacy::ClientToSession message;
         proto::legacy::Extension* extension = message.mutable_extension();
-        extension->set_name(common::kTaskManagerExtension);
+        extension->set_name(kTaskManagerExtension);
         extension->set_data(task_manager.SerializeAsString());
         sendMessage(proto::desktop::CHANNEL_ID_LEGACY, base::serialize(message));
     }
@@ -638,7 +638,7 @@ void ClientDesktop::onClipboardEvent(const proto::clipboard::Event& event)
 
     ++send_clipboard_count_;
 
-    if (event.mime_type() == common::Clipboard::kMimeTypeFileList.toStdString() &&
+    if (event.mime_type() == Clipboard::kMimeTypeFileList.toStdString() &&
         !file_clipboard_supported_)
     {
         CLOG(WARNING) << "File clipboard is not supported by remote side, skipping file list";
@@ -690,17 +690,17 @@ void ClientDesktop::readLegacyCapabilities(const proto::legacy::Capabilities& le
     };
 
     if (legacy_capabilities.os_type() == proto::legacy::Capabilities::OS_TYPE_WINDOWS)
-        add_flag(common::kFlagOSWindows, true);
+        add_flag(kFlagOSWindows, true);
 
     quint32 video_encodings = legacy_capabilities.video_encodings();
     if (video_encodings & proto::video::ENCODING_VP8)
-        add_flag(common::kFlagVideoVP8, true);
+        add_flag(kFlagVideoVP8, true);
     if (video_encodings & proto::video::ENCODING_VP9)
-        add_flag(common::kFlagVideoVP9, true);
+        add_flag(kFlagVideoVP9, true);
 
     quint32 audio_encodings = legacy_capabilities.audio_encodings();
     if (audio_encodings & proto::audio::ENCODING_OPUS)
-        add_flag(common::kFlagAudioOpus, true);
+        add_flag(kFlagAudioOpus, true);
 
     // Convert legacy "disable_*" flags (inverted logic) to new positive flags.
     // If a disable flag is absent in the legacy message, the feature is considered enabled.
@@ -719,41 +719,41 @@ void ClientDesktop::readLegacyCapabilities(const proto::legacy::Capabilities& le
         const std::string& name = flag.name();
         bool value = flag.value();
 
-        if (name == common::kFlagDisablePasteAsKeystrokes)
+        if (name == kFlagDisablePasteAsKeystrokes)
             paste_as_keystrokes = !value;
-        else if (name == common::kFlagDisableClipboard)
+        else if (name == kFlagDisableClipboard)
             clipboard = !value;
-        else if (name == common::kFlagDisableCursorShape)
+        else if (name == kFlagDisableCursorShape)
             cursor_shape = !value;
-        else if (name == common::kFlagDisableCursorPosition)
+        else if (name == kFlagDisableCursorPosition)
             cursor_position = !value;
-        else if (name == common::kFlagDisableDesktopEffects)
+        else if (name == kFlagDisableDesktopEffects)
             desktop_effects = !value;
-        else if (name == common::kFlagDisableDesktopWallpaper)
+        else if (name == kFlagDisableDesktopWallpaper)
             desktop_wallpaper = !value;
-        else if (name == common::kFlagDisableLockAtDisconnect)
+        else if (name == kFlagDisableLockAtDisconnect)
             lock_at_disconnect = !value;
-        else if (name == common::kFlagDisableBlockInput)
+        else if (name == kFlagDisableBlockInput)
             block_input = !value;
     }
 
-    add_flag(common::kFlagPasteAsKeystrokes, paste_as_keystrokes);
-    add_flag(common::kFlagClipboard, clipboard);
-    add_flag(common::kFlagCursorShape, cursor_shape);
-    add_flag(common::kFlagCursorPosition, cursor_position);
-    add_flag(common::kFlagDesktopEffects, desktop_effects);
-    add_flag(common::kFlagDesktopWallpaper, desktop_wallpaper);
-    add_flag(common::kFlagLockAtDisconnect, lock_at_disconnect);
-    add_flag(common::kFlagBlockInput, block_input);
+    add_flag(kFlagPasteAsKeystrokes, paste_as_keystrokes);
+    add_flag(kFlagClipboard, clipboard);
+    add_flag(kFlagCursorShape, cursor_shape);
+    add_flag(kFlagCursorPosition, cursor_position);
+    add_flag(kFlagDesktopEffects, desktop_effects);
+    add_flag(kFlagDesktopWallpaper, desktop_wallpaper);
+    add_flag(kFlagLockAtDisconnect, lock_at_disconnect);
+    add_flag(kFlagBlockInput, block_input);
 
     // Convert legacy extensions string (semicolon-separated) to new flags.
     QString extensions = QString::fromStdString(legacy_capabilities.extensions());
     QStringList extension_list = extensions.split(';', Qt::SkipEmptyParts);
 
-    add_flag(common::kFlagSelectScreen, extension_list.contains(common::kSelectScreenExtension));
-    add_flag(common::kFlagPowerControl, extension_list.contains(common::kPowerControlExtension));
-    add_flag(common::kFlagSystemInfo, extension_list.contains(common::kSystemInfoExtension));
-    add_flag(common::kFlagTaskManager, extension_list.contains(common::kTaskManagerExtension));
+    add_flag(kFlagSelectScreen, extension_list.contains(kSelectScreenExtension));
+    add_flag(kFlagPowerControl, extension_list.contains(kPowerControlExtension));
+    add_flag(kFlagSystemInfo, extension_list.contains(kSystemInfoExtension));
+    add_flag(kFlagTaskManager, extension_list.contains(kTaskManagerExtension));
 
     CLOG(INFO) << "Converted:" << capabilities;
     emit sig_capabilities(capabilities);
@@ -769,7 +769,7 @@ void ClientDesktop::readCapabilities(const proto::control::Capabilities& capabil
     for (int i = 0; i < capabilities.flag_size(); ++i)
     {
         const proto::control::Capabilities::Flag& flag = capabilities.flag(i);
-        if (flag.name() == common::kFlagFileClipboard)
+        if (flag.name() == kFlagFileClipboard)
         {
             file_clipboard_supported_ = flag.value();
             break;
@@ -967,7 +967,7 @@ void ClientDesktop::readCursorPosition(const proto::cursor::Position& position)
 //--------------------------------------------------------------------------------------------------
 void ClientDesktop::readClipboardEvent(const proto::clipboard::Event& event)
 {
-    if (event.mime_type() == common::Clipboard::kMimeTypeFileList.toStdString() &&
+    if (event.mime_type() == Clipboard::kMimeTypeFileList.toStdString() &&
         !file_clipboard_supported_)
     {
         CLOG(WARNING) << "File clipboard is not supported by remote side, ignoring file list";
@@ -987,7 +987,7 @@ void ClientDesktop::readExtension(const proto::legacy::Extension& extension)
     if (!isLegacy())
         return;
 
-    if (extension.name() == common::kTaskManagerExtension)
+    if (extension.name() == kTaskManagerExtension)
     {
         proto::task_manager::HostToClient message;
         if (!message.ParseFromString(extension.data()))
@@ -998,7 +998,7 @@ void ClientDesktop::readExtension(const proto::legacy::Extension& extension)
 
         emit sig_taskManager(message);
     }
-    else if (extension.name() == common::kSelectScreenExtension)
+    else if (extension.name() == kSelectScreenExtension)
     {
         proto::screen::ScreenList screen_list;
         if (!screen_list.ParseFromString(extension.data()))
@@ -1010,7 +1010,7 @@ void ClientDesktop::readExtension(const proto::legacy::Extension& extension)
         CLOG(INFO) << "Screen list receive:" << screen_list;
         emit sig_screenListChanged(screen_list);
     }
-    else if (extension.name() == common::kScreenTypeExtension)
+    else if (extension.name() == kScreenTypeExtension)
     {
         proto::screen::ScreenType screen_type;
         if (!screen_type.ParseFromString(extension.data()))

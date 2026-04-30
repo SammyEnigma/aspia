@@ -42,7 +42,7 @@ public:
         {
             QString characters;
 
-            for (const auto& character : common::FilePlatformUtil::invalidFileNameCharacters())
+            for (const auto& character : FilePlatformUtil::invalidFileNameCharacters())
             {
                 if (!characters.isEmpty())
                     characters += ", ";

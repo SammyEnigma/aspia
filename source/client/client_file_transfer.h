@@ -35,11 +35,11 @@ public:
     ~ClientFileTransfer() final;
 
 public slots:
-    void onTask(const common::FileTask& task);
-    void onDriveListRequest(common::FileTask::Target target);
-    void onFileListRequest(common::FileTask::Target target, const QString& path);
-    void onCreateDirectoryRequest(common::FileTask::Target target, const QString& path);
-    void onRenameRequest(common::FileTask::Target target,
+    void onTask(const FileTask& task);
+    void onDriveListRequest(FileTask::Target target);
+    void onFileListRequest(FileTask::Target target, const QString& path);
+    void onCreateDirectoryRequest(FileTask::Target target, const QString& path);
+    void onRenameRequest(FileTask::Target target,
                          const QString& old_path,
                          const QString& new_path);
     void onRemoveRequest(FileRemover* remover);
@@ -47,14 +47,14 @@ public slots:
 
 signals:
     void sig_errorOccurred(proto::file_transfer::ErrorCode error_code);
-    void sig_driveListReply(common::FileTask::Target target,
+    void sig_driveListReply(FileTask::Target target,
                             proto::file_transfer::ErrorCode error_code,
                             const proto::file_transfer::DriveList& drive_list);
-    void sig_fileListReply(common::FileTask::Target target,
+    void sig_fileListReply(FileTask::Target target,
                       proto::file_transfer::ErrorCode error_code,
                       const proto::file_transfer::List& file_list);
-    void sig_createDirectoryReply(common::FileTask::Target target, proto::file_transfer::ErrorCode error_code);
-    void sig_renameReply(common::FileTask::Target target, proto::file_transfer::ErrorCode error_code);
+    void sig_createDirectoryReply(FileTask::Target target, proto::file_transfer::ErrorCode error_code);
+    void sig_renameReply(FileTask::Target target, proto::file_transfer::ErrorCode error_code);
 
 protected:
     // Client implementation.
@@ -62,18 +62,18 @@ protected:
     void onMessageReceived(quint8 channel_id, const QByteArray& buffer) final;
 
 private slots:
-    void onTaskDone(const common::FileTask& task);
+    void onTaskDone(const FileTask& task);
 
 private:
     void doNextRemoteTask();
 
-    common::FileTaskFactory* taskFactory(common::FileTask::Target target);
+    FileTaskFactory* taskFactory(FileTask::Target target);
 
-    QPointer<common::FileTaskFactory> local_task_factory_;
-    QPointer<common::FileTaskFactory> remote_task_factory_;
+    QPointer<FileTaskFactory> local_task_factory_;
+    QPointer<FileTaskFactory> remote_task_factory_;
 
-    QQueue<common::FileTask> remote_task_queue_;
-    common::FileWorker* local_worker_ = nullptr;
+    QQueue<FileTask> remote_task_queue_;
+    FileWorker* local_worker_ = nullptr;
 
     QPointer<FileRemover> remover_;
     QPointer<FileTransfer> transfer_;

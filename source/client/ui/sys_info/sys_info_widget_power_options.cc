@@ -122,7 +122,7 @@ SysInfoWidgetPowerOptions::~SysInfoWidgetPowerOptions() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetPowerOptions::category() const
 {
-    return common::kSystemInfo_PowerOptions;
+    return kSystemInfo_PowerOptions;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -23,8 +23,6 @@
 #include "base/logging.h"
 #include "base/net/curl_util.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 UpdateChecker::UpdateChecker(const QString& server, const QString& package, QObject* parent)
     : QThread(parent),
@@ -192,5 +190,3 @@ void UpdateChecker::run()
 
     LOG(INFO) << "run END";
 }
-
-} // namespace common

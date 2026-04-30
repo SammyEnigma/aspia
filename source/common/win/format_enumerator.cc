@@ -18,8 +18,6 @@
 
 #include "common/win/format_enumerator.h"
 
-namespace common {
-
 //--------------------------------------------------------------------------------------------------
 FormatEnumerator::FormatEnumerator(const QVector<FORMATETC>& formats)
     : ref_count_(1),
@@ -104,5 +102,3 @@ HRESULT FormatEnumerator::Clone(IEnumFORMATETC** ppEnum)
     *ppEnum = new FormatEnumerator(formats_);
     return S_OK;
 }
-
-} // namespace common

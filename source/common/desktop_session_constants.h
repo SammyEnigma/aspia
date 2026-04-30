@@ -21,8 +21,6 @@
 
 #include <QtGlobal>
 
-namespace common {
-
 extern const char kSelectScreenExtension[]; // Deprecated.
 extern const char kPreferredSizeExtension[]; // Deprecated.
 extern const char kPowerControlExtension[]; // Deprecated.
@@ -61,7 +59,5 @@ extern const char kFlagSelectScreen[];
 extern const char kFlagSystemInfo[];
 extern const char kFlagTaskManager[];
 extern const char kFlagFileClipboard[];
-
-} // namespace common
 
 #endif // COMMON_DESKTOP_SESSION_CONSTANTS_H

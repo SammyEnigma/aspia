@@ -110,7 +110,7 @@ SysInfoWidgetPrinters::~SysInfoWidgetPrinters() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetPrinters::category() const
 {
-    return common::kSystemInfo_Printers;
+    return kSystemInfo_Printers;
 }
 
 //--------------------------------------------------------------------------------------------------

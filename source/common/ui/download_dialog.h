@@ -40,7 +40,7 @@ private slots:
 private:
     Ui::DownloadDialog ui;
 
-    std::unique_ptr<common::HttpFileDownloader> downloader_ = nullptr;
+    std::unique_ptr<HttpFileDownloader> downloader_ = nullptr;
     QFile& file_;
 
     Q_DISABLE_COPY_MOVE(DownloadDialog)

@@ -124,7 +124,7 @@ SysInfoWidgetMonitors::~SysInfoWidgetMonitors() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetMonitors::category() const
 {
-    return common::kSystemInfo_Monitors;
+    return kSystemInfo_Monitors;
 }
 
 //--------------------------------------------------------------------------------------------------

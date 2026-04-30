@@ -28,8 +28,6 @@
 #include "common/win/file_stream.h"
 #include "proto/desktop_clipboard.h"
 
-namespace common {
-
 class FileObject final : public IDataObject
 {
 public:
@@ -68,7 +66,5 @@ private:
     proto::clipboard::Event::FileList files_;
     QMap<int, FileStream*> streams_;
 };
-
-} // namespace common
 
 #endif // COMMON_WIN_FILE_OBJECT_H

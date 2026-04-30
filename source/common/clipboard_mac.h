@@ -26,8 +26,6 @@
 
 #include "common/clipboard.h"
 
-namespace common {
-
 class FileDataProvider;
 class FilePromiseWriter;
 
@@ -66,7 +64,5 @@ private:
 
     Q_DISABLE_COPY(ClipboardMac)
 };
-
-} // namespace common
 
 #endif // COMMON_CLIPBOARD_MAC_H

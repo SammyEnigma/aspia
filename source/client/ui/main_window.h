@@ -28,9 +28,7 @@
 
 class QLineEdit;
 
-namespace common {
 class UpdateChecker;
-} // namespace common
 
 class ClientTab;
 struct ComputerConfig;
@@ -74,7 +72,7 @@ private:
     QMenu* menuForActionGroup(ClientTab::ActionRole group) const;
 
     Ui::MainWindow ui;
-    std::unique_ptr<common::UpdateChecker> update_checker_;
+    std::unique_ptr<UpdateChecker> update_checker_;
 
     QLineEdit* search_field_ = nullptr;
     QAction* search_action_ = nullptr;

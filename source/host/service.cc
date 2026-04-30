@@ -274,7 +274,7 @@ void Service::onUpdateCheckedFinished(const QByteArray& result)
             break;
         }
 
-        common::UpdateInfo update_info = common::UpdateInfo::fromXml(result);
+        UpdateInfo update_info = UpdateInfo::fromXml(result);
         if (!update_info.isValid())
         {
             LOG(INFO) << "No updates available";
@@ -292,13 +292,13 @@ void Service::onUpdateCheckedFinished(const QByteArray& result)
 
         LOG(INFO) << "New version available:" << update_version.toString();
 
-        update_downloader_ = new common::HttpFileDownloader(update_info.url(), this);
+        update_downloader_ = new HttpFileDownloader(update_info.url(), this);
 
-        connect(update_downloader_, &common::HttpFileDownloader::sig_downloadError,
+        connect(update_downloader_, &HttpFileDownloader::sig_downloadError,
                 this, &Service::onFileDownloaderError);
-        connect(update_downloader_, &common::HttpFileDownloader::sig_downloadCompleted,
+        connect(update_downloader_, &HttpFileDownloader::sig_downloadCompleted,
                 this, &Service::onFileDownloaderCompleted);
-        connect(update_downloader_, &common::HttpFileDownloader::sig_downloadProgress,
+        connect(update_downloader_, &HttpFileDownloader::sig_downloadProgress,
                 this, &Service::onFileDownloaderProgress);
 
         update_downloader_->start();
@@ -921,9 +921,9 @@ void Service::checkForUpdates()
 
     storage.setLastUpdateCheck(current_timepoint);
 
-    update_checker_ = new common::UpdateChecker(settings_.updateServer(), "host", this);
+    update_checker_ = new UpdateChecker(settings_.updateServer(), "host", this);
 
-    connect(update_checker_, &common::UpdateChecker::sig_checkedFinished,
+    connect(update_checker_, &UpdateChecker::sig_checkedFinished,
             this, &Service::onUpdateCheckedFinished);
 
     LOG(INFO) << "Start checking for updates";

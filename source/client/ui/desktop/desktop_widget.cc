@@ -336,16 +336,16 @@ void DesktopWidget::doKeyEvent(QKeyEvent* event)
     quint32 usb_keycode;
 
 #if !defined(Q_OS_MACOS)
-    usb_keycode = common::KeycodeConverter::nativeKeycodeToUsbKeycode(
+    usb_keycode = KeycodeConverter::nativeKeycodeToUsbKeycode(
         static_cast<int>(event->nativeScanCode()));
 #else
     if (isModifierKey(key))
-        usb_keycode = common::KeycodeConverter::qtKeycodeToUsbKeycode(key);
+        usb_keycode = KeycodeConverter::qtKeycodeToUsbKeycode(key);
     else
-        usb_keycode = common::KeycodeConverter::nativeKeycodeToUsbKeycode(event->nativeVirtualKey());
+        usb_keycode = KeycodeConverter::nativeKeycodeToUsbKeycode(event->nativeVirtualKey());
 #endif
 
-    if (usb_keycode == common::KeycodeConverter::invalidUsbKeycode())
+    if (usb_keycode == KeycodeConverter::invalidUsbKeycode())
         return;
 
     executeKeyEvent(usb_keycode, flags);
@@ -366,9 +366,9 @@ void DesktopWidget::executeKeyCombination(QKeyCombination key_sequence)
 
     int combined_key_sequence = key_sequence.toCombined();
 
-    quint32 key = common::KeycodeConverter::qtKeycodeToUsbKeycode(
+    quint32 key = KeycodeConverter::qtKeycodeToUsbKeycode(
         combined_key_sequence & ~Qt::KeyboardModifierMask);
-    if (key == common::KeycodeConverter::invalidUsbKeycode())
+    if (key == KeycodeConverter::invalidUsbKeycode())
         return;
 
     proto::input::KeyEvent event;
@@ -713,9 +713,9 @@ LRESULT CALLBACK DesktopWidget::keyboardHookProc(INT code, WPARAM wparam, LPARAM
             if (hook->flags & LLKHF_EXTENDED)
                 scan_code |= 0x100;
 
-            quint32 usb_keycode = common::KeycodeConverter::nativeKeycodeToUsbKeycode(
+            quint32 usb_keycode = KeycodeConverter::nativeKeycodeToUsbKeycode(
                 static_cast<int>(scan_code));
-            if (usb_keycode != common::KeycodeConverter::invalidUsbKeycode())
+            if (usb_keycode != KeycodeConverter::invalidUsbKeycode())
             {
                 DesktopWidget* self = dynamic_cast<DesktopWidget*>(QApplication::focusWidget());
                 WId foreground_window = reinterpret_cast<WId>(GetForegroundWindow());
@@ -773,9 +773,9 @@ CGEventRef DesktopWidget::keyboardFilterProc(
 
         CGKeyCode key_code = CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
 
-        quint32 usb_keycode = common::KeycodeConverter::nativeKeycodeToUsbKeycode(
+        quint32 usb_keycode = KeycodeConverter::nativeKeycodeToUsbKeycode(
             static_cast<int>(key_code));
-        if (usb_keycode != common::KeycodeConverter::invalidUsbKeycode())
+        if (usb_keycode != KeycodeConverter::invalidUsbKeycode())
         {
             self_widget->executeKeyEvent(usb_keycode, flags);
             return nullptr;

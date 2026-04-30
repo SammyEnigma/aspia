@@ -24,8 +24,6 @@
 
 #include "proto/desktop_clipboard.h"
 
-namespace common {
-
 struct LocalFileEntry
 {
     QString path;
@@ -67,7 +65,5 @@ protected:
 private:
     QByteArray last_data_;
 };
-
-} // namespace common
 
 #endif // COMMON_CLIPBOARD_H

@@ -26,8 +26,6 @@
 
 class QTimer;
 
-namespace common {
-
 class FileDepacketizer;
 class FilePacketizer;
 
@@ -39,7 +37,7 @@ public:
     explicit FileWorker(QObject* parent = nullptr);
     ~FileWorker();
 
-    void doRequest(const common::FileTask& task);
+    void doRequest(const FileTask& task);
     void doRequest(const proto::file_transfer::Request& request, proto::file_transfer::Reply* reply);
 
 private:
@@ -60,7 +58,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FileWorker)
 };
-
-} // namespace common
 
 #endif // COMMON_FILE_WORKER_IMPL_H

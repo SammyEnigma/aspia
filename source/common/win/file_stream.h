@@ -26,8 +26,6 @@
 
 #include "base/win/scoped_object.h"
 
-namespace common {
-
 class FileStream final : public IStream
 {
 public:
@@ -66,7 +64,5 @@ private:
     bool is_terminated_ = false;
     std::mutex lock_;
 };
-
-} // namespace common
 
 #endif // COMMON_WIN_FILE_STREAM_H

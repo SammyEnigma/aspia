@@ -115,7 +115,7 @@ SysInfoWidgetSummary::~SysInfoWidgetSummary() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetSummary::category() const
 {
-    return common::kSystemInfo_Summary;
+    return kSystemInfo_Summary;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -18,8 +18,6 @@
 
 #include "common/system_info_constants.h"
 
-namespace common {
-
 const char kSystemInfo_Summary[] = "D9FE7CED-175C-4069-AB80-9B4F897EB376";
 const char kSystemInfo_Devices[] = "1451B77D-276E-47BB-989B-D8B61A468F8B";
 const char kSystemInfo_VideoAdapters[] = "D2867BED-1408-467C-8ABE-6BD8B32DE17B";
@@ -40,5 +38,3 @@ const char kSystemInfo_OpenFiles[] = "F851332D-D70E-4D68-A30D-7A3F00E69324";
 const char kSystemInfo_LocalUsers[] = "00489EAB-09BF-4BB2-837C-0F975183698F";
 const char kSystemInfo_LocalUserGroups[] = "FDB3703C-A943-4A0B-873F-B980B0ACA0E5";
 const char kSystemInfo_Processes[] = "91165E05-A152-4B07-B988-EF8E48DA66C3";
-
-} // namespace common

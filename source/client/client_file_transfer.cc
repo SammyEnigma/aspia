@@ -24,10 +24,10 @@
 //--------------------------------------------------------------------------------------------------
 ClientFileTransfer::ClientFileTransfer(QObject* parent)
     : Client(parent),
-      local_worker_(new common::FileWorker(this))
+      local_worker_(new FileWorker(this))
 {
     CLOG(INFO) << "Ctor";
-    qRegisterMetaType<common::FileTask>();
+    qRegisterMetaType<FileTask>();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -41,14 +41,14 @@ void ClientFileTransfer::onStarted()
 {
     CLOG(INFO) << "File transfer session started";
 
-    local_task_factory_ = new common::FileTaskFactory(common::FileTask::Target::LOCAL, this);
+    local_task_factory_ = new FileTaskFactory(FileTask::Target::LOCAL, this);
 
-    connect(local_task_factory_, &common::FileTaskFactory::sig_taskDone,
+    connect(local_task_factory_, &FileTaskFactory::sig_taskDone,
             this, &ClientFileTransfer::onTaskDone);
 
-    remote_task_factory_ = new common::FileTaskFactory(common::FileTask::Target::REMOTE, this);
+    remote_task_factory_ = new FileTaskFactory(FileTask::Target::REMOTE, this);
 
-    connect(remote_task_factory_, &common::FileTaskFactory::sig_taskDone,
+    connect(remote_task_factory_, &FileTaskFactory::sig_taskDone,
             this, &ClientFileTransfer::onTaskDone);
 }
 
@@ -89,7 +89,7 @@ void ClientFileTransfer::onMessageReceived(quint8 channel_id, const QByteArray& 
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientFileTransfer::onTaskDone(const common::FileTask& task)
+void ClientFileTransfer::onTaskDone(const FileTask& task)
 {
     const proto::file_transfer::Request& request = task.request();
     const proto::file_transfer::Reply& reply = task.reply();
@@ -117,9 +117,9 @@ void ClientFileTransfer::onTaskDone(const common::FileTask& task)
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientFileTransfer::onTask(const common::FileTask& task)
+void ClientFileTransfer::onTask(const FileTask& task)
 {
-    if (task.target() == common::FileTask::Target::LOCAL)
+    if (task.target() == FileTask::Target::LOCAL)
     {
         local_worker_->doRequest(task);
     }
@@ -137,25 +137,25 @@ void ClientFileTransfer::onTask(const common::FileTask& task)
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientFileTransfer::onDriveListRequest(common::FileTask::Target target)
+void ClientFileTransfer::onDriveListRequest(FileTask::Target target)
 {
     onTask(taskFactory(target)->driveList());
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientFileTransfer::onFileListRequest(common::FileTask::Target target, const QString& path)
+void ClientFileTransfer::onFileListRequest(FileTask::Target target, const QString& path)
 {
     onTask(taskFactory(target)->fileList(path));
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientFileTransfer::onCreateDirectoryRequest(common::FileTask::Target target, const QString& path)
+void ClientFileTransfer::onCreateDirectoryRequest(FileTask::Target target, const QString& path)
 {
     onTask(taskFactory(target)->createDirectory(path));
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientFileTransfer::onRenameRequest(common::FileTask::Target target,
+void ClientFileTransfer::onRenameRequest(FileTask::Target target,
                                          const QString& old_path,
                                          const QString& new_path)
 {
@@ -197,17 +197,17 @@ void ClientFileTransfer::doNextRemoteTask()
 }
 
 //--------------------------------------------------------------------------------------------------
-common::FileTaskFactory* ClientFileTransfer::taskFactory(common::FileTask::Target target)
+FileTaskFactory* ClientFileTransfer::taskFactory(FileTask::Target target)
 {
-    common::FileTaskFactory* task_factory;
+    FileTaskFactory* task_factory;
 
-    if (target == common::FileTask::Target::LOCAL)
+    if (target == FileTask::Target::LOCAL)
     {
         task_factory = local_task_factory_;
     }
     else
     {
-        DCHECK_EQ(target, common::FileTask::Target::REMOTE);
+        DCHECK_EQ(target, FileTask::Target::REMOTE);
         task_factory = remote_task_factory_;
     }
 

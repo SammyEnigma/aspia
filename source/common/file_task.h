@@ -25,8 +25,6 @@
 #include "base/shared_pointer.h"
 #include "proto/file_transfer.h"
 
-namespace common {
-
 class FileTaskFactory;
 
 class FileTask
@@ -77,9 +75,7 @@ private:
     base::SharedPointer<Data> data_;
 };
 
-} // namespace common
-
-Q_DECLARE_METATYPE(common::FileTask)
-Q_DECLARE_METATYPE(common::FileTask::Target)
+Q_DECLARE_METATYPE(FileTask)
+Q_DECLARE_METATYPE(FileTask::Target)
 
 #endif // COMMON_FILE_TASK_H

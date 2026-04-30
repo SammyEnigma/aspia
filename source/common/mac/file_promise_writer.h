@@ -25,8 +25,6 @@
 #include <condition_variable>
 #include <mutex>
 
-namespace common {
-
 // macOS analogue of FileStream (Windows IStream).
 //
 // When Finder pastes files from NSFilePromiseProvider, it calls the delegate's
@@ -60,7 +58,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FilePromiseWriter)
 };
-
-} // namespace common
 
 #endif // COMMON_MAC_FILE_PROMISE_WRITER_H

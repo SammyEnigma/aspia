@@ -28,8 +28,6 @@ class FileDescriptorWatcher;
 class XServerClipboard;
 } // namespace base
 
-namespace common {
-
 class ClipboardX11 final : public Clipboard
 {
     Q_OBJECT
@@ -59,7 +57,5 @@ private:
 
     Q_DISABLE_COPY(ClipboardX11)
 };
-
-} // namespace common
 
 #endif // COMMON_CLIPBOARD_X11_H

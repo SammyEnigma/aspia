@@ -30,8 +30,6 @@
 #error Not implemented
 #endif
 
-namespace common {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -93,11 +91,11 @@ void ClipboardMonitor::onBeforeThreadRunning()
     LOG(INFO) << "Thread starting";
 
 #if defined(Q_OS_WINDOWS)
-    clipboard_ = std::make_unique<common::ClipboardWin>();
+    clipboard_ = std::make_unique<ClipboardWin>();
 #elif defined(Q_OS_LINUX)
-    clipboard_ = std::make_unique<common::ClipboardX11>();
+    clipboard_ = std::make_unique<ClipboardX11>();
 #elif defined(Q_OS_MAC)
-    clipboard_ = std::make_unique<common::ClipboardMac>();
+    clipboard_ = std::make_unique<ClipboardMac>();
 #else
 #error Not implemented
 #endif
@@ -135,5 +133,3 @@ void ClipboardMonitor::onAfterThreadRunning()
     LOG(INFO) << "Thread stopping";
     clipboard_.reset();
 }
-
-} // namespace common

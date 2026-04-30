@@ -61,7 +61,7 @@ SysInfoWidgetRoutes::~SysInfoWidgetRoutes() = default;
 //--------------------------------------------------------------------------------------------------
 std::string SysInfoWidgetRoutes::category() const
 {
-    return common::kSystemInfo_Routes;
+    return kSystemInfo_Routes;
 }
 
 //--------------------------------------------------------------------------------------------------
