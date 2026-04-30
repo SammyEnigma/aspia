@@ -338,10 +338,10 @@ int main(int argc, char* argv[])
     Q_INIT_RESOURCE(common);
     Q_INIT_RESOURCE(common_translations);
 
-    base::LoggingSettings logging_settings;
-    logging_settings.min_log_level = base::LOG_INFO;
+    LoggingSettings logging_settings;
+    logging_settings.min_log_level = LOG_INFO;
 
-    base::ScopedLogging scoped_logging(logging_settings);
+    ScopedLogging scoped_logging(logging_settings);
 
     Application::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);

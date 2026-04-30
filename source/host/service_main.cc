@@ -106,10 +106,10 @@ int removeService(QTextStream& out)
 //--------------------------------------------------------------------------------------------------
 int hostServiceMain(int& argc, char* argv[])
 {
-    base::LoggingSettings logging_settings;
-    logging_settings.min_log_level = base::LOG_INFO;
+    LoggingSettings logging_settings;
+    logging_settings.min_log_level = LOG_INFO;
 
-    base::ScopedLogging scoped_logging(logging_settings);
+    ScopedLogging scoped_logging(logging_settings);
 
     CoreApplication::setEventDispatcher(new AsioEventDispatcher());
     CoreApplication::setApplicationVersion(ASPIA_VERSION_STRING);

@@ -43,8 +43,6 @@
 #include <sys/syslimits.h>
 #endif // defined(Q_OS_MACOS)
 
-namespace base {
-
 namespace {
 
 const LoggingSeverity kDefaultLogLevel = LOG_FATAL;
@@ -141,21 +139,21 @@ bool initLoggingUnlocked(const QString& prefix)
 }
 
 //--------------------------------------------------------------------------------------------------
-base::LoggingSeverity qtMessageTypeToSeverity(QtMsgType type)
+LoggingSeverity qtMessageTypeToSeverity(QtMsgType type)
 {
     switch (type)
     {
         case QtCriticalMsg:
         case QtFatalMsg:
-            return base::LOG_ERROR;
+            return LOG_ERROR;
 
         case QtWarningMsg:
-            return base::LOG_WARNING;
+            return LOG_WARNING;
 
         case QtDebugMsg:
         case QtInfoMsg:
         default:
-            return base::LOG_INFO;
+            return LOG_INFO;
     }
 }
 
@@ -170,7 +168,7 @@ void qtMessageHandler(QtMsgType type, const QMessageLogContext& context, const Q
     if (!function)
         function = "<function>";
 
-    base::LogMessage log_message(filename, context.line, function, qtMessageTypeToSeverity(type));
+    LogMessage log_message(filename, context.line, function, qtMessageTypeToSeverity(type));
     log_message.stream() << msg;
 }
 
@@ -517,8 +515,6 @@ ErrorLogMessage::~ErrorLogMessage()
 {
     stream() << ":" << error_.toString();
 }
-
-} // namespace base
 
 #if defined(Q_OS_WINDOWS)
 //--------------------------------------------------------------------------------------------------

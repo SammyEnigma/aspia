@@ -158,9 +158,9 @@ AboutDialog::AboutDialog(const QString& application_name, QWidget* parent)
     service_html += "<p><b>" + tr("Application") + "</b><br>"
         + QString("&bull; %1<br>").arg(tr("Path: %1").arg(QApplication::applicationFilePath()))
         + QString("&bull; %1<br>").arg(tr("Logging directory: %1")
-            .arg(QString("<a href='file:///%1'>%1</a>").arg(base::loggingDirectory())))
+            .arg(QString("<a href='file:///%1'>%1</a>").arg(loggingDirectory())))
         + QString("&bull; %1").arg(tr("Logging file: %1")
-            .arg(QString("<a href='file:///%1'>%1</a>").arg(base::loggingFile())))
+            .arg(QString("<a href='file:///%1'>%1</a>").arg(loggingFile())))
         + "</p>";
 
 #if defined(GIT_CURRENT_BRANCH) && defined(GIT_COMMIT_HASH)

@@ -86,8 +86,6 @@
 
 class _com_error;
 
-namespace base {
-
 #if defined(NDEBUG) && !defined(DCHECK_ALWAYS_ON)
 #define DCHECK_IS_ON() false
 #else
@@ -163,17 +161,17 @@ bool shouldCreateLogMessage(LoggingSeverity severity);
 // A few definitions of macros that don't generate much code. These are used by LOG() and LOG_IF,
 // etc. Since these are used all over our code, it's better to have compact code for these operations.
 #define COMPACT_LOG_EX_INFO(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_INFO, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_INFO, ##__VA_ARGS__)
 #define COMPACT_LOG_EX_WARNING(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_WARNING, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_WARNING, ##__VA_ARGS__)
 #define COMPACT_LOG_EX_ERROR(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_ERROR, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_ERROR, ##__VA_ARGS__)
 #define COMPACT_LOG_EX_FATAL(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_FATAL, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_FATAL, ##__VA_ARGS__)
 #define COMPACT_LOG_EX_DFATAL(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_DFATAL, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_DFATAL, ##__VA_ARGS__)
 #define COMPACT_LOG_EX_DCHECK(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_DCHECK, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_DCHECK, ##__VA_ARGS__)
 
 #define COMPACT_LOG_INFO    COMPACT_LOG_EX_INFO(LogMessage)
 #define COMPACT_LOG_WARNING COMPACT_LOG_EX_WARNING(LogMessage)
@@ -189,7 +187,7 @@ bool shouldCreateLogMessage(LoggingSeverity severity);
 // consistency.
 #define ERROR 0
 #define COMPACT_LOG_EX_0(ClassName, ...) \
-    ::base::ClassName(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_ERROR, ##__VA_ARGS__)
+    ::ClassName(__FILE__, __LINE__, __FUNCTION__, ::LOG_ERROR, ##__VA_ARGS__)
 #define COMPACT_LOG_0 COMPACT_LOG_EX_0(LogMessage)
 // Needed for LOG_IS_ON(ERROR).
 [[maybe_unused]] const LoggingSeverity LOG_0 = LOG_ERROR;
@@ -198,12 +196,12 @@ bool shouldCreateLogMessage(LoggingSeverity severity);
 // As special cases, we can assume that LOG_IS_ON(FATAL) always holds. Also, LOG_IS_ON(DFATAL)
 // always holds in debug mode. In particular, CHECK()s will always fire if they fail.
 #define LOG_IS_ON(severity) \
-    (::base::shouldCreateLogMessage(::base::LOG_##severity))
+    (::shouldCreateLogMessage(::LOG_##severity))
 
 // Helper macro which avoids evaluating the arguments to a stream if the condition doesn't hold.
 // Condition is evaluated once and only once.
 #define LAZY_STREAM(stream, condition) \
-  !(condition) ? (void) 0 : ::base::LogMessageVoidify() & (stream)
+  !(condition) ? (void) 0 : ::LogMessageVoidify() & (stream)
 
 // We use the preprocessor's merging operator, "##", so that, e.g., LOG(INFO) becomes the token
 // COMPACT_LOG_INFO. There's some funny subtle difference between ostream member streaming
@@ -242,7 +240,7 @@ extern QDebug* g_swallow_stream;
 // in some .cc files, because they become defined-but-unreferenced functions. A reinterpret_cast of
 // 0 to an ostream* also is not suitable, because some compilers warn of undefined behavior.
 #define EAT_STREAM_PARAMETERS \
-  true ? (void)0 : ::base::LogMessageVoidify() & (*::base::g_swallow_stream)
+  true ? (void)0 : ::LogMessageVoidify() & (*::g_swallow_stream)
 
 // Captures the result of a CHECK_EQ (for example) and facilitates testing as a boolean.
 class CheckOpResult
@@ -272,7 +270,7 @@ private:
 
 // Do as much work as possible out of line to reduce inline code size.
 #define CHECK(condition)                                                                         \
-    LAZY_STREAM(::base::LogMessage(__FILE__, __LINE__, __FUNCTION__, #condition).stream(), !(condition))
+    LAZY_STREAM(::LogMessage(__FILE__, __LINE__, __FUNCTION__, #condition).stream(), !(condition))
 
 #define PCHECK(condition)                                                                        \
     LAZY_STREAM(PLOG_STREAM(FATAL), !(condition)) << "Check failed: " #condition ". "
@@ -285,10 +283,10 @@ private:
 //   CHECK_EQ(2, a);
 #define CHECK_OP(name, op, val1, val2)                                                           \
   switch (0) case 0: default:                                                                    \
-  if (::base::CheckOpResult true_if_passed =                                                     \
-      ::base::check##name##Impl((val1), (val2), #val1 " " #op " " #val2));                       \
+  if (::CheckOpResult true_if_passed =                                                     \
+      ::check##name##Impl((val1), (val2), #val1 " " #op " " #val2));                       \
   else                                                                                           \
-      ::base::LogMessage(__FILE__, __LINE__, __FUNCTION__, true_if_passed.message()).stream()
+      ::LogMessage(__FILE__, __LINE__, __FUNCTION__, true_if_passed.message()).stream()
 
 template <typename T, typename = void>
 struct SupportsOstreamOperator : std::false_type {};
@@ -373,14 +371,14 @@ QString* makeCheckOpString(const QString& v1, const QString& v2, const char* nam
         if ((v1 op v2))                                                                          \
             return nullptr;                                                                      \
         else                                                                                     \
-            return ::base::makeCheckOpString(v1, v2, names);                                     \
+            return ::makeCheckOpString(v1, v2, names);                                           \
     }                                                                                            \
     constexpr QString* check##name##Impl(int v1, int v2, const char* names)                      \
     {                                                                                            \
         if ((v1 op v2))                                                                          \
             return nullptr;                                                                      \
         else                                                                                     \
-            return ::base::makeCheckOpString(v1, v2, names);                                     \
+            return ::makeCheckOpString(v1, v2, names);                                           \
     }
 
 DEFINE_CHECK_OP_IMPL(EQ, ==)
@@ -457,11 +455,11 @@ DEFINE_CHECK_OP_IMPL(GT, > )
 
 #define DCHECK_OP(name, op, val1, val2)                                                          \
     switch (0) case 0: default:                                                                  \
-    if (::base::CheckOpResult true_if_passed =                                                   \
+    if (::CheckOpResult true_if_passed =                                                         \
         DCHECK_IS_ON() ?                                                                         \
-        ::base::check##name##Impl((val1), (val2),  #val1 " " #op " " #val2) : nullptr);          \
+        ::check##name##Impl((val1), (val2),  #val1 " " #op " " #val2) : nullptr);                \
     else                                                                                         \
-        ::base::LogMessage(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_DCHECK,                 \
+        ::LogMessage(__FILE__, __LINE__, __FUNCTION__, ::LOG_DCHECK,                             \
                            true_if_passed.message()).stream()
 
 #else // DCHECK_IS_ON()
@@ -474,8 +472,8 @@ DEFINE_CHECK_OP_IMPL(GT, > )
 // |val1| and |val2| appear twice in this version of the macro expansion, this is OK, since the
 // expression is never actually evaluated.
 #define DCHECK_OP(name, op, val1, val2)                                                          \
-  EAT_STREAM_PARAMETERS << (::base::makeCheckOpValueString(::base::g_swallow_stream, val1),      \
-                            ::base::makeCheckOpValueString(::base::g_swallow_stream, val2),      \
+  EAT_STREAM_PARAMETERS << (::makeCheckOpValueString(::g_swallow_stream, val1),      \
+                            ::makeCheckOpValueString(::g_swallow_stream, val2),      \
                             (val1)op(val2))
 
 #endif // DCHECK_IS_ON()
@@ -615,13 +613,13 @@ private:
 };
 
 #define LOG_DECLARE_CONTEXT(ClassName) \
-    base::LogContext log_ctx_ { base::LogContext::forClass<ClassName>(#ClassName) }
+    LogContext log_ctx_ { LogContext::forClass<ClassName>(#ClassName) }
 
 #define CLOG(severity) \
     LAZY_STREAM(LOG_STREAM(severity) << log_ctx_.prefix(), LOG_IS_ON(severity))
 
 #define CCHECK(condition) \
-    LAZY_STREAM(::base::LogMessage(__FILE__, __LINE__, __FUNCTION__, #condition).stream() \
+    LAZY_STREAM(::LogMessage(__FILE__, __LINE__, __FUNCTION__, #condition).stream() \
                 << log_ctx_.prefix(), !(condition))
 
 #if DCHECK_IS_ON()
@@ -631,10 +629,10 @@ private:
 
 #define CDCHECK_OP(name, op, val1, val2)                                                         \
     switch (0) case 0: default:                                                                  \
-    if (::base::CheckOpResult true_if_passed =                                                   \
-        ::base::check##name##Impl((val1), (val2), #val1 " " #op " " #val2));                     \
+    if (::CheckOpResult true_if_passed =                                                         \
+        ::check##name##Impl((val1), (val2), #val1 " " #op " " #val2));                           \
     else                                                                                         \
-        ::base::LogMessage(__FILE__, __LINE__, __FUNCTION__, ::base::LOG_DCHECK,                 \
+        ::LogMessage(__FILE__, __LINE__, __FUNCTION__, ::LOG_DCHECK,                             \
                            true_if_passed.message()).stream() << log_ctx_.prefix()
 
 #define CDCHECK_EQ(val1, val2) CDCHECK_OP(EQ, ==, val1, val2)
@@ -646,8 +644,8 @@ private:
 #else
 #define CDCHECK(condition) EAT_STREAM_PARAMETERS << !(condition)
 #define CDCHECK_OP(name, op, val1, val2)                                                         \
-    EAT_STREAM_PARAMETERS << (::base::makeCheckOpValueString(::base::g_swallow_stream, val1),    \
-                              ::base::makeCheckOpValueString(::base::g_swallow_stream, val2),    \
+    EAT_STREAM_PARAMETERS << (::makeCheckOpValueString(::g_swallow_stream, val1),                \
+                              ::makeCheckOpValueString(::g_swallow_stream, val2),                \
                               (val1)op(val2))
 #define CDCHECK_EQ(val1, val2) CDCHECK_OP(EQ, ==, val1, val2)
 #define CDCHECK_NE(val1, val2) CDCHECK_OP(NE, !=, val1, val2)
@@ -674,8 +672,6 @@ public:
 private:
     bool initialized_ = false;
 };
-
-} // namespace base
 
 #if defined(Q_OS_WINDOWS)
 QDebug operator<<(QDebug out, const wchar_t* wstr);

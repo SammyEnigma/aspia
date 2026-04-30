@@ -75,10 +75,10 @@ int main(int argc, char **argv)
     int ret;
 
     {
-        base::LoggingSettings logging_settings;
-        logging_settings.min_log_level = base::LOG_INFO;
+        LoggingSettings logging_settings;
+        logging_settings.min_log_level = LOG_INFO;
 
-        base::ScopedLogging scoped_logging(logging_settings);
+        ScopedLogging scoped_logging(logging_settings);
 
         QCoreApplication::setEventDispatcher(new AsioEventDispatcher());
         QCoreApplication app(argc, argv);
