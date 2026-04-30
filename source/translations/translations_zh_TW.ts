@@ -7299,7 +7299,7 @@ Routers added: %4</source>
 <context>
     <name>client::Sidebar</name>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="60"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="62"/>
         <source>Local</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7308,32 +7308,32 @@ Routers added: %4</source>
         <translation type="obsolete">警告</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="308"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="317"/>
         <source>Are you sure you want to delete group &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="320"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="329"/>
         <source>Unable to remove group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="492"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="501"/>
         <source>A group with this name already exists in the selected parent group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="502"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="511"/>
         <source>Failed to move the group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="558"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="567"/>
         <source>A computer with this name already exists in the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="578"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="587"/>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8772,9 +8772,8 @@ Routers added: %4</source>
         <translation>您還可以在此處取得 GNU GPL 許可證的翻譯：</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="121"/>
         <source>Links:</source>
-        <translation>連結：</translation>
+        <translation type="vanished">連結：</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="122"/>
@@ -8787,24 +8786,16 @@ Routers added: %4</source>
         <translation>GitHub 頁面：</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="126"/>
         <source>Developers:</source>
-        <translation>開發人員：</translation>
+        <translation type="vanished">開發人員：</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="128"/>
         <source>Translators:</source>
-        <translation>翻譯成員：</translation>
+        <translation type="vanished">翻譯成員：</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="130"/>
         <source>Third-party components:</source>
-        <translation>第三方組件：</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="132"/>
-        <source>Graphics and images:</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">第三方組件：</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="133"/>
@@ -8812,24 +8803,9 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="160"/>
-        <source>Application:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.cc" line="161"/>
         <source>Path: %1</source>
         <translation>路徑：%1</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="169"/>
-        <source>Build Information:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="177"/>
-        <source>Compilation:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="178"/>
@@ -8847,9 +8823,54 @@ Routers added: %4</source>
         <translation>Git 分支：%1</translation>
     </message>
     <message>
+        <location filename="../common/ui/about_dialog.cc" line="121"/>
+        <source>Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="126"/>
+        <source>Developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="128"/>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="130"/>
+        <source>Third-party components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="132"/>
+        <source>Graphics and images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="160"/>
+        <source>Application</source>
+        <translation type="unfinished">應用程式</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="169"/>
+        <source>Build Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../common/ui/about_dialog.cc" line="172"/>
         <source>Git commit: %1</source>
         <translation>Git 認可:%1</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="177"/>
+        <source>Compilation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="208"/>
+        <source>Version Information</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="162"/>
@@ -8868,11 +8889,6 @@ Routers added: %4</source>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="106"/>
         <source>Version: %1 (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="208"/>
-        <source>Version Information:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

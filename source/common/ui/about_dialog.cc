@@ -118,18 +118,18 @@ AboutDialog::AboutDialog(const QString& application_name, QWidget* parent)
 
     QString links =
         QString("<b>%1</b><br>%2 <a href='%3'>%3</a><br>%4 <a href='%5'>%5</a>")
-        .arg(tr("Links:"),
+        .arg(tr("Links"),
              tr("Home page:"), kHomeLink,
              tr("GitHub page:"), kGitHubLink);
 
     QString developers =
-        createList(tr("Developers:"), kDevelopers, std::size(kDevelopers));
+        createList(tr("Developers"), kDevelopers, std::size(kDevelopers));
     QString translators =
-        createList(tr("Translators:"), kTranslators, std::size(kTranslators));
+        createList(tr("Translators"), kTranslators, std::size(kTranslators));
     QString third_party =
-        createList(tr("Third-party components:"), kThirdParty, std::size(kThirdParty));
+        createList(tr("Third-party components"), kThirdParty, std::size(kThirdParty));
     QString icons =
-        "<b>" + tr("Graphics and images:") + "</b><br>&bull; " +
+        "<b>" + tr("Graphics and images") + "</b><br>&bull; " +
         tr("Icons by %1").arg("<a href='https://icons8.com'>Icons8</a>");
 
     QString html;
@@ -157,7 +157,7 @@ AboutDialog::AboutDialog(const QString& application_name, QWidget* parent)
 
     service_html += "<html><body>";
 
-    service_html += "<p><b>" + tr("Application:") + "</b><br>"
+    service_html += "<p><b>" + tr("Application") + "</b><br>"
         + QString("&bull; %1<br>").arg(tr("Path: %1").arg(QApplication::applicationFilePath()))
         + QString("&bull; %1<br>").arg(tr("Logging directory: %1")
             .arg(QString("<a href='file:///%1'>%1</a>").arg(base::loggingDirectory())))
@@ -166,7 +166,7 @@ AboutDialog::AboutDialog(const QString& application_name, QWidget* parent)
         + "</p>";
 
 #if defined(GIT_CURRENT_BRANCH) && defined(GIT_COMMIT_HASH)
-    service_html += "<p><b>" + tr("Build Information:") + "</b><br>"
+    service_html += "<p><b>" + tr("Build Information") + "</b><br>"
         + QString("&bull; %1<br>").arg(tr("Git branch: %1")
             .arg(QString("<a href='%1/tree/%2'>%2</a>").arg(kGitHubLink, GIT_CURRENT_BRANCH)))
         + QString("&bull; %1").arg(tr("Git commit: %1")
@@ -174,7 +174,7 @@ AboutDialog::AboutDialog(const QString& application_name, QWidget* parent)
         + "</p>";
 #endif
 
-    service_html += "<p><b>" + tr("Compilation:") + "</b><br>"
+    service_html += "<p><b>" + tr("Compilation") + "</b><br>"
         + QString("&bull; %1<br>").arg(tr("Compilation date: %1").arg(__DATE__))
         + QString("&bull; %1").arg(tr("Compilation time: %1").arg(__TIME__))
         + "</p>";
@@ -205,7 +205,7 @@ AboutDialog::AboutDialog(const QString& application_name, QWidget* parent)
     add_version("sqlite", SQLITE_VERSION);
     add_version("zstd", ZSTD_versionString());
 
-    service_html += "<p><b>" + tr("Version Information:") + "</b><br>"
+    service_html += "<p><b>" + tr("Version Information") + "</b><br>"
         + versions.join("<br>") + "</p>";
     service_html += "</body></html>";
 

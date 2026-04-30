@@ -4888,37 +4888,37 @@ Routers added: %4</source>
 <context>
     <name>client::Sidebar</name>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="60"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="62"/>
         <source>Local</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="308"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="317"/>
         <source>Are you sure you want to delete group &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="320"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="329"/>
         <source>Unable to remove group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="492"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="501"/>
         <source>A group with this name already exists in the selected parent group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="502"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="511"/>
         <source>Failed to move the group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="558"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="567"/>
         <source>A computer with this name already exists in the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="578"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="587"/>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6244,11 +6244,6 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="121"/>
-        <source>Links:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.cc" line="122"/>
         <source>Home page:</source>
         <translation type="unfinished"></translation>
@@ -6259,48 +6254,13 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="126"/>
-        <source>Developers:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="128"/>
-        <source>Translators:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="130"/>
-        <source>Third-party components:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="132"/>
-        <source>Graphics and images:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.cc" line="133"/>
         <source>Icons by %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="160"/>
-        <source>Application:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.cc" line="161"/>
         <source>Path: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="169"/>
-        <source>Build Information:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="177"/>
-        <source>Compilation:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6311,11 +6271,6 @@ Routers added: %4</source>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="179"/>
         <source>Compilation time: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="208"/>
-        <source>Version Information:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6334,8 +6289,53 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../common/ui/about_dialog.cc" line="121"/>
+        <source>Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="126"/>
+        <source>Developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="128"/>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="130"/>
+        <source>Third-party components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="132"/>
+        <source>Graphics and images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="160"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../common/ui/about_dialog.cc" line="164"/>
         <source>Logging file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="169"/>
+        <source>Build Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="177"/>
+        <source>Compilation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="208"/>
+        <source>Version Information</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

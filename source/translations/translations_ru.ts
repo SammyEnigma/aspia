@@ -8121,7 +8121,7 @@ Routers added: %4</source>
 <context>
     <name>client::Sidebar</name>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="60"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="62"/>
         <source>Local</source>
         <translation>Локальные</translation>
     </message>
@@ -8134,32 +8134,32 @@ Routers added: %4</source>
         <translation type="vanished">Предупреждение</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="308"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="317"/>
         <source>Are you sure you want to delete group &quot;%1&quot;?</source>
-        <translation type="unfinished">Вы уверены, что хотите удалить группу &quot;%1&quot;?</translation>
+        <translation>Вы уверены, что хотите удалить группу &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="320"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="329"/>
         <source>Unable to remove group</source>
-        <translation type="unfinished">Не удалось удалить группу</translation>
+        <translation>Не удалось удалить группу</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="492"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="501"/>
         <source>A group with this name already exists in the selected parent group.</source>
         <translation>Группа с таким именем уже существует в выбранной родительской группе.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="502"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="511"/>
         <source>Failed to move the group.</source>
         <translation>Не удалось переместить группу.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="558"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="567"/>
         <source>A computer with this name already exists in the selected group.</source>
         <translation>Компьютер с таким именем уже существует в выбранной группе.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="578"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="587"/>
         <source>Failed to move the computer to the selected group.</source>
         <translation>Не удалось переместить компьютер в выбранную группу.</translation>
     </message>
@@ -10550,9 +10550,8 @@ Routers added: %4</source>
         <translation>Ознакомиться с переводом лицензии на ваш язык можно по адресу:</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="121"/>
         <source>Links:</source>
-        <translation>Ссылки:</translation>
+        <translation type="vanished">Ссылки:</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="122"/>
@@ -10565,24 +10564,20 @@ Routers added: %4</source>
         <translation>GitHub страница:</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="126"/>
         <source>Developers:</source>
-        <translation>Разработчики:</translation>
+        <translation type="vanished">Разработчики:</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="128"/>
         <source>Translators:</source>
-        <translation>Переводчики:</translation>
+        <translation type="vanished">Переводчики:</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="130"/>
         <source>Third-party components:</source>
-        <translation>Сторонние компоненты:</translation>
+        <translation type="vanished">Сторонние компоненты:</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="132"/>
         <source>Graphics and images:</source>
-        <translation>Графика и изображения:</translation>
+        <translation type="vanished">Графика и изображения:</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="133"/>
@@ -10590,9 +10585,8 @@ Routers added: %4</source>
         <translation>Иконки от %1</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="160"/>
         <source>Application:</source>
-        <translation>Приложение:</translation>
+        <translation type="vanished">Приложение:</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="161"/>
@@ -10600,14 +10594,12 @@ Routers added: %4</source>
         <translation>Путь: %1</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="169"/>
         <source>Build Information:</source>
-        <translation>Информация о сборке:</translation>
+        <translation type="vanished">Информация о сборке:</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="177"/>
         <source>Compilation:</source>
-        <translation>Компиляция:</translation>
+        <translation type="vanished">Компиляция:</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="178"/>
@@ -10620,9 +10612,8 @@ Routers added: %4</source>
         <translation>Время компиляции: %1</translation>
     </message>
     <message>
-        <location filename="../common/ui/about_dialog.cc" line="208"/>
         <source>Version Information:</source>
-        <translation>Информация о версиях:</translation>
+        <translation type="vanished">Информация о версиях:</translation>
     </message>
     <message>
         <location filename="../common/ui/about_dialog.cc" line="170"/>
@@ -10640,9 +10631,54 @@ Routers added: %4</source>
         <translation>Директория логов: %1</translation>
     </message>
     <message>
+        <location filename="../common/ui/about_dialog.cc" line="121"/>
+        <source>Links</source>
+        <translation>Ссылки</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="126"/>
+        <source>Developers</source>
+        <translation>Разработчики</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="128"/>
+        <source>Translators</source>
+        <translation>Переводчики</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="130"/>
+        <source>Third-party components</source>
+        <translation>Сторонние компоненты</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="132"/>
+        <source>Graphics and images</source>
+        <translation>Графика и изображения</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="160"/>
+        <source>Application</source>
+        <translation>Приложения</translation>
+    </message>
+    <message>
         <location filename="../common/ui/about_dialog.cc" line="164"/>
         <source>Logging file: %1</source>
         <translation>Файл лога: %1</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="169"/>
+        <source>Build Information</source>
+        <translation>Информация о сборке</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="177"/>
+        <source>Compilation</source>
+        <translation>Компиляция</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="208"/>
+        <source>Version Information</source>
+        <translation>Информация о версиях</translation>
     </message>
     <message>
         <source>Display &apos;%1&apos;</source>
