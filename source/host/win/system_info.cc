@@ -83,7 +83,7 @@ void fillPrinters(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillNetworkAdapters(proto::system_info::SystemInfo* system_info)
 {
-    for (base::AdapterEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (AdapterEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::NetworkAdapters::Adapter* adapter =
             system_info->mutable_network_adapters()->add_adapter();
@@ -102,13 +102,13 @@ void fillNetworkAdapters(proto::system_info::SystemInfo* system_info)
                 adapter->add_dhcp()->append(dhcp4_server.toStdString());
         }
 
-        for (base::AdapterEnumerator::GatewayEnumerator gateway(enumerator);
+        for (AdapterEnumerator::GatewayEnumerator gateway(enumerator);
              !gateway.isAtEnd(); gateway.advance())
         {
             adapter->add_gateway()->assign(gateway.address().toStdString());
         }
 
-        for (base::AdapterEnumerator::IpAddressEnumerator ip(enumerator);
+        for (AdapterEnumerator::IpAddressEnumerator ip(enumerator);
              !ip.isAtEnd(); ip.advance())
         {
             proto::system_info::NetworkAdapters::Adapter::Address* address = adapter->add_address();
@@ -117,7 +117,7 @@ void fillNetworkAdapters(proto::system_info::SystemInfo* system_info)
             address->set_mask(ip.mask().toStdString());
         }
 
-        for (base::AdapterEnumerator::DnsEnumerator dns(enumerator);
+        for (AdapterEnumerator::DnsEnumerator dns(enumerator);
              !dns.isAtEnd(); dns.advance())
         {
             adapter->add_dns()->assign(dns.address().toStdString());
@@ -492,7 +492,7 @@ void fillMonitors(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillConnection(proto::system_info::SystemInfo* system_info)
 {
-    for (base::ConnectEnumerator enumerator(base::ConnectEnumerator::Mode::TCP);
+    for (ConnectEnumerator enumerator(ConnectEnumerator::Mode::TCP);
          !enumerator.isAtEnd();
          enumerator.advance())
     {
@@ -508,7 +508,7 @@ void fillConnection(proto::system_info::SystemInfo* system_info)
         connection->set_state(enumerator.state().toStdString());
     }
 
-    for (base::ConnectEnumerator enumerator(base::ConnectEnumerator::Mode::UDP);
+    for (ConnectEnumerator enumerator(ConnectEnumerator::Mode::UDP);
          !enumerator.isAtEnd();
          enumerator.advance())
     {
@@ -525,7 +525,7 @@ void fillConnection(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillRoutes(proto::system_info::SystemInfo* system_info)
 {
-    for (base::RouteEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (RouteEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::Routes::Route* route = system_info->mutable_routes()->add_route();
 
@@ -895,7 +895,7 @@ void fillApplicationsInfo(proto::system_info::SystemInfo* system_info)
 //--------------------------------------------------------------------------------------------------
 void fillOpenFilesInfo(proto::system_info::SystemInfo* system_info)
 {
-    for (base::OpenFilesEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
+    for (OpenFilesEnumerator enumerator; !enumerator.isAtEnd(); enumerator.advance())
     {
         proto::system_info::OpenFiles::OpenFile* open_file =
             system_info->mutable_open_files()->add_open_file();

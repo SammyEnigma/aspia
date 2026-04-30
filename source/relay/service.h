@@ -51,7 +51,7 @@ protected:
 private slots:
     void onPoolKeyExpired(quint32 key_id);
     void onTcpConnected();
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
     void onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer);
     void onSessionStarted();
     void onSessionStatistics(const proto::router::RelayStatistics& statistics);
@@ -74,7 +74,7 @@ private:
     quint32 max_peer_count_ = 0;
 
     QTimer* reconnect_timer_ = nullptr;
-    base::TcpChannel* tcp_channel_ = nullptr;
+    TcpChannel* tcp_channel_ = nullptr;
     SessionManager* session_manager_ = nullptr;
 
     base::Parser<proto::router::RouterToRelay> incoming_message_;

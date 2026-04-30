@@ -29,7 +29,7 @@ class SessionAdmin final : public SessionManager
     Q_OBJECT
 
 public:
-    explicit SessionAdmin(base::TcpChannel* channel, QObject* parent = nullptr);
+    explicit SessionAdmin(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionAdmin() final;
 
 protected:

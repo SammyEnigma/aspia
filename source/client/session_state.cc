@@ -50,13 +50,13 @@ base::HostId SessionState::hostId() const
 //--------------------------------------------------------------------------------------------------
 QString SessionState::hostAddress() const
 {
-    return base::Address::fromString(computer_.address, DEFAULT_HOST_TCP_PORT).host();
+    return Address::fromString(computer_.address, DEFAULT_HOST_TCP_PORT).host();
 }
 
 //--------------------------------------------------------------------------------------------------
 quint16 SessionState::hostPort() const
 {
-    return base::Address::fromString(computer_.address, DEFAULT_HOST_TCP_PORT).port();
+    return Address::fromString(computer_.address, DEFAULT_HOST_TCP_PORT).port();
 }
 
 //--------------------------------------------------------------------------------------------------

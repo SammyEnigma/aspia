@@ -27,7 +27,7 @@ class ChatClient final : public Client
     Q_OBJECT
 
 public:
-    explicit ChatClient(base::TcpChannel* tcp_channel, QObject* parent = nullptr);
+    explicit ChatClient(TcpChannel* tcp_channel, QObject* parent = nullptr);
     ~ChatClient() final;
 
 public slots:

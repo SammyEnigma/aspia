@@ -1059,7 +1059,7 @@ bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
     }
     else
     {
-        base::Address address = base::Address::fromString(computer.address, DEFAULT_HOST_TCP_PORT);
+        Address address = Address::fromString(computer.address, DEFAULT_HOST_TCP_PORT);
         if (!address.isValid())
         {
             MsgBox::warning(this, tr("The computer has an incorrect address."));

@@ -23,8 +23,6 @@
 
 struct _FILE_INFO_3;
 
-namespace base {
-
 class OpenFilesEnumerator
 {
 public:
@@ -46,7 +44,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(OpenFilesEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_NET_OPEN_FILES_ENUMERATOR_H

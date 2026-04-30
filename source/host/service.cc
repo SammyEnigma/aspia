@@ -78,7 +78,7 @@ Service::Service(QObject* parent)
     : base::Service(kName, parent),
       repeated_timer_(new QTimer(this)),
       settings_watcher_(new QFileSystemWatcher(this)),
-      tcp_server_(new base::TcpServer(this)),
+      tcp_server_(new TcpServer(this)),
       desktop_manager_(new DesktopManager(this)),
       user_session_(new UserSession(this))
 {
@@ -95,7 +95,7 @@ Service::Service(QObject* parent)
     connect(user_session_, &UserSession::sig_lockMouseChanged, desktop_manager_, &DesktopManager::onUserLockMouse);
     connect(user_session_, &UserSession::sig_lockKeyboardChanged, desktop_manager_, &DesktopManager::onUserLockKeyboard);
     connect(desktop_manager_, &DesktopManager::sig_attached, this, &Service::onDesktopManagerAttached);
-    connect(tcp_server_, &base::TcpServer::sig_newConnection, this, &Service::onNewDirectConnection);
+    connect(tcp_server_, &TcpServer::sig_newConnection, this, &Service::onNewDirectConnection);
     connect(base::Application::instance(), &base::Application::sig_powerEvent, this, &Service::onPowerEvent);
 }
 
@@ -240,7 +240,7 @@ void Service::onConfirmationReply(quint32 request_id, bool accept)
 {
     for (auto it = pending_confirmation_.begin(), it_end = pending_confirmation_.end(); it != it_end; ++it)
     {
-        base::TcpChannel* tcp_channel = it->tcp_channel;
+        TcpChannel* tcp_channel = it->tcp_channel;
 
         if (tcp_channel->instanceId() != request_id)
             continue;
@@ -389,7 +389,7 @@ void Service::onRepeatedTasks()
 
         if (time.secsTo(current_time) > 60)
         {
-            base::TcpChannel* tcp_channel = it->tcp_channel;
+            TcpChannel* tcp_channel = it->tcp_channel;
             tcp_channel->deleteLater();
             it = pending_confirmation_.erase(it);
         }
@@ -677,7 +677,7 @@ void Service::startConfirmation(PendingConfirmation& pending)
     LOG(INFO) << "TCP channel is ready";
     CHECK(pending.tcp_channel);
 
-    base::TcpChannel* tcp_channel = pending.tcp_channel;
+    TcpChannel* tcp_channel = pending.tcp_channel;
     tcp_channel->setParent(this);
 
     const QVersionNumber& host_version = base::kCurrentVersion;
@@ -707,7 +707,7 @@ void Service::startConfirmation(PendingConfirmation& pending)
 //--------------------------------------------------------------------------------------------------
 void Service::startClient(const PendingConfirmation& pending)
 {
-    base::TcpChannel* tcp_channel = pending.tcp_channel;
+    TcpChannel* tcp_channel = pending.tcp_channel;
     CHECK(tcp_channel);
 
     static const int kReadBufferSize = 2 * 1024 * 1024; // 2 Mb.
@@ -794,7 +794,7 @@ void Service::startClient(const PendingConfirmation& pending)
 void Service::addFirewallRules()
 {
 #if defined(Q_OS_WINDOWS)
-    base::FirewallManager firewall(QCoreApplication::applicationFilePath());
+    FirewallManager firewall(QCoreApplication::applicationFilePath());
     if (!firewall.isValid())
     {
         LOG(ERROR) << "Invalid firewall manager";
@@ -821,7 +821,7 @@ void Service::addFirewallRules()
 void Service::deleteFirewallRules()
 {
 #if defined(Q_OS_WINDOWS)
-    base::FirewallManager firewall(QCoreApplication::applicationFilePath());
+    FirewallManager firewall(QCoreApplication::applicationFilePath());
     if (!firewall.isValid())
     {
         LOG(ERROR) << "Invalid firewall manager";

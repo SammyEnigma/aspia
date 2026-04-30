@@ -21,8 +21,6 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 
-namespace base {
-
 namespace {
 
 const int kMaxHostNameLength = 64;
@@ -152,5 +150,3 @@ bool NetUtils::isAddressEqual(const QString& address1, const QString& address2)
     QHostAddress host_address2(address2);
     return host_address1 == host_address2;
 };
-
-} // namespace base

@@ -50,7 +50,7 @@ public:
 
     struct ReadyConnection
     {
-        base::TcpChannel* tcp_channel = nullptr;
+        TcpChannel* tcp_channel = nullptr;
         QString stun_host;
         quint16 stun_port = 0;
         bool peer_equals = false;
@@ -73,7 +73,7 @@ signals:
 
 private slots:
     void onTcpReady();
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
     void onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer);
     void onNewPeerConnected();
 
@@ -84,7 +84,7 @@ private:
     void hostIdRequest();
     base::User createOneTimeUser() const;
 
-    base::ScopedQPointer<base::TcpChannel> tcp_channel_;
+    ScopedQPointer<TcpChannel> tcp_channel_;
     base::RelayPeerManager* peer_manager_ = nullptr;
     QTimer* reconnect_timer_ = nullptr;
 

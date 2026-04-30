@@ -156,7 +156,7 @@ QString agentFilePath()
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-FileClient::FileClient(base::TcpChannel* tcp_channel, base::SessionId session_id, QObject* parent)
+FileClient::FileClient(TcpChannel* tcp_channel, base::SessionId session_id, QObject* parent)
     : Client(tcp_channel, parent),
       session_id_(session_id),
       attach_timer_(new QTimer(this))

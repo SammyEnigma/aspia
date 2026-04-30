@@ -36,7 +36,7 @@ class FileClient final : public Client
     Q_OBJECT
 
 public:
-    FileClient(base::TcpChannel* tcp_channel, base::SessionId session_id, QObject* parent = nullptr);
+    FileClient(TcpChannel* tcp_channel, base::SessionId session_id, QObject* parent = nullptr);
     ~FileClient() final;
 
 private slots:
@@ -55,7 +55,7 @@ private:
     void onStarted(const base::Location& location, bool has_user);
     void onError(const base::Location& location);
 
-    base::ScopedQPointer<base::IpcServer> ipc_server_;
+    ScopedQPointer<base::IpcServer> ipc_server_;
     base::IpcChannel* ipc_channel_ = nullptr;
 
     const base::SessionId session_id_;

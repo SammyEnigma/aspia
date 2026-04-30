@@ -28,7 +28,7 @@ class SystemInfoClient final : public Client
     Q_OBJECT
 
 public:
-    explicit SystemInfoClient(base::TcpChannel* tcp_channel, QObject* parent = nullptr);
+    explicit SystemInfoClient(TcpChannel* tcp_channel, QObject* parent = nullptr);
     ~SystemInfoClient() final;
 
 protected:

@@ -21,8 +21,6 @@
 
 #include <QStringList>
 
-namespace base {
-
 class NetUtils
 {
 public:
@@ -37,7 +35,5 @@ public:
 private:
     Q_DISABLE_COPY_MOVE(NetUtils)
 };
-
-} // namespace base
 
 #endif // BASE_NET_NET_UTILS_H

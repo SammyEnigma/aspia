@@ -121,7 +121,7 @@ signals:
 
 private slots:
     void onStatusChanged(qint64 router_id, RouterConnection::Status status);
-    void onConnectionErrorOccurred(qint64 router_id, base::TcpChannel::ErrorCode error_code);
+    void onConnectionErrorOccurred(qint64 router_id, TcpChannel::ErrorCode error_code);
     void onTabChanged(int index);
     void onCurrentUserChanged();
     void onCurrentRelayChanged();
@@ -146,7 +146,7 @@ private:
     Ui::RouterWidget ui;
 
     RouterConfig config_;
-    base::ScopedQPointer<RouterConnection> connection_;
+    ScopedQPointer<RouterConnection> connection_;
     RouterConnection::Status status_ = RouterConnection::Status::OFFLINE;
 
     StatusDialog* status_dialog_ = nullptr;

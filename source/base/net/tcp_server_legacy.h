@@ -29,8 +29,6 @@
 #include "base/peer/user_list_base.h"
 #include "base/peer/server_authenticator.h"
 
-namespace base {
-
 class TcpChannel;
 
 class TcpServerLegacy final : public QObject
@@ -41,14 +39,14 @@ public:
     explicit TcpServerLegacy(QObject* parent = nullptr);
     ~TcpServerLegacy();
 
-    void setUserList(SharedPointer<UserListBase> user_list);
-    SharedPointer<UserListBase> userList() const { return user_list_; }
+    void setUserList(base::SharedPointer<base::UserListBase> user_list);
+    base::SharedPointer<base::UserListBase> userList() const { return user_list_; }
 
     void setPrivateKey(const QByteArray& private_key);
     QByteArray privateKey() const { return private_key_; }
 
     void setAnonymousAccess(
-        ServerAuthenticator::AnonymousAccess anonymous_access, quint32 session_types);
+        base::ServerAuthenticator::AnonymousAccess anonymous_access, quint32 session_types);
 
     void start(quint16 port, const QString& iface = QString());
 
@@ -64,15 +62,15 @@ private:
     void doAccept();
     void removePendingChannel(TcpChannel* channel);
 
-    SharedPointer<bool> alive_guard_ { new bool(true) };
+    base::SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::ip::tcp::acceptor acceptor_;
     int accept_error_count_ = 0;
 
-    SharedPointer<UserListBase> user_list_;
+    base::SharedPointer<base::UserListBase> user_list_;
     QByteArray private_key_;
 
-    ServerAuthenticator::AnonymousAccess anonymous_access_ =
-        ServerAuthenticator::AnonymousAccess::DISABLE;
+    base::ServerAuthenticator::AnonymousAccess anonymous_access_ =
+        base::ServerAuthenticator::AnonymousAccess::DISABLE;
 
     quint32 anonymous_session_types_ = 0;
 
@@ -81,7 +79,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TcpServerLegacy)
 };
-
-} // namespace base
 
 #endif // BASE_NET_TCP_SERVER_LEGACY_H

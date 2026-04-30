@@ -317,13 +317,13 @@ void startRouterSession(const ComputerConfig& computer,
     }, Qt::QueuedConnection);
 
     QObject::connect(router, &RouterConnection::sig_errorOccurred, qApp,
-        [status_dialog](qint64, base::TcpChannel::ErrorCode error_code)
+        [status_dialog](qint64, TcpChannel::ErrorCode error_code)
     {
         if (!status_dialog)
             return;
 
         status_dialog->addMessage(QApplication::translate("Client", "Network error: %1.")
-            .arg(base::TcpChannel::errorToString(error_code)));
+            .arg(TcpChannel::errorToString(error_code)));
     }, Qt::QueuedConnection);
 
     status_dialog->show();

@@ -25,8 +25,6 @@
 #include <iphlpapi.h>
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 namespace {
 
 #if defined(Q_OS_WINDOWS)
@@ -415,5 +413,3 @@ QString AdapterEnumerator::DnsEnumerator::address() const
     return QString();
 #endif
 }
-
-} // namespace base

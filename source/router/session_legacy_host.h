@@ -30,7 +30,7 @@ class SessionLegacyHost final : public Session
     Q_OBJECT
 
 public:
-    explicit SessionLegacyHost(base::TcpChannel* channel, QObject* parent = nullptr);
+    explicit SessionLegacyHost(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionLegacyHost() final;
 
     const QList<base::HostId>& hostIdList() const { return host_id_list_; }

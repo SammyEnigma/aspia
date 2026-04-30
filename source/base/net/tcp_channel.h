@@ -27,6 +27,8 @@
 #include "base/logging.h"
 
 namespace base {
+class RelayPeer;
+} // namespace base
 
 class TcpChannel : public QObject
 {
@@ -123,7 +125,7 @@ public:
 signals:
     void sig_connected();
     void sig_authenticated();
-    void sig_errorOccurred(base::TcpChannel::ErrorCode error_code);
+    void sig_errorOccurred(TcpChannel::ErrorCode error_code);
     void sig_messageReceived(quint8 channel_id, const QByteArray& buffer);
     void sig_messageWritten(quint8 channel_id);
 
@@ -132,7 +134,7 @@ protected:
 
     friend class TcpServerLegacy;
     friend class TcpServer;
-    friend class RelayPeer;
+    friend class base::RelayPeer;
 
     virtual void doAuthentication() = 0;
 
@@ -165,8 +167,6 @@ private:
     Q_DISABLE_COPY_MOVE(TcpChannel)
 };
 
-} // namespace base
-
-Q_DECLARE_METATYPE(base::TcpChannel::ErrorCode)
+Q_DECLARE_METATYPE(TcpChannel::ErrorCode)
 
 #endif // BASE_NET_TCP_CHANNEL_H

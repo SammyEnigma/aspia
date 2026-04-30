@@ -40,7 +40,7 @@
 #endif // defined(Q_OS_WINDOWS)
 
 //--------------------------------------------------------------------------------------------------
-DesktopClient::DesktopClient(base::TcpChannel* tcp_channel, QObject* parent)
+DesktopClient::DesktopClient(TcpChannel* tcp_channel, QObject* parent)
     : Client(tcp_channel, parent),
       dettach_time_(QTime::currentTime()),
       fake_capture_timer_(new QTimer(this)),

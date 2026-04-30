@@ -141,7 +141,7 @@ void Service::onTcpConnected()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Service::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
+void Service::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     LOG(INFO) << "Connection to the router has been lost:" << error_code;
 
@@ -299,11 +299,11 @@ void Service::connectToRouter()
     authenticator->setPeerPublicKey(router_public_key_);
     authenticator->setSessionType(proto::router::SESSION_TYPE_RELAY);
 
-    tcp_channel_ = new base::TcpChannelNG(authenticator, this);
+    tcp_channel_ = new TcpChannelNG(authenticator, this);
 
-    connect(tcp_channel_, &base::TcpChannel::sig_authenticated, this, &Service::onTcpConnected);
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &Service::onTcpErrorOccurred);
-    connect(tcp_channel_, &base::TcpChannel::sig_messageReceived, this, &Service::onTcpMessageReceived);
+    connect(tcp_channel_, &TcpChannel::sig_authenticated, this, &Service::onTcpConnected);
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Service::onTcpErrorOccurred);
+    connect(tcp_channel_, &TcpChannel::sig_messageReceived, this, &Service::onTcpMessageReceived);
 
     LOG(INFO) << "Connecting to router...";
     tcp_channel_->connectTo(router_address_, router_port_);

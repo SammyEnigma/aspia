@@ -23,8 +23,6 @@
 #include <WS2tcpip.h>
 #include <WinSock2.h>
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -128,5 +126,3 @@ quint32 RouteEnumerator::metric() const
 
     return forward_table->table[pos_].dwForwardMetric1;
 }
-
-} // namespace base

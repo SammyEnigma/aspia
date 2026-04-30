@@ -23,8 +23,6 @@
 
 #include "base/win/scoped_object.h"
 
-namespace base {
-
 class ConnectEnumerator
 {
 public:
@@ -54,7 +52,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(ConnectEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_NET_CONNECT_ENUMERATOR_H

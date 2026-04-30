@@ -18,11 +18,9 @@
 
 #include "base/net/tcp_channel.h"
 
-namespace base {
-
 namespace {
 
-auto g_errorCodeType = qRegisterMetaType<base::TcpChannel::ErrorCode>();
+auto g_errorCodeType = qRegisterMetaType<TcpChannel::ErrorCode>();
 
 //--------------------------------------------------------------------------------------------------
 int calculateSpeed(int last_speed, const TcpChannel::Milliseconds& duration, qint64 bytes)
@@ -165,5 +163,3 @@ void TcpChannel::addRxBytes(size_t bytes_count)
     bytes_rx_ += bytes_count;
     total_rx_ += bytes_count;
 }
-
-} // namespace base

@@ -344,7 +344,7 @@ void MainWindow::onRouterStateChanged(const proto::user::RouterState& state)
 
     if (state.state() != proto::user::RouterState::DISABLED)
     {
-        base::Address address(DEFAULT_ROUTER_TCP_PORT);
+        Address address(DEFAULT_ROUTER_TCP_PORT);
         address.setHost(QString::fromStdString(state.host_name()));
         address.setPort(static_cast<quint16>(state.host_port()));
 

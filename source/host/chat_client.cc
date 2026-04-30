@@ -23,7 +23,7 @@
 #include "base/sys_info.h"
 
 //--------------------------------------------------------------------------------------------------
-ChatClient::ChatClient(base::TcpChannel* tcp_channel, QObject* parent)
+ChatClient::ChatClient(TcpChannel* tcp_channel, QObject* parent)
     : Client(tcp_channel, parent)
 {
     CLOG(INFO) << "Ctor";

@@ -34,10 +34,11 @@
 
 class QTimer;
 
+class UdpChannel;
+
 namespace base {
 class RelayPeer;
 class StunPeer;
-class UdpChannel;
 } // namespace base
 
 class Client : public QObject
@@ -103,7 +104,7 @@ protected:
 
 private slots:
     void onTcpConnected();
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
     void onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer);
     void onUdpReady();
     void onUdpErrorOccurred();
@@ -135,10 +136,10 @@ private:
     QTimer* timeout_timer_ = nullptr;
     QTimer* reconnect_timer_ = nullptr;
     QPointer<RouterConnection> router_ = nullptr;
-    base::ScopedQPointer<base::TcpChannel> tcp_channel_;
-    base::ScopedQPointer<base::UdpChannel> udp_channel_;
-    base::ScopedQPointer<base::RelayPeer> relay_peer_;
-    base::ScopedQPointer<base::StunPeer> stun_peer_;
+    ScopedQPointer<TcpChannel> tcp_channel_;
+    ScopedQPointer<UdpChannel> udp_channel_;
+    ScopedQPointer<base::RelayPeer> relay_peer_;
+    ScopedQPointer<base::StunPeer> stun_peer_;
 
     std::optional<PendingUdp> pending_udp_context_;
     std::shared_ptr<SessionState> session_state_;

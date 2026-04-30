@@ -30,7 +30,7 @@
 namespace router {
 
 //--------------------------------------------------------------------------------------------------
-SessionAdmin::SessionAdmin(base::TcpChannel* channel, QObject* parent)
+SessionAdmin::SessionAdmin(TcpChannel* channel, QObject* parent)
     : SessionManager(channel, parent)
 {
     CLOG(INFO) << "Ctor";

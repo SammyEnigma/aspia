@@ -31,8 +31,6 @@
 #include "base/crypto/stream_decryptor.h"
 #include "base/crypto/stream_encryptor.h"
 
-namespace base {
-
 namespace {
 
 const int kWriteQueueReservedSize = 128;
@@ -71,7 +69,7 @@ void resizeBuffer(QByteArray* buffer, qint64 new_size)
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-TcpChannelLegacy::TcpChannelLegacy(Authenticator* authenticator, QObject* parent)
+TcpChannelLegacy::TcpChannelLegacy(base::Authenticator* authenticator, QObject* parent)
     : TcpChannel(Type::DIRECT, parent),
       io_context_(base::AsioEventDispatcher::ioContext()),
       socket_(io_context_),
@@ -83,7 +81,7 @@ TcpChannelLegacy::TcpChannelLegacy(Authenticator* authenticator, QObject* parent
 
 //--------------------------------------------------------------------------------------------------
 TcpChannelLegacy::TcpChannelLegacy(
-    Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent)
+    Type type, asio::ip::tcp::socket&& socket, base::Authenticator* authenticator, QObject* parent)
     : TcpChannel(type, parent),
       io_context_(base::AsioEventDispatcher::ioContext()),
       socket_(std::move(socket)),
@@ -377,9 +375,9 @@ void TcpChannelLegacy::init()
     if (authenticator_)
     {
         authenticator_->setParent(this);
-        connect(authenticator_, &Authenticator::sig_outgoingMessage, this, &TcpChannelLegacy::onAuthenticatorMessage);
-        connect(authenticator_, &Authenticator::sig_keyChanged, this, &TcpChannelLegacy::onKeyChanged);
-        connect(authenticator_, &Authenticator::sig_finished, this, &TcpChannelLegacy::onAuthenticatorFinished);
+        connect(authenticator_, &base::Authenticator::sig_outgoingMessage, this, &TcpChannelLegacy::onAuthenticatorMessage);
+        connect(authenticator_, &base::Authenticator::sig_keyChanged, this, &TcpChannelLegacy::onKeyChanged);
+        connect(authenticator_, &base::Authenticator::sig_finished, this, &TcpChannelLegacy::onAuthenticatorFinished);
     }
 }
 
@@ -434,18 +432,18 @@ void TcpChannelLegacy::onKeyChanged()
 
     if (authenticator_->encryption() == proto::key_exchange::ENCRYPTION_AES256_GCM)
     {
-        encryptor_ = StreamEncryptor::createForAes256Gcm(
+        encryptor_ = base::StreamEncryptor::createForAes256Gcm(
             authenticator_->sessionKey(), authenticator_->encryptIv());
-        decryptor_ = StreamDecryptor::createForAes256Gcm(
+        decryptor_ = base::StreamDecryptor::createForAes256Gcm(
             authenticator_->sessionKey(), authenticator_->decryptIv());
     }
     else
     {
         CDCHECK_EQ(authenticator_->encryption(), proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305);
 
-        encryptor_ = StreamEncryptor::createForChaCha20Poly1305(
+        encryptor_ = base::StreamEncryptor::createForChaCha20Poly1305(
             authenticator_->sessionKey(), authenticator_->encryptIv());
-        decryptor_ = StreamDecryptor::createForChaCha20Poly1305(
+        decryptor_ = base::StreamDecryptor::createForChaCha20Poly1305(
             authenticator_->sessionKey(), authenticator_->decryptIv());
     }
 
@@ -463,7 +461,7 @@ void TcpChannelLegacy::onAuthenticatorMessage(const QByteArray& data)
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onAuthenticatorFinished(Authenticator::ErrorCode error_code)
+void TcpChannelLegacy::onAuthenticatorFinished(base::Authenticator::ErrorCode error_code)
 {
     setPaused(true);
 
@@ -475,22 +473,22 @@ void TcpChannelLegacy::onAuthenticatorFinished(Authenticator::ErrorCode error_co
 
     switch (error_code)
     {
-        case Authenticator::ErrorCode::SUCCESS:
+        case base::Authenticator::ErrorCode::SUCCESS:
             break;
 
-        case Authenticator::ErrorCode::PROTOCOL_ERROR:
+        case base::Authenticator::ErrorCode::PROTOCOL_ERROR:
             onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
             return;
 
-        case Authenticator::ErrorCode::SESSION_DENIED:
+        case base::Authenticator::ErrorCode::SESSION_DENIED:
             onErrorOccurred(FROM_HERE, ErrorCode::SESSION_DENIED);
             return;
 
-        case Authenticator::ErrorCode::VERSION_ERROR:
+        case base::Authenticator::ErrorCode::VERSION_ERROR:
             onErrorOccurred(FROM_HERE, ErrorCode::VERSION_ERROR);
             return;
 
-        case Authenticator::ErrorCode::ACCESS_DENIED:
+        case base::Authenticator::ErrorCode::ACCESS_DENIED:
             onErrorOccurred(FROM_HERE, ErrorCode::ACCESS_DENIED);
             return;
 
@@ -518,7 +516,7 @@ void TcpChannelLegacy::onAuthenticatorFinished(Authenticator::ErrorCode error_co
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onErrorOccurred(const Location& location, const std::error_code& error_code)
+void TcpChannelLegacy::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
 {
     ErrorCode error = ErrorCode::UNKNOWN;
 
@@ -542,7 +540,7 @@ void TcpChannelLegacy::onErrorOccurred(const Location& location, const std::erro
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onErrorOccurred(const Location& location, ErrorCode error_code)
+void TcpChannelLegacy::onErrorOccurred(const base::Location& location, ErrorCode error_code)
 {
     CLOG(ERROR) << "Connection finished with error" << error_code << "from" << location;
 
@@ -728,7 +726,7 @@ void TcpChannelLegacy::doWrite()
 
         resizeBuffer(&write_buffer_, source_buffer.size());
 
-        // Service data does not need encryption. Copy the source buffer.
+        // base::Service data does not need encryption. Copy the source buffer.
         memcpy(write_buffer_.data(), source_buffer.data(), source_buffer.size());
     }
 
@@ -1006,7 +1004,7 @@ void TcpChannelLegacy::doReadServiceData(size_t length)
                     CDCHECK(!keep_alive_counter_.isEmpty());
 
                     // Increase the counter of sent packets.
-                    largeNumberIncrement(&keep_alive_counter_);
+                    base::largeNumberIncrement(&keep_alive_counter_);
 
                     // Restart keep alive timer.
                     keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
@@ -1132,5 +1130,3 @@ asio::const_buffer TcpChannelLegacy::VariableSizeWriter::variableSize(size_t siz
 
     return asio::const_buffer(buffer_, length);
 }
-
-} // namespace base

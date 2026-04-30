@@ -35,7 +35,7 @@ qint64 createSessionId()
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-Session::Session(base::TcpChannel* channel, QObject* parent)
+Session::Session(TcpChannel* channel, QObject* parent)
     : QObject(parent),
       session_id_(createSessionId()),
       tcp_channel_(channel)
@@ -44,8 +44,8 @@ Session::Session(base::TcpChannel* channel, QObject* parent)
     tcp_channel_->setParent(this);
     address_.setAddress(tcp_channel_->peerAddress());
 
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &Session::onTcpErrorOccurred);
-    connect(tcp_channel_, &base::TcpChannel::sig_messageReceived, this, &Session::onTcpMessageReceived);
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Session::onTcpErrorOccurred);
+    connect(tcp_channel_, &TcpChannel::sig_messageReceived, this, &Session::onTcpMessageReceived);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ void Session::sendMessage(quint8 channel_id, const QByteArray& message)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Session::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
+void Session::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     CLOG(INFO) << "Network error:" << error_code;
     emit sig_finished(session_id_);

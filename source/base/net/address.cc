@@ -22,8 +22,6 @@
 
 #include "base/net/net_utils.h"
 
-namespace base {
-
 namespace {
 
 struct AddressParts
@@ -325,5 +323,3 @@ bool Address::operator!=(const Address& other)
 {
     return !isEqual(other);
 }
-
-} // namespace base

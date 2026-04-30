@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class Address
 {
 public:
@@ -60,7 +58,5 @@ private:
     quint16 port_ = 0;
     quint16 default_port_;
 };
-
-} // namespace base
 
 #endif // BASE_NET_ADDRESS_H

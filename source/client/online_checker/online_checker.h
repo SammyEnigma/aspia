@@ -51,8 +51,8 @@ private slots:
     void onRouterCheckerFinished();
 
 private:
-    base::ScopedQPointer<OnlineCheckerDirect> direct_checker_;
-    base::ScopedQPointer<OnlineCheckerRouter> router_checker_;
+    ScopedQPointer<OnlineCheckerDirect> direct_checker_;
+    ScopedQPointer<OnlineCheckerRouter> router_checker_;
 
     OnlineCheckerRouter::ComputerList router_computers_;
     OnlineCheckerDirect::ComputerList direct_computers_;

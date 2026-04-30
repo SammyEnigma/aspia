@@ -75,7 +75,7 @@ void HttpFileDownloader::run()
     LOG(INFO) << "Starting http file downloader:" << url_;
     interrupted_.store(false, std::memory_order_relaxed);
 
-    base::ScopedCURL curl;
+    ScopedCURL curl;
 
     QByteArray url = url_.toUtf8();
 
@@ -99,7 +99,7 @@ void HttpFileDownloader::run()
     curl_easy_setopt(curl.get(), CURLOPT_VERBOSE, 1);
     curl_easy_setopt(curl.get(), CURLOPT_DEBUGFUNCTION, debugFunc);
 
-    base::ScopedCURLM multi_curl;
+    ScopedCURLM multi_curl;
     curl_multi_add_handle(multi_curl.get(), curl.get());
 
     CURLMcode error_code = CURLM_OK;

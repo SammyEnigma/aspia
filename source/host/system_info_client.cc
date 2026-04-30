@@ -26,7 +26,7 @@
 #endif // defined(Q_OS_WINDOWS)
 
 //--------------------------------------------------------------------------------------------------
-SystemInfoClient::SystemInfoClient(base::TcpChannel* tcp_channel, QObject* parent)
+SystemInfoClient::SystemInfoClient(TcpChannel* tcp_channel, QObject* parent)
     : Client(tcp_channel, parent)
 {
     CLOG(INFO) << "Ctor";

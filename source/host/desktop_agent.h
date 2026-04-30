@@ -95,8 +95,8 @@ private:
 
     base::PowerSaveBlocker power_save_blocker_;
     InputInjector* input_injector_ = nullptr;
-    base::ScopedQPointer<base::ScreenCapturer> screen_capturer_;
-    base::ScopedQPointer<base::AudioCapturerWrapper> audio_capturer_;
+    ScopedQPointer<base::ScreenCapturer> screen_capturer_;
+    ScopedQPointer<base::AudioCapturerWrapper> audio_capturer_;
     base::DesktopEnvironment* desktop_environment_ = nullptr;
     std::unique_ptr<base::DesktopResizer> screen_resizer_;
 

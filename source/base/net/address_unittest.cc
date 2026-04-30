@@ -21,8 +21,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(AddressTest, Port)
 {
     Address addr1 = Address::fromString("192.168.0.1:0", 8050);
@@ -181,5 +179,3 @@ TEST(AddressTest, TestVector)
     EXPECT_EQ(addr.port(), 8050);
     EXPECT_EQ(addr.toString(), "192.168.1.1");
 }
-
-} // namespace base

@@ -87,7 +87,7 @@ void RouterDialog::onButtonBoxClicked(QAbstractButton* button)
     }
 
     QString address_text = ui.edit_address->text();
-    base::Address address = base::Address::fromString(address_text, DEFAULT_ROUTER_TCP_PORT);
+    Address address = Address::fromString(address_text, DEFAULT_ROUTER_TCP_PORT);
     if (!address.isValid())
     {
         LOG(ERROR) << "Invalid router address entered";

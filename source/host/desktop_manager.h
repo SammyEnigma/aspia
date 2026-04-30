@@ -91,8 +91,8 @@ private:
     base::SessionId session_id_ = base::kInvalidSessionId;
     bool is_console_ = true;
 
-    base::ScopedQPointer<base::IpcServer> ipc_server_;
-    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<base::IpcServer> ipc_server_;
+    ScopedQPointer<base::IpcChannel> ipc_channel_;
 
     QTimer* restart_timer_ = nullptr;
     QTimer* attach_timer_ = nullptr;

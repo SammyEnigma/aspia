@@ -89,7 +89,7 @@ public slots:
 signals:
     // Generic signals.
     void sig_statusChanged(qint64 router_id, RouterConnection::Status status);
-    void sig_errorOccurred(qint64 router_id, base::TcpChannel::ErrorCode error_code);
+    void sig_errorOccurred(qint64 router_id, TcpChannel::ErrorCode error_code);
 
     // Administrator signals.
     void sig_relayListReceived(const proto::router::RelayList& list);
@@ -105,7 +105,7 @@ signals:
 
 private slots:
     void onTcpReady();
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
     void onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer);
 
 private:
@@ -113,7 +113,7 @@ private:
     void sendMessage(quint8 channel_id, const QByteArray& data);
 
     RouterConfig config_;
-    base::ScopedQPointer<base::TcpChannel> tcp_channel_;
+    ScopedQPointer<TcpChannel> tcp_channel_;
     QTimer* reconnect_timer_ = nullptr;
     Status status_ = Status::OFFLINE;
 

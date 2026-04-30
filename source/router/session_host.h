@@ -30,7 +30,7 @@ class SessionHost final : public Session
     Q_OBJECT
 
 public:
-    explicit SessionHost(base::TcpChannel* channel, QObject* parent = nullptr);
+    explicit SessionHost(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionHost() final;
 
     base::HostId hostId() const { return host_id_; }

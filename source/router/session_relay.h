@@ -30,7 +30,7 @@ class SessionRelay final : public Session
     Q_OBJECT
 
 public:
-    explicit SessionRelay(base::TcpChannel* channel, QObject* parent = nullptr);
+    explicit SessionRelay(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionRelay() final;
 
     using PeerData = std::pair<std::string, quint16>;

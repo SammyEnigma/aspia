@@ -105,9 +105,9 @@ private:
     void sendServiceMessage();
     void sendNetworkMessage(quint8 net_channel_id, const QByteArray& buffer);
 
-    base::ScopedQPointer<ClipboardMonitor> clipboard_;
-    base::ScopedQPointer<ClipboardFileTransfer> clipboard_file_transfer_;
-    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<ClipboardMonitor> clipboard_;
+    ScopedQPointer<ClipboardFileTransfer> clipboard_file_transfer_;
+    ScopedQPointer<base::IpcChannel> ipc_channel_;
 
     base::Parser<proto::user::ServiceToUser> incoming_message_;
     base::Serializer<proto::user::UserToService> outgoing_message_;

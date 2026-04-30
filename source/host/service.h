@@ -29,10 +29,11 @@
 class QFileSystemWatcher;
 class QTimer;
 
-namespace base {
-class Location;
 class TcpChannel;
 class TcpServer;
+
+namespace base {
+class Location;
 } // namespace base
 
 class HttpFileDownloader;
@@ -94,7 +95,7 @@ private slots:
 private:
     struct PendingConfirmation
     {
-        base::TcpChannel* tcp_channel = nullptr;
+        TcpChannel* tcp_channel = nullptr;
         QTime start_time;
         QString stun_host;
         quint16 stun_port = 0;
@@ -116,8 +117,8 @@ private:
     QFileSystemWatcher* settings_watcher_ = nullptr;
     SystemSettings settings_;
 
-    base::ScopedQPointer<RouterManager> router_manager_;
-    base::TcpServer* tcp_server_ = nullptr;
+    ScopedQPointer<RouterManager> router_manager_;
+    TcpServer* tcp_server_ = nullptr;
 
     DesktopManager* desktop_manager_ = nullptr;
     UserSession* user_session_ = nullptr;
@@ -125,8 +126,8 @@ private:
     QList<PendingConfirmation> pending_confirmation_;
     QList<Client*> clients_;
 
-    base::ScopedQPointer<UpdateChecker> update_checker_;
-    base::ScopedQPointer<HttpFileDownloader> update_downloader_;
+    ScopedQPointer<UpdateChecker> update_checker_;
+    ScopedQPointer<HttpFileDownloader> update_downloader_;
 
     Q_DISABLE_COPY_MOVE(Service)
 };

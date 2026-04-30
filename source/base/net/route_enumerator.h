@@ -21,8 +21,6 @@
 
 #include <QString>
 
-namespace base {
-
 class RouteEnumerator
 {
 public:
@@ -44,7 +42,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(RouteEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_NET_ROUTE_ENUMERATOR_H

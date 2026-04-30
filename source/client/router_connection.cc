@@ -99,16 +99,16 @@ void RouterConnection::onConnectToRouter()
     authenticator->setUserName(config_.username);
     authenticator->setPassword(config_.password);
 
-    tcp_channel_ = new base::TcpChannelNG(authenticator, this);
+    tcp_channel_ = new TcpChannelNG(authenticator, this);
 
-    connect(tcp_channel_, &base::TcpChannel::sig_authenticated,
+    connect(tcp_channel_, &TcpChannel::sig_authenticated,
             this, &RouterConnection::onTcpReady);
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred,
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred,
             this, &RouterConnection::onTcpErrorOccurred);
-    connect(tcp_channel_, &base::TcpChannel::sig_messageReceived,
+    connect(tcp_channel_, &TcpChannel::sig_messageReceived,
             this, &RouterConnection::onTcpMessageReceived);
 
-    base::Address address = base::Address::fromString(config_.address, DEFAULT_ROUTER_TCP_PORT);
+    Address address = Address::fromString(config_.address, DEFAULT_ROUTER_TCP_PORT);
     tcp_channel_->connectTo(address.host(), address.port());
 }
 
@@ -380,7 +380,7 @@ void RouterConnection::onTcpReady()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
+void RouterConnection::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     LOG(INFO) << "Router connection error:" << error_code;
 

@@ -25,8 +25,6 @@
 #include <wrl/client.h>
 #include <netfw.h>
 
-namespace base {
-
 class FirewallManager
 {
 public:
@@ -78,7 +76,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(FirewallManager)
 };
-
-} // namespace base
 
 #endif // BASE_NET_FIREWALL_MANAGER_H

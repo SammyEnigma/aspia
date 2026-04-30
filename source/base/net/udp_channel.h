@@ -36,10 +36,10 @@ typedef struct _ENetPeer ENetPeer;
 typedef struct _ENetPacket ENetPacket;
 
 namespace base {
-
 class DatagramDecryptor;
 class DatagramEncryptor;
 class Location;
+} // namespace base
 
 class UdpChannel final : public QObject
 {
@@ -67,8 +67,8 @@ public:
 
     void setPaused(bool enable);
 
-    void setEncryptor(std::unique_ptr<DatagramEncryptor> encryptor);
-    void setDecryptor(std::unique_ptr<DatagramDecryptor> decryptor);
+    void setEncryptor(std::unique_ptr<base::DatagramEncryptor> encryptor);
+    void setDecryptor(std::unique_ptr<base::DatagramDecryptor> decryptor);
 
     qint64 pendingBytes() const;
 
@@ -117,7 +117,7 @@ private:
     void close();
     void sendPunchHole(const ENetAddress& address);
     void processEvents();
-    void onErrorOccurred(const Location& location);
+    void onErrorOccurred(const base::Location& location);
     void onMessageReceived(quint8 channel_id, ScopedENetPacket packet);
     void onReadyCheck();
     void addTxBytes(qint64 bytes_count);
@@ -130,8 +130,8 @@ private:
     ScopedENetPeer peer_;
     int update_timer_id_ = 0;
 
-    std::unique_ptr<DatagramEncryptor> encryptor_;
-    std::unique_ptr<DatagramDecryptor> decryptor_;
+    std::unique_ptr<base::DatagramEncryptor> encryptor_;
+    std::unique_ptr<base::DatagramDecryptor> decryptor_;
 
     quint64 send_counter_ = 0;
     AntiReplayWindow replay_window_;
@@ -160,7 +160,5 @@ private:
     LOG_DECLARE_CONTEXT(UdpChannel);
     Q_DISABLE_COPY_MOVE(UdpChannel)
 };
-
-} // namespace base
 
 #endif // BASE_NET_UDP_CHANNEL_H

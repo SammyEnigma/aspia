@@ -23,8 +23,6 @@
 
 #include <bitset>
 
-namespace base {
-
 // Sliding window for detecting replayed or too-old packets.
 // Based on the same approach used by WireGuard and RFC 6479.
 //
@@ -53,7 +51,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AntiReplayWindow)
 };
-
-} // namespace base
 
 #endif // BASE_NET_ANTI_REPLAY_WINDOW_H

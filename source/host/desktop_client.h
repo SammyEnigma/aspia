@@ -46,7 +46,7 @@ class DesktopClient final : public Client
     Q_OBJECT
 
 public:
-    explicit DesktopClient(base::TcpChannel* tcp_channel, QObject* parent = nullptr);
+    explicit DesktopClient(TcpChannel* tcp_channel, QObject* parent = nullptr);
     ~DesktopClient() final;
 
     bool isAttached() const;
@@ -82,8 +82,8 @@ private:
     void readTaskManager(const proto::task_manager::ClientToHost& message);
 
     QTime dettach_time_;
-    base::ScopedQPointer<base::IpcServer> ipc_server_;
-    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<base::IpcServer> ipc_server_;
+    ScopedQPointer<base::IpcChannel> ipc_channel_;
     QTimer* fake_capture_timer_ = nullptr;
     QTimer* overflow_timer_ = nullptr;
 

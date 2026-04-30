@@ -30,9 +30,9 @@ namespace {
 //--------------------------------------------------------------------------------------------------
 bool isValidWhiteListEntry(const QString& entry)
 {
-    if (base::NetUtils::isValidIpAddress(entry))
+    if (NetUtils::isValidIpAddress(entry))
         return true;
-    return base::NetUtils::isValidSubnet(entry);
+    return NetUtils::isValidSubnet(entry);
 }
 
 } // namespace

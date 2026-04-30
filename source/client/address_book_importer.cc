@@ -64,7 +64,7 @@ QString combineHostAndPort(const QString& host, quint32 port)
     if (base::isHostId(host))
         return host;
 
-    base::Address address(DEFAULT_HOST_TCP_PORT);
+    Address address(DEFAULT_HOST_TCP_PORT);
     address.setHost(host);
     address.setPort(port == 0 ? DEFAULT_HOST_TCP_PORT : static_cast<quint16>(port));
 

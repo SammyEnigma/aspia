@@ -29,8 +29,6 @@ struct _IP_ADAPTER_DNS_SERVER_ADDRESS_XP;
 struct _IP_ADAPTER_GATEWAY_ADDRESS_LH;
 #endif // defined(Q_OS_WINDOWS)
 
-namespace base {
-
 class AdapterEnumerator
 {
 public:
@@ -111,7 +109,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(AdapterEnumerator)
 };
-
-} // namespace base
 
 #endif // BASE_NET_ADAPTER_ENUMERATOR_H

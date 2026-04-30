@@ -27,11 +27,12 @@ namespace proto::router {
 class ConnectionOffer;
 } // namespace proto::router
 
+class TcpChannel;
+
 namespace base {
 
 class Authenticator;
 class RelayPeer;
-class TcpChannel;
 
 class RelayPeerManager final : public QObject
 {

@@ -156,7 +156,7 @@ void RouterManager::onTcpReady()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterManager::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
+void RouterManager::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     LOG(INFO) << "Connection to the router is lost:" << error_code;
 
@@ -284,7 +284,7 @@ void RouterManager::onNewPeerConnected()
         auto ready = peer_manager_->takePendingConnection();
 
         const proto::router::ConnectionOffer& offer = ready.second;
-        base::TcpChannel* tcp_channel = ready.first;
+        TcpChannel* tcp_channel = ready.first;
 
         tcp_channel->setParent(this);
 
@@ -337,11 +337,11 @@ void RouterManager::connectToRouter()
     authenticator->setPeerPublicKey(public_key_);
     authenticator->setSessionType(proto::router::SESSION_TYPE_HOST);
 
-    tcp_channel_ = new base::TcpChannelNG(authenticator, this);
+    tcp_channel_ = new TcpChannelNG(authenticator, this);
 
-    connect(tcp_channel_, &base::TcpChannel::sig_authenticated, this, &RouterManager::onTcpReady);
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &RouterManager::onTcpErrorOccurred);
-    connect(tcp_channel_, &base::TcpChannel::sig_messageReceived, this, &RouterManager::onTcpMessageReceived);
+    connect(tcp_channel_, &TcpChannel::sig_authenticated, this, &RouterManager::onTcpReady);
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &RouterManager::onTcpErrorOccurred);
+    connect(tcp_channel_, &TcpChannel::sig_messageReceived, this, &RouterManager::onTcpMessageReceived);
 
     tcp_channel_->connectTo(address_, port_);
 }

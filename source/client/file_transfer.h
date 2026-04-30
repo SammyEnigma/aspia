@@ -204,7 +204,7 @@ private:
 
     // The map contains available actions for the error and the current action.
     QMap<Error::Type, Error::Action> actions_;
-    base::ScopedQPointer<FileTransferQueueBuilder> queue_builder_;
+    ScopedQPointer<FileTransferQueueBuilder> queue_builder_;
     TaskList tasks_;
 
     qint64 total_size_ = 0;

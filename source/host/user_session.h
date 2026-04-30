@@ -105,7 +105,7 @@ private:
     void sendMessage();
 
     base::IpcServer* ipc_server_ = nullptr;
-    base::ScopedQPointer<base::IpcChannel> ipc_channel_;
+    ScopedQPointer<base::IpcChannel> ipc_channel_;
     QTimer* attach_timer_ = nullptr;
     QTimer* dettach_timer_ = nullptr;
     QTimer* startup_timer_ = nullptr;

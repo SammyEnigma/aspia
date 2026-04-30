@@ -30,7 +30,7 @@ class SessionClient : public Session
     Q_OBJECT
 
 public:
-    explicit SessionClient(base::TcpChannel* channel, QObject* parent = nullptr);
+    explicit SessionClient(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionClient() override;
 
     void setStunInfo(quint16 port);

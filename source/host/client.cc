@@ -61,7 +61,7 @@ QByteArray makeBandwidthProbeData()
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-Client::Client(base::TcpChannel* tcp_channel, QObject* parent)
+Client::Client(TcpChannel* tcp_channel, QObject* parent)
     : QObject(parent),
       tcp_channel_(tcp_channel),
       probe_timer_(new QTimer(this))
@@ -71,8 +71,8 @@ Client::Client(base::TcpChannel* tcp_channel, QObject* parent)
 
     tcp_channel_->setParent(this);
 
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &Client::onTcpErrorOccurred);
-    connect(tcp_channel_, &base::TcpChannel::sig_messageReceived, this, &Client::onTcpMessageReceived);
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Client::onTcpErrorOccurred);
+    connect(tcp_channel_, &TcpChannel::sig_messageReceived, this, &Client::onTcpMessageReceived);
     connect(this, &Client::sig_started, this, [this]()
     {
         tcp_channel_->setPaused(false);
@@ -213,7 +213,7 @@ void Client::send(quint8 channel_id, const QByteArray& buffer, bool reliable)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Client::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
+void Client::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     CLOG(ERROR) << "TCP error:" << error_code;
     CCHECK(tcp_channel_);
@@ -409,10 +409,10 @@ void Client::startUdpHolePunching()
         // already failed for white IP, or previous ready_socket attempt failed for NAT).
         if (hole_punching_attempt_ <= 1)
         {
-            QStringList local_ip_list = base::NetUtils::localIpList();
+            QStringList local_ip_list = NetUtils::localIpList();
             for (const auto& local_ip : std::as_const(local_ip_list))
             {
-                if (!base::NetUtils::isAddressEqual(external_address, local_ip))
+                if (!NetUtils::isAddressEqual(external_address, local_ip))
                     continue;
 
                 // The peer has a white external address (without NAT).
@@ -476,11 +476,11 @@ void Client::startDirectUdp(qintptr socket, const QString& address, quint16 port
     CLOG(INFO) << "Starting direct UDP...";
     CCHECK(!udp_channel_);
 
-    udp_channel_ = new base::UdpChannel(this);
+    udp_channel_ = new UdpChannel(this);
 
-    connect(udp_channel_, &base::UdpChannel::sig_ready, this, &Client::onUdpReady);
-    connect(udp_channel_, &base::UdpChannel::sig_errorOccurred, this, &Client::onUdpErrorOccurred);
-    connect(udp_channel_, &base::UdpChannel::sig_messageReceived, this, &Client::onUdpMessageReceived);
+    connect(udp_channel_, &UdpChannel::sig_ready, this, &Client::onUdpReady);
+    connect(udp_channel_, &UdpChannel::sig_errorOccurred, this, &Client::onUdpErrorOccurred);
+    connect(udp_channel_, &UdpChannel::sig_messageReceived, this, &Client::onUdpMessageReceived);
 
     if (socket != -1)
         udp_channel_->bind(socket);
@@ -511,7 +511,7 @@ void Client::startDirectUdp(qintptr socket, const QString& address, quint16 port
 
     if (address.isEmpty())
     {
-        QStringList local_ip_list = base::NetUtils::localIpList();
+        QStringList local_ip_list = NetUtils::localIpList();
         for (const auto& local_ip : std::as_const(local_ip_list))
             request->add_address(local_ip.toStdString());
     }

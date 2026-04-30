@@ -28,8 +28,6 @@
 #include "base/crypto/datagram_decryptor.h"
 #include "base/crypto/datagram_encryptor.h"
 
-namespace base {
-
 namespace {
 
 const quint32 kMaxMessageSize = 7 * 1024 * 1024; // 7 MB
@@ -57,7 +55,7 @@ const int kMtu = 1200;
 //
 // Cold-path allocations (ENetHost ~12KB, ENetPeer[] ~400*N, ENetChannel[] ~76*N) and messages
 // larger than 1 MB fall through to std::malloc - too infrequent to justify caching.
-constexpr Bucket kENetBuckets[] = {
+constexpr base::Bucket kENetBuckets[] = {
     { 64,          256 },
     { 128,         512 },
     { 256,          64 },
@@ -75,7 +73,7 @@ constexpr Bucket kENetBuckets[] = {
     { 1024 * 1024,   2 },
 };
 
-using ENetPool = BucketPool<std::size(kENetBuckets)>;
+using ENetPool = base::BucketPool<std::size(kENetBuckets)>;
 thread_local ENetPool tls_enet_pool(kENetBuckets);
 
 //--------------------------------------------------------------------------------------------------
@@ -412,14 +410,14 @@ void UdpChannel::setPaused(bool enable)
 }
 
 //--------------------------------------------------------------------------------------------------
-void UdpChannel::setEncryptor(std::unique_ptr<DatagramEncryptor> encryptor)
+void UdpChannel::setEncryptor(std::unique_ptr<base::DatagramEncryptor> encryptor)
 {
     encryptor_ = std::move(encryptor);
     onReadyCheck();
 }
 
 //--------------------------------------------------------------------------------------------------
-void UdpChannel::setDecryptor(std::unique_ptr<DatagramDecryptor> decryptor)
+void UdpChannel::setDecryptor(std::unique_ptr<base::DatagramDecryptor> decryptor)
 {
     decryptor_ = std::move(decryptor);
     onReadyCheck();
@@ -564,7 +562,7 @@ void UdpChannel::processEvents()
 }
 
 //--------------------------------------------------------------------------------------------------
-void UdpChannel::onErrorOccurred(const Location& location)
+void UdpChannel::onErrorOccurred(const base::Location& location)
 {
     CLOG(ERROR) << "Error occurred from" << location.toString();
     close();
@@ -708,5 +706,3 @@ void UdpChannel::ENetPacketDeleter::operator()(ENetPacket* packet) const noexcep
     if (packet)
         enet_packet_destroy(packet);
 }
-
-} // namespace base

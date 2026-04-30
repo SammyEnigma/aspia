@@ -33,8 +33,6 @@
 #include "base/crypto/stream_encryptor.h"
 #include "base/peer/authenticator.h"
 
-namespace base {
-
 namespace {
 
 const int kWriteQueueReservedSize = 128;
@@ -71,7 +69,7 @@ void resizeBuffer(QByteArray* buffer, qint64 size)
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-TcpChannelNG::TcpChannelNG(Authenticator* authenticator, QObject* parent)
+TcpChannelNG::TcpChannelNG(base::Authenticator* authenticator, QObject* parent)
     : TcpChannel(Type::DIRECT, parent),
       io_context_(base::AsioEventDispatcher::ioContext()),
       socket_(io_context_),
@@ -83,7 +81,7 @@ TcpChannelNG::TcpChannelNG(Authenticator* authenticator, QObject* parent)
 
 //--------------------------------------------------------------------------------------------------
 TcpChannelNG::TcpChannelNG(
-    Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent)
+    Type type, asio::ip::tcp::socket&& socket, base::Authenticator* authenticator, QObject* parent)
     : TcpChannel(type, parent),
       io_context_(base::AsioEventDispatcher::ioContext()),
       socket_(std::move(socket)),
@@ -320,27 +318,27 @@ void TcpChannelNG::init()
     keep_alive_counter_.resize(sizeof(quint32));
     memset(keep_alive_counter_.data(), 0, keep_alive_counter_.size());
 
-    connect(authenticator_, &Authenticator::sig_outgoingMessage, this, [this](const QByteArray& data)
+    connect(authenticator_, &base::Authenticator::sig_outgoingMessage, this, [this](const QByteArray& data)
     {
         addWriteTask(AUTH_DATA, 0, data);
     });
 
-    connect(authenticator_, &Authenticator::sig_keyChanged, this, [this]()
+    connect(authenticator_, &base::Authenticator::sig_keyChanged, this, [this]()
     {
         if (authenticator_->encryption() == proto::key_exchange::ENCRYPTION_AES256_GCM)
         {
-            encryptor_ = StreamEncryptor::createForAes256Gcm(
+            encryptor_ = base::StreamEncryptor::createForAes256Gcm(
                 authenticator_->sessionKey(), authenticator_->encryptIv());
-            decryptor_ = StreamDecryptor::createForAes256Gcm(
+            decryptor_ = base::StreamDecryptor::createForAes256Gcm(
                 authenticator_->sessionKey(), authenticator_->decryptIv());
         }
         else
         {
             CDCHECK_EQ(authenticator_->encryption(), proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305);
 
-            encryptor_ = StreamEncryptor::createForChaCha20Poly1305(
+            encryptor_ = base::StreamEncryptor::createForChaCha20Poly1305(
                 authenticator_->sessionKey(), authenticator_->encryptIv());
-            decryptor_ = StreamDecryptor::createForChaCha20Poly1305(
+            decryptor_ = base::StreamDecryptor::createForChaCha20Poly1305(
                 authenticator_->sessionKey(), authenticator_->decryptIv());
         }
 
@@ -351,24 +349,24 @@ void TcpChannelNG::init()
         }
     });
 
-    connect(authenticator_, &Authenticator::sig_finished, this, [this](Authenticator::ErrorCode error_code)
+    connect(authenticator_, &base::Authenticator::sig_finished, this, [this](base::Authenticator::ErrorCode error_code)
     {
         setPaused(true);
 
         switch (error_code)
         {
-            case Authenticator::ErrorCode::SUCCESS:
+            case base::Authenticator::ErrorCode::SUCCESS:
                 break;
-            case Authenticator::ErrorCode::PROTOCOL_ERROR:
+            case base::Authenticator::ErrorCode::PROTOCOL_ERROR:
                 onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
                 return;
-            case Authenticator::ErrorCode::SESSION_DENIED:
+            case base::Authenticator::ErrorCode::SESSION_DENIED:
                 onErrorOccurred(FROM_HERE, ErrorCode::SESSION_DENIED);
                 return;
-            case Authenticator::ErrorCode::VERSION_ERROR:
+            case base::Authenticator::ErrorCode::VERSION_ERROR:
                 onErrorOccurred(FROM_HERE, ErrorCode::VERSION_ERROR);
                 return;
-            case Authenticator::ErrorCode::ACCESS_DENIED:
+            case base::Authenticator::ErrorCode::ACCESS_DENIED:
                 onErrorOccurred(FROM_HERE, ErrorCode::ACCESS_DENIED);
                 return;
             default:
@@ -435,7 +433,7 @@ void TcpChannelNG::setConnected(bool connected)
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::onErrorOccurred(const Location& location, const std::error_code& error_code)
+void TcpChannelNG::onErrorOccurred(const base::Location& location, const std::error_code& error_code)
 {
     ErrorCode error = ErrorCode::UNKNOWN;
 
@@ -459,7 +457,7 @@ void TcpChannelNG::onErrorOccurred(const Location& location, const std::error_co
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::onErrorOccurred(const Location& location, ErrorCode error_code)
+void TcpChannelNG::onErrorOccurred(const base::Location& location, ErrorCode error_code)
 {
     CLOG(ERROR) << "Connection finished:" << error_code << "from" << location;
     setConnected(false);
@@ -546,7 +544,7 @@ void TcpChannelNG::onMessageReceived()
         }
 
         // Increase the counter of sent packets.
-        largeNumberIncrement(&keep_alive_counter_);
+        base::largeNumberIncrement(&keep_alive_counter_);
 
         // Restart keep alive timer.
         keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
@@ -757,5 +755,3 @@ void TcpChannelNG::onKeepAliveTimer()
         onErrorOccurred(FROM_HERE, ErrorCode::SOCKET_TIMEOUT);
     }
 }
-
-} // namespace base

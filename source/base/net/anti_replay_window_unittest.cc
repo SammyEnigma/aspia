@@ -20,8 +20,6 @@
 
 #include <gtest/gtest.h>
 
-namespace base {
-
 TEST(AntiReplayWindowTest, ZeroCounterRejected)
 {
     AntiReplayWindow window;
@@ -160,5 +158,3 @@ TEST(AntiReplayWindowTest, StressSequential)
     // Very old rejected.
     EXPECT_FALSE(window.check(1));
 }
-
-} // namespace base

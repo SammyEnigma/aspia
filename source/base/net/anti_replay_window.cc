@@ -18,8 +18,6 @@
 
 #include "base/net/anti_replay_window.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 bool AntiReplayWindow::check(quint64 counter)
 {
@@ -71,5 +69,3 @@ void AntiReplayWindow::reset()
     max_counter_ = 0;
     bitmap_.reset();
 }
-
-} // namespace base

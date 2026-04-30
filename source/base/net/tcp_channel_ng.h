@@ -30,11 +30,13 @@
 class QTimer;
 
 namespace base {
-
 class Authenticator;
 class Location;
+class RelayPeer;
 class StreamEncryptor;
 class StreamDecryptor;
+} // namespace base
+
 class TcpServer;
 
 class TcpChannelNG final : public TcpChannel
@@ -43,7 +45,7 @@ class TcpChannelNG final : public TcpChannel
 
 public:
     // Constructor available for client.
-    TcpChannelNG(Authenticator* authenticator, QObject* parent = nullptr);
+    TcpChannelNG(base::Authenticator* authenticator, QObject* parent = nullptr);
     ~TcpChannelNG() final;
 
     // Gets the address of the remote host as a string.
@@ -77,13 +79,13 @@ public:
 
 protected:
     friend class TcpServer;
-    friend class RelayPeer;
+    friend class base::RelayPeer;
 
     // Constructor available for server. An already connected socket is being moved.
-    TcpChannelNG(Type type, asio::ip::tcp::socket&& socket, Authenticator* authenticator, QObject* parent);
+    TcpChannelNG(Type type, asio::ip::tcp::socket&& socket, base::Authenticator* authenticator, QObject* parent);
 
     // Starts authentication. In the client channel, it starts automatically when a connection is
-    // established. In the server channel, it is started by the RelayPeer or TcpServer.
+    // established. In the server channel, it is started by the base::RelayPeer or TcpServer.
     void doAuthentication() final;
 
 private:
@@ -150,8 +152,8 @@ private:
 
     void init();
     void setConnected(bool connected);
-    void onErrorOccurred(const Location& location, const std::error_code& error_code);
-    void onErrorOccurred(const Location& location, ErrorCode error_code);
+    void onErrorOccurred(const base::Location& location, const std::error_code& error_code);
+    void onErrorOccurred(const base::Location& location, ErrorCode error_code);
     void onMessageReceived();
     void addWriteTask(quint8 type, quint8 param, const QByteArray& data);
     void doWrite();
@@ -159,7 +161,7 @@ private:
     void doReadData();
     void onKeepAliveTimer();
 
-    SharedPointer<bool> alive_guard_ { new bool(true) };
+    base::SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::io_context& io_context_;
     asio::ip::tcp::socket socket_;
     std::unique_ptr<asio::ip::tcp::resolver> resolver_;
@@ -172,9 +174,9 @@ private:
     bool authenticated_ = false;
     bool paused_ = true;
 
-    ScopedQPointer<Authenticator> authenticator_;
-    std::unique_ptr<StreamEncryptor> encryptor_;
-    std::unique_ptr<StreamDecryptor> decryptor_;
+    ScopedQPointer<base::Authenticator> authenticator_;
+    std::unique_ptr<base::StreamEncryptor> encryptor_;
+    std::unique_ptr<base::StreamDecryptor> decryptor_;
 
     QQueue<WriteTask> write_queue_;
     QByteArray write_buffer_;
@@ -186,7 +188,5 @@ private:
 
     Q_DISABLE_COPY_MOVE(TcpChannelNG)
 };
-
-} // namespace base
 
 #endif // BASE_NET_TCP_CHANNEL_NG_H

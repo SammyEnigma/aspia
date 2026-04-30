@@ -73,7 +73,7 @@ public:
 public slots:
     void start();
     void stop();
-    void setAction(Action action);
+    void setAction(FileRemover::Action action);
 
 signals:
     void sig_started();
@@ -93,7 +93,7 @@ private:
     void onFinished(const base::Location& location);
 
     QPointer<FileTaskFactory> task_factory_;
-    base::ScopedQPointer<FileRemoveQueueBuilder> queue_builder_;
+    ScopedQPointer<FileRemoveQueueBuilder> queue_builder_;
 
     TaskList tasks_;
 

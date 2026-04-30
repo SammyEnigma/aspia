@@ -26,8 +26,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 namespace {
 
 //--------------------------------------------------------------------------------------------------
@@ -303,5 +301,3 @@ QString ConnectEnumerator::state() const
         return QString();
     }
 }
-
-} // namespace base

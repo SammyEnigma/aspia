@@ -28,7 +28,7 @@ class SessionManager : public SessionClient
     Q_OBJECT
 
 public:
-    explicit SessionManager(base::TcpChannel* channel, QObject* parent = nullptr);
+    explicit SessionManager(TcpChannel* channel, QObject* parent = nullptr);
     ~SessionManager() override;
 
 protected:

@@ -20,8 +20,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 ScopedCURL::ScopedCURL()
     : curl_(curl_easy_init())
@@ -47,5 +45,3 @@ ScopedCURLM::~ScopedCURLM()
 {
     curl_multi_cleanup(curlm_);
 }
-
-} // namespace base

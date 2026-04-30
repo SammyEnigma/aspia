@@ -194,18 +194,18 @@ void Client::start()
         if (base::kMinimumSupportedVersion < base::kVersion_3_0_0)
         {
             if (is_legacy_mode_)
-                tcp_channel_ = new base::TcpChannelLegacy(authenticator.release(), this);
+                tcp_channel_ = new TcpChannelLegacy(authenticator.release(), this);
             else
-                tcp_channel_ = new base::TcpChannelNG(authenticator.release(), this);
+                tcp_channel_ = new TcpChannelNG(authenticator.release(), this);
         }
         else
         {
-            tcp_channel_ = new base::TcpChannelNG(authenticator.release(), this);
+            tcp_channel_ = new TcpChannelNG(authenticator.release(), this);
         }
 
-        connect(tcp_channel_, &base::TcpChannel::sig_authenticated, this, &Client::onTcpConnected);
-        connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &Client::onTcpErrorOccurred);
-        connect(tcp_channel_, &base::TcpChannel::sig_messageReceived, this, &Client::onTcpMessageReceived);
+        connect(tcp_channel_, &TcpChannel::sig_authenticated, this, &Client::onTcpConnected);
+        connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Client::onTcpErrorOccurred);
+        connect(tcp_channel_, &TcpChannel::sig_messageReceived, this, &Client::onTcpMessageReceived);
 
         // Now connect to the host.
         emit sig_statusChanged(Status::HOST_CONNECTING);
@@ -322,12 +322,12 @@ void Client::onTcpConnected()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Client::onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code)
+void Client::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     // Remove this after support for versions below 3.0.0 ends.
     if (base::kMinimumSupportedVersion < base::kVersion_3_0_0)
     {
-        if (error_code == base::TcpChannel::ErrorCode::REMOTE_HOST_CLOSED && !is_legacy_mode_ &&
+        if (error_code == TcpChannel::ErrorCode::REMOTE_HOST_CLOSED && !is_legacy_mode_ &&
             !session_state_->isConnectionByHostId() && !tcp_channel_->isAuthenticated())
         {
             CLOG(INFO) << "Host may be out of date. Trying to connect in legacy mode";
@@ -547,8 +547,8 @@ void Client::onRelayConnectionReady()
         router_ = nullptr;
     }
 
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &Client::onTcpErrorOccurred);
-    connect(tcp_channel_, &base::TcpChannel::sig_messageReceived, this, &Client::onTcpMessageReceived);
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Client::onTcpErrorOccurred);
+    connect(tcp_channel_, &TcpChannel::sig_messageReceived, this, &Client::onTcpMessageReceived);
 
     tcpChannelReady();
 }
@@ -623,7 +623,7 @@ void Client::readDirectUdpRequest(const proto::peer::DirectUdpRequest& request)
     for (int i = 0; i < request.address_size(); ++i)
     {
         QString address = QString::fromStdString(request.address(i));
-        if (address.isEmpty() || !base::NetUtils::isValidIpAddress(address))
+        if (address.isEmpty() || !NetUtils::isValidIpAddress(address))
             continue;
         address_list.emplace_back(address);
     }
@@ -635,7 +635,7 @@ void Client::readDirectUdpRequest(const proto::peer::DirectUdpRequest& request)
     }
 
     quint32 port = request.port();
-    if (!base::NetUtils::isValidPort(port))
+    if (!NetUtils::isValidPort(port))
     {
         CLOG(ERROR) << "Invalid port:" << port;
         return;
@@ -661,7 +661,7 @@ void Client::readDirectUdpRequest(const proto::peer::DirectUdpRequest& request)
     // (without using STUN)
     if (address_list.size() > 1)
     {
-        QStringList client_address_list = base::NetUtils::localIpList();
+        QStringList client_address_list = NetUtils::localIpList();
 
         for (const auto& client_address : std::as_const(client_address_list))
         {
@@ -793,13 +793,13 @@ void Client::connectToUdp(
         return;
     }
 
-    udp_channel_ = new base::UdpChannel(this);
+    udp_channel_ = new UdpChannel(this);
     udp_channel_->setEncryptor(std::move(encryptor));
     udp_channel_->setDecryptor(std::move(decryptor));
 
-    connect(udp_channel_, &base::UdpChannel::sig_ready, this, &Client::onUdpReady);
-    connect(udp_channel_, &base::UdpChannel::sig_errorOccurred, this, &Client::onUdpErrorOccurred);
-    connect(udp_channel_, &base::UdpChannel::sig_messageReceived, this, &Client::onUdpMessageReceived);
+    connect(udp_channel_, &UdpChannel::sig_ready, this, &Client::onUdpReady);
+    connect(udp_channel_, &UdpChannel::sig_errorOccurred, this, &Client::onUdpErrorOccurred);
+    connect(udp_channel_, &UdpChannel::sig_messageReceived, this, &Client::onUdpMessageReceived);
 
     if (socket != -1)
         udp_channel_->connectTo(socket, context.address, context.port);

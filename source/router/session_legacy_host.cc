@@ -33,7 +33,7 @@ const size_t kHostKeySize = 512;
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-SessionLegacyHost::SessionLegacyHost(base::TcpChannel* channel, QObject* parent)
+SessionLegacyHost::SessionLegacyHost(TcpChannel* channel, QObject* parent)
     : Session(channel, parent)
 {
     CLOG(INFO) << "Ctor";

@@ -571,7 +571,7 @@ void ConfigDialog::onButtonBoxClicked(QAbstractButton* button)
         settings.setRouterEnabled(ui.checkbox_enable_router->isChecked());
         if (ui.checkbox_enable_router->isChecked())
         {
-            base::Address router_address = base::Address::fromString(
+            Address router_address = Address::fromString(
                 ui.edit_router_address->text(), DEFAULT_ROUTER_TCP_PORT);
             if (!router_address.isValid())
             {
@@ -725,7 +725,7 @@ void ConfigDialog::reloadAll()
 
     bool is_router_enabled = settings.isRouterEnabled();
 
-    base::Address router_address(DEFAULT_ROUTER_TCP_PORT);
+    Address router_address(DEFAULT_ROUTER_TCP_PORT);
     router_address.setHost(settings.routerAddress());
     router_address.setPort(settings.routerPort());
 

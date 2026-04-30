@@ -286,7 +286,7 @@ void Service::onNewConnection()
     CHECK(tcp_server_);
     while (tcp_server_->hasReadyConnections())
     {
-        base::TcpChannel* channel = tcp_server_->nextReadyConnection();
+        TcpChannel* channel = tcp_server_->nextReadyConnection();
         LOG(INFO) << "New connection:" << channel->peerAddress();
         addSession(channel, false);
     }
@@ -298,7 +298,7 @@ void Service::onNewLegacyConnection()
     CHECK(tcp_server_legacy_);
     while (tcp_server_legacy_->hasReadyConnections())
     {
-        base::TcpChannel* channel = tcp_server_legacy_->nextReadyConnection();
+        TcpChannel* channel = tcp_server_legacy_->nextReadyConnection();
         LOG(INFO) << "New legacy connection:" << channel->peerAddress();
         addSession(channel, true);
     }
@@ -374,7 +374,7 @@ bool Service::start()
     }
 
     QString listen_interface = settings.listenInterface();
-    if (!base::TcpServer::isValidListenInterface(listen_interface))
+    if (!TcpServer::isValidListenInterface(listen_interface))
     {
         LOG(ERROR) << "Invalid listen interface address";
         return false;
@@ -435,8 +435,8 @@ bool Service::start()
     base::SharedPointer<base::UserListBase> user_list(UserList::open().release());
     user_list->setSeedKey(seed_key);
 
-    tcp_server_ = new base::TcpServer(this);
-    connect(tcp_server_, &base::TcpServer::sig_newConnection, this, &Service::onNewConnection);
+    tcp_server_ = new TcpServer(this);
+    connect(tcp_server_, &TcpServer::sig_newConnection, this, &Service::onNewConnection);
 
     tcp_server_->setPrivateKey(private_key);
     tcp_server_->setUserList(user_list);
@@ -445,8 +445,8 @@ bool Service::start()
         proto::router::SESSION_TYPE_HOST | proto::router::SESSION_TYPE_RELAY);
     tcp_server_->start(port, listen_interface);
 
-    tcp_server_legacy_ = new base::TcpServerLegacy(this);
-    connect(tcp_server_legacy_, &base::TcpServerLegacy::sig_newConnection, this, &Service::onNewLegacyConnection);
+    tcp_server_legacy_ = new TcpServerLegacy(this);
+    connect(tcp_server_legacy_, &TcpServerLegacy::sig_newConnection, this, &Service::onNewLegacyConnection);
 
     tcp_server_legacy_->setPrivateKey(private_key);
     tcp_server_legacy_->setUserList(user_list);
@@ -466,7 +466,7 @@ bool Service::start()
 }
 
 //--------------------------------------------------------------------------------------------------
-void Service::addSession(base::TcpChannel* channel, bool is_legacy)
+void Service::addSession(TcpChannel* channel, bool is_legacy)
 {
     QString address = channel->peerAddress();
     proto::router::SessionType session_type =

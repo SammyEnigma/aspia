@@ -152,7 +152,7 @@ private:
     QLabel* status_computers_label_ = nullptr;
     QLabel* status_check_label_ = nullptr;
 
-    base::ScopedQPointer<OnlineChecker> online_checker_;
+    ScopedQPointer<OnlineChecker> online_checker_;
 
     Q_DISABLE_COPY_MOVE(LocalGroupWidget)
 };

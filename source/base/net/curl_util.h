@@ -22,8 +22,6 @@
 #include <QtGlobal>
 #include <curl/curl.h>
 
-namespace base {
-
 class ScopedCURL
 {
 public:
@@ -49,7 +47,5 @@ private:
     CURLM* curlm_;
     Q_DISABLE_COPY_MOVE(ScopedCURLM)
 };
-
-} // namespace base
 
 #endif // BASE_NET_CURL_UTIL_H

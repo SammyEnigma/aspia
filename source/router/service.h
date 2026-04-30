@@ -84,10 +84,10 @@ private slots:
 
 private:
     bool start();
-    void addSession(base::TcpChannel* channel, bool is_legacy);
+    void addSession(TcpChannel* channel, bool is_legacy);
 
-    base::TcpServer* tcp_server_ = nullptr;
-    base::TcpServerLegacy* tcp_server_legacy_ = nullptr;
+    TcpServer* tcp_server_ = nullptr;
+    TcpServerLegacy* tcp_server_legacy_ = nullptr;
     base::StunServer* stun_server_ = nullptr;
 
     QMap<qint64, Keys> key_pool_;

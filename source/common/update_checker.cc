@@ -129,7 +129,7 @@ void UpdateChecker::run()
 
     LOG(INFO) << "Start checking for updates. Url:" << unicode_url;
 
-    base::ScopedCURL curl;
+    ScopedCURL curl;
     curl_easy_setopt(curl.get(), CURLOPT_URL, url.data());
     curl_easy_setopt(curl.get(), CURLOPT_NOPROGRESS, 1);
     curl_easy_setopt(curl.get(), CURLOPT_MAXREDIRS, 15);
@@ -150,7 +150,7 @@ void UpdateChecker::run()
     curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, writeDataFunc);
     curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &response);
 
-    base::ScopedCURLM multi_curl;
+    ScopedCURLM multi_curl;
     curl_multi_add_handle(multi_curl.get(), curl.get());
 
     int still_running = 1;

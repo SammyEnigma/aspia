@@ -27,8 +27,6 @@
 
 #include "base/logging.h"
 
-namespace base {
-
 //--------------------------------------------------------------------------------------------------
 FirewallManager::FirewallManager(const QString& application_path)
     : application_path_(QDir::toNativeSeparators(application_path))
@@ -353,5 +351,3 @@ void FirewallManager::deleteRule(Microsoft::WRL::ComPtr<INetFwRule> rule)
     rule->put_Name(unique_name);
     firewall_rules_->Remove(unique_name);
 }
-
-} // namespace base

@@ -24,8 +24,6 @@
 #include <type_traits>
 #include <utility>
 
-namespace base {
-
 // Owning smart pointer for QObject-derived types. Behaves like std::unique_ptr, but on reset()
 // schedules deletion via deleteLater() instead of calling delete directly. This makes it safe to
 // release objects that may still be processing queued events or live in another thread.
@@ -134,7 +132,5 @@ inline void swap(ScopedQPointer<T>& a, ScopedQPointer<T>& b) noexcept
 {
     a.swap(b);
 }
-
-} // namespace base
 
 #endif // BASE_SCOPED_QPOINTER_H

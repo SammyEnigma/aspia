@@ -33,10 +33,11 @@
 
 class QTimer;
 
+class UdpChannel;
+
 namespace base {
 class Location;
 class StunPeer;
-class UdpChannel;
 } // namespace base
 
 class Client : public QObject
@@ -44,7 +45,7 @@ class Client : public QObject
     Q_OBJECT
 
 public:
-    Client(base::TcpChannel* tcp_channel, QObject* parent);
+    Client(TcpChannel* tcp_channel, QObject* parent);
     virtual ~Client();
 
     enum Feature
@@ -101,7 +102,7 @@ protected:
     virtual void onBandwidthChanged(qint64 bandwidth) { /* Nothing */ };
 
 private slots:
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
     void onTcpMessageReceived(quint8 tcp_channel_id, const QByteArray& buffer);
 
     void onUdpReady();
@@ -126,8 +127,8 @@ private:
     void setUdpState(const base::Location& location, UdpState state);
 
     Features features_ = FEATURE_NONE;
-    base::TcpChannel* tcp_channel_ = nullptr;
-    base::ScopedQPointer<base::UdpChannel> udp_channel_;
+    TcpChannel* tcp_channel_ = nullptr;
+    ScopedQPointer<UdpChannel> udp_channel_;
     UdpState udp_state_ = UdpState::DISCONNECTED;
 
     struct PendingUdp
@@ -136,7 +137,7 @@ private:
         QByteArray iv;
     };
 
-    base::ScopedQPointer<base::StunPeer> stun_peer_;
+    ScopedQPointer<base::StunPeer> stun_peer_;
     std::optional<PendingUdp> pending_udp_context_;
 
     UdpConnectPhase udp_phase_ = UdpConnectPhase::NONE;

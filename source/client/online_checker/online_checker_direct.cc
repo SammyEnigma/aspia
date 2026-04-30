@@ -47,14 +47,14 @@ public:
 
 private slots:
     void onTcpConnected();
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
 
 private:
     void onFinished(const base::Location& location, bool online);
 
     const ComputerConfig computer_;
 
-    base::TcpChannel* tcp_channel_ = nullptr;
+    TcpChannel* tcp_channel_ = nullptr;
     QTimer timer_;
     bool finished_ = false;
 };
@@ -85,7 +85,7 @@ OnlineCheckerDirect::Instance::~Instance()
 //--------------------------------------------------------------------------------------------------
 void OnlineCheckerDirect::Instance::start()
 {
-    base::Address address = base::Address::fromString(computer_.address, DEFAULT_HOST_TCP_PORT);
+    Address address = Address::fromString(computer_.address, DEFAULT_HOST_TCP_PORT);
 
     LOG(INFO) << "Starting connection to" << address.host() << ":" << address.port()
               << "(computer:" << computer_.id << ")";
@@ -96,10 +96,10 @@ void OnlineCheckerDirect::Instance::start()
     authenticator->setPassword(computer_.password);
     authenticator->setSessionType(proto::peer::SESSION_TYPE_DESKTOP);
 
-    tcp_channel_ = new base::TcpChannelNG(authenticator, this);
+    tcp_channel_ = new TcpChannelNG(authenticator, this);
 
-    connect(tcp_channel_, &base::TcpChannel::sig_connected, this, &Instance::onTcpConnected);
-    connect(tcp_channel_, &base::TcpChannel::sig_errorOccurred, this, &Instance::onTcpErrorOccurred);
+    connect(tcp_channel_, &TcpChannel::sig_connected, this, &Instance::onTcpConnected);
+    connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Instance::onTcpErrorOccurred);
 
     tcp_channel_->connectTo(address.host(), address.port());
 }
@@ -112,7 +112,7 @@ void OnlineCheckerDirect::Instance::onTcpConnected()
 }
 
 //--------------------------------------------------------------------------------------------------
-void OnlineCheckerDirect::Instance::onTcpErrorOccurred(base::TcpChannel::ErrorCode /* error_code */)
+void OnlineCheckerDirect::Instance::onTcpErrorOccurred(TcpChannel::ErrorCode /* error_code */)
 {
     LOG(INFO) << "Connection aborted for computer:" << computer_.id;
     onFinished(FROM_HERE, false);

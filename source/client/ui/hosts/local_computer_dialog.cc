@@ -170,8 +170,8 @@ void LocalComputerDialog::onButtonBoxClicked(QAbstractButton* button)
 
     if (router_id == 0)
     {
-        base::Address address =
-            base::Address::fromString(ui.edit_address->text(), DEFAULT_HOST_TCP_PORT);
+        Address address =
+            Address::fromString(ui.edit_address->text(), DEFAULT_HOST_TCP_PORT);
         if (!address.isValid())
         {
             MsgBox::warning(this, tr("An invalid computer address was entered."));

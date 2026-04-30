@@ -24,7 +24,7 @@
 namespace router {
 
 //--------------------------------------------------------------------------------------------------
-SessionManager::SessionManager(base::TcpChannel* channel, QObject* parent)
+SessionManager::SessionManager(TcpChannel* channel, QObject* parent)
     : SessionClient(channel, parent)
 {
     CLOG(INFO) << "Ctor";

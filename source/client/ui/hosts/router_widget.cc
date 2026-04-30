@@ -1118,9 +1118,9 @@ void RouterWidget::onStatusChanged(qint64 router_id, RouterConnection::Status st
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterWidget::onConnectionErrorOccurred(qint64 /* router_id */, base::TcpChannel::ErrorCode error_code)
+void RouterWidget::onConnectionErrorOccurred(qint64 /* router_id */, TcpChannel::ErrorCode error_code)
 {
-    status_dialog_->addMessage(tr("Network error: %1.").arg(base::TcpChannel::errorToString(error_code)));
+    status_dialog_->addMessage(tr("Network error: %1.").arg(TcpChannel::errorToString(error_code)));
 }
 
 //--------------------------------------------------------------------------------------------------

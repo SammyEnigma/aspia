@@ -36,7 +36,7 @@ class Session : public QObject
     Q_OBJECT
 
 public:
-    Session(base::TcpChannel* channel, QObject* parent);
+    Session(TcpChannel* channel, QObject* parent);
     virtual ~Session() override;
 
     void start();
@@ -63,14 +63,14 @@ protected:
     virtual void onSessionMessage(quint8 channel_id, const QByteArray& buffer) = 0;
 
 private slots:
-    void onTcpErrorOccurred(base::TcpChannel::ErrorCode error_code);
+    void onTcpErrorOccurred(TcpChannel::ErrorCode error_code);
     void onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer);
 
 private:
     const qint64 session_id_;
     time_t start_time_ = 0;
 
-    base::TcpChannel* tcp_channel_ = nullptr;
+    TcpChannel* tcp_channel_ = nullptr;
     QHostAddress address_;
 };
 
