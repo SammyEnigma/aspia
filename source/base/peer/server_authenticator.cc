@@ -134,13 +134,6 @@ bool ServerAuthenticator::onStarted()
 {
     internal_state_ = InternalState::READ_CLIENT_HELLO;
 
-    // We do not allow anonymous access without a private key.
-    if (anonymous_access_ == AnonymousAccess::ENABLE && !key_pair_.isValid())
-    {
-        finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
-        return false;
-    }
-
     if (anonymous_access_ == AnonymousAccess::ENABLE)
     {
         // When anonymous access is enabled, a private key must be installed.
