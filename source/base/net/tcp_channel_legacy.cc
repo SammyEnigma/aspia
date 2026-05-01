@@ -257,7 +257,7 @@ void TcpChannelLegacy::setPaused(bool enable)
 //--------------------------------------------------------------------------------------------------
 void TcpChannelLegacy::send(quint8 channel_id, const QByteArray& buffer)
 {
-    addWriteTask(WriteTask::Type::USER_DATA, channel_id, buffer);
+    addWriteTask(WriteTask::Type::USER_DATA, channel_id, buffer, true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -355,7 +355,6 @@ void TcpChannelLegacy::disconnectFrom()
     {
         std::error_code ignored_code;
         socket_.cancel(ignored_code);
-
         socket_.close(ignored_code);
     }
 
@@ -455,9 +454,9 @@ void TcpChannelLegacy::onKeyChanged()
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onAuthenticatorMessage(const QByteArray& data)
+void TcpChannelLegacy::onAuthenticatorMessage(const QByteArray& data, bool encrypted)
 {
-    send(0, data);
+    addWriteTask(WriteTask::Type::USER_DATA, 0, data, encrypted);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -639,12 +638,13 @@ void TcpChannelLegacy::onMessageReceived()
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::addWriteTask(WriteTask::Type type, quint8 channel_id, const QByteArray& data)
+void TcpChannelLegacy::addWriteTask(
+    WriteTask::Type type, quint8 channel_id, const QByteArray& data, bool encrypted)
 {
     const bool schedule_write = write_queue_.isEmpty();
 
     // Add the buffer to the queue for sending.
-    write_queue_.emplace_back(type, channel_id, data);
+    write_queue_.emplace_back(type, channel_id, data, encrypted);
 
     if (schedule_write)
         doWrite();
@@ -1064,7 +1064,7 @@ void TcpChannelLegacy::sendKeepAlive(quint8 flags, const void* data, size_t size
     memcpy(buffer.data() + sizeof(quint8) + sizeof(header), data, size);
 
     // Add a task to the queue.
-    addWriteTask(WriteTask::Type::SERVICE_DATA, 0, std::move(buffer));
+    addWriteTask(WriteTask::Type::SERVICE_DATA, 0, std::move(buffer), false);
 }
 
 //--------------------------------------------------------------------------------------------------

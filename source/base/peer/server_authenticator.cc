@@ -373,7 +373,7 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
     QByteArray message = serialize(server_hello);
 
     CLOG(INFO) << "Sending: ServerHello (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -483,7 +483,7 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
     QByteArray message = serialize(server_key_exchange);
 
     CLOG(INFO) << "Sending: ServerKeyExchange (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -564,7 +564,7 @@ void ServerAuthenticator::doSessionChallenge()
     QByteArray message = serialize(session_challenge);
 
     CLOG(INFO) << "Sending: SessionChallenge (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, true);
 }
 
 //--------------------------------------------------------------------------------------------------

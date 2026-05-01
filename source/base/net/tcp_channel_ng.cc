@@ -263,7 +263,7 @@ void TcpChannelNG::send(quint8 channel_id, const QByteArray& buffer)
         return;
     }
 
-    addWriteTask(USER_DATA, channel_id, buffer);
+    addWriteTask(USER_DATA, channel_id, buffer, true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -324,9 +324,10 @@ void TcpChannelNG::init()
     keep_alive_counter_.resize(sizeof(quint32));
     memset(keep_alive_counter_.data(), 0, keep_alive_counter_.size());
 
-    connect(authenticator_, &Authenticator::sig_outgoingMessage, this, [this](const QByteArray& data)
+    connect(authenticator_, &Authenticator::sig_outgoingMessage,
+            this, [this](const QByteArray& data, bool encrypted)
     {
-        addWriteTask(AUTH_DATA, 0, data);
+        addWriteTask(AUTH_DATA, 0, data, encrypted);
     });
 
     connect(authenticator_, &Authenticator::sig_keyChanged, this, [this]()
@@ -552,7 +553,7 @@ void TcpChannelNG::onMessageReceived()
     {
         if (read_header_.param1 & KEEP_ALIVE_PING)
         {
-            addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PONG, decrypt_buffer_);
+            addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PONG, decrypt_buffer_, true);
             return;
         }
 
@@ -582,10 +583,10 @@ void TcpChannelNG::onMessageReceived()
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::addWriteTask(quint8 type, quint8 param, const QByteArray& data)
+void TcpChannelNG::addWriteTask(quint8 type, quint8 param, const QByteArray& data, bool encrypted)
 {
     const bool schedule_write = write_queue_.isEmpty();
-    write_queue_.emplace_back(type, param, data);
+    write_queue_.emplace_back(type, param, data, encrypted);
     if (schedule_write)
         doWrite();
 }
@@ -802,7 +803,7 @@ void TcpChannelNG::scheduleKeepAlivePing()
         }
 
         // Channel is idle. Send a PING and require a PONG within kKeepAliveTimeout.
-        addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PING, keep_alive_counter_);
+        addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PING, keep_alive_counter_, true);
         scheduleKeepAlivePongTimeout();
     });
 }

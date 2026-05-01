@@ -126,10 +126,11 @@ private:
     public:
         enum class Type { SERVICE_DATA, USER_DATA };
 
-        WriteTask(Type type, quint8 channel_id, const QByteArray& data)
+        WriteTask(Type type, quint8 channel_id, const QByteArray& data, bool encrypted)
             : type_(type),
-            channel_id_(channel_id),
-            data_(data)
+              channel_id_(channel_id),
+              data_(data),
+              encrypted_(encrypted)
         {
             // Nothing
         }
@@ -141,11 +142,13 @@ private:
         quint8 channelId() const { return channel_id_; }
         const QByteArray& data() const { return data_; }
         QByteArray& data() { return data_; }
+        bool encrypted() const { return encrypted_; }
 
     private:
         Type type_;
         quint8 channel_id_;
         QByteArray data_;
+        bool encrypted_;
     };
 
     enum class ReadState
@@ -194,7 +197,7 @@ private:
     void setConnected(bool connected);
 
     void onKeyChanged();
-    void onAuthenticatorMessage(const QByteArray& data);
+    void onAuthenticatorMessage(const QByteArray& data, bool encrypted);
     void onAuthenticatorFinished(Authenticator::ErrorCode error_code);
 
     void onErrorOccurred(const Location& location, const std::error_code& error_code);
@@ -203,7 +206,7 @@ private:
     void onMessageWritten(quint8 channel_id);
     void onMessageReceived();
 
-    void addWriteTask(WriteTask::Type type, quint8 channel_id, const QByteArray& data);
+    void addWriteTask(WriteTask::Type type, quint8 channel_id, const QByteArray& data, bool encrypted);
 
     void doWrite();
     void doReadSize();

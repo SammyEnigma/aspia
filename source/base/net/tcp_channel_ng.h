@@ -88,10 +88,11 @@ private:
     class WriteTask
     {
     public:
-        WriteTask(quint8 type, quint8 param, const QByteArray& data)
+        WriteTask(quint8 type, quint8 param, const QByteArray& data, bool encrypted)
             : type_(type),
               param_(param),
-              data_(data)
+              data_(data),
+              encrypted_(encrypted)
         {
             // Nothing
         }
@@ -103,11 +104,13 @@ private:
         quint8 param() const { return param_; }
         const QByteArray& data() const { return data_; }
         QByteArray& data() { return data_; }
+        bool encrypted() const { return encrypted_; }
 
     private:
         quint8 type_;
         quint8 param_;
         QByteArray data_;
+        bool encrypted_;
     };
 
     enum class ReadState
@@ -145,7 +148,7 @@ private:
     void onErrorOccurred(const Location& location, const std::error_code& error_code);
     void onErrorOccurred(const Location& location, ErrorCode error_code);
     void onMessageReceived();
-    void addWriteTask(quint8 type, quint8 param, const QByteArray& data);
+    void addWriteTask(quint8 type, quint8 param, const QByteArray& data, bool encrypted);
     void doWrite();
     void doReadHeader();
     void doReadData();

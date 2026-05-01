@@ -300,7 +300,7 @@ void ClientAuthenticator::sendClientHello()
     QByteArray message = serialize(client_hello);
 
     CLOG(INFO) << "Sending: ClientHello (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -355,7 +355,7 @@ void ClientAuthenticator::sendIdentify()
     QByteArray message = serialize(identify);
 
     CLOG(INFO) << "Sending: Identify (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -431,7 +431,7 @@ void ClientAuthenticator::sendClientKeyExchange()
     QByteArray message = serialize(client_key_exchange);
 
     CLOG(INFO) << "Sending: ClientKeyExchange (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -492,5 +492,5 @@ void ClientAuthenticator::sendSessionResponse()
     QByteArray message = serialize(response);
 
     CLOG(INFO) << "Sending: SessionResponse (" << message.size() << ")";
-    emit sig_outgoingMessage(message);
+    emit sig_outgoingMessage(message, true);
 }

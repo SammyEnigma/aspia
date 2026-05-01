@@ -78,7 +78,7 @@ public slots:
     void onMessageWritten();
 
 signals:
-    void sig_outgoingMessage(const QByteArray& data);
+    void sig_outgoingMessage(const QByteArray& data, bool encrypted);
     void sig_keyChanged();
     void sig_finished(Authenticator::ErrorCode error_code);
 
