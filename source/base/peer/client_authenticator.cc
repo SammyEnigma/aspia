@@ -129,7 +129,6 @@ void ClientAuthenticator::setDisplayName(const QString& display_name)
 //--------------------------------------------------------------------------------------------------
 bool ClientAuthenticator::onStarted()
 {
-    internal_state_ = InternalState::SEND_CLIENT_HELLO;
     sendClientHello();
     return true;
 }
@@ -144,14 +143,9 @@ void ClientAuthenticator::onReceived(const QByteArray& buffer)
             if (readServerHello(buffer))
             {
                 if (identify_ == proto::key_exchange::IDENTIFY_ANONYMOUS)
-                {
                     internal_state_ = InternalState::READ_SESSION_CHALLENGE;
-                }
                 else
-                {
-                    internal_state_ = InternalState::SEND_IDENTIFY;
                     sendIdentify();
-                }
             }
         }
         break;
@@ -159,10 +153,7 @@ void ClientAuthenticator::onReceived(const QByteArray& buffer)
         case InternalState::READ_SERVER_KEY_EXCHANGE:
         {
             if (readServerKeyExchange(buffer))
-            {
-                internal_state_ = InternalState::SEND_CLIENT_KEY_EXCHANGE;
                 sendClientKeyExchange();
-            }
         }
         break;
 
@@ -187,41 +178,10 @@ void ClientAuthenticator::onReceived(const QByteArray& buffer)
 //--------------------------------------------------------------------------------------------------
 void ClientAuthenticator::onWritten()
 {
-    switch (internal_state_)
+    if (internal_state_ == InternalState::SEND_SESSION_RESPONSE)
     {
-        case InternalState::SEND_CLIENT_HELLO:
-        {
-            CLOG(INFO) << "Sended: ClientHello";
-            internal_state_ = InternalState::READ_SERVER_HELLO;
-        }
-        break;
-
-        case InternalState::SEND_IDENTIFY:
-        {
-            CLOG(INFO) << "Sended: Identify";
-            internal_state_ = InternalState::READ_SERVER_KEY_EXCHANGE;
-        }
-        break;
-
-        case InternalState::SEND_CLIENT_KEY_EXCHANGE:
-        {
-            CLOG(INFO) << "Sended: ClientKeyExchange";
-            internal_state_ = InternalState::READ_SESSION_CHALLENGE;
-
-            CLOG(INFO) << "Session key is ready";
-            emit sig_keyChanged();
-        }
-        break;
-
-        case InternalState::SEND_SESSION_RESPONSE:
-        {
-            CLOG(INFO) << "Sended: SessionResponse";
-            finish(FROM_HERE, ErrorCode::SUCCESS);
-        }
-        break;
-
-        default:
-            break;
+        CLOG(INFO) << "Sended: SessionResponse";
+        finish(FROM_HERE, ErrorCode::SUCCESS);
     }
 }
 
@@ -301,6 +261,7 @@ void ClientAuthenticator::sendClientHello()
 
     CLOG(INFO) << "Sending: ClientHello (" << message.size() << ")";
     emit sig_outgoingMessage(message, false);
+    internal_state_ = InternalState::READ_SERVER_HELLO;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -356,6 +317,7 @@ void ClientAuthenticator::sendIdentify()
 
     CLOG(INFO) << "Sending: Identify (" << message.size() << ")";
     emit sig_outgoingMessage(message, false);
+    internal_state_ = InternalState::READ_SERVER_KEY_EXCHANGE;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -432,6 +394,10 @@ void ClientAuthenticator::sendClientKeyExchange()
 
     CLOG(INFO) << "Sending: ClientKeyExchange (" << message.size() << ")";
     emit sig_outgoingMessage(message, false);
+    internal_state_ = InternalState::READ_SESSION_CHALLENGE;
+
+    CLOG(INFO) << "Session key is ready";
+    emit sig_keyChanged();
 }
 
 //--------------------------------------------------------------------------------------------------

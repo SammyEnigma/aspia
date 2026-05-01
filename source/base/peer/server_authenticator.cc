@@ -200,58 +200,7 @@ void ServerAuthenticator::onReceived(const QByteArray& buffer)
 //--------------------------------------------------------------------------------------------------
 void ServerAuthenticator::onWritten()
 {
-    switch (internal_state_)
-    {
-        case InternalState::SEND_SERVER_HELLO:
-        {
-            CLOG(INFO) << "Sended: ServerHello";
 
-            if (!session_key_.isEmpty())
-            {
-                CLOG(INFO) << "Session key is ready";
-                emit sig_keyChanged();
-            }
-
-            switch (identify_)
-            {
-                case proto::key_exchange::IDENTIFY_SRP:
-                {
-                    internal_state_ = InternalState::READ_IDENTIFY;
-                }
-                break;
-
-                case proto::key_exchange::IDENTIFY_ANONYMOUS:
-                {
-                    internal_state_ = InternalState::SEND_SESSION_CHALLENGE;
-                    doSessionChallenge();
-                }
-                break;
-
-                default:
-                    NOTREACHED();
-                    break;
-            }
-        }
-        break;
-
-        case InternalState::SEND_SERVER_KEY_EXCHANGE:
-        {
-            CLOG(INFO) << "Sended: ServerKeyExchange";
-            internal_state_ = InternalState::READ_CLIENT_KEY_EXCHANGE;
-        }
-        break;
-
-        case InternalState::SEND_SESSION_CHALLENGE:
-        {
-            CLOG(INFO) << "Sended: SessionChallenge";
-            internal_state_ = InternalState::READ_SESSION_RESPONSE;
-        }
-        break;
-
-        default:
-            NOTREACHED();
-            break;
-    }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -366,14 +315,33 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
         server_hello.set_encryption(proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305);
     }
 
-    // Now we are in the authentication phase.
-    internal_state_ = InternalState::SEND_SERVER_HELLO;
     encryption_ = server_hello.encryption();
 
     QByteArray message = serialize(server_hello);
 
     CLOG(INFO) << "Sending: ServerHello (" << message.size() << ")";
     emit sig_outgoingMessage(message, false);
+
+    if (!session_key_.isEmpty())
+    {
+        CLOG(INFO) << "Session key is ready";
+        emit sig_keyChanged();
+    }
+
+    switch (identify_)
+    {
+        case proto::key_exchange::IDENTIFY_SRP:
+            internal_state_ = InternalState::READ_IDENTIFY;
+            break;
+
+        case proto::key_exchange::IDENTIFY_ANONYMOUS:
+            doSessionChallenge();
+            break;
+
+        default:
+            finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
+            break;
+    }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -469,7 +437,6 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
         return;
     }
 
-    internal_state_ = InternalState::SEND_SERVER_KEY_EXCHANGE;
     encrypt_iv_ = Random::byteArray(kIvSize);
 
     proto::key_exchange::SrpServerKeyExchange server_key_exchange;
@@ -484,6 +451,7 @@ void ServerAuthenticator::onIdentify(const QByteArray& buffer)
 
     CLOG(INFO) << "Sending: ServerKeyExchange (" << message.size() << ")";
     emit sig_outgoingMessage(message, false);
+    internal_state_ = InternalState::READ_CLIENT_KEY_EXCHANGE;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -540,7 +508,6 @@ void ServerAuthenticator::onClientKeyExchange(const QByteArray& buffer)
     CLOG(INFO) << "Session key is ready";
     emit sig_keyChanged();
 
-    internal_state_ = InternalState::SEND_SESSION_CHALLENGE;
     doSessionChallenge();
 }
 
@@ -565,6 +532,7 @@ void ServerAuthenticator::doSessionChallenge()
 
     CLOG(INFO) << "Sending: SessionChallenge (" << message.size() << ")";
     emit sig_outgoingMessage(message, true);
+    internal_state_ = InternalState::READ_SESSION_RESPONSE;
 }
 
 //--------------------------------------------------------------------------------------------------

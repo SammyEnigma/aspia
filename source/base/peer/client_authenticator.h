@@ -54,16 +54,13 @@ private:
 
     enum class InternalState
     {
-        SEND_CLIENT_HELLO,
         READ_SERVER_HELLO,
-        SEND_IDENTIFY,
         READ_SERVER_KEY_EXCHANGE,
-        SEND_CLIENT_KEY_EXCHANGE,
         READ_SESSION_CHALLENGE,
         SEND_SESSION_RESPONSE
     };
 
-    InternalState internal_state_ = InternalState::SEND_CLIENT_HELLO;
+    InternalState internal_state_ = InternalState::READ_SERVER_HELLO;
 
     QByteArray peer_public_key_;
     QString username_;

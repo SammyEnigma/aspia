@@ -70,11 +70,8 @@ private:
     enum class InternalState
     {
         READ_CLIENT_HELLO,
-        SEND_SERVER_HELLO,
         READ_IDENTIFY,
-        SEND_SERVER_KEY_EXCHANGE,
         READ_CLIENT_KEY_EXCHANGE,
-        SEND_SESSION_CHALLENGE,
         READ_SESSION_RESPONSE
     };
 
