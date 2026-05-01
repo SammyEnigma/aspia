@@ -32,140 +32,319 @@
         <source>Close</source>
         <translation>Sluiten</translation>
     </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="104"/>
+        <source>Version: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="109"/>
+        <source>Aspia is free software released under GNU General Public License 3.</source>
+        <translation type="unfinished">Aspia is gratis software verspreid onder de GNU General Public License 3.</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="110"/>
+        <source>You can get a copy of license here:</source>
+        <translation type="unfinished">Download een kopie van de licentie:</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="115"/>
+        <source>You can also get a translation of GNU GPL license here:</source>
+        <translation type="unfinished">Download hier een vertaling van de GNU GPL:</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="119"/>
+        <source>Links</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="120"/>
+        <source>Home page:</source>
+        <translation type="unfinished">Website:</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="121"/>
+        <source>GitHub page:</source>
+        <translation type="unfinished">GitHub pagina:</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="124"/>
+        <source>Developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="126"/>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="128"/>
+        <source>Third-party components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="130"/>
+        <source>Graphics and images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="131"/>
+        <source>Icons by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="158"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="159"/>
+        <source>Path: %1</source>
+        <translation type="unfinished">Pad: %1</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="160"/>
+        <source>Logging directory: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="162"/>
+        <source>Logging file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="167"/>
+        <source>Build Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="168"/>
+        <source>Git branch: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="170"/>
+        <source>Git commit: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="175"/>
+        <source>Compilation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="176"/>
+        <source>Compilation date: %1</source>
+        <translation type="unfinished">Compilatie datum: %1</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="177"/>
+        <source>Compilation time: %1</source>
+        <translation type="unfinished">Compilatie tijd: %1</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/about_dialog.cc" line="206"/>
+        <source>Version Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version: %1</source>
+        <translation type="vanished">Versie: %1</translation>
+    </message>
+    <message>
+        <source>Links:</source>
+        <translation type="vanished">Links:</translation>
+    </message>
+    <message>
+        <source>Developers:</source>
+        <translation type="vanished">Ontwikkelaars:</translation>
+    </message>
+    <message>
+        <source>Translators:</source>
+        <translation type="vanished">Vertalingen:</translation>
+    </message>
+    <message>
+        <source>Third-party components:</source>
+        <translation type="vanished">Third-party componenten:</translation>
+    </message>
+    <message>
+        <source>%1 version: %2</source>
+        <translation type="vanished">%1 versie: %2</translation>
+    </message>
+    <message>
+        <source>Save File</source>
+        <translation type="vanished">Bestand Opslaan</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
 </context>
 <context>
-    <name>AddressBookDialog</name>
+    <name>AddressBar</name>
     <message>
-        <source>Address Book Properties</source>
-        <translation type="vanished">Adresboek eigenschappen</translation>
+        <location filename="../client/ui/file_transfer/address_bar.cc" line="54"/>
+        <source>An incorrect path to the folder was entered.</source>
+        <translation type="unfinished">Er is een ongeldig pad voor de map opgegeven.</translation>
     </message>
     <message>
-        <source>General</source>
-        <translation type="vanished">Basis</translation>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
+</context>
+<context>
+    <name>AddressBarModel</name>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="79"/>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="447"/>
+        <source>Home Folder</source>
+        <translation type="unfinished">Thuismap</translation>
     </message>
     <message>
-        <source>Name:</source>
-        <translation type="vanished">Naam:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="83"/>
+        <source>Desktop</source>
+        <translation type="unfinished">Bureablad</translation>
     </message>
     <message>
-        <source>File:</source>
-        <translation type="vanished">Bestand:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="286"/>
+        <source>Computer</source>
+        <translation type="unfinished">Computer</translation>
     </message>
     <message>
-        <source>Encryption:</source>
-        <translation type="vanished">Encryptie:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="395"/>
+        <source>Name</source>
+        <translation type="unfinished">Naam</translation>
     </message>
     <message>
-        <source>Password:</source>
-        <translation type="vanished">Wachtwoord:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="398"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
     </message>
     <message>
-        <source>Password (repeat):</source>
-        <translation type="vanished">Wachtwoord (nogmaals):</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="432"/>
+        <source>Optical Drive</source>
+        <translation type="unfinished">Optische Schijf</translation>
     </message>
     <message>
-        <source>Comment:</source>
-        <translation type="vanished">Commentaar:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="435"/>
+        <source>Removable Drive</source>
+        <translation type="unfinished">Verwijderbare Schijf</translation>
     </message>
     <message>
-        <source>Router</source>
-        <translation type="vanished">Router</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="438"/>
+        <source>Fixed Drive</source>
+        <translation type="unfinished">Vaste Schijf</translation>
     </message>
     <message>
-        <source>Use a router</source>
-        <translation type="vanished">Gebruik een router</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="441"/>
+        <source>Network Drive</source>
+        <translation type="unfinished">Netwerk Schijf</translation>
     </message>
     <message>
-        <source>Address:</source>
-        <translation type="vanished">Adres:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="444"/>
+        <source>RAM Drive</source>
+        <translation type="unfinished">RAM Schijf</translation>
     </message>
     <message>
-        <source>User Name:</source>
-        <translation type="vanished">Gebruikers Naam:</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="450"/>
+        <source>Desktop Folder</source>
+        <translation type="unfinished">Bureablad Map</translation>
     </message>
     <message>
-        <source>Other</source>
-        <translation type="obsolete">Overige</translation>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="453"/>
+        <source>Root Directory</source>
+        <translation type="unfinished">Root Map</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="456"/>
+        <source>Unknown Drive</source>
+        <translation type="unfinished">Onbekende Schijf</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="474"/>
+        <source>TB</source>
+        <translation type="unfinished">TB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="479"/>
+        <source>GB</source>
+        <translation type="unfinished">GB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="484"/>
+        <source>MB</source>
+        <translation type="unfinished">MB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="489"/>
+        <source>kB</source>
+        <translation type="unfinished">kB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="494"/>
+        <source>B</source>
+        <translation type="unfinished">B</translation>
+    </message>
+    <message>
+        <source>Total Space</source>
+        <translation type="vanished">Totale Ruimte</translation>
+    </message>
+    <message>
+        <source>Free Space</source>
+        <translation type="vanished">Vrije Ruimte</translation>
     </message>
 </context>
 <context>
     <name>AddressBookImporter</name>
     <message>
-        <location filename="../client/address_book_importer.cc" line="110"/>
+        <location filename="../client/address_book_importer.cc" line="108"/>
         <source>%1 (Imported)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="269"/>
+        <location filename="../client/address_book_importer.cc" line="267"/>
         <source>Unable to open file &quot;%1&quot;: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="278"/>
+        <location filename="../client/address_book_importer.cc" line="276"/>
         <source>Selected file is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="286"/>
-        <location filename="../client/address_book_importer.cc" line="333"/>
+        <location filename="../client/address_book_importer.cc" line="284"/>
+        <location filename="../client/address_book_importer.cc" line="331"/>
         <source>The address book file is corrupted or has an unknown format.</source>
         <translation type="unfinished">Het adresboek bestand is beschadigd of heeft een onbekende indeling.</translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="299"/>
+        <location filename="../client/address_book_importer.cc" line="297"/>
         <source>ChaCha20 + Poly1305 (256-bit key)</source>
         <translation type="unfinished">ChaCha20 + Poly1305 (256-bit key)</translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="312"/>
+        <location filename="../client/address_book_importer.cc" line="310"/>
         <source>The address book file is encrypted with an unsupported encryption type.</source>
         <translation type="unfinished">Het adresboek bestand is versleuteld met een encryptie type dat niet ondersteund wordt.</translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="323"/>
+        <location filename="../client/address_book_importer.cc" line="321"/>
         <source>Unable to decrypt the address book with the specified password.</source>
         <translation type="unfinished">Kan het adresboek niet ontsleutelen met het opgegeven wachtwoord.</translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="356"/>
+        <location filename="../client/address_book_importer.cc" line="354"/>
         <source>Nothing was imported.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/address_book_importer.cc" line="361"/>
+        <location filename="../client/address_book_importer.cc" line="359"/>
         <source>Import completed successfully.
 Groups added: %1
 Computers added: %2
 Computers skipped: %3
 Routers added: %4</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AddressBookTab</name>
-    <message>
-        <source>Computer Name</source>
-        <translation type="vanished">Computer Naam</translation>
-    </message>
-    <message>
-        <source>Address / ID</source>
-        <translation type="vanished">Adres / ID</translation>
-    </message>
-    <message>
-        <source>Comment</source>
-        <translation type="vanished">Commentaar</translation>
-    </message>
-    <message>
-        <source>Created</source>
-        <translation type="vanished">Gemaakt</translation>
-    </message>
-    <message>
-        <source>Modified</source>
-        <translation type="vanished">Aangepast</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation type="obsolete">Status</translation>
     </message>
 </context>
 <context>
@@ -190,6 +369,20 @@ Routers added: %4</source>
         <source>One-time password connection</source>
         <translation>Eenmalige wachtwoord verbinding</translation>
     </message>
+    <message>
+        <location filename="../client/ui/authorization_dialog.cc" line="162"/>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished">Gebruikersnaam veld mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/authorization_dialog.cc" line="170"/>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Wachtwoord mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
 </context>
 <context>
     <name>ChangePasswordDialog</name>
@@ -212,6 +405,36 @@ Routers added: %4</source>
         <location filename="../host/ui/change_password_dialog.ui" line="56"/>
         <source>New password (repeat):</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/change_password_dialog.cc" line="90"/>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Wachtwoord mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/change_password_dialog.cc" line="99"/>
+        <location filename="../host/ui/change_password_dialog.cc" line="141"/>
+        <source>The passwords entered do not match.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/change_password_dialog.cc" line="116"/>
+        <source>You must enter your old password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/change_password_dialog.cc" line="124"/>
+        <source>You entered an incorrect old password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/change_password_dialog.cc" line="133"/>
+        <source>New password cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -315,6 +538,73 @@ Routers added: %4</source>
         <source>···</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="146"/>
+        <source>Save chat...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="147"/>
+        <source>Clear chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="196"/>
+        <source>%1 is typing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="200"/>
+        <source>User %1 has joined the chat (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="204"/>
+        <source>User %1 has left the chat (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="208"/>
+        <source>User %1 is logged in (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="212"/>
+        <source>User %1 is not logged in (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="216"/>
+        <source>There are no connected users (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../common/ui/chat_widget.cc" line="514"/>
+        <source>The message is too long. The maximum message length is %n characters.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="562"/>
+        <source>Save File</source>
+        <translation type="unfinished">Bestand Opslaan</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="564"/>
+        <source>TXT files (*.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/chat_widget.cc" line="579"/>
+        <source>Could not open file for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
 </context>
 <context>
     <name>CheckPasswordDialog</name>
@@ -332,6 +622,15 @@ Routers added: %4</source>
         <location filename="../host/ui/check_password_dialog.ui" line="36"/>
         <source>Password:</source>
         <translation type="unfinished">Wachtwoord:</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/check_password_dialog.cc" line="65"/>
+        <source>You entered an incorrect password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -486,316 +785,35 @@ Routers added: %4</source>
         <source>A host ID was entered, but the router was not configured. You need to configure your router before connecting.</source>
         <translation type="obsolete">Er is een host ID ingevoerd, maar de router was niet geconfigureerd. Configureer de router voor het maken van een verbinding.</translation>
     </message>
-</context>
-<context>
-    <name>ClientSettingsDialog</name>
     <message>
-        <source>Settings</source>
-        <translation type="vanished">Instellingen</translation>
+        <location filename="../client/client.cc" line="482"/>
+        <source>The host with the specified ID is not online</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Router</source>
-        <translation type="vanished">Router</translation>
+        <location filename="../client/client.cc" line="485"/>
+        <source>Access is denied</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Use a router</source>
-        <translation type="vanished">Gebruik een router</translation>
+        <location filename="../client/client.cc" line="488"/>
+        <source>There are no relays available or the key pool is empty</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Address:</source>
-        <translation type="vanished">Adres:</translation>
+        <location filename="../client/client.cc" line="491"/>
+        <source>Unknown error</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>User Name:</source>
-        <translation type="vanished">Gebruikers Naam:</translation>
+        <location filename="../client/client.cc" line="529"/>
+        <source>Connection to the router has been lost.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Password:</source>
-        <translation type="vanished">Wachtwoord:</translation>
-    </message>
-    <message>
-        <source>Other</source>
-        <translation type="obsolete">Overige</translation>
-    </message>
-</context>
-<context>
-    <name>ClientWindow</name>
-    <message>
-        <source>Aspia Client</source>
-        <translation type="vanished">Aspia Client</translation>
-    </message>
-    <message>
-        <source>ID / Address</source>
-        <translation type="vanished">ID / Adres</translation>
-    </message>
-    <message>
-        <source>Session Type</source>
-        <translation type="vanished">Sessie Type</translation>
-    </message>
-    <message>
-        <source>Connect</source>
-        <translation type="vanished">Verbinden</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">Weergave</translation>
-    </message>
-    <message>
-        <source>Check for updates...</source>
-        <translation type="obsolete">Controleer voor updates...</translation>
-    </message>
-    <message>
-        <source>Update Settings</source>
-        <translation type="obsolete">Update Instellingen</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation type="vanished">Taal</translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation type="vanished">Hulp</translation>
-    </message>
-    <message>
-        <source>Online Help...</source>
-        <translation type="vanished">Online hulp...</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">Over</translation>
-    </message>
-    <message>
-        <source>Settings...</source>
-        <translation type="vanished">Instellingen...</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation type="vanished">Afsluiten</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerDialog</name>
-    <message>
-        <source>Computer Properties</source>
-        <translation type="vanished">Computer Eigenschappen</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerDialogDesktop</name>
-    <message>
-        <source>Codec</source>
-        <translation type="vanished">Codec</translation>
-    </message>
-    <message>
-        <source>Disable font smoothing</source>
-        <translation type="vanished">Font smoothing uitschakelen</translation>
-    </message>
-    <message>
-        <source>Block remote input</source>
-        <translation type="vanished">Blokkeer input op afstand</translation>
-    </message>
-    <message>
-        <source>Enable cursor shape</source>
-        <translation type="vanished">Cursor vorm inschakelen</translation>
-    </message>
-    <message>
-        <source>Features</source>
-        <translation type="vanished">Features</translation>
-    </message>
-    <message>
-        <source>Enable audio</source>
-        <translation type="vanished">Geluid inschakelen</translation>
-    </message>
-    <message>
-        <source>Enable clipboard</source>
-        <translation type="vanished">Klembord inschakelen</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation type="vanished">Uiterlijk</translation>
-    </message>
-    <message>
-        <source>Disable desktop effects</source>
-        <translation type="vanished">Bureaublad effecten uitschakelen</translation>
-    </message>
-    <message>
-        <source>Disable desktop wallpaper</source>
-        <translation type="vanished">Bureaublad achtergrond verbergen</translation>
-    </message>
-    <message>
-        <source>Other</source>
-        <translation type="vanished">Overige</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="obsolete">Basis</translation>
-    </message>
-    <message>
-        <source>Lock computer at disconnect</source>
-        <translation type="vanished">Computer vergrendelen bij verbroken verbinding</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerDialogGeneral</name>
-    <message>
-        <source>Name:</source>
-        <translation type="vanished">Naam:</translation>
-    </message>
-    <message>
-        <source>Parent Group:</source>
-        <translation type="vanished">Groep:</translation>
-    </message>
-    <message>
-        <source>Address / ID:</source>
-        <translation type="vanished">Adres / ID:</translation>
-    </message>
-    <message>
-        <source>User Name:</source>
-        <translation type="vanished">Gebruikers Naam:</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="vanished">Wachtwoord:</translation>
-    </message>
-    <message>
-        <source>Comment:</source>
-        <translation type="vanished">Commentaar:</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerDialogParent</name>
-    <message>
-        <source>Select child item</source>
-        <translation type="vanished">Selecteer onderliggend item</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerDialogPortForwarding</name>
-    <message>
-        <source>Port:</source>
-        <translation type="obsolete">Poort:</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerGroupDialog</name>
-    <message>
-        <source>Computer Group Properties</source>
-        <translation type="vanished">Computer Groep Eigenschappen</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="obsolete">Basis</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="vanished">Naam:</translation>
-    </message>
-    <message>
-        <source>Parent Group:</source>
-        <translation type="vanished">Groep:</translation>
-    </message>
-    <message>
-        <source>Comment:</source>
-        <translation type="vanished">Commentaar:</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerGroupDialogDesktop</name>
-    <message>
-        <source>Codec</source>
-        <translation type="obsolete">Codec</translation>
-    </message>
-    <message>
-        <source>Features</source>
-        <translation type="obsolete">Features</translation>
-    </message>
-    <message>
-        <source>Enable audio</source>
-        <translation type="obsolete">Geluid inschakelen</translation>
-    </message>
-    <message>
-        <source>Enable clipboard</source>
-        <translation type="obsolete">Klembord inschakelen</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation type="obsolete">Uiterlijk</translation>
-    </message>
-    <message>
-        <source>Disable desktop effects</source>
-        <translation type="obsolete">Bureaublad effecten uitschakelen</translation>
-    </message>
-    <message>
-        <source>Disable desktop wallpaper</source>
-        <translation type="obsolete">Bureaublad achtergrond verbergen</translation>
-    </message>
-    <message>
-        <source>Disable font smoothing</source>
-        <translation type="obsolete">Font smoothing uitschakelen</translation>
-    </message>
-    <message>
-        <source>Other</source>
-        <translation type="obsolete">Overige</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="obsolete">Basis</translation>
-    </message>
-    <message>
-        <source>Lock computer at disconnect</source>
-        <translation type="obsolete">Computer vergrendelen bij verbroken verbinding</translation>
-    </message>
-    <message>
-        <source>Block remote input</source>
-        <translation type="obsolete">Blokkeer input op afstand</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerGroupDialogGeneral</name>
-    <message>
-        <source>Name:</source>
-        <translation type="obsolete">Naam:</translation>
-    </message>
-    <message>
-        <source>Parent Group:</source>
-        <translation type="obsolete">Groep:</translation>
-    </message>
-    <message>
-        <source>Address / ID:</source>
-        <translation type="obsolete">Adres / ID:</translation>
-    </message>
-    <message>
-        <source>User Name:</source>
-        <translation type="obsolete">Gebruikers Naam:</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="obsolete">Wachtwoord:</translation>
-    </message>
-    <message>
-        <source>Comment:</source>
-        <translation type="obsolete">Commentaar:</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerGroupDialogParent</name>
-    <message>
-        <source>Select child item</source>
-        <translation type="obsolete">Selecteer onderliggend item</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerGroupDialogPortForwarding</name>
-    <message>
-        <source>Port:</source>
-        <translation type="obsolete">Poort:</translation>
-    </message>
-</context>
-<context>
-    <name>ComputerGroupItem</name>
-    <message>
-        <source>Root Group</source>
-        <translation type="vanished">Hoofd Groep</translation>
+        <location filename="../client/client.cc" line="571"/>
+        <source>Failed to connect to the relay server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -829,12 +847,161 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import</source>
-        <translation type="obsolete">Importeren</translation>
+        <location filename="../host/ui/config_dialog.cc" line="118"/>
+        <source>Once a day</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../host/ui/config_dialog.cc" line="119"/>
+        <source>Once a week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="120"/>
+        <source>Once a month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="156"/>
+        <source>Default</source>
+        <translation type="unfinished">Standaard</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="197"/>
+        <source>On reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="198"/>
+        <source>Every 5 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="199"/>
+        <source>Every 30 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="200"/>
+        <source>Every 1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="201"/>
+        <source>Every 6 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="202"/>
+        <source>Every 12 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="203"/>
+        <source>Every 24 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="211"/>
+        <source>Letters and digits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="214"/>
+        <source>Letters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="216"/>
+        <source>Digits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="233"/>
+        <source>Never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="234"/>
+        <source>15 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="235"/>
+        <source>30 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="236"/>
+        <source>45 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="237"/>
+        <source>60 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="245"/>
+        <source>Accept connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="247"/>
+        <source>Reject connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="433"/>
+        <source>Are you sure you want to delete user &quot;%1&quot;?</source>
+        <translation type="unfinished">Weet U zeker dat U de gebruiker &quot;%1&quot; wilt verwijderen?</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="468"/>
+        <location filename="../host/ui/config_dialog.cc" line="503"/>
+        <source>An error occurred while processing the password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="522"/>
+        <source>Import</source>
+        <translation type="unfinished">Importeren</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="522"/>
+        <location filename="../host/ui/config_dialog.cc" line="539"/>
+        <source>JSON-files (*.json)</source>
+        <translation type="unfinished">JSON-bestanden (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="539"/>
         <source>Export</source>
-        <translation type="obsolete">Exporteren</translation>
+        <translation type="unfinished">Exporteren</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="564"/>
+        <source>The configuration can not be written. Make sure that you have sufficient rights to write.</source>
+        <translation type="unfinished">De configuratie kon niet worden weggeschreven. Zorg dat U genoeg rechten heeft om te schrijven.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="578"/>
+        <source>Incorrect router address entered.</source>
+        <translation type="unfinished">Ongeldig router adres ingevoerd.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="588"/>
+        <source>Incorrect router public key entered.</source>
+        <translation type="unfinished">Verkeerde router public key ingevoerd.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="757"/>
+        <source>Install</source>
+        <translation type="unfinished">Installeren</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/config_dialog.cc" line="762"/>
+        <source>Remove</source>
+        <translation type="unfinished">Verwijderen</translation>
     </message>
     <message>
         <location filename="../host/ui/config_dialog.ui" line="225"/>
@@ -1026,6 +1193,74 @@ Routers added: %4</source>
         <source>Delete</source>
         <translation>Verwijderen</translation>
     </message>
+    <message>
+        <source>Confirmation</source>
+        <translation type="vanished">Bevestiging</translation>
+    </message>
+    <message>
+        <source>Service configuration changed. For the changes to take effect, you must restart the service. Restart the service now?</source>
+        <translation type="vanished">Service configuratie veranderd. Om de wijzigingen toe te passen, moet de service herstart worden. Nu herstarten?</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
+    <message>
+        <source>Started</source>
+        <translation type="vanished">Gestart</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="vanished">Stoppen</translation>
+    </message>
+    <message>
+        <source>Not started</source>
+        <translation type="vanished">Niet gestart</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="vanished">Starten</translation>
+    </message>
+    <message>
+        <source>Installed</source>
+        <translation type="vanished">Geinstalleerd</translation>
+    </message>
+    <message>
+        <source>Not installed</source>
+        <translation type="vanished">Niet geinstalleerd</translation>
+    </message>
+    <message>
+        <source>Current state: %1</source>
+        <translation type="vanished">Huidige status: %1</translation>
+    </message>
+    <message>
+        <source>The service could not be installed.</source>
+        <translation type="vanished">De service kon niet worden geinstalleerd.</translation>
+    </message>
+    <message>
+        <source>The service could not be removed.</source>
+        <translation type="vanished">De service kon niet worden verwijderd.</translation>
+    </message>
+    <message>
+        <source>Could not access the service.</source>
+        <translation type="vanished">Kon de service niet bereiken.</translation>
+    </message>
+    <message>
+        <source>The service could not be started.</source>
+        <translation type="vanished">De service kon niet worden gestart.</translation>
+    </message>
+    <message>
+        <source>The service could not be stopped.</source>
+        <translation type="vanished">De service kon niet worden gestopt.</translation>
+    </message>
 </context>
 <context>
     <name>ConnectConfirmDialog</name>
@@ -1034,255 +1269,39 @@ Routers added: %4</source>
         <source>Confirmation of connection</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>Console</name>
     <message>
-        <source>Aspia Console</source>
-        <translation type="vanished">Aspia Console</translation>
+        <location filename="../host/ui/connect_confirm_dialog.cc" line="58"/>
+        <source>User %1 (%2) is trying to connect to your computer with %3 session type.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>file</source>
-        <translation type="vanished">bestand</translation>
+        <location filename="../host/ui/connect_confirm_dialog.cc" line="60"/>
+        <source>Allow the connection?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../host/ui/connect_confirm_dialog.cc" line="135"/>
+        <source>The connection will be automatically accepted after %n seconds.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../host/ui/connect_confirm_dialog.cc" line="140"/>
+        <source>The connection will be automatically rejected after %n seconds.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
-        <source>The file to open.</source>
-        <translation type="vanished">Het bestand om te openen.</translation>
-    </message>
-</context>
-<context>
-    <name>ConsoleMainWindow</name>
-    <message>
-        <source>Aspia Console</source>
-        <translation type="vanished">Aspia Console</translation>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
     </message>
     <message>
-        <source>&amp;File</source>
-        <translation type="vanished">&amp;Bestand</translation>
-    </message>
-    <message>
-        <source>Recent open</source>
-        <translation type="vanished">Recentelijk geopend</translation>
-    </message>
-    <message>
-        <source>&amp;Edit</source>
-        <translation type="vanished">B&amp;ewerken</translation>
-    </message>
-    <message>
-        <source>&amp;Session Type</source>
-        <translation type="vanished">&amp;Sessie Type</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation type="vanished">&amp;Help</translation>
-    </message>
-    <message>
-        <source>&amp;View</source>
-        <translation type="vanished">&amp;Beeld</translation>
-    </message>
-    <message>
-        <source>&amp;Language</source>
-        <translation type="vanished">&amp;Taal</translation>
-    </message>
-    <message>
-        <source>&amp;Theme</source>
-        <translation type="vanished">&amp;Thema</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation type="vanished">Licht</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation type="vanished">Donker</translation>
-    </message>
-    <message>
-        <source>Tools</source>
-        <translation type="vanished">Gereedschappen</translation>
-    </message>
-    <message>
-        <source>Tool Bar</source>
-        <translation type="vanished">Werkbalk</translation>
-    </message>
-    <message>
-        <source>&amp;New address book</source>
-        <translation type="vanished">&amp;Nieuw adres boek</translation>
-    </message>
-    <message>
-        <source>Ctrl+N</source>
-        <translation type="vanished">Ctrl+N</translation>
-    </message>
-    <message>
-        <source>&amp;Open address book...</source>
-        <translation type="vanished">&amp;Open adres boek...</translation>
-    </message>
-    <message>
-        <source>Ctrl+O</source>
-        <translation type="vanished">Ctrl+O</translation>
-    </message>
-    <message>
-        <source>&amp;Save</source>
-        <translation type="vanished">O&amp;pslaan</translation>
-    </message>
-    <message>
-        <source>Ctrl+S</source>
-        <translation type="vanished">Ctrl+P</translation>
-    </message>
-    <message>
-        <source>Save &amp;as...</source>
-        <translation type="vanished">Opslaan &amp;als...</translation>
-    </message>
-    <message>
-        <source>Ctrl+Alt+S</source>
-        <translation type="vanished">Ctrl+Alt+A</translation>
-    </message>
-    <message>
-        <source>&amp;Close</source>
-        <translation type="vanished">S&amp;luiten</translation>
-    </message>
-    <message>
-        <source>Ctrl+W</source>
-        <translation type="vanished">Ctrl+W</translation>
-    </message>
-    <message>
-        <source>&amp;Exit</source>
-        <translation type="vanished">&amp;Beeindigen</translation>
-    </message>
-    <message>
-        <source>Add Computer Group</source>
-        <translation type="vanished">Computer Groep Toevoegen</translation>
-    </message>
-    <message>
-        <source>Modify Computer Group</source>
-        <translation type="vanished">Computer Groep Aanpassen</translation>
-    </message>
-    <message>
-        <source>Delete Computer Group</source>
-        <translation type="vanished">Computer Groep Verwijderen</translation>
-    </message>
-    <message>
-        <source>Add Computer</source>
-        <translation type="vanished">Computer Toevoegen</translation>
-    </message>
-    <message>
-        <source>Modify Computer</source>
-        <translation type="vanished">Computer Aanpassen</translation>
-    </message>
-    <message>
-        <source>Delete Computer</source>
-        <translation type="vanished">Computer Verwijderen</translation>
-    </message>
-    <message>
-        <source>Desktop &amp;Manage</source>
-        <translation type="vanished">Bureaublad &amp;Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop &amp;View</source>
-        <translation type="vanished">Bureaublad &amp;Weergeven</translation>
-    </message>
-    <message>
-        <source>&amp;File Transfer</source>
-        <translation type="vanished">&amp;Bestands Overdracht</translation>
-    </message>
-    <message>
-        <source>&amp;Online Help...</source>
-        <translation type="vanished">Online &amp;Hulp...</translation>
-    </message>
-    <message>
-        <source>F1</source>
-        <translation type="vanished">F1</translation>
-    </message>
-    <message>
-        <source>&amp;About</source>
-        <translation type="vanished">&amp;Over</translation>
-    </message>
-    <message>
-        <source>Address Book Properties</source>
-        <translation type="vanished">Adresboek eigenschappen</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">Bureaublad Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">Bureaublad Weergeven</translation>
-    </message>
-    <message>
-        <source>File Transfer</source>
-        <translation type="vanished">Bestands Overdracht</translation>
-    </message>
-    <message>
-        <source>Status Bar</source>
-        <translation type="vanished">Status Balk</translation>
-    </message>
-    <message>
-        <source>Fast Connect</source>
-        <translation type="vanished">Snel Verbinden</translation>
-    </message>
-    <message>
-        <source>F8</source>
-        <translation type="obsolete">F8</translation>
-    </message>
-    <message>
-        <source>Router Manage</source>
-        <translation type="vanished">Router Beheer</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">Systeem Informatie</translation>
-    </message>
-    <message>
-        <source>F5</source>
-        <translation type="obsolete">F5</translation>
-    </message>
-    <message>
-        <source>Show tray icon</source>
-        <translation type="vanished">Toon tray icon</translation>
-    </message>
-    <message>
-        <source>Minimize to tray</source>
-        <translation type="vanished">Minimaliseer naar de tray</translation>
-    </message>
-    <message>
-        <source>Hide</source>
-        <translation type="vanished">Verbergen</translation>
-    </message>
-    <message>
-        <source>Save all</source>
-        <translation type="vanished">Alles opslaan</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="vanished">Ctrl+Shift+S</translation>
-    </message>
-    <message>
-        <source>Close all</source>
-        <translation type="vanished">Alles sluiten</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+W</source>
-        <translation type="vanished">Ctrl+Shift+W</translation>
-    </message>
-    <message>
-        <source>Check for updates...</source>
-        <translation type="vanished">Controleer voor updates...</translation>
-    </message>
-    <message>
-        <source>Update Settings</source>
-        <translation type="vanished">Update Instellingen</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation type="vanished">Wissen</translation>
-    </message>
-    <message>
-        <source>Remember latest</source>
-        <translation type="vanished">Herinner laatste</translation>
-    </message>
-    <message>
-        <source>Copy Computer</source>
-        <translation type="vanished">Kopieer Computer</translation>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
     </message>
 </context>
 <context>
@@ -1369,106 +1388,29 @@ Routers added: %4</source>
     </message>
 </context>
 <context>
-    <name>DesktopPanel</name>
+    <name>DesktopSessionWindow</name>
     <message>
-        <source>Lock toolbar</source>
-        <translation type="vanished">Werkbalk vergrendelen</translation>
+        <location filename="../client/ui/desktop/desktop_session_window.cc" line="944"/>
+        <source>Save File</source>
+        <translation type="unfinished">Bestand Opslaan</translation>
     </message>
     <message>
-        <source>Session configuration</source>
-        <translation type="vanished">Sessie configuratie</translation>
+        <location filename="../client/ui/desktop/desktop_session_window.cc" line="946"/>
+        <source>PNG Image (*.png);;BMP Image (*.bmp)</source>
+        <translation type="unfinished">PNG Afbeelding (*.png);;BMP Afbeelding (*.bmp)</translation>
     </message>
     <message>
-        <source>Monitor selection</source>
-        <translation type="vanished">Beeldscherm selectie</translation>
+        <location filename="../client/ui/desktop/desktop_session_window.cc" line="977"/>
+        <source>Could not save image</source>
+        <translation type="unfinished">Kon het bestand niet opslaan</translation>
     </message>
     <message>
-        <source>Automatic window size</source>
-        <translation type="vanished">Automatische scherm grootte</translation>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
     <message>
-        <source>Switch to full screen mode or back</source>
-        <translation type="vanished">Tussen volledig scherm schakelen</translation>
-    </message>
-    <message>
-        <source>Automatic scrolling</source>
-        <translation type="vanished">Automatisch scrollen</translation>
-    </message>
-    <message>
-        <source>Advanced menu</source>
-        <translation type="vanished">Geavanceerd menu</translation>
-    </message>
-    <message>
-        <source>Scale</source>
-        <translation type="vanished">Schaling</translation>
-    </message>
-    <message>
-        <source>Send key combinations</source>
-        <translation type="vanished">Stuur toets combinaties</translation>
-    </message>
-    <message>
-        <source>Power control</source>
-        <translation type="vanished">Power beheer</translation>
-    </message>
-    <message>
-        <source>Shutdown</source>
-        <translation type="vanished">Afsluiten</translation>
-    </message>
-    <message>
-        <source>Reboot</source>
-        <translation type="vanished">Herstarten</translation>
-    </message>
-    <message>
-        <source>Logoff</source>
-        <translation type="vanished">Afmelden</translation>
-    </message>
-    <message>
-        <source>Lock</source>
-        <translation type="vanished">Vergrendelen</translation>
-    </message>
-    <message>
-        <source>Remote Update</source>
-        <translation type="vanished">Update op afstand</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="vanished">Systeem Informatie</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">Sluiten</translation>
-    </message>
-    <message>
-        <source>Close session</source>
-        <translation type="vanished">Sluit sessie</translation>
-    </message>
-    <message>
-        <source>Fit window</source>
-        <translation type="vanished">Scherm passend maken</translation>
-    </message>
-    <message>
-        <source>Minimize</source>
-        <translation type="vanished">Minimaliseren</translation>
-    </message>
-    <message>
-        <source>Minimize window</source>
-        <translation type="vanished">Minimaliseer scherm</translation>
-    </message>
-    <message>
-        <source>Statistics</source>
-        <translation type="vanished">Statistieken</translation>
-    </message>
-    <message>
-        <source>Save screenshot...</source>
-        <translation type="vanished">Screenshot opslaan...</translation>
-    </message>
-    <message>
-        <source>File transfer</source>
-        <translation type="vanished">Bestands overdracht</translation>
-    </message>
-    <message>
-        <source>Send Ctrl+Alt+Delete</source>
-        <translation type="vanished">Stuur Ctrl+Alt+Delete</translation>
+        <source>The current video encoding is not supported by the host. Please specify a different video encoding.</source>
+        <translation type="vanished">De huidige video encoding wordt niet ondersteund door de host. Specificeer AUB een andere encoding.</translation>
     </message>
 </context>
 <context>
@@ -1541,8 +1483,9 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="231"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="742"/>
         <source>Scale</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Schaling</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="242"/>
@@ -1644,6 +1587,7 @@ Routers added: %4</source>
     <message>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="422"/>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="425"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="435"/>
         <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1668,6 +1612,187 @@ Routers added: %4</source>
         <source>Switch Session</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="332"/>
+        <source>Resolution selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="398"/>
+        <source>Session %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="400"/>
+        <source>Session %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="430"/>
+        <source>Stop recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="555"/>
+        <source>Are you sure you want to shutdown the remote computer?</source>
+        <translation type="unfinished">Weet U zeker dat U de computer op afstand wilt afsluiten?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="570"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="599"/>
+        <source>Confirmation</source>
+        <translation type="unfinished">Bevestiging</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="571"/>
+        <source>Are you sure you want to reboot the remote computer?</source>
+        <translation type="unfinished">Weet U zeker dat U de computer op afstand wilt herstarten?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="578"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="607"/>
+        <source>Wait for host</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="600"/>
+        <source>Are you sure you want to reboot the remote computer in Safe Mode?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="628"/>
+        <source>Are you sure you want to end the user session on the remote computer?</source>
+        <translation type="unfinished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt beeindigen?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="643"/>
+        <source>Are you sure you want to lock the user session on the remote computer?</source>
+        <translation type="unfinished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt vergrendelen?</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
+</context>
+<context>
+    <name>DesktopWidget</name>
+    <message>
+        <location filename="../client/ui/desktop/desktop_widget.cc" line="530"/>
+        <source>The session was paused by a remote user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_widget.cc" line="533"/>
+        <source>The session is temporarily unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_widget.cc" line="536"/>
+        <source>The session is permanently unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/desktop_widget.cc" line="539"/>
+        <source>Error while receiving video stream: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogButtonBox</name>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="80"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="81"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="82"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="83"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="84"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="85"/>
+        <source>Close</source>
+        <translation type="unfinished">Sluiten</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="86"/>
+        <source>Save</source>
+        <translation type="unfinished">Opslaan</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="87"/>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="88"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="89"/>
+        <source>Help</source>
+        <translation type="unfinished">Help</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="90"/>
+        <source>Abort</source>
+        <translation type="unfinished">Afbreken</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="91"/>
+        <source>Retry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="92"/>
+        <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="93"/>
+        <source>Restore Defaults</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="94"/>
+        <source>Save All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="95"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="96"/>
+        <source>Yes to All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/dialog_button_box.cc" line="97"/>
+        <source>No to All</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DownloadDialog</name>
@@ -1681,20 +1806,14 @@ Routers added: %4</source>
         <source>Downloading update in progress...</source>
         <translation>De update wordt gedownload...</translation>
     </message>
-</context>
-<context>
-    <name>FastConnectDialog</name>
     <message>
-        <source>Fast Connect</source>
-        <translation type="vanished">Snel Verbinden</translation>
+        <location filename="../common/ui/download_dialog.cc" line="64"/>
+        <source>An error occurred while downloading the update: %1</source>
+        <translation type="unfinished">Er is een probleem opgetreden bij het downloaden van de update: %1</translation>
     </message>
     <message>
-        <source>Address / ID</source>
-        <translation type="vanished">Adres / ID</translation>
-    </message>
-    <message>
-        <source>Session Type</source>
-        <translation type="vanished">Sessie Type</translation>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -1708,85 +1827,138 @@ Routers added: %4</source>
 <context>
     <name>FileError</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="33"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="31"/>
         <source>Successfully completed</source>
         <translation>Succesvol voltooid</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="37"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="35"/>
         <source>Invalid request</source>
         <translation>Ongeldig verzoek</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="41"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="39"/>
         <source>Invalid directory or file name</source>
         <translation>Ongeldige map of bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="45"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="43"/>
         <source>Path not found</source>
         <translation>Pad niet gevonden</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="49"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="47"/>
         <source>Path already exists</source>
         <translation>Pad bestaat al</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="53"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="51"/>
         <source>No drives found</source>
         <translation>Geen schijven gevonden</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="57"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="55"/>
         <source>Disk full</source>
         <translation>Schijf vol</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="61"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="59"/>
         <source>Access denied</source>
         <translation>Toegang geweigerd</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="65"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="63"/>
         <source>Could not open file for reading</source>
         <translation>Kon niet openen om te lezen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="69"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="67"/>
         <source>Could not create or replace file</source>
         <translation>Kon bestand niet aanmaken of vervangen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="73"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="71"/>
         <source>Could not write to file</source>
         <translation>Kon het bestand niet schrijven</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="77"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="75"/>
         <source>Could not read file</source>
         <translation>Kon het bestand niet lezen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="81"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="79"/>
         <source>Drive not ready</source>
         <translation>Schijf niet klaar</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="85"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="83"/>
         <source>No logged in user</source>
         <translation>Geen ingelogde gebruiker</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_error_code.cc" line="89"/>
+        <location filename="../client/ui/file_transfer/file_error_code.cc" line="87"/>
         <source>Unknown error code</source>
         <translation>Onbekende error code</translation>
     </message>
 </context>
 <context>
+    <name>FileListModel</name>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="103"/>
+        <source>Folder</source>
+        <translation type="unfinished">Map</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="380"/>
+        <source>Name</source>
+        <translation type="unfinished">Naam</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="383"/>
+        <source>Size</source>
+        <translation type="unfinished">Grootte</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="386"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="389"/>
+        <source>Modified</source>
+        <translation type="unfinished">Aangepast</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="556"/>
+        <source>TB</source>
+        <translation type="unfinished">TB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="561"/>
+        <source>GB</source>
+        <translation type="unfinished">GB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="566"/>
+        <source>MB</source>
+        <translation type="unfinished">MB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="571"/>
+        <source>kB</source>
+        <translation type="unfinished">kB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="576"/>
+        <source>B</source>
+        <translation type="unfinished">B</translation>
+    </message>
+</context>
+<context>
     <name>FileNameEditor</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_item_delegate.cc" line="56"/>
+        <location filename="../client/ui/file_transfer/file_item_delegate.cc" line="54"/>
         <source>The name can not contain characters %1.</source>
         <translation>De naam mag de karakters %1 niet bevatten.</translation>
     </message>
@@ -1843,6 +2015,79 @@ Routers added: %4</source>
         <source>Send</source>
         <translation>Stuur</translation>
     </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="102"/>
+        <source>Failed to get list of drives: %1</source>
+        <translation type="unfinished">Kon lijst van schijven niet maken: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="119"/>
+        <source>Failed to get list of files: %1</source>
+        <translation type="unfinished">Kon lijst van bestanden niet maken: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="144"/>
+        <source>Failed to create directory: %1</source>
+        <translation type="unfinished">Kon lijst van mappen niet maken: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="156"/>
+        <source>Failed to rename item: %1</source>
+        <translation type="unfinished">Kon object niet hernoemen: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="283"/>
+        <source>%1 object(s) selected</source>
+        <translation type="unfinished">%1 object(en) geselecteerd</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="303"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="322"/>
+        <source>Folder name can not be empty.</source>
+        <translation type="unfinished">Map naam mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="309"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="328"/>
+        <source>Name contains invalid characters.</source>
+        <translation type="unfinished">De naam bevat ongeldige karakters.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="349"/>
+        <source>&amp;Send	F11</source>
+        <translation type="unfinished">&amp;Stuur	F11</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="350"/>
+        <source>&amp;Delete	Delete</source>
+        <translation type="unfinished">&amp;Delete	Delete</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="360"/>
+        <source>&amp;Create Folder</source>
+        <translation type="unfinished">&amp;Map maken</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="423"/>
+        <source>Are you sure you want to delete the selected items?</source>
+        <translation type="unfinished">Weet U zeker dat U de geselecteerde objecten wilt verwijderen?</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
+    <message>
+        <source>Confirmation</source>
+        <translation type="vanished">Bevestiging</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
 </context>
 <context>
     <name>FileRemoveDialog</name>
@@ -1855,6 +2100,41 @@ Routers added: %4</source>
         <location filename="../client/ui/file_transfer/file_remove_dialog.ui" line="20"/>
         <source>Creating a list of files to delete...</source>
         <translation>Lijst genereren van objecten om te verwijderen...</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="88"/>
+        <source>Deleting: %1</source>
+        <translation type="unfinished">Verwijderen: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="115"/>
+        <source>An error occurred while retrieving the list of files: %1</source>
+        <translation type="unfinished">Er is een fout opgetreden bij het ontvangen van de bestandslijst: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="120"/>
+        <source>Failed to delete &quot;%1&quot;: %2.</source>
+        <translation type="unfinished">Kon &quot;%1&quot; niet verwijderen: %2.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="125"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="133"/>
+        <source>Skip</source>
+        <translation type="unfinished">Overslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="136"/>
+        <source>Skip All</source>
+        <translation type="unfinished">Alles overslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="139"/>
+        <source>Abort</source>
+        <translation type="unfinished">Afbreken</translation>
     </message>
 </context>
 <context>
@@ -1898,6 +2178,161 @@ Routers added: %4</source>
         <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="72"/>
         <source>Item:</source>
         <translation>Item:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="92"/>
+        <source>Current Task: Copying items.</source>
+        <translation type="unfinished">Huidige taak: Items kopieren.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="104"/>
+        <source>From: %1</source>
+        <translation type="unfinished">Van: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="107"/>
+        <source>To: %1</source>
+        <translation type="unfinished">Naar: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="128"/>
+        <source>Speed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="141"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="153"/>
+        <source>Skip</source>
+        <translation type="unfinished">Overslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="156"/>
+        <source>Skip All</source>
+        <translation type="unfinished">Alles overslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="159"/>
+        <source>Replace</source>
+        <translation type="unfinished">Vervangen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="162"/>
+        <source>Replace All</source>
+        <translation type="unfinished">Alles vervangen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="165"/>
+        <source>Abort</source>
+        <translation type="unfinished">Afbreken</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="241"/>
+        <source>Current Task: Cancel transfer of files.</source>
+        <translation type="unfinished">Huidige taak: bestands overdracht afbreken.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="256"/>
+        <source>An error occurred while building the file queue for copying</source>
+        <translation type="unfinished">Er is een fout opgetreden bij het maken van de bestands lijst voor kopieren</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="261"/>
+        <source>Failed to create directory &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon de map &quot;%1&quot; niet maken: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="268"/>
+        <source>Failed to create file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet maken: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="274"/>
+        <source>Failed to open file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet openen: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="280"/>
+        <source>Failed to write file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet schrijven: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="286"/>
+        <source>Failed to read file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet lezen: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="292"/>
+        <source>Unknown error type while copying files</source>
+        <translation type="unfinished">Onbekend probleem bij het kopieren van bestanden</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="311"/>
+        <source>TB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="316"/>
+        <source>GB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="321"/>
+        <source>MB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="326"/>
+        <source>kB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="331"/>
+        <source>B/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FileTransferSessionWindow</name>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_session_window.cc" line="49"/>
+        <source>Local Computer</source>
+        <translation type="unfinished">Lokale Computer</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_session_window.cc" line="50"/>
+        <source>Remote Computer</source>
+        <translation type="unfinished">Computer op afstand</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_session_window.cc" line="123"/>
+        <source>Session error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
+</context>
+<context>
+    <name>GuiApplication</name>
+    <message>
+        <location filename="../base/gui_application.cc" line="386"/>
+        <source>Dark</source>
+        <translation type="unfinished">Donker</translation>
+    </message>
+    <message>
+        <location filename="../base/gui_application.cc" line="388"/>
+        <source>Light</source>
+        <translation type="unfinished">Licht</translation>
+    </message>
+    <message>
+        <location filename="../base/gui_application.cc" line="389"/>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1955,6 +2390,213 @@ Routers added: %4</source>
     </message>
 </context>
 <context>
+    <name>HostsTab</name>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="58"/>
+        <source>Add Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="59"/>
+        <source>Delete Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="60"/>
+        <source>Edit Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="62"/>
+        <source>Add Computer</source>
+        <translation type="unfinished">Computer Toevoegen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="63"/>
+        <source>Delete Computer</source>
+        <translation type="unfinished">Computer Verwijderen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="64"/>
+        <source>Edit Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="65"/>
+        <source>Copy Computer</source>
+        <translation type="unfinished">Kopieer Computer</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="67"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="83"/>
+        <source>Desktop Management</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="68"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="84"/>
+        <source>File Transfer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="69"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="85"/>
+        <source>Chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="70"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="86"/>
+        <source>System Information</source>
+        <translation type="unfinished">Systeem Informatie</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="114"/>
+        <source>Add User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="115"/>
+        <source>Edit User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="116"/>
+        <source>Delete User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="118"/>
+        <source>Disconnect</source>
+        <translation type="unfinished">Verbinding verbreken</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="119"/>
+        <source>Disconnect All</source>
+        <translation type="unfinished">Alle verbindingen verbreken</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="121"/>
+        <source>Remove</source>
+        <translation type="unfinished">Verwijderen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="123"/>
+        <source>Save...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="124"/>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="126"/>
+        <source>Import Old Address Book...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="129"/>
+        <source>Auto-refresh Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="453"/>
+        <source>Status</source>
+        <translation type="unfinished">Status</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="454"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="455"/>
+        <source>Delete</source>
+        <translation type="unfinished">Verwijderen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="513"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="559"/>
+        <source>Failed to retrieve computer information from the local database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="806"/>
+        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="845"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="870"/>
+        <source>Copy Row</source>
+        <translation type="unfinished">Kopieer Rij</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="846"/>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="871"/>
+        <source>Copy Value</source>
+        <translation type="unfinished">Kopieer Waarde</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="936"/>
+        <source>Import Old Address Book</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="938"/>
+        <source>Address Book (*.aab);;All files (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="1049"/>
+        <source>The router associated with this computer has been deleted. Edit the computer to select another router or switch to direct connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="1056"/>
+        <source>The computer has an invalid host ID.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/hosts_tab.cc" line="1065"/>
+        <source>The computer has an incorrect address.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation type="vanished">Update</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation type="vanished">Gebruikers</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
+    <message>
+        <source>(copy)</source>
+        <translation type="vanished">(kopieer)</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
+        <translation type="vanished">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
+    </message>
+    <message>
+        <source>Confirmation</source>
+        <translation type="vanished">Bevestiging</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
+</context>
+<context>
     <name>LocalComputerDialog</name>
     <message>
         <location filename="../client/ui/hosts/local_computer_dialog.ui" line="14"/>
@@ -1983,6 +2625,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/hosts/local_computer_dialog.ui" line="59"/>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="270"/>
         <source>Address:</source>
         <translation type="unfinished">Adres:</translation>
     </message>
@@ -2000,6 +2643,101 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/local_computer_dialog.ui" line="118"/>
         <source>Comment:</source>
         <translation type="unfinished">Commentaar:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="51"/>
+        <source>Without Router</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="63"/>
+        <source>Edit Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="83"/>
+        <source>Add Computer</source>
+        <translation type="unfinished">Computer Toevoegen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="93"/>
+        <source>&lt;deleted router&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="102"/>
+        <source>Local</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="154"/>
+        <source>Name cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="162"/>
+        <source>Too long name. The maximum length of the name is %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
+            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="177"/>
+        <source>An invalid computer address was entered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="187"/>
+        <source>An invalid host ID was entered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="198"/>
+        <source>The user name can not be empty and can contain only alphabet characters, numbers and &quot;_&quot;, &quot;-&quot;, &quot;.&quot; characters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="209"/>
+        <source>Too long comment. The maximum length of the comment is %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
+            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="224"/>
+        <source>A computer with this name already exists in the selected group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="246"/>
+        <source>Unable to add computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="256"/>
+        <source>Unable to modify computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="271"/>
+        <source>Computer name or IP address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="275"/>
+        <source>ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="276"/>
+        <source>Host ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -2028,6 +2766,61 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/local_group_dialog.ui" line="53"/>
         <source>Comment:</source>
         <translation type="unfinished">Commentaar:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="48"/>
+        <source>Edit Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="64"/>
+        <source>Add Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="68"/>
+        <source>Local</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="93"/>
+        <source>Name cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="101"/>
+        <source>Too long name. The maximum length of the name is %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
+            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="112"/>
+        <source>Too long comment. The maximum length of the comment is %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
+            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="127"/>
+        <source>A group with this name already exists in the selected parent group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="145"/>
+        <source>Unable to add group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_dialog.cc" line="154"/>
+        <source>Unable to modify group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -2071,18 +2864,70 @@ Routers added: %4</source>
         <source>Comment</source>
         <translation type="unfinished">Commentaar</translation>
     </message>
-</context>
-<context>
-    <name>LogLevel</name>
     <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="81"/>
+        <source>Status update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="329"/>
+        <source>Failed to retrieve computer information from the local database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="333"/>
+        <source>(copy)</source>
+        <translation type="unfinished">(kopieer)</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="337"/>
+        <source>Failed to add the computer to the local database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="367"/>
+        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
+        <translation type="unfinished">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="379"/>
+        <source>Unable to remove computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="495"/>
+        <source>%n child group(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n onderliggende groep</numerusform>
+            <numerusform>%n onderliggende groepen</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="497"/>
+        <source>%n child computer(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n onderliggende computer</numerusform>
+            <numerusform>%n onderliggende computers</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="601"/>
+        <source>Online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="601"/>
+        <source>Offline</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../host/ui/main_window.ui" line="26"/>
+        <location filename="../host/ui/main_window.cc" line="432"/>
+        <location filename="../host/ui/main_window.cc" line="688"/>
+        <location filename="../host/ui/main_window.cc" line="898"/>
         <source>Aspia Host</source>
         <translation>Aspia Host</translation>
     </message>
@@ -2145,6 +2990,8 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../host/ui/main_window.ui" line="204"/>
+        <location filename="../host/ui/main_window.cc" line="376"/>
+        <location filename="../host/ui/main_window.cc" line="811"/>
         <source>Router is disabled</source>
         <translation>Router is uitgeschakeld</translation>
     </message>
@@ -2184,6 +3031,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/main_window.ui" line="14"/>
+        <location filename="../client/ui/main_window.cc" line="226"/>
         <source>Aspia Client</source>
         <translation type="unfinished">Aspia Client</translation>
     </message>
@@ -2230,8 +3078,122 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../host/ui/main_window.ui" line="313"/>
+        <location filename="../host/ui/main_window.cc" line="672"/>
         <source>Hide</source>
         <translation>Verbergen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/main_window.cc" line="61"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/main_window.cc" line="123"/>
+        <source>Hosts</source>
+        <translation type="unfinished">Hosts</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/main_window.cc" line="294"/>
+        <source>Connection by ID is specified in the properties of the computer, but the router is not configured. Check the parameters of the router in the properties of the address book.</source>
+        <translation type="unfinished">Verbinding maken met ID is ingesteld in de eigenschappen van de computer,  maar de router is niet geconfigureerd. Controleer de parameters van de router in de eigenschappen van het adres boek.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="233"/>
+        <location filename="../host/ui/main_window.cc" line="667"/>
+        <source>Show</source>
+        <translation type="unfinished">Weergeven</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="326"/>
+        <source>Not available</source>
+        <translation type="unfinished">Niet beschikbaar</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="380"/>
+        <source>Connecting to router %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="384"/>
+        <source>Connected to router %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="388"/>
+        <source>Failed to connect to router %1</source>
+        <translation type="unfinished">Kon niet verbinden met een router %1</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="428"/>
+        <source>Screen recording has started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="430"/>
+        <source>Screen recording stopped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="705"/>
+        <source>If you exit from Aspia, it will not be possible to connect to this computer until you turn on the computer or Aspia again manually. Do you really want to exit the application?</source>
+        <translation type="unfinished">Als u Aspia verlaat, is het niet meer mogelijk om te verbinden naar deze computer tot u de computer aanzet of Aspia handmatig start. Wilt u de applicatie verlaten?</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="816"/>
+        <source>Connecting to router...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="821"/>
+        <source>Connected to router</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="826"/>
+        <source>Connection error</source>
+        <translation type="unfinished">Verbindings error</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="895"/>
+        <source>IP addresses:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../host/ui/main_window.cc" line="899"/>
+        <source>ID: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
+    </message>
+    <message>
+        <source>Connecting to a router %1...</source>
+        <translation type="vanished">Verbinden naar router %1...</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
+    <message>
+        <source>Connecting to a router...</source>
+        <translation type="vanished">Verbinden naar een router...</translation>
+    </message>
+    <message>
+        <source>Connected to a router %1</source>
+        <translation type="vanished">Verbonden met een router %1</translation>
+    </message>
+    <message>
+        <source>Connected to a router</source>
+        <translation type="vanished">Verbonden met een router</translation>
+    </message>
+    <message>
+        <source>Confirmation</source>
+        <translation type="vanished">Bevestiging</translation>
     </message>
 </context>
 <context>
@@ -2243,6 +3205,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/master_password_dialog.ui" line="53"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="41"/>
         <source>Set the master password to encrypt the address book.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2261,6 +3224,197 @@ Routers added: %4</source>
         <source>Confirm password:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="40"/>
+        <source>Set Master Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="48"/>
+        <source>Change Master Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="49"/>
+        <source>Enter your current password and choose a new one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="54"/>
+        <source>Remove Master Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="55"/>
+        <source>Enter your current password to remove encryption from the address book.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="111"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="156"/>
+        <source>Password you entered does not meet the security requirements!</source>
+        <translation type="unfinished">Het ingevoerde wachtwoord komt niet overeen met de beveiligings eisen!</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/master_password_dialog.cc" line="112"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="157"/>
+        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
+            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="115"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="160"/>
+        <source>Do you want to enter a different password?</source>
+        <translation type="unfinished">Wilt U een ander wachtwoord invoeren?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="118"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="163"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="128"/>
+        <source>Passwords do not match.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="134"/>
+        <source>Unable to set master password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="150"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="193"/>
+        <source>Enter the current password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="173"/>
+        <source>New passwords do not match.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="179"/>
+        <source>Invalid current password or unable to change it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/master_password_dialog.cc" line="199"/>
+        <source>Invalid current password or unable to remove it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MsgBox</name>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="49"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="50"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="51"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="52"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="53"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="54"/>
+        <source>Close</source>
+        <translation type="unfinished">Sluiten</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="55"/>
+        <source>Save</source>
+        <translation type="unfinished">Opslaan</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="56"/>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="57"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="58"/>
+        <source>Help</source>
+        <translation type="unfinished">Help</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="59"/>
+        <source>Abort</source>
+        <translation type="unfinished">Afbreken</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="60"/>
+        <source>Retry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="61"/>
+        <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="62"/>
+        <source>Restore Defaults</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="63"/>
+        <source>Save All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="64"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="65"/>
+        <source>Yes to All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="66"/>
+        <source>No to All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="83"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="91"/>
+        <source>Information</source>
+        <translation type="unfinished">Informatie</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/msg_box.cc" line="99"/>
+        <source>Confirmation</source>
+        <translation type="unfinished">Bevestiging</translation>
+    </message>
 </context>
 <context>
     <name>NotifierWindow</name>
@@ -2270,16 +3424,19 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../host/ui/notifier_window.ui" line="287"/>
+        <location filename="../host/ui/notifier_window.cc" line="251"/>
         <source>Lock mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../host/ui/notifier_window.ui" line="307"/>
+        <location filename="../host/ui/notifier_window.cc" line="259"/>
         <source>Lock keyboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../host/ui/notifier_window.ui" line="327"/>
+        <location filename="../host/ui/notifier_window.cc" line="267"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2288,50 +3445,30 @@ Routers added: %4</source>
         <source>Disconnect all</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>OpenAddressBookDialog</name>
     <message>
-        <source>Open Address Book</source>
-        <translation type="vanished">Open Adresboek</translation>
+        <location filename="../host/ui/notifier_window.cc" line="218"/>
+        <source>Disconnect</source>
+        <translation type="unfinished">Verbinding verbreken</translation>
     </message>
     <message>
-        <source>Address book is encrypted. To open, you must enter a password.</source>
-        <translation type="vanished">Het adresboek is versleuteld. Voer het wachtwoord in.</translation>
+        <location filename="../host/ui/notifier_window.cc" line="251"/>
+        <source>Unlock mouse</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>File:</source>
-        <translation type="vanished">Bestand:</translation>
+        <location filename="../host/ui/notifier_window.cc" line="259"/>
+        <source>Unlock keyboard</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Encryption Type:</source>
-        <translation type="vanished">Encryptie Type:</translation>
+        <location filename="../host/ui/notifier_window.cc" line="267"/>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Password:</source>
-        <translation type="vanished">Wachtwoord:</translation>
-    </message>
-</context>
-<context>
-    <name>PortForwardingSessionWindow</name>
-    <message>
-        <source>Statistics</source>
-        <translation type="obsolete">Statistieken</translation>
-    </message>
-    <message>
-        <source>Close session</source>
-        <translation type="obsolete">Sluit sessie</translation>
-    </message>
-</context>
-<context>
-    <name>PortForwardingWindow</name>
-    <message>
-        <source>Statistics</source>
-        <translation type="obsolete">Statistieken</translation>
-    </message>
-    <message>
-        <source>Close session</source>
-        <translation type="obsolete">Sluit sessie</translation>
+        <location filename="../host/ui/notifier_window.cc" line="473"/>
+        <source>Aspia Host</source>
+        <translation type="unfinished">Aspia Host</translation>
     </message>
 </context>
 <context>
@@ -2357,90 +3494,14 @@ Routers added: %4</source>
         <translation type="obsolete">B</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="88"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="86"/>
         <source>System Idle Process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="90"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="88"/>
         <source>Unknown Process</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QObject</name>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-</context>
-<context>
-    <name>QtDesktopWindow</name>
-    <message>
-        <source>Save File</source>
-        <translation type="obsolete">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <source>PNG Image (*.png);;BMP Image (*.bmp)</source>
-        <translation type="obsolete">PNG Afbeelding (*.png);;BMP Afbeelding (*.bmp)</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Could not save image</source>
-        <translation type="obsolete">Kon het bestand niet opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>QtFileManagerWindow</name>
-    <message>
-        <source>Local Computer</source>
-        <translation type="obsolete">Lokale Computer</translation>
-    </message>
-    <message>
-        <source>Remote Computer</source>
-        <translation type="obsolete">Computer op afstand</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>QtSystemInfoWindow</name>
-    <message>
-        <source>Printers</source>
-        <translation type="obsolete">Printers</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="obsolete">Besturingssysteem</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="obsolete">Gebruikers</translation>
-    </message>
-    <message>
-        <source>HTML File</source>
-        <translation type="obsolete">HTML Bestand</translation>
-    </message>
-    <message>
-        <source>HTML File (*.html)</source>
-        <translation type="obsolete">HTML Bestand (*.html)</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Failed to save file: %1</source>
-        <translation type="obsolete">Kon het bestand %1 niet opslaan</translation>
     </message>
 </context>
 <context>
@@ -2458,6 +3519,11 @@ Routers added: %4</source>
     <message>
         <location filename="../client/ui/desktop/record_settings_dialog.ui" line="33"/>
         <source>Write path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/record_settings_dialog.cc" line="46"/>
+        <source>Choose path</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2507,6 +3573,42 @@ Routers added: %4</source>
         <source>Password:</source>
         <translation type="unfinished">Wachtwoord:</translation>
     </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="42"/>
+        <source>Administrator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="43"/>
+        <source>Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="44"/>
+        <source>Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="94"/>
+        <source>An invalid router address was entered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="104"/>
+        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, . characters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="115"/>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Wachtwoord mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/router_dialog.cc" line="137"/>
+        <location filename="../client/ui/router_dialog.cc" line="146"/>
+        <source>Failed to save the router.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RouterGroupWidget</name>
@@ -2524,104 +3626,6 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/router_group_widget.ui" line="55"/>
         <source>Comment</source>
         <translation type="unfinished">Commentaar</translation>
-    </message>
-</context>
-<context>
-    <name>RouterManagerWindow</name>
-    <message>
-        <source>Router Management</source>
-        <translation type="vanished">Router Beheer</translation>
-    </message>
-    <message>
-        <source>Hosts</source>
-        <translation type="vanished">Hosts</translation>
-    </message>
-    <message>
-        <source>Connections count:</source>
-        <translation type="vanished">Aantal verbindingen:</translation>
-    </message>
-    <message>
-        <source>Connect Time</source>
-        <translation type="vanished">Verbindings Tijd</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="vanished">IP Adres</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Naam</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="vanished">Waarde</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">Versie</translation>
-    </message>
-    <message>
-        <source>Computer Name</source>
-        <translation type="vanished">Computer Naam</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="vanished">Besturingssysteem</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation type="vanished">Verbinding verbreken</translation>
-    </message>
-    <message>
-        <source>Disconnect All</source>
-        <translation type="vanished">Alle verbindingen verbreken</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">Vernieuwen</translation>
-    </message>
-    <message>
-        <source>Relay</source>
-        <translation type="vanished">Relay</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Adres</translation>
-    </message>
-    <message>
-        <source>Pool Size</source>
-        <translation type="vanished">Pool Grootte</translation>
-    </message>
-    <message>
-        <source>Architecture</source>
-        <translation type="obsolete">Architectuur</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="vanished">Gebruikers</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="obsolete">Toevoegen</translation>
-    </message>
-    <message>
-        <source>Modify</source>
-        <translation type="obsolete">Aanpassen</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="obsolete">Verwijderen</translation>
-    </message>
-    <message>
-        <source>User Name</source>
-        <translation type="vanished">Gebruikers Naam</translation>
-    </message>
-</context>
-<context>
-    <name>RouterStatusDialog</name>
-    <message>
-        <source>Status</source>
-        <translation type="vanished">Status</translation>
     </message>
 </context>
 <context>
@@ -2655,6 +3659,85 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/router_user_dialog.ui" line="80"/>
         <source>Allowed Session Types:</source>
         <translation>Toegestande Sessie Types:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="135"/>
+        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, ., @ characters.</source>
+        <translation type="unfinished">De gebruikersnaam mag niet leeg zijn, en alleen karakters uit het alfabet, nummers en _, -, ., @ karakters bevatten.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="147"/>
+        <source>The username you entered already exists.</source>
+        <translation type="unfinished">De ingevoerde gebruikersnaam bestaat al.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="157"/>
+        <source>The passwords you entered do not match.</source>
+        <translation type="unfinished">De ingevoerde wachtwoorden komen niet overeen.</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="168"/>
+        <source>Password can not be empty and should not exceed %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Wachtwoord mag niet leeg zijn en mag niet minder dan %n karakter zijn.</numerusform>
+            <numerusform>Wachtwoord mag niet leeg zijn en mag niet minder dan %n karakters zijn.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="178"/>
+        <source>Password you entered does not meet the security requirements!</source>
+        <translation type="unfinished">Het ingevoerde wachtwoord komt niet overeen met de beveiligings eisen!</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="179"/>
+        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
+            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="183"/>
+        <source>Do you want to enter a different password?</source>
+        <translation type="unfinished">Wilt U een ander wachtwoord invoeren?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="186"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="211"/>
+        <source>Unknown internal error when creating or modifying a user.</source>
+        <translation type="unfinished">Onbekende interne fout bij het aanmaken of aanpassen van de gebruiker.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="260"/>
+        <source>Double-click to change</source>
+        <translation type="unfinished">Dubbelklik om te wijzigen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="285"/>
+        <source>Administrator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="289"/>
+        <source>Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_user_dialog.cc" line="293"/>
+        <source>Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
     </message>
 </context>
 <context>
@@ -2783,72 +3866,343 @@ Routers added: %4</source>
         <source>Session Types</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="670"/>
+        <source>%n host(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="673"/>
+        <source>%n relay(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="676"/>
+        <source>%n user(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="693"/>
+        <source>%n seconds</source>
+        <translation type="unfinished">
+            <numerusform>%n seconde</numerusform>
+            <numerusform>%n seconden</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="694"/>
+        <source>%n minutes</source>
+        <translation type="unfinished">
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minuten</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="695"/>
+        <source>%n hours</source>
+        <translation type="unfinished">
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n uren</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/router_widget.cc" line="699"/>
+        <source>%n days</source>
+        <translation type="unfinished">
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dagen</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="725"/>
+        <source>TB</source>
+        <translation type="unfinished">TB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="727"/>
+        <source>GB</source>
+        <translation type="unfinished">GB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="729"/>
+        <source>MB</source>
+        <translation type="unfinished">MB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="731"/>
+        <source>kB</source>
+        <translation type="unfinished">kB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="733"/>
+        <source>B</source>
+        <translation type="unfinished">B</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="820"/>
+        <source>You cannot delete a built-in user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="825"/>
+        <source>Are you sure you want to delete user &quot;%1&quot;?</source>
+        <translation type="unfinished">Weet U zeker dat U de gebruiker &quot;%1&quot; wilt verwijderen?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="846"/>
+        <source>Are you sure you want to disconnect host &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="867"/>
+        <source>Are you sure you want to disconnect all hosts?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="888"/>
+        <source>Confirmation</source>
+        <translation type="unfinished">Bevestiging</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="889"/>
+        <source>Deleting a host will result in all its configuration for connecting to the router being deleted. This operation is irreversible. After deleting, the host will no longer connect to the router. Are you sure you want to do this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="897"/>
+        <source>Try to uninstall the application (result is not guaranteed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="920"/>
+        <source>Are you sure you want to disconnect relay &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="941"/>
+        <source>Are you sure you want to disconnect all relays?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1021"/>
+        <source>Disconnect</source>
+        <translation type="unfinished">Verbinding verbreken</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1023"/>
+        <source>Copy Row</source>
+        <translation type="unfinished">Kopieer Rij</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1024"/>
+        <source>Copy Value</source>
+        <translation type="unfinished">Kopieer Waarde</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1033"/>
+        <source>Are you sure you want to disconnect peer &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1081"/>
+        <source>Connecting to router %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1084"/>
+        <source>Connection to router %1 established.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1087"/>
+        <source>Disconnected from router %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1123"/>
+        <source>Network error: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1260"/>
+        <source>Invalid user request.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1262"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1287"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1310"/>
+        <source>Unknown internal error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1264"/>
+        <source>Invalid data was passed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1266"/>
+        <source>A user with the specified name already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1268"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1291"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1314"/>
+        <source>Unknown error type.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1285"/>
+        <source>Invalid host request.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1289"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1312"/>
+        <source>Invalid entry id.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1308"/>
+        <source>Invalid relay request.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1329"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1391"/>
+        <source>Save File</source>
+        <translation type="unfinished">Bestand Opslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1329"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1391"/>
+        <source>JSON files (*.json)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1340"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1402"/>
+        <source>Could not open file for writing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1379"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1466"/>
+        <source>Unable to write file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchWidget</name>
+    <message>
+        <location filename="../client/ui/hosts/search_widget.cc" line="45"/>
+        <source>Name</source>
+        <translation type="unfinished">Naam</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/search_widget.cc" line="45"/>
+        <source>Address / ID</source>
+        <translation type="unfinished">Adres / ID</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/search_widget.cc" line="45"/>
+        <source>Comment</source>
+        <translation type="unfinished">Commentaar</translation>
+    </message>
+</context>
+<context>
+    <name>SelectScreenAction</name>
+    <message>
+        <location filename="../client/ui/desktop/select_screen_action.h" line="34"/>
+        <source>Full Desktop</source>
+        <translation type="unfinished">Volledig Bureaublad</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/select_screen_action.h" line="47"/>
+        <source>Monitor %1 (primary)</source>
+        <translation type="unfinished">Beeldscherm %1 (primair)</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/desktop/select_screen_action.h" line="49"/>
+        <source>Monitor %1</source>
+        <translation type="unfinished">Beeldscherm %1</translation>
+    </message>
 </context>
 <context>
     <name>ServiceItem</name>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="190"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="188"/>
         <source>Continue Pending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="192"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="190"/>
         <source>Pause Pending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="194"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="192"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="196"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="194"/>
         <source>Running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="198"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="196"/>
         <source>Start Pending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="200"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="198"/>
         <source>Stop Pending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="202"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="200"/>
         <source>Stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="204"/>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="224"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="202"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="222"/>
         <source>Unknown</source>
         <translation type="unfinished">Onbekend</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="214"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="212"/>
         <source>Auto Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="216"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="214"/>
         <source>Demand Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="218"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="216"/>
         <source>Disabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="220"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="218"/>
         <source>Boot Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="222"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="220"/>
         <source>System Start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2856,27 +4210,27 @@ Routers added: %4</source>
 <context>
     <name>ServiceMain</name>
     <message>
-        <location filename="../host/service_main.cc" line="130"/>
+        <location filename="../host/service_main.cc" line="128"/>
         <source>Install service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/service_main.cc" line="132"/>
+        <location filename="../host/service_main.cc" line="130"/>
         <source>Remove service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/service_main.cc" line="134"/>
+        <location filename="../host/service_main.cc" line="132"/>
         <source>Start service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/service_main.cc" line="136"/>
+        <location filename="../host/service_main.cc" line="134"/>
         <source>Stop service.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/service_main.cc" line="138"/>
+        <location filename="../host/service_main.cc" line="136"/>
         <source>Get current host id.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2892,27 +4246,27 @@ Routers added: %4</source>
         <translation type="vanished">Bureaublad Weergave</translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="33"/>
+        <location filename="../common/ui/session_type.cc" line="31"/>
         <source>Desktop Management</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="36"/>
+        <location filename="../common/ui/session_type.cc" line="34"/>
         <source>File Transfer</source>
         <translation>Bestands Overdracht</translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="39"/>
+        <location filename="../common/ui/session_type.cc" line="37"/>
         <source>System Information</source>
         <translation type="unfinished">Systeem Informatie</translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="42"/>
+        <location filename="../common/ui/session_type.cc" line="40"/>
         <source>Text Chat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="55"/>
+        <location filename="../common/ui/session_type.cc" line="53"/>
         <source>Manage</source>
         <translation type="unfinished">Beheren</translation>
     </message>
@@ -2921,19 +4275,142 @@ Routers added: %4</source>
         <translation type="obsolete">Weergave</translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="58"/>
+        <location filename="../common/ui/session_type.cc" line="56"/>
         <source>Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="61"/>
+        <location filename="../common/ui/session_type.cc" line="59"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../common/ui/session_type.cc" line="64"/>
+        <location filename="../common/ui/session_type.cc" line="62"/>
         <source>Chat</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SessionWindow</name>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="117"/>
+        <source>Session started.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="125"/>
+        <source>Error requesting connection via router: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="129"/>
+        <source>The specified router is unavailable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="133"/>
+        <source>The specified router is offline.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="141"/>
+        <source>Connecting to host %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="145"/>
+        <source>Connecting to host %1:%2...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="156"/>
+        <source>Connection to host %1 established.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="160"/>
+        <source>Connection to host %1:%2 established.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="183"/>
+        <source>Host is unavailable yet. Waiting to reconnect...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="187"/>
+        <source>Timeout waiting for reconnection to host.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="195"/>
+        <source>The Host version is newer than the Client version (%1 &gt; %2). Please update the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/session_window.cc" line="201"/>
+        <source>Attempting to connect in compatibility mode...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Attempt to connect to %1.</source>
+        <translation type="vanished">Probeer te verbinden met %1:%2. {1.?}</translation>
+    </message>
+    <message>
+        <source>Desktop Manage</source>
+        <translation type="vanished">Bureaublad Beheren</translation>
+    </message>
+    <message>
+        <source>Desktop View</source>
+        <translation type="vanished">Bureaublad Weergeven</translation>
+    </message>
+    <message>
+        <source>File Transfer</source>
+        <translation type="vanished">Bestands overdracht</translation>
+    </message>
+    <message>
+        <source>System Information</source>
+        <translation type="vanished">Systeem Informatie</translation>
+    </message>
+    <message>
+        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
+        <translation type="vanished">Er is een probleem opgetreden in het netwerk (bijv, de netwerk kabel is per ongelijk verwijderd).</translation>
+    </message>
+    <message>
+        <source>Connection was refused by the peer (or timed out).</source>
+        <translation type="vanished">Verbinding is geweigerd door de peer (of er was een timeout).</translation>
+    </message>
+    <message>
+        <source>Remote host closed the connection.</source>
+        <translation type="vanished">De remote host heeft de verbinding gesloten.</translation>
+    </message>
+    <message>
+        <source>Host address was not found.</source>
+        <translation type="vanished">Host adres is niet gevonden.</translation>
+    </message>
+    <message>
+        <source>Socket operation timed out.</source>
+        <translation type="vanished">Socket operatie gaf een timeout.</translation>
+    </message>
+    <message>
+        <source>Address specified is already in use and was set to be exclusive.</source>
+        <translation type="vanished">Het opgegeven adres is al in gebruik, en is ingesteld als exclusief.</translation>
+    </message>
+    <message>
+        <source>Address specified does not belong to the host.</source>
+        <translation type="vanished">Het opgegeven adres behoort niet toe aan de host.</translation>
+    </message>
+    <message>
+        <source>An unknown error occurred.</source>
+        <translation type="vanished">Een onbekende error is opgetreden.</translation>
+    </message>
+    <message>
+        <source>Violation of the data exchange protocol.</source>
+        <translation type="vanished">Schending van het data uitwisselings protocol.</translation>
+    </message>
+    <message>
+        <source>Specified session type is not allowed for the user.</source>
+        <translation type="vanished">Het gespecificeerde sessie type is niet toegestaan voor de gebruiker.</translation>
     </message>
 </context>
 <context>
@@ -3012,12 +4489,12 @@ Routers added: %4</source>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="297"/>
         <source>Disable desktop effects</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Schakel bureaublad effecten uit</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="304"/>
         <source>Disable desktop wallpaper</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Geen bureaublad achtergrond</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="326"/>
@@ -3027,7 +4504,7 @@ Routers added: %4</source>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="333"/>
         <source>Block remote input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Blokkeer invoer op afstand</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="357"/>
@@ -3042,7 +4519,7 @@ Routers added: %4</source>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="370"/>
         <source>Use custom update server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aangepaste update server gebruiken</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="379"/>
@@ -3081,11 +4558,13 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="82"/>
+        <location filename="../client/ui/settings_dialog.cc" line="327"/>
         <source>Status: not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="102"/>
+        <location filename="../client/ui/settings_dialog.cc" line="328"/>
         <source>Set...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3144,24 +4623,47 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="57"/>
+        <location filename="../client/ui/settings_dialog.cc" line="55"/>
         <source>Administrator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="59"/>
+        <location filename="../client/ui/settings_dialog.cc" line="57"/>
         <source>Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="61"/>
+        <location filename="../client/ui/settings_dialog.cc" line="59"/>
         <source>Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="63"/>
+        <location filename="../client/ui/settings_dialog.cc" line="61"/>
         <source>Unknown</source>
         <translation type="unfinished">Onbekend</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/settings_dialog.cc" line="266"/>
+        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/settings_dialog.cc" line="322"/>
+        <source>Status: set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/settings_dialog.cc" line="323"/>
+        <source>Change...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="vanished">Wachtwoord mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -3171,37 +4673,37 @@ Routers added: %4</source>
         <translation type="vanished">Informatie</translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="45"/>
+        <location filename="../host/ui/settings_util.cc" line="43"/>
         <source>The configuration was successfully imported.</source>
         <translation>De configuratie is successvol geimporteerd.</translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="64"/>
+        <location filename="../host/ui/settings_util.cc" line="62"/>
         <source>The configuration was successfully exported.</source>
         <translation>De configuratie is successvol geëxporteerd.</translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="130"/>
+        <location filename="../host/ui/settings_util.cc" line="128"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="83"/>
+        <location filename="../host/ui/settings_util.cc" line="81"/>
         <source>Source settings file does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="101"/>
+        <location filename="../host/ui/settings_util.cc" line="99"/>
         <source>Unable to open the source file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="115"/>
+        <location filename="../host/ui/settings_util.cc" line="113"/>
         <source>Unable to read the source file: the file is damaged or has an unknown format.</source>
         <translation>Kon het bronbestand niet lezen: het bestand is beschadigd of heeft een onbekende indeling.</translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="131"/>
+        <location filename="../host/ui/settings_util.cc" line="129"/>
         <source>The existing settings will be overwritten. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3214,14 +4716,56 @@ Routers added: %4</source>
         <translation type="obsolete">Nee</translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="156"/>
+        <location filename="../host/ui/settings_util.cc" line="154"/>
         <source>Unable to open the target file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../host/ui/settings_util.cc" line="168"/>
+        <location filename="../host/ui/settings_util.cc" line="166"/>
         <source>Unable to write the target file.</source>
         <translation>Kan niet schrijven naar het bestand.</translation>
+    </message>
+</context>
+<context>
+    <name>Sidebar</name>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="60"/>
+        <source>Local</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="315"/>
+        <source>Are you sure you want to delete group &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="327"/>
+        <source>Unable to remove group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="499"/>
+        <source>A group with this name already exists in the selected parent group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="509"/>
+        <source>Failed to move the group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="565"/>
+        <source>A computer with this name already exists in the selected group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="585"/>
+        <source>Failed to move the computer to the selected group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -3241,6 +4785,10 @@ Routers added: %4</source>
         <source>Value</source>
         <translation>Waarde</translation>
     </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
 </context>
 <context>
     <name>StatusDialog</name>
@@ -3248,6 +4796,10 @@ Routers added: %4</source>
         <location filename="../common/ui/status_dialog.ui" line="14"/>
         <source>Connection Status</source>
         <translation>Verbindings Status</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="vanished">Sluiten</translation>
     </message>
 </context>
 <context>
@@ -3880,29 +5432,6 @@ Routers added: %4</source>
     </message>
 </context>
 <context>
-    <name>SysInfoRas</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
-    <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">Kopieer Rij</translation>
-    </message>
-    <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">Kopieer Waarde</translation>
-    </message>
-</context>
-<context>
     <name>SysInfoRoutes</name>
     <message>
         <source>Parameter</source>
@@ -4034,6 +5563,198 @@ Routers added: %4</source>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
     </message>
+    <message>
+        <source>Name</source>
+        <translation type="vanished">Naam</translation>
+    </message>
+    <message>
+        <source>Domain</source>
+        <translation type="vanished">Domein</translation>
+    </message>
+    <message>
+        <source>Workgroup</source>
+        <translation type="vanished">Werkgroep</translation>
+    </message>
+    <message>
+        <source>Uptime</source>
+        <translation type="vanished">Uptime</translation>
+    </message>
+    <message>
+        <source>Computer</source>
+        <translation type="vanished">Computer</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="vanished">Versie</translation>
+    </message>
+    <message>
+        <source>Architecture</source>
+        <translation type="vanished">Architectuur</translation>
+    </message>
+    <message>
+        <source>Operating System</source>
+        <translation type="vanished">Besturingssysteem</translation>
+    </message>
+    <message>
+        <source>Manufacturer</source>
+        <translation type="vanished">Producent</translation>
+    </message>
+    <message>
+        <source>Model</source>
+        <translation type="vanished">Model</translation>
+    </message>
+    <message>
+        <source>Motherboard</source>
+        <translation type="vanished">Moederbord</translation>
+    </message>
+    <message>
+        <source>Vendor</source>
+        <translation type="vanished">Verkoper</translation>
+    </message>
+    <message>
+        <source>Packages</source>
+        <translation type="vanished">Pakketten</translation>
+    </message>
+    <message>
+        <source>Cores</source>
+        <translation type="vanished">Kernen</translation>
+    </message>
+    <message>
+        <source>Threads</source>
+        <translation type="vanished">Threads</translation>
+    </message>
+    <message>
+        <source>Processor</source>
+        <translation type="vanished">Processor</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation type="vanished">Datum</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="vanished">Grootte</translation>
+    </message>
+    <message>
+        <source>Speed</source>
+        <translation type="vanished">Snelheid</translation>
+    </message>
+    <message>
+        <source>%1 MHz</source>
+        <translation type="vanished">%1 MHz</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="vanished">Type</translation>
+    </message>
+    <message>
+        <source>Form Factor</source>
+        <translation type="vanished">Form Factor</translation>
+    </message>
+    <message>
+        <source>Part Number</source>
+        <translation type="vanished">Onderdeel Nummer</translation>
+    </message>
+    <message>
+        <source>Installed</source>
+        <translation type="vanished">Geinstalleerd</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
+    <message>
+        <source>Memory</source>
+        <translation type="vanished">Geheugen</translation>
+    </message>
+    <message>
+        <source>%1 (%2 free)</source>
+        <translation type="vanished">%1 (%2 vrij)</translation>
+    </message>
+    <message>
+        <source>Logical Drives</source>
+        <translation type="vanished">Logische Drives</translation>
+    </message>
+    <message>
+        <source>Adapter Name</source>
+        <translation type="vanished">Adapter Naam</translation>
+    </message>
+    <message>
+        <source>Interface Type</source>
+        <translation type="vanished">Interface Type</translation>
+    </message>
+    <message>
+        <source>Connection Speed</source>
+        <translation type="vanished">Verbindings Snelheid</translation>
+    </message>
+    <message>
+        <source>MAC Address</source>
+        <translation type="vanished">MAC Adres</translation>
+    </message>
+    <message>
+        <source>DHCP Enabled</source>
+        <translation type="vanished">DHCP Ingeschakeld</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>DHCP Server #%1</source>
+        <translation type="vanished">DHCP Server #%1</translation>
+    </message>
+    <message>
+        <source>DHCP Server</source>
+        <translation type="vanished">DHCP Server</translation>
+    </message>
+    <message>
+        <source>Address #%1</source>
+        <translation type="vanished">Adres #%1</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation type="vanished">Adres</translation>
+    </message>
+    <message>
+        <source>Gateway #%1</source>
+        <translation type="vanished">Gateway #%1</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation type="vanished">Gateway</translation>
+    </message>
+    <message>
+        <source>Network Connections</source>
+        <translation type="vanished">Netwerk Verbindingen</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="vanished">Standaard</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="vanished">Poort</translation>
+    </message>
+    <message>
+        <source>Driver</source>
+        <translation type="vanished">Driver</translation>
+    </message>
+    <message>
+        <source>Shared</source>
+        <translation type="vanished">Gedeeld</translation>
+    </message>
+    <message>
+        <source>Share Name</source>
+        <translation type="vanished">Share Naam</translation>
+    </message>
+    <message>
+        <source>Jobs Count</source>
+        <translation type="vanished">Aantal Jobs</translation>
+    </message>
+    <message>
+        <source>Printers</source>
+        <translation type="vanished">Printers</translation>
+    </message>
 </context>
 <context>
     <name>SysInfoVideoAdapters</name>
@@ -4061,6 +5782,1197 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="68"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidget</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="95"/>
+        <source>TB</source>
+        <translation type="unfinished">TB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="97"/>
+        <source>GB</source>
+        <translation type="unfinished">GB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="99"/>
+        <source>MB</source>
+        <translation type="unfinished">MB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="101"/>
+        <source>kB</source>
+        <translation type="unfinished">kB</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="103"/>
+        <source>B</source>
+        <translation type="unfinished">B</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="118"/>
+        <source>%n seconds</source>
+        <translation type="unfinished">
+            <numerusform>%n seconde</numerusform>
+            <numerusform>%n seconden</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="119"/>
+        <source>%n minutes</source>
+        <translation type="unfinished">
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minuten</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="120"/>
+        <source>%n hours</source>
+        <translation type="unfinished">
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n uren</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="124"/>
+        <source>%n days</source>
+        <translation type="unfinished">
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dagen</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="149"/>
+        <source>Gbps</source>
+        <translation type="unfinished">Gbps</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="151"/>
+        <source>Mbps</source>
+        <translation type="unfinished">Mbps</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="153"/>
+        <source>Kbps</source>
+        <translation type="unfinished">Kbps</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="155"/>
+        <source>bps</source>
+        <translation type="unfinished">bps</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetDrivers</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="130"/>
+        <source>Continue Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="132"/>
+        <source>Pause Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="134"/>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="136"/>
+        <source>Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="138"/>
+        <source>Start Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="140"/>
+        <source>Stop Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="142"/>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="144"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="166"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Onbekend</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="156"/>
+        <source>Auto Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="158"/>
+        <source>Demand Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="160"/>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="162"/>
+        <source>Boot Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="164"/>
+        <source>System Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetEventLogs</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="65"/>
+        <source>Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="67"/>
+        <source>Security</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="69"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="192"/>
+        <source>Page %1/%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="307"/>
+        <source>Information</source>
+        <translation type="unfinished">Informatie</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="309"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="311"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="313"/>
+        <source>Audit Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="315"/>
+        <source>Audit Failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="317"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Onbekend</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetLicenses</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="135"/>
+        <source>License Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="138"/>
+        <source>License Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="141"/>
+        <source>Organization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="144"/>
+        <source>Owner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="147"/>
+        <source>Product ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="150"/>
+        <source>Product Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="153"/>
+        <source>Unknown Field</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetLocalUsers</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="143"/>
+        <source>Full Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="146"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="149"/>
+        <source>Home Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
+        <source>Password Can&apos;t Change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
+        <source>Password Expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
+        <source>Don&apos;t Expire Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
+        <source>Lockout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="159"/>
+        <source>Never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="163"/>
+        <source>Last Logon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="164"/>
+        <source>Number Logons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="165"/>
+        <source>Bad Password Count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="177"/>
+        <source>Groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetMonitors</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="152"/>
+        <source>Monitor Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="155"/>
+        <source>Manufacturer Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="158"/>
+        <source>Monitor ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="161"/>
+        <source>Serial Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="165"/>
+        <source>EDID Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="171"/>
+        <source>Date Of Manufacture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="172"/>
+        <source>Week %1 / %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="177"/>
+        <source>Gamma</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="181"/>
+        <source>Image Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="182"/>
+        <source>%1x%2 cm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="191"/>
+        <source>Diagonal Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="196"/>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="203"/>
+        <source>Horizontal Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="204"/>
+        <source>%1 - %2 kHz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="210"/>
+        <source>Vertical Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="211"/>
+        <source>%1 - %2 Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="216"/>
+        <source>Pixel Clock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="216"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="219"/>
+        <source>%1 MHz</source>
+        <translation type="unfinished">%1 MHz</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="219"/>
+        <source>Maximum Pixel Clock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="221"/>
+        <source>Input Signal Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="224"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="225"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="226"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="227"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="228"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="229"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="224"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="225"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="226"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="227"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="228"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="229"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="232"/>
+        <source>Supported Features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="241"/>
+        <source>%1 Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="245"/>
+        <source>Supported Video Modes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="291"/>
+        <source>Digital</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="293"/>
+        <source>Analog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="295"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Onbekend</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetNetAdapters</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="136"/>
+        <source>Adapter Name</source>
+        <translation type="unfinished">Adapter Naam</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="139"/>
+        <source>Interface Type</source>
+        <translation type="unfinished">Interface Type</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="142"/>
+        <source>Connection Speed</source>
+        <translation type="unfinished">Verbindings Snelheid</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="145"/>
+        <source>MAC Address</source>
+        <translation type="unfinished">MAC Adres</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
+        <source>DHCP Enabled</source>
+        <translation type="unfinished">DHCP Ingeschakeld</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="152"/>
+        <source>DHCP Server #%1</source>
+        <translation type="unfinished">DHCP Server #%1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="152"/>
+        <source>DHCP Server</source>
+        <translation type="unfinished">DHCP Server</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="164"/>
+        <source>Address #%1</source>
+        <translation type="unfinished">Adres #%1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="164"/>
+        <source>Address</source>
+        <translation type="unfinished">Adres</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="172"/>
+        <source>Gateway #%1</source>
+        <translation type="unfinished">Gateway #%1</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="172"/>
+        <source>Gateway</source>
+        <translation type="unfinished">Gateway</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetNetShares</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="130"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="133"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="136"/>
+        <source>Local Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="138"/>
+        <source>Current Uses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="141"/>
+        <source>Not limited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="142"/>
+        <source>Maximum Uses</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetPowerOptions</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="143"/>
+        <source>Power Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="145"/>
+        <source>Battery Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="151"/>
+        <source>Battery Life Percent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="157"/>
+        <source>Full Battery Life Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="164"/>
+        <source>Remaining Battery Life Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="180"/>
+        <source>Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="183"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished">Producent</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="186"/>
+        <source>Manufacture Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="189"/>
+        <source>Unique Id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="192"/>
+        <source>Serial Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="195"/>
+        <source>Tempareture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="198"/>
+        <source>Design Capacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="198"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="204"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="210"/>
+        <source>%1 mWh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="201"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="204"/>
+        <source>Full Charged Capacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="207"/>
+        <source>Depreciation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="210"/>
+        <source>Current Capacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="213"/>
+        <source>Voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="213"/>
+        <source>%1 mV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="219"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="302"/>
+        <source>Charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="219"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="222"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="225"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="228"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="222"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="300"/>
+        <source>Critical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="225"/>
+        <source>Discharging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="228"/>
+        <source>Power OnLine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="232"/>
+        <source>State</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="237"/>
+        <source>Battery #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="278"/>
+        <source>DC Battery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="281"/>
+        <source>AC Line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="284"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="306"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Onbekend</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="296"/>
+        <source>High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="298"/>
+        <source>Low</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="304"/>
+        <source>No Battery</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetPrinters</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="135"/>
+        <source>Default</source>
+        <translation type="unfinished">Standaard</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="135"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="143"/>
+        <source>Yes</source>
+        <translation type="unfinished">Ya</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="135"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="143"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="138"/>
+        <source>Port</source>
+        <translation type="unfinished">Poort</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="141"/>
+        <source>Driver</source>
+        <translation type="unfinished">Driver</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="143"/>
+        <source>Shared</source>
+        <translation type="unfinished">Gedeeld</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="146"/>
+        <source>Share Name</source>
+        <translation type="unfinished">Share Naam</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="148"/>
+        <source>Jobs Count</source>
+        <translation type="unfinished">Aantal Jobs</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetProcesses</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="140"/>
+        <source>System Idle Process</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="142"/>
+        <source>Unknown Process</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetServices</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="136"/>
+        <source>Continue Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="138"/>
+        <source>Pause Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="140"/>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="142"/>
+        <source>Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="144"/>
+        <source>Start Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="146"/>
+        <source>Stop Pending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="148"/>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="150"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="172"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Onbekend</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="162"/>
+        <source>Auto Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="164"/>
+        <source>Demand Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="166"/>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="168"/>
+        <source>Boot Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="170"/>
+        <source>System Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetSummary</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="132"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="163"/>
+        <source>Name</source>
+        <translation type="unfinished">Naam</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="135"/>
+        <source>Domain</source>
+        <translation type="unfinished">Domein</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="138"/>
+        <source>Workgroup</source>
+        <translation type="unfinished">Werkgroep</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="141"/>
+        <source>Uptime</source>
+        <translation type="unfinished">Uptime</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="144"/>
+        <source>Computer</source>
+        <translation type="unfinished">Computer</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="150"/>
+        <source>Host Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="151"/>
+        <source>Client Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="152"/>
+        <source>Router Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="154"/>
+        <source>Aspia Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="166"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="238"/>
+        <source>Version</source>
+        <translation type="unfinished">Versie</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="169"/>
+        <source>Architecture</source>
+        <translation type="unfinished">Architectuur</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="172"/>
+        <source>License Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="175"/>
+        <source>Install Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="180"/>
+        <source>Operating System</source>
+        <translation type="unfinished">Besturingssysteem</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="190"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="262"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished">Producent</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="193"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="208"/>
+        <source>Model</source>
+        <translation type="unfinished">Model</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="198"/>
+        <source>Motherboard</source>
+        <translation type="unfinished">Moederbord</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="211"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="235"/>
+        <source>Vendor</source>
+        <translation type="unfinished">Verkoper</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="214"/>
+        <source>Packages</source>
+        <translation type="unfinished">Pakketten</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="217"/>
+        <source>Cores</source>
+        <translation type="unfinished">Kernen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="220"/>
+        <source>Threads</source>
+        <translation type="unfinished">Threads</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="225"/>
+        <source>Processor</source>
+        <translation type="unfinished">Processor</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="241"/>
+        <source>Date</source>
+        <translation type="unfinished">Datum</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="265"/>
+        <source>Size</source>
+        <translation type="unfinished">Grootte</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="268"/>
+        <source>Speed</source>
+        <translation type="unfinished">Snelheid</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="268"/>
+        <source>%1 MHz</source>
+        <translation type="unfinished">%1 MHz</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="271"/>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="274"/>
+        <source>Form Factor</source>
+        <translation type="unfinished">Form Factor</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="277"/>
+        <source>Part Number</source>
+        <translation type="unfinished">Onderdeel Nummer</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="281"/>
+        <source>Installed</source>
+        <translation type="unfinished">Geinstalleerd</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="281"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="352"/>
+        <source>No</source>
+        <translation type="unfinished">Nee</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="291"/>
+        <source>Memory</source>
+        <translation type="unfinished">Geheugen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="320"/>
+        <source>%1 (%2 free)</source>
+        <translation type="unfinished">%1 (%2 vrij)</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="330"/>
+        <source>Logical Drives</source>
+        <translation type="unfinished">Logische Drives</translation>
+    </message>
+    <message>
+        <source>Adapter Name</source>
+        <translation type="vanished">Adapter Naam</translation>
+    </message>
+    <message>
+        <source>Interface Type</source>
+        <translation type="vanished">Interface Type</translation>
+    </message>
+    <message>
+        <source>Connection Speed</source>
+        <translation type="vanished">Verbindings Snelheid</translation>
+    </message>
+    <message>
+        <source>MAC Address</source>
+        <translation type="vanished">MAC Adres</translation>
+    </message>
+    <message>
+        <source>DHCP Enabled</source>
+        <translation type="vanished">DHCP Ingeschakeld</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>DHCP Server #%1</source>
+        <translation type="vanished">DHCP Server #%1</translation>
+    </message>
+    <message>
+        <source>DHCP Server</source>
+        <translation type="vanished">DHCP Server</translation>
+    </message>
+    <message>
+        <source>Address #%1</source>
+        <translation type="vanished">Adres #%1</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation type="vanished">Adres</translation>
+    </message>
+    <message>
+        <source>Gateway #%1</source>
+        <translation type="vanished">Gateway #%1</translation>
+    </message>
+    <message>
+        <source>Gateway</source>
+        <translation type="vanished">Gateway</translation>
+    </message>
+    <message>
+        <source>Network Connections</source>
+        <translation type="vanished">Netwerk Verbindingen</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="vanished">Standaard</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="vanished">Poort</translation>
+    </message>
+    <message>
+        <source>Driver</source>
+        <translation type="vanished">Driver</translation>
+    </message>
+    <message>
+        <source>Shared</source>
+        <translation type="vanished">Gedeeld</translation>
+    </message>
+    <message>
+        <source>Share Name</source>
+        <translation type="vanished">Share Naam</translation>
+    </message>
+    <message>
+        <source>Jobs Count</source>
+        <translation type="vanished">Aantal Jobs</translation>
+    </message>
+    <message>
+        <source>Printers</source>
+        <translation type="vanished">Printers</translation>
+    </message>
+</context>
+<context>
+    <name>SysInfoWidgetVideoAdapters</name>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="128"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="131"/>
+        <source>Adapter String</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="134"/>
+        <source>BIOS String</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="137"/>
+        <source>Chip Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="140"/>
+        <source>DAC Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="143"/>
+        <source>Memory Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="143"/>
+        <source>%1 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="146"/>
+        <source>Driver Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="149"/>
+        <source>Driver Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="152"/>
+        <source>Driver Provider</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4130,56 +7042,144 @@ Routers added: %4</source>
         <source>F5</source>
         <translation type="unfinished">F5</translation>
     </message>
-</context>
-<context>
-    <name>SystemInfoWindow</name>
     <message>
-        <source>System Information</source>
-        <translation type="vanished">Systeem Informatie</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="130"/>
+        <source>Summary</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Parameter</source>
-        <translation type="vanished">Argument</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="137"/>
+        <source>Hardware</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Value</source>
-        <translation type="vanished">Waarde</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="140"/>
+        <source>Devices</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation type="vanished">Opslaan</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="143"/>
+        <source>Video Adapters</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save (Ctrl+S)</source>
-        <translation type="vanished">Opslaan (Ctrl+S)</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="146"/>
+        <source>Monitors</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Print</source>
-        <translation type="vanished">Printen</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="149"/>
+        <source>Printers</source>
+        <translation type="unfinished">Printers</translation>
     </message>
     <message>
-        <source>Print (Ctrl+P)</source>
-        <translation type="vanished">Printen(Ctrl+P)</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="152"/>
+        <source>Power Options</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Row</source>
-        <translation type="vanished">Kopieer Rij</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="165"/>
+        <source>Software</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="vanished">Kopieer Naam</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="168"/>
+        <source>Applications</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Value</source>
-        <translation type="vanished">Kopieer Waarde</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="171"/>
+        <source>Drivers</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh</source>
-        <translation type="vanished">Vernieuwen</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="174"/>
+        <source>Services</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh (F5)</source>
-        <translation type="vanished">Vernieuwen (F5)</translation>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="177"/>
+        <source>Processes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="180"/>
+        <source>Licenses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="193"/>
+        <source>Network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="196"/>
+        <source>Network Adapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="199"/>
+        <source>Routes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="202"/>
+        <source>Connections</source>
+        <translation type="unfinished">Verbindingen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="205"/>
+        <source>Network Shares</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="208"/>
+        <source>Open Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="221"/>
+        <source>Operating System</source>
+        <translation type="unfinished">Besturingssysteem</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="224"/>
+        <source>Environment Variables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="227"/>
+        <source>Event Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="230"/>
+        <source>Users</source>
+        <translation type="unfinished">Gebruikers</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="233"/>
+        <source>User Groups</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="258"/>
+        <source>HTML File</source>
+        <translation type="unfinished">HTML Bestand</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="258"/>
+        <source>HTML File (*.html)</source>
+        <translation type="unfinished">HTML Bestand (*.html)</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="269"/>
+        <source>Failed to save file: %1</source>
+        <translation type="unfinished">Kon het bestand %1 niet opslaan</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -4389,106 +7389,120 @@ Routers added: %4</source>
         <source>Refresh (F5)</source>
         <translation type="obsolete">Vernieuwen (F5)</translation>
     </message>
-</context>
-<context>
-    <name>TextChatSessionWindow</name>
     <message>
-        <source>System Information</source>
-        <translation type="obsolete">Systeem Informatie</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="648"/>
+        <source>Do you really want to end &quot;%1&quot; process?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation type="obsolete">Opslaan</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="698"/>
+        <source>Do you really want to disconnect user &quot;%1&quot; session?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save (Ctrl+S)</source>
-        <translation type="obsolete">Opslaan (Ctrl+S)</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="721"/>
+        <source>Do you really want to end user &quot;%1&quot; session?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+S</source>
-        <translation type="obsolete">Ctrl+P</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="921"/>
+        <source>Processes: %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Print</source>
-        <translation type="obsolete">Printen</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="927"/>
+        <source>CPU loading: %1%</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Print (Ctrl+P)</source>
-        <translation type="obsolete">Printen(Ctrl+P)</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="933"/>
+        <source>Physical memory: %1%</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">Kopieer Rij</translation>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="939"/>
+        <source>Update Speed</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
+        <source>Confirmation</source>
+        <translation type="vanished">Bevestiging</translation>
     </message>
     <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">Kopieer Waarde</translation>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
     </message>
     <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Vernieuwen</translation>
-    </message>
-    <message>
-        <source>Refresh (F5)</source>
-        <translation type="obsolete">Vernieuwen (F5)</translation>
-    </message>
-    <message>
-        <source>F5</source>
-        <translation type="obsolete">F5</translation>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
     </message>
 </context>
 <context>
-    <name>TextChatWidget</name>
+    <name>TcpChannel</name>
     <message>
-        <source>Tools</source>
-        <translation type="obsolete">Gereedschappen</translation>
-    </message>
-</context>
-<context>
-    <name>TextChatWindow</name>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">Systeem Informatie</translation>
+        <location filename="../base/net/tcp_channel.cc" line="64"/>
+        <source>Violation of the communication protocol.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation type="obsolete">Opslaan</translation>
+        <location filename="../base/net/tcp_channel.cc" line="68"/>
+        <source>Wrong user name or password.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save (Ctrl+S)</source>
-        <translation type="obsolete">Opslaan (Ctrl+S)</translation>
+        <location filename="../base/net/tcp_channel.cc" line="72"/>
+        <source>Cryptography error (message encryption or decryption failed).</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Print</source>
-        <translation type="obsolete">Printen</translation>
+        <location filename="../base/net/tcp_channel.cc" line="76"/>
+        <source>Specified session type is not allowed for the user.</source>
+        <translation type="unfinished">Het gespecificeerde sessie type is niet toegestaan voor de gebruiker.</translation>
     </message>
     <message>
-        <source>Print (Ctrl+P)</source>
-        <translation type="obsolete">Printen(Ctrl+P)</translation>
+        <location filename="../base/net/tcp_channel.cc" line="80"/>
+        <source>Version of the application you are connecting to is less than the minimum supported version.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">Kopieer Rij</translation>
+        <location filename="../base/net/tcp_channel.cc" line="85"/>
+        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
+        <translation type="unfinished">Er is een probleem opgetreden in het netwerk (bijv, de netwerk kabel is per ongelijk verwijderd).</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
+        <location filename="../base/net/tcp_channel.cc" line="89"/>
+        <source>Connection was refused by the peer (or timed out).</source>
+        <translation type="unfinished">Verbinding is geweigerd door de peer (of er was een timeout).</translation>
     </message>
     <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">Kopieer Waarde</translation>
+        <location filename="../base/net/tcp_channel.cc" line="93"/>
+        <source>Remote host closed the connection.</source>
+        <translation type="unfinished">De remote host heeft de verbinding gesloten.</translation>
     </message>
     <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Vernieuwen</translation>
+        <location filename="../base/net/tcp_channel.cc" line="97"/>
+        <source>Host address was not found.</source>
+        <translation type="unfinished">Host adres is niet gevonden.</translation>
     </message>
     <message>
-        <source>Refresh (F5)</source>
-        <translation type="obsolete">Vernieuwen (F5)</translation>
+        <location filename="../base/net/tcp_channel.cc" line="101"/>
+        <source>Socket operation timed out.</source>
+        <translation type="unfinished">Socket operatie gaf een timeout.</translation>
+    </message>
+    <message>
+        <location filename="../base/net/tcp_channel.cc" line="105"/>
+        <source>Address specified is already in use and was set to be exclusive.</source>
+        <translation type="unfinished">Het opgegeven adres is al in gebruik, en is ingesteld als exclusief.</translation>
+    </message>
+    <message>
+        <location filename="../base/net/tcp_channel.cc" line="109"/>
+        <source>Address specified does not belong to the host.</source>
+        <translation type="unfinished">Het opgegeven adres behoort niet toe aan de host.</translation>
+    </message>
+    <message>
+        <location filename="../base/net/tcp_channel.cc" line="119"/>
+        <source>An unknown error occurred.</source>
+        <translation type="unfinished">Een onbekende error is opgetreden.</translation>
     </message>
 </context>
 <context>
@@ -4561,25 +7575,72 @@ Routers added: %4</source>
         <source>Close</source>
         <translation>Sluiten</translation>
     </message>
-</context>
-<context>
-    <name>UpdateSettingsDialog</name>
     <message>
-        <source>Update Settings</source>
-        <translation type="vanished">Update Instellingen</translation>
+        <location filename="../common/ui/update_dialog.cc" line="55"/>
+        <source>Receiving information...</source>
+        <translation type="unfinished">Informatie verkrijgen...</translation>
     </message>
     <message>
-        <source>Check for updates on startup</source>
-        <translatorcomment>This one does not really fit, but I don&apos;t know how to make the text even smaller</translatorcomment>
-        <translation type="vanished">Controleer op update bij opstarten</translation>
+        <location filename="../common/ui/update_dialog.cc" line="107"/>
+        <source>Cancel checking for updates. Please wait.</source>
+        <translation type="unfinished">Annuleer update controle. Een ogenblik geduld aub.</translation>
     </message>
     <message>
-        <source>Use custom update server</source>
-        <translation type="vanished">Gebruik andere update server</translation>
+        <location filename="../common/ui/update_dialog.cc" line="121"/>
+        <source>An update will be downloaded. After the download is complete, the application will automatically close.</source>
+        <translation type="unfinished">De update wordt gedownload. Nadat de download voltooid is zal de applicatie automatisch sluiten.</translation>
     </message>
     <message>
-        <source>Server:</source>
-        <translation type="vanished">Server:</translation>
+        <location filename="../common/ui/update_dialog.cc" line="123"/>
+        <source>All connected sessions will be terminated. You cannot establish a connection until the update is complete.</source>
+        <translation type="unfinished">Alle verbonden sessies worden afgesloten. Er kan geen verbinding gemaakt worden tot de update voltooid is.</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/update_dialog.cc" line="125"/>
+        <source>All unsaved data will be lost.</source>
+        <translation type="unfinished">Alle onopgeslagen data zal verloren gaan.</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/update_dialog.cc" line="126"/>
+        <source>Continue?</source>
+        <translation type="unfinished">Doorgaan?</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/update_dialog.cc" line="139"/>
+        <source>An error occurred while installing the update: %1</source>
+        <translation type="unfinished">Er is een probleem opgetreden bij het installeren van de update: %1</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/update_dialog.cc" line="196"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Onbekend</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/update_dialog.cc" line="197"/>
+        <source>Error retrieving update information.</source>
+        <translation type="unfinished">Er is een probleem opgetreden bij het downloaden van de update informatie.</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/update_dialog.cc" line="207"/>
+        <location filename="../common/ui/update_dialog.cc" line="230"/>
+        <source>No updates available.</source>
+        <translation type="unfinished">Geen updates beschikbaar.</translation>
+    </message>
+    <message>
+        <source>Confirmation</source>
+        <translation type="vanished">Bevestiging</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -4624,66 +7685,130 @@ Routers added: %4</source>
         <source>Uncheck all</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="146"/>
+        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, ., @ characters.</source>
+        <translation type="unfinished">De gebruikersnaam mag niet leeg zijn, en alleen karakters uit het alfabet, nummers en _, -, ., @ karakters bevatten.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="156"/>
+        <source>The username you entered already exists.</source>
+        <translation type="unfinished">De ingevoerde gebruikersnaam bestaat al.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="165"/>
+        <source>The passwords you entered do not match.</source>
+        <translation type="unfinished">De ingevoerde wachtwoorden komen niet overeen.</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../host/ui/user_dialog.cc" line="175"/>
+        <source>Password can not be empty and should not exceed %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Wachtwoord mag niet leeg zijn en mag niet minder dan %n karakter zijn.</numerusform>
+            <numerusform>Wachtwoord mag niet leeg zijn en mag niet minder dan %n karakters zijn.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="185"/>
+        <source>Password you entered does not meet the security requirements!</source>
+        <translation type="unfinished">Het ingevoerde wachtwoord komt niet overeen met de beveiligings eisen!</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../host/ui/user_dialog.cc" line="188"/>
+        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
+        <translation type="unfinished">
+            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
+            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="192"/>
+        <source>Do you want to enter a different password?</source>
+        <translation type="unfinished">Wilt U een ander wachtwoord invoeren?</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="195"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="214"/>
+        <source>Unknown internal error when creating or modifying a user.</source>
+        <translation type="unfinished">Onbekende interne fout bij het aanmaken of aanpassen van de gebruiker.</translation>
+    </message>
+    <message>
+        <location filename="../host/ui/user_dialog.cc" line="270"/>
+        <source>Double-click to change</source>
+        <translation type="unfinished">Dubbelklik om te wijzigen</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="vanished">Ya</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Nee</translation>
+    </message>
 </context>
 <context>
     <name>UserItem</name>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="252"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="250"/>
         <source>&lt;no user&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="287"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="285"/>
         <source>Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="289"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="287"/>
         <source>Connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="291"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="289"/>
         <source>Connect Query</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="293"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="291"/>
         <source>Shadow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="295"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="293"/>
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="297"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="295"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="299"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="297"/>
         <source>Listen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="301"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="299"/>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="303"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="301"/>
         <source>Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="305"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="303"/>
         <source>Init</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="307"/>
+        <location filename="../client/ui/desktop/task_manager_window.cc" line="305"/>
         <source>Unknown</source>
         <translation type="unfinished">Onbekend</translation>
     </message>
@@ -4691,5807 +7816,29 @@ Routers added: %4</source>
 <context>
     <name>UserTreeItem</name>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="217"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="215"/>
         <source>Yes</source>
         <translation type="unfinished">Ya</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="217"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="215"/>
         <source>No</source>
         <translation type="unfinished">Nee</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="249"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="247"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="253"/>
-        <source>Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/hosts/router_widget.cc" line="251"/>
-        <source>Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>base::GuiApplication</name>
-    <message>
-        <location filename="../base/gui_application.cc" line="388"/>
-        <source>Dark</source>
-        <translation type="unfinished">Donker</translation>
-    </message>
-    <message>
-        <location filename="../base/gui_application.cc" line="390"/>
-        <source>Light</source>
-        <translation type="unfinished">Licht</translation>
-    </message>
-    <message>
-        <location filename="../base/gui_application.cc" line="391"/>
-        <source>Auto</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>base::TcpChannel</name>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="66"/>
-        <source>Violation of the communication protocol.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="70"/>
-        <source>Wrong user name or password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="74"/>
-        <source>Cryptography error (message encryption or decryption failed).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="78"/>
-        <source>Specified session type is not allowed for the user.</source>
-        <translation type="unfinished">Het gespecificeerde sessie type is niet toegestaan voor de gebruiker.</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="82"/>
-        <source>Version of the application you are connecting to is less than the minimum supported version.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="87"/>
-        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
-        <translation type="unfinished">Er is een probleem opgetreden in het netwerk (bijv, de netwerk kabel is per ongelijk verwijderd).</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="91"/>
-        <source>Connection was refused by the peer (or timed out).</source>
-        <translation type="unfinished">Verbinding is geweigerd door de peer (of er was een timeout).</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="95"/>
-        <source>Remote host closed the connection.</source>
-        <translation type="unfinished">De remote host heeft de verbinding gesloten.</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="99"/>
-        <source>Host address was not found.</source>
-        <translation type="unfinished">Host adres is niet gevonden.</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="103"/>
-        <source>Socket operation timed out.</source>
-        <translation type="unfinished">Socket operatie gaf een timeout.</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="107"/>
-        <source>Address specified is already in use and was set to be exclusive.</source>
-        <translation type="unfinished">Het opgegeven adres is al in gebruik, en is ingesteld als exclusief.</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="111"/>
-        <source>Address specified does not belong to the host.</source>
-        <translation type="unfinished">Het opgegeven adres behoort niet toe aan de host.</translation>
-    </message>
-    <message>
-        <location filename="../base/net/tcp_channel.cc" line="121"/>
-        <source>An unknown error occurred.</source>
-        <translation type="unfinished">Een onbekende error is opgetreden.</translation>
-    </message>
-</context>
-<context>
-    <name>client::AddressBar</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar.cc" line="56"/>
-        <source>An incorrect path to the folder was entered.</source>
-        <translation>Er is een ongeldig pad voor de map opgegeven.</translation>
-    </message>
-</context>
-<context>
-    <name>client::AddressBarModel</name>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="81"/>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="449"/>
-        <source>Home Folder</source>
-        <translation>Thuismap</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="85"/>
-        <source>Desktop</source>
-        <translation>Bureablad</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="288"/>
-        <source>Computer</source>
-        <translation>Computer</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="397"/>
-        <source>Name</source>
-        <translation>Naam</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="400"/>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Total Space</source>
-        <translation type="vanished">Totale Ruimte</translation>
-    </message>
-    <message>
-        <source>Free Space</source>
-        <translation type="vanished">Vrije Ruimte</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="434"/>
-        <source>Optical Drive</source>
-        <translation>Optische Schijf</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="437"/>
-        <source>Removable Drive</source>
-        <translation>Verwijderbare Schijf</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="440"/>
-        <source>Fixed Drive</source>
-        <translation>Vaste Schijf</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="443"/>
-        <source>Network Drive</source>
-        <translation>Netwerk Schijf</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="446"/>
-        <source>RAM Drive</source>
-        <translation>RAM Schijf</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="452"/>
-        <source>Desktop Folder</source>
-        <translation>Bureablad Map</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="455"/>
-        <source>Root Directory</source>
-        <translation>Root Map</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="458"/>
-        <source>Unknown Drive</source>
-        <translation>Onbekende Schijf</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="476"/>
-        <source>TB</source>
-        <translation>TB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="481"/>
-        <source>GB</source>
-        <translation>GB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="486"/>
-        <source>MB</source>
-        <translation>MB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="491"/>
-        <source>kB</source>
-        <translation>kB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="496"/>
-        <source>B</source>
-        <translation>B</translation>
-    </message>
-</context>
-<context>
-    <name>client::AuthorizationDialog</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/authorization_dialog.cc" line="164"/>
-        <source>Username cannot be empty.</source>
-        <translation>Gebruikersnaam veld mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/authorization_dialog.cc" line="172"/>
-        <source>Password cannot be empty.</source>
-        <translation>Wachtwoord mag niet leeg zijn.</translation>
-    </message>
-</context>
-<context>
-    <name>client::Client</name>
-    <message>
-        <location filename="../client/client.cc" line="484"/>
-        <source>The host with the specified ID is not online</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/client.cc" line="487"/>
-        <source>Access is denied</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/client.cc" line="490"/>
-        <source>There are no relays available or the key pool is empty</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/client.cc" line="493"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/client.cc" line="531"/>
-        <source>Connection to the router has been lost.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/client.cc" line="573"/>
-        <source>Failed to connect to the relay server</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::ClientSettingsDialog</name>
-    <message>
-        <source>An invalid router address was entered.</source>
-        <translation type="vanished">Er is een ongelid router adres ingevoerd.</translation>
-    </message>
-    <message>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, . characters.</source>
-        <translation type="vanished">De gebruikersnaam mag niet leeg zijn, en alleen letters, nummers en _, -, . karakters bevatten.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">Wachtwoord mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>client::ClientWindow</name>
-    <message>
-        <source>Confirmation</source>
-        <translation type="obsolete">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Aspia Client</source>
-        <translation type="obsolete">Aspia Client</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>An invalid computer address was entered.</source>
-        <translation type="vanished">Er is een ongelid computer adres ingevoerd.</translation>
-    </message>
-    <message>
-        <source>A host ID was entered, but the router was not configured. You need to configure your router before connecting.</source>
-        <translation type="vanished">Er is een host ID ingevoerd, maar de router was niet geconfigureerd. Configureer de router voor het maken van een verbinding.</translation>
-    </message>
-</context>
-<context>
-    <name>client::ComputersTab</name>
-    <message>
-        <source>Add Computer</source>
-        <translation type="obsolete">Computer Toevoegen</translation>
-    </message>
-    <message>
-        <source>Delete Computer</source>
-        <translation type="obsolete">Computer Verwijderen</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">Systeem Informatie</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="obsolete">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="obsolete">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>client::DesktopPanel</name>
-    <message>
-        <source>Monitor selection</source>
-        <translation type="obsolete">Beeldscherm selectie</translation>
-    </message>
-    <message>
-        <source>Monitor %1 (primary)</source>
-        <translation type="vanished">Beeldscherm %1 (primair)</translation>
-    </message>
-    <message>
-        <source>Monitor %1</source>
-        <translation type="vanished">Beeldscherm %1</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to shutdown the remote computer?</source>
-        <translation type="vanished">Weet U zeker dat U de computer op afstand wilt afsluiten?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to reboot the remote computer?</source>
-        <translation type="vanished">Weet U zeker dat U de computer op afstand wilt herstarten?</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to end the user session on the remote computer?</source>
-        <translation type="vanished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt beeindigen?</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to lock the user session on the remote computer?</source>
-        <translation type="vanished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt vergrendelen?</translation>
-    </message>
-    <message>
-        <source>Scale</source>
-        <translation type="vanished">Schaal</translation>
-    </message>
-</context>
-<context>
-    <name>client::DesktopSessionWindow</name>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>The current video encoding is not supported by the host. Please specify a different video encoding.</source>
-        <translation type="obsolete">De huidige video encoding wordt niet ondersteund door de host. Specificeer AUB een andere encoding.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_session_window.cc" line="946"/>
-        <source>Save File</source>
-        <translation type="unfinished">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_session_window.cc" line="948"/>
-        <source>PNG Image (*.png);;BMP Image (*.bmp)</source>
-        <translation type="unfinished">PNG Afbeelding (*.png);;BMP Afbeelding (*.bmp)</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_session_window.cc" line="979"/>
-        <source>Could not save image</source>
-        <translation type="unfinished">Kon het bestand niet opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>client::DesktopToolBar</name>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="334"/>
-        <source>Resolution selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="400"/>
-        <source>Session %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="402"/>
-        <source>Session %1 (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="432"/>
-        <source>Stop recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="437"/>
-        <source>Start recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="572"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="601"/>
-        <source>Confirmation</source>
-        <translation type="unfinished">Bevestiging</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="557"/>
-        <source>Are you sure you want to shutdown the remote computer?</source>
-        <translation type="unfinished">Weet U zeker dat U de computer op afstand wilt afsluiten?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="573"/>
-        <source>Are you sure you want to reboot the remote computer?</source>
-        <translation type="unfinished">Weet U zeker dat U de computer op afstand wilt herstarten?</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="580"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="609"/>
-        <source>Wait for host</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="602"/>
-        <source>Are you sure you want to reboot the remote computer in Safe Mode?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="630"/>
-        <source>Are you sure you want to end the user session on the remote computer?</source>
-        <translation type="unfinished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt beeindigen?</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="645"/>
-        <source>Are you sure you want to lock the user session on the remote computer?</source>
-        <translation type="unfinished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt vergrendelen?</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="744"/>
-        <source>Scale</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::DesktopWidget</name>
-    <message>
-        <location filename="../client/ui/desktop/desktop_widget.cc" line="532"/>
-        <source>The session was paused by a remote user</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_widget.cc" line="535"/>
-        <source>The session is temporarily unavailable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_widget.cc" line="538"/>
-        <source>The session is permanently unavailable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/desktop_widget.cc" line="541"/>
-        <source>Error while receiving video stream: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::FileListModel</name>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="105"/>
-        <source>Folder</source>
-        <translation>Map</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="382"/>
-        <source>Name</source>
-        <translation>Naam</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="385"/>
-        <source>Size</source>
-        <translation>Grootte</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="388"/>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="391"/>
-        <source>Modified</source>
-        <translation>Aangepast</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="558"/>
-        <source>TB</source>
-        <translation>TB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="563"/>
-        <source>GB</source>
-        <translation>GB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="568"/>
-        <source>MB</source>
-        <translation>MB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="573"/>
-        <source>kB</source>
-        <translation>kB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="578"/>
-        <source>B</source>
-        <translation>B</translation>
-    </message>
-</context>
-<context>
-    <name>client::FilePanel</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="104"/>
-        <source>Failed to get list of drives: %1</source>
-        <translation>Kon lijst van schijven niet maken: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="121"/>
-        <source>Failed to get list of files: %1</source>
-        <translation>Kon lijst van bestanden niet maken: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="146"/>
-        <source>Failed to create directory: %1</source>
-        <translation>Kon lijst van mappen niet maken: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="158"/>
-        <source>Failed to rename item: %1</source>
-        <translation>Kon object niet hernoemen: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="285"/>
-        <source>%1 object(s) selected</source>
-        <translation>%1 object(en) geselecteerd</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="305"/>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="324"/>
-        <source>Folder name can not be empty.</source>
-        <translation>Map naam mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="311"/>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="330"/>
-        <source>Name contains invalid characters.</source>
-        <translation>De naam bevat ongeldige karakters.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="351"/>
-        <source>&amp;Send	F11</source>
-        <translation>&amp;Stuur	F11</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="352"/>
-        <source>&amp;Delete	Delete</source>
-        <translation>&amp;Delete	Delete</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="362"/>
-        <source>&amp;Create Folder</source>
-        <translation>&amp;Map maken</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="425"/>
-        <source>Are you sure you want to delete the selected items?</source>
-        <translation>Weet U zeker dat U de geselecteerde objecten wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-</context>
-<context>
-    <name>client::FileRemoveDialog</name>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="90"/>
-        <source>Deleting: %1</source>
-        <translation>Verwijderen: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="117"/>
-        <source>An error occurred while retrieving the list of files: %1</source>
-        <translation>Er is een fout opgetreden bij het ontvangen van de bestandslijst: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="122"/>
-        <source>Failed to delete &quot;%1&quot;: %2.</source>
-        <translation>Kon &quot;%1&quot; niet verwijderen: %2.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="127"/>
-        <source>Warning</source>
-        <translation>Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="135"/>
-        <source>Skip</source>
-        <translation>Overslaan</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="138"/>
-        <source>Skip All</source>
-        <translation>Alles overslaan</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="141"/>
-        <source>Abort</source>
-        <translation>Afbreken</translation>
-    </message>
-</context>
-<context>
-    <name>client::FileTransferDialog</name>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="94"/>
-        <source>Current Task: Copying items.</source>
-        <translation>Huidige taak: Items kopieren.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="106"/>
-        <source>From: %1</source>
-        <translation>Van: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="109"/>
-        <source>To: %1</source>
-        <translation>Naar: %1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="143"/>
-        <source>Warning</source>
-        <translation>Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="155"/>
-        <source>Skip</source>
-        <translation>Overslaan</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="158"/>
-        <source>Skip All</source>
-        <translation>Alles overslaan</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="161"/>
-        <source>Replace</source>
-        <translation>Vervangen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="164"/>
-        <source>Replace All</source>
-        <translation>Alles vervangen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="167"/>
-        <source>Abort</source>
-        <translation>Afbreken</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="313"/>
-        <source>TB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="318"/>
-        <source>GB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="323"/>
-        <source>MB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="328"/>
-        <source>kB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="333"/>
-        <source>B/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="130"/>
-        <source>Speed: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="243"/>
-        <source>Current Task: Cancel transfer of files.</source>
-        <translation>Huidige taak: bestands overdracht afbreken.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="258"/>
-        <source>An error occurred while building the file queue for copying</source>
-        <translation>Er is een fout opgetreden bij het maken van de bestands lijst voor kopieren</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="263"/>
-        <source>Failed to create directory &quot;%1&quot;: %2</source>
-        <translation>Kon de map &quot;%1&quot; niet maken: %2</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="270"/>
-        <source>Failed to create file &quot;%1&quot;: %2</source>
-        <translation>Kon het bestand &quot;%1&quot; niet maken: %2</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="276"/>
-        <source>Failed to open file &quot;%1&quot;: %2</source>
-        <translation>Kon het bestand &quot;%1&quot; niet openen: %2</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="282"/>
-        <source>Failed to write file &quot;%1&quot;: %2</source>
-        <translation>Kon het bestand &quot;%1&quot; niet schrijven: %2</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="288"/>
-        <source>Failed to read file &quot;%1&quot;: %2</source>
-        <translation>Kon het bestand &quot;%1&quot; niet lezen: %2</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="294"/>
-        <source>Unknown error type while copying files</source>
-        <translation>Onbekend probleem bij het kopieren van bestanden</translation>
-    </message>
-</context>
-<context>
-    <name>client::FileTransferSessionWindow</name>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_session_window.cc" line="51"/>
-        <source>Local Computer</source>
-        <translation type="unfinished">Lokale Computer</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_session_window.cc" line="52"/>
-        <source>Remote Computer</source>
-        <translation type="unfinished">Computer op afstand</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_session_window.cc" line="125"/>
-        <source>Session error: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::HostsTab</name>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="60"/>
-        <source>Add Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="61"/>
-        <source>Delete Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="62"/>
-        <source>Edit Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="64"/>
-        <source>Add Computer</source>
-        <translation type="unfinished">Computer Toevoegen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="65"/>
-        <source>Delete Computer</source>
-        <translation type="unfinished">Computer Verwijderen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="66"/>
-        <source>Edit Computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="67"/>
-        <source>Copy Computer</source>
-        <translation type="unfinished">Kopieer Computer</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="69"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="85"/>
-        <source>Desktop Management</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="70"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="86"/>
-        <source>File Transfer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="71"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="87"/>
-        <source>Chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="72"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="88"/>
-        <source>System Information</source>
-        <translation type="unfinished">Systeem Informatie</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="116"/>
-        <source>Add User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="117"/>
-        <source>Edit User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="118"/>
-        <source>Delete User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="120"/>
-        <source>Disconnect</source>
-        <translation type="unfinished">Verbinding verbreken</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="121"/>
-        <source>Disconnect All</source>
-        <translation type="unfinished">Alle verbindingen verbreken</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="123"/>
-        <source>Remove</source>
-        <translation type="unfinished">Verwijderen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="125"/>
-        <source>Save...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="126"/>
-        <source>Reload</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="128"/>
-        <source>Import Old Address Book...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="131"/>
-        <source>Auto-refresh Status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="808"/>
-        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="847"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="872"/>
-        <source>Copy Row</source>
-        <translation type="unfinished">Kopieer Rij</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="848"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="873"/>
-        <source>Copy Value</source>
-        <translation type="unfinished">Kopieer Waarde</translation>
-    </message>
-    <message>
-        <source>Update</source>
-        <translation type="obsolete">Update</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="obsolete">Gebruikers</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="515"/>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="561"/>
-        <source>Failed to retrieve computer information from the local database.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>(copy)</source>
-        <translation type="obsolete">(kopieer)</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="obsolete">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="obsolete">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="455"/>
-        <source>Status</source>
-        <translation type="unfinished">Status</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="456"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="457"/>
-        <source>Delete</source>
-        <translation type="unfinished">Verwijderen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="938"/>
-        <source>Import Old Address Book</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="940"/>
-        <source>Address Book (*.aab);;All files (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="1051"/>
-        <source>The router associated with this computer has been deleted. Edit the computer to select another router or switch to direct connection.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="1058"/>
-        <source>The computer has an invalid host ID.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/hosts_tab.cc" line="1067"/>
-        <source>The computer has an incorrect address.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::LocalComputerDialog</name>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="65"/>
-        <source>Edit Computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="85"/>
-        <source>Add Computer</source>
-        <translation type="unfinished">Computer Toevoegen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="104"/>
-        <source>Local</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="53"/>
-        <source>Without Router</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="95"/>
-        <source>&lt;deleted router&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="156"/>
-        <source>Name cannot be empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="164"/>
-        <source>Too long name. The maximum length of the name is %n characters.</source>
-        <translation type="unfinished">
-            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
-            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="179"/>
-        <source>An invalid computer address was entered.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="189"/>
-        <source>An invalid host ID was entered.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="200"/>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and &quot;_&quot;, &quot;-&quot;, &quot;.&quot; characters.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="211"/>
-        <source>Too long comment. The maximum length of the comment is %n characters.</source>
-        <translation type="unfinished">
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="226"/>
-        <source>A computer with this name already exists in the selected group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="248"/>
-        <source>Unable to add computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="258"/>
-        <source>Unable to modify computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="272"/>
-        <source>Address:</source>
-        <translation type="unfinished">Adres:</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="273"/>
-        <source>Computer name or IP address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="277"/>
-        <source>ID:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_computer_dialog.cc" line="278"/>
-        <source>Host ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::LocalGroupDialog</name>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="50"/>
-        <source>Edit Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="66"/>
-        <source>Add Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="70"/>
-        <source>Local</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="95"/>
-        <source>Name cannot be empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="103"/>
-        <source>Too long name. The maximum length of the name is %n characters.</source>
-        <translation type="unfinished">
-            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
-            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="114"/>
-        <source>Too long comment. The maximum length of the comment is %n characters.</source>
-        <translation type="unfinished">
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="129"/>
-        <source>A group with this name already exists in the selected parent group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="147"/>
-        <source>Unable to add group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_dialog.cc" line="156"/>
-        <source>Unable to modify group</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::LocalGroupWidget</name>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="83"/>
-        <source>Status update...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="331"/>
-        <source>Failed to retrieve computer information from the local database.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="335"/>
-        <source>(copy)</source>
-        <translation type="unfinished">(kopieer)</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="339"/>
-        <source>Failed to add the computer to the local database.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="369"/>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="unfinished">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="381"/>
-        <source>Unable to remove computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="497"/>
-        <source>%n child group(s)</source>
-        <translation type="unfinished">
-            <numerusform>%n onderliggende groep</numerusform>
-            <numerusform>%n onderliggende groepen</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="499"/>
-        <source>%n child computer(s)</source>
-        <translation type="unfinished">
-            <numerusform>%n onderliggende computer</numerusform>
-            <numerusform>%n onderliggende computers</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="603"/>
-        <source>Online</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="603"/>
-        <source>Offline</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::MainWindow</name>
-    <message>
-        <location filename="../client/ui/main_window.cc" line="63"/>
-        <source>Search...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/main_window.cc" line="125"/>
-        <source>Hosts</source>
-        <translation type="unfinished">Hosts</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/main_window.cc" line="296"/>
-        <source>Connection by ID is specified in the properties of the computer, but the router is not configured. Check the parameters of the router in the properties of the address book.</source>
-        <translation type="unfinished">Verbinding maken met ID is ingesteld in de eigenschappen van de computer,  maar de router is niet geconfigureerd. Controleer de parameters van de router in de eigenschappen van het adres boek.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/main_window.cc" line="228"/>
-        <source>Aspia Client</source>
-        <translation type="unfinished">Aspia Client</translation>
-    </message>
-</context>
-<context>
-    <name>client::MasterPasswordDialog</name>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="42"/>
-        <source>Set Master Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="43"/>
-        <source>Set the master password to encrypt the address book.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="50"/>
-        <source>Change Master Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="51"/>
-        <source>Enter your current password and choose a new one.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="56"/>
-        <source>Remove Master Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="57"/>
-        <source>Enter your current password to remove encryption from the address book.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="113"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="158"/>
-        <source>Password you entered does not meet the security requirements!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/master_password_dialog.cc" line="114"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="159"/>
-        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
-        <translation type="unfinished">
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="117"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="162"/>
-        <source>Do you want to enter a different password?</source>
-        <translation type="unfinished">Wilt U een ander wachtwoord invoeren?</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="120"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="165"/>
-        <source>Warning</source>
-        <translation type="unfinished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="130"/>
-        <source>Passwords do not match.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="136"/>
-        <source>Unable to set master password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="152"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="195"/>
-        <source>Enter the current password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="175"/>
-        <source>New passwords do not match.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="181"/>
-        <source>Invalid current password or unable to change it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="201"/>
-        <source>Invalid current password or unable to remove it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::ProcessItem</name>
-    <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-</context>
-<context>
-    <name>client::QtDesktopWindow</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>The current video encoding is not supported by the host. Please specify a different video encoding.</source>
-        <translation type="obsolete">De huidige video encoding wordt niet ondersteund door de host. Specificeer AUB een andere encoding.</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="obsolete">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <source>PNG Image (*.png);;BMP Image (*.bmp)</source>
-        <translation type="obsolete">PNG Afbeelding (*.png);;BMP Afbeelding (*.bmp)</translation>
-    </message>
-    <message>
-        <source>Could not save image</source>
-        <translation type="obsolete">Kon het bestand niet opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>client::QtFileManagerWindow</name>
-    <message>
-        <source>Local Computer</source>
-        <translation type="obsolete">Lokale Computer</translation>
-    </message>
-    <message>
-        <source>Remote Computer</source>
-        <translation type="obsolete">Computer op afstand</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>client::QtSystemInfoWindow</name>
-    <message>
-        <source>Printers</source>
-        <translation type="obsolete">Printers</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="obsolete">Besturingssysteem</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="obsolete">Gebruikers</translation>
-    </message>
-    <message>
-        <source>HTML File</source>
-        <translation type="obsolete">HTML Bestand</translation>
-    </message>
-    <message>
-        <source>HTML File (*.html)</source>
-        <translation type="obsolete">HTML Bestand (*.html)</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Failed to save file: %1</source>
-        <translation type="obsolete">Kon het bestand %1 niet opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>client::RecordSettingsDialog</name>
-    <message>
-        <location filename="../client/ui/desktop/record_settings_dialog.cc" line="48"/>
-        <source>Choose path</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::RouterDialog</name>
-    <message>
-        <location filename="../client/ui/router_dialog.cc" line="44"/>
-        <source>Administrator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/router_dialog.cc" line="45"/>
-        <source>Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/router_dialog.cc" line="46"/>
         <source>Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/router_dialog.cc" line="96"/>
-        <source>An invalid router address was entered.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/router_dialog.cc" line="106"/>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, . characters.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/router_dialog.cc" line="117"/>
-        <source>Password cannot be empty.</source>
-        <translation type="unfinished">Wachtwoord mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/router_dialog.cc" line="139"/>
-        <location filename="../client/ui/router_dialog.cc" line="148"/>
-        <source>Failed to save the router.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::RouterManagerWindow</name>
-    <message>
-        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
-        <translation type="obsolete">Er is een probleem opgetreden in het netwerk (bijv, de netwerk kabel is per ongelijk verwijderd).</translation>
-    </message>
-    <message>
-        <source>Connection was refused by the peer (or timed out).</source>
-        <translation type="obsolete">Verbinding is geweigerd door de peer (of er was een timeout).</translation>
-    </message>
-    <message>
-        <source>Remote host closed the connection.</source>
-        <translation type="obsolete">De remote host heeft de verbinding gesloten.</translation>
-    </message>
-    <message>
-        <source>Host address was not found.</source>
-        <translation type="obsolete">Host adres is niet gevonden.</translation>
-    </message>
-    <message>
-        <source>Socket operation timed out.</source>
-        <translation type="obsolete">Socket operatie gaf een timeout.</translation>
-    </message>
-    <message>
-        <source>Address specified is already in use and was set to be exclusive.</source>
-        <translation type="obsolete">Het opgegeven adres is al in gebruik, en is ingesteld als exclusief.</translation>
-    </message>
-    <message>
-        <source>Address specified does not belong to the host.</source>
-        <translation type="obsolete">Het opgegeven adres behoort niet toe aan de host.</translation>
-    </message>
-    <message>
-        <source>An unknown error occurred.</source>
-        <translation type="obsolete">Een onbekende error is opgetreden.</translation>
-    </message>
-    <message>
-        <source>Violation of the data exchange protocol.</source>
-        <translation type="obsolete">Schending van het data uitwisselings protocol.</translation>
-    </message>
-    <message>
-        <source>An error occured while authenticating: wrong user name or password.</source>
-        <translation type="obsolete">Er is een error opgetreden bij het authenticeren: verkeerde gebruikers naam of wachtwoord.</translation>
-    </message>
-    <message>
-        <source>Specified session type is not allowed for the user.</source>
-        <translation type="obsolete">Het gespecificeerde sessie type is niet toegestaan voor de gebruiker.</translation>
-    </message>
-    <message>
-        <source>Disconnect</source>
-        <translation type="obsolete">Verbinding verbreken</translation>
-    </message>
-    <message>
-        <source>Disconnect All</source>
-        <translation type="obsolete">Alle verbindingen verbreken</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation type="obsolete">Verwijderen</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Vernieuwen</translation>
-    </message>
-    <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">Kopieer Rij</translation>
-    </message>
-    <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">Kopieer Waarde</translation>
-    </message>
-    <message>
-        <source>Modify</source>
-        <translation type="obsolete">Aanpassen</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="obsolete">Verwijderen</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation type="obsolete">Toevoegen</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="obsolete">Bestand Opslaan</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n seconds</source>
-        <translation type="obsolete">
-            <numerusform>%n seconde</numerusform>
-            <numerusform>%n seconden</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n minutes</source>
-        <translation type="obsolete">
-            <numerusform>%n minuut</numerusform>
-            <numerusform>%n minuten</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hours</source>
-        <translation type="obsolete">
-            <numerusform>%n uur</numerusform>
-            <numerusform>%n uren</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n days</source>
-        <translation type="obsolete">
-            <numerusform>%n dag</numerusform>
-            <numerusform>%n dagen</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="obsolete">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete user &quot;%1&quot;?</source>
-        <translation type="obsolete">Weet U zeker dat U de gebruiker &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Computer Name</source>
-        <translation type="obsolete">Computer Naam</translation>
-    </message>
-    <message>
-        <source>IP Address</source>
-        <translation type="obsolete">IP Adres</translation>
-    </message>
-    <message>
-        <source>Connect Time</source>
-        <translation type="obsolete">Verbindings Tijd</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="obsolete">Versie</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="obsolete">Besturingssysteem</translation>
-    </message>
-</context>
-<context>
-    <name>client::RouterUserDialog</name>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="188"/>
-        <source>Warning</source>
-        <translation type="unfinished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="137"/>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, ., @ characters.</source>
-        <translation type="unfinished">De gebruikersnaam mag niet leeg zijn, en alleen karakters uit het alfabet, nummers en _, -, ., @ karakters bevatten.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="149"/>
-        <source>The username you entered already exists.</source>
-        <translation type="unfinished">De ingevoerde gebruikersnaam bestaat al.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="159"/>
-        <source>The passwords you entered do not match.</source>
-        <translation type="unfinished">De ingevoerde wachtwoorden komen niet overeen.</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="170"/>
-        <source>Password can not be empty and should not exceed %n characters.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="180"/>
-        <source>Password you entered does not meet the security requirements!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="181"/>
-        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
-        <translation type="unfinished">
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="185"/>
-        <source>Do you want to enter a different password?</source>
-        <translation type="unfinished">Wilt U een ander wachtwoord invoeren?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="213"/>
-        <source>Unknown internal error when creating or modifying a user.</source>
-        <translation type="unfinished">Onbekende interne fout bij het aanmaken of aanpassen van de gebruiker.</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="262"/>
-        <source>Double-click to change</source>
-        <translation type="unfinished">Dubbelklik om te wijzigen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="287"/>
-        <source>Administrator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="291"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="249"/>
         <source>Manager</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_user_dialog.cc" line="295"/>
-        <source>Client</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::RouterWidget</name>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="672"/>
-        <source>%n host(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="675"/>
-        <source>%n relay(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="678"/>
-        <source>%n user(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="695"/>
-        <source>%n seconds</source>
-        <translation type="unfinished">
-            <numerusform>%n seconde</numerusform>
-            <numerusform>%n seconden</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="696"/>
-        <source>%n minutes</source>
-        <translation type="unfinished">
-            <numerusform>%n minuut</numerusform>
-            <numerusform>%n minuten</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="697"/>
-        <source>%n hours</source>
-        <translation type="unfinished">
-            <numerusform>%n uur</numerusform>
-            <numerusform>%n uren</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="701"/>
-        <source>%n days</source>
-        <translation type="unfinished">
-            <numerusform>%n dag</numerusform>
-            <numerusform>%n dagen</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="727"/>
-        <source>TB</source>
-        <translation type="unfinished">TB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="729"/>
-        <source>GB</source>
-        <translation type="unfinished">GB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="731"/>
-        <source>MB</source>
-        <translation type="unfinished">MB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="733"/>
-        <source>kB</source>
-        <translation type="unfinished">kB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="735"/>
-        <source>B</source>
-        <translation type="unfinished">B</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="822"/>
-        <source>You cannot delete a built-in user.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="827"/>
-        <source>Are you sure you want to delete user &quot;%1&quot;?</source>
-        <translation type="unfinished">Weet U zeker dat U de gebruiker &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="848"/>
-        <source>Are you sure you want to disconnect host &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="869"/>
-        <source>Are you sure you want to disconnect all hosts?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="890"/>
-        <source>Confirmation</source>
-        <translation type="unfinished">Bevestiging</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="891"/>
-        <source>Deleting a host will result in all its configuration for connecting to the router being deleted. This operation is irreversible. After deleting, the host will no longer connect to the router. Are you sure you want to do this?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="899"/>
-        <source>Try to uninstall the application (result is not guaranteed)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="922"/>
-        <source>Are you sure you want to disconnect relay &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="943"/>
-        <source>Are you sure you want to disconnect all relays?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1023"/>
-        <source>Disconnect</source>
-        <translation type="unfinished">Verbinding verbreken</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1025"/>
-        <source>Copy Row</source>
-        <translation type="unfinished">Kopieer Rij</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1026"/>
-        <source>Copy Value</source>
-        <translation type="unfinished">Kopieer Waarde</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1035"/>
-        <source>Are you sure you want to disconnect peer &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1083"/>
-        <source>Connecting to router %1...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1086"/>
-        <source>Connection to router %1 established.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1089"/>
-        <source>Disconnected from router %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1125"/>
-        <source>Network error: %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1262"/>
-        <source>Invalid user request.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1264"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1289"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1312"/>
-        <source>Unknown internal error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1266"/>
-        <source>Invalid data was passed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1268"/>
-        <source>A user with the specified name already exists.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1270"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1293"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1316"/>
-        <source>Unknown error type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1287"/>
-        <source>Invalid host request.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1291"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1314"/>
-        <source>Invalid entry id.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1310"/>
-        <source>Invalid relay request.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1331"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1393"/>
-        <source>Save File</source>
-        <translation type="unfinished">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1331"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1393"/>
-        <source>JSON files (*.json)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1342"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1404"/>
-        <source>Could not open file for writing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1381"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1468"/>
-        <source>Unable to write file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SearchWidget</name>
-    <message>
-        <location filename="../client/ui/hosts/search_widget.cc" line="47"/>
-        <source>Name</source>
-        <translation type="unfinished">Naam</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/search_widget.cc" line="47"/>
-        <source>Address / ID</source>
-        <translation type="unfinished">Adres / ID</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/search_widget.cc" line="47"/>
-        <source>Comment</source>
-        <translation type="unfinished">Commentaar</translation>
-    </message>
-</context>
-<context>
-    <name>client::SelectScreenAction</name>
-    <message>
-        <location filename="../client/ui/desktop/select_screen_action.h" line="36"/>
-        <source>Full Desktop</source>
-        <translation>Volledig Bureaublad</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/select_screen_action.h" line="49"/>
-        <source>Monitor %1 (primary)</source>
-        <translation type="unfinished">Beeldscherm %1 (primair)</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/select_screen_action.h" line="51"/>
-        <source>Monitor %1</source>
-        <translation type="unfinished">Beeldscherm %1</translation>
-    </message>
-</context>
-<context>
-    <name>client::SessionWindow</name>
-    <message>
-        <source>Attempt to connect to %1.</source>
-        <translation type="obsolete">Probeer te verbinden met %1:%2. {1.?}</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="119"/>
-        <source>Session started.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="127"/>
-        <source>Error requesting connection via router: %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="131"/>
-        <source>The specified router is unavailable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="135"/>
-        <source>The specified router is offline.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="143"/>
-        <source>Connecting to host %1...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="147"/>
-        <source>Connecting to host %1:%2...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="158"/>
-        <source>Connection to host %1 established.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="162"/>
-        <source>Connection to host %1:%2 established.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="185"/>
-        <source>Host is unavailable yet. Waiting to reconnect...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="189"/>
-        <source>Timeout waiting for reconnection to host.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="197"/>
-        <source>The Host version is newer than the Client version (%1 &gt; %2). Please update the application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/session_window.cc" line="203"/>
-        <source>Attempting to connect in compatibility mode...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">Bureaublad Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="obsolete">Bureaublad Weergeven</translation>
-    </message>
-    <message>
-        <source>File Transfer</source>
-        <translation type="obsolete">Bestands overdracht</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">Systeem Informatie</translation>
-    </message>
-    <message>
-        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
-        <translation type="obsolete">Er is een probleem opgetreden in het netwerk (bijv, de netwerk kabel is per ongelijk verwijderd).</translation>
-    </message>
-    <message>
-        <source>Connection was refused by the peer (or timed out).</source>
-        <translation type="obsolete">Verbinding is geweigerd door de peer (of er was een timeout).</translation>
-    </message>
-    <message>
-        <source>Remote host closed the connection.</source>
-        <translation type="obsolete">De remote host heeft de verbinding gesloten.</translation>
-    </message>
-    <message>
-        <source>Host address was not found.</source>
-        <translation type="obsolete">Host adres is niet gevonden.</translation>
-    </message>
-    <message>
-        <source>Socket operation timed out.</source>
-        <translation type="obsolete">Socket operatie gaf een timeout.</translation>
-    </message>
-    <message>
-        <source>Address specified is already in use and was set to be exclusive.</source>
-        <translation type="obsolete">Het opgegeven adres is al in gebruik, en is ingesteld als exclusief.</translation>
-    </message>
-    <message>
-        <source>Address specified does not belong to the host.</source>
-        <translation type="obsolete">Het opgegeven adres behoort niet toe aan de host.</translation>
-    </message>
-    <message>
-        <source>An unknown error occurred.</source>
-        <translation type="obsolete">Een onbekende error is opgetreden.</translation>
-    </message>
-    <message>
-        <source>Violation of the data exchange protocol.</source>
-        <translation type="obsolete">Schending van het data uitwisselings protocol.</translation>
-    </message>
-    <message>
-        <source>Specified session type is not allowed for the user.</source>
-        <translation type="obsolete">Het gespecificeerde sessie type is niet toegestaan voor de gebruiker.</translation>
-    </message>
-</context>
-<context>
-    <name>client::SettingsDialog</name>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="obsolete">Wachtwoord mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="268"/>
-        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="324"/>
-        <source>Status: set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="325"/>
-        <source>Change...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="329"/>
-        <source>Status: not set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="330"/>
-        <source>Set...</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::Sidebar</name>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="62"/>
-        <source>Local</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="317"/>
-        <source>Are you sure you want to delete group &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="329"/>
-        <source>Unable to remove group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="501"/>
-        <source>A group with this name already exists in the selected parent group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="511"/>
-        <source>Failed to move the group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="567"/>
-        <source>A computer with this name already exists in the selected group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="587"/>
-        <source>Failed to move the computer to the selected group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::StatisticsDialog</name>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfo</name>
-    <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n seconds</source>
-        <translation type="obsolete">
-            <numerusform>%n seconde</numerusform>
-            <numerusform>%n seconden</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n minutes</source>
-        <translation type="obsolete">
-            <numerusform>%n minuut</numerusform>
-            <numerusform>%n minuten</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hours</source>
-        <translation type="obsolete">
-            <numerusform>%n uur</numerusform>
-            <numerusform>%n uren</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n days</source>
-        <translation type="obsolete">
-            <numerusform>%n dag</numerusform>
-            <numerusform>%n dagen</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Gbps</source>
-        <translation type="obsolete">Gbps</translation>
-    </message>
-    <message>
-        <source>Mbps</source>
-        <translation type="obsolete">Mbps</translation>
-    </message>
-    <message>
-        <source>Kbps</source>
-        <translation type="obsolete">Kbps</translation>
-    </message>
-    <message>
-        <source>bps</source>
-        <translation type="obsolete">bps</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoSummary</name>
-    <message>
-        <source>Name</source>
-        <translation type="obsolete">Naam</translation>
-    </message>
-    <message>
-        <source>Domain</source>
-        <translation type="obsolete">Domein</translation>
-    </message>
-    <message>
-        <source>Workgroup</source>
-        <translation type="obsolete">Werkgroep</translation>
-    </message>
-    <message>
-        <source>Uptime</source>
-        <translation type="obsolete">Uptime</translation>
-    </message>
-    <message>
-        <source>Computer</source>
-        <translation type="obsolete">Computer</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="obsolete">Versie</translation>
-    </message>
-    <message>
-        <source>Architecture</source>
-        <translation type="obsolete">Architectuur</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="obsolete">Besturingssysteem</translation>
-    </message>
-    <message>
-        <source>Manufacturer</source>
-        <translation type="obsolete">Producent</translation>
-    </message>
-    <message>
-        <source>Model</source>
-        <translation type="obsolete">Model</translation>
-    </message>
-    <message>
-        <source>Motherboard</source>
-        <translation type="obsolete">Moederbord</translation>
-    </message>
-    <message>
-        <source>Vendor</source>
-        <translation type="obsolete">Verkoper</translation>
-    </message>
-    <message>
-        <source>Packages</source>
-        <translation type="obsolete">Pakketten</translation>
-    </message>
-    <message>
-        <source>Cores</source>
-        <translation type="obsolete">Kernen</translation>
-    </message>
-    <message>
-        <source>Threads</source>
-        <translation type="obsolete">Threads</translation>
-    </message>
-    <message>
-        <source>Processor</source>
-        <translation type="obsolete">Processor</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation type="obsolete">Datum</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="obsolete">Grootte</translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="obsolete">Snelheid</translation>
-    </message>
-    <message>
-        <source>%1 MHz</source>
-        <translation type="obsolete">%1 MHz</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="obsolete">Type</translation>
-    </message>
-    <message>
-        <source>Form Factor</source>
-        <translation type="obsolete">Form Factor</translation>
-    </message>
-    <message>
-        <source>Part Number</source>
-        <translation type="obsolete">Onderdeel Nummer</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="obsolete">Geinstalleerd</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="obsolete">Geheugen</translation>
-    </message>
-    <message>
-        <source>%1 (%2 free)</source>
-        <translation type="obsolete">%1 (%2 vrij)</translation>
-    </message>
-    <message>
-        <source>Logical Drives</source>
-        <translation type="obsolete">Logische Drives</translation>
-    </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="obsolete">Adapter Naam</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="obsolete">Interface Type</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="obsolete">Verbindings Snelheid</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="obsolete">MAC Adres</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="obsolete">DHCP Ingeschakeld</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="obsolete">DHCP Server #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="obsolete">DHCP Server</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="obsolete">Adres #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="obsolete">Adres</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="obsolete">Gateway #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="obsolete">Gateway</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="obsolete">Netwerk Verbindingen</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="obsolete">Standaard</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="obsolete">Poort</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="obsolete">Driver</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="obsolete">Gedeeld</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="obsolete">Share Naam</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="obsolete">Aantal Jobs</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="obsolete">Printers</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidget</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="97"/>
-        <source>TB</source>
-        <translation type="unfinished">TB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="99"/>
-        <source>GB</source>
-        <translation type="unfinished">GB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="101"/>
-        <source>MB</source>
-        <translation type="unfinished">MB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="103"/>
-        <source>kB</source>
-        <translation type="unfinished">kB</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="105"/>
-        <source>B</source>
-        <translation type="unfinished">B</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="120"/>
-        <source>%n seconds</source>
-        <translation type="unfinished">
-            <numerusform>%n seconde</numerusform>
-            <numerusform>%n seconden</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="121"/>
-        <source>%n minutes</source>
-        <translation type="unfinished">
-            <numerusform>%n minuut</numerusform>
-            <numerusform>%n minuten</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="122"/>
-        <source>%n hours</source>
-        <translation type="unfinished">
-            <numerusform>%n uur</numerusform>
-            <numerusform>%n uren</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="126"/>
-        <source>%n days</source>
-        <translation type="unfinished">
-            <numerusform>%n dag</numerusform>
-            <numerusform>%n dagen</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="151"/>
-        <source>Gbps</source>
-        <translation type="unfinished">Gbps</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="153"/>
-        <source>Mbps</source>
-        <translation type="unfinished">Mbps</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="155"/>
-        <source>Kbps</source>
-        <translation type="unfinished">Kbps</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="157"/>
-        <source>bps</source>
-        <translation type="unfinished">bps</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetDrivers</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="132"/>
-        <source>Continue Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="134"/>
-        <source>Pause Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="136"/>
-        <source>Paused</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="138"/>
-        <source>Running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="140"/>
-        <source>Start Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="142"/>
-        <source>Stop Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="144"/>
-        <source>Stopped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="146"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="168"/>
-        <source>Unknown</source>
-        <translation type="unfinished">Onbekend</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="158"/>
-        <source>Auto Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="160"/>
-        <source>Demand Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="162"/>
-        <source>Disabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="164"/>
-        <source>Boot Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.cc" line="166"/>
-        <source>System Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetEventLogs</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="67"/>
-        <source>Application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="69"/>
-        <source>Security</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="71"/>
-        <source>System</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="319"/>
-        <source>Unknown</source>
-        <translation type="unfinished">Onbekend</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="309"/>
-        <source>Information</source>
-        <translation type="unfinished">Informatie</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="194"/>
-        <source>Page %1/%2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="311"/>
-        <source>Warning</source>
-        <translation type="unfinished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="313"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="315"/>
-        <source>Audit Success</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="317"/>
-        <source>Audit Failure</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetLicenses</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="137"/>
-        <source>License Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="140"/>
-        <source>License Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="143"/>
-        <source>Organization</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="146"/>
-        <source>Owner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="149"/>
-        <source>Product ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="152"/>
-        <source>Product Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.cc" line="155"/>
-        <source>Unknown Field</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetLocalUsers</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="145"/>
-        <source>Full Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="148"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
-        <source>Home Directory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
-        <source>Disabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="156"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="157"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="156"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="157"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
-        <source>Password Can&apos;t Change</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
-        <source>Password Expired</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="156"/>
-        <source>Don&apos;t Expire Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="157"/>
-        <source>Lockout</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="161"/>
-        <source>Never</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="165"/>
-        <source>Last Logon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="166"/>
-        <source>Number Logons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="167"/>
-        <source>Bad Password Count</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="179"/>
-        <source>Groups</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetMonitors</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="154"/>
-        <source>Monitor Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="157"/>
-        <source>Manufacturer Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="160"/>
-        <source>Monitor ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="163"/>
-        <source>Serial Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="167"/>
-        <source>EDID Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="179"/>
-        <source>Gamma</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="193"/>
-        <source>Diagonal Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="243"/>
-        <source>%1 Hz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="173"/>
-        <source>Date Of Manufacture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="174"/>
-        <source>Week %1 / %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="183"/>
-        <source>Image Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="184"/>
-        <source>%1x%2 cm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="198"/>
-        <source>Resolution</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="205"/>
-        <source>Horizontal Frequency</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="206"/>
-        <source>%1 - %2 kHz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="212"/>
-        <source>Vertical Frequency</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="213"/>
-        <source>%1 - %2 Hz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="218"/>
-        <source>Pixel Clock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="218"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="221"/>
-        <source>%1 MHz</source>
-        <translation type="unfinished">%1 MHz</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="221"/>
-        <source>Maximum Pixel Clock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="226"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="227"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="228"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="229"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="230"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="231"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="226"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="227"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="228"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="229"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="230"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="231"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="234"/>
-        <source>Supported Features</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="247"/>
-        <source>Supported Video Modes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="223"/>
-        <source>Input Signal Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="293"/>
-        <source>Digital</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="295"/>
-        <source>Analog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="297"/>
-        <source>Unknown</source>
-        <translation type="unfinished">Onbekend</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetNetAdapters</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="138"/>
-        <source>Adapter Name</source>
-        <translation type="unfinished">Adapter Naam</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="141"/>
-        <source>Interface Type</source>
-        <translation type="unfinished">Interface Type</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="144"/>
-        <source>Connection Speed</source>
-        <translation type="unfinished">Verbindings Snelheid</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
-        <source>MAC Address</source>
-        <translation type="unfinished">MAC Adres</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="149"/>
-        <source>DHCP Enabled</source>
-        <translation type="unfinished">DHCP Ingeschakeld</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="149"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="149"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="154"/>
-        <source>DHCP Server #%1</source>
-        <translation type="unfinished">DHCP Server #%1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="154"/>
-        <source>DHCP Server</source>
-        <translation type="unfinished">DHCP Server</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="166"/>
-        <source>Address #%1</source>
-        <translation type="unfinished">Adres #%1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="166"/>
-        <source>Address</source>
-        <translation type="unfinished">Adres</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="174"/>
-        <source>Gateway #%1</source>
-        <translation type="unfinished">Gateway #%1</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="174"/>
-        <source>Gateway</source>
-        <translation type="unfinished">Gateway</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetNetShares</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="132"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="135"/>
-        <source>Type</source>
-        <translation type="unfinished">Type</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="138"/>
-        <source>Local Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="140"/>
-        <source>Current Uses</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="143"/>
-        <source>Not limited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.cc" line="144"/>
-        <source>Maximum Uses</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetPowerOptions</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="145"/>
-        <source>Power Source</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="147"/>
-        <source>Battery Status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="153"/>
-        <source>Battery Life Percent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="159"/>
-        <source>Full Battery Life Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="166"/>
-        <source>Remaining Battery Life Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="182"/>
-        <source>Device Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="185"/>
-        <source>Manufacturer</source>
-        <translation type="unfinished">Producent</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="188"/>
-        <source>Manufacture Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="191"/>
-        <source>Unique Id</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="194"/>
-        <source>Serial Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="197"/>
-        <source>Tempareture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="200"/>
-        <source>Design Capacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="200"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="206"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="212"/>
-        <source>%1 mWh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="203"/>
-        <source>Type</source>
-        <translation type="unfinished">Type</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="206"/>
-        <source>Full Charged Capacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="209"/>
-        <source>Depreciation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="212"/>
-        <source>Current Capacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="215"/>
-        <source>Voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="215"/>
-        <source>%1 mV</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="221"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="304"/>
-        <source>Charging</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="221"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="224"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="227"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="230"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="224"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="302"/>
-        <source>Critical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="227"/>
-        <source>Discharging</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="230"/>
-        <source>Power OnLine</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="234"/>
-        <source>State</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="239"/>
-        <source>Battery #%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="280"/>
-        <source>DC Battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="283"/>
-        <source>AC Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="286"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="308"/>
-        <source>Unknown</source>
-        <translation type="unfinished">Onbekend</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="298"/>
-        <source>High</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="300"/>
-        <source>Low</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="306"/>
-        <source>No Battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetPrinters</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="137"/>
-        <source>Default</source>
-        <translation type="unfinished">Standaard</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="137"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="145"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="137"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="145"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="140"/>
-        <source>Port</source>
-        <translation type="unfinished">Poort</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="143"/>
-        <source>Driver</source>
-        <translation type="unfinished">Driver</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="145"/>
-        <source>Shared</source>
-        <translation type="unfinished">Gedeeld</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="148"/>
-        <source>Share Name</source>
-        <translation type="unfinished">Share Naam</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.cc" line="150"/>
-        <source>Jobs Count</source>
-        <translation type="unfinished">Aantal Jobs</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetProcesses</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="142"/>
-        <source>System Idle Process</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="144"/>
-        <source>Unknown Process</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetServices</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="138"/>
-        <source>Continue Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="140"/>
-        <source>Pause Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="142"/>
-        <source>Paused</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="144"/>
-        <source>Running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="146"/>
-        <source>Start Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="148"/>
-        <source>Stop Pending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="150"/>
-        <source>Stopped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="152"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="174"/>
-        <source>Unknown</source>
-        <translation type="unfinished">Onbekend</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="164"/>
-        <source>Auto Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="166"/>
-        <source>Demand Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="168"/>
-        <source>Disabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="170"/>
-        <source>Boot Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.cc" line="172"/>
-        <source>System Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetSummary</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="152"/>
-        <source>Host Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="153"/>
-        <source>Client Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="154"/>
-        <source>Router Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="156"/>
-        <source>Aspia Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="134"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="165"/>
-        <source>Name</source>
-        <translation type="unfinished">Naam</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="137"/>
-        <source>Domain</source>
-        <translation type="unfinished">Domein</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="140"/>
-        <source>Workgroup</source>
-        <translation type="unfinished">Werkgroep</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="143"/>
-        <source>Uptime</source>
-        <translation type="unfinished">Uptime</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="146"/>
-        <source>Computer</source>
-        <translation type="unfinished">Computer</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="168"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="240"/>
-        <source>Version</source>
-        <translation type="unfinished">Versie</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="171"/>
-        <source>Architecture</source>
-        <translation type="unfinished">Architectuur</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="174"/>
-        <source>License Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="177"/>
-        <source>Install Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="182"/>
-        <source>Operating System</source>
-        <translation type="unfinished">Besturingssysteem</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="192"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="264"/>
-        <source>Manufacturer</source>
-        <translation type="unfinished">Producent</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="195"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="210"/>
-        <source>Model</source>
-        <translation type="unfinished">Model</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="200"/>
-        <source>Motherboard</source>
-        <translation type="unfinished">Moederbord</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="213"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="237"/>
-        <source>Vendor</source>
-        <translation type="unfinished">Verkoper</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="216"/>
-        <source>Packages</source>
-        <translation type="unfinished">Pakketten</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="219"/>
-        <source>Cores</source>
-        <translation type="unfinished">Kernen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="222"/>
-        <source>Threads</source>
-        <translation type="unfinished">Threads</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="227"/>
-        <source>Processor</source>
-        <translation type="unfinished">Processor</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="243"/>
-        <source>Date</source>
-        <translation type="unfinished">Datum</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="267"/>
-        <source>Size</source>
-        <translation type="unfinished">Grootte</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="270"/>
-        <source>Speed</source>
-        <translation type="unfinished">Snelheid</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="270"/>
-        <source>%1 MHz</source>
-        <translation type="unfinished">%1 MHz</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="273"/>
-        <source>Type</source>
-        <translation type="unfinished">Type</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="276"/>
-        <source>Form Factor</source>
-        <translation type="unfinished">Form Factor</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="279"/>
-        <source>Part Number</source>
-        <translation type="unfinished">Onderdeel Nummer</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="283"/>
-        <source>Installed</source>
-        <translation type="unfinished">Geinstalleerd</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="283"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="354"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="293"/>
-        <source>Memory</source>
-        <translation type="unfinished">Geheugen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="322"/>
-        <source>%1 (%2 free)</source>
-        <translation type="unfinished">%1 (%2 vrij)</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="332"/>
-        <source>Logical Drives</source>
-        <translation type="unfinished">Logische Drives</translation>
-    </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="obsolete">Adapter Naam</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="obsolete">Interface Type</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="obsolete">Verbindings Snelheid</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="obsolete">MAC Adres</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="obsolete">DHCP Ingeschakeld</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="obsolete">DHCP Server #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="obsolete">DHCP Server</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="obsolete">Adres #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="obsolete">Adres</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="obsolete">Gateway #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="obsolete">Gateway</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="obsolete">Netwerk Verbindingen</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="obsolete">Standaard</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="obsolete">Poort</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="obsolete">Driver</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="obsolete">Gedeeld</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="obsolete">Share Naam</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="obsolete">Aantal Jobs</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="obsolete">Printers</translation>
-    </message>
-</context>
-<context>
-    <name>client::SysInfoWidgetVideoAdapters</name>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="130"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="133"/>
-        <source>Adapter String</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="136"/>
-        <source>BIOS String</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="139"/>
-        <source>Chip Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="142"/>
-        <source>DAC Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="145"/>
-        <source>Memory Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="145"/>
-        <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="148"/>
-        <source>Driver Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="151"/>
-        <source>Driver Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.cc" line="154"/>
-        <source>Driver Provider</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::SystemInfoSessionWindow</name>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="132"/>
-        <source>Summary</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="139"/>
-        <source>Hardware</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="142"/>
-        <source>Devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="145"/>
-        <source>Video Adapters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="148"/>
-        <source>Monitors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="151"/>
-        <source>Printers</source>
-        <translation type="unfinished">Printers</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="154"/>
-        <source>Power Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="167"/>
-        <source>Software</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="170"/>
-        <source>Applications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="173"/>
-        <source>Drivers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="176"/>
-        <source>Services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="179"/>
-        <source>Processes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="182"/>
-        <source>Licenses</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="195"/>
-        <source>Network</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="198"/>
-        <source>Network Adapters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="201"/>
-        <source>Routes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="204"/>
-        <source>Connections</source>
-        <translation type="unfinished">Verbindingen</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="207"/>
-        <source>Network Shares</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="210"/>
-        <source>Open Files</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="223"/>
-        <source>Operating System</source>
-        <translation type="unfinished">Besturingssysteem</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="226"/>
-        <source>Environment Variables</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="229"/>
-        <source>Event Logs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="232"/>
-        <source>Users</source>
-        <translation type="unfinished">Gebruikers</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="235"/>
-        <source>User Groups</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="260"/>
-        <source>HTML File</source>
-        <translation type="unfinished">HTML Bestand</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="260"/>
-        <source>HTML File (*.html)</source>
-        <translation type="unfinished">HTML Bestand (*.html)</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/sys_info/system_info_session_window.cc" line="271"/>
-        <source>Failed to save file: %1</source>
-        <translation type="unfinished">Kon het bestand %1 niet opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>client::SystemInfoWindow</name>
-    <message>
-        <source>HTML File</source>
-        <translation type="vanished">HTML Bestand</translation>
-    </message>
-    <message>
-        <source>HTML File (*.html)</source>
-        <translation type="vanished">HTML Bestand (*.html)</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Failed to save file: %1</source>
-        <translation type="vanished">Kon het bestand %1 niet opslaan</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Naam</translation>
-    </message>
-    <message>
-        <source>Domain</source>
-        <translation type="vanished">Domein</translation>
-    </message>
-    <message>
-        <source>Workgroup</source>
-        <translation type="vanished">Werkgroep</translation>
-    </message>
-    <message>
-        <source>Uptime</source>
-        <translation type="vanished">Uptime</translation>
-    </message>
-    <message>
-        <source>Computer</source>
-        <translation type="vanished">Computer</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">Versie</translation>
-    </message>
-    <message>
-        <source>Architecture</source>
-        <translation type="vanished">Architectuur</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="vanished">Besturingssysteem</translation>
-    </message>
-    <message>
-        <source>Manufacturer</source>
-        <translation type="vanished">Producent</translation>
-    </message>
-    <message>
-        <source>Model</source>
-        <translation type="vanished">Model</translation>
-    </message>
-    <message>
-        <source>Motherboard</source>
-        <translation type="vanished">Moederbord</translation>
-    </message>
-    <message>
-        <source>Vendor</source>
-        <translation type="vanished">Verkoper</translation>
-    </message>
-    <message>
-        <source>Packages</source>
-        <translation type="vanished">Pakketten</translation>
-    </message>
-    <message>
-        <source>Cores</source>
-        <translation type="vanished">Kernen</translation>
-    </message>
-    <message>
-        <source>Threads</source>
-        <translation type="vanished">Threads</translation>
-    </message>
-    <message>
-        <source>Processor</source>
-        <translation type="vanished">Processor</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation type="vanished">Datum</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="vanished">Grootte</translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="vanished">Snelheid</translation>
-    </message>
-    <message>
-        <source>%1 MHz</source>
-        <translation type="vanished">%1 MHz</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">Type</translation>
-    </message>
-    <message>
-        <source>Form Factor</source>
-        <translation type="vanished">Form Factor</translation>
-    </message>
-    <message>
-        <source>Part Number</source>
-        <translation type="vanished">Onderdeel Nummer</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">Geinstalleerd</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">Geheugen</translation>
-    </message>
-    <message>
-        <source>%1 (%2 free)</source>
-        <translation type="vanished">%1 (%2 vrij)</translation>
-    </message>
-    <message>
-        <source>Logical Drives</source>
-        <translation type="vanished">Logische Drives</translation>
-    </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="vanished">Adapter Naam</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="vanished">Interface Type</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="vanished">Verbindings Snelheid</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="vanished">MAC Adres</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="vanished">DHCP Ingeschakeld</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="vanished">DHCP Server #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="vanished">DHCP Server</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="vanished">Adres #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Adres</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="vanished">Gateway #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="vanished">Gateway</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="vanished">Netwerk Verbindingen</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="vanished">Standaard</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">Poort</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="vanished">Driver</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="vanished">Gedeeld</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="vanished">Share Naam</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="vanished">Aantal Jobs</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="vanished">Printers</translation>
-    </message>
-    <message>
-        <source>TB</source>
-        <translation type="vanished">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="vanished">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="vanished">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="vanished">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="vanished">B</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n seconds</source>
-        <translation type="vanished">
-            <numerusform>%n seconde</numerusform>
-            <numerusform>%n seconden</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n minutes</source>
-        <translation type="vanished">
-            <numerusform>%n minuut</numerusform>
-            <numerusform>%n minuten</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hours</source>
-        <translation type="vanished">
-            <numerusform>%n uur</numerusform>
-            <numerusform>%n uren</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n days</source>
-        <translation type="vanished">
-            <numerusform>%n dag</numerusform>
-            <numerusform>%n dagen</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Gbps</source>
-        <translation type="vanished">Gbps</translation>
-    </message>
-    <message>
-        <source>Mbps</source>
-        <translation type="vanished">Mbps</translation>
-    </message>
-    <message>
-        <source>Kbps</source>
-        <translation type="vanished">Kbps</translation>
-    </message>
-    <message>
-        <source>bps</source>
-        <translation type="vanished">bps</translation>
-    </message>
-</context>
-<context>
-    <name>client::TaskManagerWindow</name>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="941"/>
-        <source>Update Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="obsolete">Bevestiging</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="650"/>
-        <source>Do you really want to end &quot;%1&quot; process?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="700"/>
-        <source>Do you really want to disconnect user &quot;%1&quot; session?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="723"/>
-        <source>Do you really want to end user &quot;%1&quot; session?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="923"/>
-        <source>Processes: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="935"/>
-        <source>Physical memory: %1%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/desktop/task_manager_window.cc" line="929"/>
-        <source>CPU loading: %1%</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>client::UserTreeItem</name>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-</context>
-<context>
-    <name>common</name>
-    <message>
-        <source>Cancel checking for updates. Please wait.</source>
-        <translation type="obsolete">Annuleer update controle. Een ogenblik geduld aub.</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation type="obsolete">Onbekend</translation>
-    </message>
-    <message>
-        <source>Error retrieving update information.</source>
-        <translation type="obsolete">Er is een probleem opgetreden bij het downloaden van de update informatie.</translation>
-    </message>
-    <message>
-        <source>No updates available.</source>
-        <translation type="obsolete">Geen updates beschikbaar.</translation>
-    </message>
-    <message>
-        <source>An update will be downloaded. After the download is complete, the application will automatically close.</source>
-        <translation type="obsolete">De update wordt gedownload. Nadat de download voltooid is zal de applicatie automatisch sluiten.</translation>
-    </message>
-    <message>
-        <source>All connected sessions will be terminated. You cannot establish a connection until the update is complete.</source>
-        <translation type="obsolete">Alle verbonden sessies worden afgesloten. Er kan geen verbinding gemaakt worden tot de update voltooid is.</translation>
-    </message>
-    <message>
-        <source>All unsaved data will be lost.</source>
-        <translation type="obsolete">Alle onopgeslagen data zal verloren gaan.</translation>
-    </message>
-    <message>
-        <source>Continue?</source>
-        <translation type="obsolete">Doorgaan?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="obsolete">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>An error occurred while installing the update: %1</source>
-        <translation type="obsolete">Er is een probleem opgetreden bij het installeren van de update: %1</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="obsolete">Sluiten</translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation type="obsolete">Opslaan</translation>
-    </message>
-    <message>
-        <source>Abort</source>
-        <translation type="obsolete">Afbreken</translation>
-    </message>
-</context>
-<context>
-    <name>common::AboutDialog</name>
-    <message>
-        <source>Version: %1</source>
-        <translation type="vanished">Versie: %1</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="106"/>
-        <source>Version: %1 (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="111"/>
-        <source>Aspia is free software released under GNU General Public License 3.</source>
-        <translation>Aspia is gratis software verspreid onder de GNU General Public License 3.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="112"/>
-        <source>You can get a copy of license here:</source>
-        <translation>Download een kopie van de licentie:</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="117"/>
-        <source>You can also get a translation of GNU GPL license here:</source>
-        <translation>Download hier een vertaling van de GNU GPL:</translation>
-    </message>
-    <message>
-        <source>Links:</source>
-        <translation type="vanished">Links:</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="122"/>
-        <source>Home page:</source>
-        <translation>Website:</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="123"/>
-        <source>GitHub page:</source>
-        <translation>GitHub pagina:</translation>
-    </message>
-    <message>
-        <source>Developers:</source>
-        <translation type="vanished">Ontwikkelaars:</translation>
-    </message>
-    <message>
-        <source>Translators:</source>
-        <translation type="vanished">Vertalingen:</translation>
-    </message>
-    <message>
-        <source>Third-party components:</source>
-        <translation type="vanished">Third-party componenten:</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="133"/>
-        <source>Icons by %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="161"/>
-        <source>Path: %1</source>
-        <translation>Pad: %1</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="178"/>
-        <source>Compilation date: %1</source>
-        <translation>Compilatie datum: %1</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="179"/>
-        <source>Compilation time: %1</source>
-        <translation>Compilatie tijd: %1</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="170"/>
-        <source>Git branch: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="172"/>
-        <source>Git commit: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="162"/>
-        <source>Logging directory: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="121"/>
-        <source>Links</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="126"/>
-        <source>Developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="128"/>
-        <source>Translators</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="130"/>
-        <source>Third-party components</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="132"/>
-        <source>Graphics and images</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="160"/>
-        <source>Application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="164"/>
-        <source>Logging file: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="169"/>
-        <source>Build Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="177"/>
-        <source>Compilation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/about_dialog.cc" line="208"/>
-        <source>Version Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 version: %2</source>
-        <translation type="vanished">%1 versie: %2</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="obsolete">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>common::ChatWidget</name>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="148"/>
-        <source>Save chat...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="149"/>
-        <source>Clear chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="198"/>
-        <source>%1 is typing...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="202"/>
-        <source>User %1 has joined the chat (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="206"/>
-        <source>User %1 has left the chat (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="210"/>
-        <source>User %1 is logged in (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="214"/>
-        <source>User %1 is not logged in (%2)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="218"/>
-        <source>There are no connected users (%1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../common/ui/chat_widget.cc" line="516"/>
-        <source>The message is too long. The maximum message length is %n characters.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="564"/>
-        <source>Save File</source>
-        <translation type="unfinished">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="566"/>
-        <source>TXT files (*.txt)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/chat_widget.cc" line="581"/>
-        <source>Could not open file for writing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>common::DialogButtonBox</name>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="82"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="83"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="84"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="85"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="86"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="87"/>
-        <source>Close</source>
-        <translation type="unfinished">Sluiten</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="88"/>
-        <source>Save</source>
-        <translation type="unfinished">Opslaan</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="89"/>
-        <source>Discard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="90"/>
-        <source>Reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="91"/>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="92"/>
-        <source>Abort</source>
-        <translation type="unfinished">Afbreken</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="93"/>
-        <source>Retry</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="94"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="95"/>
-        <source>Restore Defaults</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="96"/>
-        <source>Save All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="97"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="98"/>
-        <source>Yes to All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/dialog_button_box.cc" line="99"/>
-        <source>No to All</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>common::DownloadDialog</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/download_dialog.cc" line="66"/>
-        <source>An error occurred while downloading the update: %1</source>
-        <translation>Er is een probleem opgetreden bij het downloaden van de update: %1</translation>
-    </message>
-</context>
-<context>
-    <name>common::MsgBox</name>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="51"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="52"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="53"/>
-        <source>Yes</source>
-        <translation type="unfinished">Ya</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="54"/>
-        <source>No</source>
-        <translation type="unfinished">Nee</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="55"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="56"/>
-        <source>Close</source>
-        <translation type="unfinished">Sluiten</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="57"/>
-        <source>Save</source>
-        <translation type="unfinished">Opslaan</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="58"/>
-        <source>Discard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="59"/>
-        <source>Reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="60"/>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="61"/>
-        <source>Abort</source>
-        <translation type="unfinished">Afbreken</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="62"/>
-        <source>Retry</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="63"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="64"/>
-        <source>Restore Defaults</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="65"/>
-        <source>Save All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="66"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="67"/>
-        <source>Yes to All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="68"/>
-        <source>No to All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="85"/>
-        <source>Warning</source>
-        <translation type="unfinished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="93"/>
-        <source>Information</source>
-        <translation type="unfinished">Informatie</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/msg_box.cc" line="101"/>
-        <source>Confirmation</source>
-        <translation type="unfinished">Bevestiging</translation>
-    </message>
-</context>
-<context>
-    <name>common::StatusDialog</name>
-    <message>
-        <source>Close</source>
-        <translation type="obsolete">Sluiten</translation>
-    </message>
-</context>
-<context>
-    <name>common::TextChatWidget</name>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="obsolete">Bestand Opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>common::TextChatWindow</name>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>common::UpdateDialog</name>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="57"/>
-        <source>Receiving information...</source>
-        <translation>Informatie verkrijgen...</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="109"/>
-        <source>Cancel checking for updates. Please wait.</source>
-        <translation>Annuleer update controle. Een ogenblik geduld aub.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="198"/>
-        <source>Unknown</source>
-        <translation>Onbekend</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="199"/>
-        <source>Error retrieving update information.</source>
-        <translation>Er is een probleem opgetreden bij het downloaden van de update informatie.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="209"/>
-        <location filename="../common/ui/update_dialog.cc" line="232"/>
-        <source>No updates available.</source>
-        <translation>Geen updates beschikbaar.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="123"/>
-        <source>An update will be downloaded. After the download is complete, the application will automatically close.</source>
-        <translation>De update wordt gedownload. Nadat de download voltooid is zal de applicatie automatisch sluiten.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="125"/>
-        <source>All connected sessions will be terminated. You cannot establish a connection until the update is complete.</source>
-        <translation>Alle verbonden sessies worden afgesloten. Er kan geen verbinding gemaakt worden tot de update voltooid is.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="127"/>
-        <source>All unsaved data will be lost.</source>
-        <translation>Alle onopgeslagen data zal verloren gaan.</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="128"/>
-        <source>Continue?</source>
-        <translation>Doorgaan?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../common/ui/update_dialog.cc" line="141"/>
-        <source>An error occurred while installing the update: %1</source>
-        <translation>Er is een probleem opgetreden bij het installeren van de update: %1</translation>
-    </message>
-</context>
-<context>
-    <name>console::AddressBookDialog</name>
-    <message>
-        <source>Without Encryption</source>
-        <translation type="vanished">Zonder Encryptie</translation>
-    </message>
-    <message>
-        <source>ChaCha20 + Poly1305 (256-bit key)</source>
-        <translatorcomment>Why are we translating this?</translatorcomment>
-        <translation type="vanished">ChaCha20 + Poly1305 (256-bit key)</translation>
-    </message>
-    <message>
-        <source>Double-click to change</source>
-        <translation type="vanished">Dubbelklik om te wijzigen</translation>
-    </message>
-    <message>
-        <source>Address Book</source>
-        <translation type="vanished">Adresboek</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="obsolete">Basis</translation>
-    </message>
-    <message>
-        <source>Sessions</source>
-        <translation type="obsolete">Sessies</translation>
-    </message>
-    <message>
-        <source>Manage</source>
-        <translation type="obsolete">Beheren</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">Weergave</translation>
-    </message>
-    <message numerus="yes">
-        <source>Too long name. The maximum length of the name is %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
-            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Name can not be empty.</source>
-        <translation type="vanished">Naam mag niet leeg zijn.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Too long comment. The maximum length of the comment is %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>The passwords you entered do not match.</source>
-        <translation type="vanished">De ingevoerde wachtwoorden komen niet overeen.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Password can not be empty and should not exceed %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Wachtwoord mag niet leeg zijn en mag niet minder dan %n karakter zijn.</numerusform>
-            <numerusform>Wachtwoord mag niet leeg zijn en mag niet minder dan %n karakters zijn.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Password you entered does not meet the security requirements!</source>
-        <translation type="vanished">Het ingevoerde wachtwoord komt niet overeen met de beveiligings eisen!</translation>
-    </message>
-    <message numerus="yes">
-        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Do you want to enter a different password?</source>
-        <translation type="vanished">Wilt U een ander wachtwoord invoeren?</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">Bureaublad Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="obsolete">Bureaublad Weergeven</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>An invalid router address was entered.</source>
-        <translation type="vanished">Er is een ongeldig router adres ingevoerd.</translation>
-    </message>
-    <message>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, . characters.</source>
-        <translation type="vanished">De gebruikersnaam mag niet leeg zijn, en alleen karakters uit het alfabet, nummers en _, -, . karakters bevatten.</translation>
-    </message>
-    <message>
-        <source>Router password cannot be empty.</source>
-        <translation type="vanished">Router wachtwoord mag niet leeg zijn.</translation>
-    </message>
-</context>
-<context>
-    <name>console::AddressBookTab</name>
-    <message>
-        <source>Unable to open address book file &quot;%1&quot;.</source>
-        <translation type="vanished">Adresboek &quot;%1&quot; kon niet geopend worden.</translation>
-    </message>
-    <message>
-        <source>Unable to read address book file &quot;%1&quot;.</source>
-        <translation type="vanished">Adresboek &quot;%1&quot; kon niet gelezen worden.</translation>
-    </message>
-    <message>
-        <source>The address book file &quot;%1&quot; is corrupted or has an unknown format.</source>
-        <translation type="vanished">Het adresboek &quot;%1&quot; is beschadigd of heeft een onbekende indeling.</translation>
-    </message>
-    <message>
-        <source>Unable to decrypt the address book with the specified password.</source>
-        <translation type="vanished">Kan het adresboek niet ontsleutelen met het opgegeven wachtwoord.</translation>
-    </message>
-    <message>
-        <source>The address book file is corrupted or has an unknown format.</source>
-        <translation type="vanished">Het adresboek bestand is beschadigd of heeft een onbekende indeling.</translation>
-    </message>
-    <message>
-        <source>The address book file is encrypted with an unsupported encryption type.</source>
-        <translation type="vanished">Het adresboek bestand is versleuteld met een encryptie type dat niet ondersteund wordt.</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer group &quot;%1&quot; and all child items?</source>
-        <translation type="vanished">Weet U zeker dat U de computer groep &quot;%1&quot; en alle onderliggende items wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="vanished">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Save Address Book</source>
-        <translation type="vanished">Adresboek Opslaan</translation>
-    </message>
-    <message>
-        <source>Aspia Address Book (*.aab)</source>
-        <translation type="vanished">Aspia Adresboek (*.aab)</translation>
-    </message>
-    <message>
-        <source>Unable to create or open address book file.</source>
-        <translation type="vanished">Kan adresboek bestand niet maken of openen.</translation>
-    </message>
-    <message>
-        <source>Unable to write address book file.</source>
-        <translation type="vanished">Kan adresboek bestand niet schrijven.</translation>
-    </message>
-    <message>
-        <source>Root Group</source>
-        <translation type="vanished">Hoofd Groep</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Could not open address book</source>
-        <translation type="vanished">Kon adresboek niet openen</translation>
-    </message>
-    <message>
-        <source>Failed to save address book</source>
-        <translation type="vanished">Kon adresboek niet opslaan</translation>
-    </message>
-</context>
-<context>
-    <name>console::ComputerDialog</name>
-    <message>
-        <source>(copy)</source>
-        <translation type="vanished">(kopieer)</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="vanished">Basis</translation>
-    </message>
-    <message>
-        <source>Sessions</source>
-        <translation type="vanished">Sessies</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">Bureaublad Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="obsolete">Bureaublad Weergeven</translation>
-    </message>
-    <message>
-        <source>Manage</source>
-        <translation type="vanished">Beheren</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="vanished">Weergave</translation>
-    </message>
-</context>
-<context>
-    <name>console::ComputerDialogGeneral</name>
-    <message numerus="yes">
-        <source>Too long name. The maximum length of the name is %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
-            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Name can not be empty.</source>
-        <translation type="vanished">Naam mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, . characters.</source>
-        <translation type="vanished">De gebruikersnaam mag niet leeg zijn, en alleen karakters uit het alfabet, nummers, _, -, . karakters bevatten.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Too long comment. The maximum length of the comment is %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>An invalid computer address was entered.</source>
-        <translation type="vanished">Er is een ongeldig computer adres ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>console::ComputerGroupDialog</name>
-    <message>
-        <source>General</source>
-        <translation type="obsolete">Basis</translation>
-    </message>
-    <message>
-        <source>Sessions</source>
-        <translation type="obsolete">Sessies</translation>
-    </message>
-    <message>
-        <source>Manage</source>
-        <translation type="obsolete">Beheren</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">Weergave</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">Bureaublad Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="obsolete">Bureaublad Weergeven</translation>
-    </message>
-    <message numerus="yes">
-        <source>Too long name. The maximum length of the name is %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
-            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Name can not be empty.</source>
-        <translation type="vanished">Naam mag niet leeg zijn.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Too long comment. The maximum length of the comment is %n characters.</source>
-        <translation type="vanished">
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>console::ComputerGroupDialogGeneral</name>
-    <message numerus="yes">
-        <source>Too long name. The maximum length of the name is %n characters.</source>
-        <translation type="obsolete">
-            <numerusform>Te lange naam. De maximum lengte is %n karakter.</numerusform>
-            <numerusform>Te lange naam. De maximum lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Name can not be empty.</source>
-        <translation type="obsolete">Naam mag niet leeg zijn.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Too long comment. The maximum length of the comment is %n characters.</source>
-        <translation type="obsolete">
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakter.</numerusform>
-            <numerusform>Te lang commentaar. De maximale lengte is %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>An invalid computer address was entered.</source>
-        <translation type="obsolete">Er is een ongeldig computer adres ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-</context>
-<context>
-    <name>console::FastConnectDialog</name>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>The list of entered addresses will be cleared. Continue?</source>
-        <translation type="vanished">De lijst van ingevoerde addressen zal leeg gemaakt worden. Doorgaan?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Connection by ID is specified but the router is not configured. Check the parameters of the router in the properties of the address book.</source>
-        <translation type="vanished">Verbinding maken met ID is ingesteld maar de router is niet geconfigureerd. Controleer de parameters van de router in de eigenschappen van het adres boek.</translation>
-    </message>
-    <message>
-        <source>An invalid computer address was entered.</source>
-        <translation type="vanished">Er is een ongeldig computer adres ingevoerd.</translation>
-    </message>
-</context>
-<context>
-    <name>console::MainWindow</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Pinned address book file &quot;%1&quot; was not found.&lt;br/&gt;This file will be unpinned.</source>
-        <translation type="vanished">Het vastgepinde adres boek bestand &quot;%1&quot; is niet gevonden.&lt;br/&gt;Het bestand zal ge-unpind worden.</translation>
-    </message>
-    <message>
-        <source>Open Address Book</source>
-        <translation type="vanished">Open Adresboek</translation>
-    </message>
-    <message>
-        <source>Aspia Address Book (*.aab)</source>
-        <translation type="vanished">Aspia Adresboek (*.aab)</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="obsolete">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Address book &quot;%1&quot; has been changed. Save changes?</source>
-        <translation type="vanished">Adresboek &quot;%1&quot; is aangepast. Wijzigingen opslaan?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <source>Close other tabs</source>
-        <translation type="vanished">Sluit andere tabs</translation>
-    </message>
-    <message>
-        <source>Close tab</source>
-        <translation type="vanished">Sluit tab</translation>
-    </message>
-    <message>
-        <source>Pin tab</source>
-        <translation type="vanished">Pin tab</translation>
-    </message>
-    <message>
-        <source>The list of recently opened address books will be cleared. Continue?</source>
-        <translation type="vanished">De lijst van recent geopende adres boeken zal leeg gemaakt worden. Doorgaan?</translation>
-    </message>
-    <message>
-        <source>Hide</source>
-        <translation type="vanished">Verbergen</translation>
-    </message>
-    <message>
-        <source>Show</source>
-        <translation type="vanished">Weergeven</translation>
-    </message>
-    <message>
-        <source>Connection by ID is specified in the properties of the computer, but the router is not configured. Check the parameters of the router in the properties of the address book.</source>
-        <translation type="vanished">Verbinding maken met ID is ingesteld in de eigenschappen van de computer,  maar de router is niet geconfigureerd. Controleer de parameters van de router in de eigenschappen van het adres boek.</translation>
-    </message>
-    <message>
-        <source>Aspia Console</source>
-        <translation type="vanished">Aspia Console</translation>
-    </message>
-    <message>
-        <source>Information</source>
-        <translation type="vanished">Informatie</translation>
-    </message>
-    <message>
-        <source>Address Book &quot;%1&quot; is already open.</source>
-        <translation type="vanished">Adresboek &quot;%1&quot; is al geopend.</translation>
-    </message>
-</context>
-<context>
-    <name>console::MruAction</name>
-    <message>
-        <source>&lt;empty&gt;</source>
-        <translation type="vanished">&lt;leeg&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>console::OpenAddressBookDialog</name>
-    <message>
-        <source>Without Encryption</source>
-        <translation type="vanished">Zonder Encryptie</translation>
-    </message>
-    <message>
-        <source>ChaCha20 + Poly1305 (256-bit key)</source>
-        <translation type="vanished">ChaCha20 + Poly1305 (256-bit key)</translation>
-    </message>
-</context>
-<context>
-    <name>console::StatusBar</name>
-    <message numerus="yes">
-        <source>%n child group(s)</source>
-        <translation type="vanished">
-            <numerusform>%n onderliggende groep</numerusform>
-            <numerusform>%n onderliggende groepen</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n child computer(s)</source>
-        <translation type="vanished">
-            <numerusform>%n onderliggende computer</numerusform>
-            <numerusform>%n onderliggende computers</numerusform>
-        </translation>
-    </message>
-</context>
-<context>
-    <name>host::ChangePasswordDialog</name>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/change_password_dialog.cc" line="92"/>
-        <source>Password cannot be empty.</source>
-        <translation type="unfinished">Wachtwoord mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/change_password_dialog.cc" line="118"/>
-        <source>You must enter your old password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/change_password_dialog.cc" line="126"/>
-        <source>You entered an incorrect old password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/change_password_dialog.cc" line="135"/>
-        <source>New password cannot be empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/change_password_dialog.cc" line="101"/>
-        <location filename="../host/ui/change_password_dialog.cc" line="143"/>
-        <source>The passwords entered do not match.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>host::CheckPasswordDialog</name>
-    <message>
-        <source>Warning</source>
-        <translation type="obsolete">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/check_password_dialog.cc" line="67"/>
-        <source>You entered an incorrect password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>host::ConfigDialog</name>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="435"/>
-        <source>Are you sure you want to delete user &quot;%1&quot;?</source>
-        <translation>Weet U zeker dat U de gebruiker &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="524"/>
-        <source>Import</source>
-        <translation>Importeren</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="158"/>
-        <source>Default</source>
-        <translation>Standaard</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="524"/>
-        <location filename="../host/ui/config_dialog.cc" line="541"/>
-        <source>JSON-files (*.json)</source>
-        <translation>JSON-bestanden (*.json)</translation>
-    </message>
-    <message>
-        <source>Service configuration changed. For the changes to take effect, you must restart the service. Restart the service now?</source>
-        <translation type="vanished">Service configuratie veranderd. Om de wijzigingen toe te passen, moet de service herstart worden. Nu herstarten?</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="541"/>
-        <source>Export</source>
-        <translation>Exporteren</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="566"/>
-        <source>The configuration can not be written. Make sure that you have sufficient rights to write.</source>
-        <translation>De configuratie kon niet worden weggeschreven. Zorg dat U genoeg rechten heeft om te schrijven.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="120"/>
-        <source>Once a day</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="121"/>
-        <source>Once a week</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="122"/>
-        <source>Once a month</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="199"/>
-        <source>On reboot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="200"/>
-        <source>Every 5 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="201"/>
-        <source>Every 30 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="202"/>
-        <source>Every 1 hour</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="203"/>
-        <source>Every 6 hours</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="204"/>
-        <source>Every 12 hours</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="205"/>
-        <source>Every 24 hours</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="216"/>
-        <source>Letters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="235"/>
-        <source>Never</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="236"/>
-        <source>15 seconds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="237"/>
-        <source>30 seconds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="238"/>
-        <source>45 seconds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="239"/>
-        <source>60 seconds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="247"/>
-        <source>Accept connection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="249"/>
-        <source>Reject connection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="470"/>
-        <location filename="../host/ui/config_dialog.cc" line="505"/>
-        <source>An error occurred while processing the password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="580"/>
-        <source>Incorrect router address entered.</source>
-        <translation>Ongeldig router adres ingevoerd.</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="590"/>
-        <source>Incorrect router public key entered.</source>
-        <translation>Verkeerde router public key ingevoerd.</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="764"/>
-        <source>Remove</source>
-        <translation>Verwijderen</translation>
-    </message>
-    <message>
-        <source>Started</source>
-        <translation type="vanished">Gestart</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="vanished">Stoppen</translation>
-    </message>
-    <message>
-        <source>Not started</source>
-        <translation type="vanished">Niet gestart</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="vanished">Starten</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">Geinstalleerd</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="vanished">Niet geinstalleerd</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="759"/>
-        <source>Install</source>
-        <translation>Installeren</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="213"/>
-        <source>Letters and digits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/config_dialog.cc" line="218"/>
-        <source>Digits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Current state: %1</source>
-        <translation type="vanished">Huidige status: %1</translation>
-    </message>
-    <message>
-        <source>The service could not be installed.</source>
-        <translation type="vanished">De service kon niet worden geinstalleerd.</translation>
-    </message>
-    <message>
-        <source>The service could not be removed.</source>
-        <translation type="vanished">De service kon niet worden verwijderd.</translation>
-    </message>
-    <message>
-        <source>Could not access the service.</source>
-        <translation type="vanished">Kon de service niet bereiken.</translation>
-    </message>
-    <message>
-        <source>The service could not be started.</source>
-        <translation type="vanished">De service kon niet worden gestart.</translation>
-    </message>
-    <message>
-        <source>The service could not be stopped.</source>
-        <translation type="vanished">De service kon niet worden gestopt.</translation>
-    </message>
-</context>
-<context>
-    <name>host::ConnectConfirmDialog</name>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/connect_confirm_dialog.cc" line="60"/>
-        <source>User %1 (%2) is trying to connect to your computer with %3 session type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/connect_confirm_dialog.cc" line="62"/>
-        <source>Allow the connection?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../host/ui/connect_confirm_dialog.cc" line="137"/>
-        <source>The connection will be automatically accepted after %n seconds.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../host/ui/connect_confirm_dialog.cc" line="142"/>
-        <source>The connection will be automatically rejected after %n seconds.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-</context>
-<context>
-    <name>host::MainWindow</name>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="434"/>
-        <location filename="../host/ui/main_window.cc" line="690"/>
-        <location filename="../host/ui/main_window.cc" line="900"/>
-        <source>Aspia Host</source>
-        <translation>Aspia Host</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="235"/>
-        <location filename="../host/ui/main_window.cc" line="669"/>
-        <source>Show</source>
-        <translation>Weergeven</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="328"/>
-        <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
-    </message>
-    <message>
-        <source>Connecting to a router %1...</source>
-        <translation type="vanished">Verbinden naar router %1...</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="818"/>
-        <source>Connecting to router...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="823"/>
-        <source>Connected to router</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="828"/>
-        <source>Connection error</source>
-        <translation>Verbindings error</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="901"/>
-        <source>ID: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="897"/>
-        <source>IP addresses:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="378"/>
-        <location filename="../host/ui/main_window.cc" line="813"/>
-        <source>Router is disabled</source>
-        <translation>Router is uitgeschakeld</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="382"/>
-        <source>Connecting to router %1...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="386"/>
-        <source>Connected to router %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="430"/>
-        <source>Screen recording has started.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="432"/>
-        <source>Screen recording stopped.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Connecting to a router...</source>
-        <translation type="vanished">Verbinden naar een router...</translation>
-    </message>
-    <message>
-        <source>Connected to a router %1</source>
-        <translation type="vanished">Verbonden met een router %1</translation>
-    </message>
-    <message>
-        <source>Connected to a router</source>
-        <translation type="vanished">Verbonden met een router</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="390"/>
-        <source>Failed to connect to router %1</source>
-        <translation>Kon niet verbinden met een router %1</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="674"/>
-        <source>Hide</source>
-        <translation>Verbergen</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/main_window.cc" line="707"/>
-        <source>If you exit from Aspia, it will not be possible to connect to this computer until you turn on the computer or Aspia again manually. Do you really want to exit the application?</source>
-        <translation>Als u Aspia verlaat, is het niet meer mogelijk om te verbinden naar deze computer tot u de computer aanzet of Aspia handmatig start. Wilt u de applicatie verlaten?</translation>
-    </message>
-</context>
-<context>
-    <name>host::NotifierWindow</name>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="220"/>
-        <source>Disconnect</source>
-        <translation>Verbinding verbreken</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="253"/>
-        <source>Unlock mouse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="253"/>
-        <source>Lock mouse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="261"/>
-        <source>Unlock keyboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="261"/>
-        <source>Lock keyboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="269"/>
-        <source>Resume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="269"/>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../host/ui/notifier_window.cc" line="475"/>
-        <source>Aspia Host</source>
-        <translation type="unfinished">Aspia Host</translation>
-    </message>
-</context>
-<context>
-    <name>host::UserDialog</name>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="197"/>
-        <source>Warning</source>
-        <translation>Waarschuwing</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="148"/>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, ., @ characters.</source>
-        <translation>De gebruikersnaam mag niet leeg zijn, en alleen karakters uit het alfabet, nummers en _, -, ., @ karakters bevatten.</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="158"/>
-        <source>The username you entered already exists.</source>
-        <translation>De ingevoerde gebruikersnaam bestaat al.</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="167"/>
-        <source>The passwords you entered do not match.</source>
-        <translation>De ingevoerde wachtwoorden komen niet overeen.</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../host/ui/user_dialog.cc" line="177"/>
-        <source>Password can not be empty and should not exceed %n characters.</source>
-        <translation>
-            <numerusform>Wachtwoord mag niet leeg zijn en niet meer dan %n karakter bevatten.</numerusform>
-            <numerusform>Wachtwoord mag niet leeg zijn en niet meer dan %n karakters bevatten.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="187"/>
-        <source>Password you entered does not meet the security requirements!</source>
-        <translation>Het ingevoerde wachtwoord voldoet niet aan de beveilings eisen!</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../host/ui/user_dialog.cc" line="190"/>
-        <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
-        <translation>
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakter.</numerusform>
-            <numerusform>Het wachtwoord moet kleine, hoofdletters en nummers bevatten, en mag niet korter zijn dan %n karakters.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="194"/>
-        <source>Do you want to enter a different password?</source>
-        <translation>Wilt U een ander wachtwoord invoeren?</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="216"/>
-        <source>Unknown internal error when creating or modifying a user.</source>
-        <translation>Onbekende interne fout bij het aanmaken of aanpassen van de gebruiker.</translation>
-    </message>
-    <message>
-        <location filename="../host/ui/user_dialog.cc" line="272"/>
-        <source>Double-click to change</source>
-        <translation>Dubbelklik om te wijzigen</translation>
     </message>
 </context>
 </TS>
