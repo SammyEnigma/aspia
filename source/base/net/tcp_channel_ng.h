@@ -85,34 +85,6 @@ protected:
     void doAuthentication() final;
 
 private:
-    class WriteTask
-    {
-    public:
-        WriteTask(quint8 type, quint8 param, const QByteArray& data, bool encrypted)
-            : type_(type),
-              param_(param),
-              data_(data),
-              encrypted_(encrypted)
-        {
-            // Nothing
-        }
-
-        WriteTask(const WriteTask& other) = default;
-        WriteTask& operator=(const WriteTask& other) = default;
-
-        quint8 type() const { return type_; }
-        quint8 param() const { return param_; }
-        const QByteArray& data() const { return data_; }
-        QByteArray& data() { return data_; }
-        bool encrypted() const { return encrypted_; }
-
-    private:
-        quint8 type_;
-        quint8 param_;
-        QByteArray data_;
-        bool encrypted_;
-    };
-
     enum class ReadState
     {
         IDLE,        // No reads are in progress right now.
@@ -176,8 +148,7 @@ private:
     std::unique_ptr<StreamEncryptor> encryptor_;
     std::unique_ptr<StreamDecryptor> decryptor_;
 
-    QQueue<WriteTask> write_queue_;
-    QByteArray write_buffer_;
+    QQueue<QByteArray> write_queue_;
 
     ReadState state_ = ReadState::IDLE;
     Header read_header_;

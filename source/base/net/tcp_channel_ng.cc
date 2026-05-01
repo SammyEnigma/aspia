@@ -305,8 +305,8 @@ qint64 TcpChannelNG::pendingBytes() const
 {
     qint64 result = 0;
 
-    for (const auto& task : std::as_const(write_queue_))
-        result += task.data().size();
+    for (const QByteArray& buffer : std::as_const(write_queue_))
+        result += buffer.size();
 
     return result;
 }
@@ -585,64 +585,54 @@ void TcpChannelNG::onMessageReceived()
 //--------------------------------------------------------------------------------------------------
 void TcpChannelNG::addWriteTask(quint8 type, quint8 param, const QByteArray& data, bool encrypted)
 {
-    const bool schedule_write = write_queue_.isEmpty();
-    write_queue_.emplace_back(type, param, data, encrypted);
-    if (schedule_write)
-        doWrite();
-}
-
-//--------------------------------------------------------------------------------------------------
-void TcpChannelNG::doWrite()
-{
-    const WriteTask& task = write_queue_.front();
-    const QByteArray& source_buffer = task.data();
-
-    if (source_buffer.isEmpty())
+    if (data.isEmpty())
     {
         onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
         return;
     }
 
     // Only AUTH_DATA may bypass the authenticated state (it carries the handshake itself).
-    if (task.type() != AUTH_DATA && !authenticated_)
+    if (type != AUTH_DATA && !authenticated_)
     {
         onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
         return;
     }
 
-    // The encryption decision is now per-task: the authenticator marks individual handshake
-    // frames as plaintext or encrypted, and USER_DATA / KEEP_ALIVE are always encrypted.
-    if (task.encrypted() && !encryptor_)
+    // Encryption decision is per-task: the authenticator marks individual handshake frames
+    // as plaintext or encrypted, and USER_DATA / KEEP_ALIVE are always encrypted.
+    if (encrypted && !encryptor_)
     {
         onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
         return;
     }
 
-    qint64 target_data_size = task.encrypted() ?
-        encryptor_->encryptedDataSize(source_buffer.size()) : source_buffer.size();
+    const qint64 target_data_size = encrypted ?
+        encryptor_->encryptedDataSize(data.size()) : data.size();
+    const qint64 total_size = target_data_size + static_cast<qint64>(sizeof(Header));
 
-    resizeBuffer(&write_buffer_, target_data_size + sizeof(Header));
-
-    if (write_buffer_.size() > kMaxMessageSize)
+    if (total_size > kMaxMessageSize)
     {
-        CLOG(ERROR) << "Too big outgoing message:" << target_data_size;
+        CLOG(ERROR) << "Too big outgoing message:" << total_size;
         onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
         return;
     }
 
+    QByteArray write_buffer;
+    write_buffer.resize(total_size);
+
     Header header;
-    header.type = task.type();
-    header.param1 = task.param();
+    header.type = type;
+    header.param1 = param;
     header.param2 = 0;
     header.param3 = 0;
     header.length = static_cast<quint32>(target_data_size);
-    memcpy(write_buffer_.data(), &header, sizeof(Header));
+    memcpy(write_buffer.data(), &header, sizeof(Header));
 
-    if (task.encrypted())
+    if (encrypted)
     {
-        if (!encryptor_->encrypt(source_buffer.data(), source_buffer.size(), // Data
+        if (!encryptor_->encrypt(data.data(), data.size(), // Data
                                  &header, sizeof(Header), // AAD
-                                 write_buffer_.data() + sizeof(Header)))
+                                 write_buffer.data() + sizeof(Header)))
         {
             onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
             return;
@@ -650,12 +640,23 @@ void TcpChannelNG::doWrite()
     }
     else
     {
-        memcpy(write_buffer_.data() + sizeof(Header), source_buffer.data(), source_buffer.size());
+        memcpy(write_buffer.data() + sizeof(Header), data.data(), data.size());
     }
+
+    const bool schedule_write = write_queue_.isEmpty();
+    write_queue_.emplace_back(std::move(write_buffer));
+    if (schedule_write)
+        doWrite();
+}
+
+//--------------------------------------------------------------------------------------------------
+void TcpChannelNG::doWrite()
+{
+    const QByteArray& buffer = write_queue_.front();
 
     auto guard = alive_guard_;
     asio::async_write(socket_,
-        asio::buffer(write_buffer_.data(), write_buffer_.size()),
+        asio::buffer(buffer.data(), buffer.size()),
         [this, guard](const std::error_code& error_code, size_t bytes_transferred)
     {
         if (!*guard)
@@ -674,9 +675,7 @@ void TcpChannelNG::doWrite()
 
         write_queue_.pop_front();
 
-        bool schedule_write = !write_queue_.isEmpty();
-
-        if (schedule_write)
+        if (!write_queue_.isEmpty())
             doWrite();
     });
 }
