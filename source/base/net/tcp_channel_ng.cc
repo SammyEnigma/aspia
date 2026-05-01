@@ -490,7 +490,7 @@ void TcpChannelNG::onMessageReceived()
     {
         if (!authenticator_ || authenticated_)
         {
-            onErrorOccurred(FROM_HERE, ErrorCode::UNKNOWN);
+            onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
             return;
         }
 
@@ -690,7 +690,7 @@ void TcpChannelNG::doWrite()
         {
             if (!authenticator_ || authenticated_)
             {
-                onErrorOccurred(FROM_HERE, ErrorCode::UNKNOWN);
+                onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
                 return;
             }
 
