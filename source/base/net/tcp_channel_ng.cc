@@ -185,8 +185,8 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port, const Seconds
             onErrorOccurred(FROM_HERE, ErrorCode::SOCKET_TIMEOUT);
     });
 
-    resolver_->async_resolve(host, service,
-        [this, guard, watchdog](const std::error_code& error_code, const asio::ip::tcp::resolver::results_type& endpoints)
+    resolver_->async_resolve(host, service, [this, guard, watchdog](
+        const std::error_code& error_code, const asio::ip::tcp::resolver::results_type& endpoints)
     {
         if (!*guard)
             return;
@@ -200,7 +200,7 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port, const Seconds
             return;
         }
 
-        CLOG(INFO) << "Resolved endpoints:" << endpointsToString(endpoints);
+        CLOG(INFO) << "Resolved:" << endpointsToString(endpoints);
 
         asio::async_connect(socket_, endpoints,
             [](const std::error_code& error_code, const asio::ip::tcp::endpoint& next)
@@ -228,7 +228,7 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port, const Seconds
                 return;
             }
 
-            CLOG(INFO) << "Connected to endpoint:" << endpoint.address().to_string() << ":" << endpoint.port();
+            CLOG(INFO) << "Connected to:" << endpoint.address().to_string() << ":" << endpoint.port();
             watchdog->cancel();
 
             setConnected(true);
@@ -487,10 +487,11 @@ void TcpChannelNG::onErrorOccurred(const Location& location, const std::error_co
 void TcpChannelNG::onErrorOccurred(const Location& location, ErrorCode error_code)
 {
     CLOG(ERROR) << "Connection finished:" << error_code << "from" << location;
-    setConnected(false);
 
     if (!*alive_guard_)
         return;
+
+    setConnected(false);
 
     *alive_guard_ = false;
     emit sig_errorOccurred(error_code);
