@@ -131,12 +131,6 @@ private:
         KEEP_ALIVE_PING = 1
     };
 
-    enum KeepAliveTimerType
-    {
-        KEEP_ALIVE_TIMEOUT = 0,
-        KEEP_ALIVE_INTERVAL = 1
-    };
-
     struct Header
     {
         quint8 type;
@@ -155,8 +149,8 @@ private:
     void doWrite();
     void doReadHeader();
     void doReadData();
-    void startKeepAliveTimer(Seconds duration);
-    void onKeepAliveTimer();
+    void scheduleKeepAlivePing();
+    void scheduleKeepAlivePongTimeout();
 
     SharedPointer<bool> alive_guard_ { new bool(true) };
     asio::io_context& io_context_;
@@ -164,7 +158,6 @@ private:
     std::unique_ptr<asio::ip::tcp::resolver> resolver_;
 
     asio::steady_timer keep_alive_timer_;
-    KeepAliveTimerType keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
     QByteArray keep_alive_counter_;
 
     bool connected_ = false;

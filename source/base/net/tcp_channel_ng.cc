@@ -240,10 +240,7 @@ void TcpChannelNG::setPaused(bool enable)
     // is set, |encryptor_| may not be ready, and a KEEP_ALIVE frame would be sent
     // unencrypted, which the peer would treat as a protocol violation.
     if (authenticated_)
-    {
-        keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
-        startKeepAliveTimer(kKeepAliveInterval);
-    }
+        scheduleKeepAlivePing();
 
     // We already have an incomplete read operation.
     if (state_ == ReadState::READ_HEADER || state_ == ReadState::READ_DATA)
@@ -564,8 +561,7 @@ void TcpChannelNG::onMessageReceived()
         largeNumberIncrement(&keep_alive_counter_);
 
         // Restart keep alive timer.
-        keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
-        startKeepAliveTimer(kKeepAliveInterval);
+        scheduleKeepAlivePing();
     }
     else
     {
@@ -756,32 +752,35 @@ void TcpChannelNG::doReadData()
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::startKeepAliveTimer(Seconds duration)
+void TcpChannelNG::scheduleKeepAlivePing()
 {
-    keep_alive_timer_.expires_after(duration);
+    keep_alive_timer_.expires_after(kKeepAliveInterval);
 
     auto guard = alive_guard_;
     keep_alive_timer_.async_wait([this, guard](const std::error_code& error_code)
     {
-        if (*guard && !error_code)
-            onKeepAliveTimer();
+        if (!*guard || error_code)
+            return;
+
+        // Time to send a PING. The peer must respond with a PONG within kKeepAliveTimeout,
+        // otherwise the connection will be terminated.
+        addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PING, keep_alive_counter_);
+        scheduleKeepAlivePongTimeout();
     });
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::onKeepAliveTimer()
+void TcpChannelNG::scheduleKeepAlivePongTimeout()
 {
-    if (keep_alive_timer_type_ == KEEP_ALIVE_INTERVAL)
+    keep_alive_timer_.expires_after(kKeepAliveTimeout);
+
+    auto guard = alive_guard_;
+    keep_alive_timer_.async_wait([this, guard](const std::error_code& error_code)
     {
-        // If a response is not received within the specified interval, the connection will be terminated.
-        addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PING, keep_alive_counter_);
-        keep_alive_timer_type_ = KEEP_ALIVE_TIMEOUT;
-        startKeepAliveTimer(kKeepAliveTimeout);
-    }
-    else
-    {
-        // No response came within the specified period of time. We forcibly terminate the connection.
-        CDCHECK_EQ(keep_alive_timer_type_, KEEP_ALIVE_TIMEOUT);
+        if (!*guard || error_code)
+            return;
+
+        // No PONG arrived within the specified period. Forcibly terminate the connection.
         onErrorOccurred(FROM_HERE, ErrorCode::SOCKET_TIMEOUT);
-    }
+    });
 }
