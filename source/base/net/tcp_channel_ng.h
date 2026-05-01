@@ -159,6 +159,11 @@ private:
 
     asio::steady_timer keep_alive_timer_;
     QByteArray keep_alive_counter_;
+    // Set to true on any successfully received message; checked and cleared by the
+    // keep-alive timer callbacks. Lets us avoid sending PINGs / firing PONG timeouts when
+    // the peer is obviously alive due to incoming traffic, without rescheduling the
+    // timer on every message.
+    bool rx_since_last_check_ = false;
 
     bool connected_ = false;
     bool authenticated_ = false;

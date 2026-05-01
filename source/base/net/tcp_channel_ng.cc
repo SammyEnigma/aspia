@@ -532,6 +532,11 @@ void TcpChannelNG::onMessageReceived()
         return;
     }
 
+    // Any successfully decrypted message proves the peer is alive. Cheap flag instead of
+    // rescheduling the timer on every message - the keep-alive callbacks will consult it
+    // when they actually fire.
+    rx_since_last_check_ = true;
+
     if (read_header_.type == USER_DATA)
     {
         emit sig_messageReceived(read_header_.param1, decrypt_buffer_);
@@ -560,7 +565,7 @@ void TcpChannelNG::onMessageReceived()
         // Increase the counter of sent packets.
         largeNumberIncrement(&keep_alive_counter_);
 
-        // Restart keep alive timer.
+        // PONG received - cancel the pong-timeout and switch back to the interval cycle.
         scheduleKeepAlivePing();
     }
     else
@@ -754,6 +759,7 @@ void TcpChannelNG::doReadData()
 //--------------------------------------------------------------------------------------------------
 void TcpChannelNG::scheduleKeepAlivePing()
 {
+    rx_since_last_check_ = false;
     keep_alive_timer_.expires_after(kKeepAliveInterval);
 
     auto guard = alive_guard_;
@@ -762,8 +768,15 @@ void TcpChannelNG::scheduleKeepAlivePing()
         if (!*guard || error_code)
             return;
 
-        // Time to send a PING. The peer must respond with a PONG within kKeepAliveTimeout,
-        // otherwise the connection will be terminated.
+        // Incoming traffic since last check or pending outgoing data both prove the
+        // connection is alive. Skip the PING and reschedule the next interval.
+        if (rx_since_last_check_ || !write_queue_.isEmpty())
+        {
+            scheduleKeepAlivePing();
+            return;
+        }
+
+        // Channel is idle. Send a PING and require a PONG within kKeepAliveTimeout.
         addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PING, keep_alive_counter_);
         scheduleKeepAlivePongTimeout();
     });
