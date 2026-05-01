@@ -4298,10 +4298,6 @@ Routers added: %4</source>
         <source>Connection Status</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">Fechar</translation>
-    </message>
 </context>
 <context>
     <name>SysInfoApplications</name>

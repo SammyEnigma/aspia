@@ -14,10 +14,6 @@
         <translation>一般</translation>
     </message>
     <message>
-        <source>License</source>
-        <translation type="vanished">授權</translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.ui" line="90"/>
         <source>Service Information</source>
         <translation>服務詳細資訊</translation>
@@ -147,46 +143,6 @@
         <source>Version Information</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Version: %1</source>
-        <translation type="vanished">版本： %1</translation>
-    </message>
-    <message>
-        <source>Links:</source>
-        <translation type="vanished">連結：</translation>
-    </message>
-    <message>
-        <source>Developers:</source>
-        <translation type="vanished">開發人員：</translation>
-    </message>
-    <message>
-        <source>Translators:</source>
-        <translation type="vanished">翻譯成員：</translation>
-    </message>
-    <message>
-        <source>Third-party components:</source>
-        <translation type="vanished">第三方組件：</translation>
-    </message>
-    <message>
-        <source>%1 version: %2</source>
-        <translation type="vanished">%1 版本：%2</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="vanished">儲存檔案</translation>
-    </message>
-    <message>
-        <source>TXT files (*.txt)</source>
-        <translation type="vanished">TXT 檔案 (*.txt)</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Could not open file for writing.</source>
-        <translation type="vanished">無法開啟檔案進行寫入。</translation>
-    </message>
 </context>
 <context>
     <name>AddressBar</name>
@@ -194,10 +150,6 @@
         <location filename="../client/ui/file_transfer/address_bar.cc" line="54"/>
         <source>An incorrect path to the folder was entered.</source>
         <translation type="unfinished">輸入的資料夾路徑不正確。</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
@@ -293,14 +245,6 @@
         <source>B</source>
         <translation type="unfinished">B</translation>
     </message>
-    <message>
-        <source>Total Space</source>
-        <translation type="vanished">總空間</translation>
-    </message>
-    <message>
-        <source>Free Space</source>
-        <translation type="vanished">可用空間</translation>
-    </message>
 </context>
 <context>
     <name>AddressBookImporter</name>
@@ -387,10 +331,6 @@ Routers added: %4</source>
         <source>Password cannot be empty.</source>
         <translation type="unfinished">密碼不能為空。</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>ChangePasswordDialog</name>
@@ -439,10 +379,6 @@ Routers added: %4</source>
         <location filename="../host/ui/change_password_dialog.cc" line="133"/>
         <source>New password cannot be empty.</source>
         <translation type="unfinished">新密碼不能為空。</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
@@ -608,10 +544,6 @@ Routers added: %4</source>
         <source>Could not open file for writing.</source>
         <translation type="unfinished">無法開啟檔案進行寫入。</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>CheckPasswordDialog</name>
@@ -635,17 +567,9 @@ Routers added: %4</source>
         <source>You entered an incorrect password.</source>
         <translation type="unfinished">您輸入了不正確的舊密碼。</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>Client</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
     <message>
         <location filename="../client/main.cc" line="43"/>
         <source>Incorrect value for &quot;%1&quot;. Possible values: %2.</source>
@@ -692,10 +616,6 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remote computer port.</source>
-        <translation type="vanished">遠端電腦通訊埠。</translation>
-    </message>
-    <message>
         <location filename="../client/main.cc" line="367"/>
         <source>Name of host.</source>
         <translation type="unfinished"></translation>
@@ -709,22 +629,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="375"/>
         <source>Password of user.</source>
         <translation>使用者密碼。</translation>
-    </message>
-    <message>
-        <source>Session type. Possible values: desktop-manage, desktop-view, file-transfer.</source>
-        <translation type="vanished">工作階段類型。可能的值：desktop-manage、desktop-view、file-transfer。</translation>
-    </message>
-    <message>
-        <source>Type of codec. Possible values: vp8, vp9, zstd.</source>
-        <translation type="vanished">編碼類型。可能的值：vp8、vp9、zstd。</translation>
-    </message>
-    <message>
-        <source>Color depth. Possible values: 3, 6, 8, 16, 32.</source>
-        <translation type="vanished">色彩深度。可能的值：3、6、8、16、32。</translation>
-    </message>
-    <message>
-        <source>Compression ratio. Possible values: 1-22.</source>
-        <translation type="vanished">壓縮率。可能的值：1-22。</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="388"/>
@@ -750,14 +654,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="408"/>
         <source>Enable or disable desktop wallpaper. Possible values: 0 or 1.</source>
         <translation>啟用或停用桌布。可能的值：0 或 1。</translation>
-    </message>
-    <message>
-        <source>Enable or disable font smoothing. Possible values: 0 or 1.</source>
-        <translation type="vanished">啟用或停用字體平滑。可能的值：0 或 1。</translation>
-    </message>
-    <message>
-        <source>Clear clipboard at disconnect. Possible values: 0 or 1.</source>
-        <translation type="vanished">在中斷連線時清除剪貼簿。可能的值：0 或 1。</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="383"/>
@@ -793,10 +689,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="432"/>
         <source>Aspia Client</source>
         <translation>Aspia Client</translation>
-    </message>
-    <message>
-        <source>A host ID was entered, but the router was not configured. You need to configure your router before connecting.</source>
-        <translation type="vanished">輸入了主機 ID，但未配置路由器。您需要在連線之前配置您的路由器。</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="396"/>
@@ -1014,10 +906,6 @@ Routers added: %4</source>
         <translation>刪除使用者</translation>
     </message>
     <message>
-        <source>Advanced</source>
-        <translation type="vanished">進階</translation>
-    </message>
-    <message>
         <location filename="../host/ui/config_dialog.ui" line="78"/>
         <source>Preffered video capturer:</source>
         <translation>偏好的視訊擷取器：</translation>
@@ -1204,74 +1092,6 @@ Routers added: %4</source>
         <source>Remove</source>
         <translation type="unfinished">移除</translation>
     </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">確認</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Service configuration changed. For the changes to take effect, you must restart the service. Restart the service now?</source>
-        <translation type="vanished">服務配置已更改。要使變更生效，您必須重新啟動服務。是否現在重啟服務？</translation>
-    </message>
-    <message>
-        <source>Started</source>
-        <translation type="vanished">已啟動</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="vanished">停止</translation>
-    </message>
-    <message>
-        <source>Not started</source>
-        <translation type="vanished">未啟動</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="vanished">啟動</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">已安裝</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="vanished">未安裝</translation>
-    </message>
-    <message>
-        <source>Current service state: %1</source>
-        <translation type="vanished">目前服務狀態：%1</translation>
-    </message>
-    <message>
-        <source>The service could not be installed.</source>
-        <translation type="vanished">無法安裝服務。</translation>
-    </message>
-    <message>
-        <source>The service could not be removed.</source>
-        <translation type="vanished">無法移除服務。</translation>
-    </message>
-    <message>
-        <source>Could not access the service.</source>
-        <translation type="vanished">無法存取服務。</translation>
-    </message>
-    <message>
-        <source>The service could not be started.</source>
-        <translation type="vanished">無法啟動服務。</translation>
-    </message>
-    <message>
-        <source>The service could not be stopped.</source>
-        <translation type="vanished">無法停止服務。</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>ConnectConfirmDialog</name>
@@ -1304,14 +1124,6 @@ Routers added: %4</source>
             <numerusform>此連線將在 %n 秒後自動被拒絕。</numerusform>
         </translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>DesktopAgentMain</name>
@@ -1327,22 +1139,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="20"/>
         <source>Session Configuration</source>
         <translation>工作階段配置</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation type="vanished">編碼</translation>
-    </message>
-    <message>
-        <source>Color depth:</source>
-        <translation type="vanished">色彩深度：</translation>
-    </message>
-    <message>
-        <source>Fast</source>
-        <translation type="vanished">快速</translation>
-    </message>
-    <message>
-        <source>Best</source>
-        <translation type="vanished">最佳</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="32"/>
@@ -1385,17 +1181,9 @@ Routers added: %4</source>
         <translation>停用桌布</translation>
     </message>
     <message>
-        <source>Disable font smoothing</source>
-        <translation type="vanished">停用字體平滑</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="104"/>
         <source>Other</source>
         <translation>其他</translation>
-    </message>
-    <message>
-        <source>Clear clipboard at disconnect</source>
-        <translation type="vanished">在中斷連線時清除剪貼簿</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="110"/>
@@ -1406,30 +1194,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="117"/>
         <source>Block remote input</source>
         <translation>阻止遠端輸入</translation>
-    </message>
-    <message>
-        <source>True color (32 bit)</source>
-        <translation type="vanished">全彩 (32 bit)</translation>
-    </message>
-    <message>
-        <source>High color (16 bit)</source>
-        <translation type="vanished">高彩 (16 bit)</translation>
-    </message>
-    <message>
-        <source>256 colors (8 bit)</source>
-        <translation type="vanished">256 色 (8 bit)</translation>
-    </message>
-    <message>
-        <source>64 colors (6 bit)</source>
-        <translation type="vanished">64 色 (6 bit)</translation>
-    </message>
-    <message>
-        <source>8 colors (3 bit)</source>
-        <translation type="vanished">8 色 (3 bit)</translation>
-    </message>
-    <message>
-        <source>Compression ratio: %1</source>
-        <translation type="vanished">壓縮率：%1</translation>
     </message>
 </context>
 <context>
@@ -1448,18 +1212,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_session_window.cc" line="977"/>
         <source>Could not save image</source>
         <translation type="unfinished">無法儲存影像</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>There are no supported video encodings.</source>
-        <translation type="vanished">沒有支援的視訊編碼。</translation>
-    </message>
-    <message>
-        <source>The current video encoding is not supported by the host. Please specify a different video encoding.</source>
-        <translation type="vanished">主機不支援目前的視訊編碼。請指定其他視訊編碼。</translation>
     </message>
 </context>
 <context>
@@ -1566,10 +1318,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="277"/>
         <source>Lock</source>
         <translation type="unfinished">鎖定</translation>
-    </message>
-    <message>
-        <source>Remote Update</source>
-        <translation type="obsolete">遠端更新</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="286"/>
@@ -1718,14 +1466,6 @@ Routers added: %4</source>
         <source>Are you sure you want to lock the user session on the remote computer?</source>
         <translation type="unfinished">您是否確定要鎖定遠端電腦的使用者工作階段？</translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>DesktopWidget</name>
@@ -1859,10 +1599,6 @@ Routers added: %4</source>
         <location filename="../common/ui/download_dialog.cc" line="64"/>
         <source>An error occurred while downloading the update: %1</source>
         <translation type="unfinished">下載更新時發生錯誤：%1</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
@@ -2121,22 +1857,6 @@ Routers added: %4</source>
         <source>Are you sure you want to delete the selected items?</source>
         <translation type="unfinished">您是否確定要刪除所選項目？</translation>
     </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">確認</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>FileRemoveDialog</name>
@@ -2361,10 +2081,6 @@ Routers added: %4</source>
         <source>Session error: %1</source>
         <translation type="unfinished">工作階段錯誤：%1</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>GuiApplication</name>
@@ -2387,10 +2103,6 @@ Routers added: %4</source>
 <context>
     <name>Host</name>
     <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
         <location filename="../host/ui/host_main.cc" line="142"/>
         <source>Application integrity check failed. Components are missing or damaged.</source>
         <translation>應用程式完整性檢查失敗。組件有缺少或損壞。</translation>
@@ -2399,10 +2111,6 @@ Routers added: %4</source>
         <location filename="../host/ui/host_main.cc" line="156"/>
         <source>Export and import parameters can not be specified together.</source>
         <translation>不能同時指定匯出和匯入參數。</translation>
-    </message>
-    <message>
-        <source>Aspia Host</source>
-        <translation type="obsolete">Aspia Host</translation>
     </message>
 </context>
 <context>
@@ -2612,38 +2320,6 @@ Routers added: %4</source>
         <source>The computer has an incorrect address.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Update</source>
-        <translation type="vanished">更新</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="vanished">使用者</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>(copy)</source>
-        <translation type="vanished">(複製)</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="vanished">您確定要刪除電腦「%1」嗎?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">確認</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>LocalComputerDialog</name>
@@ -2782,10 +2458,6 @@ Routers added: %4</source>
         <source>Host ID</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupDialog</name>
@@ -2863,10 +2535,6 @@ Routers added: %4</source>
         <source>Unable to modify group</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupWidget</name>
@@ -2899,10 +2567,6 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/local_group_widget.ui" line="75"/>
         <source>Status</source>
         <translation type="unfinished">狀態</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="obsolete">位址</translation>
     </message>
     <message>
         <location filename="../client/ui/hosts/local_group_widget.ui" line="55"/>
@@ -3000,10 +2664,6 @@ Routers added: %4</source>
         <location filename="../host/ui/main_window.ui" line="298"/>
         <source>F1</source>
         <translation type="unfinished">F1</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">桌面管理</translation>
     </message>
     <message>
         <location filename="../host/ui/main_window.ui" line="324"/>
@@ -3120,18 +2780,10 @@ Routers added: %4</source>
         <translation>設定...</translation>
     </message>
     <message>
-        <source>Check for updates...</source>
-        <translation type="obsolete">檢查更新...</translation>
-    </message>
-    <message>
         <location filename="../host/ui/main_window.ui" line="313"/>
         <location filename="../host/ui/main_window.cc" line="672"/>
         <source>Hide</source>
         <translation>隱藏</translation>
-    </message>
-    <message>
-        <source>Show icons in menus</source>
-        <translation type="vanished">在選單顯示圖示</translation>
     </message>
     <message>
         <location filename="../client/ui/main_window.cc" line="61"/>
@@ -3213,38 +2865,6 @@ Routers added: %4</source>
         <location filename="../host/ui/main_window.cc" line="899"/>
         <source>ID: %1</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Connecting to a router %1...</source>
-        <translation type="vanished">正在連線到路由器 %1...</translation>
-    </message>
-    <message>
-        <source>Connected to a router %1</source>
-        <translation type="vanished">已連線到路由器 %1</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">確認</translation>
-    </message>
-    <message>
-        <source>Connecting to a router...</source>
-        <translation type="vanished">正在連線到路由器...</translation>
-    </message>
-    <message>
-        <source>Connected to a router</source>
-        <translation type="vanished">已連線到路由器</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
     </message>
 </context>
 <context>
@@ -3469,18 +3089,6 @@ Routers added: %4</source>
 <context>
     <name>NotifierWindow</name>
     <message>
-        <source>Connections</source>
-        <translation type="vanished">連線</translation>
-    </message>
-    <message>
-        <source>Voice chat</source>
-        <translation type="vanished">語音聊天</translation>
-    </message>
-    <message>
-        <source>Chat</source>
-        <translation type="vanished">聊天</translation>
-    </message>
-    <message>
         <location filename="../host/ui/notifier_window.ui" line="287"/>
         <location filename="../host/ui/notifier_window.cc" line="251"/>
         <source>Lock mouse</source>
@@ -3532,26 +3140,6 @@ Routers added: %4</source>
 <context>
     <name>ProcessItem</name>
     <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="86"/>
         <source>System Idle Process</source>
         <translation type="unfinished"></translation>
@@ -3596,10 +3184,6 @@ Routers added: %4</source>
         <location filename="../client/ui/router_dialog.ui" line="25"/>
         <source>Address:</source>
         <translation type="unfinished">位址：</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="obsolete">名稱：</translation>
     </message>
     <message>
         <location filename="../client/ui/router_dialog.ui" line="35"/>
@@ -3787,21 +3371,9 @@ Routers added: %4</source>
         <source>Client</source>
         <translation type="unfinished">客戶端</translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>RouterWidget</name>
-    <message>
-        <source>Router</source>
-        <translation type="obsolete">路由器</translation>
-    </message>
     <message>
         <location filename="../client/ui/hosts/router_widget.ui" line="126"/>
         <source>Relays</source>
@@ -4287,14 +3859,6 @@ Routers added: %4</source>
 <context>
     <name>SessionType</name>
     <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">桌面管理</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">桌面檢視</translation>
-    </message>
-    <message>
         <location filename="../common/ui/session_type.cc" line="31"/>
         <source>Desktop Management</source>
         <translation type="unfinished"></translation>
@@ -4318,10 +3882,6 @@ Routers added: %4</source>
         <location filename="../common/ui/session_type.cc" line="53"/>
         <source>Manage</source>
         <translation type="unfinished">管理</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">檢視</translation>
     </message>
     <message>
         <location filename="../common/ui/session_type.cc" line="56"/>
@@ -4401,122 +3961,6 @@ Routers added: %4</source>
         <source>Attempting to connect in compatibility mode...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Attempt to connect to %1.</source>
-        <translation type="vanished">嘗試連線到 %1。</translation>
-    </message>
-    <message>
-        <source>Connection established.</source>
-        <translation type="vanished">連線已建立。</translation>
-    </message>
-    <message>
-        <source>Network error when connecting to the router: %1</source>
-        <translation type="vanished">連線到路由器時的身份驗證錯誤：%1</translation>
-    </message>
-    <message>
-        <source>Authentication error when connecting to the router: %1</source>
-        <translation type="vanished">連線到路由器時的身份驗證錯誤：%1</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">桌面管理</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">桌面檢視</translation>
-    </message>
-    <message>
-        <source>File Transfer</source>
-        <translation type="vanished">檔案傳輸</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="vanished">系統訊息</translation>
-    </message>
-    <message>
-        <source>Violation of the communication protocol.</source>
-        <translation type="vanished">違反通訊協定。</translation>
-    </message>
-    <message>
-        <source>Cryptography error (message encryption or decryption failed).</source>
-        <translation type="vanished">加密錯誤（訊息加密或解密失敗）。</translation>
-    </message>
-    <message>
-        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
-        <translation type="vanished">網路出現錯誤（例如網路電纜被意外拔出）。</translation>
-    </message>
-    <message>
-        <source>Connection was refused by the peer (or timed out).</source>
-        <translation type="vanished">連接被對方拒絕（或逾時）。</translation>
-    </message>
-    <message>
-        <source>Remote host closed the connection.</source>
-        <translation type="vanished">遠端主機關閉了連線。</translation>
-    </message>
-    <message>
-        <source>Host address was not found.</source>
-        <translation type="vanished">未找到主機位址。</translation>
-    </message>
-    <message>
-        <source>Socket operation timed out.</source>
-        <translation type="vanished">Socket 操作逾時。</translation>
-    </message>
-    <message>
-        <source>Address specified is already in use and was set to be exclusive.</source>
-        <translation type="vanished">指定的位址已被使用並設定為獨占。</translation>
-    </message>
-    <message>
-        <source>Address specified does not belong to the host.</source>
-        <translation type="vanished">指定位址的主機無法使用。</translation>
-    </message>
-    <message>
-        <source>An unknown error occurred.</source>
-        <translation type="vanished">出現未知錯誤。</translation>
-    </message>
-    <message>
-        <source>Authentication successfully completed.</source>
-        <translation type="vanished">身分驗證成功完成。</translation>
-    </message>
-    <message>
-        <source>Network authentication error.</source>
-        <translation type="vanished">網路認證錯誤。</translation>
-    </message>
-    <message>
-        <source>Violation of the data exchange protocol.</source>
-        <translation type="vanished">違反資料交換協定。</translation>
-    </message>
-    <message>
-        <source>Wrong user name or password.</source>
-        <translation type="vanished">錯誤的使用者名稱或密碼。</translation>
-    </message>
-    <message>
-        <source>Specified session type is not allowed for the user.</source>
-        <translation type="vanished">使用者不允許使用指定的工作階段類型。</translation>
-    </message>
-    <message>
-        <source>No host with the specified ID was found.</source>
-        <translation type="vanished">未找到具有指定 ID 的主機。</translation>
-    </message>
-    <message>
-        <source>There are no relays available or the key pool is empty.</source>
-        <translation type="vanished">沒有可用的中繼或密鑰池為空。</translation>
-    </message>
-    <message>
-        <source>Failed to connect to the relay server.</source>
-        <translation type="vanished">無法連線到中繼伺服器。</translation>
-    </message>
-    <message>
-        <source>Access is denied.</source>
-        <translation type="vanished">存取被拒。</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <translation type="vanished">未知錯誤。</translation>
-    </message>
-    <message>
-        <source>Text Chat</source>
-        <translation type="vanished">文字聊天</translation>
-    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -4529,22 +3973,6 @@ Routers added: %4</source>
         <location filename="../client/ui/settings_dialog.ui" line="133"/>
         <source>Router</source>
         <translation type="unfinished">路由器</translation>
-    </message>
-    <message>
-        <source>Use a router</source>
-        <translation type="obsolete">使用路由器</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation type="obsolete">位址：</translation>
-    </message>
-    <message>
-        <source>User Name:</source>
-        <translation type="obsolete">使用者名稱：</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="obsolete">密碼：</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="163"/>
@@ -4684,10 +4112,6 @@ Routers added: %4</source>
         <translation type="unfinished">位址</translation>
     </message>
     <message>
-        <source>Name</source>
-        <translation type="obsolete">名稱</translation>
-    </message>
-    <message>
         <location filename="../client/ui/settings_dialog.ui" line="168"/>
         <source>Access Level</source>
         <translation type="unfinished"></translation>
@@ -4762,25 +4186,9 @@ Routers added: %4</source>
         <source>Change...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>An invalid router address was entered.</source>
-        <translation type="vanished">輸入的路由器位址無效。</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">密碼不能為空。</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>SettingsUtil</name>
-    <message>
-        <source>Information</source>
-        <translation type="vanished">詳細資訊</translation>
-    </message>
     <message>
         <location filename="../host/ui/settings_util.cc" line="43"/>
         <source>The configuration was successfully imported.</source>
@@ -4826,14 +4234,6 @@ Routers added: %4</source>
         <source>Unable to write the target file.</source>
         <translation>無法寫入到目標檔案。</translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">否</translation>
-    </message>
 </context>
 <context>
     <name>Sidebar</name>
@@ -4872,10 +4272,6 @@ Routers added: %4</source>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>StatisticsDialog</name>
@@ -4894,10 +4290,6 @@ Routers added: %4</source>
         <source>Value</source>
         <translation>值</translation>
     </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>StatusDialog</name>
@@ -4905,10 +4297,6 @@ Routers added: %4</source>
         <location filename="../common/ui/status_dialog.ui" line="14"/>
         <source>Connection Status</source>
         <translation>連線狀態</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">關閉</translation>
     </message>
 </context>
 <context>
@@ -5458,10 +4846,6 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="76"/>
         <source>User Name</source>
         <translation type="unfinished">使用者名稱</translation>
-    </message>
-    <message>
-        <source>Threads</source>
-        <translation type="obsolete">執行緒數</translation>
     </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="81"/>
@@ -6368,10 +5752,6 @@ Routers added: %4</source>
         <source>No Battery</source>
         <translation type="unfinished">無電池</translation>
     </message>
-    <message>
-        <source>%1 s</source>
-        <translation type="vanished">%1 秒</translation>
-    </message>
 </context>
 <context>
     <name>SysInfoWidgetPrinters</name>
@@ -6934,17 +6314,9 @@ Routers added: %4</source>
         <source>Failed to save file: %1</source>
         <translation type="unfinished">無法儲存檔案：%1</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>TaskManagerWindow</name>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">系統訊息</translation>
-    </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="37"/>
         <source>Processes</source>
@@ -6968,50 +6340,10 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Memory</source>
-        <translation type="obsolete">記憶體</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="153"/>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="308"/>
         <source>End Task</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation type="obsolete">儲存</translation>
-    </message>
-    <message>
-        <source>Save (Ctrl+S)</source>
-        <translation type="obsolete">儲存 (Ctrl+S)</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation type="obsolete">列印</translation>
-    </message>
-    <message>
-        <source>Print (Ctrl+P)</source>
-        <translation type="obsolete">列印 (Ctrl+P)</translation>
-    </message>
-    <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">複製列</translation>
-    </message>
-    <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">複製名稱</translation>
-    </message>
-    <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">複製值</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">重新整理</translation>
-    </message>
-    <message>
-        <source>Refresh (F5)</source>
-        <translation type="obsolete">重新整理（F5）</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="70"/>
@@ -7180,18 +6512,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="939"/>
         <source>Update Speed</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">確認</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
     </message>
 </context>
 <context>
@@ -7383,22 +6703,6 @@ Routers added: %4</source>
         <source>No updates available.</source>
         <translation type="unfinished">沒有可用的更新。</translation>
     </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">確認</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>UserDialog</name>
@@ -7495,14 +6799,6 @@ Routers added: %4</source>
         <location filename="../host/ui/user_dialog.cc" line="270"/>
         <source>Double-click to change</source>
         <translation type="unfinished">點選兩次以修改</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
     </message>
 </context>
 <context>

@@ -143,30 +143,6 @@
         <source>Version Information</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Version: %1</source>
-        <translation type="vanished">Version: %1</translation>
-    </message>
-    <message>
-        <source>Links:</source>
-        <translation type="vanished">Links:</translation>
-    </message>
-    <message>
-        <source>Developers:</source>
-        <translation type="vanished">Entwickler:</translation>
-    </message>
-    <message>
-        <source>Translators:</source>
-        <translation type="vanished">Übersetzer:</translation>
-    </message>
-    <message>
-        <source>Third-party components:</source>
-        <translation type="vanished">Komponenten von Drittanbietern:</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>AddressBar</name>
@@ -174,10 +150,6 @@
         <location filename="../client/ui/file_transfer/address_bar.cc" line="54"/>
         <source>An incorrect path to the folder was entered.</source>
         <translation type="unfinished">Ein falscher Pfad zu dem Ordner wurde eingegeben.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
     </message>
 </context>
 <context>
@@ -273,14 +245,6 @@
         <source>B</source>
         <translation type="unfinished">B</translation>
     </message>
-    <message>
-        <source>Total Space</source>
-        <translation type="vanished">Gesamter Speicherplatz</translation>
-    </message>
-    <message>
-        <source>Free Space</source>
-        <translation type="vanished">Freier Speicherplatz</translation>
-    </message>
 </context>
 <context>
     <name>AddressBookImporter</name>
@@ -367,10 +331,6 @@ Routers added: %4</source>
         <source>Password cannot be empty.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>ChangePasswordDialog</name>
@@ -419,10 +379,6 @@ Routers added: %4</source>
         <location filename="../host/ui/change_password_dialog.cc" line="133"/>
         <source>New password cannot be empty.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
     </message>
 </context>
 <context>
@@ -589,10 +545,6 @@ Routers added: %4</source>
         <source>Could not open file for writing.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>CheckPasswordDialog</name>
@@ -615,10 +567,6 @@ Routers added: %4</source>
         <location filename="../host/ui/check_password_dialog.cc" line="65"/>
         <source>You entered an incorrect password.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
     </message>
 </context>
 <context>
@@ -754,10 +702,6 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Warning</source>
-        <translation type="obsolete">Warnung</translation>
-    </message>
-    <message>
         <location filename="../client/client.cc" line="482"/>
         <source>The host with the specified ID is not online</source>
         <translation type="unfinished"></translation>
@@ -800,18 +744,6 @@ Routers added: %4</source>
         <location filename="../host/ui/config_dialog.ui" line="24"/>
         <source>General</source>
         <translation type="unfinished">Allgemein</translation>
-    </message>
-    <message>
-        <source>Service</source>
-        <translation type="obsolete">Dienst</translation>
-    </message>
-    <message>
-        <source>Incoming Connections</source>
-        <translation type="obsolete">Eingehende Verbindugen</translation>
-    </message>
-    <message>
-        <source>Port:</source>
-        <translation type="obsolete">Port:</translation>
     </message>
     <message>
         <location filename="../host/ui/config_dialog.ui" line="250"/>
@@ -1161,66 +1093,6 @@ Routers added: %4</source>
         <source>Remove</source>
         <translation type="unfinished">Löschen</translation>
     </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bestätigung</translation>
-    </message>
-    <message>
-        <source>Service configuration changed. For the changes to take effect, you must restart the service. Restart the service now?</source>
-        <translation type="vanished">Servicekonfiguration geändert. Damit die Änderungen wirksam werden, müssen Sie den Dienst neu starten. Den Dienst jetzt neu?</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
-    <message>
-        <source>Started</source>
-        <translation type="vanished">Gestartet</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="vanished">Stopp</translation>
-    </message>
-    <message>
-        <source>Not started</source>
-        <translation type="vanished">Nicht gestartet</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="vanished">Starten</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">Installiert</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="vanished">Nicht installiert</translation>
-    </message>
-    <message>
-        <source>Current state: %1</source>
-        <translation type="vanished">Aktueller Zustand: %1</translation>
-    </message>
-    <message>
-        <source>The service could not be installed.</source>
-        <translation type="vanished">Dienst konnte nicht installiert werden.</translation>
-    </message>
-    <message>
-        <source>The service could not be removed.</source>
-        <translation type="vanished">Dienst konnte nicht gelöscht werden.</translation>
-    </message>
-    <message>
-        <source>Could not access the service.</source>
-        <translation type="vanished">Kann nicht auf den Dienst zugreifen.</translation>
-    </message>
-    <message>
-        <source>The service could not be started.</source>
-        <translation type="vanished">Dienst konnte nicht gestartet werden.</translation>
-    </message>
-    <message>
-        <source>The service could not be stopped.</source>
-        <translation type="vanished">Dienst konnte nicht angehalten werden.</translation>
-    </message>
 </context>
 <context>
     <name>ConnectConfirmDialog</name>
@@ -1275,10 +1147,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="117"/>
         <source>Block remote input</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable cursor shape</source>
-        <translation type="vanished">Cursorform erlauben</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="32"/>
@@ -1347,10 +1215,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_session_window.cc" line="977"/>
         <source>Could not save image</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
     </message>
 </context>
 <context>
@@ -1739,10 +1603,6 @@ Routers added: %4</source>
         <source>An error occurred while downloading the update: %1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>FileAgentMain</name>
@@ -2000,14 +1860,6 @@ Routers added: %4</source>
         <source>Are you sure you want to delete the selected items?</source>
         <translation type="unfinished">Möchten Sie die ausgewählten Elemente wirklich löschen?</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bestätigung</translation>
-    </message>
 </context>
 <context>
     <name>FileRemoveDialog</name>
@@ -2232,10 +2084,6 @@ Routers added: %4</source>
         <source>Session error: %1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>GuiApplication</name>
@@ -2257,10 +2105,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>Host</name>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
     <message>
         <location filename="../host/ui/host_main.cc" line="142"/>
         <source>Application integrity check failed. Components are missing or damaged.</source>
@@ -2479,22 +2323,6 @@ Routers added: %4</source>
         <source>The computer has an incorrect address.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Users</source>
-        <translation type="vanished">Benutzer</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="vanished">Möchten Sie den Computer &quot;%1&quot; wirklich löschen?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bestätigung</translation>
-    </message>
 </context>
 <context>
     <name>LocalComputerDialog</name>
@@ -2635,10 +2463,6 @@ Routers added: %4</source>
         <source>Host ID</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupDialog</name>
@@ -2717,10 +2541,6 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/local_group_dialog.cc" line="154"/>
         <source>Unable to modify group</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
     </message>
 </context>
 <context>
@@ -2864,10 +2684,6 @@ Routers added: %4</source>
         <location filename="../client/ui/main_window.ui" line="177"/>
         <source>Status Bar</source>
         <translation type="unfinished">Statusleiste</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">Desktopverwaltung</translation>
     </message>
     <message>
         <location filename="../host/ui/main_window.ui" line="324"/>
@@ -3058,14 +2874,6 @@ Routers added: %4</source>
         <location filename="../host/ui/main_window.cc" line="899"/>
         <source>ID: %1</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bestätigung</translation>
     </message>
 </context>
 <context>
@@ -3291,10 +3099,6 @@ Routers added: %4</source>
 <context>
     <name>NotifierWindow</name>
     <message>
-        <source>Connections</source>
-        <translation type="obsolete">Verbindungen</translation>
-    </message>
-    <message>
         <location filename="../host/ui/notifier_window.ui" line="287"/>
         <location filename="../host/ui/notifier_window.cc" line="251"/>
         <source>Lock mouse</source>
@@ -3346,26 +3150,6 @@ Routers added: %4</source>
 <context>
     <name>ProcessItem</name>
     <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="86"/>
         <source>System Idle Process</source>
         <translation type="unfinished"></translation>
@@ -3410,10 +3194,6 @@ Routers added: %4</source>
         <location filename="../client/ui/router_dialog.ui" line="25"/>
         <source>Address:</source>
         <translation type="unfinished">Adresse:</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="obsolete">Name:</translation>
     </message>
     <message>
         <location filename="../client/ui/router_dialog.ui" line="35"/>
@@ -4098,14 +3878,6 @@ Routers added: %4</source>
 <context>
     <name>SessionType</name>
     <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">Desktopverwaltung</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="obsolete">Desktopansicht</translation>
-    </message>
-    <message>
         <location filename="../common/ui/session_type.cc" line="31"/>
         <source>Desktop Management</source>
         <translation type="unfinished"></translation>
@@ -4208,22 +3980,6 @@ Routers added: %4</source>
         <source>Attempting to connect in compatibility mode...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Attempt to connect to %1.</source>
-        <translation type="vanished">Versuch, eine Verbindung mit %1:%2 herzustellen. {1.?}</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">Desktopverwaltung</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">Desktopansicht</translation>
-    </message>
-    <message>
-        <source>File Transfer</source>
-        <translation type="vanished">Dateiübertragung</translation>
-    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -4236,18 +3992,6 @@ Routers added: %4</source>
         <location filename="../client/ui/settings_dialog.ui" line="133"/>
         <source>Router</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation type="obsolete">Adresse:</translation>
-    </message>
-    <message>
-        <source>User Name:</source>
-        <translation type="obsolete">Benutzername:</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="obsolete">Kennwort:</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="163"/>
@@ -4387,10 +4131,6 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Name</source>
-        <translation type="obsolete">Name</translation>
-    </message>
-    <message>
         <location filename="../client/ui/settings_dialog.ui" line="168"/>
         <source>Access Level</source>
         <translation type="unfinished"></translation>
@@ -4465,21 +4205,9 @@ Routers added: %4</source>
         <source>Change...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>The user name can not be empty and can contain only alphabet characters, numbers and _, -, . characters.</source>
-        <translation type="vanished">Der Benutzername darf nicht leer sein und darf nur Buchstaben, Zahlen und folgende Zeichen: &quot;_&quot;,&quot;-&quot;,&quot;.&quot; beinhalten.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>SettingsUtil</name>
-    <message>
-        <source>Information</source>
-        <translation type="obsolete">Information</translation>
-    </message>
     <message>
         <location filename="../host/ui/settings_util.cc" line="43"/>
         <source>The configuration was successfully imported.</source>
@@ -4563,10 +4291,6 @@ Routers added: %4</source>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>StatisticsDialog</name>
@@ -4592,10 +4316,6 @@ Routers added: %4</source>
         <location filename="../common/ui/status_dialog.ui" line="14"/>
         <source>Connection Status</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">Schließen</translation>
     </message>
 </context>
 <context>
@@ -4805,10 +4525,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoEventLogs</name>
-    <message>
-        <source>Type</source>
-        <translation type="obsolete">Typ</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="130"/>
         <source>Level</source>
@@ -5278,22 +4994,6 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="68"/>
         <source>Copy Value</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Name</translation>
-    </message>
-    <message>
-        <source>Computer</source>
-        <translation type="vanished">Computer</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="vanished">Größe</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">Typ</translation>
     </message>
 </context>
 <context>
@@ -6637,10 +6337,6 @@ Routers added: %4</source>
         <source>Failed to save file: %1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
-    </message>
 </context>
 <context>
     <name>TaskManagerWindow</name>
@@ -6806,10 +6502,6 @@ Routers added: %4</source>
         <translation type="unfinished">Trennen</translation>
     </message>
     <message>
-        <source>Refresh (F5)</source>
-        <translation type="obsolete">Aktualisieren (F5)</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="648"/>
         <source>Do you really want to end &quot;%1&quot; process?</source>
         <translation type="unfinished"></translation>
@@ -6843,10 +6535,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="939"/>
         <source>Update Speed</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bestätigung</translation>
     </message>
 </context>
 <context>
@@ -7037,14 +6725,6 @@ Routers added: %4</source>
         <location filename="../common/ui/update_dialog.cc" line="230"/>
         <source>No updates available.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bestätigung</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Warnung</translation>
     </message>
 </context>
 <context>

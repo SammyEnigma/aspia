@@ -14,10 +14,6 @@
         <translation>常规</translation>
     </message>
     <message>
-        <source>License</source>
-        <translation type="vanished">许可证</translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.ui" line="90"/>
         <source>Service Information</source>
         <translation>服务模块信息</translation>
@@ -147,38 +143,6 @@
         <source>Version Information</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Version: %1</source>
-        <translation type="vanished">版本： %1</translation>
-    </message>
-    <message>
-        <source>Links:</source>
-        <translation type="vanished">链接：</translation>
-    </message>
-    <message>
-        <source>Developers:</source>
-        <translation type="vanished">开发人员：</translation>
-    </message>
-    <message>
-        <source>Translators:</source>
-        <translation type="vanished">翻译成员：</translation>
-    </message>
-    <message>
-        <source>Third-party components:</source>
-        <translation type="vanished">第三方组件：</translation>
-    </message>
-    <message>
-        <source>%1 version: %2</source>
-        <translation type="vanished">%1 版本： %2</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="vanished">保存文件</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>AddressBar</name>
@@ -186,10 +150,6 @@
         <location filename="../client/ui/file_transfer/address_bar.cc" line="54"/>
         <source>An incorrect path to the folder was entered.</source>
         <translation type="unfinished">输入的文件夹路径不正确。</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
@@ -285,14 +245,6 @@
         <source>B</source>
         <translation type="unfinished">B</translation>
     </message>
-    <message>
-        <source>Total Space</source>
-        <translation type="vanished">总空间</translation>
-    </message>
-    <message>
-        <source>Free Space</source>
-        <translation type="vanished">空闲空间</translation>
-    </message>
 </context>
 <context>
     <name>AddressBookImporter</name>
@@ -379,10 +331,6 @@ Routers added: %4</source>
         <source>Password cannot be empty.</source>
         <translation type="unfinished">密码不能为空。</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>ChangePasswordDialog</name>
@@ -431,10 +379,6 @@ Routers added: %4</source>
         <location filename="../host/ui/change_password_dialog.cc" line="133"/>
         <source>New password cannot be empty.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
@@ -600,10 +544,6 @@ Routers added: %4</source>
         <source>Could not open file for writing.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>CheckPasswordDialog</name>
@@ -627,10 +567,6 @@ Routers added: %4</source>
         <source>You entered an incorrect password.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>Client</name>
@@ -643,10 +579,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="363"/>
         <source>Remote computer address.</source>
         <translation>远程计算机地址。</translation>
-    </message>
-    <message>
-        <source>Remote computer port.</source>
-        <translation type="vanished">远程计算机端口。</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="367"/>
@@ -662,10 +594,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="375"/>
         <source>Password of user.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Session type. Possible values: desktop-manage, desktop-view, file-transfer.</source>
-        <translation type="vanished">会话类型。 可能的值：桌面管理，桌面视图，文件传输。</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="379"/>
@@ -773,18 +701,6 @@ Routers added: %4</source>
         <translation>Aspia 客户端</translation>
     </message>
     <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Incorrect session type entered.</source>
-        <translation type="vanished">输入了错误的会话类型。</translation>
-    </message>
-    <message>
-        <source>A host ID was entered, but the router was not configured. You need to configure your router before connecting.</source>
-        <translation type="obsolete">输入了主机ID，但未配置路由器。 连接之前，您需要配置路由器。</translation>
-    </message>
-    <message>
         <location filename="../client/client.cc" line="482"/>
         <source>The host with the specified ID is not online</source>
         <translation type="unfinished"></translation>
@@ -827,18 +743,6 @@ Routers added: %4</source>
         <location filename="../host/ui/config_dialog.ui" line="24"/>
         <source>General</source>
         <translation>常规</translation>
-    </message>
-    <message>
-        <source>Service</source>
-        <translation type="vanished">服务</translation>
-    </message>
-    <message>
-        <source>Incoming Connections</source>
-        <translation type="vanished">传入连接</translation>
-    </message>
-    <message>
-        <source>Port:</source>
-        <translation type="vanished">端口：</translation>
     </message>
     <message>
         <location filename="../host/ui/config_dialog.ui" line="250"/>
@@ -1169,10 +1073,6 @@ Routers added: %4</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <source>Advanced</source>
-        <translation type="vanished">高级</translation>
-    </message>
-    <message>
         <location filename="../host/ui/config_dialog.ui" line="78"/>
         <source>Preffered video capturer:</source>
         <translation>首选视频捕获器：</translation>
@@ -1191,74 +1091,6 @@ Routers added: %4</source>
         <location filename="../host/ui/config_dialog.ui" line="614"/>
         <source>Delete</source>
         <translation>删除</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">确认</translation>
-    </message>
-    <message>
-        <source>Service configuration changed. For the changes to take effect, you must restart the service. Restart the service now?</source>
-        <translation type="vanished">服务配置已更改。 为了使更改生效，您必须重新启动服务。 立即重新启动服务？</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
-    <message>
-        <source>Started</source>
-        <translation type="vanished">已开始</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="vanished">停止</translation>
-    </message>
-    <message>
-        <source>Not started</source>
-        <translation type="vanished">没有开始</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="vanished">开始</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">已安装</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="vanished">未安装</translation>
-    </message>
-    <message>
-        <source>Current state: %1</source>
-        <translation type="vanished">当前状态 %1</translation>
-    </message>
-    <message>
-        <source>The service could not be installed.</source>
-        <translation type="vanished">无法安装该服务。</translation>
-    </message>
-    <message>
-        <source>The service could not be removed.</source>
-        <translation type="vanished">该服务无法删除。</translation>
-    </message>
-    <message>
-        <source>Could not access the service.</source>
-        <translation type="vanished">无法访问该服务。</translation>
-    </message>
-    <message>
-        <source>The service could not be started.</source>
-        <translation type="vanished">该服务无法启动。</translation>
-    </message>
-    <message>
-        <source>The service could not be stopped.</source>
-        <translation type="vanished">该服务无法停止。</translation>
     </message>
 </context>
 <context>
@@ -1292,14 +1124,6 @@ Routers added: %4</source>
             <numerusform></numerusform>
         </translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>DesktopAgentMain</name>
@@ -1317,17 +1141,9 @@ Routers added: %4</source>
         <translation>会话配置</translation>
     </message>
     <message>
-        <source>Codec</source>
-        <translation type="vanished">编码</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="117"/>
         <source>Block remote input</source>
         <translation>阻止远程输入</translation>
-    </message>
-    <message>
-        <source>Enable cursor shape</source>
-        <translation type="vanished">启用光标形状</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="32"/>
@@ -1370,10 +1186,6 @@ Routers added: %4</source>
         <translation>禁用桌面壁纸</translation>
     </message>
     <message>
-        <source>Disable font smoothing</source>
-        <translation type="vanished">禁用字体平滑</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="104"/>
         <source>Other</source>
         <translation>其它</translation>
@@ -1400,18 +1212,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_session_window.cc" line="977"/>
         <source>Could not save image</source>
         <translation type="unfinished">无法保存图像</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>There are no supported video encodings.</source>
-        <translation type="vanished">没有支持的视频编码。</translation>
-    </message>
-    <message>
-        <source>The current video encoding is not supported by the host. Please specify a different video encoding.</source>
-        <translation type="vanished">主机不支持当前的视频编码。请指定其他视频编码。</translation>
     </message>
 </context>
 <context>
@@ -1518,10 +1318,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="277"/>
         <source>Lock</source>
         <translation type="unfinished">锁定</translation>
-    </message>
-    <message>
-        <source>Remote Update</source>
-        <translation type="obsolete">远程升级</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="286"/>
@@ -1670,14 +1466,6 @@ Routers added: %4</source>
         <source>Are you sure you want to lock the user session on the remote computer?</source>
         <translation type="unfinished">确定要锁定远程计算机上的用户会话吗？</translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>DesktopWidget</name>
@@ -1811,10 +1599,6 @@ Routers added: %4</source>
         <location filename="../common/ui/download_dialog.cc" line="64"/>
         <source>An error occurred while downloading the update: %1</source>
         <translation type="unfinished">下载更新时出错：%1</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
@@ -2073,22 +1857,6 @@ Routers added: %4</source>
         <source>Are you sure you want to delete the selected items?</source>
         <translation type="unfinished">是否确定要删除所选项目？</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">确认</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>FileRemoveDialog</name>
@@ -2313,10 +2081,6 @@ Routers added: %4</source>
         <source>Session error: %1</source>
         <translation type="unfinished">会话错误: %1</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>GuiApplication</name>
@@ -2339,10 +2103,6 @@ Routers added: %4</source>
 <context>
     <name>Host</name>
     <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
         <location filename="../host/ui/host_main.cc" line="142"/>
         <source>Application integrity check failed. Components are missing or damaged.</source>
         <translation>应用程序完整性检查失败。 组件丢失或损坏。</translation>
@@ -2351,10 +2111,6 @@ Routers added: %4</source>
         <location filename="../host/ui/host_main.cc" line="156"/>
         <source>Export and import parameters can not be specified together.</source>
         <translation>不能同时指定导出和导入参数。</translation>
-    </message>
-    <message>
-        <source>Aspia Host</source>
-        <translation type="obsolete">Aspia 主机</translation>
     </message>
 </context>
 <context>
@@ -2564,38 +2320,6 @@ Routers added: %4</source>
         <source>The computer has an incorrect address.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Update</source>
-        <translation type="vanished">更新</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="vanished">用户</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>(copy)</source>
-        <translation type="vanished">(copy)</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="vanished">确定要删除计算机吗 &quot;%1&quot;?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">确认</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>LocalComputerDialog</name>
@@ -2734,10 +2458,6 @@ Routers added: %4</source>
         <source>Host ID</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupDialog</name>
@@ -2815,10 +2535,6 @@ Routers added: %4</source>
         <source>Unable to modify group</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupWidget</name>
@@ -2851,10 +2567,6 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/local_group_widget.ui" line="75"/>
         <source>Status</source>
         <translation type="unfinished">状态</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="obsolete">地址</translation>
     </message>
     <message>
         <location filename="../client/ui/hosts/local_group_widget.ui" line="55"/>
@@ -2952,10 +2664,6 @@ Routers added: %4</source>
         <location filename="../host/ui/main_window.ui" line="298"/>
         <source>F1</source>
         <translation type="unfinished">F1</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="obsolete">桌面管理</translation>
     </message>
     <message>
         <location filename="../host/ui/main_window.ui" line="324"/>
@@ -3072,10 +2780,6 @@ Routers added: %4</source>
         <translation>设置...</translation>
     </message>
     <message>
-        <source>Check for updates...</source>
-        <translation type="obsolete">检查更新...</translation>
-    </message>
-    <message>
         <location filename="../host/ui/main_window.ui" line="313"/>
         <location filename="../host/ui/main_window.cc" line="672"/>
         <source>Hide</source>
@@ -3161,38 +2865,6 @@ Routers added: %4</source>
         <location filename="../host/ui/main_window.cc" line="899"/>
         <source>ID: %1</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
-    <message>
-        <source>Connecting to a router...</source>
-        <translation type="vanished">正在连接到路由器...</translation>
-    </message>
-    <message>
-        <source>Connected to a router %1</source>
-        <translation type="vanished">已连接到路由器 %1</translation>
-    </message>
-    <message>
-        <source>Connected to a router</source>
-        <translation type="vanished">已连接到路由器</translation>
-    </message>
-    <message>
-        <source>Connecting to a router %1...</source>
-        <translation type="vanished">正在连接到路由器 %1 ...</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">确认</translation>
     </message>
 </context>
 <context>
@@ -3417,10 +3089,6 @@ Routers added: %4</source>
 <context>
     <name>NotifierWindow</name>
     <message>
-        <source>Connections</source>
-        <translation type="vanished">连接数</translation>
-    </message>
-    <message>
         <location filename="../host/ui/notifier_window.ui" line="287"/>
         <location filename="../host/ui/notifier_window.cc" line="251"/>
         <source>Lock mouse</source>
@@ -3471,26 +3139,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>ProcessItem</name>
-    <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="86"/>
         <source>System Idle Process</source>
@@ -3723,21 +3371,9 @@ Routers added: %4</source>
         <source>Client</source>
         <translation type="unfinished">客户端</translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>RouterWidget</name>
-    <message>
-        <source>Router</source>
-        <translation type="obsolete">路由器</translation>
-    </message>
     <message>
         <location filename="../client/ui/hosts/router_widget.ui" line="126"/>
         <source>Relays</source>
@@ -4223,14 +3859,6 @@ Routers added: %4</source>
 <context>
     <name>SessionType</name>
     <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">桌面管理</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">桌面查看</translation>
-    </message>
-    <message>
         <location filename="../common/ui/session_type.cc" line="31"/>
         <source>Desktop Management</source>
         <translation type="unfinished"></translation>
@@ -4254,10 +3882,6 @@ Routers added: %4</source>
         <location filename="../common/ui/session_type.cc" line="53"/>
         <source>Manage</source>
         <translation type="unfinished">管理</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">查看</translation>
     </message>
     <message>
         <location filename="../common/ui/session_type.cc" line="56"/>
@@ -4337,118 +3961,6 @@ Routers added: %4</source>
         <source>Attempting to connect in compatibility mode...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Attempt to connect to %1.</source>
-        <translation type="vanished">尝试连接到 %1.</translation>
-    </message>
-    <message>
-        <source>Connection established.</source>
-        <translation type="vanished">已建立连接。</translation>
-    </message>
-    <message>
-        <source>Network error when connecting to the router: %1</source>
-        <translation type="vanished">连接到路由器时出现网络错误： %1</translation>
-    </message>
-    <message>
-        <source>Authentication error when connecting to the router: %1</source>
-        <translation type="vanished">连接到路由器时发生身份验证错误： %1</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">桌面管理</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">桌面查看</translation>
-    </message>
-    <message>
-        <source>File Transfer</source>
-        <translation type="vanished">文件传输</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="vanished">系统信息</translation>
-    </message>
-    <message>
-        <source>Violation of the communication protocol.</source>
-        <translation type="vanished">违反通信协议。</translation>
-    </message>
-    <message>
-        <source>Cryptography error (message encryption or decryption failed).</source>
-        <translation type="vanished">加密错误（消息加密或解密失败）。</translation>
-    </message>
-    <message>
-        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
-        <translation type="vanished">网络发生错误（例如，网络电缆被意外地拔出）。</translation>
-    </message>
-    <message>
-        <source>Connection was refused by the peer (or timed out).</source>
-        <translation type="vanished">连接被对方拒绝（或超时）。</translation>
-    </message>
-    <message>
-        <source>Remote host closed the connection.</source>
-        <translation type="vanished">远程主机已关闭连接。</translation>
-    </message>
-    <message>
-        <source>Host address was not found.</source>
-        <translation type="vanished">找不到主机地址。</translation>
-    </message>
-    <message>
-        <source>Socket operation timed out.</source>
-        <translation type="vanished">套接字操作超时。</translation>
-    </message>
-    <message>
-        <source>Address specified is already in use and was set to be exclusive.</source>
-        <translation type="vanished">指定的地址已在使用中，并被设置为独占地址。</translation>
-    </message>
-    <message>
-        <source>Address specified does not belong to the host.</source>
-        <translation type="vanished">指定的地址的主机不可用。</translation>
-    </message>
-    <message>
-        <source>An unknown error occurred.</source>
-        <translation type="vanished">出现未知错误。</translation>
-    </message>
-    <message>
-        <source>Authentication successfully completed.</source>
-        <translation type="vanished">身份验证成功。</translation>
-    </message>
-    <message>
-        <source>Network authentication error.</source>
-        <translation type="vanished">网络身份验证错误。</translation>
-    </message>
-    <message>
-        <source>Violation of the data exchange protocol.</source>
-        <translation type="vanished">违反数据交换协议。</translation>
-    </message>
-    <message>
-        <source>Wrong user name or password.</source>
-        <translation type="vanished">错误的用户名或密码。</translation>
-    </message>
-    <message>
-        <source>Specified session type is not allowed for the user.</source>
-        <translation type="vanished">用户不允许指定的会话类型。</translation>
-    </message>
-    <message>
-        <source>No host with the specified ID was found.</source>
-        <translation type="vanished">找不到具有指定ID的主机。</translation>
-    </message>
-    <message>
-        <source>There are no relays available or the key pool is empty.</source>
-        <translation type="vanished">没有可用的中继或密钥池为空。</translation>
-    </message>
-    <message>
-        <source>Failed to connect to the relay server.</source>
-        <translation type="vanished">无法连接到中继服务器。</translation>
-    </message>
-    <message>
-        <source>Access is denied.</source>
-        <translation type="vanished">访问被拒绝。</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <translation type="vanished">未知错误。</translation>
-    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -4461,22 +3973,6 @@ Routers added: %4</source>
         <location filename="../client/ui/settings_dialog.ui" line="133"/>
         <source>Router</source>
         <translation type="unfinished">路由器</translation>
-    </message>
-    <message>
-        <source>Use a router</source>
-        <translation type="obsolete">使用路由器</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation type="obsolete">地址：</translation>
-    </message>
-    <message>
-        <source>User Name:</source>
-        <translation type="obsolete">用户名：</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="obsolete">密码：</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="163"/>
@@ -4690,25 +4186,9 @@ Routers added: %4</source>
         <source>Change...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>An invalid router address was entered.</source>
-        <translation type="vanished">输入了无效的路由器地址。</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">密码不能为空。</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>SettingsUtil</name>
-    <message>
-        <source>Information</source>
-        <translation type="vanished">信息</translation>
-    </message>
     <message>
         <location filename="../host/ui/settings_util.cc" line="43"/>
         <source>The configuration was successfully imported.</source>
@@ -4743,14 +4223,6 @@ Routers added: %4</source>
         <location filename="../host/ui/settings_util.cc" line="129"/>
         <source>The existing settings will be overwritten. Continue?</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">否</translation>
     </message>
     <message>
         <location filename="../host/ui/settings_util.cc" line="154"/>
@@ -4800,10 +4272,6 @@ Routers added: %4</source>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>StatisticsDialog</name>
@@ -4822,10 +4290,6 @@ Routers added: %4</source>
         <source>Value</source>
         <translation>值</translation>
     </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
 </context>
 <context>
     <name>StatusDialog</name>
@@ -4833,10 +4297,6 @@ Routers added: %4</source>
         <location filename="../common/ui/status_dialog.ui" line="14"/>
         <source>Connection Status</source>
         <translation>连接状态</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">关闭</translation>
     </message>
 </context>
 <context>
@@ -4885,14 +4345,6 @@ Routers added: %4</source>
 <context>
     <name>SysInfoConnections</name>
     <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">值</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="54"/>
         <source>Process Name</source>
         <translation type="unfinished"></translation>
@@ -4933,10 +4385,6 @@ Routers added: %4</source>
         <translation type="unfinished">复制行</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="97"/>
         <source>Copy Value</source>
         <translation type="unfinished">复制值</translation>
@@ -4944,14 +4392,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoDevices</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">值</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="54"/>
         <source>Name</source>
@@ -4988,10 +4428,6 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="87"/>
         <source>Copy Value</source>
         <translation type="unfinished">复制值</translation>
@@ -4999,14 +4435,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoDrivers</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">值</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="54"/>
         <source>Display Name</source>
@@ -5043,10 +4471,6 @@ Routers added: %4</source>
         <translation type="unfinished">复制行</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="92"/>
         <source>Copy Value</source>
         <translation type="unfinished">复制值</translation>
@@ -5054,10 +4478,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoEnvVars</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="51"/>
         <source>Name</source>
@@ -5086,18 +4506,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoEventLogs</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">值</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="obsolete">类型</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="130"/>
         <source>Level</source>
@@ -5148,10 +4556,6 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="195"/>
         <source>Copy Row</source>
         <translation type="unfinished">复制行</translation>
-    </message>
-    <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
     </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="200"/>
@@ -5444,10 +4848,6 @@ Routers added: %4</source>
         <translation type="unfinished">用户名</translation>
     </message>
     <message>
-        <source>Threads</source>
-        <translation type="obsolete">线程数</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="81"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
@@ -5470,14 +4870,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoRoutes</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">值</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="54"/>
         <source>Destonation</source>
@@ -5504,10 +4896,6 @@ Routers added: %4</source>
         <translation type="unfinished">复制行</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="82"/>
         <source>Copy Value</source>
         <translation type="unfinished">复制值</translation>
@@ -5515,14 +4903,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoServices</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">参数</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">值</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="54"/>
         <source>Display Name</source>
@@ -5564,10 +4944,6 @@ Routers added: %4</source>
         <translation type="unfinished">复制行</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="97"/>
         <source>Copy Value</source>
         <translation type="unfinished">复制值</translation>
@@ -5599,194 +4975,6 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="68"/>
         <source>Copy Value</source>
         <translation type="unfinished">复制值</translation>
-    </message>
-    <message>
-        <source>Domain</source>
-        <translation type="vanished">域</translation>
-    </message>
-    <message>
-        <source>Workgroup</source>
-        <translation type="vanished">工作组</translation>
-    </message>
-    <message>
-        <source>Uptime</source>
-        <translation type="vanished">正常运行时间</translation>
-    </message>
-    <message>
-        <source>Computer</source>
-        <translation type="vanished">计算机</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">版本</translation>
-    </message>
-    <message>
-        <source>Architecture</source>
-        <translation type="vanished">架构</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="vanished">操作系统</translation>
-    </message>
-    <message>
-        <source>Manufacturer</source>
-        <translation type="vanished">制造商</translation>
-    </message>
-    <message>
-        <source>Model</source>
-        <translation type="vanished">型号</translation>
-    </message>
-    <message>
-        <source>Motherboard</source>
-        <translation type="vanished">主板</translation>
-    </message>
-    <message>
-        <source>Vendor</source>
-        <translation type="vanished">供应商</translation>
-    </message>
-    <message>
-        <source>Packages</source>
-        <translation type="vanished">个数</translation>
-    </message>
-    <message>
-        <source>Cores</source>
-        <translation type="vanished">核心数</translation>
-    </message>
-    <message>
-        <source>Threads</source>
-        <translation type="vanished">线程数</translation>
-    </message>
-    <message>
-        <source>Processor</source>
-        <translation type="vanished">处理器</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation type="vanished">日期</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="vanished">大小</translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="vanished">速度</translation>
-    </message>
-    <message>
-        <source>%1 MHz</source>
-        <translation type="vanished">%1 MHz</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Form Factor</source>
-        <translation type="vanished">模块类型</translation>
-    </message>
-    <message>
-        <source>Part Number</source>
-        <translation type="vanished">模块序号</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">已安装</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">内存</translation>
-    </message>
-    <message>
-        <source>%1 (%2 free)</source>
-        <translation type="vanished">%1 (%2 空闲)</translation>
-    </message>
-    <message>
-        <source>Logical Drives</source>
-        <translation type="vanished">逻辑驱动器</translation>
-    </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="vanished">适配器名称</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="vanished">接口类型</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="vanished">连接速度</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="vanished">MAC地址</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="vanished">DHCP 已启用</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="vanished">DHCP 服务器 #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="vanished">DHCP 服务器</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="vanished">地址 #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">地址</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="vanished">网关 #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="vanished">网关</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="vanished">网络连接</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="vanished">默认</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">端口</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="vanished">驱动器</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="vanished">共享</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="vanished">共享名称</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="vanished">任务数</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="vanished">打印机</translation>
     </message>
 </context>
 <context>
@@ -6870,86 +6058,6 @@ Routers added: %4</source>
         <source>Logical Drives</source>
         <translation type="unfinished">逻辑驱动器</translation>
     </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="vanished">适配器名称</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="vanished">接口类型</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="vanished">连接速度</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="vanished">MAC地址</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="vanished">DHCP 已启用</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="vanished">DHCP 服务器 #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="vanished">DHCP 服务器</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="vanished">地址 #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">地址</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="vanished">网关 #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="vanished">网关</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="vanished">网络连接</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="vanished">默认</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">端口</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="vanished">驱动器</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="vanished">共享</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="vanished">共享名称</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="vanished">任务数</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="vanished">打印机</translation>
-    </message>
 </context>
 <context>
     <name>SysInfoWidgetVideoAdapters</name>
@@ -7206,17 +6314,9 @@ Routers added: %4</source>
         <source>Failed to save file: %1</source>
         <translation type="unfinished">无法保存文件：%1</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>TaskManagerWindow</name>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">系统信息</translation>
-    </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="37"/>
         <source>Processes</source>
@@ -7238,10 +6338,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="85"/>
         <source>CPU</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="obsolete">内存</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="70"/>
@@ -7383,42 +6479,6 @@ Routers added: %4</source>
         <translation type="unfinished">断开连接</translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation type="obsolete">保存</translation>
-    </message>
-    <message>
-        <source>Save (Ctrl+S)</source>
-        <translation type="obsolete">保存 (Ctrl+S)</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation type="obsolete">打印</translation>
-    </message>
-    <message>
-        <source>Print (Ctrl+P)</source>
-        <translation type="obsolete">打印 (Ctrl+P)</translation>
-    </message>
-    <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">复制行</translation>
-    </message>
-    <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">复制名称</translation>
-    </message>
-    <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">复制值</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">刷新</translation>
-    </message>
-    <message>
-        <source>Refresh (F5)</source>
-        <translation type="obsolete">刷新 (F5)</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="648"/>
         <source>Do you really want to end &quot;%1&quot; process?</source>
         <translation type="unfinished"></translation>
@@ -7452,18 +6512,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="939"/>
         <source>Update Speed</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">确认</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
     </message>
 </context>
 <context>
@@ -7655,22 +6703,6 @@ Routers added: %4</source>
         <source>No updates available.</source>
         <translation type="unfinished">没有可用的更新。</translation>
     </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">确认</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
-    </message>
 </context>
 <context>
     <name>UserDialog</name>
@@ -7767,14 +6799,6 @@ Routers added: %4</source>
         <location filename="../host/ui/user_dialog.cc" line="270"/>
         <source>Double-click to change</source>
         <translation type="unfinished">双击可更改</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">是</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">否</translation>
     </message>
 </context>
 <context>

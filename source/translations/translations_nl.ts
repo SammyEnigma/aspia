@@ -14,10 +14,6 @@
         <translation>Basis</translation>
     </message>
     <message>
-        <source>License</source>
-        <translation type="vanished">Licentie</translation>
-    </message>
-    <message>
         <location filename="../common/ui/about_dialog.ui" line="90"/>
         <source>Service Information</source>
         <translation>Service Informatie</translation>
@@ -147,38 +143,6 @@
         <source>Version Information</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Version: %1</source>
-        <translation type="vanished">Versie: %1</translation>
-    </message>
-    <message>
-        <source>Links:</source>
-        <translation type="vanished">Links:</translation>
-    </message>
-    <message>
-        <source>Developers:</source>
-        <translation type="vanished">Ontwikkelaars:</translation>
-    </message>
-    <message>
-        <source>Translators:</source>
-        <translation type="vanished">Vertalingen:</translation>
-    </message>
-    <message>
-        <source>Third-party components:</source>
-        <translation type="vanished">Third-party componenten:</translation>
-    </message>
-    <message>
-        <source>%1 version: %2</source>
-        <translation type="vanished">%1 versie: %2</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="vanished">Bestand Opslaan</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>AddressBar</name>
@@ -186,10 +150,6 @@
         <location filename="../client/ui/file_transfer/address_bar.cc" line="54"/>
         <source>An incorrect path to the folder was entered.</source>
         <translation type="unfinished">Er is een ongeldig pad voor de map opgegeven.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -285,14 +245,6 @@
         <source>B</source>
         <translation type="unfinished">B</translation>
     </message>
-    <message>
-        <source>Total Space</source>
-        <translation type="vanished">Totale Ruimte</translation>
-    </message>
-    <message>
-        <source>Free Space</source>
-        <translation type="vanished">Vrije Ruimte</translation>
-    </message>
 </context>
 <context>
     <name>AddressBookImporter</name>
@@ -379,10 +331,6 @@ Routers added: %4</source>
         <source>Password cannot be empty.</source>
         <translation type="unfinished">Wachtwoord mag niet leeg zijn.</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>ChangePasswordDialog</name>
@@ -431,10 +379,6 @@ Routers added: %4</source>
         <location filename="../host/ui/change_password_dialog.cc" line="133"/>
         <source>New password cannot be empty.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -601,10 +545,6 @@ Routers added: %4</source>
         <source>Could not open file for writing.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>CheckPasswordDialog</name>
@@ -628,10 +568,6 @@ Routers added: %4</source>
         <source>You entered an incorrect password.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>Client</name>
@@ -644,10 +580,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="363"/>
         <source>Remote computer address.</source>
         <translation>Adres van computer op afstand</translation>
-    </message>
-    <message>
-        <source>Remote computer port.</source>
-        <translation type="vanished">Poort van computer op afstand</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="367"/>
@@ -663,10 +595,6 @@ Routers added: %4</source>
         <location filename="../client/main.cc" line="375"/>
         <source>Password of user.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Session type. Possible values: desktop-manage, desktop-view, file-transfer.</source>
-        <translation type="vanished">Sessie type. Mogelijke waarden: desktop-manage, desktop-view, file-transfer.</translation>
     </message>
     <message>
         <location filename="../client/main.cc" line="379"/>
@@ -774,18 +702,6 @@ Routers added: %4</source>
         <translation>Aspia Client</translation>
     </message>
     <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Incorrect session type entered.</source>
-        <translation type="vanished">Ongeldig sessie type ingevoerd.</translation>
-    </message>
-    <message>
-        <source>A host ID was entered, but the router was not configured. You need to configure your router before connecting.</source>
-        <translation type="obsolete">Er is een host ID ingevoerd, maar de router was niet geconfigureerd. Configureer de router voor het maken van een verbinding.</translation>
-    </message>
-    <message>
         <location filename="../client/client.cc" line="482"/>
         <source>The host with the specified ID is not online</source>
         <translation type="unfinished"></translation>
@@ -828,18 +744,6 @@ Routers added: %4</source>
         <location filename="../host/ui/config_dialog.ui" line="24"/>
         <source>General</source>
         <translation>Basis</translation>
-    </message>
-    <message>
-        <source>Service</source>
-        <translation type="vanished">Service</translation>
-    </message>
-    <message>
-        <source>Incoming Connections</source>
-        <translation type="vanished">Binnenkomende Verbindingen</translation>
-    </message>
-    <message>
-        <source>Port:</source>
-        <translation type="vanished">Poort:</translation>
     </message>
     <message>
         <location filename="../host/ui/config_dialog.ui" line="250"/>
@@ -1170,10 +1074,6 @@ Routers added: %4</source>
         <translation>Controleer op updates</translation>
     </message>
     <message>
-        <source>Advanced</source>
-        <translation type="vanished">Geavanceerd</translation>
-    </message>
-    <message>
         <location filename="../host/ui/config_dialog.ui" line="78"/>
         <source>Preffered video capturer:</source>
         <translation>Voorkeurs video input:</translation>
@@ -1192,74 +1092,6 @@ Routers added: %4</source>
         <location filename="../host/ui/config_dialog.ui" line="614"/>
         <source>Delete</source>
         <translation>Verwijderen</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Service configuration changed. For the changes to take effect, you must restart the service. Restart the service now?</source>
-        <translation type="vanished">Service configuratie veranderd. Om de wijzigingen toe te passen, moet de service herstart worden. Nu herstarten?</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
-    <message>
-        <source>Started</source>
-        <translation type="vanished">Gestart</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="vanished">Stoppen</translation>
-    </message>
-    <message>
-        <source>Not started</source>
-        <translation type="vanished">Niet gestart</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="vanished">Starten</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">Geinstalleerd</translation>
-    </message>
-    <message>
-        <source>Not installed</source>
-        <translation type="vanished">Niet geinstalleerd</translation>
-    </message>
-    <message>
-        <source>Current state: %1</source>
-        <translation type="vanished">Huidige status: %1</translation>
-    </message>
-    <message>
-        <source>The service could not be installed.</source>
-        <translation type="vanished">De service kon niet worden geinstalleerd.</translation>
-    </message>
-    <message>
-        <source>The service could not be removed.</source>
-        <translation type="vanished">De service kon niet worden verwijderd.</translation>
-    </message>
-    <message>
-        <source>Could not access the service.</source>
-        <translation type="vanished">Kon de service niet bereiken.</translation>
-    </message>
-    <message>
-        <source>The service could not be started.</source>
-        <translation type="vanished">De service kon niet worden gestart.</translation>
-    </message>
-    <message>
-        <source>The service could not be stopped.</source>
-        <translation type="vanished">De service kon niet worden gestopt.</translation>
     </message>
 </context>
 <context>
@@ -1295,14 +1127,6 @@ Routers added: %4</source>
             <numerusform></numerusform>
         </translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
 </context>
 <context>
     <name>DesktopAgentMain</name>
@@ -1320,21 +1144,9 @@ Routers added: %4</source>
         <translation>Sessie Eigenschappen</translation>
     </message>
     <message>
-        <source>Codec</source>
-        <translation type="vanished">Codec</translation>
-    </message>
-    <message>
-        <source>Disable font smoothing</source>
-        <translation type="obsolete">Font smoothing uitschakelen</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="117"/>
         <source>Block remote input</source>
         <translation>Blokkeer invoer op afstand</translation>
-    </message>
-    <message>
-        <source>Enable cursor shape</source>
-        <translation type="vanished">Muis vorm inschakelen</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="32"/>
@@ -1403,14 +1215,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_session_window.cc" line="977"/>
         <source>Could not save image</source>
         <translation type="unfinished">Kon het bestand niet opslaan</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>The current video encoding is not supported by the host. Please specify a different video encoding.</source>
-        <translation type="vanished">De huidige video encoding wordt niet ondersteund door de host. Specificeer AUB een andere encoding.</translation>
     </message>
 </context>
 <context>
@@ -1517,10 +1321,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="277"/>
         <source>Lock</source>
         <translation type="unfinished">Vergrendelen</translation>
-    </message>
-    <message>
-        <source>Remote Update</source>
-        <translation type="obsolete">Update op afstand</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/desktop_toolbar.ui" line="286"/>
@@ -1669,14 +1469,6 @@ Routers added: %4</source>
         <source>Are you sure you want to lock the user session on the remote computer?</source>
         <translation type="unfinished">Weet U zeker dat U de gebruikers sessie van de computer op afstand wilt vergrendelen?</translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
 </context>
 <context>
     <name>DesktopWidget</name>
@@ -1810,10 +1602,6 @@ Routers added: %4</source>
         <location filename="../common/ui/download_dialog.cc" line="64"/>
         <source>An error occurred while downloading the update: %1</source>
         <translation type="unfinished">Er is een probleem opgetreden bij het downloaden van de update: %1</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
     </message>
 </context>
 <context>
@@ -2072,22 +1860,6 @@ Routers added: %4</source>
         <source>Are you sure you want to delete the selected items?</source>
         <translation type="unfinished">Weet U zeker dat U de geselecteerde objecten wilt verwijderen?</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
 </context>
 <context>
     <name>FileRemoveDialog</name>
@@ -2312,10 +2084,6 @@ Routers added: %4</source>
         <source>Session error: %1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>GuiApplication</name>
@@ -2338,10 +2106,6 @@ Routers added: %4</source>
 <context>
     <name>Host</name>
     <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
         <location filename="../host/ui/host_main.cc" line="142"/>
         <source>Application integrity check failed. Components are missing or damaged.</source>
         <translation>Applicatie integriteits controle gefaald. Missende of ontbrekende onderdelen.</translation>
@@ -2350,10 +2114,6 @@ Routers added: %4</source>
         <location filename="../host/ui/host_main.cc" line="156"/>
         <source>Export and import parameters can not be specified together.</source>
         <translation>Export en import argumenten kunnen niet samen gespecificeerd worden.</translation>
-    </message>
-    <message>
-        <source>Aspia Host</source>
-        <translation type="obsolete">Aspia Host</translation>
     </message>
 </context>
 <context>
@@ -2563,38 +2323,6 @@ Routers added: %4</source>
         <source>The computer has an incorrect address.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Update</source>
-        <translation type="vanished">Update</translation>
-    </message>
-    <message>
-        <source>Users</source>
-        <translation type="vanished">Gebruikers</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>(copy)</source>
-        <translation type="vanished">(kopieer)</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation type="vanished">Weet U zeker dat U de computer &quot;%1&quot; wilt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
 </context>
 <context>
     <name>LocalComputerDialog</name>
@@ -2735,10 +2463,6 @@ Routers added: %4</source>
         <source>Host ID</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupDialog</name>
@@ -2818,10 +2542,6 @@ Routers added: %4</source>
         <source>Unable to modify group</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>LocalGroupWidget</name>
@@ -2854,10 +2574,6 @@ Routers added: %4</source>
         <location filename="../client/ui/hosts/local_group_widget.ui" line="75"/>
         <source>Status</source>
         <translation type="unfinished">Status</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="obsolete">Adres</translation>
     </message>
     <message>
         <location filename="../client/ui/hosts/local_group_widget.ui" line="55"/>
@@ -3073,10 +2789,6 @@ Routers added: %4</source>
         <translation>Instellingen...</translation>
     </message>
     <message>
-        <source>Check for updates...</source>
-        <translation type="obsolete">Controleer voor updates...</translation>
-    </message>
-    <message>
         <location filename="../host/ui/main_window.ui" line="313"/>
         <location filename="../host/ui/main_window.cc" line="672"/>
         <source>Hide</source>
@@ -3162,38 +2874,6 @@ Routers added: %4</source>
         <location filename="../host/ui/main_window.cc" line="899"/>
         <source>ID: %1</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
-    <message>
-        <source>Connecting to a router %1...</source>
-        <translation type="vanished">Verbinden naar router %1...</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
-    <message>
-        <source>Connecting to a router...</source>
-        <translation type="vanished">Verbinden naar een router...</translation>
-    </message>
-    <message>
-        <source>Connected to a router %1</source>
-        <translation type="vanished">Verbonden met een router %1</translation>
-    </message>
-    <message>
-        <source>Connected to a router</source>
-        <translation type="vanished">Verbonden met een router</translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
     </message>
 </context>
 <context>
@@ -3419,10 +3099,6 @@ Routers added: %4</source>
 <context>
     <name>NotifierWindow</name>
     <message>
-        <source>Connections</source>
-        <translation type="vanished">Verbindingen</translation>
-    </message>
-    <message>
         <location filename="../host/ui/notifier_window.ui" line="287"/>
         <location filename="../host/ui/notifier_window.cc" line="251"/>
         <source>Lock mouse</source>
@@ -3474,26 +3150,6 @@ Routers added: %4</source>
 <context>
     <name>ProcessItem</name>
     <message>
-        <source>TB</source>
-        <translation type="obsolete">TB</translation>
-    </message>
-    <message>
-        <source>GB</source>
-        <translation type="obsolete">GB</translation>
-    </message>
-    <message>
-        <source>MB</source>
-        <translation type="obsolete">MB</translation>
-    </message>
-    <message>
-        <source>kB</source>
-        <translation type="obsolete">kB</translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="86"/>
         <source>System Idle Process</source>
         <translation type="unfinished"></translation>
@@ -3538,10 +3194,6 @@ Routers added: %4</source>
         <location filename="../client/ui/router_dialog.ui" line="25"/>
         <source>Address:</source>
         <translation type="unfinished">Adres:</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="obsolete">Naam:</translation>
     </message>
     <message>
         <location filename="../client/ui/router_dialog.ui" line="35"/>
@@ -3731,21 +3383,9 @@ Routers added: %4</source>
         <source>Client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
 </context>
 <context>
     <name>RouterWidget</name>
-    <message>
-        <source>Router</source>
-        <translation type="obsolete">Router</translation>
-    </message>
     <message>
         <location filename="../client/ui/hosts/router_widget.ui" line="126"/>
         <source>Relays</source>
@@ -4238,14 +3878,6 @@ Routers added: %4</source>
 <context>
     <name>SessionType</name>
     <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">Bureaublad Beheer</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">Bureaublad Weergave</translation>
-    </message>
-    <message>
         <location filename="../common/ui/session_type.cc" line="31"/>
         <source>Desktop Management</source>
         <translation type="unfinished"></translation>
@@ -4269,10 +3901,6 @@ Routers added: %4</source>
         <location filename="../common/ui/session_type.cc" line="53"/>
         <source>Manage</source>
         <translation type="unfinished">Beheren</translation>
-    </message>
-    <message>
-        <source>View</source>
-        <translation type="obsolete">Weergave</translation>
     </message>
     <message>
         <location filename="../common/ui/session_type.cc" line="56"/>
@@ -4352,66 +3980,6 @@ Routers added: %4</source>
         <source>Attempting to connect in compatibility mode...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Attempt to connect to %1.</source>
-        <translation type="vanished">Probeer te verbinden met %1:%2. {1.?}</translation>
-    </message>
-    <message>
-        <source>Desktop Manage</source>
-        <translation type="vanished">Bureaublad Beheren</translation>
-    </message>
-    <message>
-        <source>Desktop View</source>
-        <translation type="vanished">Bureaublad Weergeven</translation>
-    </message>
-    <message>
-        <source>File Transfer</source>
-        <translation type="vanished">Bestands overdracht</translation>
-    </message>
-    <message>
-        <source>System Information</source>
-        <translation type="vanished">Systeem Informatie</translation>
-    </message>
-    <message>
-        <source>An error occurred with the network (e.g., the network cable was accidentally plugged out).</source>
-        <translation type="vanished">Er is een probleem opgetreden in het netwerk (bijv, de netwerk kabel is per ongelijk verwijderd).</translation>
-    </message>
-    <message>
-        <source>Connection was refused by the peer (or timed out).</source>
-        <translation type="vanished">Verbinding is geweigerd door de peer (of er was een timeout).</translation>
-    </message>
-    <message>
-        <source>Remote host closed the connection.</source>
-        <translation type="vanished">De remote host heeft de verbinding gesloten.</translation>
-    </message>
-    <message>
-        <source>Host address was not found.</source>
-        <translation type="vanished">Host adres is niet gevonden.</translation>
-    </message>
-    <message>
-        <source>Socket operation timed out.</source>
-        <translation type="vanished">Socket operatie gaf een timeout.</translation>
-    </message>
-    <message>
-        <source>Address specified is already in use and was set to be exclusive.</source>
-        <translation type="vanished">Het opgegeven adres is al in gebruik, en is ingesteld als exclusief.</translation>
-    </message>
-    <message>
-        <source>Address specified does not belong to the host.</source>
-        <translation type="vanished">Het opgegeven adres behoort niet toe aan de host.</translation>
-    </message>
-    <message>
-        <source>An unknown error occurred.</source>
-        <translation type="vanished">Een onbekende error is opgetreden.</translation>
-    </message>
-    <message>
-        <source>Violation of the data exchange protocol.</source>
-        <translation type="vanished">Schending van het data uitwisselings protocol.</translation>
-    </message>
-    <message>
-        <source>Specified session type is not allowed for the user.</source>
-        <translation type="vanished">Het gespecificeerde sessie type is niet toegestaan voor de gebruiker.</translation>
-    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
@@ -4424,22 +3992,6 @@ Routers added: %4</source>
         <location filename="../client/ui/settings_dialog.ui" line="133"/>
         <source>Router</source>
         <translation type="unfinished">Router</translation>
-    </message>
-    <message>
-        <source>Use a router</source>
-        <translation type="obsolete">Gebruik een router</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation type="obsolete">Adres:</translation>
-    </message>
-    <message>
-        <source>User Name:</source>
-        <translation type="obsolete">Gebruikers Naam:</translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="obsolete">Wachtwoord:</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="163"/>
@@ -4579,10 +4131,6 @@ Routers added: %4</source>
         <translation type="unfinished">Adres</translation>
     </message>
     <message>
-        <source>Name</source>
-        <translation type="obsolete">Naam</translation>
-    </message>
-    <message>
         <location filename="../client/ui/settings_dialog.ui" line="168"/>
         <source>Access Level</source>
         <translation type="unfinished"></translation>
@@ -4657,21 +4205,9 @@ Routers added: %4</source>
         <source>Change...</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="vanished">Wachtwoord mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>SettingsUtil</name>
-    <message>
-        <source>Information</source>
-        <translation type="vanished">Informatie</translation>
-    </message>
     <message>
         <location filename="../host/ui/settings_util.cc" line="43"/>
         <source>The configuration was successfully imported.</source>
@@ -4706,14 +4242,6 @@ Routers added: %4</source>
         <location filename="../host/ui/settings_util.cc" line="129"/>
         <source>The existing settings will be overwritten. Continue?</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="obsolete">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="obsolete">Nee</translation>
     </message>
     <message>
         <location filename="../host/ui/settings_util.cc" line="154"/>
@@ -4763,10 +4291,6 @@ Routers added: %4</source>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>StatisticsDialog</name>
@@ -4785,10 +4309,6 @@ Routers added: %4</source>
         <source>Value</source>
         <translation>Waarde</translation>
     </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
 </context>
 <context>
     <name>StatusDialog</name>
@@ -4796,10 +4316,6 @@ Routers added: %4</source>
         <location filename="../common/ui/status_dialog.ui" line="14"/>
         <source>Connection Status</source>
         <translation>Verbindings Status</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="vanished">Sluiten</translation>
     </message>
 </context>
 <context>
@@ -4848,14 +4364,6 @@ Routers added: %4</source>
 <context>
     <name>SysInfoConnections</name>
     <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="54"/>
         <source>Process Name</source>
         <translation type="unfinished"></translation>
@@ -4896,10 +4404,6 @@ Routers added: %4</source>
         <translation type="unfinished">Kopieer Rij</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="97"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
@@ -4907,14 +4411,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoDevices</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="54"/>
         <source>Name</source>
@@ -4951,10 +4447,6 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="87"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
@@ -4962,14 +4454,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoDrivers</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="54"/>
         <source>Display Name</source>
@@ -5006,10 +4490,6 @@ Routers added: %4</source>
         <translation type="unfinished">Kopieer Rij</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="92"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
@@ -5017,10 +4497,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoEnvVars</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="51"/>
         <source>Name</source>
@@ -5049,18 +4525,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoEventLogs</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="obsolete">Type</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="130"/>
         <source>Level</source>
@@ -5111,10 +4575,6 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="195"/>
         <source>Copy Row</source>
         <translation type="unfinished">Kopieer Rij</translation>
-    </message>
-    <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
     </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="200"/>
@@ -5407,10 +4867,6 @@ Routers added: %4</source>
         <translation type="unfinished">Gebruikers Naam</translation>
     </message>
     <message>
-        <source>Threads</source>
-        <translation type="obsolete">Threads</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="81"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
@@ -5433,14 +4889,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoRoutes</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="54"/>
         <source>Destonation</source>
@@ -5467,10 +4915,6 @@ Routers added: %4</source>
         <translation type="unfinished">Kopieer Rij</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="82"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
@@ -5478,14 +4922,6 @@ Routers added: %4</source>
 </context>
 <context>
     <name>SysInfoServices</name>
-    <message>
-        <source>Parameter</source>
-        <translation type="obsolete">Argument</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation type="obsolete">Waarde</translation>
-    </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="54"/>
         <source>Display Name</source>
@@ -5527,10 +4963,6 @@ Routers added: %4</source>
         <translation type="unfinished">Kopieer Rij</translation>
     </message>
     <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
         <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="97"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
@@ -5562,198 +4994,6 @@ Routers added: %4</source>
         <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="68"/>
         <source>Copy Value</source>
         <translation type="unfinished">Kopieer Waarde</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Naam</translation>
-    </message>
-    <message>
-        <source>Domain</source>
-        <translation type="vanished">Domein</translation>
-    </message>
-    <message>
-        <source>Workgroup</source>
-        <translation type="vanished">Werkgroep</translation>
-    </message>
-    <message>
-        <source>Uptime</source>
-        <translation type="vanished">Uptime</translation>
-    </message>
-    <message>
-        <source>Computer</source>
-        <translation type="vanished">Computer</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation type="vanished">Versie</translation>
-    </message>
-    <message>
-        <source>Architecture</source>
-        <translation type="vanished">Architectuur</translation>
-    </message>
-    <message>
-        <source>Operating System</source>
-        <translation type="vanished">Besturingssysteem</translation>
-    </message>
-    <message>
-        <source>Manufacturer</source>
-        <translation type="vanished">Producent</translation>
-    </message>
-    <message>
-        <source>Model</source>
-        <translation type="vanished">Model</translation>
-    </message>
-    <message>
-        <source>Motherboard</source>
-        <translation type="vanished">Moederbord</translation>
-    </message>
-    <message>
-        <source>Vendor</source>
-        <translation type="vanished">Verkoper</translation>
-    </message>
-    <message>
-        <source>Packages</source>
-        <translation type="vanished">Pakketten</translation>
-    </message>
-    <message>
-        <source>Cores</source>
-        <translation type="vanished">Kernen</translation>
-    </message>
-    <message>
-        <source>Threads</source>
-        <translation type="vanished">Threads</translation>
-    </message>
-    <message>
-        <source>Processor</source>
-        <translation type="vanished">Processor</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation type="vanished">Datum</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="vanished">Grootte</translation>
-    </message>
-    <message>
-        <source>Speed</source>
-        <translation type="vanished">Snelheid</translation>
-    </message>
-    <message>
-        <source>%1 MHz</source>
-        <translation type="vanished">%1 MHz</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">Type</translation>
-    </message>
-    <message>
-        <source>Form Factor</source>
-        <translation type="vanished">Form Factor</translation>
-    </message>
-    <message>
-        <source>Part Number</source>
-        <translation type="vanished">Onderdeel Nummer</translation>
-    </message>
-    <message>
-        <source>Installed</source>
-        <translation type="vanished">Geinstalleerd</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">Geheugen</translation>
-    </message>
-    <message>
-        <source>%1 (%2 free)</source>
-        <translation type="vanished">%1 (%2 vrij)</translation>
-    </message>
-    <message>
-        <source>Logical Drives</source>
-        <translation type="vanished">Logische Drives</translation>
-    </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="vanished">Adapter Naam</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="vanished">Interface Type</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="vanished">Verbindings Snelheid</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="vanished">MAC Adres</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="vanished">DHCP Ingeschakeld</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="vanished">DHCP Server #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="vanished">DHCP Server</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="vanished">Adres #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Adres</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="vanished">Gateway #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="vanished">Gateway</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="vanished">Netwerk Verbindingen</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="vanished">Standaard</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">Poort</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="vanished">Driver</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="vanished">Gedeeld</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="vanished">Share Naam</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="vanished">Aantal Jobs</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="vanished">Printers</translation>
     </message>
 </context>
 <context>
@@ -6841,86 +6081,6 @@ Routers added: %4</source>
         <source>Logical Drives</source>
         <translation type="unfinished">Logische Drives</translation>
     </message>
-    <message>
-        <source>Adapter Name</source>
-        <translation type="vanished">Adapter Naam</translation>
-    </message>
-    <message>
-        <source>Interface Type</source>
-        <translation type="vanished">Interface Type</translation>
-    </message>
-    <message>
-        <source>Connection Speed</source>
-        <translation type="vanished">Verbindings Snelheid</translation>
-    </message>
-    <message>
-        <source>MAC Address</source>
-        <translation type="vanished">MAC Adres</translation>
-    </message>
-    <message>
-        <source>DHCP Enabled</source>
-        <translation type="vanished">DHCP Ingeschakeld</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>DHCP Server #%1</source>
-        <translation type="vanished">DHCP Server #%1</translation>
-    </message>
-    <message>
-        <source>DHCP Server</source>
-        <translation type="vanished">DHCP Server</translation>
-    </message>
-    <message>
-        <source>Address #%1</source>
-        <translation type="vanished">Adres #%1</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation type="vanished">Adres</translation>
-    </message>
-    <message>
-        <source>Gateway #%1</source>
-        <translation type="vanished">Gateway #%1</translation>
-    </message>
-    <message>
-        <source>Gateway</source>
-        <translation type="vanished">Gateway</translation>
-    </message>
-    <message>
-        <source>Network Connections</source>
-        <translation type="vanished">Netwerk Verbindingen</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="vanished">Standaard</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation type="vanished">Poort</translation>
-    </message>
-    <message>
-        <source>Driver</source>
-        <translation type="vanished">Driver</translation>
-    </message>
-    <message>
-        <source>Shared</source>
-        <translation type="vanished">Gedeeld</translation>
-    </message>
-    <message>
-        <source>Share Name</source>
-        <translation type="vanished">Share Naam</translation>
-    </message>
-    <message>
-        <source>Jobs Count</source>
-        <translation type="vanished">Aantal Jobs</translation>
-    </message>
-    <message>
-        <source>Printers</source>
-        <translation type="vanished">Printers</translation>
-    </message>
 </context>
 <context>
     <name>SysInfoWidgetVideoAdapters</name>
@@ -7177,17 +6337,9 @@ Routers added: %4</source>
         <source>Failed to save file: %1</source>
         <translation type="unfinished">Kon het bestand %1 niet opslaan</translation>
     </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>TaskManagerWindow</name>
-    <message>
-        <source>System Information</source>
-        <translation type="obsolete">Systeem Informatie</translation>
-    </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="37"/>
         <source>Processes</source>
@@ -7209,10 +6361,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="85"/>
         <source>CPU</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="obsolete">Geheugen</translation>
     </message>
     <message>
         <location filename="../client/ui/desktop/task_manager_window.ui" line="70"/>
@@ -7354,42 +6502,6 @@ Routers added: %4</source>
         <translation type="unfinished">Verbinding verbreken</translation>
     </message>
     <message>
-        <source>Save</source>
-        <translation type="obsolete">Opslaan</translation>
-    </message>
-    <message>
-        <source>Save (Ctrl+S)</source>
-        <translation type="obsolete">Opslaan (Ctrl+S)</translation>
-    </message>
-    <message>
-        <source>Print</source>
-        <translation type="obsolete">Printen</translation>
-    </message>
-    <message>
-        <source>Print (Ctrl+P)</source>
-        <translation type="obsolete">Printen(Ctrl+P)</translation>
-    </message>
-    <message>
-        <source>Copy Row</source>
-        <translation type="obsolete">Kopieer Rij</translation>
-    </message>
-    <message>
-        <source>Copy Name</source>
-        <translation type="obsolete">Kopieer Naam</translation>
-    </message>
-    <message>
-        <source>Copy Value</source>
-        <translation type="obsolete">Kopieer Waarde</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Vernieuwen</translation>
-    </message>
-    <message>
-        <source>Refresh (F5)</source>
-        <translation type="obsolete">Vernieuwen (F5)</translation>
-    </message>
-    <message>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="648"/>
         <source>Do you really want to end &quot;%1&quot; process?</source>
         <translation type="unfinished"></translation>
@@ -7423,18 +6535,6 @@ Routers added: %4</source>
         <location filename="../client/ui/desktop/task_manager_window.cc" line="939"/>
         <source>Update Speed</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
     </message>
 </context>
 <context>
@@ -7626,22 +6726,6 @@ Routers added: %4</source>
         <source>No updates available.</source>
         <translation type="unfinished">Geen updates beschikbaar.</translation>
     </message>
-    <message>
-        <source>Confirmation</source>
-        <translation type="vanished">Bevestiging</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Waarschuwing</translation>
-    </message>
 </context>
 <context>
     <name>UserDialog</name>
@@ -7740,14 +6824,6 @@ Routers added: %4</source>
         <location filename="../host/ui/user_dialog.cc" line="270"/>
         <source>Double-click to change</source>
         <translation type="unfinished">Dubbelklik om te wijzigen</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation type="vanished">Ya</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation type="vanished">Nee</translation>
     </message>
 </context>
 <context>
