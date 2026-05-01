@@ -508,6 +508,12 @@ void TcpChannelNG::onMessageReceived()
         return;
     }
 
+    if (!decryptor_)
+    {
+        onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
+        return;
+    }
+
     resizeBuffer(&decrypt_buffer_, decryptor_->decryptedDataSize(read_buffer_.size()));
 
     if (!decryptor_->decrypt(read_buffer_.data(), read_buffer_.size(), // Data
