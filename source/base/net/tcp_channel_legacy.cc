@@ -550,6 +550,11 @@ void TcpChannelLegacy::onErrorOccurred(const Location& location, ErrorCode error
     }
 
     disconnectFrom();
+
+    if (!*alive_guard_)
+        return;
+
+    *alive_guard_ = false;
     emit sig_errorOccurred(error_code);
 }
 

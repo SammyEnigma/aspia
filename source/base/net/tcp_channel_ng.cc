@@ -470,6 +470,11 @@ void TcpChannelNG::onErrorOccurred(const Location& location, ErrorCode error_cod
 {
     CLOG(ERROR) << "Connection finished:" << error_code << "from" << location;
     setConnected(false);
+
+    if (!*alive_guard_)
+        return;
+
+    *alive_guard_ = false;
     emit sig_errorOccurred(error_code);
 }
 
