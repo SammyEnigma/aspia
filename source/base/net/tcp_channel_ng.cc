@@ -162,7 +162,7 @@ QString TcpChannelNG::peerAddress() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelNG::connectTo(const QString& address, quint16 port)
+void TcpChannelNG::connectTo(const QString& address, quint16 port, const Seconds& timeout)
 {
     if (isConnected() || !resolver_)
         return;
@@ -172,9 +172,21 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port)
 
     CLOG(INFO) << "Start resolving for" << host << ":" << service;
 
+    // Watchdog for the entire connect phase (resolve + TCP handshake). Without it the channel
+    // would wait for the OS-level SYN-retransmit timeout (~2 minutes on Linux) before reporting
+    // an unreachable peer.
+    SharedPointer<asio::steady_timer> watchdog(new asio::steady_timer(io_context_));
+    watchdog->expires_after(timeout);
+
     auto guard = alive_guard_;
+    watchdog->async_wait([this, guard, watchdog](const std::error_code& error_code)
+    {
+        if (*guard && !error_code)
+            onErrorOccurred(FROM_HERE, ErrorCode::SOCKET_TIMEOUT);
+    });
+
     resolver_->async_resolve(host, service,
-        [this, guard](const std::error_code& error_code, const asio::ip::tcp::resolver::results_type& endpoints)
+        [this, guard, watchdog](const std::error_code& error_code, const asio::ip::tcp::resolver::results_type& endpoints)
     {
         if (!*guard)
             return;
@@ -183,6 +195,7 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port)
         {
             if (error_code == asio::error::operation_aborted)
                 return;
+            watchdog->cancel();
             onErrorOccurred(FROM_HERE, error_code);
             return;
         }
@@ -201,7 +214,7 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port)
 
             return true;
         },
-            [this, guard](const std::error_code& error_code, const asio::ip::tcp::endpoint& endpoint)
+            [this, guard, watchdog](const std::error_code& error_code, const asio::ip::tcp::endpoint& endpoint)
         {
             if (!*guard)
                 return;
@@ -210,11 +223,13 @@ void TcpChannelNG::connectTo(const QString& address, quint16 port)
             {
                 if (error_code == asio::error::operation_aborted)
                     return;
+                watchdog->cancel();
                 onErrorOccurred(FROM_HERE, error_code);
                 return;
             }
 
             CLOG(INFO) << "Connected to endpoint:" << endpoint.address().to_string() << ":" << endpoint.port();
+            watchdog->cancel();
 
             setConnected(true);
             emit sig_connected();

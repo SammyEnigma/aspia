@@ -95,7 +95,7 @@ public:
     using Seconds = std::chrono::seconds;
 
     virtual QString peerAddress() const = 0;
-    virtual void connectTo(const QString& address, quint16 port) = 0;
+    virtual void connectTo(const QString& address, quint16 port, const Seconds& timeout = Seconds(30)) = 0;
     virtual bool isConnected() const = 0;
     virtual bool isAuthenticated() const = 0;
     virtual bool isPaused() const = 0;

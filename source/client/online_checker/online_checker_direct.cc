@@ -101,7 +101,7 @@ void OnlineCheckerDirect::Instance::start()
     connect(tcp_channel_, &TcpChannel::sig_connected, this, &Instance::onTcpConnected);
     connect(tcp_channel_, &TcpChannel::sig_errorOccurred, this, &Instance::onTcpErrorOccurred);
 
-    tcp_channel_->connectTo(address.host(), address.port());
+    tcp_channel_->connectTo(address.host(), address.port(), TcpChannel::Seconds(10));
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -160,7 +160,7 @@ QString TcpChannelLegacy::peerAddress() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::connectTo(const QString& address, quint16 port)
+void TcpChannelLegacy::connectTo(const QString& address, quint16 port, const Seconds& /* timeout */)
 {
     if (isConnected() || !resolver_)
         return;
