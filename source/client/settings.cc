@@ -36,7 +36,6 @@ const QString kThemeParam = "theme";
 const QString kSessionTypeParam = "session_type";
 const QString kDesktopConfigParam = "desktop_config";
 const QString kOneTimePasswordCheckedParam = "one_time_password_checked";
-const QString kRouterManagerStateParam = "router_manager_state";
 const QString kWindowGeometryParam = "window_geometry";
 const QString kWindowStateParam = "window_state";
 const QString kLargeIconsParam = "large_icons";
@@ -143,18 +142,6 @@ bool Settings::isOneTimePasswordChecked() const
 void Settings::setOneTimePasswordChecked(bool check)
 {
     settings_.setValue(kOneTimePasswordCheckedParam, check);
-}
-
-//--------------------------------------------------------------------------------------------------
-QByteArray Settings::routerManagerState() const
-{
-    return settings_.value(kRouterManagerStateParam, false).toByteArray();
-}
-
-//--------------------------------------------------------------------------------------------------
-void Settings::setRouterManagerState(const QByteArray& state)
-{
-    settings_.setValue(kRouterManagerStateParam, state);
 }
 
 //--------------------------------------------------------------------------------------------------

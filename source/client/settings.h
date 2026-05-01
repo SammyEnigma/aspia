@@ -51,9 +51,6 @@ public:
     bool isOneTimePasswordChecked() const;
     void setOneTimePasswordChecked(bool check);
 
-    QByteArray routerManagerState() const;
-    void setRouterManagerState(const QByteArray& state);
-
     QByteArray windowGeometry() const;
     void setWindowGeometry(const QByteArray& geometry);
 
