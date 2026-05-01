@@ -256,6 +256,13 @@ void TcpChannelNG::setPaused(bool enable)
 //--------------------------------------------------------------------------------------------------
 void TcpChannelNG::send(quint8 channel_id, const QByteArray& buffer)
 {
+    // USER_DATA may only be sent over an authenticated channel.
+    if (!authenticated_)
+    {
+        CLOG(ERROR) << "Sending message before authentication completed";
+        return;
+    }
+
     addWriteTask(USER_DATA, channel_id, buffer);
 }
 
@@ -593,6 +600,24 @@ void TcpChannelNG::doWrite()
     {
         onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
         return;
+    }
+
+    // AUTH_DATA may travel in plaintext during the initial hello exchange and encrypted afterwards.
+    // Any other type requires both an authenticated state and a working encryptor; otherwise we'd
+    // leak USER_DATA / KEEP_ALIVE in cleartext.
+    if (task.type() != AUTH_DATA)
+    {
+        if (!authenticated_)
+        {
+            onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
+            return;
+        }
+
+        if (!encryptor_)
+        {
+            onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
+            return;
+        }
     }
 
     qint64 target_data_size =
