@@ -34,7 +34,8 @@
 
 namespace {
 
-const int kWriteQueueReservedSize = 128;
+const qint64 kWriteQueueReservedSize = 128;
+const qint64 kWritePoolReservedSize = 32;
 const TcpChannelNG::Seconds kKeepAliveInterval { 60 };
 const TcpChannelNG::Seconds kKeepAliveTimeout { 30 };
 
@@ -319,6 +320,7 @@ void TcpChannelNG::init()
     CCHECK(authenticator_);
     authenticator_->setParent(this);
 
+    write_pool_.reserve(kWritePoolReservedSize);
     write_queue_.reserve(kWriteQueueReservedSize);
 
     keep_alive_counter_.resize(sizeof(quint32));
@@ -617,15 +619,26 @@ void TcpChannelNG::addWriteTask(quint8 type, quint8 param, const QByteArray& dat
         return;
     }
 
-    QByteArray write_buffer;
-    write_buffer.resize(total_size);
-
     Header header;
     header.type = type;
     header.param1 = param;
     header.param2 = 0;
     header.param3 = 0;
     header.length = static_cast<quint32>(target_data_size);
+
+    QByteArray write_buffer;
+
+    if (!write_pool_.isEmpty())
+    {
+        write_buffer = std::move(write_pool_.front());
+        write_pool_.pop_front();
+
+        if (write_buffer.capacity() < total_size)
+            write_buffer.reserve(total_size);
+    }
+
+    write_buffer.resize(total_size);
+
     memcpy(write_buffer.data(), &header, sizeof(Header));
 
     if (encrypted)
@@ -671,8 +684,10 @@ void TcpChannelNG::doWrite()
         }
 
         addTxBytes(bytes_transferred); // Update TX statistics.
-        CDCHECK(!write_queue_.empty());
+        CDCHECK(!write_queue_.isEmpty());
 
+        if (write_pool_.size() < kWritePoolReservedSize)
+            write_pool_.emplace_back(std::move(write_queue_.front()));
         write_queue_.pop_front();
 
         if (!write_queue_.isEmpty())

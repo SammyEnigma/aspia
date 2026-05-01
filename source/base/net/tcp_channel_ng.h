@@ -148,6 +148,7 @@ private:
     std::unique_ptr<StreamEncryptor> encryptor_;
     std::unique_ptr<StreamDecryptor> decryptor_;
 
+    QList<QByteArray> write_pool_;
     QQueue<QByteArray> write_queue_;
 
     ReadState state_ = ReadState::IDLE;
