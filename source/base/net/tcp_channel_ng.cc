@@ -18,7 +18,6 @@
 
 #include "base/net/tcp_channel_ng.h"
 
-#include <QTimer>
 #include <QThread>
 
 #include <asio/connect.hpp>
@@ -74,6 +73,7 @@ TcpChannelNG::TcpChannelNG(Authenticator* authenticator, QObject* parent)
       io_context_(AsioEventDispatcher::ioContext()),
       socket_(io_context_),
       resolver_(std::make_unique<asio::ip::tcp::resolver>(io_context_)),
+      keep_alive_timer_(io_context_),
       authenticator_(authenticator)
 {
     init();
@@ -85,6 +85,7 @@ TcpChannelNG::TcpChannelNG(
     : TcpChannel(type, parent),
       io_context_(AsioEventDispatcher::ioContext()),
       socket_(std::move(socket)),
+      keep_alive_timer_(io_context_),
       authenticator_(authenticator)
 {
     CDCHECK(socket_.is_open());
@@ -231,7 +232,7 @@ void TcpChannelNG::setPaused(bool enable)
     paused_ = enable;
     if (paused_)
     {
-        keep_alive_timer_->stop();
+        keep_alive_timer_.cancel();
         return;
     }
 
@@ -241,7 +242,7 @@ void TcpChannelNG::setPaused(bool enable)
     if (authenticated_)
     {
         keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
-        keep_alive_timer_->start(kKeepAliveInterval);
+        startKeepAliveTimer(kKeepAliveInterval);
     }
 
     // We already have an incomplete read operation.
@@ -315,11 +316,6 @@ void TcpChannelNG::init()
     authenticator_->setParent(this);
 
     write_queue_.reserve(kWriteQueueReservedSize);
-
-    keep_alive_timer_ = new QTimer(this);
-    keep_alive_timer_->setSingleShot(true);
-
-    connect(keep_alive_timer_, &QTimer::timeout, this, &TcpChannelNG::onKeepAliveTimer);
 
     keep_alive_counter_.resize(sizeof(quint32));
     memset(keep_alive_counter_.data(), 0, keep_alive_counter_.size());
@@ -416,7 +412,7 @@ void TcpChannelNG::setConnected(bool connected)
             socket_.close(ignored_code);
         }
 
-        keep_alive_timer_->stop();
+        keep_alive_timer_.cancel();
         return;
     }
 
@@ -569,7 +565,7 @@ void TcpChannelNG::onMessageReceived()
 
         // Restart keep alive timer.
         keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
-        keep_alive_timer_->start(kKeepAliveInterval);
+        startKeepAliveTimer(kKeepAliveInterval);
     }
     else
     {
@@ -760,6 +756,19 @@ void TcpChannelNG::doReadData()
 }
 
 //--------------------------------------------------------------------------------------------------
+void TcpChannelNG::startKeepAliveTimer(Seconds duration)
+{
+    keep_alive_timer_.expires_after(duration);
+
+    auto guard = alive_guard_;
+    keep_alive_timer_.async_wait([this, guard](const std::error_code& error_code)
+    {
+        if (*guard && !error_code)
+            onKeepAliveTimer();
+    });
+}
+
+//--------------------------------------------------------------------------------------------------
 void TcpChannelNG::onKeepAliveTimer()
 {
     if (keep_alive_timer_type_ == KEEP_ALIVE_INTERVAL)
@@ -767,7 +776,7 @@ void TcpChannelNG::onKeepAliveTimer()
         // If a response is not received within the specified interval, the connection will be terminated.
         addWriteTask(KEEP_ALIVE, KEEP_ALIVE_PING, keep_alive_counter_);
         keep_alive_timer_type_ = KEEP_ALIVE_TIMEOUT;
-        keep_alive_timer_->start(kKeepAliveTimeout);
+        startKeepAliveTimer(kKeepAliveTimeout);
     }
     else
     {

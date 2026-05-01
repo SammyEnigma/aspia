@@ -22,6 +22,7 @@
 #include <QQueue>
 
 #include <asio/ip/tcp.hpp>
+#include <asio/steady_timer.hpp>
 
 #include "base/scoped_qpointer.h"
 #include "base/shared_pointer.h"
@@ -29,7 +30,6 @@
 
 class Authenticator;
 class Location;
-class QTimer;
 class RelayPeer;
 class StreamDecryptor;
 class StreamEncryptor;
@@ -155,6 +155,7 @@ private:
     void doWrite();
     void doReadHeader();
     void doReadData();
+    void startKeepAliveTimer(Seconds duration);
     void onKeepAliveTimer();
 
     SharedPointer<bool> alive_guard_ { new bool(true) };
@@ -162,7 +163,7 @@ private:
     asio::ip::tcp::socket socket_;
     std::unique_ptr<asio::ip::tcp::resolver> resolver_;
 
-    QTimer* keep_alive_timer_ = nullptr;
+    asio::steady_timer keep_alive_timer_;
     KeepAliveTimerType keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
     QByteArray keep_alive_counter_;
 
