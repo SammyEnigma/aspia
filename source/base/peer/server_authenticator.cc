@@ -232,9 +232,16 @@ void ServerAuthenticator::onClientHello(const QByteArray& buffer)
     identify_ = client_hello.identify();
     switch (identify_)
     {
-        // SRP is always supported.
         case proto::key_exchange::IDENTIFY_SRP:
-            break;
+        {
+            // SRP authentication uses its own key exchange and must never combine with a public key.
+            if (!client_hello.public_key().empty() || !client_hello.iv().empty())
+            {
+                finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
+                return;
+            }
+        }
+        break;
 
         case proto::key_exchange::IDENTIFY_ANONYMOUS:
         {

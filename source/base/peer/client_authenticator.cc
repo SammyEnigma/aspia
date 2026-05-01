@@ -182,6 +182,13 @@ void ClientAuthenticator::sendClientHello()
         return;
     }
 
+    // SRP authentication uses its own key exchange and must never combine with a public key.
+    if (identify_ == proto::key_exchange::IDENTIFY_SRP && !peer_public_key_.isEmpty())
+    {
+        finish(FROM_HERE, ErrorCode::UNKNOWN_ERROR);
+        return;
+    }
+
     proto::key_exchange::ClientHello client_hello;
 
     quint32 encryption = proto::key_exchange::ENCRYPTION_CHACHA20_POLY1305;
