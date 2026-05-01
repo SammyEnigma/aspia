@@ -665,17 +665,17 @@ void TcpChannelLegacy::doWrite()
 
     if (task.type() == WriteTask::Type::USER_DATA)
     {
-        size_t target_data_size;
+        // Encryption decision is per-task now: the authenticator tags handshake frames
+        // explicitly, and post-auth payload is always encrypted. Mismatch with the encryptor
+        // state is a hard protocol error.
+        if (task.encrypted() && !encryptor_)
+        {
+            onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
+            return;
+        }
 
-        if (encryptor_)
-        {
-            // Calculate the size of the encrypted message.
-            target_data_size = encryptor_->encryptedDataSize(source_buffer.size());
-        }
-        else
-        {
-            target_data_size = source_buffer.size();
-        }
+        size_t target_data_size = task.encrypted() ?
+            encryptor_->encryptedDataSize(source_buffer.size()) : source_buffer.size();
 
         if (is_channel_id_supported_)
             target_data_size += sizeof(UserDataHeader);
@@ -706,7 +706,7 @@ void TcpChannelLegacy::doWrite()
             write_buffer += sizeof(header);
         }
 
-        if (encryptor_)
+        if (task.encrypted())
         {
             // Encrypt the message.
             if (!encryptor_->encrypt(source_buffer.data(), source_buffer.size(), write_buffer))

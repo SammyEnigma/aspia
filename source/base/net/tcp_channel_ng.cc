@@ -603,26 +603,23 @@ void TcpChannelNG::doWrite()
         return;
     }
 
-    // AUTH_DATA may travel in plaintext during the initial hello exchange and encrypted afterwards.
-    // Any other type requires both an authenticated state and a working encryptor; otherwise we'd
-    // leak USER_DATA / KEEP_ALIVE in cleartext.
-    if (task.type() != AUTH_DATA)
+    // Only AUTH_DATA may bypass the authenticated state (it carries the handshake itself).
+    if (task.type() != AUTH_DATA && !authenticated_)
     {
-        if (!authenticated_)
-        {
-            onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
-            return;
-        }
-
-        if (!encryptor_)
-        {
-            onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
-            return;
-        }
+        onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
+        return;
     }
 
-    qint64 target_data_size =
-        encryptor_ ? encryptor_->encryptedDataSize(source_buffer.size()) : source_buffer.size();
+    // The encryption decision is now per-task: the authenticator marks individual handshake
+    // frames as plaintext or encrypted, and USER_DATA / KEEP_ALIVE are always encrypted.
+    if (task.encrypted() && !encryptor_)
+    {
+        onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
+        return;
+    }
+
+    qint64 target_data_size = task.encrypted() ?
+        encryptor_->encryptedDataSize(source_buffer.size()) : source_buffer.size();
 
     resizeBuffer(&write_buffer_, target_data_size + sizeof(Header));
 
@@ -641,7 +638,7 @@ void TcpChannelNG::doWrite()
     header.length = static_cast<quint32>(target_data_size);
     memcpy(write_buffer_.data(), &header, sizeof(Header));
 
-    if (encryptor_)
+    if (task.encrypted())
     {
         if (!encryptor_->encrypt(source_buffer.data(), source_buffer.size(), // Data
                                  &header, sizeof(Header), // AAD
