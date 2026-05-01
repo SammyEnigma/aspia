@@ -235,8 +235,14 @@ void TcpChannelNG::setPaused(bool enable)
         return;
     }
 
-    keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
-    keep_alive_timer_->start(kKeepAliveInterval);
+    // Keep-alive applies only after authentication completes. Before |authenticated_|
+    // is set, |encryptor_| may not be ready, and a KEEP_ALIVE frame would be sent
+    // unencrypted, which the peer would treat as a protocol violation.
+    if (authenticated_)
+    {
+        keep_alive_timer_type_ = KEEP_ALIVE_INTERVAL;
+        keep_alive_timer_->start(kKeepAliveInterval);
+    }
 
     // We already have an incomplete read operation.
     if (state_ == ReadState::READ_HEADER || state_ == ReadState::READ_DATA)
