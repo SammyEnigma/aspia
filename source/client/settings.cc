@@ -18,13 +18,19 @@
 
 #include "client/settings.h"
 
-#include "base/xml_settings.h"
-#include "client/config_factory.h"
-
 #include <QLocale>
+#include <QVersionNumber>
+
+#include <mutex>
+
+#include "base/logging.h"
+#include "base/xml_settings.h"
+#include "build/version.h"
+#include "client/config_factory.h"
 
 namespace {
 
+const QString kVersionParam = "version";
 const QString kLocaleParam = "locale";
 const QString kThemeParam = "theme";
 const QString kSessionTypeParam = "session_type";
@@ -45,7 +51,25 @@ const QString kTabStateParam = "tab_state";
 Settings::Settings()
     : settings_(XmlSettings::format(), QSettings::UserScope, "aspia", "client")
 {
-    // Nothing
+    static std::once_flag version_check_flag;
+    std::call_once(version_check_flag, [this]()
+    {
+        QVersionNumber stored = QVersionNumber::fromString(settings_.value(kVersionParam).toString());
+        QVersionNumber current = QVersionNumber::fromString(ASPIA_VERSION_SHORT_STRING);
+
+        if (stored < current)
+        {
+            LOG(INFO) << "Settings version changed from" << stored.toString()
+                      << "to" << current.toString();
+            settings_.clear();
+        }
+    });
+}
+
+//--------------------------------------------------------------------------------------------------
+Settings::~Settings()
+{
+    settings_.setValue(kVersionParam, QString::fromLatin1(ASPIA_VERSION_SHORT_STRING));
 }
 
 //--------------------------------------------------------------------------------------------------

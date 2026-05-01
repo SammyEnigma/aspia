@@ -24,11 +24,17 @@
 #include "proto/desktop_control.h"
 #include "proto/peer.h"
 
+// Stores non-critical UI/preference settings.
+//
+// On application upgrade (when the stored version is older than the current one), all parameters
+// are cleared on first construction in the process. Therefore this class must NOT be used for
+// connection-related, security-related or any other critical data: such values should be stored
+// in the Database (see client/database.h) or another persistent storage that survives upgrades.
 class Settings
 {
 public:
     Settings();
-    ~Settings() = default;
+    ~Settings();
 
     QString locale() const;
     void setLocale(const QString& locale);
