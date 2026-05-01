@@ -29,6 +29,8 @@
 #include "base/logging.h"
 #include "base/version_constants.h"
 #include "base/peer/host_id.h"
+#include "build/build_config.h"
+#include "client/database.h"
 #include "client/settings.h"
 #include "client/ui/settings_dialog.h"
 #include "client/ui/client_tab.h"
@@ -96,9 +98,12 @@ MainWindow::MainWindow(QWidget* parent)
     connect(search_field_, &QLineEdit::textChanged, this, &MainWindow::onSearchTextChanged);
 
 #if defined(Q_OS_WINDOWS)
-    if (settings.checkUpdates())
+    Database& db = Database::instance();
+    if (db.property(Database::kCheckUpdatesProperty, true).toBool())
     {
-        update_checker_ = std::make_unique<UpdateChecker>(settings.updateServer(), "client");
+        QString update_server =
+            db.property(Database::kUpdateServerProperty, DEFAULT_UPDATE_SERVER).toString().toLower();
+        update_checker_ = std::make_unique<UpdateChecker>(update_server, "client");
 
         connect(update_checker_.get(), &UpdateChecker::sig_checkedFinished,
                 this, &MainWindow::onUpdateCheckedFinished);
@@ -325,8 +330,10 @@ void MainWindow::onConnect(qint64 /* computer_id */,
     if (!session_window)
         return;
 
+    QString display_name = Database::instance().property(Database::kDisplayNameProperty).toString();
+
     session_window->setAttribute(Qt::WA_DeleteOnClose);
-    if (!session_window->connectToHost(computer, Settings().displayName()))
+    if (!session_window->connectToHost(computer, display_name))
         session_window->close();
 }
 

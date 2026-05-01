@@ -155,6 +155,15 @@ bool createTables(QSqlDatabase& db)
 
 //--------------------------------------------------------------------------------------------------
 // static
+const QString Database::kDisplayNameProperty = "display_name";
+const QString Database::kCheckUpdatesProperty = "check_updates";
+const QString Database::kUpdateServerProperty = "update_server";
+const QString Database::kSaltPropertyName = "master_password_salt";
+const QString Database::kVerifierPropertyName = "master_password_verifier";
+const QString Database::kVersionPropertyName = "master_password_version";
+
+//--------------------------------------------------------------------------------------------------
+// static
 Database& Database::instance()
 {
     static thread_local Database database;

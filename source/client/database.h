@@ -33,6 +33,13 @@ class Database
 public:
     ~Database() = default;
 
+    static const QString kDisplayNameProperty;
+    static const QString kCheckUpdatesProperty;
+    static const QString kUpdateServerProperty;
+    static const QString kSaltPropertyName;
+    static const QString kVerifierPropertyName;
+    static const QString kVersionPropertyName;
+
     static Database& instance();
     static QString filePath();
     bool isValid() const;

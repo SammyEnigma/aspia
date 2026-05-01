@@ -18,9 +18,7 @@
 
 #include "client/settings.h"
 
-#include "base/logging.h"
 #include "base/xml_settings.h"
-#include "build/build_config.h"
 #include "client/config_factory.h"
 
 #include <QLocale>
@@ -31,11 +29,8 @@ const QString kLocaleParam = "locale";
 const QString kThemeParam = "theme";
 const QString kSessionTypeParam = "session_type";
 const QString kDesktopConfigParam = "desktop_config";
-const QString kCheckUpdatesParam = "check_updates";
-const QString kUpdateServerParam = "update_server";
 const QString kOneTimePasswordCheckedParam = "one_time_password_checked";
 const QString kRouterManagerStateParam = "router_manager_state";
-const QString kDisplayNameParam = "display_name";
 const QString kWindowGeometryParam = "window_geometry";
 const QString kWindowStateParam = "window_state";
 const QString kLargeIconsParam = "large_icons";
@@ -115,30 +110,6 @@ void Settings::setDesktopConfig(const proto::control::Config& config)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Settings::checkUpdates() const
-{
-    return settings_.value(kCheckUpdatesParam, true).toBool();
-}
-
-//--------------------------------------------------------------------------------------------------
-void Settings::setCheckUpdates(bool check)
-{
-    settings_.setValue(kCheckUpdatesParam, check);
-}
-
-//--------------------------------------------------------------------------------------------------
-QString Settings::updateServer() const
-{
-    return settings_.value(kUpdateServerParam, DEFAULT_UPDATE_SERVER).toString().toLower();
-}
-
-//--------------------------------------------------------------------------------------------------
-void Settings::setUpdateServer(const QString& server)
-{
-    settings_.setValue(kUpdateServerParam, server.toLower());
-}
-
-//--------------------------------------------------------------------------------------------------
 bool Settings::isOneTimePasswordChecked() const
 {
     return settings_.value(kOneTimePasswordCheckedParam, false).toBool();
@@ -160,18 +131,6 @@ QByteArray Settings::routerManagerState() const
 void Settings::setRouterManagerState(const QByteArray& state)
 {
     settings_.setValue(kRouterManagerStateParam, state);
-}
-
-//--------------------------------------------------------------------------------------------------
-QString Settings::displayName() const
-{
-    return settings_.value(kDisplayNameParam).toString();
-}
-
-//--------------------------------------------------------------------------------------------------
-void Settings::setDisplayName(const QString& display_name)
-{
-    settings_.setValue(kDisplayNameParam, display_name);
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -26,9 +26,6 @@
 
 namespace {
 
-const char kSaltPropertyName[] = "master_password_salt";
-const char kVerifierPropertyName[] = "master_password_verifier";
-const char kVersionPropertyName[] = "master_password_version";
 const quint32 kCurrentVersion = 1;
 const int kSaltSize = 32;
 const int kVerifierPayloadSize = 32;
@@ -96,15 +93,15 @@ bool changeKeyAndReencrypt(const QByteArray& new_key, const QByteArray& new_salt
     bool ok;
     if (new_salt.isEmpty() && new_verifier.isEmpty())
     {
-        ok = db.removeProperty(kSaltPropertyName) &&
-             db.removeProperty(kVerifierPropertyName) &&
-             db.removeProperty(kVersionPropertyName);
+        ok = db.removeProperty(Database::kSaltPropertyName) &&
+             db.removeProperty(Database::kVerifierPropertyName) &&
+             db.removeProperty(Database::kVersionPropertyName);
     }
     else
     {
-        ok = db.setProperty(kSaltPropertyName, new_salt) &&
-             db.setProperty(kVerifierPropertyName, new_verifier) &&
-             db.setProperty(kVersionPropertyName, kCurrentVersion);
+        ok = db.setProperty(Database::kSaltPropertyName, new_salt) &&
+             db.setProperty(Database::kVerifierPropertyName, new_verifier) &&
+             db.setProperty(Database::kVersionPropertyName, kCurrentVersion);
     }
 
     if (!ok)
@@ -156,9 +153,9 @@ bool MasterPassword::isSet()
     if (!db.isValid())
         return false;
 
-    return db.hasProperty(kSaltPropertyName) &&
-           db.hasProperty(kVerifierPropertyName) &&
-           db.hasProperty(kVersionPropertyName);
+    return db.hasProperty(Database::kSaltPropertyName) &&
+           db.hasProperty(Database::kVerifierPropertyName) &&
+           db.hasProperty(Database::kVersionPropertyName);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -172,9 +169,9 @@ bool MasterPassword::unlock(const QString& password)
         return false;
     }
 
-    QVariant salt_value = db.property(kSaltPropertyName);
-    QVariant verifier_value = db.property(kVerifierPropertyName);
-    QVariant version_value = db.property(kVersionPropertyName);
+    QVariant salt_value = db.property(Database::kSaltPropertyName);
+    QVariant verifier_value = db.property(Database::kVerifierPropertyName);
+    QVariant version_value = db.property(Database::kVersionPropertyName);
 
     QByteArray salt = salt_value.toByteArray();
     QByteArray verifier = verifier_value.toByteArray();

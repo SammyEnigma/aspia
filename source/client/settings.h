@@ -21,7 +21,6 @@
 
 #include <QSettings>
 
-#include "client/config.h"
 #include "proto/desktop_control.h"
 #include "proto/peer.h"
 
@@ -43,20 +42,11 @@ public:
     proto::control::Config desktopConfig() const;
     void setDesktopConfig(const proto::control::Config& config);
 
-    bool checkUpdates() const;
-    void setCheckUpdates(bool check);
-
-    QString updateServer() const;
-    void setUpdateServer(const QString& server);
-
     bool isOneTimePasswordChecked() const;
     void setOneTimePasswordChecked(bool check);
 
     QByteArray routerManagerState() const;
     void setRouterManagerState(const QByteArray& state);
-
-    QString displayName() const;
-    void setDisplayName(const QString& display_name);
 
     QByteArray windowGeometry() const;
     void setWindowGeometry(const QByteArray& geometry);

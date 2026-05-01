@@ -107,7 +107,8 @@ SettingsDialog::SettingsDialog(QWidget* parent)
             ui.combo_theme->setCurrentIndex(ui.combo_theme->count() - 1);
     }
 
-    ui.edit_display_name->setText(settings.displayName());
+    Database& db = Database::instance();
+    ui.edit_display_name->setText(db.property(Database::kDisplayNameProperty).toString());
 
     // Master Password.
     connect(ui.button_set_master_password, &QPushButton::clicked,
@@ -129,10 +130,13 @@ SettingsDialog::SettingsDialog(QWidget* parent)
 
     // Update tab.
 #if defined(Q_OS_WINDOWS)
-    ui.checkbox_check_updates->setChecked(settings.checkUpdates());
-    ui.edit_update_server->setText(settings.updateServer());
+    ui.checkbox_check_updates->setChecked(db.property(Database::kCheckUpdatesProperty, true).toBool());
 
-    if (settings.updateServer() == DEFAULT_UPDATE_SERVER)
+    QString update_server = db.property(
+        Database::kUpdateServerProperty, DEFAULT_UPDATE_SERVER).toString().toLower();
+    ui.edit_update_server->setText(update_server);
+
+    if (update_server == DEFAULT_UPDATE_SERVER)
     {
         ui.checkbox_custom_server->setChecked(false);
         ui.edit_update_server->setEnabled(false);
@@ -202,8 +206,6 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
         settings.setTheme(new_theme);
         GuiApplication::instance()->setTheme(new_theme);
 
-        settings.setDisplayName(ui.edit_display_name->text());
-
         proto::control::Config desktop_config;
         desktop_config.set_audio(ui.checkbox_audio->isChecked());
         desktop_config.set_clipboard(ui.checkbox_clipboard->isChecked());
@@ -215,9 +217,12 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
         desktop_config.set_block_input(ui.checkbox_block_remote_input->isChecked());
         settings.setDesktopConfig(desktop_config);
 
+        Database& db = Database::instance();
+        db.setProperty(Database::kDisplayNameProperty, ui.edit_display_name->text());
+
 #if defined(Q_OS_WINDOWS)
-        settings.setCheckUpdates(ui.checkbox_check_updates->isChecked());
-        settings.setUpdateServer(ui.edit_update_server->text());
+        db.setProperty(Database::kCheckUpdatesProperty, ui.checkbox_check_updates->isChecked());
+        db.setProperty(Database::kUpdateServerProperty, ui.edit_update_server->text().toLower());
 #endif
 
         accept();
