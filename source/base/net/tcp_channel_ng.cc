@@ -508,9 +508,18 @@ void TcpChannelNG::onMessageReceived()
         return;
     }
 
-    if (!decryptor_)
+    // Any non-AUTH_DATA message before authentication completes is a protocol violation.
+    if (!authenticated_)
     {
         onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
+        return;
+    }
+
+    // Defense in depth: |decryptor_| must be created before |authenticated_| is set
+    // (in Authenticator::sig_keyChanged handler), but guard against any state inconsistency.
+    if (!decryptor_)
+    {
+        onErrorOccurred(FROM_HERE, ErrorCode::CRYPTO_ERROR);
         return;
     }
 
