@@ -79,14 +79,6 @@ void Authenticator::onIncomingMessage(const QByteArray& data)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Authenticator::onMessageWritten()
-{
-    if (state() != State::PENDING)
-        return;
-    onWritten();
-}
-
-//--------------------------------------------------------------------------------------------------
 void Authenticator::finish(const Location& location, ErrorCode error_code)
 {
     timer_->stop();

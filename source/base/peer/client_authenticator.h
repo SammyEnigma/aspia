@@ -41,7 +41,6 @@ protected:
     // Authenticator implementation.
     [[nodiscard]] bool onStarted() final;
     void onReceived(const QByteArray& buffer) final;
-    void onWritten() final;
 
 private:
     void sendClientHello();
@@ -56,8 +55,7 @@ private:
     {
         READ_SERVER_HELLO,
         READ_SERVER_KEY_EXCHANGE,
-        READ_SESSION_CHALLENGE,
-        SEND_SESSION_RESPONSE
+        READ_SESSION_CHALLENGE
     };
 
     InternalState internal_state_ = InternalState::READ_SERVER_HELLO;

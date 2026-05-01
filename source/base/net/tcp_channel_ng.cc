@@ -672,28 +672,9 @@ void TcpChannelNG::doWrite()
         addTxBytes(bytes_transferred); // Update TX statistics.
         CDCHECK(!write_queue_.empty());
 
-        const WriteTask& task = write_queue_.front();
-        quint8 type = task.type();
-        quint8 param = task.param();
-
         write_queue_.pop_front();
 
         bool schedule_write = !write_queue_.isEmpty();
-
-        if (type == USER_DATA)
-        {
-            emit sig_messageWritten(param);
-        }
-        else if (type == AUTH_DATA)
-        {
-            if (!authenticator_ || authenticated_)
-            {
-                onErrorOccurred(FROM_HERE, ErrorCode::INVALID_PROTOCOL);
-                return;
-            }
-
-            authenticator_->onMessageWritten();
-        }
 
         if (schedule_write)
             doWrite();

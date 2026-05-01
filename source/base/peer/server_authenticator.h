@@ -55,7 +55,6 @@ protected:
     // Authenticator implementation.
     [[nodiscard]] bool onStarted() final;
     void onReceived(const QByteArray& buffer) final;
-    void onWritten() final;
 
 private:
     void onClientHello(const QByteArray& buffer);

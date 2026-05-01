@@ -203,7 +203,6 @@ private:
     void onErrorOccurred(const Location& location, const std::error_code& error_code);
     void onErrorOccurred(const Location& location, ErrorCode error_code);
 
-    void onMessageWritten(quint8 channel_id);
     void onMessageReceived();
 
     void addWriteTask(WriteTask::Type type, quint8 channel_id, const QByteArray& data, bool encrypted);

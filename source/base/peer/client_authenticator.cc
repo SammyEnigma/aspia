@@ -160,10 +160,7 @@ void ClientAuthenticator::onReceived(const QByteArray& buffer)
         case InternalState::READ_SESSION_CHALLENGE:
         {
             if (readSessionChallenge(buffer))
-            {
-                internal_state_ = InternalState::SEND_SESSION_RESPONSE;
                 sendSessionResponse();
-            }
         }
         break;
 
@@ -172,16 +169,6 @@ void ClientAuthenticator::onReceived(const QByteArray& buffer)
             NOTREACHED();
         }
         break;
-    }
-}
-
-//--------------------------------------------------------------------------------------------------
-void ClientAuthenticator::onWritten()
-{
-    if (internal_state_ == InternalState::SEND_SESSION_RESPONSE)
-    {
-        CLOG(INFO) << "Sended: SessionResponse";
-        finish(FROM_HERE, ErrorCode::SUCCESS);
     }
 }
 
@@ -459,4 +446,5 @@ void ClientAuthenticator::sendSessionResponse()
 
     CLOG(INFO) << "Sending: SessionResponse (" << message.size() << ")";
     emit sig_outgoingMessage(message, true);
+    finish(FROM_HERE, ErrorCode::SUCCESS);
 }

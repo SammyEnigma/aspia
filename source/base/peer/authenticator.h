@@ -75,7 +75,6 @@ public:
 
 public slots:
     void onIncomingMessage(const QByteArray& data);
-    void onMessageWritten();
 
 signals:
     void sig_outgoingMessage(const QByteArray& data, bool encrypted);
@@ -87,7 +86,6 @@ protected:
 
     [[nodiscard]] virtual bool onStarted() = 0;
     virtual void onReceived(const QByteArray& buffer) = 0;
-    virtual void onWritten() = 0;
 
     void finish(const Location& location, ErrorCode error_code);
     void setPeerVersion(const proto::peer::Version& version);

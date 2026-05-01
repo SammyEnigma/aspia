@@ -125,7 +125,6 @@ signals:
     void sig_authenticated();
     void sig_errorOccurred(TcpChannel::ErrorCode error_code);
     void sig_messageReceived(quint8 channel_id, const QByteArray& buffer);
-    void sig_messageWritten(quint8 channel_id);
 
 protected:
     LOG_DECLARE_CONTEXT(TcpChannel);

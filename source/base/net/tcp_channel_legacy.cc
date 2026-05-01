@@ -554,24 +554,6 @@ void TcpChannelLegacy::onErrorOccurred(const Location& location, ErrorCode error
 }
 
 //--------------------------------------------------------------------------------------------------
-void TcpChannelLegacy::onMessageWritten(quint8 channel_id)
-{
-    if (!authenticated_)
-    {
-        if (!authenticator_)
-        {
-            onErrorOccurred(FROM_HERE, ErrorCode::UNKNOWN);
-            return;
-        }
-
-        authenticator_->onMessageWritten();
-        return;
-    }
-
-    emit sig_messageWritten(channel_id);
-}
-
-//--------------------------------------------------------------------------------------------------
 void TcpChannelLegacy::onMessageReceived()
 {
     char* read_data = read_buffer_.data();
@@ -751,18 +733,11 @@ void TcpChannelLegacy::doWrite()
         // Update TX statistics.
         addTxBytes(bytes_transferred);
 
-        const WriteTask& task = write_queue_.front();
-        WriteTask::Type task_type = task.type();
-        quint8 channel_id = task.channelId();
-
         // Delete the sent message from the queue.
         write_queue_.pop_front();
 
         // If the queue is not empty, then we send the following message.
         bool schedule_write = !write_queue_.empty();
-
-        if (task_type == WriteTask::Type::USER_DATA)
-            onMessageWritten(channel_id);
 
         if (schedule_write)
             doWrite();

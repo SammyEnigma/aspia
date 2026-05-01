@@ -198,12 +198,6 @@ void ServerAuthenticator::onReceived(const QByteArray& buffer)
 }
 
 //--------------------------------------------------------------------------------------------------
-void ServerAuthenticator::onWritten()
-{
-
-}
-
-//--------------------------------------------------------------------------------------------------
 void ServerAuthenticator::onClientHello(const QByteArray& buffer)
 {
     CLOG(INFO) << "Received: ClientHello (" << buffer.size() << ")";
