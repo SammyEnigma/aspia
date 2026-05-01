@@ -257,6 +257,9 @@ void TcpChannelNG::setPaused(bool enable)
 //--------------------------------------------------------------------------------------------------
 void TcpChannelNG::send(quint8 channel_id, const QByteArray& buffer)
 {
+    if (!*alive_guard_)
+        return;
+
     // USER_DATA may only be sent over an authenticated channel.
     if (!authenticated_)
     {

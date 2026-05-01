@@ -353,7 +353,7 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
 
     if (!SrpMath::verify_B_mod_N(B_, N_))
     {
-        CLOG(ERROR) << "Invalid B or N";
+        finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
     }
 
@@ -362,7 +362,7 @@ bool ClientAuthenticator::readServerKeyExchange(const QByteArray& buffer)
     BigNum key = SrpMath::calcClientKey(N_, B_, g_, x, a_, u);
     if (!key.isValid())
     {
-        CLOG(ERROR) << "Empty encryption key generated";
+        finish(FROM_HERE, ErrorCode::PROTOCOL_ERROR);
         return false;
     }
 
