@@ -43,13 +43,12 @@ public:
 
     Type tabType() const;
     bool isClosable() const;
+    virtual bool isDetachable() const;
 
     virtual QByteArray saveState() = 0;
     virtual void restoreState(const QByteArray& state) = 0;
-
     virtual void attach(QStatusBar* statusbar) = 0;
     virtual void detach(QStatusBar* statusbar) = 0;
-
     virtual bool hasSearchField() const;
     virtual void onSearchTextChanged(const QString& text);
 

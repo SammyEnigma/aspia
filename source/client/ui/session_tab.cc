@@ -37,6 +37,8 @@ SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
         session_window_->installEventFilter(this);
         layout->addWidget(session_window_);
         session_window_->show();
+
+        connect(session_window_, &SessionWindow::sig_dragFinished, this, &SessionTab::sig_dragFinished);
     }
 }
 
@@ -56,6 +58,34 @@ SessionWindow* SessionTab::sessionWindow() const
 }
 
 //--------------------------------------------------------------------------------------------------
+void SessionTab::detachToWindow()
+{
+    if (!session_window_ || isDetached())
+        return;
+
+    layout()->removeWidget(session_window_);
+    session_window_->setParent(nullptr, Qt::Window);
+    session_window_->show();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SessionTab::attachToTab()
+{
+    if (!session_window_ || !isDetached())
+        return;
+
+    session_window_->setParent(this);
+    layout()->addWidget(session_window_);
+    session_window_->show();
+}
+
+//--------------------------------------------------------------------------------------------------
+bool SessionTab::isDetached() const
+{
+    return session_window_ && session_window_->isWindow();
+}
+
+//--------------------------------------------------------------------------------------------------
 QByteArray SessionTab::saveState()
 {
     return QByteArray();
@@ -65,6 +95,12 @@ QByteArray SessionTab::saveState()
 void SessionTab::restoreState(const QByteArray& /* state */)
 {
     // Nothing
+}
+
+//--------------------------------------------------------------------------------------------------
+bool SessionTab::isDetachable() const
+{
+    return true;
 }
 
 //--------------------------------------------------------------------------------------------------

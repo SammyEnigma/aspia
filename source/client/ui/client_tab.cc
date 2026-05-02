@@ -43,6 +43,12 @@ bool ClientTab::isClosable() const
 }
 
 //--------------------------------------------------------------------------------------------------
+bool ClientTab::isDetachable() const
+{
+    return false;
+}
+
+//--------------------------------------------------------------------------------------------------
 bool ClientTab::hasSearchField() const
 {
     return false;

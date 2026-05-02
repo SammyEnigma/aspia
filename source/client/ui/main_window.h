@@ -28,6 +28,7 @@
 
 class ClientTab;
 class QLineEdit;
+class SessionTab;
 class UpdateChecker;
 struct ComputerConfig;
 
@@ -58,9 +59,12 @@ private slots:
     void onConnect(qint64 computer_id,
                    const ComputerConfig& computer,
                    proto::peer::SessionType session_type);
+    void onTabDetachRequested(int index, const QPoint& global_pos);
+    void onSessionDragFinished(const QPoint& global_pos);
 
 private:
     void addTab(ClientTab* tab, const QString& title, const QIcon& icon);
+    bool tabBarHitTest(const QPoint& global_pos) const;
     void hideCloseButtonForTab(int index);
     ClientTab* tabAt(int index);
     void updateSearchFieldVisibility();

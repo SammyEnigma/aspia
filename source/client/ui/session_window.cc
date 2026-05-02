@@ -18,6 +18,11 @@
 
 #include "client/ui/session_window.h"
 
+#include <QCursor>
+#include <QGuiApplication>
+#include <QMoveEvent>
+#include <QTimer>
+
 #include "base/gui_application.h"
 #include "base/logging.h"
 #include "base/version_constants.h"
@@ -25,10 +30,17 @@
 #include "common/ui/session_type.h"
 #include "common/ui/status_dialog.h"
 
+namespace {
+
+constexpr int kDragPollIntervalMs = 50;
+
+} // namespace
+
 //--------------------------------------------------------------------------------------------------
 SessionWindow::SessionWindow(proto::peer::SessionType session_type, QWidget* parent)
     : QWidget(parent),
-      session_type_(session_type)
+      session_type_(session_type),
+      drag_poll_timer_(new QTimer(this))
 {
     LOG(INFO) << "Ctor";
 
@@ -38,6 +50,9 @@ SessionWindow::SessionWindow(proto::peer::SessionType session_type, QWidget* par
 
     // After closing the status dialog, close the session window.
     connect(status_dialog_, &StatusDialog::finished, this, &SessionWindow::close);
+
+    drag_poll_timer_->setInterval(kDragPollIntervalMs);
+    connect(drag_poll_timer_, &QTimer::timeout, this, &SessionWindow::onDragPoll);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -103,7 +118,28 @@ bool SessionWindow::connectToHost(ComputerConfig computer, const QString& displa
 void SessionWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event";
+    drag_poll_timer_->stop();
     emit sig_stop();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SessionWindow::moveEvent(QMoveEvent* event)
+{
+    QWidget::moveEvent(event);
+
+    // Drag detection only makes sense when this widget is acting as a top-level window (i.e. the
+    // session is currently detached from the tab bar). When embedded as a child, moveEvent fires
+    // from layout repositioning and must be ignored.
+    if (window() != this)
+        return;
+
+    if (drag_poll_timer_->isActive())
+        return;
+
+    if (!(QGuiApplication::mouseButtons() & Qt::LeftButton))
+        return;
+
+    drag_poll_timer_->start();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -204,6 +240,16 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
         default:
             break;
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+void SessionWindow::onDragPoll()
+{
+    if (QGuiApplication::mouseButtons() & Qt::LeftButton)
+        return;
+
+    drag_poll_timer_->stop();
+    emit sig_dragFinished(QCursor::pos());
 }
 
 //--------------------------------------------------------------------------------------------------

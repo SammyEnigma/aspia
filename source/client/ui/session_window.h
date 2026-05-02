@@ -26,6 +26,7 @@
 
 #include <QWidget>
 
+class QTimer;
 class StatusDialog;
 
 class SessionWindow : public QWidget
@@ -47,15 +48,24 @@ signals:
     void sig_start();
     void sig_stop();
 
+    // Emitted when the user finishes a native window-drag of this widget while it is top-level
+    // (i.e. detached from a tab). The owner inspects globalReleasePos to decide whether to
+    // re-attach the session into the main tab bar.
+    void sig_dragFinished(const QPoint& globalReleasePos);
+
 protected:
     virtual Client* createClient() = 0;
     virtual void onInternalReset() = 0;
 
     // QWidget implementation.
     void closeEvent(QCloseEvent* event) override;
+    void moveEvent(QMoveEvent* event) override;
 
 public slots:
     void onStatusChanged(Client::Status status, const QVariant& data);
+
+private slots:
+    void onDragPoll();
 
 private:
     void setClientTitle(const ComputerConfig& computer, proto::peer::SessionType session_type);
@@ -64,6 +74,7 @@ private:
     const proto::peer::SessionType session_type_;
     std::shared_ptr<SessionState> session_state_;
     StatusDialog* status_dialog_ = nullptr;
+    QTimer* drag_poll_timer_ = nullptr;
 };
 
 #endif // CLIENT_UI_SESSION_WINDOW_H

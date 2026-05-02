@@ -77,6 +77,10 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/master_password_dialog.ui
     ui/session_tab.cc
     ui/session_tab.h
+    ui/tab_bar.cc
+    ui/tab_bar.h
+    ui/tab_widget.cc
+    ui/tab_widget.h
     ui/router_dialog.cc
     ui/router_dialog.h
     ui/router_dialog.ui

@@ -21,8 +21,9 @@
 #include <QDesktopServices>
 #include <QLineEdit>
 #include <QTabBar>
-#include <QUrl>
 #include <QTimer>
+#include <QUrl>
+#include <QWindow>
 
 #include "base/gui_application.h"
 #include "common/ui/msg_box.h"
@@ -35,6 +36,9 @@
 #include "client/ui/settings_dialog.h"
 #include "client/ui/client_tab.h"
 #include "client/ui/session_tab.h"
+#include "client/ui/session_window.h"
+#include "client/ui/tab_bar.h"
+#include "client/ui/tab_widget.h"
 #include "client/ui/chat/chat_session_window.h"
 #include "client/ui/hosts/hosts_tab.h"
 #include "client/ui/desktop/desktop_session_window.h"
@@ -55,6 +59,8 @@ MainWindow::MainWindow(QWidget* parent)
     Settings settings;
 
     ui.setupUi(this);
+
+    connect(ui.tabs->tabBar(), &TabBar::sig_tabDetachRequested, this, &MainWindow::onTabDetachRequested);
 
     // Create search field at the far right of the toolbar.
     QWidget* spacer = new QWidget(this);
@@ -336,28 +342,72 @@ void MainWindow::onConnect(qint64 /* computer_id */,
         return;
 
     QString display_name = Database::instance().property(Database::kDisplayNameProperty).toString();
+    QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
+    QString title = QString("%1 - %2").arg(computer_name, sessionName(session_type));
+    QIcon icon = sessionIcon(session_type);
 
-    if (ui.action_sessions_in_tabs->isChecked())
+    session_window->setWindowIcon(icon);
+
+    SessionTab* session_tab = new SessionTab(session_window);
+    addTab(session_tab, title, icon);
+
+    if (!ui.action_sessions_in_tabs->isChecked())
     {
-        QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
-        QString title = QString("%1 - %2").arg(computer_name, sessionName(session_type));
-
-        SessionTab* session_tab = new SessionTab(session_window);
-        addTab(session_tab, title, sessionIcon(session_type));
-
-        if (!session_window->connectToHost(computer, display_name))
-        {
-            int index = ui.tabs->indexOf(session_tab);
-            if (index != -1)
-                onCloseTab(index);
-        }
+        int index = ui.tabs->indexOf(session_tab);
+        ui.tabs->tabBar()->setTabVisible(index, false);
+        session_tab->detachToWindow();
     }
-    else
+
+    if (!session_window->connectToHost(computer, display_name))
     {
-        session_window->setAttribute(Qt::WA_DeleteOnClose);
-        if (!session_window->connectToHost(computer, display_name))
-            session_window->close();
+        int index = ui.tabs->indexOf(session_tab);
+        if (index != -1)
+            onCloseTab(index);
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
+{
+    SessionTab* session_tab = dynamic_cast<SessionTab*>(tabAt(index));
+    if (!session_tab || !session_tab->isDetachable() || session_tab->isDetached())
+        return;
+
+    QSize tab_size = session_tab->size();
+
+    session_tab->detachToWindow();
+    ui.tabs->tabBar()->setTabVisible(index, false);
+
+    SessionWindow* session_window = session_tab->sessionWindow();
+    if (!session_window)
+        return;
+
+    session_window->resize(tab_size);
+    session_window->move(global_pos - QPoint(tab_size.width() / 2, 15));
+    session_window->raise();
+    session_window->activateWindow();
+
+    if (QWindow* handle = session_window->windowHandle())
+        handle->startSystemMove();
+}
+
+//--------------------------------------------------------------------------------------------------
+void MainWindow::onSessionDragFinished(const QPoint& global_pos)
+{
+    SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
+    if (!session_tab || !session_tab->isDetached())
+        return;
+
+    if (!tabBarHitTest(global_pos))
+        return;
+
+    int index = ui.tabs->indexOf(session_tab);
+    if (index == -1)
+        return;
+
+    session_tab->attachToTab();
+    ui.tabs->tabBar()->setTabVisible(index, true);
+    ui.tabs->setCurrentIndex(index);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -385,7 +435,20 @@ void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
             onCloseTab(tab_index);
     }, Qt::QueuedConnection);
 
+    if (SessionTab* session_tab = qobject_cast<SessionTab*>(tab))
+        connect(session_tab, &SessionTab::sig_dragFinished, this, &MainWindow::onSessionDragFinished);
+
     ui.tabs->setCurrentIndex(index);
+}
+
+//--------------------------------------------------------------------------------------------------
+bool MainWindow::tabBarHitTest(const QPoint& global_pos) const
+{
+    QTabBar* tabbar = ui.tabs->tabBar();
+    if (!tabbar->isVisible())
+        return false;
+
+    return tabbar->rect().contains(tabbar->mapFromGlobal(global_pos));
 }
 
 //--------------------------------------------------------------------------------------------------

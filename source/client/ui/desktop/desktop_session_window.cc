@@ -111,7 +111,7 @@ DesktopSessionWindow::DesktopSessionWindow(
     {
         LOG(INFO) << "Minimize from full screen";
         is_minimized_from_full_screen_ = true;
-        showMinimized();
+        window()->showMinimized();
     });
     connect(toolbar_, &DesktopToolBar::sig_closeSession, this, &DesktopSessionWindow::close);
     connect(toolbar_, &DesktopToolBar::sig_showHidePanel, this, &DesktopSessionWindow::onShowHidePanel);
@@ -169,17 +169,18 @@ DesktopSessionWindow::DesktopSessionWindow(
             this, &DesktopSessionWindow::onPasteKeystrokes);
     connect(toolbar_, &DesktopToolBar::sig_switchToFullscreen, this, [this](bool fullscreen)
     {
+        QWidget* top = window();
         if (fullscreen)
         {
-            is_maximized_ = isMaximized();
-            showFullScreen();
+            is_maximized_ = top->isMaximized();
+            top->showFullScreen();
         }
         else
         {
             if (is_maximized_)
-                showMaximized();
+                top->showMaximized();
             else
-                showNormal();
+                top->showNormal();
         }
     });
 
@@ -314,8 +315,8 @@ Client* DesktopSessionWindow::createClient()
 void DesktopSessionWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";
-    showNormal();
-    activateWindow();
+    window()->showNormal();
+    window()->activateWindow();
     toolbar_->enableTextChat(true);
 }
 
@@ -581,7 +582,7 @@ void DesktopSessionWindow::changeEvent(QEvent* event)
 {
     if (event->type() == QEvent::WindowStateChange)
     {
-        bool is_minimized = isMinimized();
+        bool is_minimized = window()->isMinimized();
 
         LOG(INFO) << "Window minimized:" << is_minimized;
 
@@ -641,7 +642,7 @@ void DesktopSessionWindow::showEvent(QShowEvent* event)
             // not return to full screen. We force the window to full screen.
             // However, in versions of Windows less than 11, this breaks the window's minimization,
             // therefore we use this piece of code only for Windows 11.
-            showFullScreen();
+            window()->showFullScreen();
         }
 #endif // defined(Q_OS_WINDOWS)
     }
@@ -908,9 +909,10 @@ void DesktopSessionWindow::onAutosizeWindow()
         return;
     }
 
-    QScreen* current_screen = window()->screen();
+    QWidget* top = window();
+    QScreen* current_screen = top->screen();
     QRect local_screen_rect = current_screen->availableGeometry();
-    QSize window_size = screen_size_ + frameSize() - size();
+    QSize window_size = screen_size_ + top->frameSize() - top->size();
 
     if (window_size.width() < local_screen_rect.width() &&
         window_size.height() < local_screen_rect.height())
@@ -921,18 +923,18 @@ void DesktopSessionWindow::onAutosizeWindow()
                   << "local_screen_rect:" << local_screen_rect
                   << "window_size:" << window_size
                   << "remote_screen_size:" << remote_screen_size << ")";
-        showNormal();
+        top->showNormal();
 
-        resize(remote_screen_size);
-        move(local_screen_rect.x() + (local_screen_rect.width() / 2 - window_size.width() / 2),
-             local_screen_rect.y() + (local_screen_rect.height() / 2 - window_size.height() / 2));
+        top->resize(remote_screen_size);
+        top->move(local_screen_rect.x() + (local_screen_rect.width() / 2 - window_size.width() / 2),
+                  local_screen_rect.y() + (local_screen_rect.height() / 2 - window_size.height() / 2));
     }
     else
     {
         LOG(INFO) << "Show maximized (screen_size:" << screen_size_
                   << "local_screen_rect:" << local_screen_rect
                   << "window_size:" << window_size << ")";
-        showMaximized();
+        top->showMaximized();
     }
 }
 

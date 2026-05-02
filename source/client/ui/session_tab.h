@@ -35,11 +35,25 @@ public:
 
     SessionWindow* sessionWindow() const;
 
+    // Switches the embedded SessionWindow into a top-level window. The session widget is
+    // reparented away from this tab and shown. The caller is responsible for positioning and
+    // sizing the new window (and calling startSystemMove if a drag is in progress).
+    void detachToWindow();
+
+    // Switches the SessionWindow back into the tab as a child widget.
+    void attachToTab();
+
+    bool isDetached() const;
+
     QByteArray saveState() override;
     void restoreState(const QByteArray& state) override;
-
+    bool isDetachable() const override;
     void attach(QStatusBar* statusbar) override;
     void detach(QStatusBar* statusbar) override;
+
+signals:
+    // Forwarded from SessionWindow::sig_dragFinished while detached.
+    void sig_dragFinished(const QPoint& globalReleasePos);
 
 protected:
     // QObject implementation.
