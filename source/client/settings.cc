@@ -42,6 +42,7 @@ const QString kLargeIconsParam = "large_icons";
 const QString kToolbarParam = "toolbar";
 const QString kStatusbarParam = "statusbar";
 const QString kOnlineCheckParam = "online_check";
+const QString kOpenSessionsInTabsParam = "open_sessions_in_tabs";
 const QString kTabStateParam = "tab_state";
 
 } // namespace
@@ -214,6 +215,18 @@ bool Settings::isOnlineCheckEnabled() const
 void Settings::setOnlineCheckEnabled(bool enable)
 {
     settings_.setValue(kOnlineCheckParam, enable);
+}
+
+//--------------------------------------------------------------------------------------------------
+bool Settings::openSessionsInTabs() const
+{
+    return settings_.value(kOpenSessionsInTabsParam, false).toBool();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Settings::setOpenSessionsInTabs(bool enable)
+{
+    settings_.setValue(kOpenSessionsInTabsParam, enable);
 }
 
 //--------------------------------------------------------------------------------------------------

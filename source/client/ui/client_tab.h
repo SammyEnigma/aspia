@@ -58,6 +58,7 @@ public:
 
 signals:
     void sig_titleChanged(const QString& title);
+    void sig_closeRequested();
 
 protected:
     void addActions(ActionRole group, const QList<QAction*>& actions);

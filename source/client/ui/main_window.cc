@@ -34,11 +34,13 @@
 #include "client/settings.h"
 #include "client/ui/settings_dialog.h"
 #include "client/ui/client_tab.h"
+#include "client/ui/session_tab.h"
 #include "client/ui/chat/chat_session_window.h"
 #include "client/ui/hosts/hosts_tab.h"
 #include "client/ui/desktop/desktop_session_window.h"
 #include "client/ui/file_transfer/file_transfer_session_window.h"
 #include "client/ui/sys_info/system_info_session_window.h"
+#include "common/ui/session_type.h"
 #include "common/update_checker.h"
 #include "common/update_info.h"
 #include "common/ui/about_dialog.h"
@@ -77,6 +79,8 @@ MainWindow::MainWindow(QWidget* parent)
     ui.toolbar->setIconSize(large_icons ? QSize(32, 32) : QSize(24, 24));
     ui.action_large_icons->setChecked(large_icons);
 
+    ui.action_sessions_in_tabs->setChecked(settings.openSessionsInTabs());
+
     connect(ui.action_settings, &QAction::triggered, this, &MainWindow::onSettings);
     connect(ui.action_help, &QAction::triggered, this, &MainWindow::onHelp);
     connect(ui.action_about, &QAction::triggered, this, &MainWindow::onAbout);
@@ -87,7 +91,6 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui.action_large_icons, &QAction::toggled, this, [this](bool enable)
     {
         ui.toolbar->setIconSize(enable ? QSize(32, 32) : QSize(24, 24));
-        Settings().setLargeIcons(enable);
     });
 
     // Tab management.
@@ -155,6 +158,8 @@ void MainWindow::closeEvent(QCloseEvent* /* event */)
     settings.setWindowState(saveState());
     settings.setToolBarEnabled(ui.action_toolbar->isChecked());
     settings.setStatusBarEnabled(ui.action_statusbar->isChecked());
+    settings.setLargeIcons(ui.action_large_icons->isChecked());
+    settings.setOpenSessionsInTabs(ui.action_sessions_in_tabs->isChecked());
 
     for (int i = 0; i < ui.tabs->count(); ++i)
     {
@@ -332,9 +337,27 @@ void MainWindow::onConnect(qint64 /* computer_id */,
 
     QString display_name = Database::instance().property(Database::kDisplayNameProperty).toString();
 
-    session_window->setAttribute(Qt::WA_DeleteOnClose);
-    if (!session_window->connectToHost(computer, display_name))
-        session_window->close();
+    if (ui.action_sessions_in_tabs->isChecked())
+    {
+        QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
+        QString title = QString("%1 - %2").arg(computer_name, sessionName(session_type));
+
+        SessionTab* session_tab = new SessionTab(session_window);
+        addTab(session_tab, title, sessionIcon(session_type));
+
+        if (!session_window->connectToHost(computer, display_name))
+        {
+            int index = ui.tabs->indexOf(session_tab);
+            if (index != -1)
+                onCloseTab(index);
+        }
+    }
+    else
+    {
+        session_window->setAttribute(Qt::WA_DeleteOnClose);
+        if (!session_window->connectToHost(computer, display_name))
+            session_window->close();
+    }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -354,6 +377,15 @@ void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
         if (tab_index != -1)
             ui.tabs->setTabText(tab_index, new_title);
     });
+
+    connect(tab, &ClientTab::sig_closeRequested, this, [this, tab]()
+    {
+        int tab_index = ui.tabs->indexOf(tab);
+        if (tab_index != -1)
+            onCloseTab(tab_index);
+    }, Qt::QueuedConnection);
+
+    ui.tabs->setCurrentIndex(index);
 }
 
 //--------------------------------------------------------------------------------------------------

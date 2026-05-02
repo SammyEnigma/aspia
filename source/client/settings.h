@@ -69,6 +69,9 @@ public:
     bool isOnlineCheckEnabled() const;
     void setOnlineCheckEnabled(bool enable);
 
+    bool openSessionsInTabs() const;
+    void setOpenSessionsInTabs(bool enable);
+
     QByteArray tabState(const QString& name) const;
     void setTabState(const QString& name, const QByteArray& state);
 

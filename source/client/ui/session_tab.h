@@ -19,22 +19,36 @@
 #ifndef CLIENT_UI_SESSION_TAB_H
 #define CLIENT_UI_SESSION_TAB_H
 
+#include "base/scoped_qpointer.h"
 #include "client/ui/client_tab.h"
 
 class QStatusBar;
+class SessionWindow;
 
 class SessionTab : public ClientTab
 {
     Q_OBJECT
 
 public:
-    explicit SessionTab(const QString& title, QWidget* parent = nullptr);
+    explicit SessionTab(SessionWindow* session_window, QWidget* parent = nullptr);
     ~SessionTab() override;
+
+    SessionWindow* sessionWindow() const;
+
+    QByteArray saveState() override;
+    void restoreState(const QByteArray& state) override;
 
     void attach(QStatusBar* statusbar) override;
     void detach(QStatusBar* statusbar) override;
 
+protected:
+    // QObject implementation.
+    bool eventFilter(QObject* object, QEvent* event) override;
+
 private:
+    ScopedQPointer<SessionWindow> session_window_;
+    bool closing_ = false;
+
     Q_DISABLE_COPY_MOVE(SessionTab)
 };
 

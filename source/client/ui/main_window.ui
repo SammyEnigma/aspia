@@ -90,6 +90,8 @@
     <addaction name="action_toolbar"/>
     <addaction name="action_statusbar"/>
     <addaction name="action_large_icons"/>
+    <addaction name="separator"/>
+    <addaction name="action_sessions_in_tabs"/>
    </widget>
    <widget class="QMenu" name="menu_session_type">
     <property name="title">
@@ -183,6 +185,14 @@
    </property>
    <property name="text">
     <string>Large icons</string>
+   </property>
+  </action>
+  <action name="action_sessions_in_tabs">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Open Sessions in Tabs</string>
    </property>
   </action>
  </widget>

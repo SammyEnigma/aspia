@@ -18,23 +18,54 @@
 
 #include "client/ui/session_tab.h"
 
-#include <QLabel>
+#include <QEvent>
 #include <QVBoxLayout>
 
+#include "client/ui/session_window.h"
+
 //--------------------------------------------------------------------------------------------------
-SessionTab::SessionTab(const QString& title, QWidget* parent)
-    : ClientTab(Type::SESSION, "session", parent)
+SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
+    : ClientTab(Type::SESSION, "session", parent),
+      session_window_(session_window)
 {
     QVBoxLayout* layout = new QVBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
 
-    QLabel* label = new QLabel(title, this);
-    label->setAlignment(Qt::AlignCenter);
-
-    layout->addWidget(label);
+    if (session_window_)
+    {
+        session_window_->setParent(this);
+        session_window_->installEventFilter(this);
+        layout->addWidget(session_window_);
+        session_window_->show();
+    }
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionTab::~SessionTab() = default;
+SessionTab::~SessionTab()
+{
+    closing_ = true;
+
+    if (session_window_)
+        session_window_->close();
+}
+
+//--------------------------------------------------------------------------------------------------
+SessionWindow* SessionTab::sessionWindow() const
+{
+    return session_window_;
+}
+
+//--------------------------------------------------------------------------------------------------
+QByteArray SessionTab::saveState()
+{
+    return QByteArray();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SessionTab::restoreState(const QByteArray& /* state */)
+{
+    // Nothing
+}
 
 //--------------------------------------------------------------------------------------------------
 void SessionTab::attach(QStatusBar* /* statusbar */)
@@ -46,4 +77,28 @@ void SessionTab::attach(QStatusBar* /* statusbar */)
 void SessionTab::detach(QStatusBar* /* statusbar */)
 {
     // Nothing
+}
+
+//--------------------------------------------------------------------------------------------------
+bool SessionTab::eventFilter(QObject* object, QEvent* event)
+{
+    if (object == session_window_)
+    {
+        switch (event->type())
+        {
+            case QEvent::WindowTitleChange:
+                emit sig_titleChanged(session_window_->windowTitle());
+                break;
+
+            case QEvent::Close:
+                if (!closing_)
+                    emit sig_closeRequested();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    return ClientTab::eventFilter(object, event);
 }
