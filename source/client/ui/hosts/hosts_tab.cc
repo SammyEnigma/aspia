@@ -178,7 +178,7 @@ QByteArray HostsTab::saveState()
 
     {
         QDataStream stream(&buffer, QIODevice::WriteOnly);
-        stream.setVersion(QDataStream::Qt_5_15);
+        stream.setVersion(QDataStream::Qt_6_10);
 
         stream << local_group_widget_->saveState();
         stream << router_group_widget_->saveState();
@@ -187,7 +187,7 @@ QByteArray HostsTab::saveState()
         QByteArray routers_buffer;
         {
             QDataStream routers_stream(&routers_buffer, QIODevice::WriteOnly);
-            routers_stream.setVersion(QDataStream::Qt_5_15);
+            routers_stream.setVersion(QDataStream::Qt_6_10);
 
             routers_stream << quint32(router_widgets_.size());
             for (auto it = router_widgets_.begin(); it != router_widgets_.end(); ++it)
@@ -206,7 +206,7 @@ QByteArray HostsTab::saveState()
 void HostsTab::restoreState(const QByteArray& state)
 {
     QDataStream stream(state);
-    stream.setVersion(QDataStream::Qt_5_15);
+    stream.setVersion(QDataStream::Qt_6_10);
 
     QByteArray local_group_state;
     QByteArray router_group_state;
@@ -239,7 +239,7 @@ void HostsTab::restoreState(const QByteArray& state)
     if (!routers_buffer.isEmpty())
     {
         QDataStream routers_stream(routers_buffer);
-        routers_stream.setVersion(QDataStream::Qt_5_15);
+        routers_stream.setVersion(QDataStream::Qt_6_10);
 
         quint32 count = 0;
         routers_stream >> count;

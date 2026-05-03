@@ -492,7 +492,7 @@ QByteArray RouterWidget::saveState()
 
     {
         QDataStream stream(&buffer, QIODevice::WriteOnly);
-        stream.setVersion(QDataStream::Qt_5_15);
+        stream.setVersion(QDataStream::Qt_6_10);
 
         stream << ui.tree_relays->header()->saveState();
         stream << ui.splitter->saveState();
@@ -508,7 +508,7 @@ QByteArray RouterWidget::saveState()
 void RouterWidget::restoreState(const QByteArray& state)
 {
     QDataStream stream(state);
-    stream.setVersion(QDataStream::Qt_5_15);
+    stream.setVersion(QDataStream::Qt_6_10);
 
     QByteArray relays_columns_state;
     QByteArray splitter_state;

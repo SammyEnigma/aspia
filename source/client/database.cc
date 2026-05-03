@@ -760,7 +760,7 @@ bool Database::setProperty(const QString& name, const QVariant& value)
 
     QByteArray buffer;
     QDataStream stream(&buffer, QIODevice::WriteOnly);
-    stream.setVersion(QDataStream::Qt_6_0);
+    stream.setVersion(QDataStream::Qt_6_10);
     stream << value;
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
@@ -804,7 +804,7 @@ QVariant Database::property(const QString& name, const QVariant& default_value) 
 
     QByteArray buffer = query.value(0).toByteArray();
     QDataStream stream(&buffer, QIODevice::ReadOnly);
-    stream.setVersion(QDataStream::Qt_6_0);
+    stream.setVersion(QDataStream::Qt_6_10);
 
     QVariant value;
     stream >> value;

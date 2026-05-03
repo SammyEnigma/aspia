@@ -137,7 +137,7 @@ QString variantToString(const QVariant& value)
 
             {
                 QDataStream stream(&buffer, QIODevice::WriteOnly);
-                stream.setVersion(QDataStream::Qt_5_15);
+                stream.setVersion(QDataStream::Qt_6_10);
                 stream << value;
             }
 
@@ -161,7 +161,7 @@ QVariant stringToVariant(QStringView value, const QString& type)
         QByteArray buffer = QByteArray::fromHex(value.toLatin1());
 
         QDataStream stream(&buffer, QIODevice::ReadOnly);
-        stream.setVersion(QDataStream::Qt_5_15);
+        stream.setVersion(QDataStream::Qt_6_10);
 
         QVariant result;
         stream >> result;

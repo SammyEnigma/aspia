@@ -193,7 +193,7 @@ QByteArray FileTransferSessionWindow::saveState() const
 
     {
         QDataStream stream(&buffer, QIODevice::WriteOnly);
-        stream.setVersion(QDataStream::Qt_5_15);
+        stream.setVersion(QDataStream::Qt_6_10);
         stream << ui->splitter->saveState();
         stream << ui->local_panel->saveState();
         stream << ui->remote_panel->saveState();
@@ -206,7 +206,7 @@ QByteArray FileTransferSessionWindow::saveState() const
 void FileTransferSessionWindow::restoreState(const QByteArray& state)
 {
     QDataStream stream(state);
-    stream.setVersion(QDataStream::Qt_5_15);
+    stream.setVersion(QDataStream::Qt_6_10);
 
     QByteArray value;
 

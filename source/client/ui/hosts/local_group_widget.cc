@@ -190,7 +190,7 @@ QByteArray LocalGroupWidget::saveState()
 
     {
         QDataStream stream(&buffer, QIODevice::WriteOnly);
-        stream.setVersion(QDataStream::Qt_5_15);
+        stream.setVersion(QDataStream::Qt_6_10);
 
         stream << ui.tree_computer->header()->saveState();
     }
@@ -202,7 +202,7 @@ QByteArray LocalGroupWidget::saveState()
 void LocalGroupWidget::restoreState(const QByteArray& state)
 {
     QDataStream stream(state);
-    stream.setVersion(QDataStream::Qt_5_15);
+    stream.setVersion(QDataStream::Qt_6_10);
 
     QByteArray columns_state;
     stream >> columns_state;
