@@ -118,6 +118,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="checkbox_send_key_combinations">
+        <property name="text">
+         <string>Send key combinations</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

@@ -845,7 +845,8 @@ void DesktopWindow::onSettings()
 {
     LOG(INFO) << "Create desktop config dialog";
 
-    DesktopConfigDialog* dialog = new DesktopConfigDialog(desktop_config_, this);
+    DesktopConfigDialog* dialog = new DesktopConfigDialog(
+        desktop_config_, desktop_->keyCombinationsEnabled(), this);
     dialog->setAttribute(Qt::WA_DeleteOnClose);
 
     dialog->enableAudioFeature(feature_audio_);
@@ -858,6 +859,8 @@ void DesktopWindow::onSettings()
     dialog->enableBlockInputFeature(feature_block_input_);
 
     connect(dialog, &DesktopConfigDialog::sig_configChanged, this, &DesktopWindow::onConfigChanged);
+    connect(dialog, &DesktopConfigDialog::sig_sendKeyCombinationsChanged,
+            desktop_, &DesktopWidget::enableKeyCombinations);
 
     dialog->show();
     dialog->activateWindow();

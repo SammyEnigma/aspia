@@ -63,6 +63,8 @@ public:
                       const QPoint& delta = QPoint());
     void doKeyEvent(QKeyEvent* event);
 
+    bool keyCombinationsEnabled() const { return enable_key_sequenses_; }
+
 public slots:
     void executeKeyCombination(QKeyCombination key_sequence);
 

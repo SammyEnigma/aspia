@@ -22,7 +22,6 @@
 #include <QDialog>
 
 #include "proto/desktop_control.h"
-#include "proto/peer.h"
 
 class QAbstractButton;
 
@@ -35,7 +34,9 @@ class DesktopConfigDialog final : public QDialog
     Q_OBJECT
 
 public:
-    explicit DesktopConfigDialog(const proto::control::Config& config, QWidget* parent = nullptr);
+    DesktopConfigDialog(const proto::control::Config& config,
+                        bool send_key_combinations,
+                        QWidget* parent = nullptr);
     ~DesktopConfigDialog() final;
 
     void enableAudioFeature(bool enable);
@@ -51,6 +52,7 @@ public:
 
 signals:
     void sig_configChanged(const proto::control::Config& config);
+    void sig_sendKeyCombinationsChanged(bool enable);
 
 private slots:
     void onButtonBoxClicked(QAbstractButton* button);

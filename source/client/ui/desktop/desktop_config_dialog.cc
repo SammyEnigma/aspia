@@ -25,7 +25,9 @@
 #include "ui_desktop_config_dialog.h"
 
 //--------------------------------------------------------------------------------------------------
-DesktopConfigDialog::DesktopConfigDialog(const proto::control::Config& config, QWidget* parent)
+DesktopConfigDialog::DesktopConfigDialog(const proto::control::Config& config,
+                                         bool send_key_combinations,
+                                         QWidget* parent)
     : QDialog(parent),
       ui(std::make_unique<Ui::DesktopConfigDialog>()),
       config_(config)
@@ -41,6 +43,7 @@ DesktopConfigDialog::DesktopConfigDialog(const proto::control::Config& config, Q
     ui->checkbox_enable_cursor_pos->setChecked(config_.cursor_position());
     ui->checkbox_desktop_effects->setChecked(!config_.effects());
     ui->checkbox_desktop_wallpaper->setChecked(!config_.wallpaper());
+    ui->checkbox_send_key_combinations->setChecked(send_key_combinations);
 
     connect(ui->button_box, &QDialogButtonBox::clicked, this, &DesktopConfigDialog::onButtonBoxClicked);
 
@@ -130,6 +133,7 @@ void DesktopConfigDialog::onButtonBoxClicked(QAbstractButton* button)
         config_.set_lock_at_disconnect(ui->checkbox_lock_at_disconnect->isChecked());
 
         emit sig_configChanged(config_);
+        emit sig_sendKeyCombinationsChanged(ui->checkbox_send_key_combinations->isChecked());
         accept();
     }
     else
