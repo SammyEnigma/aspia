@@ -392,7 +392,7 @@ void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainWindow::onSessionDragMove(const QPoint& global_pos)
+void MainWindow::onTabDragMove(const QPoint& global_pos)
 {
     SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
     if (!session_tab || !session_tab->isDetached())
@@ -409,7 +409,7 @@ void MainWindow::onSessionDragMove(const QPoint& global_pos)
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainWindow::onSessionDragFinished(const QPoint& global_pos)
+void MainWindow::onTabDragFinished(const QPoint& global_pos)
 {
     SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
     if (!session_tab || !session_tab->isDetached())
@@ -459,11 +459,8 @@ void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
             onCloseTab(tab_index);
     }, Qt::QueuedConnection);
 
-    if (SessionTab* session_tab = qobject_cast<SessionTab*>(tab))
-    {
-        connect(session_tab, &SessionTab::sig_dragMove, this, &MainWindow::onSessionDragMove);
-        connect(session_tab, &SessionTab::sig_dragFinished, this, &MainWindow::onSessionDragFinished);
-    }
+    connect(tab, &Tab::sig_dragMove, this, &MainWindow::onTabDragMove);
+    connect(tab, &Tab::sig_dragFinished, this, &MainWindow::onTabDragFinished);
 
     ui.tabs->setCurrentIndex(index);
 }

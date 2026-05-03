@@ -28,19 +28,18 @@ SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
     : Tab(Type::SESSION, "session", parent),
       session_window_(session_window)
 {
+    CHECK(session_window);
+
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
-    if (session_window_)
-    {
-        session_window_->setParent(this);
-        session_window_->installEventFilter(this);
-        layout->addWidget(session_window_);
-        session_window_->show();
+    session_window_->setParent(this);
+    session_window_->installEventFilter(this);
+    layout->addWidget(session_window_);
+    session_window_->show();
 
-        connect(session_window_, &SessionWindow::sig_dragMove, this, &SessionTab::sig_dragMove);
-        connect(session_window_, &SessionWindow::sig_dragFinished, this, &SessionTab::sig_dragFinished);
-    }
+    connect(session_window_, &SessionWindow::sig_dragMove, this, &Tab::sig_dragMove);
+    connect(session_window_, &SessionWindow::sig_dragFinished, this, &Tab::sig_dragFinished);
 }
 
 //--------------------------------------------------------------------------------------------------

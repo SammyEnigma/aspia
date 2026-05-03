@@ -51,12 +51,6 @@ public:
     void activate(QStatusBar* statusbar) final;
     void deactivate(QStatusBar* statusbar) final;
 
-signals:
-    // Forwarded from SessionWindow::sig_dragMove while detached.
-    void sig_dragMove(const QPoint& global_pos);
-    // Forwarded from SessionWindow::sig_dragFinished while detached.
-    void sig_dragFinished(const QPoint& global_release_pos);
-
 protected:
     // QObject implementation.
     bool eventFilter(QObject* object, QEvent* event) final;

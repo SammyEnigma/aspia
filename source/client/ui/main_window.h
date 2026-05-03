@@ -60,8 +60,8 @@ private slots:
                    const ComputerConfig& computer,
                    proto::peer::SessionType session_type);
     void onTabDetachRequested(int index, const QPoint& global_pos);
-    void onSessionDragMove(const QPoint& global_pos);
-    void onSessionDragFinished(const QPoint& global_pos);
+    void onTabDragMove(const QPoint& global_pos);
+    void onTabDragFinished(const QPoint& global_pos);
 
 private:
     void addTab(Tab* tab, const QString& title, const QIcon& icon);

@@ -60,6 +60,12 @@ signals:
     void sig_titleChanged(const QString& title);
     void sig_closeRequested();
 
+    // Emitted while the user drags a detached tab as a top-level window with the left mouse
+    // button held. The owner uses global_pos to update visual hints (e.g. previewing the drop
+    // target in the main tab bar). Detachable subclasses are responsible for emitting these.
+    void sig_dragMove(const QPoint& global_pos);
+    void sig_dragFinished(const QPoint& global_release_pos);
+
 protected:
     void addActions(ActionRole group, const QList<QAction*>& actions);
 
