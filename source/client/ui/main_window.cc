@@ -131,6 +131,7 @@ MainWindow::MainWindow(QWidget* parent)
     // Hide dynamic menus until a tab populates them.
     ui.menu_edit->menuAction()->setVisible(false);
     ui.menu_session_type->menuAction()->setVisible(false);
+    ui.menu_action->menuAction()->setVisible(false);
 
     HostsTab* hosts = new HostsTab(this);
     connect(hosts, &HostsTab::sig_connect, this, &MainWindow::onConnect);
