@@ -31,10 +31,10 @@
 #include "client/ui/application.h"
 #include "client/ui/main_window.h"
 #include "client/ui/unlock_dialog.h"
-#include "client/ui/chat/chat_session_window.h"
-#include "client/ui/desktop/desktop_session_window.h"
-#include "client/ui/file_transfer/file_transfer_session_window.h"
-#include "client/ui/sys_info/system_info_session_window.h"
+#include "client/ui/chat/chat_window.h"
+#include "client/ui/desktop/desktop_window.h"
+#include "client/ui/file_transfer/file_transfer_window.h"
+#include "client/ui/sys_info/system_info_window.h"
 
 //--------------------------------------------------------------------------------------------------
 void onInvalidValue(const QString& arg, const QString& values)
@@ -233,24 +233,24 @@ bool startSession(const ComputerConfig& computer,
                   const QString& display_name,
                   const proto::control::Config& desktop_config)
 {
-    SessionWindow* session_window = nullptr;
+    ClientWindow* client_window = nullptr;
 
     switch (session_type)
     {
         case proto::peer::SESSION_TYPE_DESKTOP:
-            session_window = new DesktopSessionWindow(desktop_config);
+            client_window = new DesktopWindow(desktop_config);
             break;
 
         case proto::peer::SESSION_TYPE_FILE_TRANSFER:
-            session_window = new FileTransferSessionWindow();
+            client_window = new FileTransferWindow();
             break;
 
         case proto::peer::SESSION_TYPE_SYSTEM_INFO:
-            session_window = new SystemInfoSessionWindow();
+            client_window = new SystemInfoWindow();
             break;
 
         case proto::peer::SESSION_TYPE_TEXT_CHAT:
-            session_window = new ChatSessionWindow();
+            client_window = new ChatWindow();
             break;
 
         default:
@@ -258,14 +258,14 @@ bool startSession(const ComputerConfig& computer,
             break;
     }
 
-    if (!session_window)
+    if (!client_window)
     {
         LOG(ERROR) << "Session window not created";
         return false;
     }
 
-    session_window->setAttribute(Qt::WA_DeleteOnClose);
-    if (!session_window->connectToHost(computer, display_name))
+    client_window->setAttribute(Qt::WA_DeleteOnClose);
+    if (!client_window->connectToHost(computer, display_name))
         LOG(ERROR) << "Unable to connect to host";
 
     return true;

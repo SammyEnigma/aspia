@@ -16,32 +16,32 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_SESSION_WINDOW_H
-#define CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_SESSION_WINDOW_H
+#ifndef CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WINDOW_H
+#define CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WINDOW_H
 
 #include <QPointer>
 
 #include "client/file_remover.h"
 #include "client/file_transfer.h"
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 
 namespace Ui {
-class FileTransferSessionWindow;
+class FileTransferWindow;
 } // namespace Ui
 
 class FilePanel;
 class FileRemoveDialog;
 class FileTransferDialog;
 
-class FileTransferSessionWindow final : public SessionWindow
+class FileTransferWindow final : public ClientWindow
 {
     Q_OBJECT
 
 public:
-    explicit FileTransferSessionWindow(QWidget* parent = nullptr);
-    ~FileTransferSessionWindow() final;
+    explicit FileTransferWindow(QWidget* parent = nullptr);
+    ~FileTransferWindow() final;
 
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     Client* createClient() final;
 
     QByteArray saveState() const;
@@ -70,7 +70,7 @@ signals:
     void sig_transferRequest(FileTransfer* transfer);
 
 protected:
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     void onInternalReset() final;
 
     // QWidget implementation.
@@ -95,12 +95,12 @@ private:
                    const QString& mime_type,
                    FilePanel* panel);
 
-    std::unique_ptr<Ui::FileTransferSessionWindow> ui;
+    std::unique_ptr<Ui::FileTransferWindow> ui;
 
     QPointer<FileRemoveDialog> remove_dialog_;
     QPointer<FileTransferDialog> transfer_dialog_;
 
-    Q_DISABLE_COPY_MOVE(FileTransferSessionWindow)
+    Q_DISABLE_COPY_MOVE(FileTransferWindow)
 };
 
-#endif // CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_SESSION_WINDOW_H
+#endif // CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WINDOW_H

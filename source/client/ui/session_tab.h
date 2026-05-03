@@ -23,17 +23,17 @@
 #include "client/ui/tab.h"
 
 class QStatusBar;
-class SessionWindow;
+class ClientWindow;
 
 class SessionTab final : public Tab
 {
     Q_OBJECT
 
 public:
-    explicit SessionTab(SessionWindow* session_window, QWidget* parent = nullptr);
+    explicit SessionTab(ClientWindow* client_window, QWidget* parent = nullptr);
     ~SessionTab() final;
 
-    SessionWindow* sessionWindow() const;
+    ClientWindow* clientWindow() const;
 
     // Tab implementation.
     bool isDetachable() const final;
@@ -52,7 +52,7 @@ protected:
     bool eventFilter(QObject* object, QEvent* event) final;
 
 private:
-    ScopedQPointer<SessionWindow> session_window_;
+    ScopedQPointer<ClientWindow> client_window_;
     bool closing_ = false;
 
     Q_DISABLE_COPY_MOVE(SessionTab)

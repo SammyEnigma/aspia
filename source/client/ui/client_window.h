@@ -16,8 +16,8 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_SESSION_WINDOW_H
-#define CLIENT_UI_SESSION_WINDOW_H
+#ifndef CLIENT_UI_CLIENT_WINDOW_H
+#define CLIENT_UI_CLIENT_WINDOW_H
 
 #include "client/client.h"
 #include "client/config.h"
@@ -29,13 +29,13 @@
 class QTimer;
 class StatusDialog;
 
-class SessionWindow : public QWidget
+class ClientWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit SessionWindow(proto::peer::SessionType session_type, QWidget* parent = nullptr);
-    virtual ~SessionWindow() override;
+    explicit ClientWindow(proto::peer::SessionType session_type, QWidget* parent = nullptr);
+    virtual ~ClientWindow() override;
 
     // Connects to a host.
     // If the username and/or password are not specified in the connection parameters, the
@@ -99,4 +99,4 @@ private:
     QTimer* drag_poll_timer_ = nullptr;
 };
 
-#endif // CLIENT_UI_SESSION_WINDOW_H
+#endif // CLIENT_UI_CLIENT_WINDOW_H

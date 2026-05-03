@@ -16,29 +16,29 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_CHAT_CHAT_SESSION_WINDOW_H
-#define CLIENT_UI_CHAT_CHAT_SESSION_WINDOW_H
+#ifndef CLIENT_UI_CHAT_CHAT_WINDOW_H
+#define CLIENT_UI_CHAT_CHAT_WINDOW_H
 
 #include <QTreeWidget>
 
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 #include "proto/chat.h"
 
 namespace Ui {
-class ChatSessionWindow;
+class ChatWindow;
 } // namespace Ui
 
 class QHBoxLayout;
 
-class ChatSessionWindow final : public SessionWindow
+class ChatWindow final : public ClientWindow
 {
     Q_OBJECT
 
 public:
-    explicit ChatSessionWindow(QWidget* parent = nullptr);
-    ~ChatSessionWindow() final;
+    explicit ChatWindow(QWidget* parent = nullptr);
+    ~ChatWindow() final;
 
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     Client* createClient() final;
 
 public slots:
@@ -49,12 +49,12 @@ signals:
     void sig_chatMessage(const proto::chat::Chat& chat);
 
 protected:
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     void onInternalReset() final;
 
 private:
-    std::unique_ptr<Ui::ChatSessionWindow> ui;
-    Q_DISABLE_COPY_MOVE(ChatSessionWindow)
+    std::unique_ptr<Ui::ChatWindow> ui;
+    Q_DISABLE_COPY_MOVE(ChatWindow)
 };
 
-#endif // CLIENT_UI_CHAT_CHAT_SESSION_WINDOW_H
+#endif // CLIENT_UI_CHAT_CHAT_WINDOW_H

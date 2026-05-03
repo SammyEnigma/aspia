@@ -21,28 +21,28 @@
 #include <QEvent>
 #include <QVBoxLayout>
 
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 
 //--------------------------------------------------------------------------------------------------
-SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
+SessionTab::SessionTab(ClientWindow* client_window, QWidget* parent)
     : Tab(Type::SESSION, "session", parent),
-      session_window_(session_window)
+      client_window_(client_window)
 {
-    CHECK(session_window);
+    CHECK(client_window);
 
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
-    session_window_->setParent(this);
-    session_window_->installEventFilter(this);
-    layout->addWidget(session_window_);
-    session_window_->show();
+    client_window_->setParent(this);
+    client_window_->installEventFilter(this);
+    layout->addWidget(client_window_);
+    client_window_->show();
 
-    connect(session_window_, &SessionWindow::sig_dragMove, this, &Tab::sig_dragMove);
-    connect(session_window_, &SessionWindow::sig_dragFinished, this, &Tab::sig_dragFinished);
-    connect(session_window_, &SessionWindow::sig_fullscreenRequested, this, &Tab::sig_fullscreenRequested);
-    connect(session_window_, &SessionWindow::sig_minimizeRequested, this, &Tab::sig_minimizeRequested);
-    connect(session_window_, &SessionWindow::sig_showRequested, this, &Tab::sig_showRequested);
+    connect(client_window_, &ClientWindow::sig_dragMove, this, &Tab::sig_dragMove);
+    connect(client_window_, &ClientWindow::sig_dragFinished, this, &Tab::sig_dragFinished);
+    connect(client_window_, &ClientWindow::sig_fullscreenRequested, this, &Tab::sig_fullscreenRequested);
+    connect(client_window_, &ClientWindow::sig_minimizeRequested, this, &Tab::sig_minimizeRequested);
+    connect(client_window_, &ClientWindow::sig_showRequested, this, &Tab::sig_showRequested);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -50,14 +50,14 @@ SessionTab::~SessionTab()
 {
     closing_ = true;
 
-    if (session_window_)
-        session_window_->close();
+    if (client_window_)
+        client_window_->close();
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionWindow* SessionTab::sessionWindow() const
+ClientWindow* SessionTab::clientWindow() const
 {
-    return session_window_;
+    return client_window_;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -69,36 +69,36 @@ bool SessionTab::isDetachable() const
 //--------------------------------------------------------------------------------------------------
 bool SessionTab::isDetached() const
 {
-    return session_window_ && session_window_->isWindow();
+    return client_window_ && client_window_->isWindow();
 }
 
 //--------------------------------------------------------------------------------------------------
 void SessionTab::detachToWindow()
 {
-    if (!session_window_ || isDetached())
+    if (!client_window_ || isDetached())
         return;
 
-    layout()->removeWidget(session_window_);
-    session_window_->setParent(nullptr, Qt::Window);
-    session_window_->show();
-    session_window_->setSessionPaused(false);
+    layout()->removeWidget(client_window_);
+    client_window_->setParent(nullptr, Qt::Window);
+    client_window_->show();
+    client_window_->setSessionPaused(false);
 }
 
 //--------------------------------------------------------------------------------------------------
 void SessionTab::attachToTab()
 {
-    if (!session_window_ || !isDetached())
+    if (!client_window_ || !isDetached())
         return;
 
-    session_window_->setParent(this);
-    layout()->addWidget(session_window_);
-    session_window_->show();
+    client_window_->setParent(this);
+    layout()->addWidget(client_window_);
+    client_window_->show();
 }
 
 //--------------------------------------------------------------------------------------------------
 QWidget* SessionTab::detachedWindow() const
 {
-    return isDetached() ? session_window_.get() : nullptr;
+    return isDetached() ? client_window_.get() : nullptr;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -116,15 +116,15 @@ void SessionTab::restoreState(const QByteArray& /* state */)
 //--------------------------------------------------------------------------------------------------
 void SessionTab::activate(QStatusBar* /* statusbar */)
 {
-    if (session_window_)
-        session_window_->setSessionPaused(false);
+    if (client_window_)
+        client_window_->setSessionPaused(false);
 }
 
 //--------------------------------------------------------------------------------------------------
 void SessionTab::deactivate(QStatusBar* /* statusbar */)
 {
-    if (session_window_)
-        session_window_->setSessionPaused(true);
+    if (client_window_)
+        client_window_->setSessionPaused(true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ bool SessionTab::hasStatusBar() const
 //--------------------------------------------------------------------------------------------------
 bool SessionTab::eventFilter(QObject* object, QEvent* event)
 {
-    if (object == session_window_ && event->type() == QEvent::Close && !closing_)
+    if (object == client_window_ && event->type() == QEvent::Close && !closing_)
         emit sig_closeRequested();
 
     return Tab::eventFilter(object, event);

@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 
 #include <QCursor>
 #include <QEvent>
@@ -38,7 +38,7 @@ constexpr int kDragPollIntervalMs = 50;
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-SessionWindow::SessionWindow(proto::peer::SessionType session_type, QWidget* parent)
+ClientWindow::ClientWindow(proto::peer::SessionType session_type, QWidget* parent)
     : QWidget(parent),
       session_type_(session_type),
       drag_poll_timer_(new QTimer(this))
@@ -50,20 +50,20 @@ SessionWindow::SessionWindow(proto::peer::SessionType session_type, QWidget* par
     status_dialog_->setWindowFlag(Qt::WindowStaysOnTopHint);
 
     // After closing the status dialog, close the session window.
-    connect(status_dialog_, &StatusDialog::finished, this, &SessionWindow::close);
+    connect(status_dialog_, &StatusDialog::finished, this, &ClientWindow::close);
 
     drag_poll_timer_->setInterval(kDragPollIntervalMs);
-    connect(drag_poll_timer_, &QTimer::timeout, this, &SessionWindow::onDragPoll);
+    connect(drag_poll_timer_, &QTimer::timeout, this, &ClientWindow::onDragPoll);
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionWindow::~SessionWindow()
+ClientWindow::~ClientWindow()
 {
     LOG(INFO) << "Dtor";
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionWindow::connectToHost(ComputerConfig computer, const QString& display_name)
+bool ClientWindow::connectToHost(ComputerConfig computer, const QString& display_name)
 {
     LOG(INFO) << "Connecting to host";
 
@@ -106,9 +106,9 @@ bool SessionWindow::connectToHost(ComputerConfig computer, const QString& displa
     client->moveToThread(GuiApplication::ioThread());
     client->setSessionState(session_state_);
 
-    connect(client, &Client::sig_statusChanged, this, &SessionWindow::onStatusChanged, Qt::QueuedConnection);
-    connect(this, &SessionWindow::sig_start, client, &Client::start, Qt::QueuedConnection);
-    connect(this, &SessionWindow::sig_stop, client, &Client::deleteLater, Qt::QueuedConnection);
+    connect(client, &Client::sig_statusChanged, this, &ClientWindow::onStatusChanged, Qt::QueuedConnection);
+    connect(this, &ClientWindow::sig_start, client, &Client::start, Qt::QueuedConnection);
+    connect(this, &ClientWindow::sig_stop, client, &Client::deleteLater, Qt::QueuedConnection);
 
     LOG(INFO) << "Start client";
     emit sig_start();
@@ -116,13 +116,13 @@ bool SessionWindow::connectToHost(ComputerConfig computer, const QString& displa
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::setSessionPaused(bool /* paused */)
+void ClientWindow::setSessionPaused(bool /* paused */)
 {
     // Nothing
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::closeEvent(QCloseEvent* /* event */)
+void ClientWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event";
     drag_poll_timer_->stop();
@@ -130,7 +130,7 @@ void SessionWindow::closeEvent(QCloseEvent* /* event */)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::moveEvent(QMoveEvent* event)
+void ClientWindow::moveEvent(QMoveEvent* event)
 {
     QWidget::moveEvent(event);
 
@@ -150,7 +150,7 @@ void SessionWindow::moveEvent(QMoveEvent* event)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::changeEvent(QEvent* event)
+void ClientWindow::changeEvent(QEvent* event)
 {
     QWidget::changeEvent(event);
 
@@ -162,7 +162,7 @@ void SessionWindow::changeEvent(QEvent* event)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
+void ClientWindow::onStatusChanged(Client::Status status, const QVariant& data)
 {
     LOG(INFO) << "Client status changed:" << status;
 
@@ -262,7 +262,7 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::onDragPoll()
+void ClientWindow::onDragPoll()
 {
     if (QGuiApplication::mouseButtons() & Qt::LeftButton)
     {
@@ -275,7 +275,7 @@ void SessionWindow::onDragPoll()
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::setClientTitle(const ComputerConfig& computer, proto::peer::SessionType session_type)
+void ClientWindow::setClientTitle(const ComputerConfig& computer, proto::peer::SessionType session_type)
 {
     QString session_name = sessionName(session_type);
     QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
@@ -284,7 +284,7 @@ void SessionWindow::setClientTitle(const ComputerConfig& computer, proto::peer::
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionWindow::onErrorOccurred(const QString& message)
+void ClientWindow::onErrorOccurred(const QString& message)
 {
     hide();
     onInternalReset();

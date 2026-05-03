@@ -16,14 +16,14 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_SYS_INFO_SYSTEM_INFO_SESSION_WINDOW_H
-#define CLIENT_UI_SYS_INFO_SYSTEM_INFO_SESSION_WINDOW_H
+#ifndef CLIENT_UI_SYS_INFO_SYSTEM_INFO_WINDOW_H
+#define CLIENT_UI_SYS_INFO_SYSTEM_INFO_WINDOW_H
 
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 #include "proto/system_info.h"
 
 namespace Ui {
-class SystemInfoSessionWindow;
+class SystemInfoWindow;
 } // namespace Ui
 
 class QHBoxLayout;
@@ -31,15 +31,15 @@ class QTreeWidget;
 class QTreeWidgetItem;
 class SysInfoWidget;
 
-class SystemInfoSessionWindow final : public SessionWindow
+class SystemInfoWindow final : public ClientWindow
 {
     Q_OBJECT
 
 public:
-    explicit SystemInfoSessionWindow(QWidget* parent = nullptr);
-    ~SystemInfoSessionWindow() final;
+    explicit SystemInfoWindow(QWidget* parent = nullptr);
+    ~SystemInfoWindow() final;
 
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     Client* createClient() final;
 
 public slots:
@@ -50,7 +50,7 @@ signals:
     void sig_systemInfoRequired(const proto::system_info::SystemInfoRequest& request);
 
 protected:
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     void onInternalReset() final;
 
 private slots:
@@ -58,12 +58,12 @@ private slots:
     void onRefresh();
 
 private:
-    std::unique_ptr<Ui::SystemInfoSessionWindow> ui;
+    std::unique_ptr<Ui::SystemInfoWindow> ui;
     QHBoxLayout* layout_ = nullptr;
     QList<SysInfoWidget*> sys_info_widgets_;
     int current_widget_ = 0;
 
-    Q_DISABLE_COPY_MOVE(SystemInfoSessionWindow)
+    Q_DISABLE_COPY_MOVE(SystemInfoWindow)
 };
 
-#endif // CLIENT_UI_SYS_INFO_SYSTEM_INFO_SESSION_WINDOW_H
+#endif // CLIENT_UI_SYS_INFO_SYSTEM_INFO_WINDOW_H

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SystemInfoSessionWindow</class>
- <widget class="QWidget" name="SystemInfoSessionWindow">
+ <class>SystemInfoWindow</class>
+ <widget class="QWidget" name="SystemInfoWindow">
   <property name="geometry">
    <rect>
     <x>0</x>

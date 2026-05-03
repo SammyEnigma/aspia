@@ -39,13 +39,13 @@
 #include "client/ui/settings_dialog.h"
 #include "client/ui/tab.h"
 #include "client/ui/session_tab.h"
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 #include "client/ui/tab_bar.h"
 #include "client/ui/tab_widget.h"
-#include "client/ui/chat/chat_session_window.h"
-#include "client/ui/desktop/desktop_session_window.h"
-#include "client/ui/file_transfer/file_transfer_session_window.h"
-#include "client/ui/sys_info/system_info_session_window.h"
+#include "client/ui/chat/chat_window.h"
+#include "client/ui/desktop/desktop_window.h"
+#include "client/ui/file_transfer/file_transfer_window.h"
+#include "client/ui/sys_info/system_info_window.h"
 #include "common/ui/session_type.h"
 #include "common/update_checker.h"
 #include "common/update_info.h"
@@ -315,24 +315,24 @@ void MainWindow::onConnect(qint64 /* computer_id */,
         return;
     }
 
-    SessionWindow* session_window = nullptr;
+    ClientWindow* client_window = nullptr;
 
     switch (session_type)
     {
         case proto::peer::SESSION_TYPE_DESKTOP:
-            session_window = new DesktopSessionWindow(Settings().desktopConfig());
+            client_window = new DesktopWindow(Settings().desktopConfig());
             break;
 
         case proto::peer::SESSION_TYPE_FILE_TRANSFER:
-            session_window = new FileTransferSessionWindow();
+            client_window = new FileTransferWindow();
             break;
 
         case proto::peer::SESSION_TYPE_SYSTEM_INFO:
-            session_window = new SystemInfoSessionWindow();
+            client_window = new SystemInfoWindow();
             break;
 
         case proto::peer::SESSION_TYPE_TEXT_CHAT:
-            session_window = new ChatSessionWindow();
+            client_window = new ChatWindow();
             break;
 
         default:
@@ -340,16 +340,16 @@ void MainWindow::onConnect(qint64 /* computer_id */,
             break;
     }
 
-    if (!session_window)
+    if (!client_window)
         return;
 
     QString display_name = Database::instance().displayName();
     QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
     QIcon icon = sessionIcon(session_type);
 
-    session_window->setWindowIcon(icon);
+    client_window->setWindowIcon(icon);
 
-    SessionTab* session_tab = new SessionTab(session_window);
+    SessionTab* session_tab = new SessionTab(client_window);
     addTab(session_tab, computer_name, icon);
 
     if (!ui.action_sessions_in_tabs->isChecked())
@@ -359,7 +359,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
         session_tab->detachToWindow();
     }
 
-    if (!session_window->connectToHost(computer, display_name))
+    if (!client_window->connectToHost(computer, display_name))
     {
         int index = ui.tabs->indexOf(session_tab);
         if (index != -1)

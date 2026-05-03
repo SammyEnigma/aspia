@@ -16,12 +16,12 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/chat/chat_session_window.h"
+#include "client/ui/chat/chat_window.h"
 
 #include "base/logging.h"
 #include "base/crypto/generic_hash.h"
 #include "client/client_text_chat.h"
-#include "ui_chat_session_window.h"
+#include "ui_chat_window.h"
 
 namespace {
 
@@ -39,9 +39,9 @@ QString chatHistoryId(const SessionState& session_state)
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-ChatSessionWindow::ChatSessionWindow(QWidget* parent)
-    : SessionWindow(proto::peer::SESSION_TYPE_TEXT_CHAT, parent),
-      ui(std::make_unique<Ui::ChatSessionWindow>())
+ChatWindow::ChatWindow(QWidget* parent)
+    : ClientWindow(proto::peer::SESSION_TYPE_TEXT_CHAT, parent),
+      ui(std::make_unique<Ui::ChatWindow>())
 {
     LOG(INFO) << "Ctor";
     ui->setupUi(this);
@@ -64,13 +64,13 @@ ChatSessionWindow::ChatSessionWindow(QWidget* parent)
 }
 
 //--------------------------------------------------------------------------------------------------
-ChatSessionWindow::~ChatSessionWindow()
+ChatWindow::~ChatWindow()
 {
     LOG(INFO) << "Dtor";
 }
 
 //--------------------------------------------------------------------------------------------------
-Client* ChatSessionWindow::createClient()
+Client* ChatWindow::createClient()
 {
     LOG(INFO) << "Create client";
 
@@ -78,18 +78,15 @@ Client* ChatSessionWindow::createClient()
 
     ClientChat* client = new ClientChat();
 
-    connect(this, &ChatSessionWindow::sig_chatMessage, client, &ClientChat::onChatMessage,
-            Qt::QueuedConnection);
-    connect(client, &ClientChat::sig_showSessionWindow, this, &ChatSessionWindow::onShowWindow,
-            Qt::QueuedConnection);
-    connect(client, &ClientChat::sig_chatMessage, this, &ChatSessionWindow::onChatMessage,
-            Qt::QueuedConnection);
+    connect(this, &ChatWindow::sig_chatMessage, client, &ClientChat::onChatMessage, Qt::QueuedConnection);
+    connect(client, &ClientChat::sig_showSessionWindow, this, &ChatWindow::onShowWindow, Qt::QueuedConnection);
+    connect(client, &ClientChat::sig_chatMessage, this, &ChatWindow::onChatMessage, Qt::QueuedConnection);
 
     return client;
 }
 
 //--------------------------------------------------------------------------------------------------
-void ChatSessionWindow::onShowWindow()
+void ChatWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";
 
@@ -100,7 +97,7 @@ void ChatSessionWindow::onShowWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-void ChatSessionWindow::onChatMessage(const proto::chat::Chat& chat)
+void ChatWindow::onChatMessage(const proto::chat::Chat& chat)
 {
     if (chat.has_chat_message())
     {
@@ -123,7 +120,7 @@ void ChatSessionWindow::onChatMessage(const proto::chat::Chat& chat)
 }
 
 //--------------------------------------------------------------------------------------------------
-void ChatSessionWindow::onInternalReset()
+void ChatWindow::onInternalReset()
 {
     // Nothing
 }

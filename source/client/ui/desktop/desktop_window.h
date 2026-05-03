@@ -16,14 +16,14 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_DESKTOP_DESKTOP_SESSION_WINDOW_H
-#define CLIENT_UI_DESKTOP_DESKTOP_SESSION_WINDOW_H
+#ifndef CLIENT_UI_DESKTOP_DESKTOP_WINDOW_H
+#define CLIENT_UI_DESKTOP_DESKTOP_WINDOW_H
 
 #include <QPointer>
 
 #include "base/desktop/mouse_cursor.h"
 #include "client/client_desktop.h"
-#include "client/ui/session_window.h"
+#include "client/ui/client_window.h"
 
 class QHBoxLayout;
 class QScrollArea;
@@ -36,18 +36,18 @@ class DesktopConfigDialog;
 class DesktopToolBar;
 class DesktopWidget;
 class StatisticsDialog;
-class SystemInfoSessionWindow;
+class SystemInfoWindow;
 class TaskManagerWindow;
 
-class DesktopSessionWindow final : public SessionWindow
+class DesktopWindow final : public ClientWindow
 {
     Q_OBJECT
 
 public:
-    DesktopSessionWindow(const proto::control::Config& desktop_config, QWidget* parent = nullptr);
-    ~DesktopSessionWindow() final;
+    DesktopWindow(const proto::control::Config& desktop_config, QWidget* parent = nullptr);
+    ~DesktopWindow() final;
 
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     Client* createClient() final;
     void setSessionPaused(bool paused) final;
 
@@ -79,7 +79,7 @@ signals:
     void sig_metricsRequested();
 
 protected:
-    // SessionWindow implementation.
+    // ClientWindow implementation.
     void onInternalReset() final;
 
     // QWidget implementation.
@@ -139,7 +139,7 @@ private:
 
     QPoint wheel_angle_;
 
-    Q_DISABLE_COPY_MOVE(DesktopSessionWindow)
+    Q_DISABLE_COPY_MOVE(DesktopWindow)
 };
 
-#endif // CLIENT_UI_DESKTOP_DESKTOP_SESSION_WINDOW_H
+#endif // CLIENT_UI_DESKTOP_DESKTOP_WINDOW_H

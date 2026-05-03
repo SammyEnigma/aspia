@@ -67,6 +67,8 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/authorization_dialog.cc
     ui/authorization_dialog.h
     ui/authorization_dialog.ui
+    ui/client_window.cc
+    ui/client_window.h
     ui/hosts_tab.cc
     ui/hosts_tab.h
     ui/hosts_tab.ui
@@ -90,8 +92,6 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/settings_dialog.cc
     ui/settings_dialog.h
     ui/settings_dialog.ui
-    ui/session_window.cc
-    ui/session_window.h
     ui/unlock_dialog.cc
     ui/unlock_dialog.h
     ui/unlock_dialog.ui
@@ -101,8 +101,8 @@ list(APPEND SOURCE_CLIENT_CORE_UI_DESKTOP
     ui/desktop/desktop_config_dialog.cc
     ui/desktop/desktop_config_dialog.h
     ui/desktop/desktop_config_dialog.ui
-    ui/desktop/desktop_session_window.cc
-    ui/desktop/desktop_session_window.h
+    ui/desktop/desktop_window.cc
+    ui/desktop/desktop_window.h
     ui/desktop/desktop_toolbar.cc
     ui/desktop/desktop_toolbar.h
     ui/desktop/desktop_toolbar.ui
@@ -151,9 +151,9 @@ list(APPEND SOURCE_CLIENT_CORE_UI_FILE_TRANSFER
     ui/file_transfer/file_transfer_dialog.cc
     ui/file_transfer/file_transfer_dialog.h
     ui/file_transfer/file_transfer_dialog.ui
-    ui/file_transfer/file_transfer_session_window.cc
-    ui/file_transfer/file_transfer_session_window.h
-    ui/file_transfer/file_transfer_session_window.ui)
+    ui/file_transfer/file_transfer_window.cc
+    ui/file_transfer/file_transfer_window.h
+    ui/file_transfer/file_transfer_window.ui)
 
 list(APPEND SOURCE_CLIENT_CORE_UI_SYS_INFO
     ui/sys_info/sys_info_widget.cc
@@ -218,16 +218,16 @@ list(APPEND SOURCE_CLIENT_CORE_UI_SYS_INFO
     ui/sys_info/sys_info_widget_video_adapters.cc
     ui/sys_info/sys_info_widget_video_adapters.h
     ui/sys_info/sys_info_widget_video_adapters.ui
-    ui/sys_info/system_info_session_window.cc
-    ui/sys_info/system_info_session_window.h
-    ui/sys_info/system_info_session_window.ui
+    ui/sys_info/system_info_window.cc
+    ui/sys_info/system_info_window.h
+    ui/sys_info/system_info_window.ui
     ui/sys_info/tree_to_html.cc
     ui/sys_info/tree_to_html.h)
 
 list(APPEND SOURCE_CLIENT_CORE_UI_CHAT
-    ui/chat/chat_session_window.cc
-    ui/chat/chat_session_window.h
-    ui/chat/chat_session_window.ui)
+    ui/chat/chat_window.cc
+    ui/chat/chat_window.h
+    ui/chat/chat_window.ui)
 
 list(APPEND SOURCE_CLIENT_CORE_UI_HOSTS_TAB
     ui/hosts/local_computer_dialog.cc
