@@ -100,7 +100,7 @@
    </widget>
    <widget class="QMenu" name="menu_action">
     <property name="title">
-     <string>Action</string>
+     <string>Actions</string>
     </property>
    </widget>
    <addaction name="menu_file"/>
