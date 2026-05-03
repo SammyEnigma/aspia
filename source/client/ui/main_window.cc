@@ -20,6 +20,7 @@
 
 #include <QDesktopServices>
 #include <QLineEdit>
+#include <QScreen>
 #include <QStyle>
 #include <QTabBar>
 #include <QTimer>
@@ -289,6 +290,8 @@ void MainWindow::onCloseTab(int index)
     Settings settings;
     settings.setTabState(tab->objectName(), tab->saveState());
 
+    fullscreen_was_visible_.remove(tab);
+
     ui.tabs->removeTab(index);
     delete tab;
 }
@@ -439,6 +442,85 @@ void MainWindow::onTabDragFinished(const QPoint& global_pos)
 }
 
 //--------------------------------------------------------------------------------------------------
+void MainWindow::onTabFullscreenRequested(bool enabled)
+{
+    Tab* tab = qobject_cast<Tab*>(sender());
+    if (!tab || !tab->isDetachable())
+        return;
+
+    int index = ui.tabs->indexOf(tab);
+    if (index == -1)
+        return;
+
+    TabBar* tabbar = ui.tabs->tabBar();
+
+    if (enabled)
+    {
+        fullscreen_was_visible_[tab] = tabbar->isTabVisible(index);
+
+        if (!tab->isDetached())
+            tab->detachToWindow();
+        tabbar->setTabVisible(index, false);
+
+        if (QWidget* window = tab->detachedWindow())
+        {
+            if (QScreen* target_screen = screen())
+                window->move(target_screen->geometry().topLeft());
+            window->showFullScreen();
+        }
+    }
+    else
+    {
+        if (QWidget* window = tab->detachedWindow())
+            window->showNormal();
+
+        bool was_visible = fullscreen_was_visible_.take(tab);
+        if (was_visible)
+        {
+            tab->attachToTab();
+            tabbar->setTabVisible(index, true);
+            ui.tabs->setCurrentIndex(index);
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+void MainWindow::onTabMinimizeRequested()
+{
+    Tab* tab = qobject_cast<Tab*>(sender());
+    if (!tab || !tab->isDetached())
+        return;
+
+    if (QWidget* window = tab->detachedWindow())
+        window->showMinimized();
+}
+
+//--------------------------------------------------------------------------------------------------
+void MainWindow::onTabShowRequested()
+{
+    Tab* tab = qobject_cast<Tab*>(sender());
+    if (!tab)
+        return;
+
+    int index = ui.tabs->indexOf(tab);
+    if (index == -1)
+        return;
+
+    if (tab->isDetached())
+    {
+        if (QWidget* window = tab->detachedWindow())
+        {
+            window->showNormal();
+            window->activateWindow();
+        }
+    }
+    else if (ui.tabs->tabBar()->isTabVisible(index))
+    {
+        ui.tabs->setCurrentIndex(index);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
 void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
 {
     int index = ui.tabs->addTab(tab, icon, title);
@@ -465,6 +547,9 @@ void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
 
     connect(tab, &Tab::sig_dragMove, this, &MainWindow::onTabDragMove);
     connect(tab, &Tab::sig_dragFinished, this, &MainWindow::onTabDragFinished);
+    connect(tab, &Tab::sig_fullscreenRequested, this, &MainWindow::onTabFullscreenRequested);
+    connect(tab, &Tab::sig_minimizeRequested, this, &MainWindow::onTabMinimizeRequested);
+    connect(tab, &Tab::sig_showRequested, this, &MainWindow::onTabShowRequested);
 
     ui.tabs->setCurrentIndex(index);
 }

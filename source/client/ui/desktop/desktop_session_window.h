@@ -49,6 +49,7 @@ public:
 
     // SessionWindow implementation.
     Client* createClient() final;
+    void setSessionPaused(bool paused) final;
 
 public slots:
     void onShowWindow();
@@ -84,7 +85,6 @@ protected:
     // QWidget implementation.
     void resizeEvent(QResizeEvent* event) final;
     void leaveEvent(QEvent* event) final;
-    void changeEvent(QEvent* event) final;
     void showEvent(QShowEvent* event) final;
     void focusOutEvent(QFocusEvent* event) final;
     void closeEvent(QCloseEvent* event) final;
@@ -118,7 +118,6 @@ private:
     QTimer* scroll_timer_ = nullptr;
     QPoint scroll_delta_;
 
-    bool is_maximized_ = false;
     bool is_minimized_from_full_screen_ = false;
 
     std::optional<QPoint> start_panel_pos_;

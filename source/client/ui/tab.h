@@ -70,6 +70,12 @@ signals:
     void sig_dragMove(const QPoint& global_pos);
     void sig_dragFinished(const QPoint& global_release_pos);
 
+    // Forwarded session-level requests. The container (e.g. MainWindow) decides how to honor
+    // them depending on whether the tab is currently attached or detached.
+    void sig_fullscreenRequested(bool enabled);
+    void sig_minimizeRequested();
+    void sig_showRequested();
+
 protected:
     void addActions(ActionRole group, const QList<QAction*>& actions);
 

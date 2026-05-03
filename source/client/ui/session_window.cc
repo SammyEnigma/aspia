@@ -19,6 +19,7 @@
 #include "client/ui/session_window.h"
 
 #include <QCursor>
+#include <QEvent>
 #include <QGuiApplication>
 #include <QMoveEvent>
 #include <QTimer>
@@ -115,6 +116,12 @@ bool SessionWindow::connectToHost(ComputerConfig computer, const QString& displa
 }
 
 //--------------------------------------------------------------------------------------------------
+void SessionWindow::setSessionPaused(bool /* paused */)
+{
+    // Nothing
+}
+
+//--------------------------------------------------------------------------------------------------
 void SessionWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event";
@@ -140,6 +147,18 @@ void SessionWindow::moveEvent(QMoveEvent* event)
         return;
 
     drag_poll_timer_->start();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SessionWindow::changeEvent(QEvent* event)
+{
+    QWidget::changeEvent(event);
+
+    // Mirror window minimize/restore as a session pause/resume request, but only when this widget
+    // really is the top-level window. In a tabbed setup the container drives setSessionPaused
+    // directly via activate/deactivate.
+    if (event->type() == QEvent::WindowStateChange && isWindow())
+        setSessionPaused(isMinimized());
 }
 
 //--------------------------------------------------------------------------------------------------

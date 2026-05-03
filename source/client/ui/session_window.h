@@ -44,6 +44,11 @@ public:
 
     std::shared_ptr<SessionState> sessionState() { return session_state_; }
 
+    // Notifies the session that it has been hidden (paused=true) or made visible again
+    // (paused=false). Subclasses override to pause/resume video, audio, etc. The container
+    // (Tab/MainWindow) drives this from tab activation or window state changes.
+    virtual void setSessionPaused(bool paused);
+
 signals:
     void sig_start();
     void sig_stop();
@@ -58,6 +63,17 @@ signals:
     // re-attach the session into the main tab bar.
     void sig_dragFinished(const QPoint& global_release_pos);
 
+    // Asks the container to toggle fullscreen for this session. The container decides how to do
+    // it (e.g. tabbed session detaches into a top-level window first, then goes fullscreen).
+    void sig_fullscreenRequested(bool enabled);
+
+    // Asks the container to minimize the session. Tabbed containers ignore this.
+    void sig_minimizeRequested();
+
+    // Asks the container to bring the session to the user's attention (raise / activate / make
+    // current tab). Emitted when the connection is established.
+    void sig_showRequested();
+
 protected:
     virtual Client* createClient() = 0;
     virtual void onInternalReset() = 0;
@@ -65,6 +81,7 @@ protected:
     // QWidget implementation.
     void closeEvent(QCloseEvent* event) override;
     void moveEvent(QMoveEvent* event) override;
+    void changeEvent(QEvent* event) override;
 
 public slots:
     void onStatusChanged(Client::Status status, const QVariant& data);

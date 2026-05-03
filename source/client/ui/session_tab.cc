@@ -40,6 +40,9 @@ SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
 
     connect(session_window_, &SessionWindow::sig_dragMove, this, &Tab::sig_dragMove);
     connect(session_window_, &SessionWindow::sig_dragFinished, this, &Tab::sig_dragFinished);
+    connect(session_window_, &SessionWindow::sig_fullscreenRequested, this, &Tab::sig_fullscreenRequested);
+    connect(session_window_, &SessionWindow::sig_minimizeRequested, this, &Tab::sig_minimizeRequested);
+    connect(session_window_, &SessionWindow::sig_showRequested, this, &Tab::sig_showRequested);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -78,6 +81,7 @@ void SessionTab::detachToWindow()
     layout()->removeWidget(session_window_);
     session_window_->setParent(nullptr, Qt::Window);
     session_window_->show();
+    session_window_->setSessionPaused(false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -112,13 +116,15 @@ void SessionTab::restoreState(const QByteArray& /* state */)
 //--------------------------------------------------------------------------------------------------
 void SessionTab::activate(QStatusBar* /* statusbar */)
 {
-    // Nothing
+    if (session_window_)
+        session_window_->setSessionPaused(false);
 }
 
 //--------------------------------------------------------------------------------------------------
 void SessionTab::deactivate(QStatusBar* /* statusbar */)
 {
-    // Nothing
+    if (session_window_)
+        session_window_->setSessionPaused(true);
 }
 
 //--------------------------------------------------------------------------------------------------

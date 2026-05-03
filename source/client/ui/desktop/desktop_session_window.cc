@@ -69,8 +69,7 @@ QSize scaledSize(const QSize& source_size, int scale)
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-DesktopSessionWindow::DesktopSessionWindow(
-    const proto::control::Config& desktop_config, QWidget* parent)
+DesktopSessionWindow::DesktopSessionWindow(const proto::control::Config& desktop_config, QWidget* parent)
     : SessionWindow(proto::peer::SESSION_TYPE_DESKTOP, parent),
       desktop_config_(desktop_config)
 {
@@ -111,7 +110,7 @@ DesktopSessionWindow::DesktopSessionWindow(
     {
         LOG(INFO) << "Minimize from full screen";
         is_minimized_from_full_screen_ = true;
-        window()->showMinimized();
+        emit sig_minimizeRequested();
     });
     connect(toolbar_, &DesktopToolBar::sig_closeSession, this, &DesktopSessionWindow::close);
     connect(toolbar_, &DesktopToolBar::sig_showHidePanel, this, &DesktopSessionWindow::onShowHidePanel);
@@ -128,9 +127,7 @@ DesktopSessionWindow::DesktopSessionWindow(
         enable_audio_pause_ = enable;
     });
 
-    connect(toolbar_, &DesktopToolBar::sig_screenSelected,
-            this, &DesktopSessionWindow::sig_screenSelected);
-
+    connect(toolbar_, &DesktopToolBar::sig_screenSelected, this, &DesktopSessionWindow::sig_screenSelected);
     connect(toolbar_, &DesktopToolBar::sig_powerControl,
             this, [this](proto::power::Control::Action action, bool wait)
     {
@@ -163,35 +160,15 @@ DesktopSessionWindow::DesktopSessionWindow(
         task_manager_->activateWindow();
     });
 
-    connect(toolbar_, &DesktopToolBar::sig_startStatistics,
-            this, &DesktopSessionWindow::sig_metricsRequested);
-    connect(toolbar_, &DesktopToolBar::sig_pasteAsKeystrokes,
-            this, &DesktopSessionWindow::onPasteKeystrokes);
-    connect(toolbar_, &DesktopToolBar::sig_switchToFullscreen, this, [this](bool fullscreen)
-    {
-        QWidget* top = window();
-        if (fullscreen)
-        {
-            is_maximized_ = top->isMaximized();
-            top->showFullScreen();
-        }
-        else
-        {
-            if (is_maximized_)
-                top->showMaximized();
-            else
-                top->showNormal();
-        }
-    });
-
-    connect(toolbar_, &DesktopToolBar::sig_keyCombinationsChanged,
-            desktop_, &DesktopWidget::enableKeyCombinations);
+    connect(toolbar_, &DesktopToolBar::sig_startStatistics, this, &DesktopSessionWindow::sig_metricsRequested);
+    connect(toolbar_, &DesktopToolBar::sig_pasteAsKeystrokes, this, &DesktopSessionWindow::onPasteKeystrokes);
+    connect(toolbar_, &DesktopToolBar::sig_switchToFullscreen, this, &DesktopSessionWindow::sig_fullscreenRequested);
+    connect(toolbar_, &DesktopToolBar::sig_keyCombinationsChanged, desktop_, &DesktopWidget::enableKeyCombinations);
 
     desktop_->installEventFilter(this);
     scroll_area_->viewport()->installEventFilter(this);
 
-    connect(toolbar_, &DesktopToolBar::sig_startSession,
-            this, [this](proto::peer::SessionType session_type)
+    connect(toolbar_, &DesktopToolBar::sig_startSession, this, [this](proto::peer::SessionType session_type)
     {
         SessionWindow* session_window = nullptr;
 
@@ -312,11 +289,47 @@ Client* DesktopSessionWindow::createClient()
 }
 
 //--------------------------------------------------------------------------------------------------
+void DesktopSessionWindow::setSessionPaused(bool paused)
+{
+    LOG(INFO) << "Session paused:" << paused;
+
+    if (paused)
+    {
+        if (enable_video_pause_)
+        {
+            emit sig_videoPaused(true);
+            video_pause_last_ = true;
+        }
+
+        if (enable_audio_pause_)
+        {
+            emit sig_audioPaused(true);
+            audio_pause_last_ = true;
+        }
+
+        desktop_->userLeftFromWindow();
+    }
+    else
+    {
+        if (video_pause_last_)
+        {
+            emit sig_videoPaused(false);
+            video_pause_last_ = false;
+        }
+
+        if (audio_pause_last_)
+        {
+            emit sig_audioPaused(false);
+            audio_pause_last_ = false;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
 void DesktopSessionWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";
-    window()->showNormal();
-    window()->activateWindow();
+    emit sig_showRequested();
     toolbar_->enableTextChat(true);
 }
 
@@ -578,59 +591,9 @@ void DesktopSessionWindow::leaveEvent(QEvent* event)
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopSessionWindow::changeEvent(QEvent* event)
-{
-    if (event->type() == QEvent::WindowStateChange)
-    {
-        bool is_minimized = window()->isMinimized();
-
-        LOG(INFO) << "Window minimized:" << is_minimized;
-
-        if (is_minimized)
-        {
-            if (enable_video_pause_)
-            {
-                emit sig_videoPaused(true);
-                video_pause_last_ = true;
-            }
-
-            if (enable_audio_pause_)
-            {
-                emit sig_audioPaused(true);
-                audio_pause_last_ = true;
-            }
-
-            desktop_->userLeftFromWindow();
-        }
-        else
-        {
-            if (enable_video_pause_ || video_pause_last_)
-            {
-                if (video_pause_last_)
-                {
-                    emit sig_videoPaused(false);
-                    video_pause_last_ = false;
-                }
-            }
-
-            if (enable_audio_pause_ || audio_pause_last_)
-            {
-                if (audio_pause_last_)
-                {
-                    emit sig_audioPaused(false);
-                    audio_pause_last_ = false;
-                }
-            }
-        }
-    }
-
-    QWidget::changeEvent(event);
-}
-
-//--------------------------------------------------------------------------------------------------
 void DesktopSessionWindow::showEvent(QShowEvent* event)
 {
-    if (is_minimized_from_full_screen_)
+    if (is_minimized_from_full_screen_ && isWindow())
     {
         LOG(INFO) << "Restore to full screen";
         is_minimized_from_full_screen_ = false;
@@ -642,7 +605,7 @@ void DesktopSessionWindow::showEvent(QShowEvent* event)
             // not return to full screen. We force the window to full screen.
             // However, in versions of Windows less than 11, this breaks the window's minimization,
             // therefore we use this piece of code only for Windows 11.
-            window()->showFullScreen();
+            showFullScreen();
         }
 #endif // defined(Q_OS_WINDOWS)
     }
@@ -903,6 +866,9 @@ void DesktopSessionWindow::onConfigChanged(const proto::control::Config& desktop
 //--------------------------------------------------------------------------------------------------
 void DesktopSessionWindow::onAutosizeWindow()
 {
+    if (!isWindow())
+        return;
+
     if (screen_size_.isEmpty())
     {
         LOG(INFO) << "Empty screen size";
