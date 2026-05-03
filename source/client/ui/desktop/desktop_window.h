@@ -28,10 +28,6 @@
 class QHBoxLayout;
 class QScrollArea;
 
-namespace desktop {
-class Frame;
-} // namespace desktop
-
 class DesktopConfigDialog;
 class DesktopToolBar;
 class DesktopWidget;
