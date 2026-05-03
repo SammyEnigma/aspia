@@ -343,13 +343,12 @@ void MainWindow::onConnect(qint64 /* computer_id */,
 
     QString display_name = Database::instance().displayName();
     QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
-    QString title = QString("%1 - %2").arg(computer_name, sessionName(session_type));
     QIcon icon = sessionIcon(session_type);
 
     session_window->setWindowIcon(icon);
 
     SessionTab* session_tab = new SessionTab(session_window);
-    addTab(session_tab, title, icon);
+    addTab(session_tab, computer_name, icon);
 
     if (!ui.action_sessions_in_tabs->isChecked())
     {

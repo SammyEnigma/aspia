@@ -124,23 +124,8 @@ bool SessionTab::hasStatusBar() const
 //--------------------------------------------------------------------------------------------------
 bool SessionTab::eventFilter(QObject* object, QEvent* event)
 {
-    if (object == session_window_)
-    {
-        switch (event->type())
-        {
-            case QEvent::WindowTitleChange:
-                emit sig_titleChanged(session_window_->windowTitle());
-                break;
-
-            case QEvent::Close:
-                if (!closing_)
-                    emit sig_closeRequested();
-                break;
-
-            default:
-                break;
-        }
-    }
+    if (object == session_window_ && event->type() == QEvent::Close && !closing_)
+        emit sig_closeRequested();
 
     return Tab::eventFilter(object, event);
 }
