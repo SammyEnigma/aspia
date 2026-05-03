@@ -108,7 +108,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     }
 
     Database& db = Database::instance();
-    ui.edit_display_name->setText(db.property(Database::kDisplayNameProperty).toString());
+    ui.edit_display_name->setText(db.displayName());
 
     // Master Password.
     connect(ui.button_set_master_password, &QPushButton::clicked,
@@ -130,10 +130,9 @@ SettingsDialog::SettingsDialog(QWidget* parent)
 
     // Update tab.
 #if defined(Q_OS_WINDOWS)
-    ui.checkbox_check_updates->setChecked(db.property(Database::kCheckUpdatesProperty, true).toBool());
+    ui.checkbox_check_updates->setChecked(db.isCheckUpdatesEnabled());
 
-    QString update_server = db.property(
-        Database::kUpdateServerProperty, DEFAULT_UPDATE_SERVER).toString().toLower();
+    QString update_server = db.updateServer();
     ui.edit_update_server->setText(update_server);
 
     if (update_server == DEFAULT_UPDATE_SERVER)
@@ -218,11 +217,11 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
         settings.setDesktopConfig(desktop_config);
 
         Database& db = Database::instance();
-        db.setProperty(Database::kDisplayNameProperty, ui.edit_display_name->text());
+        db.setDisplayName(ui.edit_display_name->text());
 
 #if defined(Q_OS_WINDOWS)
-        db.setProperty(Database::kCheckUpdatesProperty, ui.checkbox_check_updates->isChecked());
-        db.setProperty(Database::kUpdateServerProperty, ui.edit_update_server->text().toLower());
+        db.setCheckUpdatesEnabled(ui.checkbox_check_updates->isChecked());
+        db.setUpdateServer(ui.edit_update_server->text().toLower());
 #endif
 
         accept();

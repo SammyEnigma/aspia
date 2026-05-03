@@ -92,17 +92,9 @@ bool changeKeyAndReencrypt(const QByteArray& new_key, const QByteArray& new_salt
 
     bool ok;
     if (new_salt.isEmpty() && new_verifier.isEmpty())
-    {
-        ok = db.removeProperty(Database::kSaltPropertyName) &&
-             db.removeProperty(Database::kVerifierPropertyName) &&
-             db.removeProperty(Database::kVersionPropertyName);
-    }
+        ok = db.clearMasterPassword();
     else
-    {
-        ok = db.setProperty(Database::kSaltPropertyName, new_salt) &&
-             db.setProperty(Database::kVerifierPropertyName, new_verifier) &&
-             db.setProperty(Database::kVersionPropertyName, kCurrentVersion);
-    }
+        ok = db.setMasterPassword(new_salt, new_verifier, kCurrentVersion);
 
     if (!ok)
     {
@@ -153,9 +145,7 @@ bool MasterPassword::isSet()
     if (!db.isValid())
         return false;
 
-    return db.hasProperty(Database::kSaltPropertyName) &&
-           db.hasProperty(Database::kVerifierPropertyName) &&
-           db.hasProperty(Database::kVersionPropertyName);
+    return db.isMasterPasswordSet();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -169,12 +159,8 @@ bool MasterPassword::unlock(const QString& password)
         return false;
     }
 
-    QVariant salt_value = db.property(Database::kSaltPropertyName);
-    QVariant verifier_value = db.property(Database::kVerifierPropertyName);
-    QVariant version_value = db.property(Database::kVersionPropertyName);
-
-    QByteArray salt = salt_value.toByteArray();
-    QByteArray verifier = verifier_value.toByteArray();
+    QByteArray salt = db.masterPasswordSalt();
+    QByteArray verifier = db.masterPasswordVerifier();
 
     if (salt.isEmpty() || verifier.isEmpty())
     {
@@ -182,7 +168,7 @@ bool MasterPassword::unlock(const QString& password)
         return false;
     }
 
-    quint32 version = version_value.toUInt();
+    quint32 version = db.masterPasswordVersion();
     if (version != kCurrentVersion)
     {
         LOG(ERROR) << "Unsupported master password version:" << version;

@@ -21,8 +21,6 @@
 
 #include <QList>
 #include <QString>
-#include <QStringList>
-#include <QVariant>
 
 #include <optional>
 
@@ -32,13 +30,6 @@ class Database
 {
 public:
     ~Database() = default;
-
-    static const QString kDisplayNameProperty;
-    static const QString kCheckUpdatesProperty;
-    static const QString kUpdateServerProperty;
-    static const QString kSaltPropertyName;
-    static const QString kVerifierPropertyName;
-    static const QString kVersionPropertyName;
 
     static Database& instance();
     static QString filePath();
@@ -73,16 +64,31 @@ public:
     std::optional<RouterConfig> findRouter(qint64 router_id) const;
 
     // Settings.
-    bool setProperty(const QString& name, const QVariant& value);
-    QVariant property(const QString& name, const QVariant& default_value = {}) const;
-    bool removeProperty(const QString& name);
-    bool hasProperty(const QString& name) const;
-    QStringList propertyNames() const;
+    QString displayName() const;
+    bool setDisplayName(const QString& name);
+
+    bool isCheckUpdatesEnabled() const;
+    bool setCheckUpdatesEnabled(bool enable);
+
+    QString updateServer() const;
+    bool setUpdateServer(const QString& server);
+
+    // Master password.
+    bool isMasterPasswordSet() const;
+    bool setMasterPassword(const QByteArray& salt, const QByteArray& verifier, quint32 version);
+    bool clearMasterPassword();
+    QByteArray masterPasswordSalt() const;
+    QByteArray masterPasswordVerifier() const;
+    quint32 masterPasswordVersion() const;
 
 private:
     Database() = default;
 
     bool openDatabase();
+
+    QString readSetting(const QString& name) const;
+    bool writeSetting(const QString& name, const QString& value);
+    bool removeSetting(const QString& name);
 
     bool valid_ = false;
 };

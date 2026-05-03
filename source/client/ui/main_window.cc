@@ -108,10 +108,9 @@ MainWindow::MainWindow(QWidget* parent)
 
 #if defined(Q_OS_WINDOWS)
     Database& db = Database::instance();
-    if (db.property(Database::kCheckUpdatesProperty, true).toBool())
+    if (db.isCheckUpdatesEnabled())
     {
-        QString update_server =
-            db.property(Database::kUpdateServerProperty, DEFAULT_UPDATE_SERVER).toString().toLower();
+        QString update_server = db.updateServer();
         update_checker_ = std::make_unique<UpdateChecker>(update_server, "client");
 
         connect(update_checker_.get(), &UpdateChecker::sig_checkedFinished,
@@ -341,7 +340,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
     if (!session_window)
         return;
 
-    QString display_name = Database::instance().property(Database::kDisplayNameProperty).toString();
+    QString display_name = Database::instance().displayName();
     QString computer_name = computer.name.isEmpty() ? computer.address : computer.name;
     QString title = QString("%1 - %2").arg(computer_name, sessionName(session_type));
     QIcon icon = sessionIcon(session_type);

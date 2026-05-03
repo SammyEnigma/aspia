@@ -21,12 +21,11 @@
 #include "base/crypto/data_cryptor.h"
 #include "base/logging.h"
 #include "base/files/base_paths.h"
+#include "build/build_config.h"
 
-#include <QDataStream>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
-#include <QMetaType>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -35,6 +34,13 @@
 namespace {
 
 const char kConnectionName[] = "client";
+
+constexpr auto kSettingDisplayName    = "display_name";
+constexpr auto kSettingCheckUpdates   = "check_updates";
+constexpr auto kSettingUpdateServer   = "update_server";
+constexpr auto kSettingSalt           = "master_password_salt";
+constexpr auto kSettingVerifier       = "master_password_verifier";
+constexpr auto kSettingVersion        = "master_password_version";
 
 //--------------------------------------------------------------------------------------------------
 ComputerConfig readComputer(const QSqlQuery& query)
@@ -137,14 +143,11 @@ bool createTables(QSqlDatabase& db)
         return false;
     }
 
-    if (!query.exec("CREATE TABLE IF NOT EXISTS \"properties\" ("
-                    "\"id\" INTEGER UNIQUE,"
-                    "\"name\" TEXT NOT NULL UNIQUE,"
-                    "\"type\" INTEGER NOT NULL DEFAULT 0,"
-                    "\"value\" BLOB NOT NULL DEFAULT X'',"
-                    "PRIMARY KEY(\"id\" AUTOINCREMENT))"))
+    if (!query.exec("CREATE TABLE IF NOT EXISTS \"settings\" ("
+                    "\"name\" TEXT PRIMARY KEY NOT NULL,"
+                    "\"value\" TEXT NOT NULL)"))
     {
-        LOG(ERROR) << "Unable to create properties table:" << query.lastError();
+        LOG(ERROR) << "Unable to create settings table:" << query.lastError();
         return false;
     }
 
@@ -152,15 +155,6 @@ bool createTables(QSqlDatabase& db)
 }
 
 } // namespace
-
-//--------------------------------------------------------------------------------------------------
-// static
-const QString Database::kDisplayNameProperty = "display_name";
-const QString Database::kCheckUpdatesProperty = "check_updates";
-const QString Database::kUpdateServerProperty = "update_server";
-const QString Database::kSaltPropertyName = "master_password_salt";
-const QString Database::kVerifierPropertyName = "master_password_verifier";
-const QString Database::kVersionPropertyName = "master_password_version";
 
 //--------------------------------------------------------------------------------------------------
 // static
@@ -744,151 +738,85 @@ std::optional<RouterConfig> Database::findRouter(qint64 router_id) const
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Database::setProperty(const QString& name, const QVariant& value)
+QString Database::displayName() const
 {
-    if (!isValid())
-    {
-        LOG(ERROR) << "Database is not valid";
-        return false;
-    }
-
-    if (name.isEmpty())
-    {
-        LOG(ERROR) << "Empty property name";
-        return false;
-    }
-
-    QByteArray buffer;
-    QDataStream stream(&buffer, QIODevice::WriteOnly);
-    stream.setVersion(QDataStream::Qt_6_10);
-    stream << value;
-
-    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("INSERT INTO properties (id, name, type, value) "
-                  "VALUES ((SELECT id FROM properties WHERE name=?), ?, ?, ?)");
-    query.addBindValue(name);
-    query.addBindValue(name);
-    query.addBindValue(static_cast<int>(value.metaType().id()));
-    query.addBindValue(buffer);
-
-    if (!query.exec())
-    {
-        LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return false;
-    }
-
-    return true;
+    return readSetting(kSettingDisplayName);
 }
 
 //--------------------------------------------------------------------------------------------------
-QVariant Database::property(const QString& name, const QVariant& default_value) const
+bool Database::setDisplayName(const QString& name)
 {
-    if (!isValid())
-    {
-        LOG(ERROR) << "Database is not valid";
-        return default_value;
-    }
-
-    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("SELECT value FROM properties WHERE name=?");
-    query.addBindValue(name);
-
-    if (!query.exec())
-    {
-        LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return default_value;
-    }
-
-    if (!query.next())
-        return default_value;
-
-    QByteArray buffer = query.value(0).toByteArray();
-    QDataStream stream(&buffer, QIODevice::ReadOnly);
-    stream.setVersion(QDataStream::Qt_6_10);
-
-    QVariant value;
-    stream >> value;
-
-    if (stream.status() != QDataStream::Ok || !value.isValid())
-    {
-        LOG(ERROR) << "Unable to deserialize property:" << name;
-        return default_value;
-    }
-
-    return value;
+    return writeSetting(kSettingDisplayName, name);
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Database::removeProperty(const QString& name)
+bool Database::isCheckUpdatesEnabled() const
 {
-    if (!isValid())
-    {
-        LOG(ERROR) << "Database is not valid";
-        return false;
-    }
-
-    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("DELETE FROM properties WHERE name=?");
-    query.addBindValue(name);
-
-    if (!query.exec())
-    {
-        LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return false;
-    }
-
-    return true;
+    QString value = readSetting(kSettingCheckUpdates);
+    if (value.isEmpty())
+        return true;
+    return value == "1";
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Database::hasProperty(const QString& name) const
+bool Database::setCheckUpdatesEnabled(bool enable)
 {
-    if (!isValid())
-    {
-        LOG(ERROR) << "Database is not valid";
-        return false;
-    }
-
-    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    if (!query.prepare("SELECT 1 FROM properties WHERE name=? LIMIT 1"))
-    {
-        LOG(ERROR) << "Unable to prepare query:" << query.lastError();
-        return false;
-    }
-    query.addBindValue(name);
-
-    if (!query.exec())
-    {
-        LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return false;
-    }
-
-    return query.next();
+    return writeSetting(kSettingCheckUpdates, enable ? "1" : "0");
 }
 
 //--------------------------------------------------------------------------------------------------
-QStringList Database::propertyNames() const
+QString Database::updateServer() const
 {
-    if (!isValid())
-    {
-        LOG(ERROR) << "Database is not valid";
-        return {};
-    }
+    QString value = readSetting(kSettingUpdateServer);
+    if (value.isEmpty())
+        value = QString::fromLatin1(DEFAULT_UPDATE_SERVER);
+    return value.toLower();
+}
 
-    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("SELECT name FROM properties ORDER BY name");
+//--------------------------------------------------------------------------------------------------
+bool Database::setUpdateServer(const QString& server)
+{
+    return writeSetting(kSettingUpdateServer, server);
+}
 
-    if (!query.exec())
-    {
-        LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return {};
-    }
+//--------------------------------------------------------------------------------------------------
+bool Database::isMasterPasswordSet() const
+{
+    return !readSetting(kSettingSalt).isEmpty() && !readSetting(kSettingVerifier).isEmpty();
+}
 
-    QStringList names;
-    while (query.next())
-        names.append(query.value(0).toString());
+//--------------------------------------------------------------------------------------------------
+bool Database::setMasterPassword(const QByteArray& salt, const QByteArray& verifier, quint32 version)
+{
+    return writeSetting(kSettingSalt, QString::fromLatin1(salt.toBase64())) &&
+           writeSetting(kSettingVerifier, QString::fromLatin1(verifier.toBase64())) &&
+           writeSetting(kSettingVersion, QString::number(version));
+}
 
-    return names;
+//--------------------------------------------------------------------------------------------------
+bool Database::clearMasterPassword()
+{
+    return removeSetting(kSettingSalt) &&
+           removeSetting(kSettingVerifier) &&
+           removeSetting(kSettingVersion);
+}
+
+//--------------------------------------------------------------------------------------------------
+QByteArray Database::masterPasswordSalt() const
+{
+    return QByteArray::fromBase64(readSetting(kSettingSalt).toLatin1());
+}
+
+//--------------------------------------------------------------------------------------------------
+QByteArray Database::masterPasswordVerifier() const
+{
+    return QByteArray::fromBase64(readSetting(kSettingVerifier).toLatin1());
+}
+
+//--------------------------------------------------------------------------------------------------
+quint32 Database::masterPasswordVersion() const
+{
+    return readSetting(kSettingVersion).toUInt();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -946,6 +874,76 @@ bool Database::openDatabase()
     {
         db.close();
         QSqlDatabase::removeDatabase(kConnectionName);
+        return false;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+QString Database::readSetting(const QString& name) const
+{
+    if (!isValid())
+    {
+        LOG(ERROR) << "Database is not valid";
+        return QString();
+    }
+
+    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
+    query.prepare("SELECT value FROM settings WHERE name=?");
+    query.addBindValue(name);
+
+    if (!query.exec())
+    {
+        LOG(ERROR) << "Unable to execute query:" << query.lastError();
+        return QString();
+    }
+
+    if (!query.next())
+        return QString();
+
+    return query.value(0).toString();
+}
+
+//--------------------------------------------------------------------------------------------------
+bool Database::writeSetting(const QString& name, const QString& value)
+{
+    if (!isValid())
+    {
+        LOG(ERROR) << "Database is not valid";
+        return false;
+    }
+
+    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
+    query.prepare("INSERT OR REPLACE INTO settings (name, value) VALUES (?, ?)");
+    query.addBindValue(name);
+    query.addBindValue(value);
+
+    if (!query.exec())
+    {
+        LOG(ERROR) << "Unable to execute query:" << query.lastError();
+        return false;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+bool Database::removeSetting(const QString& name)
+{
+    if (!isValid())
+    {
+        LOG(ERROR) << "Database is not valid";
+        return false;
+    }
+
+    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
+    query.prepare("DELETE FROM settings WHERE name=?");
+    query.addBindValue(name);
+
+    if (!query.exec())
+    {
+        LOG(ERROR) << "Unable to execute query:" << query.lastError();
         return false;
     }
 
