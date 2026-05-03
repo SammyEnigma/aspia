@@ -372,7 +372,7 @@ void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
     if (!session_tab || !session_tab->isDetachable() || session_tab->isDetached())
         return;
 
-    QSize tab_size = session_tab->size();
+    QSize new_size = session_tab->size() / 2;
 
     session_tab->detachToWindow();
     ui.tabs->tabBar()->setTabVisible(index, false);
@@ -381,8 +381,8 @@ void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
     if (!session_window)
         return;
 
-    session_window->resize(tab_size);
-    session_window->move(global_pos - QPoint(tab_size.width() / 2, 15));
+    session_window->resize(new_size);
+    session_window->move(global_pos - QPoint(new_size.width() / 2, 15));
     session_window->raise();
     session_window->activateWindow();
 
