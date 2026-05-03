@@ -44,6 +44,11 @@ public:
     Type tabType() const;
     bool isClosable() const;
 
+    // Container-managed flag remembering whether this tab was visible in the tab bar before
+    // entering fullscreen, so the container can decide whether to put it back on exit.
+    bool isVisibleBeforeFullscreen() const;
+    void setVisibleBeforeFullscreen(bool was_visible);
+
     virtual bool isDetachable() const;
     virtual bool isDetached() const;
     virtual void detachToWindow();
@@ -82,6 +87,7 @@ protected:
 private:
     Type type_;
     QList<ActionGroupEntry> action_groups_;
+    bool visible_before_fullscreen_ = false;
 
     Q_DISABLE_COPY_MOVE(Tab)
 };

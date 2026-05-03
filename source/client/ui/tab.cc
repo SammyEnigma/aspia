@@ -43,6 +43,18 @@ bool Tab::isClosable() const
 }
 
 //--------------------------------------------------------------------------------------------------
+bool Tab::isVisibleBeforeFullscreen() const
+{
+    return visible_before_fullscreen_;
+}
+
+//--------------------------------------------------------------------------------------------------
+void Tab::setVisibleBeforeFullscreen(bool was_visible)
+{
+    visible_before_fullscreen_ = was_visible;
+}
+
+//--------------------------------------------------------------------------------------------------
 bool Tab::isDetachable() const
 {
     return false;

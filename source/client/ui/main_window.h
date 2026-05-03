@@ -20,7 +20,6 @@
 #define CLIENT_UI_MAIN_WINDOW_H
 
 #include <QByteArray>
-#include <QHash>
 #include <QMainWindow>
 
 #include "client/ui/tab.h"
@@ -87,7 +86,6 @@ private:
     Tab* active_tab_ = nullptr;
     QList<QAction*> tab_toolbar_actions_;
     QList<QPair<QMenu*, QList<QAction*>>> tab_menu_actions_;
-    QHash<Tab*, bool> fullscreen_was_visible_;
 
     Q_DISABLE_COPY_MOVE(MainWindow)
 };

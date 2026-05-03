@@ -290,8 +290,6 @@ void MainWindow::onCloseTab(int index)
     Settings settings;
     settings.setTabState(tab->objectName(), tab->saveState());
 
-    fullscreen_was_visible_.remove(tab);
-
     ui.tabs->removeTab(index);
     delete tab;
 }
@@ -456,7 +454,7 @@ void MainWindow::onTabFullscreenRequested(bool enabled)
 
     if (enabled)
     {
-        fullscreen_was_visible_[tab] = tabbar->isTabVisible(index);
+        tab->setVisibleBeforeFullscreen(tabbar->isTabVisible(index));
 
         if (!tab->isDetached())
             tab->detachToWindow();
@@ -474,8 +472,7 @@ void MainWindow::onTabFullscreenRequested(bool enabled)
         if (QWidget* window = tab->detachedWindow())
             window->showNormal();
 
-        bool was_visible = fullscreen_was_visible_.take(tab);
-        if (was_visible)
+        if (tab->isVisibleBeforeFullscreen())
         {
             tab->attachToTab();
             tabbar->setTabVisible(index, true);
