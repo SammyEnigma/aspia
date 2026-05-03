@@ -35,11 +35,11 @@
 #include "build/build_config.h"
 #include "client/database.h"
 #include "client/settings.h"
+#include "client/ui/client_tab.h"
+#include "client/ui/client_window.h"
 #include "client/ui/hosts_tab.h"
 #include "client/ui/settings_dialog.h"
 #include "client/ui/tab.h"
-#include "client/ui/session_tab.h"
-#include "client/ui/client_window.h"
 #include "client/ui/tab_bar.h"
 #include "client/ui/tab_widget.h"
 #include "client/ui/chat/chat_window.h"
@@ -349,19 +349,19 @@ void MainWindow::onConnect(qint64 /* computer_id */,
 
     client_window->setWindowIcon(icon);
 
-    SessionTab* session_tab = new SessionTab(client_window);
-    addTab(session_tab, computer_name, icon);
+    ClientTab* client_tab = new ClientTab(client_window);
+    addTab(client_tab, computer_name, icon);
 
     if (!ui.action_sessions_in_tabs->isChecked())
     {
-        int index = ui.tabs->indexOf(session_tab);
+        int index = ui.tabs->indexOf(client_tab);
         ui.tabs->tabBar()->setTabVisible(index, false);
-        session_tab->detachToWindow();
+        client_tab->detachToWindow();
     }
 
     if (!client_window->connectToHost(computer, display_name))
     {
-        int index = ui.tabs->indexOf(session_tab);
+        int index = ui.tabs->indexOf(client_tab);
         if (index != -1)
             onCloseTab(index);
     }

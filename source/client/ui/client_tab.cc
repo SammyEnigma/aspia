@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/session_tab.h"
+#include "client/ui/client_tab.h"
 
 #include <QEvent>
 #include <QVBoxLayout>
@@ -24,7 +24,7 @@
 #include "client/ui/client_window.h"
 
 //--------------------------------------------------------------------------------------------------
-SessionTab::SessionTab(ClientWindow* client_window, QWidget* parent)
+ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
     : Tab(Type::SESSION, "session", parent),
       client_window_(client_window)
 {
@@ -46,7 +46,7 @@ SessionTab::SessionTab(ClientWindow* client_window, QWidget* parent)
 }
 
 //--------------------------------------------------------------------------------------------------
-SessionTab::~SessionTab()
+ClientTab::~ClientTab()
 {
     closing_ = true;
 
@@ -55,25 +55,25 @@ SessionTab::~SessionTab()
 }
 
 //--------------------------------------------------------------------------------------------------
-ClientWindow* SessionTab::clientWindow() const
+ClientWindow* ClientTab::clientWindow() const
 {
     return client_window_;
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionTab::isDetachable() const
+bool ClientTab::isDetachable() const
 {
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionTab::isDetached() const
+bool ClientTab::isDetached() const
 {
     return client_window_ && client_window_->isWindow();
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionTab::detachToWindow()
+void ClientTab::detachToWindow()
 {
     if (!client_window_ || isDetached())
         return;
@@ -85,7 +85,7 @@ void SessionTab::detachToWindow()
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionTab::attachToTab()
+void ClientTab::attachToTab()
 {
     if (!client_window_ || !isDetached())
         return;
@@ -96,45 +96,45 @@ void SessionTab::attachToTab()
 }
 
 //--------------------------------------------------------------------------------------------------
-QWidget* SessionTab::detachedWindow() const
+QWidget* ClientTab::detachedWindow() const
 {
     return isDetached() ? client_window_.get() : nullptr;
 }
 
 //--------------------------------------------------------------------------------------------------
-QByteArray SessionTab::saveState()
+QByteArray ClientTab::saveState()
 {
     return QByteArray();
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionTab::restoreState(const QByteArray& /* state */)
+void ClientTab::restoreState(const QByteArray& /* state */)
 {
     // Nothing
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionTab::activate(QStatusBar* /* statusbar */)
+void ClientTab::activate(QStatusBar* /* statusbar */)
 {
     if (client_window_)
         client_window_->setSessionPaused(false);
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionTab::deactivate(QStatusBar* /* statusbar */)
+void ClientTab::deactivate(QStatusBar* /* statusbar */)
 {
     if (client_window_)
         client_window_->setSessionPaused(true);
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionTab::hasStatusBar() const
+bool ClientTab::hasStatusBar() const
 {
     return false;
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionTab::eventFilter(QObject* object, QEvent* event)
+bool ClientTab::eventFilter(QObject* object, QEvent* event)
 {
     if (object == client_window_ && event->type() == QEvent::Close && !closing_)
         emit sig_closeRequested();

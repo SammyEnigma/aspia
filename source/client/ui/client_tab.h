@@ -16,8 +16,8 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_SESSION_TAB_H
-#define CLIENT_UI_SESSION_TAB_H
+#ifndef CLIENT_UI_CLIENT_TAB_H
+#define CLIENT_UI_CLIENT_TAB_H
 
 #include "base/scoped_qpointer.h"
 #include "client/ui/tab.h"
@@ -25,13 +25,13 @@
 class QStatusBar;
 class ClientWindow;
 
-class SessionTab final : public Tab
+class ClientTab final : public Tab
 {
     Q_OBJECT
 
 public:
-    explicit SessionTab(ClientWindow* client_window, QWidget* parent = nullptr);
-    ~SessionTab() final;
+    explicit ClientTab(ClientWindow* client_window, QWidget* parent = nullptr);
+    ~ClientTab() final;
 
     ClientWindow* clientWindow() const;
 
@@ -55,7 +55,7 @@ private:
     ScopedQPointer<ClientWindow> client_window_;
     bool closing_ = false;
 
-    Q_DISABLE_COPY_MOVE(SessionTab)
+    Q_DISABLE_COPY_MOVE(ClientTab)
 };
 
-#endif // CLIENT_UI_SESSION_TAB_H
+#endif // CLIENT_UI_CLIENT_TAB_H
