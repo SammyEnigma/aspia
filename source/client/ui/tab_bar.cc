@@ -20,6 +20,9 @@
 
 #include <QApplication>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QTimer>
 
 namespace {
 
@@ -27,17 +30,47 @@ namespace {
 // trigger detachment. Horizontal movement keeps the tab in the bar (reorder).
 constexpr int kDetachThresholdPx = 30;
 
+// Drop-target pulsing animation parameters.
+constexpr int kPulseTickMs = 33;
+constexpr int kPulsePeriodMs = 800;
+constexpr int kPulseMaxAlpha = 220;
+constexpr int kPulseFrameWidthPx = 2;
+
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
 TabBar::TabBar(QWidget* parent)
-    : QTabBar(parent)
+    : QTabBar(parent),
+      pulse_timer_(new QTimer(this))
 {
-    // Nothing
+    pulse_timer_->setInterval(kPulseTickMs);
+    connect(pulse_timer_, &QTimer::timeout, this, &TabBar::onPulseTick);
 }
 
 //--------------------------------------------------------------------------------------------------
 TabBar::~TabBar() = default;
+
+//--------------------------------------------------------------------------------------------------
+void TabBar::setDropTarget(int index)
+{
+    if (drop_target_index_ == index)
+        return;
+
+    drop_target_index_ = index;
+
+    if (index >= 0)
+    {
+        pulse_phase_ms_ = 0;
+        if (!pulse_timer_->isActive())
+            pulse_timer_->start();
+    }
+    else
+    {
+        pulse_timer_->stop();
+    }
+
+    update();
+}
 
 //--------------------------------------------------------------------------------------------------
 void TabBar::mousePressEvent(QMouseEvent* event)
@@ -81,4 +114,43 @@ void TabBar::mouseReleaseEvent(QMouseEvent* event)
 {
     pressed_tab_index_ = -1;
     QTabBar::mouseReleaseEvent(event);
+}
+
+//--------------------------------------------------------------------------------------------------
+void TabBar::paintEvent(QPaintEvent* event)
+{
+    QTabBar::paintEvent(event);
+
+    if (drop_target_index_ < 0 || drop_target_index_ >= count())
+        return;
+
+    if (!isTabVisible(drop_target_index_))
+        return;
+
+    QRect rect = tabRect(drop_target_index_);
+    if (rect.isEmpty())
+        return;
+
+    // Triangle wave: 0 -> max -> 0 over kPulsePeriodMs.
+    double t = static_cast<double>(pulse_phase_ms_) / kPulsePeriodMs;
+    double wave = (t < 0.5) ? (t * 2.0) : ((1.0 - t) * 2.0);
+    int alpha = static_cast<int>(wave * kPulseMaxAlpha);
+
+    QColor color = palette().highlight().color();
+    color.setAlpha(alpha);
+
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setBrush(Qt::NoBrush);
+    painter.setPen(QPen(color, kPulseFrameWidthPx));
+
+    int inset = kPulseFrameWidthPx / 2 + 1;
+    painter.drawRect(rect.adjusted(inset, inset, -inset, -inset));
+}
+
+//--------------------------------------------------------------------------------------------------
+void TabBar::onPulseTick()
+{
+    pulse_phase_ms_ = (pulse_phase_ms_ + kPulseTickMs) % kPulsePeriodMs;
+    update();
 }

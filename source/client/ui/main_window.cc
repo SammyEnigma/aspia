@@ -401,10 +401,11 @@ void MainWindow::onTabDragMove(const QPoint& global_pos)
     if (index == -1)
         return;
 
-    QTabBar* tabbar = ui.tabs->tabBar();
+    TabBar* tabbar = ui.tabs->tabBar();
     bool over = tabBarHitTest(global_pos);
     if (tabbar->isTabVisible(index) != over)
         tabbar->setTabVisible(index, over);
+    tabbar->setDropTarget(over ? index : -1);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -418,7 +419,8 @@ void MainWindow::onTabDragFinished(const QPoint& global_pos)
     if (index == -1)
         return;
 
-    QTabBar* tabbar = ui.tabs->tabBar();
+    TabBar* tabbar = ui.tabs->tabBar();
+    tabbar->setDropTarget(-1);
 
     if (tabBarHitTest(global_pos))
     {

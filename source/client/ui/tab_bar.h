@@ -21,6 +21,8 @@
 
 #include <QTabBar>
 
+class QTimer;
+
 class TabBar final : public QTabBar
 {
     Q_OBJECT
@@ -28,6 +30,10 @@ class TabBar final : public QTabBar
 public:
     explicit TabBar(QWidget* parent = nullptr);
     ~TabBar() final;
+
+    // Marks a tab as the current drop target for an in-flight detached-window drag. Drawing of
+    // the highlight pulses while the target is set. Pass -1 to clear.
+    void setDropTarget(int index);
 
 signals:
     // Emitted when the user drags a tab vertically out of the bar bounds. The receiver is expected
@@ -39,9 +45,16 @@ protected:
     void mousePressEvent(QMouseEvent* event) final;
     void mouseMoveEvent(QMouseEvent* event) final;
     void mouseReleaseEvent(QMouseEvent* event) final;
+    void paintEvent(QPaintEvent* event) final;
+
+private slots:
+    void onPulseTick();
 
 private:
     int pressed_tab_index_ = -1;
+    int drop_target_index_ = -1;
+    int pulse_phase_ms_ = 0;
+    QTimer* pulse_timer_ = nullptr;
 
     Q_DISABLE_COPY_MOVE(TabBar)
 };
