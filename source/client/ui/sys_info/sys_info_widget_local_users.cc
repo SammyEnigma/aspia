@@ -21,6 +21,7 @@
 #include <QMenu>
 
 #include "common/system_info_constants.h"
+#include "common/ui/formatter.h"
 
 namespace {
 
@@ -158,7 +159,7 @@ void SysInfoWidgetLocalUsers::setSystemInfo(const proto::system_info::SystemInfo
         if (user.last_logon_time() == 0)
             last_logon = tr("Never");
         else
-            last_logon = timeToString(static_cast<time_t>(user.last_logon_time()));
+            last_logon = Formatter::timeToString(static_cast<time_t>(user.last_logon_time()));
 
         group << mk(tr("Last Logon"), last_logon);
         group << mk(tr("Number Logons"), QString::number(user.number_logons()));

@@ -38,10 +38,6 @@ public:
     virtual void setSystemInfo(const proto::system_info::SystemInfo& system_info) = 0;
     virtual QTreeWidget* treeWidget() = 0;
 
-    static QString sizeToString(qint64 size);
-    static QString delayToString(quint64 delay);
-    static QString speedToString(quint64 speed);
-    static QString timeToString(time_t time);
     static void searchInGoogle(const QString& request);
 
 signals:

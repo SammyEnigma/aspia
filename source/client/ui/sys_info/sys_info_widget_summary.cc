@@ -21,6 +21,7 @@
 #include <QMenu>
 
 #include "common/system_info_constants.h"
+#include "common/ui/formatter.h"
 
 namespace {
 
@@ -138,7 +139,7 @@ void SysInfoWidgetSummary::setSystemInfo(const proto::system_info::SystemInfo& s
             items << mk(tr("Workgroup"), computer.workgroup());
 
         if (computer.uptime())
-            items << mk(tr("Uptime"), delayToString(computer.uptime()));
+            items << mk(tr("Uptime"), Formatter::delayToString(computer.uptime()));
 
         if (!items.isEmpty())
             ui.tree->addTopLevelItem(new Item(":/img/computer.svg", tr("Computer"), items));
@@ -172,7 +173,7 @@ void SysInfoWidgetSummary::setSystemInfo(const proto::system_info::SystemInfo& s
             items << mk(tr("License Key"), os.key());
 
         if (os.install_date() != 0)
-            items << mk(tr("Install Date"), timeToString(os.install_date()));
+            items << mk(tr("Install Date"), Formatter::timeToString(os.install_date()));
 
         if (!items.isEmpty())
         {
@@ -262,7 +263,7 @@ void SysInfoWidgetSummary::setSystemInfo(const proto::system_info::SystemInfo& s
                     group << mk(tr("Manufacturer"), module.manufacturer());
 
                 if (module.size())
-                    group << mk(tr("Size"), sizeToString(static_cast<qint64>(module.size())));
+                    group << mk(tr("Size"), Formatter::sizeToString(static_cast<qint64>(module.size())));
 
                 if (module.speed())
                     group << mk(tr("Speed"), tr("%1 MHz").arg(module.speed()));
@@ -318,8 +319,8 @@ void SysInfoWidgetSummary::setSystemInfo(const proto::system_info::SystemInfo& s
             if (drive.total_size() && drive.total_size() != static_cast<quint64>(-1))
             {
                 value = tr("%1 (%2 free)")
-                    .arg(sizeToString(static_cast<qint64>(drive.total_size())),
-                         sizeToString(static_cast<qint64>(drive.free_size())));
+                    .arg(Formatter::sizeToString(static_cast<qint64>(drive.total_size())),
+                         Formatter::sizeToString(static_cast<qint64>(drive.free_size())));
             }
 
             items << mk(param, value);

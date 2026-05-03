@@ -38,9 +38,6 @@ signals:
     void sig_metricsRequired();
 
 private:
-    static QString sizeToString(qint64 size);
-    static QString speedToString(qint64 speed);
-
     Ui::StatisticsDialog ui;
     QTimer* update_timer_ = nullptr;
     QTime duration_;

@@ -22,6 +22,7 @@
 
 #include "base/logging.h"
 #include "common/system_info_constants.h"
+#include "common/ui/formatter.h"
 
 namespace {
 
@@ -139,7 +140,7 @@ void SysInfoWidgetNetAdapters::setSystemInfo(const proto::system_info::SystemInf
             group << mk(tr("Interface Type"), adapter.iface());
 
         if (adapter.speed())
-            group << mk(tr("Connection Speed"), speedToString(adapter.speed()));
+            group << mk(tr("Connection Speed"), Formatter::networkSpeedToString(adapter.speed()));
 
         if (!adapter.mac().empty())
             group << mk(tr("MAC Address"), adapter.mac());

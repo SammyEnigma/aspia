@@ -54,7 +54,6 @@ protected:
 
 private:
     QString errorToMessage(const FileTransfer::Error& error);
-    QString speedToString(qint64 speed);
 
     Ui::FileTransferDialog ui;
     std::unique_ptr<QFontMetrics> label_metrics_;

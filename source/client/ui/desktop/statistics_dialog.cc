@@ -20,6 +20,7 @@
 
 #include "base/logging.h"
 #include "base/desktop/screen_capturer.h"
+#include "common/ui/formatter.h"
 #include "proto/desktop_video.h"
 
 #include <QTimer>
@@ -89,16 +90,16 @@ void StatisticsDialog::setMetrics(const ClientDesktop::Metrics& metrics)
                     static_cast<int>(metrics.duration.count())).toString());
                 break;
             case 1:
-                item->setText(1, sizeToString(metrics.total_tcp_rx) + " / " + sizeToString(metrics.total_tcp_tx));
+                item->setText(1, Formatter::sizeToString(metrics.total_tcp_rx) + " / " + Formatter::sizeToString(metrics.total_tcp_tx));
                 break;
             case 2:
-                item->setText(1, speedToString(metrics.speed_tcp_rx) + " / " + speedToString(metrics.speed_tcp_tx));
+                item->setText(1, Formatter::transferSpeedToString(metrics.speed_tcp_rx) + " / " + Formatter::transferSpeedToString(metrics.speed_tcp_tx));
                 break;
             case 3:
-                item->setText(1, sizeToString(metrics.total_udp_rx) + " / " + sizeToString(metrics.total_udp_tx));
+                item->setText(1, Formatter::sizeToString(metrics.total_udp_rx) + " / " + Formatter::sizeToString(metrics.total_udp_tx));
                 break;
             case 4:
-                item->setText(1, speedToString(metrics.speed_udp_rx) + " / " + speedToString(metrics.speed_udp_tx));
+                item->setText(1, Formatter::transferSpeedToString(metrics.speed_udp_rx) + " / " + Formatter::transferSpeedToString(metrics.speed_udp_tx));
                 break;
             case 5:
                 item->setText(1, QString::number(metrics.video_packet_count));
@@ -109,8 +110,8 @@ void StatisticsDialog::setMetrics(const ClientDesktop::Metrics& metrics)
                               .arg(metrics.video_resume_count));
                 break;
             case 7:
-                item->setText(1, sizeToString(metrics.min_video_packet) + " / " +
-                    sizeToString(metrics.max_video_packet) + " / " + sizeToString(metrics.avg_video_packet));
+                item->setText(1, Formatter::sizeToString(metrics.min_video_packet) + " / " +
+                    Formatter::sizeToString(metrics.max_video_packet) + " / " + Formatter::sizeToString(metrics.avg_video_packet));
                 break;
             case 8:
                 item->setText(1, QString::number(metrics.audio_packet_count));
@@ -121,8 +122,8 @@ void StatisticsDialog::setMetrics(const ClientDesktop::Metrics& metrics)
                               .arg(metrics.audio_resume_count));
                 break;
             case 10:
-                item->setText(1, sizeToString(metrics.min_audio_packet) + " / " +
-                    sizeToString(metrics.max_audio_packet) + " / " + sizeToString(metrics.avg_audio_packet));
+                item->setText(1, Formatter::sizeToString(metrics.min_audio_packet) + " / " +
+                    Formatter::sizeToString(metrics.max_audio_packet) + " / " + Formatter::sizeToString(metrics.avg_audio_packet));
                 break;
             case 11:
                 item->setText(1, capturerToString(metrics.video_capturer_type) + " / " +
@@ -167,88 +168,3 @@ void StatisticsDialog::setMetrics(const ClientDesktop::Metrics& metrics)
     }
 }
 
-//--------------------------------------------------------------------------------------------------
-// static
-QString StatisticsDialog::sizeToString(qint64 size)
-{
-    static const qint64 kKB = 1024LL;
-    static const qint64 kMB = kKB * 1024LL;
-    static const qint64 kGB = kMB * 1024LL;
-    static const qint64 kTB = kGB * 1024LL;
-
-    QString units;
-    qint64 divider;
-
-    if (size >= kTB)
-    {
-        units = "TB";
-        divider = kTB;
-    }
-    else if (size >= kGB)
-    {
-        units = "GB";
-        divider = kGB;
-    }
-    else if (size >= kMB)
-    {
-        units = "MB";
-        divider = kMB;
-    }
-    else if (size >= kKB)
-    {
-        units = "kB";
-        divider = kKB;
-    }
-    else
-    {
-        units = "B";
-        divider = 1;
-    }
-
-    return QString("%1 %2")
-        .arg(static_cast<double>(size) / static_cast<double>(divider), 0, 'g', 4)
-        .arg(units);
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString StatisticsDialog::speedToString(qint64 speed)
-{
-    static const qint64 kKB = 1024LL;
-    static const qint64 kMB = kKB * 1024LL;
-    static const qint64 kGB = kMB * 1024LL;
-    static const qint64 kTB = kGB * 1024LL;
-
-    QString units;
-    qint64 divider;
-
-    if (speed >= kTB)
-    {
-        units = "TB/s";
-        divider = kTB;
-    }
-    else if (speed >= kGB)
-    {
-        units = "GB/s";
-        divider = kGB;
-    }
-    else if (speed >= kMB)
-    {
-        units = "MB/s";
-        divider = kMB;
-    }
-    else if (speed >= kKB)
-    {
-        units = "kB/s";
-        divider = kKB;
-    }
-    else
-    {
-        units = "B/s";
-        divider = 1;
-    }
-
-    return QString("%1 %2")
-        .arg(static_cast<double>(speed) / static_cast<double>(divider), 0, 'g', 4)
-        .arg(units);
-}

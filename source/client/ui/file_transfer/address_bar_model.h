@@ -61,7 +61,6 @@ signals:
 
 protected:
     static QString typeToString(proto::file_transfer::DriveList::Item::Type type);
-    static QString sizeToString(qint64 size);
 
 private:
     struct Drive

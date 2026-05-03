@@ -38,6 +38,7 @@
 #include "base/logging.h"
 #include "base/peer/user.h"
 #include "client/ui/hosts/router_user_dialog.h"
+#include "common/ui/formatter.h"
 #include "common/ui/msg_box.h"
 #include "common/ui/status_dialog.h"
 #include "proto/router_admin.h"
@@ -108,9 +109,9 @@ public:
     void updateItem(const proto::router::Peer& connection)
     {
         conn = connection;
-        setText(4, RouterWidget::sizeToString(conn.bytes_transferred()));
-        setText(5, RouterWidget::delayToString(conn.duration()));
-        setText(6, RouterWidget::delayToString(conn.idle_time()));
+        setText(4, Formatter::sizeToString(conn.bytes_transferred()));
+        setText(5, Formatter::delayToString(conn.duration()));
+        setText(6, Formatter::delayToString(conn.idle_time()));
     }
 
     // QTreeWidgetItem implementation.
@@ -653,60 +654,6 @@ void RouterWidget::updateStatusLabel()
             status_label_->clear();
             break;
     }
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString RouterWidget::delayToString(quint64 delay)
-{
-    quint64 days = (delay / 86400);
-    quint64 hours = (delay % 86400) / 3600;
-    quint64 minutes = ((delay % 86400) % 3600) / 60;
-    quint64 seconds = ((delay % 86400) % 3600) % 60;
-
-    QString seconds_string = tr("%n seconds", "", static_cast<int>(seconds));
-    QString minutes_string = tr("%n minutes", "", static_cast<int>(minutes));
-    QString hours_string = tr("%n hours", "", static_cast<int>(hours));
-
-    if (days)
-    {
-        QString days_string = tr("%n days", "", static_cast<int>(days));
-        return days_string + ' ' + hours_string + ' ' + minutes_string + ' ' + seconds_string;
-    }
-
-    if (hours)
-        return hours_string + ' ' + minutes_string + ' ' + seconds_string;
-
-    if (minutes)
-        return minutes_string + ' ' + seconds_string;
-
-    return seconds_string;
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString RouterWidget::sizeToString(qint64 size)
-{
-    static const qint64 kKB = 1024LL;
-    static const qint64 kMB = kKB * 1024LL;
-    static const qint64 kGB = kMB * 1024LL;
-    static const qint64 kTB = kGB * 1024LL;
-
-    QString units;
-    qint64 divider;
-
-    if (size >= kTB)
-        units = tr("TB"), divider = kTB;
-    else if (size >= kGB)
-        units = tr("GB"), divider = kGB;
-    else if (size >= kMB)
-        units = tr("MB"), divider = kMB;
-    else if (size >= kKB)
-        units = tr("kB"), divider = kKB;
-    else
-        units = tr("B"), divider = 1;
-
-    return QString("%1 %2").arg(double(size) / double(divider), 0, 'g', 4).arg(units);
 }
 
 //--------------------------------------------------------------------------------------------------

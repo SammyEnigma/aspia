@@ -20,9 +20,7 @@
 
 #include "client/ui/file_transfer/file_mime_data.h"
 #include "common/file_platform_util.h"
-
-#include <QDateTime>
-#include <QLocale>
+#include "common/ui/formatter.h"
 
 namespace {
 
@@ -275,7 +273,7 @@ QVariant FileListModel::data(const QModelIndex& index, int role) const
                         return folder.name;
 
                     case COLUMN_LAST_WRITE:
-                        return timeToString(folder.last_write);
+                        return Formatter::timeToString(folder.last_write);
 
                     case COLUMN_TYPE:
                         return dir_type_;
@@ -312,13 +310,13 @@ QVariant FileListModel::data(const QModelIndex& index, int role) const
                         return file.name;
 
                     case COLUMN_SIZE:
-                        return sizeToString(file.size);
+                        return Formatter::sizeToString(file.size);
 
                     case COLUMN_TYPE:
                         return file.type;
 
                     case COLUMN_LAST_WRITE:
-                        return timeToString(file.last_write);
+                        return Formatter::timeToString(file.last_write);
 
                     default:
                         break;
@@ -539,52 +537,3 @@ void FileListModel::sortItems(int column, Qt::SortOrder order)
     }
 }
 
-//--------------------------------------------------------------------------------------------------
-// static
-QString FileListModel::sizeToString(qint64 size)
-{
-    static const qint64 kKB = 1024LL;
-    static const qint64 kMB = kKB * 1024LL;
-    static const qint64 kGB = kMB * 1024LL;
-    static const qint64 kTB = kGB * 1024LL;
-
-    QString units;
-    qint64 divider;
-
-    if (size >= kTB)
-    {
-        units = tr("TB");
-        divider = kTB;
-    }
-    else if (size >= kGB)
-    {
-        units = tr("GB");
-        divider = kGB;
-    }
-    else if (size >= kMB)
-    {
-        units = tr("MB");
-        divider = kMB;
-    }
-    else if (size >= kKB)
-    {
-        units = tr("kB");
-        divider = kKB;
-    }
-    else
-    {
-        units = tr("B");
-        divider = 1;
-    }
-
-    return QString("%1 %2")
-        .arg(static_cast<double>(size) / static_cast<double>(divider), 0, 'g', 4)
-        .arg(units);
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString FileListModel::timeToString(time_t time)
-{
-    return QLocale::system().toString(QDateTime::fromSecsSinceEpoch(time), QLocale::ShortFormat);
-}

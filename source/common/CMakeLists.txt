@@ -97,6 +97,8 @@ list(APPEND SOURCE_COMMON_UI
     ui/download_dialog.cc
     ui/download_dialog.h
     ui/download_dialog.ui
+    ui/formatter.cc
+    ui/formatter.h
     ui/language_action.h
     ui/msg_box.cc
     ui/msg_box.h

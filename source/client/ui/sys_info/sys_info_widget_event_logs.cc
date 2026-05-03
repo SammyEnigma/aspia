@@ -22,6 +22,7 @@
 
 #include "base/logging.h"
 #include "common/system_info_constants.h"
+#include "common/ui/formatter.h"
 
 namespace {
 
@@ -211,7 +212,7 @@ void SysInfoWidgetEventLogs::setSystemInfo(const proto::system_info::SystemInfo&
         const proto::system_info::EventLogs::Event& event = event_logs.event(i);
 
         EventItem* item = new EventItem(event.time());
-        item->setText(0, timeToString(event.time()));
+        item->setText(0, Formatter::timeToString(event.time()));
         item->setText(1, levelToString(event.level()));
         item->setText(2, QString::fromStdString(event.category()));
         item->setText(3, QString::number(event.event_id()));

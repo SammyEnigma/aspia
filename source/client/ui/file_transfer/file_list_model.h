@@ -67,8 +67,6 @@ signals:
 
 protected:
     void sortItems(int column, Qt::SortOrder order);
-    static QString sizeToString(qint64 size);
-    static QString timeToString(time_t time);
 
 private:
     struct File

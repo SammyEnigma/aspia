@@ -23,6 +23,7 @@
 
 #include "base/logging.h"
 #include "client/ui/file_transfer/file_error_code.h"
+#include "common/ui/formatter.h"
 #include "common/ui/msg_box.h"
 
 #if defined(Q_OS_WINDOWS)
@@ -125,7 +126,7 @@ void FileTransferDialog::setCurrentProgress(int total, int current)
 //--------------------------------------------------------------------------------------------------
 void FileTransferDialog::setCurrentSpeed(qint64 speed)
 {
-    ui.label_speed->setText(tr("Speed: %1").arg(speedToString(speed)));
+    ui.label_speed->setText(tr("Speed: %1").arg(Formatter::transferSpeedToString(speed)));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -294,45 +295,3 @@ QString FileTransferDialog::errorToMessage(const FileTransfer::Error& error)
     }
 }
 
-//--------------------------------------------------------------------------------------------------
-// static
-QString FileTransferDialog::speedToString(qint64 speed)
-{
-    static const qint64 kKB = 1024LL;
-    static const qint64 kMB = kKB * 1024LL;
-    static const qint64 kGB = kMB * 1024LL;
-    static const qint64 kTB = kGB * 1024LL;
-
-    QString units;
-    qint64 divider;
-
-    if (speed >= kTB)
-    {
-            units = tr("TB/s");
-            divider = kTB;
-    }
-    else if (speed >= kGB)
-    {
-            units = tr("GB/s");
-            divider = kGB;
-    }
-    else if (speed >= kMB)
-    {
-            units = tr("MB/s");
-            divider = kMB;
-    }
-    else if (speed >= kKB)
-    {
-            units = tr("kB/s");
-            divider = kKB;
-    }
-    else
-    {
-            units = tr("B/s");
-            divider = 1;
-    }
-
-    return QString("%1 %2")
-        .arg(static_cast<double>(speed) / static_cast<double>(divider), 0, 'g', 4)
-        .arg(units);
-}

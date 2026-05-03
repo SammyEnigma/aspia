@@ -20,9 +20,7 @@
 
 #include <QApplication>
 #include <QClipboard>
-#include <QDateTime>
 #include <QDesktopServices>
-#include <QLocale>
 #include <QTreeWidgetItem>
 #include <QUrl>
 
@@ -77,93 +75,6 @@ proto::system_info::SystemInfoRequest SysInfoWidget::request() const
     proto::system_info::SystemInfoRequest system_info_request;
     system_info_request.set_category(category());
     return system_info_request;
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString SysInfoWidget::sizeToString(qint64 size)
-{
-    static const qint64 kKB = 1024LL;
-    static const qint64 kMB = kKB * 1024LL;
-    static const qint64 kGB = kMB * 1024LL;
-    static const qint64 kTB = kGB * 1024LL;
-
-    QString units;
-    qint64 divider;
-
-    if (size >= kTB)
-        units = tr("TB"), divider = kTB;
-    else if (size >= kGB)
-        units = tr("GB"), divider = kGB;
-    else if (size >= kMB)
-        units = tr("MB"), divider = kMB;
-    else if (size >= kKB)
-        units = tr("kB"), divider = kKB;
-    else
-        units = tr("B"), divider = 1;
-
-    return QString("%1 %2")
-        .arg(static_cast<double>(size) / static_cast<double>(divider), 0, 'g', 4)
-        .arg(units);
-}
-
-//--------------------------------------------------------------------------------------------------
-QString SysInfoWidget::delayToString(quint64 delay)
-{
-    quint64 days = (delay / 86400);
-    quint64 hours = (delay % 86400) / 3600;
-    quint64 minutes = ((delay % 86400) % 3600) / 60;
-    quint64 seconds = ((delay % 86400) % 3600) % 60;
-
-    QString seconds_string = tr("%n seconds", "", static_cast<int>(seconds));
-    QString minutes_string = tr("%n minutes", "", static_cast<int>(minutes));
-    QString hours_string = tr("%n hours", "", static_cast<int>(hours));
-
-    if (days)
-    {
-        QString days_string = tr("%n days", "", static_cast<int>(days));
-        return days_string + ' ' + hours_string + ' ' + minutes_string + ' ' + seconds_string;
-    }
-
-    if (hours)
-        return hours_string + ' ' + minutes_string + ' ' + seconds_string;
-
-    if (minutes)
-        return minutes_string + ' ' + seconds_string;
-
-    return seconds_string;
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString SysInfoWidget::speedToString(quint64 speed)
-{
-    static const quint64 kKbps = 1000ULL;
-    static const quint64 kMbps = kKbps * 1000ULL;
-    static const quint64 kGbps = kMbps * 1000ULL;
-
-    QString units;
-    quint64 divider;
-
-    if (speed >= kGbps)
-        units = tr("Gbps"), divider = kGbps;
-    else if (speed >= kMbps)
-        units = tr("Mbps"), divider = kMbps;
-    else if (speed >= kKbps)
-        units = tr("Kbps"), divider = kKbps;
-    else
-        units = tr("bps"), divider = 1;
-
-    return QString("%1 %2")
-        .arg(static_cast<double>(speed) / static_cast<double>(divider), 0, 'g', 4)
-        .arg(units);
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-QString SysInfoWidget::timeToString(time_t time)
-{
-    return QLocale::system().toString(QDateTime::fromSecsSinceEpoch(time), QLocale::ShortFormat);
 }
 
 //--------------------------------------------------------------------------------------------------

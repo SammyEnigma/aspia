@@ -21,6 +21,7 @@
 #include <QMenu>
 
 #include "common/system_info_constants.h"
+#include "common/ui/formatter.h"
 
 namespace {
 
@@ -155,7 +156,7 @@ void SysInfoWidgetProcesses::setSystemInfo(const proto::system_info::SystemInfo&
         item->setText(0, process_name);
         item->setText(1, QString::number(process.pid()));
         item->setText(2, QString("%1%").arg(process.cpu()));
-        item->setText(3, sizeToString(process.memory()));
+        item->setText(3, Formatter::sizeToString(process.memory()));
         item->setText(4, QString::number(process.sid()));
         item->setText(5, user_name);
         item->setText(6, QString::fromStdString(process.path()));

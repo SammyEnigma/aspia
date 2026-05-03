@@ -83,9 +83,6 @@ public:
 
     void showStatusDialog();
 
-    static QString delayToString(quint64 delay);
-    static QString sizeToString(qint64 size);
-
 public slots:
     void onUpdateRelayList();
     void onUpdateHostList();
