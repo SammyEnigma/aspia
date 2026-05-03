@@ -43,6 +43,8 @@ TabBar::TabBar(QWidget* parent)
     : QTabBar(parent),
       pulse_timer_(new QTimer(this))
 {
+    setStyleSheet("QTabBar::close-button { image: url(:/img/close-window.svg); }");
+
     pulse_timer_->setInterval(kPulseTickMs);
     connect(pulse_timer_, &QTimer::timeout, this, &TabBar::onPulseTick);
 }
