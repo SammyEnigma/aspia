@@ -20,6 +20,7 @@
 
 #include <QAbstractButton>
 #include <QCoreApplication>
+#include <QFileDialog>
 #include <QPushButton>
 #include <QTimer>
 
@@ -128,6 +129,11 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     ui.checkbox_lock_at_disconnect->setChecked(desktop_config.lock_at_disconnect());
     ui.checkbox_block_remote_input->setChecked(desktop_config.block_input());
 
+    ui.checkbox_record_autostart->setChecked(settings.recordSessions());
+    ui.edit_record_dir->setText(settings.recordingPath());
+    connect(ui.button_select_record_dir, &QPushButton::clicked,
+            this, &SettingsDialog::onSelectRecordingPath);
+
     // Update tab.
 #if defined(Q_OS_WINDOWS)
     ui.checkbox_check_updates->setChecked(db.isCheckUpdatesEnabled());
@@ -215,6 +221,9 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
         desktop_config.set_lock_at_disconnect(ui.checkbox_lock_at_disconnect->isChecked());
         desktop_config.set_block_input(ui.checkbox_block_remote_input->isChecked());
         settings.setDesktopConfig(desktop_config);
+
+        settings.setRecordSessions(ui.checkbox_record_autostart->isChecked());
+        settings.setRecordingPath(ui.edit_record_dir->text());
 
         Database& db = Database::instance();
         db.setDisplayName(ui.edit_display_name->text());
@@ -314,6 +323,25 @@ void SettingsDialog::onRemoveMasterPassword()
     dialog.exec();
 
     updateMasterPasswordUi();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SettingsDialog::onSelectRecordingPath()
+{
+    LOG(INFO) << "[ACTION] Select recording path";
+
+    QString path = QFileDialog::getExistingDirectory(
+        this, tr("Choose path"), ui.edit_record_dir->text(),
+        QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    if (path.isEmpty())
+    {
+        LOG(INFO) << "[ACTION] Recording path selection rejected";
+        return;
+    }
+
+    LOG(INFO) << "[ACTION] Recording path selected:" << path;
+    ui.edit_record_dir->setText(path);
 }
 
 //--------------------------------------------------------------------------------------------------

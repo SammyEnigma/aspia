@@ -20,15 +20,11 @@
 
 #include "base/xml_settings.h"
 
-#include <QStandardPaths>
-
 namespace {
 
 const QString kScaleParam = "Desktop/Scale";
 const QString kAutoScrollingParam = "Desktop/AutoScrolling";
 const QString kSendKeyCombinationsParam = "Desktop/SendKeyCombinations";
-const QString kRecordingPathParam = "Desktop/RecordingPath";
-const QString kRecordSessionsParam = "Desktop/RecordSessions";
 const QString kToolBarPinnedParam = "Desktop/ToolBarPinned";
 const QString kPauseVideoParam = "Desktop/PauseVideo";
 const QString kPauseAudioParam = "Desktop/PauseAudio";
@@ -92,31 +88,6 @@ bool DesktopSettings::sendKeyCombinations() const
 void DesktopSettings::setSendKeyCombinations(bool enable)
 {
     settings_.setValue(kSendKeyCombinationsParam, enable);
-}
-
-//--------------------------------------------------------------------------------------------------
-QString DesktopSettings::recordingPath() const
-{
-    QString default_path = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation) + "/Aspia";
-    return settings_.value(kRecordingPathParam, default_path).toString();
-}
-
-//--------------------------------------------------------------------------------------------------
-void DesktopSettings::setRecordingPath(const QString& path)
-{
-    settings_.setValue(kRecordingPathParam, path);
-}
-
-//--------------------------------------------------------------------------------------------------
-bool DesktopSettings::recordSessions() const
-{
-    return settings_.value(kRecordSessionsParam, false).toBool();
-}
-
-//--------------------------------------------------------------------------------------------------
-void DesktopSettings::setRecordSessions(bool enable)
-{
-    settings_.setValue(kRecordSessionsParam, enable);
 }
 
 //--------------------------------------------------------------------------------------------------

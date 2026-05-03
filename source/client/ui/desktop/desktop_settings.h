@@ -35,12 +35,6 @@ public:
     bool sendKeyCombinations() const;
     void setSendKeyCombinations(bool enable);
 
-    QString recordingPath() const;
-    void setRecordingPath(const QString& path);
-
-    bool recordSessions() const;
-    void setRecordSessions(bool enable);
-
     bool isToolBarPinned() const;
     void setToolBarPinned(bool enable);
 

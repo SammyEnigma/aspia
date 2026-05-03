@@ -44,6 +44,7 @@ private slots:
     void onRemoveRouter();
     void onSetOrChangeMasterPassword();
     void onRemoveMasterPassword();
+    void onSelectRecordingPath();
 
 private:
     void showError(const QString& message);

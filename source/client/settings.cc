@@ -19,6 +19,7 @@
 #include "client/settings.h"
 
 #include <QLocale>
+#include <QStandardPaths>
 #include <QVersionNumber>
 
 #include <mutex>
@@ -43,6 +44,8 @@ const QString kToolbarParam = "toolbar";
 const QString kStatusbarParam = "statusbar";
 const QString kOnlineCheckParam = "online_check";
 const QString kOpenSessionsInTabsParam = "open_sessions_in_tabs";
+const QString kRecordingPathParam = "recording_path";
+const QString kRecordSessionsParam = "record_sessions";
 const QString kTabStateParam = "tab_state";
 
 } // namespace
@@ -227,6 +230,31 @@ bool Settings::openSessionsInTabs() const
 void Settings::setOpenSessionsInTabs(bool enable)
 {
     settings_.setValue(kOpenSessionsInTabsParam, enable);
+}
+
+//--------------------------------------------------------------------------------------------------
+QString Settings::recordingPath() const
+{
+    QString default_path = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation) + "/Aspia";
+    return settings_.value(kRecordingPathParam, default_path).toString();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Settings::setRecordingPath(const QString& path)
+{
+    settings_.setValue(kRecordingPathParam, path);
+}
+
+//--------------------------------------------------------------------------------------------------
+bool Settings::recordSessions() const
+{
+    return settings_.value(kRecordSessionsParam, false).toBool();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Settings::setRecordSessions(bool enable)
+{
+    settings_.setValue(kRecordSessionsParam, enable);
 }
 
 //--------------------------------------------------------------------------------------------------

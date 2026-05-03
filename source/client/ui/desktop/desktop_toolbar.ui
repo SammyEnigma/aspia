@@ -408,11 +408,6 @@
     <bool>false</bool>
    </property>
   </action>
-  <action name="action_recording_settings">
-   <property name="text">
-    <string>Recording settings...</string>
-   </property>
-  </action>
   <action name="action_start_recording">
    <property name="icon">
     <iconset resource="../../../common/resources/common.qrc">

@@ -104,7 +104,6 @@ private slots:
     void onSwitchSessionAction(QAction* action);
     void onMenuShow();
     void onMenuHide();
-    void onShowRecordSettings();
 
 private:
     void createAdditionalMenu();

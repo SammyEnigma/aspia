@@ -19,6 +19,7 @@
 #include "client/ui/desktop/desktop_toolbar.h"
 
 #include <QActionGroup>
+#include <QCheckBox>
 #include <QMenu>
 #include <QTimer>
 #include <QToolButton>
@@ -26,7 +27,6 @@
 #include "common/ui/msg_box.h"
 #include "base/logging.h"
 #include "client/ui/desktop/desktop_settings.h"
-#include "client/ui/desktop/record_settings_dialog.h"
 #include "client/ui/desktop/select_screen_action.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -497,7 +497,6 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
                        ui.action_pause_video,
                        ui.action_pause_audio,
                        ui.action_screenshot,
-                       ui.action_recording_settings,
                        ui.action_statistics }) });
 
     groups.append({ Tab::ActionRole::SESSION_TYPE,
@@ -788,13 +787,6 @@ void DesktopToolBar::onMenuHide()
 }
 
 //--------------------------------------------------------------------------------------------------
-void DesktopToolBar::onShowRecordSettings()
-{
-    LOG(INFO) << "[ACTION] Record settings";
-    RecordSettingsDialog(this).exec();
-}
-
-//--------------------------------------------------------------------------------------------------
 void DesktopToolBar::createAdditionalMenu()
 {
     LOG(INFO) << "Create additional menu";
@@ -827,7 +819,6 @@ void DesktopToolBar::createAdditionalMenu()
     additional_menu_->addSeparator();
     additional_menu_->addAction(ui.action_screenshot);
     additional_menu_->addSeparator();
-    additional_menu_->addAction(ui.action_recording_settings);
     additional_menu_->addAction(ui.action_start_recording);
     additional_menu_->addSeparator();
     additional_menu_->addAction(ui.action_statistics);
@@ -917,7 +908,6 @@ void DesktopToolBar::createAdditionalMenu()
     connect(additional_menu_, &QMenu::aboutToShow, this, &DesktopToolBar::onMenuShow);
     connect(additional_menu_, &QMenu::aboutToHide, this, &DesktopToolBar::onMenuHide);
 
-    connect(ui.action_recording_settings, &QAction::triggered, this, &DesktopToolBar::onShowRecordSettings);
     connect(ui.action_start_recording, &QAction::triggered, this, [this]()
     {
         startRecording(!is_recording_started_);

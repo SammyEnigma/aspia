@@ -338,6 +338,62 @@
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="groupbox_recording">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>Recording</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_recording">
+          <item>
+           <widget class="QCheckBox" name="checkbox_record_autostart">
+            <property name="text">
+             <string>Automatically start recording sessions on connection</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_record_path">
+            <property name="text">
+             <string>Write path:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_record_path">
+            <item>
+             <widget class="QLineEdit" name="edit_record_dir">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_select_record_dir">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string notr="true">...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_desktop">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>

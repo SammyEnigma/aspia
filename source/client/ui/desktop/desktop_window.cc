@@ -37,9 +37,9 @@
 #include "common/ui/msg_box.h"
 #include "base/desktop/mouse_cursor.h"
 #include "client/client_desktop.h"
+#include "client/settings.h"
 #include "client/ui/chat/chat_window.h"
 #include "client/ui/desktop/desktop_config_dialog.h"
-#include "client/ui/desktop/desktop_settings.h"
 #include "client/ui/desktop/desktop_toolbar.h"
 #include "client/ui/desktop/desktop_widget.h"
 #include "client/ui/file_transfer/file_transfer_window.h"
@@ -208,7 +208,7 @@ DesktopWindow::DesktopWindow(const proto::control::Config& desktop_config, QWidg
 
         if (enable)
         {
-            DesktopSettings settings;
+            Settings settings;
             file_path = settings.recordingPath();
         }
 
@@ -460,7 +460,7 @@ void DesktopWindow::onFrameChanged(const QSize& screen_size, std::shared_ptr<Fra
 
         // If the parameters indicate that it is necessary to record the connection session, then we
         // start recording.
-        DesktopSettings settings;
+        Settings settings;
         if (settings.recordSessions())
         {
             LOG(INFO) << "Auto-recording enabled";

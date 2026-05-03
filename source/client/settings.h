@@ -72,6 +72,12 @@ public:
     bool openSessionsInTabs() const;
     void setOpenSessionsInTabs(bool enable);
 
+    QString recordingPath() const;
+    void setRecordingPath(const QString& path);
+
+    bool recordSessions() const;
+    void setRecordSessions(bool enable);
+
     QByteArray tabState(const QString& name) const;
     void setTabState(const QString& name, const QByteArray& state);
 
