@@ -43,9 +43,8 @@ public:
 
     // ClientWindow implementation.
     Client* createClient() final;
-
-    QByteArray saveState() const;
-    void restoreState(const QByteArray& state);
+    QByteArray saveState() const final;
+    void restoreState(const QByteArray& state) final;
 
 public slots:
     void onShowWindow();

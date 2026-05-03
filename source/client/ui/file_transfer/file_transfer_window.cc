@@ -26,7 +26,6 @@
 #include "client/ui/file_transfer/file_error_code.h"
 #include "client/ui/file_transfer/file_remove_dialog.h"
 #include "client/ui/file_transfer/file_transfer_dialog.h"
-#include "client/ui/file_transfer/file_manager_settings.h"
 #include "client/ui/file_transfer/file_mime_data.h"
 
 #include "common/ui/msg_box.h"
@@ -39,10 +38,6 @@ FileTransferWindow::FileTransferWindow(QWidget* parent)
     LOG(INFO) << "Ctor";
 
     ui->setupUi(this);
-
-    FileManagerSettings settings;
-    restoreGeometry(settings.windowGeometry());
-    restoreState(settings.windowState());
 
     QString mime_type = FileMimeData::createMimeType();
 
@@ -182,6 +177,7 @@ QByteArray FileTransferWindow::saveState() const
     {
         QDataStream stream(&buffer, QIODevice::WriteOnly);
         stream.setVersion(QDataStream::Qt_6_10);
+        stream << saveGeometry();
         stream << ui->splitter->saveState();
         stream << ui->local_panel->saveState();
         stream << ui->remote_panel->saveState();
@@ -197,6 +193,9 @@ void FileTransferWindow::restoreState(const QByteArray& state)
     stream.setVersion(QDataStream::Qt_6_10);
 
     QByteArray value;
+
+    stream >> value;
+    restoreGeometry(value);
 
     stream >> value;
     ui->splitter->restoreState(value);
@@ -237,11 +236,6 @@ void FileTransferWindow::closeEvent(QCloseEvent* event)
         LOG(INFO) << "Stopping remove dialog";
         remove_dialog_->stop();
     }
-
-    FileManagerSettings settings;
-
-    settings.setWindowGeometry(saveGeometry());
-    settings.setWindowState(saveState());
 
     ClientWindow::closeEvent(event);
 }

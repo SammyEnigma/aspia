@@ -128,8 +128,6 @@ list(APPEND SOURCE_CLIENT_CORE_UI_FILE_TRANSFER
     ui/file_transfer/file_list.h
     ui/file_transfer/file_list_model.cc
     ui/file_transfer/file_list_model.h
-    ui/file_transfer/file_manager_settings.cc
-    ui/file_transfer/file_manager_settings.h
     ui/file_transfer/file_mime_data.cc
     ui/file_transfer/file_mime_data.h
     ui/file_transfer/file_name_validator.cc
