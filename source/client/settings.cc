@@ -224,7 +224,7 @@ void Settings::setOnlineCheckEnabled(bool enable)
 //--------------------------------------------------------------------------------------------------
 bool Settings::openSessionsInTabs() const
 {
-    return settings_.value(kOpenSessionsInTabsParam, false).toBool();
+    return settings_.value(kOpenSessionsInTabsParam, true).toBool();
 }
 
 //--------------------------------------------------------------------------------------------------

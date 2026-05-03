@@ -66,6 +66,7 @@
      <addaction name="action_switch_session"/>
      <addaction name="action_power_control"/>
      <addaction name="action_cad"/>
+     <addaction name="action_paste_clipboard_as_keystrokes"/>
      <addaction name="separator"/>
      <addaction name="action_autosize"/>
      <addaction name="action_fullscreen"/>
@@ -365,6 +366,10 @@
    </property>
   </action>
   <action name="action_paste_clipboard_as_keystrokes">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/paste.svg</normaloff>:/img/paste.svg</iconset>
+   </property>
    <property name="text">
     <string>Paste clipboard as keystrokes</string>
    </property>

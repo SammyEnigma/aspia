@@ -31,7 +31,9 @@ public:
     explicit SelectScreenAction(QObject* parent)
         : QAction(parent)
     {
-        setToolTip(tr("Full Desktop"));
+        QString text = tr("Full Desktop");
+        setText(text);
+        setToolTip(text);
         setIcon(QIcon(":/img/computer.svg"));
         setCheckable(true);
         screen_.set_id(-1);
@@ -41,14 +43,15 @@ public:
         : QAction(parent),
           screen_(screen)
     {
-        QString tooltip;
+        QString text;
 
         if (is_primary)
-            tooltip = tr("Monitor %1 (primary)").arg(number);
+            text = tr("Monitor %1 (primary)").arg(number);
         else
-            tooltip = tr("Monitor %1").arg(number);
+            text = tr("Monitor %1").arg(number);
 
-        setToolTip(tooltip);
+        setText(text);
+        setToolTip(text);
 
         QString icon;
         if (number >= 1 && number <= 9)

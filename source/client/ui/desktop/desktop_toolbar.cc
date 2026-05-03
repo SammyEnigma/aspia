@@ -321,7 +321,9 @@ void DesktopToolBar::setScreenList(const proto::screen::ScreenList& screen_list)
     {
         QAction* resolution_select_action = new QAction(ui.toolbar);
 
-        resolution_select_action->setToolTip(tr("Resolution selection"));
+        QString text = tr("Resolution selection");
+        resolution_select_action->setText(text);
+        resolution_select_action->setToolTip(text);
         resolution_select_action->setIcon(QIcon(":/img/computer.svg"));
         resolution_select_action->setMenu(resolutions_menu_);
 
@@ -470,7 +472,6 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
     ui.action_start_recording->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_statistics->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_screenshot->setProperty(Tab::kMenuOnlyProperty, true);
-    ui.action_paste_clipboard_as_keystrokes->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_autoscroll->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_pause_video->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_pause_audio->setProperty(Tab::kMenuOnlyProperty, true);
@@ -482,13 +483,13 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
     actions.append(ui.action_switch_session);
     actions.append(ui.action_power_control);
     actions.append(ui.action_cad);
+    actions.append(ui.action_paste_clipboard_as_keystrokes);
 
     groups.append({ Tab::ActionRole::ACTION, actions});
     groups.append({ Tab::ActionRole::ACTION,
     {
         ui.action_file_transfer, ui.action_text_chat, ui.action_task_manager, ui.action_system_info
     }});
-    groups.append({ Tab::ActionRole::ACTION, { ui.action_paste_clipboard_as_keystrokes }});
     groups.append({ Tab::ActionRole::FILE,
     {
         ui.action_start_recording, ui.action_screenshot, ui.action_statistics
@@ -782,9 +783,6 @@ void DesktopToolBar::createAdditionalMenu()
 
     // Create a menu and add actions to it.
     additional_menu_ = new QMenu(this);
-
-    additional_menu_->addAction(ui.action_paste_clipboard_as_keystrokes);
-    additional_menu_->addSeparator();
 
     scale_group_ = new QActionGroup(additional_menu_);
     scale_group_->addAction(ui.action_scale100);
