@@ -59,6 +59,11 @@ public:
     // session is embedded in a tab. The default implementation returns an empty list.
     virtual QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const;
 
+    // Re-reads the relevant client settings and applies them to the running session. Called by
+    // the container after the user changes settings in the global Settings dialog. The default
+    // implementation does nothing; sessions that read from Settings (e.g. DesktopWindow) override.
+    virtual void applySettings();
+
 signals:
     void sig_start();
     void sig_stop();

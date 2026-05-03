@@ -39,7 +39,6 @@
 #include "client/client_desktop.h"
 #include "client/settings.h"
 #include "client/ui/chat/chat_window.h"
-#include "client/ui/desktop/desktop_config_dialog.h"
 #include "client/ui/desktop/desktop_toolbar.h"
 #include "client/ui/desktop/desktop_widget.h"
 #include "client/ui/file_transfer/file_transfer_window.h"
@@ -103,7 +102,6 @@ DesktopWindow::DesktopWindow(const proto::control::Config& desktop_config, QWidg
     desktop_->enableRemoteCursorPosition(desktop_config_.cursor_position());
 
     connect(toolbar_, &DesktopToolBar::sig_keyCombination, desktop_, &DesktopWidget::executeKeyCombination);
-    connect(toolbar_, &DesktopToolBar::sig_settingsButton, this, &DesktopWindow::onSettings);
     connect(toolbar_, &DesktopToolBar::sig_switchToAutosize, this, &DesktopWindow::onAutosizeWindow);
     connect(toolbar_, &DesktopToolBar::sig_takeScreenshot, this, &DesktopWindow::onTakeScreenshot);
     connect(toolbar_, &DesktopToolBar::sig_scaleChanged, this, &DesktopWindow::onScaleDesktop);
@@ -340,6 +338,23 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopWindow::tabActionGroups() 
 }
 
 //--------------------------------------------------------------------------------------------------
+void DesktopWindow::applySettings()
+{
+    LOG(INFO) << "Apply client settings";
+
+    Settings settings;
+
+    desktop_config_ = settings.desktopConfig();
+    emit sig_desktopConfigChanged(desktop_config_);
+
+    desktop_->enableRemoteCursorPosition(desktop_config_.cursor_position());
+    if (!desktop_config_.cursor_shape())
+        desktop_->setCursorShape(QPixmap(), QPoint());
+
+    desktop_->enableKeyCombinations(settings.sendKeyCombinations());
+}
+
+//--------------------------------------------------------------------------------------------------
 void DesktopWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";
@@ -360,22 +375,6 @@ void DesktopWindow::onCapabilitiesChanged(const proto::control::Capabilities& ca
             toolbar_->enableCtrlAltDelFeature(true);
         else if (name == kFlagPasteAsKeystrokes)
             toolbar_->enablePasteAsKeystrokesFeature(value);
-        else if (name == kFlagAudioOpus)
-            feature_audio_ = value;
-        else if (name == kFlagClipboard)
-            feature_clipboard_ = value;
-        else if (name == kFlagCursorShape)
-            feature_cursor_shape_ = value;
-        else if (name == kFlagCursorPosition)
-            feature_cursor_position_ = value;
-        else if (name == kFlagDesktopEffects)
-            feature_desktop_effects_ = value;
-        else if (name == kFlagDesktopWallpaper)
-            feature_desktop_wallpaper_ = value;
-        else if (name == kFlagLockAtDisconnect)
-            feature_lock_at_disconnect_ = value;
-        else if (name == kFlagBlockInput)
-            feature_block_input_ = value;
         else if (name == kFlagPowerControl)
             toolbar_->enablePowerControl(value);
         else if (name == kFlagSelectScreen)
@@ -559,15 +558,6 @@ void DesktopWindow::onInternalReset()
     video_pause_last_ = false;
     enable_audio_pause_ = true;
     audio_pause_last_ = false;
-
-    feature_audio_ = false;
-    feature_clipboard_ = false;
-    feature_cursor_shape_ = false;
-    feature_cursor_position_ = false;
-    feature_desktop_effects_ = false;
-    feature_desktop_wallpaper_ = false;
-    feature_lock_at_disconnect_ = false;
-    feature_block_input_ = false;
 
     wheel_angle_ = QPoint();
 
@@ -839,45 +829,6 @@ void DesktopWindow::onMouseEvent(const proto::input::MouseEvent& event)
         if (!toolbar_->rect().contains(pos))
             QApplication::postEvent(toolbar_, new QEvent(QEvent::Leave));
     }
-}
-
-//--------------------------------------------------------------------------------------------------
-void DesktopWindow::onSettings()
-{
-    LOG(INFO) << "Create desktop config dialog";
-
-    DesktopConfigDialog* dialog = new DesktopConfigDialog(
-        desktop_config_, desktop_->keyCombinationsEnabled(), this);
-    dialog->setAttribute(Qt::WA_DeleteOnClose);
-
-    dialog->enableAudioFeature(feature_audio_);
-    dialog->enableClipboardFeature(feature_clipboard_);
-    dialog->enableCursorShapeFeature(feature_cursor_shape_);
-    dialog->enableCursorPositionFeature(feature_cursor_position_);
-    dialog->enableDesktopEffectsFeature(feature_desktop_effects_);
-    dialog->enableDesktopWallpaperFeature(feature_desktop_wallpaper_);
-    dialog->enableLockAtDisconnectFeature(feature_lock_at_disconnect_);
-    dialog->enableBlockInputFeature(feature_block_input_);
-
-    connect(dialog, &DesktopConfigDialog::sig_configChanged, this, &DesktopWindow::onConfigChanged);
-    connect(dialog, &DesktopConfigDialog::sig_sendKeyCombinationsChanged,
-            desktop_, &DesktopWidget::enableKeyCombinations);
-
-    dialog->show();
-    dialog->activateWindow();
-}
-
-//--------------------------------------------------------------------------------------------------
-void DesktopWindow::onConfigChanged(const proto::control::Config& desktop_config)
-{
-    LOG(INFO) << "Desktop config changed:" << desktop_config;
-    desktop_config_ = desktop_config;
-
-    emit sig_desktopConfigChanged(desktop_config);
-
-    desktop_->enableRemoteCursorPosition(desktop_config_.cursor_position());
-    if (!desktop_config_.cursor_shape())
-        desktop_->setCursorShape(QPixmap(), QPoint());
 }
 
 //--------------------------------------------------------------------------------------------------

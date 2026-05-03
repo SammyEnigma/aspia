@@ -69,7 +69,6 @@ signals:
     void sig_keyCombination(QKeyCombination key_secuence);
     void sig_switchToFullscreen(bool fullscreen);
     void sig_switchToAutosize();
-    void sig_settingsButton();
     void sig_screenSelected(const proto::screen::Screen& screen);
     void sig_scaleChanged();
     void sig_autoScrollChanged(bool enabled);

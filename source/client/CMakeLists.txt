@@ -98,9 +98,6 @@ list(APPEND SOURCE_CLIENT_CORE_UI
 )
 
 list(APPEND SOURCE_CLIENT_CORE_UI_DESKTOP
-    ui/desktop/desktop_config_dialog.cc
-    ui/desktop/desktop_config_dialog.h
-    ui/desktop/desktop_config_dialog.ui
     ui/desktop/desktop_window.cc
     ui/desktop/desktop_window.h
     ui/desktop/desktop_toolbar.cc

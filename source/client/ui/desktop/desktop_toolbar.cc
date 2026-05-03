@@ -71,12 +71,6 @@ DesktopToolBar::DesktopToolBar(QWidget* parent)
     ui.action_pause_video->setChecked(settings.pauseVideoWhenMinimizing());
     ui.action_pause_audio->setChecked(settings.pauseAudioWhenMinimizing());
 
-    connect(ui.action_settings, &QAction::triggered, this, [this]()
-    {
-        LOG(INFO) << "[ACTION] Settings button clicked";
-        emit sig_settingsButton();
-    });
-
     connect(ui.action_autosize, &QAction::triggered, this, &DesktopToolBar::onAutosizeButton);
     connect(ui.action_fullscreen, &QAction::triggered, this, &DesktopToolBar::onFullscreenButton);
     connect(ui.action_autoscroll, &QAction::triggered, this, [this](bool enabled)
@@ -494,13 +488,10 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
     {
         ui.action_file_transfer, ui.action_text_chat, ui.action_task_manager, ui.action_system_info
     }});
-    groups.append({ Tab::ActionRole::ACTION,
-    {
-        ui.action_paste_clipboard_as_keystrokes
-    }});
+    groups.append({ Tab::ActionRole::ACTION, { ui.action_paste_clipboard_as_keystrokes }});
     groups.append({ Tab::ActionRole::FILE,
     {
-        ui.action_start_recording, ui.action_screenshot, ui.action_statistics, ui.action_settings
+        ui.action_start_recording, ui.action_screenshot, ui.action_statistics
     }});
     groups.append({ Tab::ActionRole::VIEW,
     {

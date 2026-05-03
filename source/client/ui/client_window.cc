@@ -134,6 +134,12 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> ClientWindow::tabActionGroups() c
 }
 
 //--------------------------------------------------------------------------------------------------
+void ClientWindow::applySettings()
+{
+    // Nothing
+}
+
+//--------------------------------------------------------------------------------------------------
 void ClientWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event";

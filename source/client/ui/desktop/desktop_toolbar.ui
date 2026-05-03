@@ -66,7 +66,6 @@
      <addaction name="action_switch_session"/>
      <addaction name="action_power_control"/>
      <addaction name="action_cad"/>
-     <addaction name="action_settings"/>
      <addaction name="separator"/>
      <addaction name="action_autosize"/>
      <addaction name="action_fullscreen"/>
@@ -118,18 +117,6 @@
    </property>
    <property name="toolTip">
     <string>Lock toolbar</string>
-   </property>
-  </action>
-  <action name="action_settings">
-   <property name="icon">
-    <iconset resource="../../../common/resources/common.qrc">
-     <normaloff>:/img/tools.svg</normaloff>:/img/tools.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Session configuration</string>
-   </property>
-   <property name="toolTip">
-    <string>Session configuration</string>
    </property>
   </action>
   <action name="action_autosize">

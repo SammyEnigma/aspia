@@ -223,9 +223,17 @@ void MainWindow::onSettings()
 
         for (int i = 0; i < ui.tabs->count(); ++i)
         {
-            HostsTab* hosts = dynamic_cast<HostsTab*>(ui.tabs->widget(i));
-            if (hosts)
+            QWidget* widget = ui.tabs->widget(i);
+
+            if (HostsTab* hosts = dynamic_cast<HostsTab*>(widget))
+            {
                 hosts->reloadRouters();
+            }
+            else if (ClientTab* client_tab = dynamic_cast<ClientTab*>(widget))
+            {
+                if (ClientWindow* client_window = client_tab->clientWindow())
+                    client_window->applySettings();
+            }
         }
     }
 }

@@ -48,6 +48,7 @@ public:
     void setSessionPaused(bool paused) final;
     void setTabbedMode(bool tabbed) final;
     QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const final;
+    void applySettings() final;
 
 public slots:
     void onShowWindow();
@@ -90,8 +91,6 @@ protected:
 
 private slots:
     void onMouseEvent(const proto::input::MouseEvent& event);
-    void onSettings();
-    void onConfigChanged(const proto::control::Config& config);
     void onAutosizeWindow();
     void onTakeScreenshot();
     void onScaleDesktop();
@@ -125,15 +124,6 @@ private:
     bool video_pause_last_ = false;
     bool enable_audio_pause_ = true;
     bool audio_pause_last_ = false;
-
-    bool feature_audio_ = false;
-    bool feature_clipboard_ = false;
-    bool feature_cursor_shape_ = false;
-    bool feature_cursor_position_ = false;
-    bool feature_desktop_effects_ = false;
-    bool feature_desktop_wallpaper_ = false;
-    bool feature_lock_at_disconnect_ = false;
-    bool feature_block_input_ = false;
 
     QPoint wheel_angle_;
 
