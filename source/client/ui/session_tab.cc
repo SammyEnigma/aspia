@@ -116,6 +116,12 @@ void SessionTab::deactivate(QStatusBar* /* statusbar */)
 }
 
 //--------------------------------------------------------------------------------------------------
+bool SessionTab::hasStatusBar() const
+{
+    return false;
+}
+
+//--------------------------------------------------------------------------------------------------
 bool SessionTab::eventFilter(QObject* object, QEvent* event)
 {
     if (object == session_window_)

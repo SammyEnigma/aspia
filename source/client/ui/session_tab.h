@@ -50,6 +50,7 @@ public:
     void restoreState(const QByteArray& state) final;
     void activate(QStatusBar* statusbar) final;
     void deactivate(QStatusBar* statusbar) final;
+    bool hasStatusBar() const final;
 
 protected:
     // QObject implementation.

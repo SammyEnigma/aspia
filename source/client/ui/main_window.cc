@@ -93,7 +93,7 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui.action_exit, &QAction::triggered, this, &MainWindow::close);
     connect(ui.toolbar, &QToolBar::visibilityChanged, ui.action_toolbar, &QAction::setChecked);
     connect(ui.action_toolbar, &QAction::toggled, ui.toolbar, &QToolBar::setVisible);
-    connect(ui.action_statusbar, &QAction::toggled, ui.statusbar, &QStatusBar::setVisible);
+    connect(ui.action_statusbar, &QAction::toggled, this, &MainWindow::updateStatusBarVisibility);
     connect(ui.action_large_icons, &QAction::toggled, this, [this](bool enable)
     {
         ui.toolbar->setIconSize(enable ? QSize(32, 32) : QSize(24, 24));
@@ -268,6 +268,7 @@ void MainWindow::onCurrentTabChanged(int index)
     installTabActions(active_tab_);
     active_tab_->activate(ui.statusbar);
     updateSearchFieldVisibility();
+    updateStatusBarVisibility();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -504,6 +505,13 @@ void MainWindow::updateSearchFieldVisibility()
         search_field_->clear();
 
     search_action_->setVisible(show_search);
+}
+
+//--------------------------------------------------------------------------------------------------
+void MainWindow::updateStatusBarVisibility()
+{
+    bool tab_has_statusbar = !active_tab_ || active_tab_->hasStatusBar();
+    ui.statusbar->setVisible(ui.action_statusbar->isChecked() && tab_has_statusbar);
 }
 
 //--------------------------------------------------------------------------------------------------

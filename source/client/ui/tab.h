@@ -51,6 +51,7 @@ public:
     virtual void activate(QStatusBar* statusbar) = 0;
     virtual void deactivate(QStatusBar* statusbar) = 0;
     virtual bool hasSearchField() const;
+    virtual bool hasStatusBar() const;
     virtual void onSearchTextChanged(const QString& text);
 
     using ActionGroupEntry = QPair<ActionRole, QList<QAction*>>;

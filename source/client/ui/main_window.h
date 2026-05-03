@@ -69,6 +69,7 @@ private:
     void hideCloseButtonForTab(int index);
     Tab* tabAt(int index);
     void updateSearchFieldVisibility();
+    void updateStatusBarVisibility();
     void installTabActions(Tab* tab);
     void removeTabActions();
     void updateSeparatorVisibility();

@@ -61,6 +61,12 @@ bool Tab::hasSearchField() const
 }
 
 //--------------------------------------------------------------------------------------------------
+bool Tab::hasStatusBar() const
+{
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
 void Tab::onSearchTextChanged(const QString& /* text */)
 {
     // Nothing
