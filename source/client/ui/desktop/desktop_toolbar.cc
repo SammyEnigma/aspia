@@ -473,35 +473,47 @@ void DesktopToolBar::setTabbedMode(bool tabbed)
 //--------------------------------------------------------------------------------------------------
 QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups() const
 {
-    auto markMenuOnly = [](const QList<QAction*>& actions)
-    {
-        for (QAction* action : actions)
-            action->setProperty(Tab::kMenuOnlyProperty, true);
-        return actions;
-    };
+    ui.action_start_recording->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_statistics->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_screenshot->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_send_key_combinations->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_paste_clipboard_as_keystrokes->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_autoscroll->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_pause_video->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_pause_audio->setProperty(Tab::kMenuOnlyProperty, true);
+    scale_menu_->menuAction()->setProperty(Tab::kMenuOnlyProperty, true);
 
     QList<QPair<Tab::ActionRole, QList<QAction*>>> groups;
 
-    groups.append({ Tab::ActionRole::FILE, { ui.action_settings } });
+    groups.append({ Tab::ActionRole::FILE,
+    {
+        ui.action_start_recording, ui.action_screenshot, ui.action_statistics, ui.action_settings
+    }});
+
+    groups.append({ Tab::ActionRole::ACTION,
+    {
+        ui.action_switch_session, ui.action_power_control, ui.action_cad
+    }});
+
+    groups.append({ Tab::ActionRole::ACTION,
+    {
+        ui.action_file_transfer, ui.action_text_chat, ui.action_task_manager, ui.action_system_info
+    }});
+
+    groups.append({ Tab::ActionRole::ACTION,
+    {
+        ui.action_paste_clipboard_as_keystrokes
+    }});
 
     groups.append({ Tab::ActionRole::EDIT,
-        { ui.action_switch_session, ui.action_power_control, ui.action_cad } });
-    groups.append({ Tab::ActionRole::EDIT,
-        markMenuOnly({ ui.action_send_key_combinations,
-                       ui.action_paste_clipboard_as_keystrokes }) });
+    {
+        ui.action_send_key_combinations
+    }});
 
-    groups.append({ Tab::ActionRole::VIEW, { ui.action_fullscreen, ui.action_start_recording } });
     groups.append({ Tab::ActionRole::VIEW,
-        markMenuOnly({ scale_menu_->menuAction(),
-                       ui.action_autoscroll,
-                       ui.action_pause_video,
-                       ui.action_pause_audio,
-                       ui.action_screenshot,
-                       ui.action_statistics }) });
-
-    groups.append({ Tab::ActionRole::SESSION_TYPE,
-        { ui.action_file_transfer, ui.action_text_chat,
-          ui.action_task_manager, ui.action_system_info } });
+    {
+        ui.action_fullscreen, scale_menu_->menuAction(), ui.action_autoscroll, ui.action_pause_video, ui.action_pause_audio,
+    }});
 
     return groups;
 }

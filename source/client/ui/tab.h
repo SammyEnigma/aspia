@@ -32,7 +32,7 @@ class Tab : public QWidget
 
 public:
     enum class Type { HOSTS, SESSION };
-    enum class ActionRole { FILE, EDIT, VIEW, SESSION_TYPE, HELP };
+    enum class ActionRole { FILE, EDIT, VIEW, ACTION, SESSION_TYPE, HELP };
 
     // Property name. If set on a QAction to true, the action will be added only to the menu and
     // skipped on the toolbar (e.g. checkable items without an icon).

@@ -60,7 +60,7 @@
      <x>0</x>
      <y>0</y>
      <width>924</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
@@ -98,9 +98,15 @@
      <string>Session Type</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menu_action">
+    <property name="title">
+     <string>Action</string>
+    </property>
+   </widget>
    <addaction name="menu_file"/>
    <addaction name="menu_edit"/>
    <addaction name="menu_view"/>
+   <addaction name="menu_action"/>
    <addaction name="menu_session_type"/>
    <addaction name="menu_help"/>
   </widget>
@@ -201,6 +207,7 @@
    <class>TabWidget</class>
    <extends>QTabWidget</extends>
    <header>client/ui/tab_widget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

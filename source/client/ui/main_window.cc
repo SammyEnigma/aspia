@@ -793,6 +793,9 @@ QMenu* MainWindow::menuForActionGroup(Tab::ActionRole group) const
         case Tab::ActionRole::VIEW:
             return ui.menu_view;
 
+        case Tab::ActionRole::ACTION:
+            return ui.menu_action;
+
         case Tab::ActionRole::SESSION_TYPE:
             return ui.menu_session_type;
 
