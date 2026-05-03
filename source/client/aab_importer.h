@@ -16,17 +16,17 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_ADDRESS_BOOK_IMPORTER_H
-#define CLIENT_ADDRESS_BOOK_IMPORTER_H
+#ifndef CLIENT_AAB_IMPORTER_H
+#define CLIENT_AAB_IMPORTER_H
 
 #include <QCoreApplication>
 #include <QString>
 
 class QWidget;
 
-class AddressBookImporter
+class AabImporter
 {
-    Q_DECLARE_TR_FUNCTIONS(AddressBookImporter)
+    Q_DECLARE_TR_FUNCTIONS(AabImporter)
 
 public:
     // Imports the address book from |file_path| into the root group.
@@ -35,7 +35,7 @@ public:
     static bool import(QWidget* parent, const QString& file_path);
 
 private:
-    Q_DISABLE_COPY_MOVE(AddressBookImporter)
+    Q_DISABLE_COPY_MOVE(AabImporter)
 };
 
-#endif // CLIENT_ADDRESS_BOOK_IMPORTER_H
+#endif // CLIENT_AAB_IMPORTER_H

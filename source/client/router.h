@@ -16,8 +16,8 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_ROUTER_CONNECTION_H
-#define CLIENT_ROUTER_CONNECTION_H
+#ifndef CLIENT_ROUTER_H
+#define CLIENT_ROUTER_H
 
 #include <QObject>
 
@@ -38,7 +38,7 @@ class UserList;
 class UserResult;
 } // namespace proto::router
 
-class RouterConnection final : public QObject
+class Router final : public QObject
 {
     Q_OBJECT
 
@@ -51,10 +51,10 @@ public:
     };
     Q_ENUM(Status)
 
-    explicit RouterConnection(const RouterConfig& config, QObject* parent = nullptr);
-    ~RouterConnection() final;
+    explicit Router(const RouterConfig& config, QObject* parent = nullptr);
+    ~Router() final;
 
-    static RouterConnection* instance(qint64 router_id);
+    static Router* instance(qint64 router_id);
 
     Status status() const { return status_; }
     const RouterConfig& config() const;
@@ -88,7 +88,7 @@ public slots:
 
 signals:
     // Generic signals.
-    void sig_statusChanged(qint64 router_id, RouterConnection::Status status);
+    void sig_statusChanged(qint64 router_id, Router::Status status);
     void sig_errorOccurred(qint64 router_id, TcpChannel::ErrorCode error_code);
 
     // Administrator signals.
@@ -117,7 +117,7 @@ private:
     QTimer* reconnect_timer_ = nullptr;
     Status status_ = Status::OFFLINE;
 
-    Q_DISABLE_COPY_MOVE(RouterConnection)
+    Q_DISABLE_COPY_MOVE(Router)
 };
 
-#endif // CLIENT_ROUTER_CONNECTION_H
+#endif // CLIENT_ROUTER_H

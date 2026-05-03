@@ -22,7 +22,7 @@
 #include "base/peer/user.h"
 #include "base/scoped_qpointer.h"
 #include "client/config.h"
-#include "client/router_connection.h"
+#include "client/router.h"
 #include "client/ui/hosts/content_widget.h"
 #include "ui_router_widget.h"
 
@@ -54,7 +54,7 @@ public:
     ~RouterWidget() final;
 
     qint64 routerId() const;
-    RouterConnection::Status status() const;
+    Router::Status status() const;
     TabType currentTabType() const;
     bool hasSelectedUser() const;
     bool hasSelectedHost() const;
@@ -110,7 +110,7 @@ signals:
     void sig_removeHost(qint64 session_id, bool try_to_uninstall);
     void sig_disconnectRelay(qint64 session_id);
     void sig_disconnectPeer(qint64 relay_entry_id, quint64 peer_session_id);
-    void sig_statusChanged(qint64 router_id, RouterConnection::Status status);
+    void sig_statusChanged(qint64 router_id, Router::Status status);
     void sig_currentTabTypeChanged(qint64 router_id, RouterWidget::TabType tab);
     void sig_currentUserChanged(qint64 router_id);
     void sig_currentHostChanged(qint64 router_id);
@@ -121,7 +121,7 @@ signals:
     void sig_updateConfig(const RouterConfig& config);
 
 private slots:
-    void onStatusChanged(qint64 router_id, RouterConnection::Status status);
+    void onStatusChanged(qint64 router_id, Router::Status status);
     void onConnectionErrorOccurred(qint64 router_id, TcpChannel::ErrorCode error_code);
     void onTabChanged(int index);
     void onCurrentUserChanged();
@@ -147,8 +147,8 @@ private:
     Ui::RouterWidget ui;
 
     RouterConfig config_;
-    ScopedQPointer<RouterConnection> connection_;
-    RouterConnection::Status status_ = RouterConnection::Status::OFFLINE;
+    ScopedQPointer<Router> router_;
+    Router::Status status_ = Router::Status::OFFLINE;
 
     StatusDialog* status_dialog_ = nullptr;
 

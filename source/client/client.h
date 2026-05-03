@@ -30,7 +30,7 @@
 #include "base/net/tcp_channel.h"
 #include "base/scoped_qpointer.h"
 #include "client/session_state.h"
-#include "client/router_connection.h"
+#include "client/router.h"
 
 class QTimer;
 class RelayPeer;
@@ -105,8 +105,8 @@ private slots:
     void onUdpReady();
     void onUdpErrorOccurred();
     void onUdpMessageReceived(quint8 channel_id, const QByteArray& buffer);
-    void onRouterConnectionOffer(const proto::router::ConnectionOffer& offer);
-    void onRouterStatusChanged(qint64 router_id, RouterConnection::Status status);
+    void onRouterOffer(const proto::router::ConnectionOffer& offer);
+    void onRouterStatusChanged(qint64 router_id, Router::Status status);
     void onRelayConnectionReady();
     void onRelayConnectionError();
 
@@ -131,7 +131,7 @@ private:
     bool is_legacy_mode_ = false;
     QTimer* timeout_timer_ = nullptr;
     QTimer* reconnect_timer_ = nullptr;
-    QPointer<RouterConnection> router_ = nullptr;
+    QPointer<Router> router_ = nullptr;
     ScopedQPointer<TcpChannel> tcp_channel_;
     ScopedQPointer<UdpChannel> udp_channel_;
     ScopedQPointer<RelayPeer> relay_peer_;

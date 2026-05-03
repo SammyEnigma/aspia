@@ -32,7 +32,7 @@
 #include "base/peer/host_id.h"
 #include "base/peer/user.h"
 #include "build/build_config.h"
-#include "client/address_book_importer.h"
+#include "client/aab_importer.h"
 #include "client/database.h"
 #include "client/settings.h"
 #include "client/ui/hosts/content_widget.h"
@@ -708,7 +708,7 @@ proto::peer::SessionType HostsTab::defaultSessionType() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::onRouterStatusChanged(qint64 router_id, RouterConnection::Status status)
+void HostsTab::onRouterStatusChanged(qint64 router_id, Router::Status status)
 {
     Sidebar::Router* router = ui.sidebar->routerById(router_id);
     if (!router)
@@ -716,13 +716,13 @@ void HostsTab::onRouterStatusChanged(qint64 router_id, RouterConnection::Status 
 
     switch (status)
     {
-        case RouterConnection::Status::OFFLINE:
+        case Router::Status::OFFLINE:
             router->setStatus(Sidebar::Router::Status::OFFLINE);
             break;
-        case RouterConnection::Status::CONNECTING:
+        case Router::Status::CONNECTING:
             router->setStatus(Sidebar::Router::Status::CONNECTING);
             break;
-        case RouterConnection::Status::ONLINE:
+        case Router::Status::ONLINE:
             router->setStatus(Sidebar::Router::Status::ONLINE);
             break;
     }
@@ -943,7 +943,7 @@ void HostsTab::onImportOldBookAction()
         return;
     }
 
-    if (!AddressBookImporter::import(this, file_path))
+    if (!AabImporter::import(this, file_path))
         return;
 
     reloadRouters();

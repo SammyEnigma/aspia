@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/router_connection.h"
+#include "client/router.h"
 
 #include <QHash>
 #include <QTimer>
@@ -35,16 +35,16 @@ namespace {
 const std::chrono::seconds kReconnectTimeout{ 5 };
 
 //--------------------------------------------------------------------------------------------------
-QHash<qint64, RouterConnection*>& instances()
+QHash<qint64, Router*>& instances()
 {
-    static thread_local QHash<qint64, RouterConnection*> g_instances;
+    static thread_local QHash<qint64, Router*> g_instances;
     return g_instances;
 }
 
 } // namespace
 
 //--------------------------------------------------------------------------------------------------
-RouterConnection::RouterConnection(const RouterConfig& config, QObject* parent)
+Router::Router(const RouterConfig& config, QObject* parent)
     : QObject(parent),
       config_(config),
       reconnect_timer_(new QTimer(this))
@@ -60,7 +60,7 @@ RouterConnection::RouterConnection(const RouterConfig& config, QObject* parent)
 }
 
 //--------------------------------------------------------------------------------------------------
-RouterConnection::~RouterConnection()
+Router::~Router()
 {
     LOG(INFO) << "Dtor";
     instances().remove(config_.router_id);
@@ -69,7 +69,7 @@ RouterConnection::~RouterConnection()
 
 //--------------------------------------------------------------------------------------------------
 // static
-RouterConnection* RouterConnection::instance(qint64 router_id)
+Router* Router::instance(qint64 router_id)
 {
     if (!instances().contains(router_id))
         return nullptr;
@@ -78,7 +78,7 @@ RouterConnection* RouterConnection::instance(qint64 router_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onConnectToRouter()
+void Router::onConnectToRouter()
 {
     // We cannot perform registration in the constructor because the constructor is executed in the
     // GUI thread.
@@ -102,18 +102,18 @@ void RouterConnection::onConnectToRouter()
     tcp_channel_ = new TcpChannelNG(authenticator, this);
 
     connect(tcp_channel_, &TcpChannel::sig_authenticated,
-            this, &RouterConnection::onTcpReady);
+            this, &Router::onTcpReady);
     connect(tcp_channel_, &TcpChannel::sig_errorOccurred,
-            this, &RouterConnection::onTcpErrorOccurred);
+            this, &Router::onTcpErrorOccurred);
     connect(tcp_channel_, &TcpChannel::sig_messageReceived,
-            this, &RouterConnection::onTcpMessageReceived);
+            this, &Router::onTcpMessageReceived);
 
     Address address = Address::fromString(config_.address, DEFAULT_ROUTER_TCP_PORT);
     tcp_channel_->connectTo(address.host(), address.port());
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onDisconnectFromRouter()
+void Router::onDisconnectFromRouter()
 {
     reconnect_timer_->stop();
 
@@ -127,19 +127,19 @@ void RouterConnection::onDisconnectFromRouter()
 }
 
 //--------------------------------------------------------------------------------------------------
-const RouterConfig& RouterConnection::config() const
+const RouterConfig& Router::config() const
 {
     return config_;
 }
 
 //--------------------------------------------------------------------------------------------------
-qint64 RouterConnection::routerId() const
+qint64 Router::routerId() const
 {
     return config_.router_id;
 }
 
 //--------------------------------------------------------------------------------------------------
-QVersionNumber RouterConnection::version() const
+QVersionNumber Router::version() const
 {
     if (!tcp_channel_)
         return QVersionNumber();
@@ -148,7 +148,7 @@ QVersionNumber RouterConnection::version() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onUpdateConfig(const RouterConfig& config)
+void Router::onUpdateConfig(const RouterConfig& config)
 {
     bool need_reconnect = !config_.hasSameConnectionParams(config);
     config_ = config;
@@ -161,7 +161,7 @@ void RouterConnection::onUpdateConfig(const RouterConfig& config)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onRelayListRequest()
+void Router::onRelayListRequest()
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -178,7 +178,7 @@ void RouterConnection::onRelayListRequest()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onHostListRequest()
+void Router::onHostListRequest()
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -195,7 +195,7 @@ void RouterConnection::onHostListRequest()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onUserListRequest()
+void Router::onUserListRequest()
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -211,7 +211,7 @@ void RouterConnection::onUserListRequest()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onAddUser(const proto::router::User& user)
+void Router::onAddUser(const proto::router::User& user)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -230,7 +230,7 @@ void RouterConnection::onAddUser(const proto::router::User& user)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onModifyUser(const proto::router::User& user)
+void Router::onModifyUser(const proto::router::User& user)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -249,7 +249,7 @@ void RouterConnection::onModifyUser(const proto::router::User& user)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onDeleteUser(qint64 entry_id)
+void Router::onDeleteUser(qint64 entry_id)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -267,7 +267,7 @@ void RouterConnection::onDeleteUser(qint64 entry_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onDisconnectHost(qint64 session_id)
+void Router::onDisconnectHost(qint64 session_id)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -285,7 +285,7 @@ void RouterConnection::onDisconnectHost(qint64 session_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onRemoveHost(qint64 session_id, bool try_to_uninstall)
+void Router::onRemoveHost(qint64 session_id, bool try_to_uninstall)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -306,7 +306,7 @@ void RouterConnection::onRemoveHost(qint64 session_id, bool try_to_uninstall)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onDisconnectRelay(qint64 session_id)
+void Router::onDisconnectRelay(qint64 session_id)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -324,7 +324,7 @@ void RouterConnection::onDisconnectRelay(qint64 session_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onDisconnectPeer(qint64 relay_entry_id, quint64 peer_session_id)
+void Router::onDisconnectPeer(qint64 relay_entry_id, quint64 peer_session_id)
 {
     if (config_.session_type != proto::router::SESSION_TYPE_ADMIN)
     {
@@ -344,7 +344,7 @@ void RouterConnection::onDisconnectPeer(qint64 relay_entry_id, quint64 peer_sess
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onConnectionRequest(qint64 request_id, quint64 host_id)
+void Router::onConnectionRequest(qint64 request_id, quint64 host_id)
 {
     proto::router::ClientToRouter message;
     proto::router::ConnectionRequest* request = message.mutable_connection_request();
@@ -356,7 +356,7 @@ void RouterConnection::onConnectionRequest(qint64 request_id, quint64 host_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onCheckHostStatus(qint64 request_id, quint64 host_id)
+void Router::onCheckHostStatus(qint64 request_id, quint64 host_id)
 {
     proto::router::ClientToRouter message;
     proto::router::CheckHostStatus* request = message.mutable_check_host_status();
@@ -368,7 +368,7 @@ void RouterConnection::onCheckHostStatus(qint64 request_id, quint64 host_id)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onTcpReady()
+void Router::onTcpReady()
 {
     CHECK(tcp_channel_);
 
@@ -380,7 +380,7 @@ void RouterConnection::onTcpReady()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
+void Router::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 {
     LOG(INFO) << "Router connection error:" << error_code;
 
@@ -399,7 +399,7 @@ void RouterConnection::onTcpErrorOccurred(TcpChannel::ErrorCode error_code)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer)
+void Router::onTcpMessageReceived(quint8 channel_id, const QByteArray& buffer)
 {
     if (channel_id == proto::router::CHANNEL_ID_ADMIN)
     {
@@ -490,7 +490,7 @@ void RouterConnection::onTcpMessageReceived(quint8 channel_id, const QByteArray&
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::setStatus(Status status)
+void Router::setStatus(Status status)
 {
     if (status_ != status)
     {
@@ -501,7 +501,7 @@ void RouterConnection::setStatus(Status status)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterConnection::sendMessage(quint8 channel_id, const QByteArray& data)
+void Router::sendMessage(quint8 channel_id, const QByteArray& data)
 {
     if (!tcp_channel_)
         return;

@@ -153,14 +153,14 @@ void Client::start()
             emit sig_statusChanged(Status::STARTED);
         }
 
-        router_ = RouterConnection::instance(session_state_->routerId());
+        router_ = Router::instance(session_state_->routerId());
         if (!router_)
         {
             emit sig_statusChanged(Status::NO_ROUTER);
             return;
         }
 
-        if (router_->status() != RouterConnection::Status::ONLINE)
+        if (router_->status() != Router::Status::ONLINE)
         {
             emit sig_statusChanged(Status::ROUTER_OFFLINE);
             return;
@@ -168,10 +168,8 @@ void Client::start()
 
         session_state_->setRouterVersion(router_->version());
 
-        connect(router_, &RouterConnection::sig_connectionOffer,
-                this, &Client::onRouterConnectionOffer, Qt::UniqueConnection);
-        connect(router_, &RouterConnection::sig_statusChanged,
-                this, &Client::onRouterStatusChanged, Qt::UniqueConnection);
+        connect(router_, &Router::sig_connectionOffer, this, &Client::onRouterOffer, Qt::UniqueConnection);
+        connect(router_, &Router::sig_statusChanged, this, &Client::onRouterStatusChanged, Qt::UniqueConnection);
 
         relay_peer_ = new RelayPeer(authenticator.release(), this);
 
@@ -464,7 +462,7 @@ void Client::onUdpMessageReceived(quint8 channel_id, const QByteArray& buffer)
 }
 
 //--------------------------------------------------------------------------------------------------
-void Client::onRouterConnectionOffer(const proto::router::ConnectionOffer& offer)
+void Client::onRouterOffer(const proto::router::ConnectionOffer& offer)
 {
     if (offer.request_id() != instanceId())
         return;
@@ -516,11 +514,11 @@ void Client::onRouterConnectionOffer(const proto::router::ConnectionOffer& offer
 }
 
 //--------------------------------------------------------------------------------------------------
-void Client::onRouterStatusChanged(qint64 router_id, RouterConnection::Status status)
+void Client::onRouterStatusChanged(qint64 router_id, Router::Status status)
 {
     CHECK(router_);
 
-    if (status == RouterConnection::Status::ONLINE)
+    if (status == Router::Status::ONLINE)
         return;
 
     router_->disconnect(this);

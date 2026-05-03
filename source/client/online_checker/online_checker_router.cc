@@ -90,15 +90,15 @@ void OnlineCheckerRouter::checkNextComputer()
     LOG(INFO) << "Checking status for host id" << host_id
               << "(router_id:" << computer.router_id << "computer_id:" << computer.id << ")";
 
-    RouterConnection* connection = RouterConnection::instance(computer.router_id);
+    Router* connection = Router::instance(computer.router_id);
 
     if (!routers_.contains(computer.router_id) && connection)
     {
-        connect(connection, &RouterConnection::sig_hostStatus, this, &OnlineCheckerRouter::onHostStatus);
+        connect(connection, &Router::sig_hostStatus, this, &OnlineCheckerRouter::onHostStatus);
         routers_.insert(computer.router_id);
     }
 
-    if (!connection || connection->status() != RouterConnection::Status::ONLINE)
+    if (!connection || connection->status() != Router::Status::ONLINE)
     {
         emit sig_checkerResult(computer.id, false);
         computers_.pop_front();

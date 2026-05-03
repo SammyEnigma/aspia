@@ -17,8 +17,8 @@
 #
 
 list(APPEND SOURCE_CLIENT_CORE
-    address_book_importer.cc
-    address_book_importer.h
+    aab_importer.cc
+    aab_importer.h
     database.cc
     database.h
     client.cc
@@ -45,8 +45,8 @@ list(APPEND SOURCE_CLIENT_CORE
     file_transfer_queue_builder.h
     master_password.cc
     master_password.h
-    router_connection.cc
-    router_connection.h
+    router.cc
+    router.h
     session_state.cc
     session_state.h
     settings.cc

@@ -27,7 +27,7 @@
 #include "client/master_password.h"
 #include "common/ui/msg_box.h"
 #include "common/ui/status_dialog.h"
-#include "client/router_connection.h"
+#include "client/router.h"
 #include "client/ui/application.h"
 #include "client/ui/main_window.h"
 #include "client/ui/unlock_dialog.h"
@@ -281,12 +281,12 @@ void startRouterSession(const ComputerConfig& computer,
     QPointer<StatusDialog> status_dialog = new StatusDialog();
     status_dialog->setAttribute(Qt::WA_DeleteOnClose);
 
-    QPointer<RouterConnection> router = new RouterConnection(router_config);
+    QPointer<Router> router = new Router(router_config);
     router->moveToThread(GuiApplication::ioThread());
 
-    QObject::connect(router, &RouterConnection::sig_statusChanged, qApp,
+    QObject::connect(router, &Router::sig_statusChanged, qApp,
         [status_dialog, router, computer, session_type, display_name, desktop_config](
-            qint64, RouterConnection::Status status)
+            qint64, Router::Status status)
     {
         if (!router || !status_dialog)
             return;
@@ -295,12 +295,12 @@ void startRouterSession(const ComputerConfig& computer,
 
         switch (status)
         {
-            case RouterConnection::Status::CONNECTING:
+            case Router::Status::CONNECTING:
                 status_dialog->addMessage(QApplication::translate("Client",
                     "Connecting to router %1...").arg(address));
                 break;
 
-            case RouterConnection::Status::ONLINE:
+            case Router::Status::ONLINE:
                 status_dialog->addMessage(QApplication::translate("Client",
                     "Connection to router %1 established.").arg(address));
                 router->disconnect(qApp);
@@ -309,14 +309,14 @@ void startRouterSession(const ComputerConfig& computer,
                 startSession(computer, session_type, display_name, desktop_config);
                 break;
 
-            case RouterConnection::Status::OFFLINE:
+            case Router::Status::OFFLINE:
                 status_dialog->addMessage(QApplication::translate("Client",
                     "Disconnected from router %1.").arg(address));
                 break;
         }
     }, Qt::QueuedConnection);
 
-    QObject::connect(router, &RouterConnection::sig_errorOccurred, qApp,
+    QObject::connect(router, &Router::sig_errorOccurred, qApp,
         [status_dialog](qint64, TcpChannel::ErrorCode error_code)
     {
         if (!status_dialog)
@@ -329,7 +329,7 @@ void startRouterSession(const ComputerConfig& computer,
     status_dialog->show();
     status_dialog->activateWindow();
 
-    QMetaObject::invokeMethod(router, &RouterConnection::onConnectToRouter, Qt::QueuedConnection);
+    QMetaObject::invokeMethod(router, &Router::onConnectToRouter, Qt::QueuedConnection);
 }
 
 //--------------------------------------------------------------------------------------------------

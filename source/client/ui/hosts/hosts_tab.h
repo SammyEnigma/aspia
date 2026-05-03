@@ -22,7 +22,7 @@
 #include <QHash>
 
 #include "client/config.h"
-#include "client/router_connection.h"
+#include "client/router.h"
 #include "client/ui/tab.h"
 #include "proto/peer.h"
 #include "ui_hosts_tab.h"
@@ -59,7 +59,7 @@ signals:
                      proto::peer::SessionType session_type);
 
 private slots:
-    void onRouterStatusChanged(qint64 router_id, RouterConnection::Status status);
+    void onRouterStatusChanged(qint64 router_id, Router::Status status);
     void onSwitchContent(Sidebar::Item::Type type);
     void onSidebarContextMenu(Sidebar::Item::Type type, const QPoint& pos);
     void onCurrentComputerChanged(qint64 computer_id);

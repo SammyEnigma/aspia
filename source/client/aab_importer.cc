@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/address_book_importer.h"
+#include "client/aab_importer.h"
 
 #include <QFile>
 
@@ -105,7 +105,7 @@ qint64 ensureRouter(const proto::address_book::Router& proto_router, ImportCount
     }
 
     RouterConfig config;
-    config.display_name = AddressBookImporter::tr("%1 (Imported)").arg(address);
+    config.display_name = AabImporter::tr("%1 (Imported)").arg(address);
     config.address = combined_address;
     config.username = username;
     config.password = password;
@@ -258,7 +258,7 @@ void importGroup(const proto::address_book::ComputerGroup& proto_group,
 
 //--------------------------------------------------------------------------------------------------
 // static
-bool AddressBookImporter::import(QWidget* parent, const QString& file_path)
+bool AabImporter::import(QWidget* parent, const QString& file_path)
 {
     QFile file(file_path);
     if (!file.open(QIODevice::ReadOnly))
