@@ -20,6 +20,7 @@
 
 #include <QDesktopServices>
 #include <QLineEdit>
+#include <QStyle>
 #include <QTabBar>
 #include <QTimer>
 #include <QUrl>
@@ -382,7 +383,9 @@ void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
         return;
 
     session_window->resize(new_size);
-    session_window->move(global_pos - QPoint(new_size.width() / 2, 15));
+
+    int title_h = session_window->style()->pixelMetric(QStyle::PM_TitleBarHeight);
+    session_window->move(global_pos - QPoint(title_h + title_h / 2, title_h / 2));
     session_window->raise();
     session_window->activateWindow();
 
