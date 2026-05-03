@@ -67,6 +67,9 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/authorization_dialog.cc
     ui/authorization_dialog.h
     ui/authorization_dialog.ui
+    ui/hosts_tab.cc
+    ui/hosts_tab.h
+    ui/hosts_tab.ui
     ui/main_window.cc
     ui/main_window.h
     ui/main_window.ui
@@ -233,9 +236,6 @@ list(APPEND SOURCE_CLIENT_CORE_UI_HOSTS_TAB
     ui/hosts/local_group_dialog.cc
     ui/hosts/local_group_dialog.h
     ui/hosts/local_group_dialog.ui
-    ui/hosts/hosts_tab.cc
-    ui/hosts/hosts_tab.h
-    ui/hosts/hosts_tab.ui
     ui/hosts/content_widget.cc
     ui/hosts/content_widget.h
     ui/hosts/sidebar.cc

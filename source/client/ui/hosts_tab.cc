@@ -16,7 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/hosts/hosts_tab.h"
+#include "client/ui/hosts_tab.h"
 
 #include <optional>
 
