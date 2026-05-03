@@ -54,82 +54,43 @@ HostsTab::HostsTab(QWidget* parent)
 
     ui.setupUi(this);
 
-    // Create toolbar actions.
-    action_add_group_ = new QAction(QIcon(":/img/add-folder.svg"), tr("Add Group"), this);
-    action_delete_group_ = new QAction(QIcon(":/img/remove-folder.svg"), tr("Delete Group"), this);
-    action_edit_group_ = new QAction(QIcon(":/img/change-folder.svg"), tr("Edit Group"), this);
-
-    action_add_computer_ = new QAction(QIcon(":/img/add-computer.svg"), tr("Add Computer"), this);
-    action_delete_computer_ = new QAction(QIcon(":/img/remove-computer.svg"), tr("Delete Computer"), this);
-    action_edit_computer_ = new QAction(QIcon(":/img/change-computer.svg"), tr("Edit Computer"), this);
-    action_copy_computer_ = new QAction(QIcon(":/img/copy-computer.svg"), tr("Copy Computer"), this);
-
-    action_desktop_ = new QAction(QIcon(":/img/workstation.svg"), tr("Desktop Management"), this);
-    action_file_transfer_ = new QAction(QIcon(":/img/file-explorer.svg"), tr("File Transfer"), this);
-    action_chat_ = new QAction(QIcon(":/img/chat.svg"), tr("Chat"), this);
-    action_system_info_ = new QAction(QIcon(":/img/system-information.svg"), tr("System Information"), this);
-
-    action_desktop_->setCheckable(true);
-    action_file_transfer_->setCheckable(true);
-    action_chat_->setCheckable(true);
-    action_system_info_->setCheckable(true);
-
+    // Group session-type actions to make them mutually exclusive.
     QActionGroup* session_type_group = new QActionGroup(this);
-    session_type_group->addAction(action_desktop_);
-    session_type_group->addAction(action_file_transfer_);
-    session_type_group->addAction(action_chat_);
-    session_type_group->addAction(action_system_info_);
-
-    action_desktop_connect_ = new QAction(QIcon(":/img/workstation.svg"), tr("Desktop Management"), this);
-    action_file_transfer_connect_ = new QAction(QIcon(":/img/file-explorer.svg"), tr("File Transfer"), this);
-    action_chat_connect_ = new QAction(QIcon(":/img/chat.svg"), tr("Chat"), this);
-    action_system_info_connect_ = new QAction(QIcon(":/img/system-information.svg"), tr("System Information"), this);
+    session_type_group->addAction(ui.action_desktop);
+    session_type_group->addAction(ui.action_file_transfer);
+    session_type_group->addAction(ui.action_chat);
+    session_type_group->addAction(ui.action_system_info);
 
     QActionGroup* session_connect_group = new QActionGroup(this);
-    session_connect_group->addAction(action_desktop_connect_);
-    session_connect_group->addAction(action_file_transfer_connect_);
-    session_connect_group->addAction(action_chat_connect_);
-    session_connect_group->addAction(action_system_info_connect_);
+    session_connect_group->addAction(ui.action_desktop_connect);
+    session_connect_group->addAction(ui.action_file_transfer_connect);
+    session_connect_group->addAction(ui.action_chat_connect);
+    session_connect_group->addAction(ui.action_system_info_connect);
 
     Settings settings;
 
     switch (settings.sessionType())
     {
         case proto::peer::SESSION_TYPE_DESKTOP:
-            action_desktop_->setChecked(true);
+            ui.action_desktop->setChecked(true);
             break;
         case proto::peer::SESSION_TYPE_FILE_TRANSFER:
-            action_file_transfer_->setChecked(true);
+            ui.action_file_transfer->setChecked(true);
             break;
         case proto::peer::SESSION_TYPE_TEXT_CHAT:
-            action_chat_->setChecked(true);
+            ui.action_chat->setChecked(true);
             break;
         case proto::peer::SESSION_TYPE_SYSTEM_INFO:
-            action_system_info_->setChecked(true);
+            ui.action_system_info->setChecked(true);
             break;
         default:
             break;
     }
 
-    action_add_user_ = new QAction(QIcon(":/img/user-add.svg"), tr("Add User"), this);
-    action_edit_user_ = new QAction(QIcon(":/img/user-edit.svg"), tr("Edit User"), this);
-    action_delete_user_ = new QAction(QIcon(":/img/user-delete.svg"), tr("Delete User"), this);
+    ui.action_online_check->setChecked(settings.isOnlineCheckEnabled());
 
-    action_disconnect_ = new QAction(QIcon(":/img/host-disconnect.svg"), tr("Disconnect"), this);
-    action_disconnect_all_ = new QAction(QIcon(":/img/host-disconnect-all.svg"), tr("Disconnect All"), this);
-
-    action_host_remove_ = new QAction(QIcon(":/img/remove-computer.svg"), tr("Remove"), this);
-
-    action_save_ = new QAction(QIcon(":/img/save.svg"), tr("Save..."), this);
-    action_reload_ = new QAction(QIcon(":/img/reload.svg"), tr("Reload"), this);
-
-    action_import_old_book_ = new QAction(QIcon(":/img/import.svg"), tr("Import Old Address Book..."), this);
-    action_import_old_book_->setProperty(Tab::kMenuOnlyProperty, true);
-
-    action_online_check_ = new QAction(tr("Auto-refresh Status"), this);
-    action_online_check_->setCheckable(true);
-    action_online_check_->setChecked(settings.isOnlineCheckEnabled());
-    action_online_check_->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_import_old_book->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_online_check->setProperty(Tab::kMenuOnlyProperty, true);
 
     // Create content widgets.
     local_group_widget_ = new LocalGroupWidget(this);
@@ -160,35 +121,35 @@ HostsTab::HostsTab(QWidget* parent)
         if (computer_id != -1)
             local_group_widget_->setConnectTime(computer_id, QDateTime::currentSecsSinceEpoch());
     });
-    connect(action_add_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onAddComputer);
-    connect(action_edit_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onEditComputer);
-    connect(action_copy_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onCopyComputer);
-    connect(action_delete_computer_, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onRemoveComputer);
-    connect(action_add_group_, &QAction::triggered, ui.sidebar, &Sidebar::onAddGroup);
-    connect(action_edit_group_, &QAction::triggered, ui.sidebar, &Sidebar::onEditGroup);
-    connect(action_delete_group_, &QAction::triggered, ui.sidebar, &Sidebar::onRemoveGroup);
-    connect(action_add_user_, &QAction::triggered, this, &HostsTab::onAddUserAction);
-    connect(action_edit_user_, &QAction::triggered, this, &HostsTab::onEditUserAction);
-    connect(action_delete_user_, &QAction::triggered, this, &HostsTab::onDeleteUserAction);
-    connect(action_reload_, &QAction::triggered, this, &HostsTab::onReloadAction);
-    connect(action_save_, &QAction::triggered, this, &HostsTab::onSaveAction);
-    connect(action_import_old_book_, &QAction::triggered, this, &HostsTab::onImportOldBookAction);
-    connect(action_disconnect_, &QAction::triggered, this, &HostsTab::onDisconnectAction);
-    connect(action_disconnect_all_, &QAction::triggered, this, &HostsTab::onDisconnectAllAction);
-    connect(action_host_remove_, &QAction::triggered, this, &HostsTab::onRemoveHostAction);
-    connect(action_online_check_, &QAction::toggled, this, &HostsTab::onOnlineCheckToggled);
+    connect(ui.action_add_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onAddComputer);
+    connect(ui.action_edit_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onEditComputer);
+    connect(ui.action_copy_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onCopyComputer);
+    connect(ui.action_delete_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onRemoveComputer);
+    connect(ui.action_add_group, &QAction::triggered, ui.sidebar, &Sidebar::onAddGroup);
+    connect(ui.action_edit_group, &QAction::triggered, ui.sidebar, &Sidebar::onEditGroup);
+    connect(ui.action_delete_group, &QAction::triggered, ui.sidebar, &Sidebar::onRemoveGroup);
+    connect(ui.action_add_user, &QAction::triggered, this, &HostsTab::onAddUserAction);
+    connect(ui.action_edit_user, &QAction::triggered, this, &HostsTab::onEditUserAction);
+    connect(ui.action_delete_user, &QAction::triggered, this, &HostsTab::onDeleteUserAction);
+    connect(ui.action_reload, &QAction::triggered, this, &HostsTab::onReloadAction);
+    connect(ui.action_save, &QAction::triggered, this, &HostsTab::onSaveAction);
+    connect(ui.action_import_old_book, &QAction::triggered, this, &HostsTab::onImportOldBookAction);
+    connect(ui.action_disconnect, &QAction::triggered, this, &HostsTab::onDisconnectAction);
+    connect(ui.action_disconnect_all, &QAction::triggered, this, &HostsTab::onDisconnectAllAction);
+    connect(ui.action_host_remove, &QAction::triggered, this, &HostsTab::onRemoveHostAction);
+    connect(ui.action_online_check, &QAction::toggled, this, &HostsTab::onOnlineCheckToggled);
     connect(session_connect_group, &QActionGroup::triggered, this, &HostsTab::onConnectAction);
 
     // Register actions for toolbar and menus.
-    addActions(ActionRole::FILE, { action_save_, action_import_old_book_ });
-    addActions(ActionRole::EDIT, { action_add_user_, action_edit_user_, action_delete_user_ });
-    addActions(ActionRole::EDIT, { action_add_group_, action_edit_group_, action_delete_group_ });
-    addActions(ActionRole::EDIT, { action_add_computer_, action_edit_computer_, action_copy_computer_, action_delete_computer_ });
-    addActions(ActionRole::EDIT, { action_host_remove_, action_disconnect_, action_disconnect_all_ });
-    addActions(ActionRole::VIEW, { action_reload_, action_online_check_ });
-    addActions(ActionRole::SESSION_TYPE, { action_desktop_, action_file_transfer_, action_chat_, action_system_info_ });
+    addActions(ActionRole::FILE, { ui.action_save, ui.action_import_old_book });
+    addActions(ActionRole::EDIT, { ui.action_add_user, ui.action_edit_user, ui.action_delete_user });
+    addActions(ActionRole::EDIT, { ui.action_add_group, ui.action_edit_group, ui.action_delete_group });
+    addActions(ActionRole::EDIT, { ui.action_add_computer, ui.action_edit_computer, ui.action_copy_computer, ui.action_delete_computer });
+    addActions(ActionRole::EDIT, { ui.action_host_remove, ui.action_disconnect, ui.action_disconnect_all });
+    addActions(ActionRole::VIEW, { ui.action_reload, ui.action_online_check });
+    addActions(ActionRole::SESSION_TYPE, { ui.action_desktop, ui.action_file_transfer, ui.action_chat, ui.action_system_info });
 
-    local_group_widget_->setOnlineCheckEnabled(action_online_check_->isChecked());
+    local_group_widget_->setOnlineCheckEnabled(ui.action_online_check->isChecked());
     local_group_widget_->showGroup(ui.sidebar->currentGroupId());
     switchContent(local_group_widget_);
     updateActionsState();
@@ -431,11 +392,11 @@ void HostsTab::onSidebarContextMenu(Sidebar::Item::Type type, const QPoint& pos)
 
     if (type == Sidebar::Item::Type::LOCAL_GROUP)
     {
-        menu.addAction(action_add_group_);
-        menu.addAction(action_edit_group_);
-        menu.addAction(action_delete_group_);
+        menu.addAction(ui.action_add_group);
+        menu.addAction(ui.action_edit_group);
+        menu.addAction(ui.action_delete_group);
         menu.addSeparator();
-        menu.addAction(action_add_computer_);
+        menu.addAction(ui.action_add_computer);
     }
     else if (type == Sidebar::Item::Type::ROUTER_GROUP)
     {
@@ -486,13 +447,13 @@ void HostsTab::onConnectAction(QAction* action)
 {
     proto::peer::SessionType session_type;
 
-    if (action == action_desktop_connect_)
+    if (action == ui.action_desktop_connect)
         session_type = proto::peer::SESSION_TYPE_DESKTOP;
-    else if (action == action_file_transfer_connect_)
+    else if (action == ui.action_file_transfer_connect)
         session_type = proto::peer::SESSION_TYPE_FILE_TRANSFER;
-    else if (action == action_chat_connect_)
+    else if (action == ui.action_chat_connect)
         session_type = proto::peer::SESSION_TYPE_TEXT_CHAT;
-    else if (action == action_system_info_connect_)
+    else if (action == ui.action_system_info_connect)
         session_type = proto::peer::SESSION_TYPE_SYSTEM_INFO;
     else
         return;
@@ -575,18 +536,18 @@ void HostsTab::onLocalComputerContextMenu(qint64 computer_id, const QPoint& pos)
 
     if (computer_id)
     {
-        menu.addAction(action_desktop_connect_);
-        menu.addAction(action_file_transfer_connect_);
-        menu.addAction(action_chat_connect_);
-        menu.addAction(action_system_info_connect_);
+        menu.addAction(ui.action_desktop_connect);
+        menu.addAction(ui.action_file_transfer_connect);
+        menu.addAction(ui.action_chat_connect);
+        menu.addAction(ui.action_system_info_connect);
         menu.addSeparator();
-        menu.addAction(action_edit_computer_);
-        menu.addAction(action_copy_computer_);
-        menu.addAction(action_delete_computer_);
+        menu.addAction(ui.action_edit_computer);
+        menu.addAction(ui.action_copy_computer);
+        menu.addAction(ui.action_delete_computer);
     }
     else
     {
-        menu.addAction(action_add_computer_);
+        menu.addAction(ui.action_add_computer);
     }
 
     menu.exec(pos);
@@ -611,49 +572,49 @@ void HostsTab::switchContent(ContentWidget* new_widget)
 //--------------------------------------------------------------------------------------------------
 void HostsTab::updateActionsState()
 {
-    action_add_group_->setVisible(false);
-    action_delete_group_->setVisible(false);
-    action_edit_group_->setVisible(false);
+    ui.action_add_group->setVisible(false);
+    ui.action_delete_group->setVisible(false);
+    ui.action_edit_group->setVisible(false);
 
-    action_add_computer_->setVisible(false);
-    action_delete_computer_->setVisible(false);
-    action_edit_computer_->setVisible(false);
-    action_copy_computer_->setVisible(false);
+    ui.action_add_computer->setVisible(false);
+    ui.action_delete_computer->setVisible(false);
+    ui.action_edit_computer->setVisible(false);
+    ui.action_copy_computer->setVisible(false);
 
-    action_desktop_->setVisible(false);
-    action_file_transfer_->setVisible(false);
-    action_chat_->setVisible(false);
-    action_system_info_->setVisible(false);
+    ui.action_desktop->setVisible(false);
+    ui.action_file_transfer->setVisible(false);
+    ui.action_chat->setVisible(false);
+    ui.action_system_info->setVisible(false);
 
-    action_add_user_->setVisible(false);
-    action_edit_user_->setVisible(false);
-    action_delete_user_->setVisible(false);
+    ui.action_add_user->setVisible(false);
+    ui.action_edit_user->setVisible(false);
+    ui.action_delete_user->setVisible(false);
 
-    action_reload_->setVisible(false);
-    action_save_->setVisible(false);
-    action_import_old_book_->setVisible(false);
-    action_disconnect_->setVisible(false);
-    action_disconnect_all_->setVisible(false);
-    action_host_remove_->setVisible(false);
-    action_online_check_->setVisible(false);
+    ui.action_reload->setVisible(false);
+    ui.action_save->setVisible(false);
+    ui.action_import_old_book->setVisible(false);
+    ui.action_disconnect->setVisible(false);
+    ui.action_disconnect_all->setVisible(false);
+    ui.action_host_remove->setVisible(false);
+    ui.action_online_check->setVisible(false);
 
     Sidebar::Item* sidebar_item = ui.sidebar->currentItem();
 
     if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::Type::LOCAL_GROUP)
     {
-        action_online_check_->setVisible(true);
-        action_import_old_book_->setVisible(true);
+        ui.action_online_check->setVisible(true);
+        ui.action_import_old_book->setVisible(true);
 
-        action_add_group_->setVisible(true);
-        action_delete_group_->setVisible(sidebar_item->groupId() != 0);
-        action_edit_group_->setVisible(sidebar_item->groupId() != 0);
+        ui.action_add_group->setVisible(true);
+        ui.action_delete_group->setVisible(sidebar_item->groupId() != 0);
+        ui.action_edit_group->setVisible(sidebar_item->groupId() != 0);
 
         LocalGroupWidget::Item* computer_item = local_group_widget_->currentItem();
 
-        action_add_computer_->setVisible(true);
-        action_delete_computer_->setVisible(computer_item != nullptr);
-        action_edit_computer_->setVisible(computer_item != nullptr);
-        action_copy_computer_->setVisible(computer_item != nullptr);
+        ui.action_add_computer->setVisible(true);
+        ui.action_delete_computer->setVisible(computer_item != nullptr);
+        ui.action_edit_computer->setVisible(computer_item != nullptr);
+        ui.action_copy_computer->setVisible(computer_item != nullptr);
     }
 
     if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::ROUTER)
@@ -664,9 +625,9 @@ void HostsTab::updateActionsState()
         bool on_users_tab = widget && widget->currentTabType() == RouterWidget::TabType::USERS;
         bool has_selection = on_users_tab && widget->hasSelectedUser();
 
-        action_add_user_->setVisible(on_users_tab);
-        action_edit_user_->setVisible(has_selection);
-        action_delete_user_->setVisible(has_selection);
+        ui.action_add_user->setVisible(on_users_tab);
+        ui.action_edit_user->setVisible(has_selection);
+        ui.action_delete_user->setVisible(has_selection);
 
         bool on_hosts_tab = widget && widget->currentTabType() == RouterWidget::TabType::HOSTS;
         bool on_relays_tab = widget && widget->currentTabType() == RouterWidget::TabType::RELAYS;
@@ -676,32 +637,32 @@ void HostsTab::updateActionsState()
         bool has_any = (on_hosts_tab && widget->hostCount() > 0) ||
                        (on_relays_tab && widget->relayCount() > 0);
 
-        action_disconnect_->setVisible(has_target);
-        action_disconnect_all_->setVisible(has_any);
-        action_host_remove_->setVisible(on_hosts_tab && widget->hasSelectedHost());
+        ui.action_disconnect->setVisible(has_target);
+        ui.action_disconnect_all->setVisible(has_any);
+        ui.action_host_remove->setVisible(on_hosts_tab && widget->hasSelectedHost());
     }
     else
     {
-        action_desktop_->setVisible(true);
-        action_file_transfer_->setVisible(true);
-        action_chat_->setVisible(true);
-        action_system_info_->setVisible(true);
+        ui.action_desktop->setVisible(true);
+        ui.action_file_transfer->setVisible(true);
+        ui.action_chat->setVisible(true);
+        ui.action_system_info->setVisible(true);
     }
 
-    action_reload_->setVisible(current_content_ && current_content_->canReload());
-    action_save_->setVisible(current_content_ && current_content_->canSave());
+    ui.action_reload->setVisible(current_content_ && current_content_->canReload());
+    ui.action_save->setVisible(current_content_ && current_content_->canSave());
 }
 
 //--------------------------------------------------------------------------------------------------
 proto::peer::SessionType HostsTab::defaultSessionType() const
 {
-    if (action_desktop_->isChecked())
+    if (ui.action_desktop->isChecked())
         return proto::peer::SESSION_TYPE_DESKTOP;
-    else if (action_file_transfer_->isChecked())
+    else if (ui.action_file_transfer->isChecked())
         return proto::peer::SESSION_TYPE_FILE_TRANSFER;
-    else if (action_chat_->isChecked())
+    else if (ui.action_chat->isChecked())
         return proto::peer::SESSION_TYPE_TEXT_CHAT;
-    else if (action_system_info_->isChecked())
+    else if (ui.action_system_info->isChecked())
         return proto::peer::SESSION_TYPE_SYSTEM_INFO;
     else
         return proto::peer::SESSION_TYPE_UNKNOWN;
@@ -820,12 +781,12 @@ void HostsTab::onUserContextMenu(qint64 /* router_id */, const User& user, const
     QMenu menu;
     if (user.isValid())
     {
-        menu.addAction(action_edit_user_);
-        menu.addAction(action_delete_user_);
+        menu.addAction(ui.action_edit_user);
+        menu.addAction(ui.action_delete_user);
     }
     else
     {
-        menu.addAction(action_add_user_);
+        menu.addAction(ui.action_add_user);
     }
     menu.exec(pos);
 }
@@ -838,8 +799,8 @@ void HostsTab::onHostContextMenu(qint64 router_id, const QPoint& pos, int column
         return;
 
     QMenu menu;
-    menu.addAction(action_disconnect_);
-    menu.addAction(action_host_remove_);
+    menu.addAction(ui.action_disconnect);
+    menu.addAction(ui.action_host_remove);
     menu.addSeparator();
 
     QAction* copy_row = menu.addAction(tr("Copy Row"));
@@ -863,8 +824,8 @@ void HostsTab::onRelayContextMenu(qint64 router_id, const QPoint& pos, int colum
         return;
 
     QMenu menu;
-    menu.addAction(action_disconnect_);
-    menu.addAction(action_disconnect_all_);
+    menu.addAction(ui.action_disconnect);
+    menu.addAction(ui.action_disconnect_all);
     menu.addSeparator();
 
     QAction* copy_row = menu.addAction(tr("Copy Row"));

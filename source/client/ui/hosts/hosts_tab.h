@@ -96,39 +96,6 @@ private:
 
     Ui::HostsTab ui;
 
-    QAction* action_add_group_ = nullptr;
-    QAction* action_delete_group_ = nullptr;
-    QAction* action_edit_group_ = nullptr;
-
-    QAction* action_add_computer_ = nullptr;
-    QAction* action_delete_computer_ = nullptr;
-    QAction* action_edit_computer_ = nullptr;
-    QAction* action_copy_computer_ = nullptr;
-
-    QAction* action_desktop_ = nullptr;
-    QAction* action_file_transfer_ = nullptr;
-    QAction* action_chat_ = nullptr;
-    QAction* action_system_info_ = nullptr;
-
-    QAction* action_desktop_connect_ = nullptr;
-    QAction* action_file_transfer_connect_ = nullptr;
-    QAction* action_chat_connect_ = nullptr;
-    QAction* action_system_info_connect_ = nullptr;
-
-    QAction* action_add_user_ = nullptr;
-    QAction* action_edit_user_ = nullptr;
-    QAction* action_delete_user_ = nullptr;
-
-    QAction* action_save_ = nullptr;
-    QAction* action_reload_ = nullptr;
-    QAction* action_online_check_ = nullptr;
-    QAction* action_import_old_book_ = nullptr;
-
-    QAction* action_disconnect_ = nullptr;
-    QAction* action_disconnect_all_ = nullptr;
-
-    QAction* action_host_remove_ = nullptr;
-
     ContentWidget* current_content_ = nullptr;
     ContentWidget* previous_content_ = nullptr;
 

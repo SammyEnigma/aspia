@@ -47,6 +47,242 @@
     </widget>
    </item>
   </layout>
+  <action name="action_add_group">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/add-folder.svg</normaloff>:/img/add-folder.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Group</string>
+   </property>
+  </action>
+  <action name="action_delete_group">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/remove-folder.svg</normaloff>:/img/remove-folder.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Delete Group</string>
+   </property>
+  </action>
+  <action name="action_edit_group">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/change-folder.svg</normaloff>:/img/change-folder.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Edit Group</string>
+   </property>
+  </action>
+  <action name="action_add_computer">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/add-computer.svg</normaloff>:/img/add-computer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add Computer</string>
+   </property>
+  </action>
+  <action name="action_delete_computer">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/remove-computer.svg</normaloff>:/img/remove-computer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Delete Computer</string>
+   </property>
+  </action>
+  <action name="action_edit_computer">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/change-computer.svg</normaloff>:/img/change-computer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Edit Computer</string>
+   </property>
+  </action>
+  <action name="action_copy_computer">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/copy-computer.svg</normaloff>:/img/copy-computer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Copy Computer</string>
+   </property>
+  </action>
+  <action name="action_desktop">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/workstation.svg</normaloff>:/img/workstation.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Desktop Management</string>
+   </property>
+  </action>
+  <action name="action_file_transfer">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/file-explorer.svg</normaloff>:/img/file-explorer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>File Transfer</string>
+   </property>
+  </action>
+  <action name="action_chat">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/chat.svg</normaloff>:/img/chat.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Chat</string>
+   </property>
+  </action>
+  <action name="action_system_info">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/system-information.svg</normaloff>:/img/system-information.svg</iconset>
+   </property>
+   <property name="text">
+    <string>System Information</string>
+   </property>
+  </action>
+  <action name="action_desktop_connect">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/workstation.svg</normaloff>:/img/workstation.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Desktop Management</string>
+   </property>
+  </action>
+  <action name="action_file_transfer_connect">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/file-explorer.svg</normaloff>:/img/file-explorer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>File Transfer</string>
+   </property>
+  </action>
+  <action name="action_chat_connect">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/chat.svg</normaloff>:/img/chat.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Chat</string>
+   </property>
+  </action>
+  <action name="action_system_info_connect">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/system-information.svg</normaloff>:/img/system-information.svg</iconset>
+   </property>
+   <property name="text">
+    <string>System Information</string>
+   </property>
+  </action>
+  <action name="action_add_user">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/user-add.svg</normaloff>:/img/user-add.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Add User</string>
+   </property>
+  </action>
+  <action name="action_edit_user">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/user-edit.svg</normaloff>:/img/user-edit.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Edit User</string>
+   </property>
+  </action>
+  <action name="action_delete_user">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/user-delete.svg</normaloff>:/img/user-delete.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Delete User</string>
+   </property>
+  </action>
+  <action name="action_disconnect">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/host-disconnect.svg</normaloff>:/img/host-disconnect.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </action>
+  <action name="action_disconnect_all">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/host-disconnect-all.svg</normaloff>:/img/host-disconnect-all.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Disconnect All</string>
+   </property>
+  </action>
+  <action name="action_host_remove">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/remove-computer.svg</normaloff>:/img/remove-computer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/save.svg</normaloff>:/img/save.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save...</string>
+   </property>
+  </action>
+  <action name="action_reload">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/reload.svg</normaloff>:/img/reload.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Reload</string>
+   </property>
+  </action>
+  <action name="action_import_old_book">
+   <property name="icon">
+    <iconset resource="../../../common/resources/common.qrc">
+     <normaloff>:/img/import.svg</normaloff>:/img/import.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Import Old Address Book...</string>
+   </property>
+  </action>
+  <action name="action_online_check">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto-refresh Status</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -55,6 +291,8 @@
    <header>client/ui/hosts/sidebar.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../../common/resources/common.qrc"/>
+ </resources>
  <connections/>
 </ui>
