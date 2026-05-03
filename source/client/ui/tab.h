@@ -46,6 +46,9 @@ public:
 
     virtual bool isDetachable() const;
     virtual bool isDetached() const;
+    virtual void detachToWindow();
+    virtual void attachToTab();
+    virtual QWidget* detachedWindow() const;
     virtual QByteArray saveState() = 0;
     virtual void restoreState(const QByteArray& state) = 0;
     virtual void activate(QStatusBar* statusbar) = 0;

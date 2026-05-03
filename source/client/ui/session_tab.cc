@@ -58,6 +58,18 @@ SessionWindow* SessionTab::sessionWindow() const
 }
 
 //--------------------------------------------------------------------------------------------------
+bool SessionTab::isDetachable() const
+{
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+bool SessionTab::isDetached() const
+{
+    return session_window_ && session_window_->isWindow();
+}
+
+//--------------------------------------------------------------------------------------------------
 void SessionTab::detachToWindow()
 {
     if (!session_window_ || isDetached())
@@ -80,15 +92,9 @@ void SessionTab::attachToTab()
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionTab::isDetachable() const
+QWidget* SessionTab::detachedWindow() const
 {
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-bool SessionTab::isDetached() const
-{
-    return session_window_ && session_window_->isWindow();
+    return isDetached() ? session_window_.get() : nullptr;
 }
 
 //--------------------------------------------------------------------------------------------------

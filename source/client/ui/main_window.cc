@@ -369,38 +369,38 @@ void MainWindow::onConnect(qint64 /* computer_id */,
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
 {
-    SessionTab* session_tab = dynamic_cast<SessionTab*>(tabAt(index));
-    if (!session_tab || !session_tab->isDetachable() || session_tab->isDetached())
+    Tab* tab = tabAt(index);
+    if (!tab || !tab->isDetachable() || tab->isDetached())
         return;
 
-    QSize new_size = session_tab->size() / 2;
+    QSize new_size = tab->size() / 2;
 
-    session_tab->detachToWindow();
+    tab->detachToWindow();
     ui.tabs->tabBar()->setTabVisible(index, false);
 
-    SessionWindow* session_window = session_tab->sessionWindow();
-    if (!session_window)
+    QWidget* window = tab->detachedWindow();
+    if (!window)
         return;
 
-    session_window->resize(new_size);
+    window->resize(new_size);
 
-    int title_h = session_window->style()->pixelMetric(QStyle::PM_TitleBarHeight);
-    session_window->move(global_pos - QPoint(title_h + title_h / 2, title_h / 2));
-    session_window->raise();
-    session_window->activateWindow();
+    int title_h = window->style()->pixelMetric(QStyle::PM_TitleBarHeight);
+    window->move(global_pos - QPoint(title_h + title_h / 2, title_h / 2));
+    window->raise();
+    window->activateWindow();
 
-    if (QWindow* handle = session_window->windowHandle())
+    if (QWindow* handle = window->windowHandle())
         handle->startSystemMove();
 }
 
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onTabDragMove(const QPoint& global_pos)
 {
-    SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
-    if (!session_tab || !session_tab->isDetached())
+    Tab* tab = qobject_cast<Tab*>(sender());
+    if (!tab || !tab->isDetached())
         return;
 
-    int index = ui.tabs->indexOf(session_tab);
+    int index = ui.tabs->indexOf(tab);
     if (index == -1)
         return;
 
@@ -414,11 +414,11 @@ void MainWindow::onTabDragMove(const QPoint& global_pos)
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onTabDragFinished(const QPoint& global_pos)
 {
-    SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
-    if (!session_tab || !session_tab->isDetached())
+    Tab* tab = qobject_cast<Tab*>(sender());
+    if (!tab || !tab->isDetached())
         return;
 
-    int index = ui.tabs->indexOf(session_tab);
+    int index = ui.tabs->indexOf(tab);
     if (index == -1)
         return;
 
@@ -427,7 +427,7 @@ void MainWindow::onTabDragFinished(const QPoint& global_pos)
 
     if (tabBarHitTest(global_pos))
     {
-        session_tab->attachToTab();
+        tab->attachToTab();
         tabbar->setTabVisible(index, true);
         ui.tabs->setCurrentIndex(index);
     }
