@@ -64,6 +64,12 @@ public:
     // implementation does nothing; sessions that read from Settings (e.g. DesktopWindow) override.
     virtual void applySettings();
 
+    // Serializes session-window-specific UI state (e.g. desktop toolbar pin/scale/pause flags) to
+    // an opaque blob persisted by the container as part of Tab state. The default implementation
+    // returns an empty blob; sessions with persistent UI state (e.g. DesktopWindow) override.
+    virtual QByteArray saveState() const;
+    virtual void restoreState(const QByteArray& state);
+
 signals:
     void sig_start();
     void sig_stop();

@@ -57,6 +57,11 @@ public:
     // dropdown holder (Menu). Items meant to live only inside menus carry Tab::kMenuOnlyProperty.
     QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const;
 
+    // Persistent toolbar state (scale, autoscroll, pin, pause flags, wait-for-host) packed for
+    // storage as part of the owning Tab's state.
+    QByteArray saveState() const;
+    void restoreState(const QByteArray& state);
+
     int scale() const { return scale_; }
     bool autoScrolling() const;
     bool isPanelHidden() const;
@@ -141,8 +146,9 @@ private:
     bool allow_hide_ = true;
     bool leaved_ = true;
     bool is_tabbed_ = false;
+    bool wait_for_host_ = true;
 
-    int scale_ = 100;
+    qint64 scale_ = -1;
 
     Q_DISABLE_COPY_MOVE(DesktopToolBar)
 };

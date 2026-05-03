@@ -49,6 +49,8 @@ public:
     void setTabbedMode(bool tabbed) final;
     QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const final;
     void applySettings() final;
+    QByteArray saveState() const final;
+    void restoreState(const QByteArray& state) final;
 
 public slots:
     void onShowWindow();

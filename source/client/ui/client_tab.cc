@@ -108,13 +108,14 @@ QWidget* ClientTab::detachedWindow() const
 //--------------------------------------------------------------------------------------------------
 QByteArray ClientTab::saveState()
 {
-    return QByteArray();
+    return client_window_ ? client_window_->saveState() : QByteArray();
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientTab::restoreState(const QByteArray& /* state */)
+void ClientTab::restoreState(const QByteArray& state)
 {
-    // Nothing
+    if (client_window_)
+        client_window_->restoreState(state);
 }
 
 //--------------------------------------------------------------------------------------------------

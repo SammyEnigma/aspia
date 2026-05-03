@@ -20,14 +20,37 @@
 
 #include <QActionGroup>
 #include <QCheckBox>
+#include <QDataStream>
+#include <QIODevice>
 #include <QMenu>
 #include <QTimer>
 #include <QToolButton>
 
 #include "common/ui/msg_box.h"
 #include "base/logging.h"
-#include "client/ui/desktop/desktop_settings.h"
 #include "client/ui/desktop/select_screen_action.h"
+
+namespace {
+
+bool isValidScale(qint64 scale)
+{
+    switch (scale)
+    {
+        case 100:
+        case 90:
+        case 80:
+        case 70:
+        case 60:
+        case 50:
+        case -1:
+            return true;
+
+        default:
+            return false;
+    }
+}
+
+} // namespace
 
 //--------------------------------------------------------------------------------------------------
 DesktopToolBar::DesktopToolBar(QWidget* parent)
@@ -61,15 +84,6 @@ DesktopToolBar::DesktopToolBar(QWidget* parent)
     connect(sessions_menu_, &QMenu::aboutToShow, this, &DesktopToolBar::onMenuShow);
     connect(sessions_menu_, &QMenu::aboutToHide, this, &DesktopToolBar::onMenuHide);
     connect(sessions_group_, &QActionGroup::triggered, this, &DesktopToolBar::onSwitchSessionAction);
-
-    DesktopSettings settings;
-
-    ui.action_autoscroll->setChecked(settings.autoScrolling());
-
-    scale_ = settings.scale();
-
-    ui.action_pause_video->setChecked(settings.pauseVideoWhenMinimizing());
-    ui.action_pause_audio->setChecked(settings.pauseAudioWhenMinimizing());
 
     connect(ui.action_autosize, &QAction::triggered, this, &DesktopToolBar::onAutosizeButton);
     connect(ui.action_fullscreen, &QAction::triggered, this, &DesktopToolBar::onFullscreenButton);
@@ -120,14 +134,8 @@ DesktopToolBar::DesktopToolBar(QWidget* parent)
         emit sig_startSession(proto::peer::SESSION_TYPE_TEXT_CHAT);
     });
 
-    bool is_pinned = settings.isToolBarPinned();
-
-    ui.action_pin->setChecked(is_pinned);
-    ui.toolbar->setVisible(is_pinned);
-    ui.frame->setVisible(!is_pinned);
-
-    if (!is_pinned)
-        hide_timer_->start(0);
+    // Default state matches the .ui defaults: pin off, toolbar hidden, frame visible.
+    hide_timer_->start(0);
 
 #if defined(Q_OS_MACOS)
     // MacOS has its own button to maximize the window to full screen.
@@ -142,13 +150,6 @@ DesktopToolBar::DesktopToolBar(QWidget* parent)
 DesktopToolBar::~DesktopToolBar()
 {
     LOG(INFO) << "Dtor";
-
-    DesktopSettings settings;
-    settings.setScale(scale_);
-    settings.setAutoScrolling(ui.action_autoscroll->isChecked());
-    settings.setToolBarPinned(ui.action_pin->isChecked());
-    settings.setPauseVideoWhenMinimizing(ui.action_pause_video->isChecked());
-    settings.setPauseAudioWhenMinimizing(ui.action_pause_audio->isChecked());
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -503,6 +504,64 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
 }
 
 //--------------------------------------------------------------------------------------------------
+QByteArray DesktopToolBar::saveState() const
+{
+    QByteArray buffer;
+    QDataStream stream(&buffer, QIODevice::WriteOnly);
+    stream.setVersion(QDataStream::Qt_6_0);
+
+    stream << scale_;
+    stream << ui.action_autoscroll->isChecked();
+    stream << ui.action_pin->isChecked();
+    stream << ui.action_pause_video->isChecked();
+    stream << ui.action_pause_audio->isChecked();
+    stream << wait_for_host_;
+
+    return buffer;
+}
+
+//--------------------------------------------------------------------------------------------------
+void DesktopToolBar::restoreState(const QByteArray& state)
+{
+    if (state.isEmpty())
+        return;
+
+    QDataStream stream(state);
+    stream.setVersion(QDataStream::Qt_6_0);
+
+    qint64 scale = -1;
+    bool autoscroll = true;
+    bool pinned = false;
+    bool pause_video = true;
+    bool pause_audio = true;
+    bool wait_for_host = true;
+
+    stream >> scale >> autoscroll >> pinned >> pause_video >> pause_audio >> wait_for_host;
+
+    scale_ = isValidScale(scale) ? scale : -1;
+    ui.action_autoscroll->setChecked(autoscroll);
+    ui.action_pause_video->setChecked(pause_video);
+    ui.action_pause_audio->setChecked(pause_audio);
+    wait_for_host_ = wait_for_host;
+
+    ui.action_pin->setChecked(pinned);
+    ui.toolbar->setVisible(pinned);
+    ui.frame->setVisible(!pinned);
+    if (pinned)
+    {
+        if (hide_timer_->isActive())
+            hide_timer_->stop();
+    }
+    else if (!hide_timer_->isActive())
+    {
+        hide_timer_->start(0);
+    }
+
+    if (scale_menu_)
+        updateScaleMenu();
+}
+
+//--------------------------------------------------------------------------------------------------
 bool DesktopToolBar::autoScrolling() const
 {
     return ui.action_autoscroll->isChecked();
@@ -635,20 +694,17 @@ void DesktopToolBar::onPowerControl(QAction* action)
                                 MsgBox::Yes | MsgBox::No,
                                 this);
 
-        DesktopSettings settings;
-
         QCheckBox* wait_checkbox = new QCheckBox(&message_box);
         wait_checkbox->setText(tr("Wait for host"));
-        wait_checkbox->setChecked(settings.waitForHost());
+        wait_checkbox->setChecked(wait_for_host_);
         message_box.setCheckBox(wait_checkbox);
 
         if (message_box.exec() == MsgBox::Yes)
         {
-            bool wait = wait_checkbox->isChecked();
-            settings.setWaitForHost(wait);
+            wait_for_host_ = wait_checkbox->isChecked();
 
-            LOG(INFO) << "[ACTION] Reboot accepted by user (wait=" << wait << ")";
-            emit sig_powerControl(proto::power::Control::ACTION_REBOOT, wait);
+            LOG(INFO) << "[ACTION] Reboot accepted by user (wait=" << wait_for_host_ << ")";
+            emit sig_powerControl(proto::power::Control::ACTION_REBOOT, wait_for_host_);
         }
         else
         {
@@ -664,20 +720,17 @@ void DesktopToolBar::onPowerControl(QAction* action)
                                 MsgBox::Yes | MsgBox::No,
                                 this);
 
-        DesktopSettings settings;
-
         QCheckBox* wait_checkbox = new QCheckBox(&message_box);
         wait_checkbox->setText(tr("Wait for host"));
-        wait_checkbox->setChecked(settings.waitForHost());
+        wait_checkbox->setChecked(wait_for_host_);
         message_box.setCheckBox(wait_checkbox);
 
         if (message_box.exec() == MsgBox::Yes)
         {
-            bool wait = wait_checkbox->isChecked();
-            settings.setWaitForHost(wait);
+            wait_for_host_ = wait_checkbox->isChecked();
 
-            LOG(INFO) << "[ACTION] Reboot (safe mode) accepted by user (wait=" << wait << ")";
-            emit sig_powerControl(proto::power::Control::ACTION_REBOOT_SAFE_MODE, wait);
+            LOG(INFO) << "[ACTION] Reboot (safe mode) accepted by user (wait=" << wait_for_host_ << ")";
+            emit sig_powerControl(proto::power::Control::ACTION_REBOOT_SAFE_MODE, wait_for_host_);
         }
         else
         {

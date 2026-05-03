@@ -355,6 +355,18 @@ void DesktopWindow::applySettings()
 }
 
 //--------------------------------------------------------------------------------------------------
+QByteArray DesktopWindow::saveState() const
+{
+    return toolbar_->saveState();
+}
+
+//--------------------------------------------------------------------------------------------------
+void DesktopWindow::restoreState(const QByteArray& state)
+{
+    toolbar_->restoreState(state);
+}
+
+//--------------------------------------------------------------------------------------------------
 void DesktopWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";

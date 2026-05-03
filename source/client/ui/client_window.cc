@@ -140,6 +140,18 @@ void ClientWindow::applySettings()
 }
 
 //--------------------------------------------------------------------------------------------------
+QByteArray ClientWindow::saveState() const
+{
+    return {};
+}
+
+//--------------------------------------------------------------------------------------------------
+void ClientWindow::restoreState(const QByteArray& /* state */)
+{
+    // Nothing
+}
+
+//--------------------------------------------------------------------------------------------------
 void ClientWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event";
