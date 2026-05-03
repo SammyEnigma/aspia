@@ -37,6 +37,11 @@ ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
     client_window_->installEventFilter(this);
     layout->addWidget(client_window_);
     client_window_->show();
+    client_window_->setTabbedMode(true);
+
+    const auto groups = client_window_->tabActionGroups();
+    for (const auto& [role, actions] : groups)
+        addActions(role, actions);
 
     connect(client_window_, &ClientWindow::sig_dragMove, this, &Tab::sig_dragMove);
     connect(client_window_, &ClientWindow::sig_dragFinished, this, &Tab::sig_dragFinished);
@@ -82,6 +87,7 @@ void ClientTab::detachToWindow()
     client_window_->setParent(nullptr, Qt::Window);
     client_window_->show();
     client_window_->setSessionPaused(false);
+    client_window_->setTabbedMode(false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,6 +99,7 @@ void ClientTab::attachToTab()
     client_window_->setParent(this);
     layout()->addWidget(client_window_);
     client_window_->show();
+    client_window_->setTabbedMode(true);
 }
 
 //--------------------------------------------------------------------------------------------------

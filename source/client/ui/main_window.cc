@@ -24,6 +24,7 @@
 #include <QStyle>
 #include <QTabBar>
 #include <QTimer>
+#include <QToolButton>
 #include <QUrl>
 #include <QWindow>
 
@@ -623,6 +624,17 @@ void MainWindow::installTabActions(Tab* tab)
 
             ui.toolbar->insertAction(before, action);
             tab_toolbar_actions_.append(action);
+
+            // Actions that carry a submenu (e.g. power control, switch session, scale) need
+            // their toolbar button to open the menu on a single click.
+            if (action->menu())
+            {
+                if (QToolButton* button =
+                        qobject_cast<QToolButton*>(ui.toolbar->widgetForAction(action)))
+                {
+                    button->setPopupMode(QToolButton::InstantPopup);
+                }
+            }
 
             connect(action, &QAction::changed, this, &MainWindow::updateSeparatorVisibility);
             any_in_toolbar = true;

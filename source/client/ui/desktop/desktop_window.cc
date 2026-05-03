@@ -326,6 +326,19 @@ void DesktopWindow::setSessionPaused(bool paused)
 }
 
 //--------------------------------------------------------------------------------------------------
+void DesktopWindow::setTabbedMode(bool tabbed)
+{
+    LOG(INFO) << "Set tabbed mode:" << tabbed;
+    toolbar_->setTabbedMode(tabbed);
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopWindow::tabActionGroups() const
+{
+    return toolbar_->tabActionGroups();
+}
+
+//--------------------------------------------------------------------------------------------------
 void DesktopWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";

@@ -122,6 +122,18 @@ void ClientWindow::setSessionPaused(bool /* paused */)
 }
 
 //--------------------------------------------------------------------------------------------------
+void ClientWindow::setTabbedMode(bool /* tabbed */)
+{
+    // Nothing
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QPair<Tab::ActionRole, QList<QAction*>>> ClientWindow::tabActionGroups() const
+{
+    return {};
+}
+
+//--------------------------------------------------------------------------------------------------
 void ClientWindow::closeEvent(QCloseEvent* /* event */)
 {
     LOG(INFO) << "Close event";

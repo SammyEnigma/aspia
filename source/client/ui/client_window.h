@@ -22,6 +22,7 @@
 #include "client/client.h"
 #include "client/config.h"
 #include "client/session_state.h"
+#include "client/ui/tab.h"
 #include "proto/peer.h"
 
 #include <QWidget>
@@ -48,6 +49,15 @@ public:
     // (paused=false). Subclasses override to pause/resume video, audio, etc. The container
     // (Tab/MainWindow) drives this from tab activation or window state changes.
     virtual void setSessionPaused(bool paused);
+
+    // Notifies the session that it has been embedded in a tab (tabbed=true) or detached into a
+    // top-level window (tabbed=false). Subclasses override to hide their own session-level
+    // toolbars while in tabbed mode, since their actions are exposed via tabActionGroups().
+    virtual void setTabbedMode(bool tabbed);
+
+    // Returns session-specific actions to be hosted by the container's toolbar/menus while the
+    // session is embedded in a tab. The default implementation returns an empty list.
+    virtual QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const;
 
 signals:
     void sig_start();

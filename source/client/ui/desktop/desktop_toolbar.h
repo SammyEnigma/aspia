@@ -19,6 +19,7 @@
 #ifndef CLIENT_UI_DESKTOP_DESKTOP_TOOLBAR_H
 #define CLIENT_UI_DESKTOP_DESKTOP_TOOLBAR_H
 
+#include "client/ui/tab.h"
 #include "proto/desktop_control.h"
 #include "proto/desktop_power.h"
 #include "proto/desktop_screen.h"
@@ -44,6 +45,17 @@ public:
     void setScreenList(const proto::screen::ScreenList& screen_list);
     void setSessionList(const proto::control::SessionList& session_list);
     void startRecording(bool enable);
+
+    // Switches the toolbar between floating mode (used in a top-level desktop window) and tabbed
+    // mode (used when the session is embedded in MainWindow's tab widget). In tabbed mode the
+    // floating panel stays hidden and never reacts to hover; the actions remain valid and are
+    // exposed via tabActionGroups() so MainWindow can host them on the global toolbar/menus.
+    void setTabbedMode(bool tabbed);
+
+    // Returns the actions exposed to MainWindow when the session is embedded in a tab. Excludes
+    // toolbar-only items (Pin), top-level-window-only items (Autosize, Minimize, Close) and the
+    // dropdown holder (Menu). Items meant to live only inside menus carry Tab::kMenuOnlyProperty.
+    QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const;
 
     int scale() const { return scale_; }
     bool autoScrolling() const;
@@ -128,6 +140,7 @@ private:
 
     bool allow_hide_ = true;
     bool leaved_ = true;
+    bool is_tabbed_ = false;
 
     int scale_ = 100;
 

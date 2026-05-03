@@ -440,6 +440,74 @@ void DesktopToolBar::startRecording(bool enable)
 }
 
 //--------------------------------------------------------------------------------------------------
+void DesktopToolBar::setTabbedMode(bool tabbed)
+{
+    LOG(INFO) << "setTabbedMode:" << tabbed;
+
+    if (is_tabbed_ == tabbed)
+        return;
+
+    is_tabbed_ = tabbed;
+
+    if (tabbed)
+    {
+        if (hide_timer_->isActive())
+            hide_timer_->stop();
+
+        hide();
+    }
+    else
+    {
+        // Restore the look the floating-mode constructor would have produced for the current
+        // pin-state.
+        bool is_pinned = ui.action_pin->isChecked();
+        ui.toolbar->setVisible(is_pinned);
+        ui.frame->setVisible(!is_pinned);
+        show();
+
+        if (!is_pinned)
+            hide_timer_->start(0);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups() const
+{
+    auto markMenuOnly = [](const QList<QAction*>& actions)
+    {
+        for (QAction* action : actions)
+            action->setProperty(Tab::kMenuOnlyProperty, true);
+        return actions;
+    };
+
+    QList<QPair<Tab::ActionRole, QList<QAction*>>> groups;
+
+    groups.append({ Tab::ActionRole::FILE, { ui.action_settings } });
+
+    groups.append({ Tab::ActionRole::EDIT,
+        { ui.action_switch_session, ui.action_power_control, ui.action_cad } });
+    groups.append({ Tab::ActionRole::EDIT,
+        markMenuOnly({ ui.action_send_key_combinations,
+                       ui.action_paste_clipboard_as_keystrokes }) });
+
+    groups.append({ Tab::ActionRole::VIEW, { ui.action_fullscreen, ui.action_start_recording } });
+    groups.append({ Tab::ActionRole::VIEW,
+        markMenuOnly({ scale_menu_->menuAction(),
+                       ui.action_autoscroll,
+                       ui.action_pause_video,
+                       ui.action_pause_audio,
+                       ui.action_screenshot,
+                       ui.action_recording_settings,
+                       ui.action_statistics }) });
+
+    groups.append({ Tab::ActionRole::SESSION_TYPE,
+        { ui.action_file_transfer, ui.action_text_chat,
+          ui.action_task_manager, ui.action_system_info } });
+
+    return groups;
+}
+
+//--------------------------------------------------------------------------------------------------
 bool DesktopToolBar::autoScrolling() const
 {
     return ui.action_autoscroll->isChecked();
@@ -454,7 +522,7 @@ bool DesktopToolBar::sendKeyCombinations() const
 //--------------------------------------------------------------------------------------------------
 bool DesktopToolBar::isPanelHidden() const
 {
-    return ui.toolbar->isHidden();
+    return is_tabbed_ || ui.toolbar->isHidden();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -478,6 +546,9 @@ bool DesktopToolBar::isAudioPauseEnabled() const
 //--------------------------------------------------------------------------------------------------
 void DesktopToolBar::enterEvent(QEnterEvent* /* event */)
 {
+    if (is_tabbed_)
+        return;
+
     leaved_ = false;
 
     if (hide_timer_->isActive())
@@ -498,6 +569,9 @@ void DesktopToolBar::enterEvent(QEnterEvent* /* event */)
 //--------------------------------------------------------------------------------------------------
 void DesktopToolBar::leaveEvent(QEvent* /* event */)
 {
+    if (is_tabbed_)
+        return;
+
     leaved_ = true;
 
     if (allow_hide_)

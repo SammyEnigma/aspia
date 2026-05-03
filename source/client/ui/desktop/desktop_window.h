@@ -46,6 +46,8 @@ public:
     // ClientWindow implementation.
     Client* createClient() final;
     void setSessionPaused(bool paused) final;
+    void setTabbedMode(bool tabbed) final;
+    QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const final;
 
 public slots:
     void onShowWindow();
