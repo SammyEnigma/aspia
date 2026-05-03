@@ -46,6 +46,7 @@ public:
     void activate(QStatusBar* statusbar) final;
     void deactivate(QStatusBar* statusbar) final;
     bool hasStatusBar() const final;
+    QList<ActionGroupEntry> actionGroups() const final;
 
 protected:
     // QObject implementation.

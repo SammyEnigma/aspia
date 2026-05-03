@@ -364,6 +364,8 @@ void DesktopToolBar::setScreenList(const proto::screen::ScreenList& screen_list)
     }
 
     updateSize();
+
+    emit sig_actionsChanged();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -482,26 +484,24 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
 
     QList<QPair<Tab::ActionRole, QList<QAction*>>> groups;
 
-    groups.append({ Tab::ActionRole::FILE,
-    {
-        ui.action_start_recording, ui.action_screenshot, ui.action_statistics, ui.action_settings
-    }});
+    QList<QAction*> actions = QList<QAction*>(screen_actions_.cbegin(), screen_actions_.cend());
+    actions.append(ui.action_switch_session);
+    actions.append(ui.action_power_control);
+    actions.append(ui.action_cad);
 
-    groups.append({ Tab::ActionRole::ACTION,
-    {
-        ui.action_switch_session, ui.action_power_control, ui.action_cad
-    }});
-
+    groups.append({ Tab::ActionRole::ACTION, actions});
     groups.append({ Tab::ActionRole::ACTION,
     {
         ui.action_file_transfer, ui.action_text_chat, ui.action_task_manager, ui.action_system_info
     }});
-
     groups.append({ Tab::ActionRole::ACTION,
     {
         ui.action_paste_clipboard_as_keystrokes
     }});
-
+    groups.append({ Tab::ActionRole::FILE,
+    {
+        ui.action_start_recording, ui.action_screenshot, ui.action_statistics, ui.action_settings
+    }});
     groups.append({ Tab::ActionRole::VIEW,
     {
         ui.action_fullscreen, scale_menu_->menuAction(), ui.action_autoscroll, ui.action_pause_video, ui.action_pause_audio,

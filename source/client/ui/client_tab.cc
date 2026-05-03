@@ -39,15 +39,12 @@ ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
     client_window_->show();
     client_window_->setTabbedMode(true);
 
-    const auto groups = client_window_->tabActionGroups();
-    for (const auto& [role, actions] : groups)
-        addActions(role, actions);
-
     connect(client_window_, &ClientWindow::sig_dragMove, this, &Tab::sig_dragMove);
     connect(client_window_, &ClientWindow::sig_dragFinished, this, &Tab::sig_dragFinished);
     connect(client_window_, &ClientWindow::sig_fullscreenRequested, this, &Tab::sig_fullscreenRequested);
     connect(client_window_, &ClientWindow::sig_minimizeRequested, this, &Tab::sig_minimizeRequested);
     connect(client_window_, &ClientWindow::sig_showRequested, this, &Tab::sig_showRequested);
+    connect(client_window_, &ClientWindow::sig_actionsChanged, this, &Tab::sig_actionsChanged);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -138,6 +135,14 @@ void ClientTab::deactivate(QStatusBar* /* statusbar */)
 bool ClientTab::hasStatusBar() const
 {
     return false;
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<Tab::ActionGroupEntry> ClientTab::actionGroups() const
+{
+    if (!client_window_)
+        return {};
+    return client_window_->tabActionGroups();
 }
 
 //--------------------------------------------------------------------------------------------------

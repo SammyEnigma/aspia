@@ -86,6 +86,10 @@ signals:
     void sig_audioPauseChanged(bool enable);
     void sig_switchSession(quint32 session_id);
 
+    // Emitted when the set of actions exposed via tabActionGroups() may have changed (e.g. a
+    // new screen list arrived from the host and screen_actions_ was rebuilt).
+    void sig_actionsChanged();
+
 protected:
     // QFrame implementation.
     void enterEvent(QEnterEvent* event) final;

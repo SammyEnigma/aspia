@@ -103,7 +103,7 @@ void Tab::onSearchTextChanged(const QString& /* text */)
 }
 
 //--------------------------------------------------------------------------------------------------
-const QList<Tab::ActionGroupEntry>& Tab::actionGroups() const
+QList<Tab::ActionGroupEntry> Tab::actionGroups() const
 {
     return action_groups_;
 }

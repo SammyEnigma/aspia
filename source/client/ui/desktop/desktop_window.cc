@@ -164,6 +164,7 @@ DesktopWindow::DesktopWindow(const proto::control::Config& desktop_config, QWidg
     connect(toolbar_, &DesktopToolBar::sig_startStatistics, this, &DesktopWindow::sig_metricsRequested);
     connect(toolbar_, &DesktopToolBar::sig_pasteAsKeystrokes, this, &DesktopWindow::onPasteKeystrokes);
     connect(toolbar_, &DesktopToolBar::sig_switchToFullscreen, this, &DesktopWindow::sig_fullscreenRequested);
+    connect(toolbar_, &DesktopToolBar::sig_actionsChanged, this, &DesktopWindow::sig_actionsChanged);
 
     desktop_->installEventFilter(this);
     scroll_area_->viewport()->installEventFilter(this);

@@ -84,6 +84,11 @@ signals:
     // current tab). Emitted when the connection is established.
     void sig_showRequested();
 
+    // Emitted when the set of actions returned by tabActionGroups() may have changed (e.g. the
+    // host reported a new monitor configuration). The container re-installs the actions on the
+    // global toolbar/menus.
+    void sig_actionsChanged();
+
 protected:
     virtual Client* createClient() = 0;
     virtual void onInternalReset() = 0;

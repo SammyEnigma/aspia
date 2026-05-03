@@ -63,7 +63,7 @@ public:
     virtual void onSearchTextChanged(const QString& text);
 
     using ActionGroupEntry = QPair<ActionRole, QList<QAction*>>;
-    const QList<ActionGroupEntry>& actionGroups() const;
+    virtual QList<ActionGroupEntry> actionGroups() const;
 
 signals:
     void sig_titleChanged(const QString& title);
@@ -80,6 +80,11 @@ signals:
     void sig_fullscreenRequested(bool enabled);
     void sig_minimizeRequested();
     void sig_showRequested();
+
+    // Emitted when the set of actions returned by actionGroups() may have changed (e.g. a
+    // session-level toolbar discovered new monitors). The container (MainWindow) uses this to
+    // re-install actions on the global toolbar/menus when this tab is currently active.
+    void sig_actionsChanged();
 
 protected:
     void addActions(ActionRole group, const QList<QAction*>& actions);

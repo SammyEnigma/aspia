@@ -548,6 +548,14 @@ void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
     connect(tab, &Tab::sig_fullscreenRequested, this, &MainWindow::onTabFullscreenRequested);
     connect(tab, &Tab::sig_minimizeRequested, this, &MainWindow::onTabMinimizeRequested);
     connect(tab, &Tab::sig_showRequested, this, &MainWindow::onTabShowRequested);
+    connect(tab, &Tab::sig_actionsChanged, this, [this, tab]()
+    {
+        if (active_tab_ == tab)
+        {
+            removeTabActions();
+            installTabActions(tab);
+        }
+    });
 
     ui.tabs->setCurrentIndex(index);
 }
@@ -602,7 +610,7 @@ void MainWindow::updateStatusBarVisibility()
 //--------------------------------------------------------------------------------------------------
 void MainWindow::installTabActions(Tab* tab)
 {
-    const QList<Tab::ActionGroupEntry>& groups = tab->actionGroups();
+    const QList<Tab::ActionGroupEntry> groups = tab->actionGroups();
 
     // Find the first static toolbar action to insert before it.
     QAction* before = nullptr;
