@@ -32,9 +32,6 @@ public:
     bool autoScrolling() const;
     void setAutoScrolling(bool enable);
 
-    bool sendKeyCombinations() const;
-    void setSendKeyCombinations(bool enable);
-
     bool isToolBarPinned() const;
     void setToolBarPinned(bool enable);
 

@@ -128,6 +128,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     ui.checkbox_desktop_wallpaper->setChecked(!desktop_config.wallpaper());
     ui.checkbox_lock_at_disconnect->setChecked(desktop_config.lock_at_disconnect());
     ui.checkbox_block_remote_input->setChecked(desktop_config.block_input());
+    ui.checkbox_send_key_combinations->setChecked(settings.sendKeyCombinations());
 
     ui.checkbox_record_autostart->setChecked(settings.recordSessions());
     ui.edit_record_dir->setText(settings.recordingPath());
@@ -224,6 +225,7 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
 
         settings.setRecordSessions(ui.checkbox_record_autostart->isChecked());
         settings.setRecordingPath(ui.edit_record_dir->text());
+        settings.setSendKeyCombinations(ui.checkbox_send_key_combinations->isChecked());
 
         Database& db = Database::instance();
         db.setDisplayName(ui.edit_display_name->text());

@@ -68,7 +68,6 @@ DesktopToolBar::DesktopToolBar(QWidget* parent)
 
     scale_ = settings.scale();
 
-    ui.action_send_key_combinations->setChecked(settings.sendKeyCombinations());
     ui.action_pause_video->setChecked(settings.pauseVideoWhenMinimizing());
     ui.action_pause_audio->setChecked(settings.pauseAudioWhenMinimizing());
 
@@ -156,7 +155,6 @@ DesktopToolBar::~DesktopToolBar()
     settings.setToolBarPinned(ui.action_pin->isChecked());
     settings.setPauseVideoWhenMinimizing(ui.action_pause_video->isChecked());
     settings.setPauseAudioWhenMinimizing(ui.action_pause_audio->isChecked());
-    settings.setSendKeyCombinations(ui.action_send_key_combinations->isChecked());
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -476,7 +474,6 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
     ui.action_start_recording->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_statistics->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_screenshot->setProperty(Tab::kMenuOnlyProperty, true);
-    ui.action_send_key_combinations->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_paste_clipboard_as_keystrokes->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_autoscroll->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_pause_video->setProperty(Tab::kMenuOnlyProperty, true);
@@ -505,11 +502,6 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
         ui.action_paste_clipboard_as_keystrokes
     }});
 
-    groups.append({ Tab::ActionRole::EDIT,
-    {
-        ui.action_send_key_combinations
-    }});
-
     groups.append({ Tab::ActionRole::VIEW,
     {
         ui.action_fullscreen, scale_menu_->menuAction(), ui.action_autoscroll, ui.action_pause_video, ui.action_pause_audio,
@@ -522,12 +514,6 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
 bool DesktopToolBar::autoScrolling() const
 {
     return ui.action_autoscroll->isChecked();
-}
-
-//--------------------------------------------------------------------------------------------------
-bool DesktopToolBar::sendKeyCombinations() const
-{
-    return ui.action_send_key_combinations->isChecked();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -825,7 +811,6 @@ void DesktopToolBar::createAdditionalMenu()
     updateScaleMenu();
 
     additional_menu_->addAction(ui.action_autoscroll);
-    additional_menu_->addAction(ui.action_send_key_combinations);
     additional_menu_->addAction(ui.action_pause_video);
     additional_menu_->addAction(ui.action_pause_audio);
     additional_menu_->addSeparator();
@@ -840,12 +825,6 @@ void DesktopToolBar::createAdditionalMenu()
 
     QToolButton* button = qobject_cast<QToolButton*>(ui.toolbar->widgetForAction(ui.action_menu));
     button->setPopupMode(QToolButton::InstantPopup);
-
-    connect(ui.action_send_key_combinations, &QAction::triggered, this, [this](bool enable)
-    {
-        LOG(INFO) << "[ACTION] Send key combinations changed:" << enable;
-        emit sig_keyCombinationsChanged(enable);
-    });
 
     connect(ui.action_paste_clipboard_as_keystrokes, &QAction::triggered,
             this, &DesktopToolBar::sig_pasteAsKeystrokes);

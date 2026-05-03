@@ -231,17 +231,6 @@
     <string>Scale</string>
    </property>
   </action>
-  <action name="action_send_key_combinations">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Send key combinations</string>
-   </property>
-  </action>
   <action name="action_power_control">
    <property name="icon">
     <iconset resource="../../../common/resources/common.qrc">

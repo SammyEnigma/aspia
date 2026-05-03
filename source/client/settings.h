@@ -78,6 +78,9 @@ public:
     bool recordSessions() const;
     void setRecordSessions(bool enable);
 
+    bool sendKeyCombinations() const;
+    void setSendKeyCombinations(bool enable);
+
     QByteArray tabState(const QString& name) const;
     void setTabState(const QString& name, const QByteArray& state);
 

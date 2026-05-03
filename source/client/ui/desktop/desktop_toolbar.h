@@ -59,7 +59,6 @@ public:
 
     int scale() const { return scale_; }
     bool autoScrolling() const;
-    bool sendKeyCombinations() const;
     bool isPanelHidden() const;
     bool isPanelPinned() const;
     bool isVideoPauseEnabled() const;
@@ -74,7 +73,6 @@ signals:
     void sig_screenSelected(const proto::screen::Screen& screen);
     void sig_scaleChanged();
     void sig_autoScrollChanged(bool enabled);
-    void sig_keyCombinationsChanged(bool enabled);
     void sig_takeScreenshot();
     void sig_startSession(proto::peer::SessionType session_type);
     void sig_powerControl(proto::power::Control_Action action, bool wait);

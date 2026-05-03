@@ -46,6 +46,7 @@ const QString kOnlineCheckParam = "online_check";
 const QString kOpenSessionsInTabsParam = "open_sessions_in_tabs";
 const QString kRecordingPathParam = "recording_path";
 const QString kRecordSessionsParam = "record_sessions";
+const QString kSendKeyCombinationsParam = "send_key_combinations";
 const QString kTabStateParam = "tab_state";
 
 } // namespace
@@ -255,6 +256,18 @@ bool Settings::recordSessions() const
 void Settings::setRecordSessions(bool enable)
 {
     settings_.setValue(kRecordSessionsParam, enable);
+}
+
+//--------------------------------------------------------------------------------------------------
+bool Settings::sendKeyCombinations() const
+{
+    return settings_.value(kSendKeyCombinationsParam, true).toBool();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Settings::setSendKeyCombinations(bool enable)
+{
+    settings_.setValue(kSendKeyCombinationsParam, enable);
 }
 
 //--------------------------------------------------------------------------------------------------

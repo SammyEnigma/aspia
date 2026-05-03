@@ -24,7 +24,6 @@ namespace {
 
 const QString kScaleParam = "Desktop/Scale";
 const QString kAutoScrollingParam = "Desktop/AutoScrolling";
-const QString kSendKeyCombinationsParam = "Desktop/SendKeyCombinations";
 const QString kToolBarPinnedParam = "Desktop/ToolBarPinned";
 const QString kPauseVideoParam = "Desktop/PauseVideo";
 const QString kPauseAudioParam = "Desktop/PauseAudio";
@@ -76,18 +75,6 @@ bool DesktopSettings::autoScrolling() const
 void DesktopSettings::setAutoScrolling(bool enable)
 {
     settings_.setValue(kAutoScrollingParam, enable);
-}
-
-//--------------------------------------------------------------------------------------------------
-bool DesktopSettings::sendKeyCombinations() const
-{
-    return settings_.value(kSendKeyCombinationsParam, true).toBool();
-}
-
-//--------------------------------------------------------------------------------------------------
-void DesktopSettings::setSendKeyCombinations(bool enable)
-{
-    settings_.setValue(kSendKeyCombinationsParam, enable);
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -98,7 +98,8 @@ DesktopWindow::DesktopWindow(const proto::control::Config& desktop_config, QWidg
     scroll_timer_ = new QTimer(this);
     connect(scroll_timer_, &QTimer::timeout, this, &DesktopWindow::onScrollTimer);
 
-    desktop_->enableKeyCombinations(toolbar_->sendKeyCombinations());
+    Settings settings;
+    desktop_->enableKeyCombinations(settings.sendKeyCombinations());
     desktop_->enableRemoteCursorPosition(desktop_config_.cursor_position());
 
     connect(toolbar_, &DesktopToolBar::sig_keyCombination, desktop_, &DesktopWidget::executeKeyCombination);
@@ -163,7 +164,6 @@ DesktopWindow::DesktopWindow(const proto::control::Config& desktop_config, QWidg
     connect(toolbar_, &DesktopToolBar::sig_startStatistics, this, &DesktopWindow::sig_metricsRequested);
     connect(toolbar_, &DesktopToolBar::sig_pasteAsKeystrokes, this, &DesktopWindow::onPasteKeystrokes);
     connect(toolbar_, &DesktopToolBar::sig_switchToFullscreen, this, &DesktopWindow::sig_fullscreenRequested);
-    connect(toolbar_, &DesktopToolBar::sig_keyCombinationsChanged, desktop_, &DesktopWidget::enableKeyCombinations);
 
     desktop_->installEventFilter(this);
     scroll_area_->viewport()->installEventFilter(this);
