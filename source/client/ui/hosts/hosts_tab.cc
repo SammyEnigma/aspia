@@ -45,7 +45,7 @@
 
 //--------------------------------------------------------------------------------------------------
 HostsTab::HostsTab(QWidget* parent)
-    : ClientTab(Type::HOSTS, "hosts", parent)
+    : Tab(Type::HOSTS, "hosts", parent)
 {
     LOG(INFO) << "Ctor";
 
@@ -124,12 +124,12 @@ HostsTab::HostsTab(QWidget* parent)
     action_reload_ = new QAction(QIcon(":/img/reload.svg"), tr("Reload"), this);
 
     action_import_old_book_ = new QAction(QIcon(":/img/import.svg"), tr("Import Old Address Book..."), this);
-    action_import_old_book_->setProperty(ClientTab::kMenuOnlyProperty, true);
+    action_import_old_book_->setProperty(Tab::kMenuOnlyProperty, true);
 
     action_online_check_ = new QAction(tr("Auto-refresh Status"), this);
     action_online_check_->setCheckable(true);
     action_online_check_->setChecked(settings.isOnlineCheckEnabled());
-    action_online_check_->setProperty(ClientTab::kMenuOnlyProperty, true);
+    action_online_check_->setProperty(Tab::kMenuOnlyProperty, true);
 
     // Create content widgets.
     local_group_widget_ = new LocalGroupWidget(this);
@@ -305,18 +305,18 @@ void HostsTab::restoreState(const QByteArray& state)
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::attach(QStatusBar* statusbar)
+void HostsTab::activate(QStatusBar* statusbar)
 {
     statusbar_ = statusbar;
     if (current_content_ && statusbar_)
-        current_content_->attach(statusbar_);
+        current_content_->activate(statusbar_);
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::detach(QStatusBar* /* statusbar */)
+void HostsTab::deactivate(QStatusBar* /* statusbar */)
 {
     if (current_content_ && statusbar_)
-        current_content_->detach(statusbar_);
+        current_content_->deactivate(statusbar_);
     statusbar_ = nullptr;
 }
 
@@ -599,13 +599,13 @@ void HostsTab::switchContent(ContentWidget* new_widget)
         return;
 
     if (current_content_ && statusbar_)
-        current_content_->detach(statusbar_);
+        current_content_->deactivate(statusbar_);
 
     current_content_ = new_widget;
     ui.content_stack->setCurrentWidget(new_widget);
 
     if (statusbar_)
-        current_content_->attach(statusbar_);
+        current_content_->activate(statusbar_);
 }
 
 //--------------------------------------------------------------------------------------------------

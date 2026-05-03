@@ -246,7 +246,10 @@ void SessionWindow::onStatusChanged(Client::Status status, const QVariant& data)
 void SessionWindow::onDragPoll()
 {
     if (QGuiApplication::mouseButtons() & Qt::LeftButton)
+    {
+        emit sig_dragMove(QCursor::pos());
         return;
+    }
 
     drag_poll_timer_->stop();
     emit sig_dragFinished(QCursor::pos());

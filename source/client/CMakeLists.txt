@@ -67,8 +67,6 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/authorization_dialog.cc
     ui/authorization_dialog.h
     ui/authorization_dialog.ui
-    ui/client_tab.cc
-    ui/client_tab.h
     ui/main_window.cc
     ui/main_window.h
     ui/main_window.ui
@@ -77,6 +75,8 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/master_password_dialog.ui
     ui/session_tab.cc
     ui/session_tab.h
+    ui/tab.cc
+    ui/tab.h
     ui/tab_bar.cc
     ui/tab_bar.h
     ui/tab_widget.cc

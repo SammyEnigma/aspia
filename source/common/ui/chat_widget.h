@@ -50,6 +50,7 @@ signals:
     void sig_textChatClosed();
 
 protected:
+    // QWidget implementation.
     bool eventFilter(QObject* object, QEvent* event) final;
     void showEvent(QShowEvent* event) final;
     void resizeEvent(QResizeEvent* event) final;

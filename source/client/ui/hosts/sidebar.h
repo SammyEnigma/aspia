@@ -27,13 +27,13 @@
 
 struct GroupConfig;
 
-class Sidebar : public QWidget
+class Sidebar final : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit Sidebar(QWidget* parent = nullptr);
-    ~Sidebar() override;
+    ~Sidebar() final;
 
     class Item : public QTreeWidgetItem
     {
@@ -52,7 +52,7 @@ public:
         qint64 group_id_;
     };
 
-    class LocalGroup : public Item
+    class LocalGroup final : public Item
     {
     public:
         LocalGroup(const GroupConfig& group, QTreeWidget* parent);
@@ -66,7 +66,7 @@ public:
         QString group_name_;
     };
 
-    class Router : public Item
+    class Router final : public Item
     {
     public:
         Router(qint64 router_id, const QString& name, QTreeWidget* parent);
@@ -83,7 +83,7 @@ public:
         QString name_;
     };
 
-    class RouterGroup : public Item
+    class RouterGroup final : public Item
     {
     public:
         RouterGroup(qint64 group_id, const QString& name, QTreeWidgetItem* parent);
@@ -142,7 +142,8 @@ public slots:
     void onRemoveGroup();
 
 protected:
-    bool eventFilter(QObject* watched, QEvent* event) override;
+    // QObject implementation.
+    bool eventFilter(QObject* watched, QEvent* event) final;
 
 signals:
     void sig_switchContent(Sidebar::Item::Type type);

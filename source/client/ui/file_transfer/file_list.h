@@ -51,7 +51,7 @@ signals:
     void sig_fileListDropped(const QString& folder_name, const QList<FileTransfer::Item>& files);
 
 protected:
-    // QTreeView implemenation.
+    // QTreeView implementation.
     void keyPressEvent(QKeyEvent* event) final;
     void mouseDoubleClickEvent(QMouseEvent* event) final;
 

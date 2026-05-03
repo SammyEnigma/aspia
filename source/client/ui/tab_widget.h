@@ -26,13 +26,13 @@ class TabBar;
 // QTabWidget subclass that installs a custom TabBar (with detach gesture support). Exists because
 // QTabWidget::setTabBar is protected; promoting QTabWidget to this class in the .ui lets us swap
 // the tab bar without subclassing every use.
-class TabWidget : public QTabWidget
+class TabWidget final : public QTabWidget
 {
     Q_OBJECT
 
 public:
     explicit TabWidget(QWidget* parent = nullptr);
-    ~TabWidget() override;
+    ~TabWidget() final;
 
     TabBar* tabBar() const;
 

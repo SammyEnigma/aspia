@@ -634,7 +634,7 @@ void RouterWidget::save()
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterWidget::attach(QStatusBar* statusbar)
+void RouterWidget::activate(QStatusBar* statusbar)
 {
     if (!statusbar)
         return;
@@ -649,7 +649,7 @@ void RouterWidget::attach(QStatusBar* statusbar)
 }
 
 //--------------------------------------------------------------------------------------------------
-void RouterWidget::detach(QStatusBar* statusbar)
+void RouterWidget::deactivate(QStatusBar* statusbar)
 {
     if (!statusbar || !status_label_)
         return;

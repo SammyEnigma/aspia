@@ -23,13 +23,13 @@
 
 #include "ui_local_computer_dialog.h"
 
-class LocalComputerDialog : public QDialog
+class LocalComputerDialog final : public QDialog
 {
     Q_OBJECT
 
 public:
     LocalComputerDialog(qint64 computer_id, qint64 group_id, QWidget* parent = nullptr);
-    ~LocalComputerDialog() override;
+    ~LocalComputerDialog() final;
 
     qint64 computerId() const { return computer_id_; }
 

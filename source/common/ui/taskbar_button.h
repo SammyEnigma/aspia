@@ -50,6 +50,7 @@ public slots:
     void clearOverlayIcon();
 
 protected:
+    // QObject implementation.
     bool eventFilter(QObject* object, QEvent* event) final;
 
 private slots:

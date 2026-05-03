@@ -30,11 +30,13 @@ public:
     explicit ChatOutgoingMessage(QWidget* parent = nullptr);
     ~ChatOutgoingMessage() final;
 
+    // ChatMessage implementation.
     void setMessageText(const QString& text) final;
     QString messageText() const final;
     QString messageTime() const final;
 
 protected:
+    // QWidget implementation.
     void resizeEvent(QResizeEvent* event) final;
 
 private:

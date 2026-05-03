@@ -25,7 +25,7 @@
 
 //--------------------------------------------------------------------------------------------------
 SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
-    : ClientTab(Type::SESSION, "session", parent),
+    : Tab(Type::SESSION, "session", parent),
       session_window_(session_window)
 {
     QVBoxLayout* layout = new QVBoxLayout(this);
@@ -38,6 +38,7 @@ SessionTab::SessionTab(SessionWindow* session_window, QWidget* parent)
         layout->addWidget(session_window_);
         session_window_->show();
 
+        connect(session_window_, &SessionWindow::sig_dragMove, this, &SessionTab::sig_dragMove);
         connect(session_window_, &SessionWindow::sig_dragFinished, this, &SessionTab::sig_dragFinished);
     }
 }
@@ -80,6 +81,12 @@ void SessionTab::attachToTab()
 }
 
 //--------------------------------------------------------------------------------------------------
+bool SessionTab::isDetachable() const
+{
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
 bool SessionTab::isDetached() const
 {
     return session_window_ && session_window_->isWindow();
@@ -98,19 +105,13 @@ void SessionTab::restoreState(const QByteArray& /* state */)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool SessionTab::isDetachable() const
-{
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void SessionTab::attach(QStatusBar* /* statusbar */)
+void SessionTab::activate(QStatusBar* /* statusbar */)
 {
     // Nothing
 }
 
 //--------------------------------------------------------------------------------------------------
-void SessionTab::detach(QStatusBar* /* statusbar */)
+void SessionTab::deactivate(QStatusBar* /* statusbar */)
 {
     // Nothing
 }
@@ -136,5 +137,5 @@ bool SessionTab::eventFilter(QObject* object, QEvent* event)
         }
     }
 
-    return ClientTab::eventFilter(object, event);
+    return Tab::eventFilter(object, event);
 }

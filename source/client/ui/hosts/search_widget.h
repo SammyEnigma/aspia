@@ -23,18 +23,20 @@
 
 class QTreeWidget;
 
-class SearchWidget : public ContentWidget
+class SearchWidget final : public ContentWidget
 {
     Q_OBJECT
 
 public:
     explicit SearchWidget(QWidget* parent = nullptr);
-    ~SearchWidget() override;
+    ~SearchWidget() final;
 
     void search(const QString& query);
     void clear();
-    QByteArray saveState() override;
-    void restoreState(const QByteArray& state) override;
+
+    // ContentWidget implementation.
+    QByteArray saveState() final;
+    void restoreState(const QByteArray& state) final;
 
 private:
     QTreeWidget* tree_computer_ = nullptr;

@@ -23,13 +23,13 @@
 
 #include "ui_local_group_dialog.h"
 
-class LocalGroupDialog : public QDialog
+class LocalGroupDialog final : public QDialog
 {
     Q_OBJECT
 
 public:
     LocalGroupDialog(qint64 group_id, qint64 parent_id, QWidget* parent = nullptr);
-    ~LocalGroupDialog() override;
+    ~LocalGroupDialog() final;
 
 private slots:
     void onButtonBoxClicked(QAbstractButton* button);

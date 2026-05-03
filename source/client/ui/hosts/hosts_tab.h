@@ -23,7 +23,7 @@
 
 #include "client/config.h"
 #include "client/router_connection.h"
-#include "client/ui/client_tab.h"
+#include "client/ui/tab.h"
 #include "proto/peer.h"
 #include "ui_hosts_tab.h"
 
@@ -35,20 +35,22 @@ class RouterWidget;
 class SearchWidget;
 class User;
 
-class HostsTab : public ClientTab
+class HostsTab final : public Tab
 {
     Q_OBJECT
 
 public:
     explicit HostsTab(QWidget* parent = nullptr);
-    ~HostsTab() override;
+    ~HostsTab() final;
 
-    QByteArray saveState() override;
-    void restoreState(const QByteArray& state) override;
-    void attach(QStatusBar* statusbar) override;
-    void detach(QStatusBar* statusbar) override;
-    bool hasSearchField() const override;
-    void onSearchTextChanged(const QString& text) override;
+    // Tab implementation.
+    QByteArray saveState() final;
+    void restoreState(const QByteArray& state) final;
+    void activate(QStatusBar* statusbar) final;
+    void deactivate(QStatusBar* statusbar) final;
+    bool hasSearchField() const final;
+    void onSearchTextChanged(const QString& text) final;
+
     void reloadRouters();
 
 signals:

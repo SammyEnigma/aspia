@@ -21,24 +21,24 @@
 
 #include <QTabBar>
 
-class TabBar : public QTabBar
+class TabBar final : public QTabBar
 {
     Q_OBJECT
 
 public:
     explicit TabBar(QWidget* parent = nullptr);
-    ~TabBar() override;
+    ~TabBar() final;
 
 signals:
     // Emitted when the user drags a tab vertically out of the bar bounds. The receiver is expected
-    // to remove the tab from the QTabWidget and place it into a detached window at globalPos.
-    void sig_tabDetachRequested(int index, const QPoint& globalPos);
+    // to remove the tab from the QTabWidget and place it into a detached window at global_pos.
+    void sig_tabDetachRequested(int index, const QPoint& global_pos);
 
 protected:
     // QWidget implementation.
-    void mousePressEvent(QMouseEvent* event) override;
-    void mouseMoveEvent(QMouseEvent* event) override;
-    void mouseReleaseEvent(QMouseEvent* event) override;
+    void mousePressEvent(QMouseEvent* event) final;
+    void mouseMoveEvent(QMouseEvent* event) final;
+    void mouseReleaseEvent(QMouseEvent* event) final;
 
 private:
     int pressed_tab_index_ = -1;

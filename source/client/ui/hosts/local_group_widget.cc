@@ -218,7 +218,7 @@ void LocalGroupWidget::reload()
 }
 
 //--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::attach(QStatusBar* statusbar)
+void LocalGroupWidget::activate(QStatusBar* statusbar)
 {
     if (!statusbar)
         return;
@@ -235,7 +235,7 @@ void LocalGroupWidget::attach(QStatusBar* statusbar)
 }
 
 //--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::detach(QStatusBar* statusbar)
+void LocalGroupWidget::deactivate(QStatusBar* statusbar)
 {
     stopOnlineChecker();
 

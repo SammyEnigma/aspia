@@ -34,6 +34,7 @@ public:
     ~SettingsDialog() final;
 
 protected:
+    // QDialog implementation.
     void closeEvent(QCloseEvent* event) final;
 
 private slots:

@@ -33,13 +33,13 @@ class QLabel;
 class QStatusBar;
 struct ComputerConfig;
 
-class LocalGroupWidget : public ContentWidget
+class LocalGroupWidget final : public ContentWidget
 {
     Q_OBJECT
 
 public:
     explicit LocalGroupWidget(QWidget* parent = nullptr);
-    ~LocalGroupWidget() override;
+    ~LocalGroupWidget() final;
 
     class Item : public QTreeWidgetItem
     {
@@ -104,12 +104,12 @@ public:
     void setOnlineCheckEnabled(bool enable);
 
     // ContentWidget implementation.
-    QByteArray saveState() override;
-    void restoreState(const QByteArray& state) override;
-    bool canReload() const override { return true; }
-    void reload() override;
-    void attach(QStatusBar* statusbar) override;
-    void detach(QStatusBar* statusbar) override;
+    QByteArray saveState() final;
+    void restoreState(const QByteArray& state) final;
+    bool canReload() const final { return true; }
+    void reload() final;
+    void activate(QStatusBar* statusbar) final;
+    void deactivate(QStatusBar* statusbar) final;
 
     QString mimeType() const { return mime_type_; }
 
@@ -120,7 +120,8 @@ public slots:
     void onRemoveComputer();
 
 protected:
-    bool eventFilter(QObject* watched, QEvent* event) override;
+    // QObject implementation.
+    bool eventFilter(QObject* watched, QEvent* event) final;
 
 signals:
     void sig_doubleClicked(qint64 computer_id);

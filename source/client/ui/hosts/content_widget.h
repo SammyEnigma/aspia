@@ -40,8 +40,8 @@ public:
     virtual void reload() {}
     virtual bool canSave() const { return false; }
     virtual void save() {}
-    virtual void attach(QStatusBar* /* statusbar */) {}
-    virtual void detach(QStatusBar* /* statusbar */) {}
+    virtual void activate(QStatusBar* /* statusbar */) {}
+    virtual void deactivate(QStatusBar* /* statusbar */) {}
 
 private:
     Type type_;

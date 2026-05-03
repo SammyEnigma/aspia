@@ -34,7 +34,7 @@
 #include "client/database.h"
 #include "client/settings.h"
 #include "client/ui/settings_dialog.h"
-#include "client/ui/client_tab.h"
+#include "client/ui/tab.h"
 #include "client/ui/session_tab.h"
 #include "client/ui/session_window.h"
 #include "client/ui/tab_bar.h"
@@ -169,7 +169,7 @@ void MainWindow::closeEvent(QCloseEvent* /* event */)
 
     for (int i = 0; i < ui.tabs->count(); ++i)
     {
-        ClientTab* tab = dynamic_cast<ClientTab*>(ui.tabs->widget(i));
+        Tab* tab = dynamic_cast<Tab*>(ui.tabs->widget(i));
         if (tab)
             settings.setTabState(tab->objectName(), tab->saveState());
     }
@@ -254,34 +254,34 @@ void MainWindow::onCurrentTabChanged(int index)
     if (active_tab_)
     {
         removeTabActions();
-        active_tab_->detach(ui.statusbar);
+        active_tab_->deactivate(ui.statusbar);
         active_tab_ = nullptr;
     }
 
     if (index == -1)
         return;
 
-    ClientTab* tab = tabAt(index);
+    Tab* tab = tabAt(index);
     if (!tab)
         return;
 
     active_tab_ = tab;
     installTabActions(active_tab_);
-    active_tab_->attach(ui.statusbar);
+    active_tab_->activate(ui.statusbar);
     updateSearchFieldVisibility();
 }
 
 //--------------------------------------------------------------------------------------------------
 void MainWindow::onCloseTab(int index)
 {
-    ClientTab* tab = tabAt(index);
+    Tab* tab = tabAt(index);
     if (!tab || !tab->isClosable())
         return;
 
     if (tab == active_tab_)
     {
         removeTabActions();
-        tab->detach(ui.statusbar);
+        tab->deactivate(ui.statusbar);
         active_tab_ = nullptr;
     }
 
@@ -392,26 +392,50 @@ void MainWindow::onTabDetachRequested(int index, const QPoint& global_pos)
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainWindow::onSessionDragFinished(const QPoint& global_pos)
+void MainWindow::onSessionDragMove(const QPoint& global_pos)
 {
     SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
     if (!session_tab || !session_tab->isDetached())
-        return;
-
-    if (!tabBarHitTest(global_pos))
         return;
 
     int index = ui.tabs->indexOf(session_tab);
     if (index == -1)
         return;
 
-    session_tab->attachToTab();
-    ui.tabs->tabBar()->setTabVisible(index, true);
-    ui.tabs->setCurrentIndex(index);
+    QTabBar* tabbar = ui.tabs->tabBar();
+    bool over = tabBarHitTest(global_pos);
+    if (tabbar->isTabVisible(index) != over)
+        tabbar->setTabVisible(index, over);
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
+void MainWindow::onSessionDragFinished(const QPoint& global_pos)
+{
+    SessionTab* session_tab = qobject_cast<SessionTab*>(sender());
+    if (!session_tab || !session_tab->isDetached())
+        return;
+
+    int index = ui.tabs->indexOf(session_tab);
+    if (index == -1)
+        return;
+
+    QTabBar* tabbar = ui.tabs->tabBar();
+
+    if (tabBarHitTest(global_pos))
+    {
+        session_tab->attachToTab();
+        tabbar->setTabVisible(index, true);
+        ui.tabs->setCurrentIndex(index);
+    }
+    else if (tabbar->isTabVisible(index))
+    {
+        // Drop missed the tab bar; clean up the preview state we may have set during drag.
+        tabbar->setTabVisible(index, false);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
 {
     int index = ui.tabs->addTab(tab, icon, title);
 
@@ -421,14 +445,14 @@ void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
     Settings settings;
     tab->restoreState(settings.tabState(tab->objectName()));
 
-    connect(tab, &ClientTab::sig_titleChanged, this, [this, tab](const QString& new_title)
+    connect(tab, &Tab::sig_titleChanged, this, [this, tab](const QString& new_title)
     {
         int tab_index = ui.tabs->indexOf(tab);
         if (tab_index != -1)
             ui.tabs->setTabText(tab_index, new_title);
     });
 
-    connect(tab, &ClientTab::sig_closeRequested, this, [this, tab]()
+    connect(tab, &Tab::sig_closeRequested, this, [this, tab]()
     {
         int tab_index = ui.tabs->indexOf(tab);
         if (tab_index != -1)
@@ -436,7 +460,10 @@ void MainWindow::addTab(ClientTab* tab, const QString& title, const QIcon& icon)
     }, Qt::QueuedConnection);
 
     if (SessionTab* session_tab = qobject_cast<SessionTab*>(tab))
+    {
+        connect(session_tab, &SessionTab::sig_dragMove, this, &MainWindow::onSessionDragMove);
         connect(session_tab, &SessionTab::sig_dragFinished, this, &MainWindow::onSessionDragFinished);
+    }
 
     ui.tabs->setCurrentIndex(index);
 }
@@ -465,9 +492,9 @@ void MainWindow::hideCloseButtonForTab(int index)
 }
 
 //--------------------------------------------------------------------------------------------------
-ClientTab* MainWindow::tabAt(int index)
+Tab* MainWindow::tabAt(int index)
 {
-    return dynamic_cast<ClientTab*>(ui.tabs->widget(index));
+    return dynamic_cast<Tab*>(ui.tabs->widget(index));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -482,9 +509,9 @@ void MainWindow::updateSearchFieldVisibility()
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainWindow::installTabActions(ClientTab* tab)
+void MainWindow::installTabActions(Tab* tab)
 {
-    const QList<ClientTab::ActionGroupEntry>& groups = tab->actionGroups();
+    const QList<Tab::ActionGroupEntry>& groups = tab->actionGroups();
 
     // Find the first static toolbar action to insert before it.
     QAction* before = nullptr;
@@ -494,14 +521,14 @@ void MainWindow::installTabActions(ClientTab* tab)
 
     for (int i = 0; i < groups.size(); ++i)
     {
-        const ClientTab::ActionGroupEntry& entry = groups[i];
+        const Tab::ActionGroupEntry& entry = groups[i];
 
         // Add actions to toolbar and connect visibility tracking. Actions marked with
         // kMenuOnlyProperty go only to the menu and are skipped here.
         bool any_in_toolbar = false;
         for (QAction* action : entry.second)
         {
-            if (action->property(ClientTab::kMenuOnlyProperty).toBool())
+            if (action->property(Tab::kMenuOnlyProperty).toBool())
                 continue;
 
             ui.toolbar->insertAction(before, action);
@@ -651,23 +678,23 @@ void MainWindow::updateSeparatorVisibility()
 }
 
 //--------------------------------------------------------------------------------------------------
-QMenu* MainWindow::menuForActionGroup(ClientTab::ActionRole group) const
+QMenu* MainWindow::menuForActionGroup(Tab::ActionRole group) const
 {
     switch (group)
     {
-        case ClientTab::ActionRole::FILE:
+        case Tab::ActionRole::FILE:
             return ui.menu_file;
 
-        case ClientTab::ActionRole::EDIT:
+        case Tab::ActionRole::EDIT:
             return ui.menu_edit;
 
-        case ClientTab::ActionRole::VIEW:
+        case Tab::ActionRole::VIEW:
             return ui.menu_view;
 
-        case ClientTab::ActionRole::SESSION_TYPE:
+        case Tab::ActionRole::SESSION_TYPE:
             return ui.menu_session_type;
 
-        case ClientTab::ActionRole::HELP:
+        case Tab::ActionRole::HELP:
             return ui.menu_help;
 
         default:

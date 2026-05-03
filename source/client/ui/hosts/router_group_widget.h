@@ -22,17 +22,19 @@
 #include "client/ui/hosts/content_widget.h"
 #include "ui_router_group_widget.h"
 
-class RouterGroupWidget : public ContentWidget
+class RouterGroupWidget final : public ContentWidget
 {
     Q_OBJECT
 
 public:
     explicit RouterGroupWidget(QWidget* parent = nullptr);
-    ~RouterGroupWidget() override;
+    ~RouterGroupWidget() final;
 
     void showGroup(qint64 group_id);
-    QByteArray saveState() override;
-    void restoreState(const QByteArray& state) override;
+
+    // ContentWidget implementation.
+    QByteArray saveState() final;
+    void restoreState(const QByteArray& state) final;
 
 private:
     Ui::RouterGroupWidget ui;

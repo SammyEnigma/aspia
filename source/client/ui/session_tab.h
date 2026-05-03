@@ -20,18 +20,18 @@
 #define CLIENT_UI_SESSION_TAB_H
 
 #include "base/scoped_qpointer.h"
-#include "client/ui/client_tab.h"
+#include "client/ui/tab.h"
 
 class QStatusBar;
 class SessionWindow;
 
-class SessionTab : public ClientTab
+class SessionTab final : public Tab
 {
     Q_OBJECT
 
 public:
     explicit SessionTab(SessionWindow* session_window, QWidget* parent = nullptr);
-    ~SessionTab() override;
+    ~SessionTab() final;
 
     SessionWindow* sessionWindow() const;
 
@@ -43,21 +43,23 @@ public:
     // Switches the SessionWindow back into the tab as a child widget.
     void attachToTab();
 
-    bool isDetached() const;
-
-    QByteArray saveState() override;
-    void restoreState(const QByteArray& state) override;
-    bool isDetachable() const override;
-    void attach(QStatusBar* statusbar) override;
-    void detach(QStatusBar* statusbar) override;
+    // Tab implementation.
+    bool isDetachable() const final;
+    bool isDetached() const final;
+    QByteArray saveState() final;
+    void restoreState(const QByteArray& state) final;
+    void activate(QStatusBar* statusbar) final;
+    void deactivate(QStatusBar* statusbar) final;
 
 signals:
+    // Forwarded from SessionWindow::sig_dragMove while detached.
+    void sig_dragMove(const QPoint& global_pos);
     // Forwarded from SessionWindow::sig_dragFinished while detached.
-    void sig_dragFinished(const QPoint& globalReleasePos);
+    void sig_dragFinished(const QPoint& global_release_pos);
 
 protected:
     // QObject implementation.
-    bool eventFilter(QObject* object, QEvent* event) override;
+    bool eventFilter(QObject* object, QEvent* event) final;
 
 private:
     ScopedQPointer<SessionWindow> session_window_;

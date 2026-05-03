@@ -16,8 +16,8 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_CLIENT_TAB_H
-#define CLIENT_UI_CLIENT_TAB_H
+#ifndef CLIENT_UI_TAB_H
+#define CLIENT_UI_TAB_H
 
 #include <QAction>
 #include <QList>
@@ -26,7 +26,7 @@
 
 class QStatusBar;
 
-class ClientTab : public QWidget
+class Tab : public QWidget
 {
     Q_OBJECT
 
@@ -38,17 +38,18 @@ public:
     // skipped on the toolbar (e.g. checkable items without an icon).
     static inline constexpr const char* kMenuOnlyProperty = "aspiaMenuOnly";
 
-    explicit ClientTab(Type type, const QString& object_name, QWidget* parent = nullptr);
-    ~ClientTab() override;
+    explicit Tab(Type type, const QString& object_name, QWidget* parent = nullptr);
+    ~Tab() override;
 
     Type tabType() const;
     bool isClosable() const;
-    virtual bool isDetachable() const;
 
+    virtual bool isDetachable() const;
+    virtual bool isDetached() const;
     virtual QByteArray saveState() = 0;
     virtual void restoreState(const QByteArray& state) = 0;
-    virtual void attach(QStatusBar* statusbar) = 0;
-    virtual void detach(QStatusBar* statusbar) = 0;
+    virtual void activate(QStatusBar* statusbar) = 0;
+    virtual void deactivate(QStatusBar* statusbar) = 0;
     virtual bool hasSearchField() const;
     virtual void onSearchTextChanged(const QString& text);
 
@@ -66,7 +67,7 @@ private:
     Type type_;
     QList<ActionGroupEntry> action_groups_;
 
-    Q_DISABLE_COPY_MOVE(ClientTab)
+    Q_DISABLE_COPY_MOVE(Tab)
 };
 
-#endif // CLIENT_UI_CLIENT_TAB_H
+#endif // CLIENT_UI_TAB_H

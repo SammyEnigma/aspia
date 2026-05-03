@@ -16,10 +16,10 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/client_tab.h"
+#include "client/ui/tab.h"
 
 //--------------------------------------------------------------------------------------------------
-ClientTab::ClientTab(Type type, const QString& object_name, QWidget* parent)
+Tab::Tab(Type type, const QString& object_name, QWidget* parent)
     : QWidget(parent),
       type_(type)
 {
@@ -28,46 +28,52 @@ ClientTab::ClientTab(Type type, const QString& object_name, QWidget* parent)
 }
 
 //--------------------------------------------------------------------------------------------------
-ClientTab::~ClientTab() = default;
+Tab::~Tab() = default;
 
 //--------------------------------------------------------------------------------------------------
-ClientTab::Type ClientTab::tabType() const
+Tab::Type Tab::tabType() const
 {
     return type_;
 }
 
 //--------------------------------------------------------------------------------------------------
-bool ClientTab::isClosable() const
+bool Tab::isClosable() const
 {
     return type_ == Type::SESSION;
 }
 
 //--------------------------------------------------------------------------------------------------
-bool ClientTab::isDetachable() const
+bool Tab::isDetachable() const
 {
     return false;
 }
 
 //--------------------------------------------------------------------------------------------------
-bool ClientTab::hasSearchField() const
+bool Tab::isDetached() const
 {
     return false;
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientTab::onSearchTextChanged(const QString& /* text */)
+bool Tab::hasSearchField() const
+{
+    return false;
+}
+
+//--------------------------------------------------------------------------------------------------
+void Tab::onSearchTextChanged(const QString& /* text */)
 {
     // Nothing
 }
 
 //--------------------------------------------------------------------------------------------------
-const QList<ClientTab::ActionGroupEntry>& ClientTab::actionGroups() const
+const QList<Tab::ActionGroupEntry>& Tab::actionGroups() const
 {
     return action_groups_;
 }
 
 //--------------------------------------------------------------------------------------------------
-void ClientTab::addActions(ActionRole group, const QList<QAction*>& actions)
+void Tab::addActions(ActionRole group, const QList<QAction*>& actions)
 {
     action_groups_.append({ group, actions });
 }

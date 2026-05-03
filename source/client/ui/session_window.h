@@ -48,10 +48,15 @@ signals:
     void sig_start();
     void sig_stop();
 
+    // Emitted on each drag-poll tick while the user is dragging this widget as a top-level
+    // window with the left mouse button held. The owner uses global_pos to update visual hints
+    // (e.g. previewing the destination in the main tab bar).
+    void sig_dragMove(const QPoint& global_pos);
+
     // Emitted when the user finishes a native window-drag of this widget while it is top-level
-    // (i.e. detached from a tab). The owner inspects globalReleasePos to decide whether to
+    // (i.e. detached from a tab). The owner inspects global_release_pos to decide whether to
     // re-attach the session into the main tab bar.
-    void sig_dragFinished(const QPoint& globalReleasePos);
+    void sig_dragFinished(const QPoint& global_release_pos);
 
 protected:
     virtual Client* createClient() = 0;

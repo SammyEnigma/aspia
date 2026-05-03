@@ -22,11 +22,11 @@
 #include <QByteArray>
 #include <QMainWindow>
 
-#include "client/ui/client_tab.h"
+#include "client/ui/tab.h"
 #include "proto/peer.h"
 #include "ui_main_window.h"
 
-class ClientTab;
+class Tab;
 class QLineEdit;
 class SessionTab;
 class UpdateChecker;
@@ -60,25 +60,26 @@ private slots:
                    const ComputerConfig& computer,
                    proto::peer::SessionType session_type);
     void onTabDetachRequested(int index, const QPoint& global_pos);
+    void onSessionDragMove(const QPoint& global_pos);
     void onSessionDragFinished(const QPoint& global_pos);
 
 private:
-    void addTab(ClientTab* tab, const QString& title, const QIcon& icon);
+    void addTab(Tab* tab, const QString& title, const QIcon& icon);
     bool tabBarHitTest(const QPoint& global_pos) const;
     void hideCloseButtonForTab(int index);
-    ClientTab* tabAt(int index);
+    Tab* tabAt(int index);
     void updateSearchFieldVisibility();
-    void installTabActions(ClientTab* tab);
+    void installTabActions(Tab* tab);
     void removeTabActions();
     void updateSeparatorVisibility();
-    QMenu* menuForActionGroup(ClientTab::ActionRole group) const;
+    QMenu* menuForActionGroup(Tab::ActionRole group) const;
 
     Ui::MainWindow ui;
     std::unique_ptr<UpdateChecker> update_checker_;
 
     QLineEdit* search_field_ = nullptr;
     QAction* search_action_ = nullptr;
-    ClientTab* active_tab_ = nullptr;
+    Tab* active_tab_ = nullptr;
     QList<QAction*> tab_toolbar_actions_;
     QList<QPair<QMenu*, QList<QAction*>>> tab_menu_actions_;
 

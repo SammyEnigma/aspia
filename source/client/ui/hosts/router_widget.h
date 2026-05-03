@@ -36,7 +36,7 @@ class RelayList;
 class RelayResult;
 } // namespace proto::router
 
-class RouterWidget : public ContentWidget
+class RouterWidget final : public ContentWidget
 {
     Q_OBJECT
 
@@ -51,7 +51,7 @@ public:
     Q_ENUM(TabType)
 
     explicit RouterWidget(const RouterConfig& config, QWidget* parent = nullptr);
-    ~RouterWidget() override;
+    ~RouterWidget() final;
 
     qint64 routerId() const;
     RouterConnection::Status status() const;
@@ -67,14 +67,15 @@ public:
     void copyCurrentRelayRow();
     void copyCurrentRelayColumn(int column);
 
-    QByteArray saveState() override;
-    void restoreState(const QByteArray& state) override;
-    bool canReload() const override { return true; }
-    void reload() override;
-    bool canSave() const override;
-    void save() override;
-    void attach(QStatusBar* statusbar) override;
-    void detach(QStatusBar* statusbar) override;
+    // ContentWidget implementation.
+    QByteArray saveState() final;
+    void restoreState(const QByteArray& state) final;
+    bool canReload() const final { return true; }
+    void reload() final;
+    bool canSave() const final;
+    void save() final;
+    void activate(QStatusBar* statusbar) final;
+    void deactivate(QStatusBar* statusbar) final;
 
     void connectToRouter();
     void disconnectFromRouter();
