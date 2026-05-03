@@ -45,6 +45,7 @@ public:
     // Formats a Unix timestamp in the user's locale short format.
     static QString timeToString(time_t time);
 
+private:
     Q_DISABLE_COPY_MOVE(Formatter)
 };
 
