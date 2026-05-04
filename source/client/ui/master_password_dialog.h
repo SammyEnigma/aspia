@@ -30,7 +30,7 @@ class MasterPasswordDialog final : public QDialog
     Q_OBJECT
 
 public:
-    enum class Mode { SET, CHANGE, REMOVE };
+    enum class Mode { SET, CHANGE };
     Q_ENUM(Mode)
 
     explicit MasterPasswordDialog(Mode mode, QWidget* parent = nullptr);
@@ -42,7 +42,6 @@ private slots:
 private:
     bool applySet();
     bool applyChange();
-    bool applyRemove();
 
     Ui::MasterPasswordDialog ui;
     const Mode mode_;

@@ -30,6 +30,7 @@
 #include "client/router.h"
 #include "client/ui/application.h"
 #include "client/ui/main_window.h"
+#include "client/ui/master_password_dialog.h"
 #include "client/ui/unlock_dialog.h"
 #include "client/ui/chat/chat_window.h"
 #include "client/ui/desktop/desktop_window.h"
@@ -617,6 +618,19 @@ int main(int argc, char* argv[])
                 MsgBox::warning(nullptr,
                     QApplication::translate("Client", "Invalid master password."));
             }
+        }
+        else
+        {
+            LOG(INFO) << "Master password is not set, prompting user to set one";
+
+            MasterPasswordDialog dialog(MasterPasswordDialog::Mode::SET);
+            if (dialog.exec() != QDialog::Accepted)
+            {
+                LOG(INFO) << "Master password set cancelled by user";
+                return 0;
+            }
+
+            LOG(INFO) << "Master password set";
         }
 
         main_window.reset(new MainWindow());

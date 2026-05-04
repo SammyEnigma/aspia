@@ -39,13 +39,11 @@ protected:
 
 private slots:
     void onButtonBoxClicked(QAbstractButton* button);
-    void onSetOrChangeMasterPassword();
-    void onRemoveMasterPassword();
+    void onChangeMasterPassword();
     void onSelectRecordingPath();
 
 private:
     void showError(const QString& message);
-    void updateMasterPasswordUi();
 
     Ui::SettingsDialog ui;
 };

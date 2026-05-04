@@ -76,7 +76,6 @@ public:
     // Master password.
     bool isMasterPasswordSet() const;
     bool setMasterPassword(const QByteArray& salt, const QByteArray& verifier, quint32 version);
-    bool clearMasterPassword();
     QByteArray masterPasswordSalt() const;
     QByteArray masterPasswordVerifier() const;
     quint32 masterPasswordVersion() const;
@@ -88,7 +87,6 @@ private:
 
     QString readSetting(const QString& name) const;
     bool writeSetting(const QString& name, const QString& value);
-    bool removeSetting(const QString& name);
 
     bool valid_ = false;
 };

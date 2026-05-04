@@ -28,7 +28,6 @@
 #include "common/ui/msg_box.h"
 #include "build/build_config.h"
 #include "client/database.h"
-#include "client/master_password.h"
 #include "client/settings.h"
 #include "client/ui/application.h"
 #include "client/ui/master_password_dialog.h"
@@ -66,11 +65,8 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     ui.edit_display_name->setText(db.displayName());
 
     // Master Password.
-    connect(ui.button_set_master_password, &QPushButton::clicked,
-            this, &SettingsDialog::onSetOrChangeMasterPassword);
-    connect(ui.button_remove_master_password, &QPushButton::clicked,
-            this, &SettingsDialog::onRemoveMasterPassword);
-    updateMasterPasswordUi();
+    connect(ui.button_change_master_password, &QPushButton::clicked,
+            this, &SettingsDialog::onChangeMasterPassword);
 
     // Desktop tab.
     proto::control::Config desktop_config = settings.desktopConfig();
@@ -202,27 +198,12 @@ void SettingsDialog::showError(const QString& message)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SettingsDialog::onSetOrChangeMasterPassword()
+void SettingsDialog::onChangeMasterPassword()
 {
-    LOG(INFO) << "[ACTION] Set/change master password";
+    LOG(INFO) << "[ACTION] Change master password";
 
-    MasterPasswordDialog::Mode mode = MasterPassword::isSet() ?
-        MasterPasswordDialog::Mode::CHANGE : MasterPasswordDialog::Mode::SET;
-    MasterPasswordDialog dialog(mode, this);
+    MasterPasswordDialog dialog(MasterPasswordDialog::Mode::CHANGE, this);
     dialog.exec();
-
-    updateMasterPasswordUi();
-}
-
-//--------------------------------------------------------------------------------------------------
-void SettingsDialog::onRemoveMasterPassword()
-{
-    LOG(INFO) << "[ACTION] Remove master password";
-
-    MasterPasswordDialog dialog(MasterPasswordDialog::Mode::REMOVE, this);
-    dialog.exec();
-
-    updateMasterPasswordUi();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -242,23 +223,4 @@ void SettingsDialog::onSelectRecordingPath()
 
     LOG(INFO) << "[ACTION] Recording path selected:" << path;
     ui.edit_record_dir->setText(path);
-}
-
-//--------------------------------------------------------------------------------------------------
-void SettingsDialog::updateMasterPasswordUi()
-{
-    bool is_set = MasterPassword::isSet();
-
-    if (is_set)
-    {
-        ui.label_master_password_status->setText(tr("Status: set"));
-        ui.button_set_master_password->setText(tr("Change..."));
-    }
-    else
-    {
-        ui.label_master_password_status->setText(tr("Status: not set"));
-        ui.button_set_master_password->setText(tr("Set..."));
-    }
-
-    ui.button_remove_master_password->setEnabled(is_set);
 }

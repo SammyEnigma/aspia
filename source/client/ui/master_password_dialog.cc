@@ -49,16 +49,6 @@ MasterPasswordDialog::MasterPasswordDialog(Mode mode, QWidget* parent)
             ui.label_description->setText(tr("Enter your current password and choose a new one."));
             ui.edit_current->setFocus();
             break;
-
-        case Mode::REMOVE:
-            setWindowTitle(tr("Remove Master Password"));
-            ui.label_description->setText(tr("Enter your current password to remove encryption from the address book."));
-            ui.label_new->setVisible(false);
-            ui.edit_new->setVisible(false);
-            ui.label_confirm->setVisible(false);
-            ui.edit_confirm->setVisible(false);
-            ui.edit_current->setFocus();
-            break;
     }
 
     connect(ui.button_box, &QDialogButtonBox::clicked, this, &MasterPasswordDialog::onButtonBoxClicked);
@@ -90,9 +80,6 @@ void MasterPasswordDialog::onButtonBoxClicked(QAbstractButton* button)
             break;
         case Mode::CHANGE:
             ok = applyChange();
-            break;
-        case Mode::REMOVE:
-            ok = applyRemove();
             break;
     }
 
@@ -177,26 +164,6 @@ bool MasterPasswordDialog::applyChange()
     if (!MasterPassword::change(current, new_password))
     {
         MsgBox::warning(this, tr("Invalid current password or unable to change it."));
-        return false;
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-bool MasterPasswordDialog::applyRemove()
-{
-    QString current = ui.edit_current->text();
-
-    if (current.isEmpty())
-    {
-        MsgBox::warning(this, tr("Enter the current password."));
-        return false;
-    }
-
-    if (!MasterPassword::clear(current))
-    {
-        MsgBox::warning(this, tr("Invalid current password or unable to remove it."));
         return false;
     }
 

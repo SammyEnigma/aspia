@@ -90,13 +90,7 @@ bool changeKeyAndReencrypt(const QByteArray& new_key, const QByteArray& new_salt
         }
     }
 
-    bool ok;
-    if (new_salt.isEmpty() && new_verifier.isEmpty())
-        ok = db.clearMasterPassword();
-    else
-        ok = db.setMasterPassword(new_salt, new_verifier, kCurrentVersion);
-
-    if (!ok)
+    if (!db.setMasterPassword(new_salt, new_verifier, kCurrentVersion))
     {
         cryptor.setKey(old_key);
         return false;
@@ -235,14 +229,4 @@ bool MasterPassword::change(const QString& current_password, const QString& new_
         return false;
 
     return changeKeyAndReencrypt(new_key, salt, *verifier);
-}
-
-//--------------------------------------------------------------------------------------------------
-// static
-bool MasterPassword::clear(const QString& current_password)
-{
-    if (!unlock(current_password))
-        return false;
-
-    return changeKeyAndReencrypt(QByteArray(), QByteArray(), QByteArray());
 }

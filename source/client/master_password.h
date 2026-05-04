@@ -33,7 +33,6 @@ public:
 
     static bool setNew(const QString& new_password);
     static bool change(const QString& current_password, const QString& new_password);
-    static bool clear(const QString& current_password);
 
 private:
     MasterPassword() = delete;

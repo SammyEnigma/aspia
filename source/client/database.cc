@@ -794,14 +794,6 @@ bool Database::setMasterPassword(const QByteArray& salt, const QByteArray& verif
 }
 
 //--------------------------------------------------------------------------------------------------
-bool Database::clearMasterPassword()
-{
-    return removeSetting(kSettingSalt) &&
-           removeSetting(kSettingVerifier) &&
-           removeSetting(kSettingVersion);
-}
-
-//--------------------------------------------------------------------------------------------------
 QByteArray Database::masterPasswordSalt() const
 {
     return QByteArray::fromBase64(readSetting(kSettingSalt).toLatin1());
@@ -918,28 +910,6 @@ bool Database::writeSetting(const QString& name, const QString& value)
     query.prepare("INSERT OR REPLACE INTO settings (name, value) VALUES (?, ?)");
     query.addBindValue(name);
     query.addBindValue(value);
-
-    if (!query.exec())
-    {
-        LOG(ERROR) << "Unable to execute query:" << query.lastError();
-        return false;
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-bool Database::removeSetting(const QString& name)
-{
-    if (!isValid())
-    {
-        LOG(ERROR) << "Database is not valid";
-        return false;
-    }
-
-    QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("DELETE FROM settings WHERE name=?");
-    query.addBindValue(name);
 
     if (!query.exec())
     {
