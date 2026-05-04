@@ -242,7 +242,8 @@ void SysInfoWidgetPowerOptions::setSystemInfo(const proto::system_info::SystemIn
     for (int i = 0; i < ui.tree->topLevelItemCount(); ++i)
         ui.tree->topLevelItem(i)->setExpanded(true);
 
-    ui.tree->resizeColumnToContents(0);
+    if (!isStateRestored())
+        ui.tree->resizeColumnToContents(0);
 }
 
 //--------------------------------------------------------------------------------------------------

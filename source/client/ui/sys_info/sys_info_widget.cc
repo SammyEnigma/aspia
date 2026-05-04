@@ -21,6 +21,8 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QDesktopServices>
+#include <QHeaderView>
+#include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QUrl>
 
@@ -75,6 +77,30 @@ proto::system_info::SystemInfoRequest SysInfoWidget::request() const
     proto::system_info::SystemInfoRequest system_info_request;
     system_info_request.set_category(category());
     return system_info_request;
+}
+
+//--------------------------------------------------------------------------------------------------
+QByteArray SysInfoWidget::saveState() const
+{
+    QTreeWidget* tree = const_cast<SysInfoWidget*>(this)->treeWidget();
+    if (!tree)
+        return QByteArray();
+
+    return tree->header()->saveState();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SysInfoWidget::restoreState(const QByteArray& state)
+{
+    if (state.isEmpty())
+        return;
+
+    QTreeWidget* tree = treeWidget();
+    if (!tree)
+        return;
+
+    tree->header()->restoreState(state);
+    state_restored_ = true;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -53,6 +53,10 @@ SysInfoWidgetOpenFiles::SysInfoWidgetOpenFiles(QWidget* parent)
     {
         current_column_ = column;
     });
+
+    ui.tree->setColumnWidth(0, 250);
+    ui.tree->setColumnWidth(1, 120);
+    ui.tree->setColumnWidth(2, 100);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -91,10 +95,6 @@ void SysInfoWidgetOpenFiles::setSystemInfo(const proto::system_info::SystemInfo&
 
         ui.tree->addTopLevelItem(item);
     }
-
-    ui.tree->setColumnWidth(0, 250);
-    ui.tree->setColumnWidth(1, 120);
-    ui.tree->setColumnWidth(2, 100);
 }
 
 //--------------------------------------------------------------------------------------------------

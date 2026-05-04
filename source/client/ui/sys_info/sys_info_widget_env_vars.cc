@@ -88,7 +88,8 @@ void SysInfoWidgetEnvVars::setSystemInfo(const proto::system_info::SystemInfo& s
         ui.tree->addTopLevelItem(item);
     }
 
-    ui.tree->resizeColumnToContents(0);
+    if (!isStateRestored())
+        ui.tree->resizeColumnToContents(0);
 }
 
 //--------------------------------------------------------------------------------------------------

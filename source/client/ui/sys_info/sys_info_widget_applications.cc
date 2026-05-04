@@ -66,6 +66,12 @@ SysInfoWidgetApplications::SysInfoWidgetApplications(QWidget* parent)
 
         searchInGoogle(name);
     });
+
+    ui.tree->setColumnWidth(0, 250);
+    ui.tree->setColumnWidth(1, 100);
+    ui.tree->setColumnWidth(2, 170);
+    ui.tree->setColumnWidth(3, 80);
+    ui.tree->setColumnWidth(4, 100);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -106,12 +112,6 @@ void SysInfoWidgetApplications::setSystemInfo(const proto::system_info::SystemIn
 
         ui.tree->addTopLevelItem(item);
     }
-
-    ui.tree->setColumnWidth(0, 250);
-    ui.tree->setColumnWidth(1, 100);
-    ui.tree->setColumnWidth(2, 170);
-    ui.tree->setColumnWidth(3, 80);
-    ui.tree->setColumnWidth(4, 100);
 }
 
 //--------------------------------------------------------------------------------------------------

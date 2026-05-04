@@ -141,6 +141,12 @@ SysInfoWidgetEventLogs::SysInfoWidgetEventLogs(QWidget* parent)
                 ui.combobox_type->itemData(index).toInt());
         emit sig_systemInfoRequest(createRequest(type, 0));
     });
+
+    ui.tree->setColumnWidth(0, 150);
+    ui.tree->setColumnWidth(1, 120);
+    ui.tree->setColumnWidth(2, 80);
+    ui.tree->setColumnWidth(3, 80);
+    ui.tree->setColumnWidth(4, 140);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -237,12 +243,6 @@ void SysInfoWidgetEventLogs::setSystemInfo(const proto::system_info::SystemInfo&
 
         ui.tree->addTopLevelItem(item);
     }
-
-    ui.tree->setColumnWidth(0, 150);
-    ui.tree->setColumnWidth(1, 120);
-    ui.tree->setColumnWidth(2, 80);
-    ui.tree->setColumnWidth(3, 80);
-    ui.tree->setColumnWidth(4, 140);
 
     if (ui.tree->topLevelItemCount() > 0)
         ui.tree->setCurrentItem(ui.tree->topLevelItem(0));

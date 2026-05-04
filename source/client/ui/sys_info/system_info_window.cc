@@ -21,6 +21,7 @@
 #include <QClipboard>
 #include <QDateTime>
 #include <QFileDialog>
+#include <QHash>
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextDocument>
@@ -345,6 +346,21 @@ QByteArray SystemInfoWindow::saveState() const
         stream.setVersion(QDataStream::Qt_6_10);
         stream << saveGeometry();
         stream << ui->splitter->saveState();
+
+        QByteArray widgets_buffer;
+        {
+            QDataStream widgets_stream(&widgets_buffer, QIODevice::WriteOnly);
+            widgets_stream.setVersion(QDataStream::Qt_6_10);
+
+            widgets_stream << quint32(sys_info_widgets_.size());
+            for (int i = 0; i < sys_info_widgets_.size(); ++i)
+            {
+                SysInfoWidget* widget = sys_info_widgets_[i];
+                widgets_stream << QByteArray::fromStdString(widget->category());
+                widgets_stream << widget->saveState();
+            }
+        }
+        stream << widgets_buffer;
     }
 
     return buffer;
@@ -365,6 +381,41 @@ void SystemInfoWindow::restoreState(const QByteArray& state)
     stream >> value;
     if (!value.isEmpty())
         ui->splitter->restoreState(value);
+
+    QByteArray widgets_buffer;
+    stream >> widgets_buffer;
+
+    if (widgets_buffer.isEmpty())
+        return;
+
+    QDataStream widgets_stream(widgets_buffer);
+    widgets_stream.setVersion(QDataStream::Qt_6_10);
+
+    quint32 count = 0;
+    widgets_stream >> count;
+
+    QHash<QByteArray, QByteArray> states;
+    for (quint32 i = 0; i < count; ++i)
+    {
+        QByteArray category;
+        QByteArray widget_state;
+
+        widgets_stream >> category;
+        widgets_stream >> widget_state;
+
+        if (widgets_stream.status() != QDataStream::Ok)
+            break;
+
+        states.insert(category, widget_state);
+    }
+
+    for (int i = 0; i < sys_info_widgets_.size(); ++i)
+    {
+        SysInfoWidget* widget = sys_info_widgets_[i];
+        QByteArray widget_state = states.value(QByteArray::fromStdString(widget->category()));
+        if (!widget_state.isEmpty())
+            widget->restoreState(widget_state);
+    }
 }
 
 //--------------------------------------------------------------------------------------------------

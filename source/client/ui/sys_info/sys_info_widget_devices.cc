@@ -63,6 +63,12 @@ SysInfoWidgetDevices::SysInfoWidgetDevices(QWidget* parent)
 
         searchInGoogle(device_id);
     });
+
+    ui.tree->setColumnWidth(0, 200);
+    ui.tree->setColumnWidth(1, 90);
+    ui.tree->setColumnWidth(2, 90);
+    ui.tree->setColumnWidth(3, 90);
+    ui.tree->setColumnWidth(4, 200);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -110,12 +116,6 @@ void SysInfoWidgetDevices::setSystemInfo(const proto::system_info::SystemInfo& s
 
         tree->addTopLevelItem(item);
     }
-
-    ui.tree->setColumnWidth(0, 200);
-    ui.tree->setColumnWidth(1, 90);
-    ui.tree->setColumnWidth(2, 90);
-    ui.tree->setColumnWidth(3, 90);
-    ui.tree->setColumnWidth(4, 200);
 }
 
 //--------------------------------------------------------------------------------------------------

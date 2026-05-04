@@ -53,6 +53,11 @@ SysInfoWidgetRoutes::SysInfoWidgetRoutes(QWidget* parent)
     {
         current_column_ = column;
     });
+
+    ui.tree->setColumnWidth(0, 150);
+    ui.tree->setColumnWidth(1, 150);
+    ui.tree->setColumnWidth(2, 150);
+    ui.tree->setColumnWidth(3, 100);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -91,11 +96,6 @@ void SysInfoWidgetRoutes::setSystemInfo(const proto::system_info::SystemInfo& sy
 
         ui.tree->addTopLevelItem(item);
     }
-
-    ui.tree->setColumnWidth(0, 150);
-    ui.tree->setColumnWidth(1, 150);
-    ui.tree->setColumnWidth(2, 150);
-    ui.tree->setColumnWidth(3, 100);
 }
 
 //--------------------------------------------------------------------------------------------------

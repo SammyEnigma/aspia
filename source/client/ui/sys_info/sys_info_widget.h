@@ -37,6 +37,8 @@ public:
     virtual proto::system_info::SystemInfoRequest request() const;
     virtual void setSystemInfo(const proto::system_info::SystemInfo& system_info) = 0;
     virtual QTreeWidget* treeWidget() = 0;
+    virtual QByteArray saveState() const;
+    virtual void restoreState(const QByteArray& state);
 
     static void searchInGoogle(const QString& request);
 
@@ -46,8 +48,13 @@ signals:
 protected:
     explicit SysInfoWidget(QWidget* parent = nullptr);
 
+    bool isStateRestored() const { return state_restored_; }
+
     void copyRow(QTreeWidgetItem* item);
     void copyColumn(QTreeWidgetItem* item, int column);
+
+private:
+    bool state_restored_ = false;
 };
 
 #endif // CLIENT_UI_SYS_INFO_SYS_INFO_WIDGET_H

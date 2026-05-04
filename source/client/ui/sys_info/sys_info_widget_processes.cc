@@ -102,6 +102,13 @@ SysInfoWidgetProcesses::SysInfoWidgetProcesses(QWidget* parent)
     {
         copyRow(item);
     });
+
+    ui.tree->setColumnWidth(0, 150);
+    ui.tree->setColumnWidth(1, 50);
+    ui.tree->setColumnWidth(2, 40);
+    ui.tree->setColumnWidth(3, 70);
+    ui.tree->setColumnWidth(4, 60);
+    ui.tree->setColumnWidth(5, 110);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -163,13 +170,6 @@ void SysInfoWidgetProcesses::setSystemInfo(const proto::system_info::SystemInfo&
 
         ui.tree->addTopLevelItem(item);
     }
-
-    ui.tree->setColumnWidth(0, 150);
-    ui.tree->setColumnWidth(1, 50);
-    ui.tree->setColumnWidth(2, 40);
-    ui.tree->setColumnWidth(3, 70);
-    ui.tree->setColumnWidth(4, 60);
-    ui.tree->setColumnWidth(5, 110);
 }
 
 //--------------------------------------------------------------------------------------------------
