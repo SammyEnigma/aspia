@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>556</width>
-    <height>572</height>
+    <height>486</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -132,7 +132,7 @@
       <attribute name="title">
        <string>Desktop</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_desktop">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QGroupBox" name="groupbox_features">
          <property name="sizePolicy">
@@ -144,7 +144,7 @@
          <property name="title">
           <string>Features</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_features">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QCheckBox" name="checkbox_audio">
             <property name="text">
@@ -173,21 +173,6 @@
             </property>
            </widget>
           </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupbox_appearance">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Appearance</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_appearance">
           <item>
            <widget class="QCheckBox" name="checkbox_desktop_effects">
             <property name="text">
@@ -202,21 +187,6 @@
             </property>
            </widget>
           </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupbox_other">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Other</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_other_desktop">
           <item>
            <widget class="QCheckBox" name="checkbox_lock_at_disconnect">
             <property name="text">
