@@ -29,6 +29,8 @@ namespace Ui {
 class ChatWidget;
 } // namespace Ui
 
+class QAction;
+
 class ChatWidget final : public QWidget
 {
     Q_OBJECT
@@ -43,6 +45,9 @@ public:
     void setDisplayName(const QString& display_name);
     void setHistoryId(const QString& history_id);
     void setChatEnabled(bool enable);
+    void setToolsButtonVisible(bool visible);
+
+    QList<QAction*> tabActions() const;
 
 signals:
     void sig_sendMessage(const proto::chat::Message& message);
@@ -81,6 +86,8 @@ private:
     void onUpdateSize();
 
     std::unique_ptr<Ui::ChatWidget> ui;
+    QAction* action_save_chat_;
+    QAction* action_clear_chat_;
     QString display_name_;
     QString history_id_;
     QVector<HistoryMessage> history_messages_;

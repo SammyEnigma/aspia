@@ -18,6 +18,7 @@
 
 #include "common/ui/chat_widget.h"
 
+#include <QAction>
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
@@ -126,6 +127,8 @@ void removeHistoryFilesOlderThan(int days)
 ChatWidget::ChatWidget(QWidget* parent)
     : QWidget(parent),
       ui(std::make_unique<Ui::ChatWidget>()),
+      action_save_chat_(new QAction(QIcon(":/img/save.svg"), tr("Save chat..."), this)),
+      action_clear_chat_(new QAction(QIcon(":/img/clean.svg"), tr("Clear chat"), this)),
       display_name_(QHostInfo::localHostName()),
       status_clear_timer_(new QTimer(this))
 {
@@ -136,6 +139,9 @@ ChatWidget::ChatWidget(QWidget* parent)
     ui->list_messages->horizontalScrollBar()->installEventFilter(this);
     ui->list_messages->verticalScrollBar()->installEventFilter(this);
 
+    connect(action_save_chat_, &QAction::triggered, this, &ChatWidget::onSaveChat);
+    connect(action_clear_chat_, &QAction::triggered, this, &ChatWidget::onClearHistory);
+
     connect(status_clear_timer_, &QTimer::timeout, ui->label_status, &QLabel::clear);
     connect(ui->button_send, &QToolButton::clicked, this, &ChatWidget::onSendMessage);
     connect(ui->button_tools, &QToolButton::clicked, this, [this]()
@@ -143,8 +149,8 @@ ChatWidget::ChatWidget(QWidget* parent)
         LOG(INFO) << "[ACTION] Show tool menu";
 
         QMenu menu;
-        QAction* save_chat_action = menu.addAction(tr("Save chat..."));
-        QAction* clear_history_action = menu.addAction(tr("Clear chat"));
+        menu.addAction(action_save_chat_);
+        menu.addAction(action_clear_chat_);
 
         menu.show();
 
@@ -152,15 +158,7 @@ ChatWidget::ChatWidget(QWidget* parent)
         pos.setX(pos.x() - menu.rect().width());
         pos.setY(pos.y() - menu.rect().height());
 
-        QAction* action = menu.exec(pos);
-        if (action == clear_history_action)
-        {
-            onClearHistory();
-        }
-        else if (action == save_chat_action)
-        {
-            onSaveChat();
-        }
+        menu.exec(pos);
     });
 
     ui->edit_message->setFocus();
@@ -251,6 +249,18 @@ void ChatWidget::setChatEnabled(bool enable)
 {
     ui->edit_message->setEnabled(enable);
     ui->button_send->setEnabled(enable);
+}
+
+//--------------------------------------------------------------------------------------------------
+void ChatWidget::setToolsButtonVisible(bool visible)
+{
+    ui->button_tools->setVisible(visible);
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QAction*> ChatWidget::tabActions() const
+{
+    return { action_save_chat_, action_clear_chat_ };
 }
 
 //--------------------------------------------------------------------------------------------------

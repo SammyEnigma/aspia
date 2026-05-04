@@ -144,5 +144,6 @@
         <file>copy.svg</file>
         <file>cut.svg</file>
         <file>rename.svg</file>
+        <file>clean.svg</file>
     </qresource>
 </RCC>

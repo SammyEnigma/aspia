@@ -21,6 +21,7 @@
 #include "base/logging.h"
 #include "base/crypto/generic_hash.h"
 #include "client/client_text_chat.h"
+#include "common/ui/chat_widget.h"
 #include "ui_chat_window.h"
 
 namespace {
@@ -83,6 +84,19 @@ Client* ChatWindow::createClient()
     connect(client, &ClientChat::sig_chatMessage, this, &ChatWindow::onChatMessage, Qt::QueuedConnection);
 
     return client;
+}
+
+//--------------------------------------------------------------------------------------------------
+void ChatWindow::setTabbedMode(bool tabbed)
+{
+    LOG(INFO) << "Set tabbed mode:" << tabbed;
+    ui->text_chat_widget->setToolsButtonVisible(!tabbed);
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QPair<Tab::ActionRole, QList<QAction*>>> ChatWindow::tabActionGroups() const
+{
+    return {{ Tab::ActionRole::FILE, ui->text_chat_widget->tabActions() }};
 }
 
 //--------------------------------------------------------------------------------------------------
