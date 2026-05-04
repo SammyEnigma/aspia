@@ -75,7 +75,7 @@ public:
     int pixelMetric(
         PixelMetric metric, const QStyleOption* option, const QWidget* widget) const final
     {
-        if (metric == QStyle::PM_SmallIconSize)
+        if (metric == QStyle::PM_SmallIconSize || metric == QStyle::PM_TabBarIconSize)
             return small_icon_size_;
 
         return QProxyStyle::pixelMetric(metric, option, widget);
