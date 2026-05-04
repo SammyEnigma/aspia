@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>556</width>
-    <height>443</height>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -261,14 +261,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_record_path">
-            <property name="text">
-             <string>Write path:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_record_path">
+            <item>
+             <widget class="QLabel" name="label_record_path">
+              <property name="text">
+               <string>Write path:</string>
+              </property>
+             </widget>
+            </item>
             <item>
              <widget class="QLineEdit" name="edit_record_dir">
               <property name="sizePolicy">
