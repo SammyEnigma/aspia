@@ -16,23 +16,27 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_DIALOG_H
-#define CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_DIALOG_H
+#ifndef CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WIDGET_H
+#define CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WIDGET_H
 
 #include "client/file_transfer.h"
-#include "ui_file_transfer_dialog.h"
+#include "ui_file_transfer_widget.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "common/ui/taskbar_progress.h"
 #endif
 
-class FileTransferDialog final : public QDialog
+class FileTransferWidget final : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit FileTransferDialog(QWidget* parent = nullptr);
-    ~FileTransferDialog() final;
+    explicit FileTransferWidget(QWidget* parent = nullptr);
+    ~FileTransferWidget() final;
+
+    void reset();
+    void requestStop();
+    bool isFinished() const { return finished_; }
 
 public slots:
     void start();
@@ -43,19 +47,15 @@ public slots:
     void errorOccurred(const FileTransfer::Error& error);
 
 signals:
-    void sig_action(FileTransfer::Error::Type error_type,
-                    FileTransfer::Error::Action action);
+    void sig_action(FileTransfer::Error::Type error_type, FileTransfer::Error::Action action);
     void sig_stop();
-
-protected:
-    // QDialog implementation.
-    void keyPressEvent(QKeyEvent* event) final;
-    void closeEvent(QCloseEvent* event) final;
+    void sig_finished();
 
 private:
     QString errorToMessage(const FileTransfer::Error& error);
+    void updateTaskbarWindow();
 
-    Ui::FileTransferDialog ui;
+    Ui::FileTransferWidget ui;
     std::unique_ptr<QFontMetrics> label_metrics_;
 
 #if defined(Q_OS_WINDOWS)
@@ -63,10 +63,10 @@ private:
 #endif
 
     bool task_queue_building_ = true;
-    bool closing_ = false;
+    bool stopping_ = false;
     bool finished_ = false;
 
-    Q_DISABLE_COPY_MOVE(FileTransferDialog)
+    Q_DISABLE_COPY_MOVE(FileTransferWidget)
 };
 
-#endif // CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_DIALOG_H
+#endif // CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WIDGET_H

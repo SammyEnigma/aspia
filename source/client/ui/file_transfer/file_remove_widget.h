@@ -16,23 +16,27 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#ifndef CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_DIALOG_H
-#define CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_DIALOG_H
+#ifndef CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_WIDGET_H
+#define CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_WIDGET_H
 
 #include "client/file_remover.h"
-#include "ui_file_remove_dialog.h"
+#include "ui_file_remove_widget.h"
 
 #if defined(Q_OS_WINDOWS)
 #include "common/ui/taskbar_progress.h"
 #endif // defined(Q_OS_WINDOWS)
 
-class FileRemoveDialog final : public QDialog
+class FileRemoveWidget final : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit FileRemoveDialog(QWidget* parent);
-    ~FileRemoveDialog() final;
+    explicit FileRemoveWidget(QWidget* parent = nullptr);
+    ~FileRemoveWidget() final;
+
+    void reset();
+    void requestStop();
+    bool isFinished() const { return finished_; }
 
 public slots:
     void start();
@@ -45,21 +49,21 @@ public slots:
 signals:
     void sig_stop();
     void sig_action(FileRemover::Action action);
-
-protected:
-    // QDialog implementation.
-    void closeEvent(QCloseEvent* event) final;
+    void sig_finished();
 
 private:
-    Ui::FileRemoveDialog ui;
+    void updateTaskbarWindow();
+
+    Ui::FileRemoveWidget ui;
     std::unique_ptr<QFontMetrics> label_metrics_;
-    bool stopped_ = false;
+    bool stopping_ = false;
+    bool finished_ = false;
 
 #if defined(Q_OS_WINDOWS)
     TaskbarProgress* taskbar_progress_ = nullptr;
 #endif // defined(Q_OS_WINDOWS)
 
-    Q_DISABLE_COPY_MOVE(FileRemoveDialog)
+    Q_DISABLE_COPY_MOVE(FileRemoveWidget)
 };
 
-#endif // CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_DIALOG_H
+#endif // CLIENT_UI_FILE_TRANSFER_FILE_REMOVE_WIDGET_H

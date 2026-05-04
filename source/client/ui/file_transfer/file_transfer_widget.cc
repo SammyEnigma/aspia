@@ -16,10 +16,7 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/file_transfer/file_transfer_dialog.h"
-
-#include <QCloseEvent>
-#include <QPushButton>
+#include "client/ui/file_transfer/file_transfer_widget.h"
 
 #include "base/logging.h"
 #include "client/ui/file_transfer/file_error_code.h"
@@ -31,36 +28,30 @@
 #endif // defined(Q_OS_WINDOWS)
 
 //--------------------------------------------------------------------------------------------------
-FileTransferDialog::FileTransferDialog(QWidget* parent)
-    : QDialog(parent)
+FileTransferWidget::FileTransferWidget(QWidget* parent)
+    : QWidget(parent)
 {
     LOG(INFO) << "Ctor";
 
     ui.setupUi(this);
-    setFixedHeight(sizeHint().height());
 
     ui.progress_total->setRange(0, 0);
     ui.progress_current->setRange(0, 0);
 
-    connect(ui.button_box, &QDialogButtonBox::clicked, this, &FileTransferDialog::close);
+    connect(ui.button_cancel, &QPushButton::clicked, this, &FileTransferWidget::requestStop);
 
 #if defined(Q_OS_WINDOWS)
     TaskbarButton* button = new TaskbarButton(this);
-    button->setWindow(parent->windowHandle());
-
     taskbar_progress_ = button->progress();
     if (taskbar_progress_)
-    {
         taskbar_progress_->setRange(0, 0);
-        taskbar_progress_->show();
-    }
 #endif
 
     label_metrics_ = std::make_unique<QFontMetrics>(ui.label_source->font());
 }
 
 //--------------------------------------------------------------------------------------------------
-FileTransferDialog::~FileTransferDialog()
+FileTransferWidget::~FileTransferWidget()
 {
     LOG(INFO) << "Dtor";
 
@@ -71,21 +62,74 @@ FileTransferDialog::~FileTransferDialog()
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::start()
+void FileTransferWidget::reset()
 {
-    show();
-    activateWindow();
+    task_queue_building_ = true;
+    stopping_ = false;
+    finished_ = false;
+
+    ui.label_task->setText(tr("Current Task: Creating a list of files to copy..."));
+    ui.label_source->setText(tr("From: ..."));
+    ui.label_target->setText(tr("To: ..."));
+    ui.label_speed->setText(tr("Speed: ..."));
+
+    ui.progress_total->setRange(0, 0);
+    ui.progress_total->setValue(0);
+    ui.progress_current->setRange(0, 0);
+    ui.progress_current->setValue(0);
+
+    ui.button_cancel->setEnabled(true);
+
+#if defined(Q_OS_WINDOWS)
+    if (taskbar_progress_)
+    {
+        taskbar_progress_->resume();
+        taskbar_progress_->setRange(0, 0);
+        taskbar_progress_->setValue(0);
+    }
+#endif
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::stop()
+void FileTransferWidget::requestStop()
+{
+    if (finished_ || stopping_)
+        return;
+
+    stopping_ = true;
+
+    ui.label_task->setText(tr("Current Task: Cancel transfer of files."));
+    ui.button_cancel->setEnabled(false);
+
+    emit sig_stop();
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWidget::start()
+{
+    updateTaskbarWindow();
+
+#if defined(Q_OS_WINDOWS)
+    if (taskbar_progress_)
+        taskbar_progress_->show();
+#endif
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWidget::stop()
 {
     finished_ = true;
-    close();
+
+#if defined(Q_OS_WINDOWS)
+    if (taskbar_progress_)
+        taskbar_progress_->hide();
+#endif
+
+    emit sig_finished();
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::setCurrentItem(const QString& source_path, const QString& target_path)
+void FileTransferWidget::setCurrentItem(const QString& source_path, const QString& target_path)
 {
     if (task_queue_building_)
     {
@@ -112,7 +156,7 @@ void FileTransferDialog::setCurrentItem(const QString& source_path, const QStrin
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::setCurrentProgress(int total, int current)
+void FileTransferWidget::setCurrentProgress(int total, int current)
 {
     ui.progress_total->setValue(total);
     ui.progress_current->setValue(current);
@@ -124,20 +168,22 @@ void FileTransferDialog::setCurrentProgress(int total, int current)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::setCurrentSpeed(qint64 speed)
+void FileTransferWidget::setCurrentSpeed(qint64 speed)
 {
     ui.label_speed->setText(tr("Speed: %1").arg(Formatter::transferSpeedToString(speed)));
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::errorOccurred(const FileTransfer::Error& error)
+void FileTransferWidget::errorOccurred(const FileTransfer::Error& error)
 {
 #if defined(Q_OS_WINDOWS)
     if (taskbar_progress_)
         taskbar_progress_->pause();
 #endif
 
-    MsgBox* dialog = new MsgBox(this);
+    MsgBox* dialog = new MsgBox(window());
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->setWindowModality(Qt::WindowModal);
 
     dialog->setWindowTitle(tr("Warning"));
     dialog->setIcon(MsgBox::Warning);
@@ -165,90 +211,55 @@ void FileTransferDialog::errorOccurred(const FileTransfer::Error& error)
     if (available_actions & FileTransfer::Error::ACTION_ABORT)
         dialog->addButton(tr("Abort"), MsgBox::ButtonRole::ActionRole);
 
-    connect(dialog, &MsgBox::buttonClicked, this, [=, this](QAbstractButton* button)
+    FileTransfer::Error::Type error_type = error.type();
+
+    connect(dialog, &MsgBox::buttonClicked, this,
+            [this, error_type, skip_button, skip_all_button, replace_button, replace_all_button]
+            (QAbstractButton* button)
     {
         if (button != nullptr)
         {
             if (button == skip_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_SKIP);
+                emit sig_action(error_type, FileTransfer::Error::ACTION_SKIP);
                 return;
             }
 
             if (button == skip_all_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_SKIP_ALL);
+                emit sig_action(error_type, FileTransfer::Error::ACTION_SKIP_ALL);
                 return;
             }
 
             if (button == replace_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_REPLACE);
+                emit sig_action(error_type, FileTransfer::Error::ACTION_REPLACE);
                 return;
             }
 
             if (button == replace_all_button)
             {
-                emit sig_action(error.type(), FileTransfer::Error::ACTION_REPLACE_ALL);
+                emit sig_action(error_type, FileTransfer::Error::ACTION_REPLACE_ALL);
                 return;
             }
         }
 
-        emit sig_action(error.type(), FileTransfer::Error::ACTION_ABORT);
+        emit sig_action(error_type, FileTransfer::Error::ACTION_ABORT);
     });
 
-    connect(dialog, &MsgBox::finished, dialog, &MsgBox::deleteLater);
-
-    dialog->exec();
-
+    connect(dialog, &MsgBox::finished, this, [this]()
+    {
 #if defined(Q_OS_WINDOWS)
-    if (taskbar_progress_)
-        taskbar_progress_->resume();
+        if (taskbar_progress_)
+            taskbar_progress_->resume();
 #endif
+    });
+
+    dialog->show();
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferDialog::keyPressEvent(QKeyEvent* event)
-{
-    // If the user presses the Esc key in a dialog, QDialog::reject() will be called. This will
-    // cause the window to close: The close event cannot be ignored.
-    // We do not allow pressing Esc to cause regular behavior. We intercept pressing and we cause
-    // closing of dialog.
-    if (event->key() == Qt::Key_Escape)
-    {
-        close();
-        return;
-    }
-
-    QDialog::keyPressEvent(event);
-}
-
-//--------------------------------------------------------------------------------------------------
-void FileTransferDialog::closeEvent(QCloseEvent* event)
-{
-    if (finished_)
-    {
-        event->accept();
-        accept();
-    }
-    else
-    {
-        event->ignore();
-
-        if (!closing_)
-        {
-            closing_ = true;
-
-            ui.label_task->setText(tr("Current Task: Cancel transfer of files."));
-            ui.button_box->setDisabled(true);
-
-            emit sig_stop();
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------------
-QString FileTransferDialog::errorToMessage(const FileTransfer::Error& error)
+QString FileTransferWidget::errorToMessage(const FileTransfer::Error& error)
 {
     switch (error.type())
     {
@@ -295,3 +306,19 @@ QString FileTransferDialog::errorToMessage(const FileTransfer::Error& error)
     }
 }
 
+//--------------------------------------------------------------------------------------------------
+void FileTransferWidget::updateTaskbarWindow()
+{
+#if defined(Q_OS_WINDOWS)
+    if (!taskbar_progress_)
+        return;
+
+    QWidget* top_window = window();
+    if (!top_window)
+        return;
+
+    TaskbarButton* button = qobject_cast<TaskbarButton*>(taskbar_progress_->parent());
+    if (button)
+        button->setWindow(top_window->windowHandle());
+#endif
+}

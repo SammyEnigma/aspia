@@ -24,9 +24,9 @@
 #include "client/client_file_transfer.h"
 #include "client/ui/file_transfer/address_bar_model.h"
 #include "client/ui/file_transfer/file_error_code.h"
-#include "client/ui/file_transfer/file_remove_dialog.h"
-#include "client/ui/file_transfer/file_transfer_dialog.h"
 #include "client/ui/file_transfer/file_mime_data.h"
+#include "client/ui/file_transfer/file_remove_widget.h"
+#include "client/ui/file_transfer/file_transfer_widget.h"
 
 #include "common/ui/msg_box.h"
 
@@ -43,6 +43,11 @@ FileTransferWindow::FileTransferWindow(QWidget* parent)
 
     initPanel(FileTask::Target::LOCAL, tr("Local Computer"), mime_type, ui->local_panel);
     initPanel(FileTask::Target::REMOTE, tr("Remote Computer"), mime_type, ui->remote_panel);
+
+    connect(ui->transfer_widget, &FileTransferWidget::sig_finished,
+            this, &FileTransferWindow::onTransferWidgetFinished);
+    connect(ui->remove_widget, &FileRemoveWidget::sig_finished,
+            this, &FileTransferWindow::onRemoveWidgetFinished);
 
     ui->local_panel->setFocus();
 }
@@ -87,6 +92,44 @@ Client* FileTransferWindow::createClient()
             Qt::QueuedConnection);
 
     return client;
+}
+
+//--------------------------------------------------------------------------------------------------
+QByteArray FileTransferWindow::saveState() const
+{
+    QByteArray buffer;
+
+    {
+        QDataStream stream(&buffer, QIODevice::WriteOnly);
+        stream.setVersion(QDataStream::Qt_6_10);
+        stream << saveGeometry();
+        stream << ui->splitter->saveState();
+        stream << ui->local_panel->saveState();
+        stream << ui->remote_panel->saveState();
+    }
+
+    return buffer;
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWindow::restoreState(const QByteArray& state)
+{
+    QDataStream stream(state);
+    stream.setVersion(QDataStream::Qt_6_10);
+
+    QByteArray value;
+
+    stream >> value;
+    restoreGeometry(value);
+
+    stream >> value;
+    ui->splitter->restoreState(value);
+
+    stream >> value;
+    ui->local_panel->restoreState(value);
+
+    stream >> value;
+    ui->remote_panel->restoreState(value);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -170,44 +213,6 @@ void FileTransferWindow::onRename(
 }
 
 //--------------------------------------------------------------------------------------------------
-QByteArray FileTransferWindow::saveState() const
-{
-    QByteArray buffer;
-
-    {
-        QDataStream stream(&buffer, QIODevice::WriteOnly);
-        stream.setVersion(QDataStream::Qt_6_10);
-        stream << saveGeometry();
-        stream << ui->splitter->saveState();
-        stream << ui->local_panel->saveState();
-        stream << ui->remote_panel->saveState();
-    }
-
-    return buffer;
-}
-
-//--------------------------------------------------------------------------------------------------
-void FileTransferWindow::restoreState(const QByteArray& state)
-{
-    QDataStream stream(state);
-    stream.setVersion(QDataStream::Qt_6_10);
-
-    QByteArray value;
-
-    stream >> value;
-    restoreGeometry(value);
-
-    stream >> value;
-    ui->splitter->restoreState(value);
-
-    stream >> value;
-    ui->local_panel->restoreState(value);
-
-    stream >> value;
-    ui->remote_panel->restoreState(value);
-}
-
-//--------------------------------------------------------------------------------------------------
 void FileTransferWindow::refresh()
 {
     ui->local_panel->refresh();
@@ -225,16 +230,16 @@ void FileTransferWindow::closeEvent(QCloseEvent* event)
 {
     LOG(INFO) << "Close event detected";
 
-    if (transfer_dialog_)
+    if (ui->transfer_widget->isVisible())
     {
-        LOG(INFO) << "Stopping transfer dialog";
-        transfer_dialog_->stop();
+        LOG(INFO) << "Stopping transfer widget";
+        ui->transfer_widget->requestStop();
     }
 
-    if (remove_dialog_)
+    if (ui->remove_widget->isVisible())
     {
-        LOG(INFO) << "Stopping remove dialog";
-        remove_dialog_->stop();
+        LOG(INFO) << "Stopping remove widget";
+        ui->remove_widget->requestStop();
     }
 
     ClientWindow::closeEvent(event);
@@ -243,19 +248,6 @@ void FileTransferWindow::closeEvent(QCloseEvent* event)
 //--------------------------------------------------------------------------------------------------
 void FileTransferWindow::removeItems(FilePanel* sender, const FileRemover::TaskList& items)
 {
-    remove_dialog_ = new FileRemoveDialog(this);
-    remove_dialog_->setAttribute(Qt::WA_DeleteOnClose);
-
-    connect(remove_dialog_, &FileRemoveDialog::finished, this, [this]()
-    {
-        refresh();
-        activateWindow();
-        setFocus();
-
-        ui->local_panel->setEnabled(true);
-        ui->remote_panel->setEnabled(true);
-    });
-
     FileTask::Target target;
 
     if (sender == ui->local_panel)
@@ -268,23 +260,25 @@ void FileTransferWindow::removeItems(FilePanel* sender, const FileRemover::TaskL
         target = FileTask::Target::REMOTE;
     }
 
-    ui->local_panel->setEnabled(false);
-    ui->remote_panel->setEnabled(false);
+    ui->remove_widget->reset();
+    ui->remove_widget->setVisible(true);
+
+    setFilePanelsEnabled(false);
 
     FileRemover* remover = new FileRemover(target, items);
     remover->moveToThread(GuiApplication::ioThread());
 
-    connect(remover, &FileRemover::sig_started, remove_dialog_, &FileRemoveDialog::start,
+    connect(remover, &FileRemover::sig_started, ui->remove_widget, &FileRemoveWidget::start,
             Qt::QueuedConnection);
-    connect(remover, &FileRemover::sig_finished, remove_dialog_, &FileRemoveDialog::stop,
+    connect(remover, &FileRemover::sig_finished, ui->remove_widget, &FileRemoveWidget::stop,
             Qt::QueuedConnection);
-    connect(remover, &FileRemover::sig_errorOccurred, remove_dialog_, &FileRemoveDialog::errorOccurred,
+    connect(remover, &FileRemover::sig_errorOccurred, ui->remove_widget, &FileRemoveWidget::errorOccurred,
             Qt::QueuedConnection);
-    connect(remover, &FileRemover::sig_progressChanged, remove_dialog_, &FileRemoveDialog::setCurrentProgress,
+    connect(remover, &FileRemover::sig_progressChanged, ui->remove_widget, &FileRemoveWidget::setCurrentProgress,
             Qt::QueuedConnection);
-    connect(remove_dialog_, &FileRemoveDialog::sig_action, remover, &FileRemover::setAction,
+    connect(ui->remove_widget, &FileRemoveWidget::sig_action, remover, &FileRemover::setAction,
             Qt::QueuedConnection);
-    connect(remove_dialog_, &FileRemoveDialog::sig_stop, remover, &FileRemover::stop,
+    connect(ui->remove_widget, &FileRemoveWidget::sig_stop, remover, &FileRemover::stop,
             Qt::QueuedConnection);
 
     emit sig_removeRequest(remover);
@@ -335,51 +329,6 @@ void FileTransferWindow::receiveItems(
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileTransferWindow::transferItems(
-    FileTransfer::Type type, const QString& source_path, const QString& target_path,
-    const QList<FileTransfer::Item>& items)
-{
-    transfer_dialog_ = new FileTransferDialog(this);
-    transfer_dialog_->setAttribute(Qt::WA_DeleteOnClose);
-
-    connect(transfer_dialog_, &FileRemoveDialog::finished, this, [this]()
-    {
-        refresh();
-        activateWindow();
-        setFocus();
-
-        ui->local_panel->setEnabled(true);
-        ui->remote_panel->setEnabled(true);
-    });
-
-    ui->local_panel->setEnabled(false);
-    ui->remote_panel->setEnabled(false);
-
-    FileTransfer* transfer = new FileTransfer(type, source_path, target_path, items);
-    transfer->moveToThread(GuiApplication::ioThread());
-
-    connect(transfer, &FileTransfer::sig_started, transfer_dialog_, &FileTransferDialog::start,
-            Qt::QueuedConnection);
-    connect(transfer, &FileTransfer::sig_finished, transfer_dialog_, &FileTransferDialog::stop,
-            Qt::QueuedConnection);
-    connect(transfer, &FileTransfer::sig_errorOccurred, transfer_dialog_, &FileTransferDialog::errorOccurred,
-            Qt::QueuedConnection);
-    connect(transfer, &FileTransfer::sig_progressChanged, transfer_dialog_, &FileTransferDialog::setCurrentProgress,
-            Qt::QueuedConnection);
-    connect(transfer, &FileTransfer::sig_currentItemChanged, transfer_dialog_, &FileTransferDialog::setCurrentItem,
-            Qt::QueuedConnection);
-    connect(transfer, &FileTransfer::sig_currentSpeedChanged, transfer_dialog_, &FileTransferDialog::setCurrentSpeed,
-            Qt::QueuedConnection);
-
-    connect(transfer_dialog_, &FileTransferDialog::sig_action, transfer, &FileTransfer::setAction,
-            Qt::QueuedConnection);
-    connect(transfer_dialog_, &FileTransferDialog::sig_stop, transfer, &FileTransfer::stop,
-            Qt::QueuedConnection);
-
-    emit sig_transferRequest(transfer);
-}
-
-//--------------------------------------------------------------------------------------------------
 void FileTransferWindow::onPathChanged(FilePanel* sender, const QString& path)
 {
     bool allow = path != AddressBarModel::computerPath();
@@ -394,6 +343,60 @@ void FileTransferWindow::onPathChanged(FilePanel* sender, const QString& path)
         ui->local_panel->setTransferAllowed(allow);
 
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWindow::onTransferWidgetFinished()
+{
+    ui->transfer_widget->setVisible(false);
+    setFilePanelsEnabled(true);
+    refresh();
+    activateWindow();
+    setFocus();
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWindow::onRemoveWidgetFinished()
+{
+    ui->remove_widget->setVisible(false);
+    setFilePanelsEnabled(true);
+    refresh();
+    activateWindow();
+    setFocus();
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWindow::transferItems(
+    FileTransfer::Type type, const QString& source_path, const QString& target_path,
+    const QList<FileTransfer::Item>& items)
+{
+    ui->transfer_widget->reset();
+    ui->transfer_widget->setVisible(true);
+
+    setFilePanelsEnabled(false);
+
+    FileTransfer* transfer = new FileTransfer(type, source_path, target_path, items);
+    transfer->moveToThread(GuiApplication::ioThread());
+
+    connect(transfer, &FileTransfer::sig_started, ui->transfer_widget, &FileTransferWidget::start,
+            Qt::QueuedConnection);
+    connect(transfer, &FileTransfer::sig_finished, ui->transfer_widget, &FileTransferWidget::stop,
+            Qt::QueuedConnection);
+    connect(transfer, &FileTransfer::sig_errorOccurred, ui->transfer_widget, &FileTransferWidget::errorOccurred,
+            Qt::QueuedConnection);
+    connect(transfer, &FileTransfer::sig_progressChanged, ui->transfer_widget, &FileTransferWidget::setCurrentProgress,
+            Qt::QueuedConnection);
+    connect(transfer, &FileTransfer::sig_currentItemChanged, ui->transfer_widget, &FileTransferWidget::setCurrentItem,
+            Qt::QueuedConnection);
+    connect(transfer, &FileTransfer::sig_currentSpeedChanged, ui->transfer_widget, &FileTransferWidget::setCurrentSpeed,
+            Qt::QueuedConnection);
+
+    connect(ui->transfer_widget, &FileTransferWidget::sig_action, transfer, &FileTransfer::setAction,
+            Qt::QueuedConnection);
+    connect(ui->transfer_widget, &FileTransferWidget::sig_stop, transfer, &FileTransfer::stop,
+            Qt::QueuedConnection);
+
+    emit sig_transferRequest(transfer);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -430,4 +433,11 @@ void FileTransferWindow::initPanel(
     connect(panel, &FilePanel::sig_sendItems, this, &FileTransferWindow::sendItems);
     connect(panel, &FilePanel::sig_receiveItems, this, &FileTransferWindow::receiveItems);
     connect(panel, &FilePanel::sig_pathChanged, this, &FileTransferWindow::onPathChanged);
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileTransferWindow::setFilePanelsEnabled(bool enabled)
+{
+    ui->local_panel->setEnabled(enabled);
+    ui->remote_panel->setEnabled(enabled);
 }

@@ -41,6 +41,20 @@
      <widget class="FilePanel" name="remote_panel" native="true"/>
     </widget>
    </item>
+   <item>
+    <widget class="FileTransferWidget" name="transfer_widget" native="true">
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="FileRemoveWidget" name="remove_widget" native="true">
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -48,6 +62,18 @@
    <class>FilePanel</class>
    <extends>QWidget</extends>
    <header>client/ui/file_transfer/file_panel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FileTransferWidget</class>
+   <extends>QWidget</extends>
+   <header>client/ui/file_transfer/file_transfer_widget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FileRemoveWidget</class>
+   <extends>QWidget</extends>
+   <header>client/ui/file_transfer/file_remove_widget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

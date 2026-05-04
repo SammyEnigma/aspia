@@ -135,12 +135,12 @@ list(APPEND SOURCE_CLIENT_CORE_UI_FILE_TRANSFER
     ui/file_transfer/file_panel.cc
     ui/file_transfer/file_panel.h
     ui/file_transfer/file_panel.ui
-    ui/file_transfer/file_remove_dialog.cc
-    ui/file_transfer/file_remove_dialog.h
-    ui/file_transfer/file_remove_dialog.ui
-    ui/file_transfer/file_transfer_dialog.cc
-    ui/file_transfer/file_transfer_dialog.h
-    ui/file_transfer/file_transfer_dialog.ui
+    ui/file_transfer/file_remove_widget.cc
+    ui/file_transfer/file_remove_widget.h
+    ui/file_transfer/file_remove_widget.ui
+    ui/file_transfer/file_transfer_widget.cc
+    ui/file_transfer/file_transfer_widget.h
+    ui/file_transfer/file_transfer_widget.ui
     ui/file_transfer/file_transfer_window.cc
     ui/file_transfer/file_transfer_window.h
     ui/file_transfer/file_transfer_window.ui)

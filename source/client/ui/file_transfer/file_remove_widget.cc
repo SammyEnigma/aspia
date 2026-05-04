@@ -16,11 +16,9 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 //
 
-#include "client/ui/file_transfer/file_remove_dialog.h"
+#include "client/ui/file_transfer/file_remove_widget.h"
 
-#include <QCloseEvent>
 #include <QPointer>
-#include <QPushButton>
 
 #include "base/logging.h"
 #include "client/ui/file_transfer/file_error_code.h"
@@ -31,58 +29,96 @@
 #endif // defined(Q_OS_WINDOWS)
 
 //--------------------------------------------------------------------------------------------------
-FileRemoveDialog::FileRemoveDialog(QWidget* parent)
-    : QDialog(parent)
+FileRemoveWidget::FileRemoveWidget(QWidget* parent)
+    : QWidget(parent)
 {
     LOG(INFO) << "Ctor";
 
     ui.setupUi(this);
-    setFixedHeight(sizeHint().height());
 
-    connect(ui.button_box, &QDialogButtonBox::clicked, this, &FileRemoveDialog::close);
+    connect(ui.button_cancel, &QPushButton::clicked, this, &FileRemoveWidget::requestStop);
 
 #if defined(Q_OS_WINDOWS)
     TaskbarButton* button = new TaskbarButton(this);
-    button->setWindow(parent->windowHandle());
-
     taskbar_progress_ = button->progress();
-    if (taskbar_progress_)
-        taskbar_progress_->show();
 #endif
 
     label_metrics_ = std::make_unique<QFontMetrics>(ui.label_current_item->font());
 }
 
 //--------------------------------------------------------------------------------------------------
-FileRemoveDialog::~FileRemoveDialog()
+FileRemoveWidget::~FileRemoveWidget()
 {
     LOG(INFO) << "Dtor";
 
 #if defined(Q_OS_WINDOWS)
     if (taskbar_progress_)
         taskbar_progress_->hide();
+#endif // defined(Q_OS_WINDOWS)
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileRemoveWidget::reset()
+{
+    stopping_ = false;
+    finished_ = false;
+
+    ui.label_current_item->setText(tr("Creating a list of files to delete..."));
+    ui.progress->setValue(0);
+
+    ui.button_cancel->setEnabled(true);
+
+#if defined(Q_OS_WINDOWS)
+    if (taskbar_progress_)
+    {
+        taskbar_progress_->resume();
+        taskbar_progress_->setValue(0);
+    }
 #endif
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileRemoveDialog::start()
+void FileRemoveWidget::requestStop()
 {
-    show();
-    activateWindow();
-}
-
-//--------------------------------------------------------------------------------------------------
-void FileRemoveDialog::stop()
-{
-    if (stopped_)
+    if (finished_ || stopping_)
         return;
 
-    stopped_ = true;
-    close();
+    stopping_ = true;
+
+    ui.button_cancel->setEnabled(false);
+
+    emit sig_stop();
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileRemoveDialog::setCurrentProgress(const QString& name, int percentage)
+void FileRemoveWidget::start()
+{
+    updateTaskbarWindow();
+
+#if defined(Q_OS_WINDOWS)
+    if (taskbar_progress_)
+        taskbar_progress_->show();
+#endif
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileRemoveWidget::stop()
+{
+    if (finished_)
+        return;
+
+    finished_ = true;
+
+#if defined(Q_OS_WINDOWS)
+    if (taskbar_progress_)
+        taskbar_progress_->hide();
+#endif
+
+    emit sig_finished();
+}
+
+//--------------------------------------------------------------------------------------------------
+void FileRemoveWidget::setCurrentProgress(const QString& name, int percentage)
 {
     QString elided_text = label_metrics_->elidedText(
         tr("Deleting: %1").arg(name),
@@ -99,7 +135,7 @@ void FileRemoveDialog::setCurrentProgress(const QString& name, int percentage)
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileRemoveDialog::errorOccurred(const QString& path,
+void FileRemoveWidget::errorOccurred(const QString& path,
                                      proto::file_transfer::ErrorCode error_code,
                                      quint32 available_actions)
 {
@@ -120,7 +156,9 @@ void FileRemoveDialog::errorOccurred(const QString& path,
         message = tr("Failed to delete \"%1\": %2.").arg(path, fileErrorToString(error_code));
     }
 
-    QPointer<MsgBox> dialog(new MsgBox(this));
+    MsgBox* dialog = new MsgBox(window());
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    dialog->setWindowModality(Qt::WindowModal);
 
     dialog->setWindowTitle(tr("Warning"));
     dialog->setIcon(MsgBox::Warning);
@@ -138,7 +176,8 @@ void FileRemoveDialog::errorOccurred(const QString& path,
     if (available_actions & FileRemover::ACTION_ABORT)
         dialog->addButton(tr("Abort"), MsgBox::ButtonRole::ActionRole);
 
-    connect(dialog, &MsgBox::buttonClicked, this, [&](QAbstractButton* button)
+    connect(dialog, &MsgBox::buttonClicked, this,
+            [this, skip_button, skip_all_button](QAbstractButton* button)
     {
         if (button != nullptr)
         {
@@ -158,25 +197,30 @@ void FileRemoveDialog::errorOccurred(const QString& path,
         emit sig_action(FileRemover::ACTION_ABORT);
     });
 
-    dialog->exec();
-
+    connect(dialog, &MsgBox::finished, this, [this]()
+    {
 #if defined(Q_OS_WINDOWS)
-    if (taskbar_progress_)
-        taskbar_progress_->resume();
+        if (taskbar_progress_)
+            taskbar_progress_->resume();
 #endif
+    });
+
+    dialog->show();
 }
 
 //--------------------------------------------------------------------------------------------------
-void FileRemoveDialog::closeEvent(QCloseEvent* event)
+void FileRemoveWidget::updateTaskbarWindow()
 {
-    if (stopped_)
-    {
-        event->accept();
-        accept();
-    }
-    else
-    {
-        emit sig_stop();
-        event->ignore();
-    }
+#if defined(Q_OS_WINDOWS)
+    if (!taskbar_progress_)
+        return;
+
+    QWidget* top_window = window();
+    if (!top_window)
+        return;
+
+    TaskbarButton* button = qobject_cast<TaskbarButton*>(taskbar_progress_->parent());
+    if (button)
+        button->setWindow(top_window->windowHandle());
+#endif
 }

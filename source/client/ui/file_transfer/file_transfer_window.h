@@ -19,8 +19,6 @@
 #ifndef CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WINDOW_H
 #define CLIENT_UI_FILE_TRANSFER_FILE_TRANSFER_WINDOW_H
 
-#include <QPointer>
-
 #include "client/file_remover.h"
 #include "client/file_transfer.h"
 #include "client/ui/client_window.h"
@@ -30,8 +28,6 @@ class FileTransferWindow;
 } // namespace Ui
 
 class FilePanel;
-class FileRemoveDialog;
-class FileTransferDialog;
 
 class FileTransferWindow final : public ClientWindow
 {
@@ -82,6 +78,8 @@ private slots:
                       const QString& target_folder,
                       const QList<FileTransfer::Item>& items);
     void onPathChanged(FilePanel* sender, const QString& path);
+    void onTransferWidgetFinished();
+    void onRemoveWidgetFinished();
 
 private:
     void transferItems(FileTransfer::Type type,
@@ -94,10 +92,9 @@ private:
                    const QString& mime_type,
                    FilePanel* panel);
 
-    std::unique_ptr<Ui::FileTransferWindow> ui;
+    void setFilePanelsEnabled(bool enabled);
 
-    QPointer<FileRemoveDialog> remove_dialog_;
-    QPointer<FileTransferDialog> transfer_dialog_;
+    std::unique_ptr<Ui::FileTransferWindow> ui;
 
     Q_DISABLE_COPY_MOVE(FileTransferWindow)
 };
