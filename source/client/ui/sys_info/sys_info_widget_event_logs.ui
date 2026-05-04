@@ -108,12 +108,6 @@
       <property name="showDropIndicator" stdset="0">
        <bool>false</bool>
       </property>
-      <property name="iconSize">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
       <property name="indentation">
        <number>0</number>
       </property>
