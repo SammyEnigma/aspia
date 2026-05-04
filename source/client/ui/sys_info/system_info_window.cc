@@ -320,6 +320,22 @@ Client* SystemInfoWindow::createClient()
 }
 
 //--------------------------------------------------------------------------------------------------
+void SystemInfoWindow::setTabbedMode(bool tabbed)
+{
+    LOG(INFO) << "Set tabbed mode:" << tabbed;
+    ui->toolbar->setVisible(!tabbed);
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QPair<Tab::ActionRole, QList<QAction*>>> SystemInfoWindow::tabActionGroups() const
+{
+    return {
+        { Tab::ActionRole::FILE, { ui->action_save, ui->action_print } },
+        { Tab::ActionRole::VIEW, { ui->action_refresh } }
+    };
+}
+
+//--------------------------------------------------------------------------------------------------
 void SystemInfoWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";
