@@ -139,5 +139,10 @@
         <file>computer-online.svg</file>
         <file>paste.svg</file>
         <file>router-status.svg</file>
+        <file>arrow-left.svg</file>
+        <file>arrow-right.svg</file>
+        <file>copy.svg</file>
+        <file>cut.svg</file>
+        <file>rename.svg</file>
     </qresource>
 </RCC>

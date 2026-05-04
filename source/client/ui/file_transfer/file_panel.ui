@@ -83,20 +83,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QToolBar" name="toolbar2">
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
-       </property>
-       <addaction name="action_send"/>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>

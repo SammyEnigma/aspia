@@ -407,6 +407,7 @@ void FileTransferWindow::initPanel(
 
     panel->setPanelName(title);
     panel->setMimeType(mime_type);
+    panel->setMirrored(target == FileTask::Target::REMOTE);
 
     connect(panel, &FilePanel::sig_driveList, this, [this, target]()
     {

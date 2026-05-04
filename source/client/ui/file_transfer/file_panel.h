@@ -24,6 +24,8 @@
 #include "proto/file_transfer.h"
 #include "ui_file_panel.h"
 
+class FileSendButton;
+
 class FilePanel final : public QWidget
 {
     Q_OBJECT
@@ -41,6 +43,7 @@ public:
     void setMimeType(const QString& mime_type);
     void setTransferAllowed(bool allowed);
     void setTransferEnabled(bool enabled);
+    void setMirrored(bool mirrored);
 
     QString currentPath() const { return ui.address_bar->currentPath(); }
 
@@ -65,6 +68,7 @@ public slots:
 protected:
     // QWidget implementation.
     void keyPressEvent(QKeyEvent* event) final;
+    void changeEvent(QEvent* event) final;
 
 private slots:
     void onPathChanged(const QString& path);
@@ -82,11 +86,15 @@ private slots:
 
 private:
     void showError(const QString& message);
+    void applyMirrored();
 
     Ui::FilePanel ui;
 
+    FileSendButton* send_button_ = nullptr;
+
     bool transfer_allowed_ = false;
     bool transfer_enabled_ = false;
+    bool mirrored_ = false;
 
     Q_DISABLE_COPY_MOVE(FilePanel)
 };

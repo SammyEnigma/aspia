@@ -23,6 +23,9 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 #include <QMenu>
+#include <QStyleOptionToolButton>
+#include <QStylePainter>
+#include <QToolButton>
 
 #include "common/ui/msg_box.h"
 #include "base/logging.h"
@@ -34,6 +37,9 @@
 #include "common/file_platform_util.h"
 
 namespace {
+
+constexpr int kSendButtonGap = 4;
+constexpr int kSendButtonHPadding = 8;
 
 //--------------------------------------------------------------------------------------------------
 QString parentPath(const QString& path)
@@ -50,6 +56,92 @@ QString parentPath(const QString& path)
 }
 
 } // namespace
+
+//--------------------------------------------------------------------------------------------------
+class FileSendButton final : public QToolButton
+{
+public:
+    explicit FileSendButton(QWidget* parent = nullptr) : QToolButton(parent) {}
+
+    void setIconOnRight(bool on_right)
+    {
+        icon_on_right_ = on_right;
+        updateGeometry();
+        update();
+    }
+
+    QSize sizeHint() const final
+    {
+        QFontMetrics fm(font());
+        int text_w = fm.horizontalAdvance(text());
+        int icon_w = iconSize().width();
+        int icon_h = iconSize().height();
+        int w = text_w + icon_w + kSendButtonGap + kSendButtonHPadding * 2;
+        int h = qMax(fm.height(), icon_h) + kSendButtonHPadding;
+        return QSize(w, h);
+    }
+
+protected:
+    void paintEvent(QPaintEvent* /* event */) final
+    {
+        QStylePainter p(this);
+        QStyleOptionToolButton opt;
+        initStyleOption(&opt);
+
+        QStyleOptionToolButton bg_opt = opt;
+        bg_opt.text.clear();
+        bg_opt.icon = QIcon();
+        bg_opt.toolButtonStyle = Qt::ToolButtonIconOnly;
+        p.drawComplexControl(QStyle::CC_ToolButton, bg_opt);
+
+        QFontMetrics fm(font());
+        QString btn_text = text();
+        int text_w = fm.horizontalAdvance(btn_text);
+        int icon_w = iconSize().width();
+        int icon_h = iconSize().height();
+        int total_w = text_w + icon_w + kSendButtonGap;
+        int x = (width() - total_w) / 2;
+        int y_offset = 0;
+
+        if (opt.state & QStyle::State_Sunken)
+        {
+            x += style()->pixelMetric(QStyle::PM_ButtonShiftHorizontal, &opt, this);
+            y_offset = style()->pixelMetric(QStyle::PM_ButtonShiftVertical, &opt, this);
+        }
+
+        int text_baseline = (height() + fm.ascent() - fm.descent()) / 2 + y_offset;
+        int icon_y = (height() - icon_h) / 2 + y_offset;
+
+        QIcon::Mode icon_mode = QIcon::Normal;
+        if (!isEnabled())
+            icon_mode = QIcon::Disabled;
+        else if (opt.state & QStyle::State_Sunken)
+            icon_mode = QIcon::Active;
+
+        QPixmap pix = icon().pixmap(QSize(icon_w, icon_h), icon_mode);
+
+        QColor text_color = palette().color(
+            isEnabled() ? QPalette::Active : QPalette::Disabled, QPalette::ButtonText);
+
+        if (icon_on_right_)
+        {
+            p.setPen(text_color);
+            p.drawText(x, text_baseline, btn_text);
+            x += text_w + kSendButtonGap;
+            p.drawPixmap(x, icon_y, pix);
+        }
+        else
+        {
+            p.drawPixmap(x, icon_y, pix);
+            x += icon_w + kSendButtonGap;
+            p.setPen(text_color);
+            p.drawText(x, text_baseline, btn_text);
+        }
+    }
+
+private:
+    bool icon_on_right_ = false;
+};
 
 //--------------------------------------------------------------------------------------------------
 FilePanel::FilePanel(QWidget* parent)
@@ -83,6 +175,12 @@ FilePanel::FilePanel(QWidget* parent)
 
         emit sig_receiveItems(this, target_folder, items);
     });
+
+    send_button_ = new FileSendButton(this);
+    send_button_->setDefaultAction(ui.action_send);
+    send_button_->setIconSize(ui.toolbar->iconSize());
+    send_button_->setAutoRaise(true);
+    ui.horizontalLayout->addWidget(send_button_);
 
     ui.list->setFocus();
 }
@@ -211,6 +309,25 @@ void FilePanel::setTransferEnabled(bool enabled)
 }
 
 //--------------------------------------------------------------------------------------------------
+void FilePanel::setMirrored(bool mirrored)
+{
+    mirrored_ = mirrored;
+    applyMirrored();
+}
+
+//--------------------------------------------------------------------------------------------------
+void FilePanel::applyMirrored()
+{
+    bool effective_rtl = isRightToLeft() ^ mirrored_;
+
+    ui.horizontalLayout->setDirection(
+        effective_rtl ? QBoxLayout::RightToLeft : QBoxLayout::LeftToRight);
+    ui.action_send->setIcon(QIcon(
+        effective_rtl ? ":/img/arrow-left.svg" : ":/img/arrow-right.svg"));
+    send_button_->setIconOnRight(!effective_rtl);
+}
+
+//--------------------------------------------------------------------------------------------------
 QByteArray FilePanel::saveState() const
 {
     return ui.list->saveState();
@@ -258,6 +375,15 @@ void FilePanel::keyPressEvent(QKeyEvent* event)
     }
 
     QWidget::keyPressEvent(event);
+}
+
+//--------------------------------------------------------------------------------------------------
+void FilePanel::changeEvent(QEvent* event)
+{
+    QWidget::changeEvent(event);
+
+    if (event->type() == QEvent::LayoutDirectionChange)
+        applyMirrored();
 }
 
 //--------------------------------------------------------------------------------------------------
