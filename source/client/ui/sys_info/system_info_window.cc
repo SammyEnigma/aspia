@@ -336,6 +336,38 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> SystemInfoWindow::tabActionGroups
 }
 
 //--------------------------------------------------------------------------------------------------
+QByteArray SystemInfoWindow::saveState() const
+{
+    QByteArray buffer;
+
+    {
+        QDataStream stream(&buffer, QIODevice::WriteOnly);
+        stream.setVersion(QDataStream::Qt_6_10);
+        stream << saveGeometry();
+        stream << ui->splitter->saveState();
+    }
+
+    return buffer;
+}
+
+//--------------------------------------------------------------------------------------------------
+void SystemInfoWindow::restoreState(const QByteArray& state)
+{
+    QDataStream stream(state);
+    stream.setVersion(QDataStream::Qt_6_10);
+
+    QByteArray value;
+
+    stream >> value;
+    if (!value.isEmpty())
+        restoreGeometry(value);
+
+    stream >> value;
+    if (!value.isEmpty())
+        ui->splitter->restoreState(value);
+}
+
+//--------------------------------------------------------------------------------------------------
 void SystemInfoWindow::onShowWindow()
 {
     LOG(INFO) << "Show window";
