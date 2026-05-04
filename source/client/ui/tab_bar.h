@@ -47,6 +47,9 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event) final;
     void paintEvent(QPaintEvent* event) final;
 
+    // QTabBar implementation.
+    void tabInserted(int index) final;
+
 private slots:
     void onPulseTick();
 

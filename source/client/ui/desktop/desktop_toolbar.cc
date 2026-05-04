@@ -487,6 +487,11 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
     actions.append(ui.action_paste_clipboard_as_keystrokes);
 
     groups.append({ Tab::ActionRole::ACTION, actions});
+    groups.append({ Tab::ActionRole::VIEW,
+    {
+        ui.action_fullscreen, scale_menu_->menuAction(), ui.action_autoscroll, ui.action_pause_video,
+        ui.action_pause_audio,
+    }});
     groups.append({ Tab::ActionRole::ACTION,
     {
         ui.action_file_transfer, ui.action_text_chat, ui.action_task_manager, ui.action_system_info
@@ -494,10 +499,6 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> DesktopToolBar::tabActionGroups()
     groups.append({ Tab::ActionRole::FILE,
     {
         ui.action_start_recording, ui.action_screenshot, ui.action_statistics
-    }});
-    groups.append({ Tab::ActionRole::VIEW,
-    {
-        ui.action_fullscreen, scale_menu_->menuAction(), ui.action_autoscroll, ui.action_pause_video, ui.action_pause_audio,
     }});
 
     return groups;

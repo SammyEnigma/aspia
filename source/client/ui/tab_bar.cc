@@ -19,10 +19,13 @@
 #include "client/ui/tab_bar.h"
 
 #include <QApplication>
+#include <QIcon>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QStyle>
 #include <QTimer>
+#include <QToolButton>
 
 namespace {
 
@@ -43,8 +46,6 @@ TabBar::TabBar(QWidget* parent)
     : QTabBar(parent),
       pulse_timer_(new QTimer(this))
 {
-    setStyleSheet("QTabBar::close-button { image: url(:/img/close-window.svg); }");
-
     pulse_timer_->setInterval(kPulseTickMs);
     connect(pulse_timer_, &QTimer::timeout, this, &TabBar::onPulseTick);
 }
@@ -148,6 +149,43 @@ void TabBar::paintEvent(QPaintEvent* event)
 
     int inset = kPulseFrameWidthPx / 2 + 1;
     painter.drawRect(rect.adjusted(inset, inset, -inset, -inset));
+}
+
+//--------------------------------------------------------------------------------------------------
+void TabBar::tabInserted(int index)
+{
+    QTabBar::tabInserted(index);
+
+    // Replace Qt's built-in close button.
+    QToolButton* close_button = new QToolButton(this);
+    close_button->setIcon(QIcon(":/img/close-window.svg"));
+    close_button->setIconSize(QSize(16, 16));
+    close_button->setFixedSize(QSize(16, 16));
+    close_button->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    close_button->setAutoRaise(true);
+    close_button->setCursor(Qt::ArrowCursor);
+    close_button->setFocusPolicy(Qt::NoFocus);
+    close_button->setStyleSheet(
+        "QToolButton { border: none; margin: 0px; padding: 0px; }"
+        "QToolButton:hover { background-color: rgba(0, 0, 0, 40); border-radius: 2px; }"
+        "QToolButton:pressed { background-color: rgba(0, 0, 0, 80); }");
+
+    connect(close_button, &QToolButton::clicked, this, [this, close_button]()
+    {
+        for (int i = 0; i < count(); ++i)
+        {
+            if (tabButton(i, QTabBar::RightSide) == close_button ||
+                tabButton(i, QTabBar::LeftSide) == close_button)
+            {
+                emit tabCloseRequested(i);
+                break;
+            }
+        }
+    });
+
+    QTabBar::ButtonPosition side = static_cast<QTabBar::ButtonPosition>(
+        style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition, nullptr, this));
+    setTabButton(index, side, close_button);
 }
 
 //--------------------------------------------------------------------------------------------------
