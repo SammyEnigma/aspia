@@ -44,6 +44,7 @@ public:
     bool connectToHost(ComputerConfig computer, const QString& display_name);
 
     std::shared_ptr<SessionState> sessionState() { return session_state_; }
+    proto::peer::SessionType sessionType() const { return session_type_; }
 
     // Notifies the session that it has been hidden (paused=true) or made visible again
     // (paused=false). Subclasses override to pause/resume video, audio, etc. The container

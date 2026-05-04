@@ -23,13 +23,29 @@
 
 #include "client/ui/client_window.h"
 
-//--------------------------------------------------------------------------------------------------
-ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
-    : Tab(Type::SESSION, "session", parent),
-      client_window_(client_window)
+namespace {
+
+QString tabObjectName(ClientWindow* client_window)
 {
     CHECK(client_window);
 
+    switch (client_window->sessionType())
+    {
+        case proto::peer::SESSION_TYPE_DESKTOP:       return "session_desktop";
+        case proto::peer::SESSION_TYPE_FILE_TRANSFER: return "session_file_transfer";
+        case proto::peer::SESSION_TYPE_SYSTEM_INFO:   return "session_system_info";
+        case proto::peer::SESSION_TYPE_TEXT_CHAT:     return "session_text_chat";
+        default:                                      return "session";
+    }
+}
+
+} // namespace
+
+//--------------------------------------------------------------------------------------------------
+ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
+    : Tab(Type::SESSION, tabObjectName(client_window), parent),
+      client_window_(client_window)
+{
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
