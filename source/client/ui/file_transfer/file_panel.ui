@@ -34,17 +34,11 @@
    </property>
    <item>
     <widget class="QLabel" name="label_name">
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Plain</enum>
+     <property name="styleSheet">
+      <string notr="true">QLabel { padding: 4px; font-weight: bold; }</string>
      </property>
      <property name="text">
       <string notr="true">Panel Name</string>
-     </property>
-     <property name="margin">
-      <number>2</number>
      </property>
     </widget>
    </item>
