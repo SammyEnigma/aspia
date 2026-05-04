@@ -1868,109 +1868,109 @@ Routers added: %4</source>
 <context>
     <name>FilePanel</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="165"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="151"/>
         <source>Up</source>
         <translation>Omhoog</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="168"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="154"/>
         <source>Browse to parent folder (Backspace)</source>
         <translation>Navigeer naar bovenliggende map (Backspace)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="177"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="163"/>
         <source>Refresh</source>
         <translation>Vernieuwen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="180"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="166"/>
         <source>Refresh (F5)</source>
         <translation>Vernieuwen (F5)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="192"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="178"/>
         <source>New Folder</source>
         <translation>Nieuwe Map</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="195"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="181"/>
         <source>Create a new folder</source>
         <translation>Nieuwe map maken</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="207"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="193"/>
         <source>Delete</source>
         <translation>Verwijderen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="210"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="196"/>
         <source>Delete selected object(s) (Delete)</source>
         <translation>Verwijder geselecteerde object(en) (Delete)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="225"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="211"/>
         <source>Send selected object(s) (F11)</source>
         <translation>Geselecteerde object(en) versturen (F11)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="222"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="208"/>
         <source>Send</source>
         <translation>Stuur</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="102"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="200"/>
         <source>Failed to get list of drives: %1</source>
         <translation type="unfinished">Kon lijst van schijven niet maken: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="119"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="217"/>
         <source>Failed to get list of files: %1</source>
         <translation type="unfinished">Kon lijst van bestanden niet maken: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="144"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="242"/>
         <source>Failed to create directory: %1</source>
         <translation type="unfinished">Kon lijst van mappen niet maken: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="156"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="254"/>
         <source>Failed to rename item: %1</source>
         <translation type="unfinished">Kon object niet hernoemen: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="283"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="409"/>
         <source>%1 object(s) selected</source>
         <translation type="unfinished">%1 object(en) geselecteerd</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="303"/>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="322"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="429"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="448"/>
         <source>Folder name can not be empty.</source>
         <translation type="unfinished">Map naam mag niet leeg zijn.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="309"/>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="328"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="435"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="454"/>
         <source>Name contains invalid characters.</source>
         <translation type="unfinished">De naam bevat ongeldige karakters.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="349"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="475"/>
         <source>&amp;Send	F11</source>
         <translation type="unfinished">&amp;Stuur	F11</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="350"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="476"/>
         <source>&amp;Delete	Delete</source>
         <translation type="unfinished">&amp;Delete	Delete</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="360"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="486"/>
         <source>&amp;Create Folder</source>
         <translation type="unfinished">&amp;Map maken</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="423"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="549"/>
         <source>Are you sure you want to delete the selected items?</source>
         <translation type="unfinished">Weet U zeker dat U de geselecteerde objecten wilt verwijderen?</translation>
     </message>
@@ -1978,47 +1978,112 @@ Routers added: %4</source>
 <context>
     <name>FileRemoveDialog</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.ui" line="14"/>
         <source>Deleting Items</source>
-        <translation>Objecten Verwijderen</translation>
+        <translation type="vanished">Objecten Verwijderen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.ui" line="20"/>
         <source>Creating a list of files to delete...</source>
-        <translation>Lijst genereren van objecten om te verwijderen...</translation>
+        <translation type="vanished">Lijst genereren van objecten om te verwijderen...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="88"/>
         <source>Deleting: %1</source>
-        <translation type="unfinished">Verwijderen: %1</translation>
+        <translation type="obsolete">Verwijderen: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="115"/>
+        <source>An error occurred while retrieving the list of files: %1</source>
+        <translation type="obsolete">Er is een fout opgetreden bij het ontvangen van de bestandslijst: %1</translation>
+    </message>
+    <message>
+        <source>Failed to delete &quot;%1&quot;: %2.</source>
+        <translation type="obsolete">Kon &quot;%1&quot; niet verwijderen: %2.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="obsolete">Waarschuwing</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation type="obsolete">Overslaan</translation>
+    </message>
+    <message>
+        <source>Skip All</source>
+        <translation type="obsolete">Alles overslaan</translation>
+    </message>
+    <message>
+        <source>Abort</source>
+        <translation type="obsolete">Afbreken</translation>
+    </message>
+</context>
+<context>
+    <name>FileRemoveWidget</name>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="35"/>
+        <source>File Removal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="43"/>
+        <source>Current Task:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="56"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="67"/>
+        <source>Creating a list of files to delete...</source>
+        <translation type="unfinished">Lijst genereren van objecten om te verwijderen...</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="63"/>
+        <source>Deleting:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="76"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="103"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="90"/>
+        <source>Cancel removal of files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="129"/>
+        <source>Deleting items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="156"/>
         <source>An error occurred while retrieving the list of files: %1</source>
         <translation type="unfinished">Er is een fout opgetreden bij het ontvangen van de bestandslijst: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="120"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="161"/>
         <source>Failed to delete &quot;%1&quot;: %2.</source>
         <translation type="unfinished">Kon &quot;%1&quot; niet verwijderen: %2.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="125"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="168"/>
         <source>Warning</source>
         <translation type="unfinished">Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="133"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="176"/>
         <source>Skip</source>
         <translation type="unfinished">Overslaan</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="136"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="179"/>
         <source>Skip All</source>
         <translation type="unfinished">Alles overslaan</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="139"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="182"/>
         <source>Abort</source>
         <translation type="unfinished">Afbreken</translation>
     </message>
@@ -2026,134 +2091,100 @@ Routers added: %4</source>
 <context>
     <name>FileTransferDialog</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="14"/>
         <source>File Transfer</source>
-        <translation>Bestands overdracht</translation>
+        <translation type="vanished">Bestands overdracht</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="26"/>
         <source>Current Task: Creating a list of files to copy...</source>
-        <translation>Huidige taak: Bestandslijst maken...</translation>
+        <translation type="vanished">Huidige taak: Bestandslijst maken...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="33"/>
         <source>From: ...</source>
-        <translation>Van: ...</translation>
+        <translation type="vanished">Van: ...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="40"/>
         <source>To: ...</source>
-        <translation>Naar: ...</translation>
+        <translation type="vanished">Naar: ...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="47"/>
-        <source>Speed: ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="57"/>
         <source>Progress</source>
-        <translation>Voortgang</translation>
+        <translation type="vanished">Voortgang</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="65"/>
         <source>Total:</source>
-        <translation>Totaal:</translation>
+        <translation type="vanished">Totaal:</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="72"/>
         <source>Item:</source>
-        <translation>Item:</translation>
+        <translation type="vanished">Item:</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="93"/>
         <source>Current Task: Copying items.</source>
-        <translation type="unfinished">Huidige taak: Items kopieren.</translation>
+        <translation type="obsolete">Huidige taak: Items kopieren.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="105"/>
         <source>From: %1</source>
-        <translation type="unfinished">Van: %1</translation>
+        <translation type="obsolete">Van: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="108"/>
         <source>To: %1</source>
-        <translation type="unfinished">Naar: %1</translation>
+        <translation type="obsolete">Naar: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="129"/>
-        <source>Speed: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="142"/>
         <source>Warning</source>
-        <translation type="unfinished">Waarschuwing</translation>
+        <translation type="obsolete">Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="154"/>
         <source>Skip</source>
-        <translation type="unfinished">Overslaan</translation>
+        <translation type="obsolete">Overslaan</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="157"/>
         <source>Skip All</source>
-        <translation type="unfinished">Alles overslaan</translation>
+        <translation type="obsolete">Alles overslaan</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="160"/>
         <source>Replace</source>
-        <translation type="unfinished">Vervangen</translation>
+        <translation type="obsolete">Vervangen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="163"/>
         <source>Replace All</source>
-        <translation type="unfinished">Alles vervangen</translation>
+        <translation type="obsolete">Alles vervangen</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="166"/>
         <source>Abort</source>
-        <translation type="unfinished">Afbreken</translation>
+        <translation type="obsolete">Afbreken</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="242"/>
         <source>Current Task: Cancel transfer of files.</source>
-        <translation type="unfinished">Huidige taak: bestands overdracht afbreken.</translation>
+        <translation type="obsolete">Huidige taak: bestands overdracht afbreken.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="257"/>
         <source>An error occurred while building the file queue for copying</source>
-        <translation type="unfinished">Er is een fout opgetreden bij het maken van de bestands lijst voor kopieren</translation>
+        <translation type="obsolete">Er is een fout opgetreden bij het maken van de bestands lijst voor kopieren</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="262"/>
         <source>Failed to create directory &quot;%1&quot;: %2</source>
-        <translation type="unfinished">Kon de map &quot;%1&quot; niet maken: %2</translation>
+        <translation type="obsolete">Kon de map &quot;%1&quot; niet maken: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="269"/>
         <source>Failed to create file &quot;%1&quot;: %2</source>
-        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet maken: %2</translation>
+        <translation type="obsolete">Kon het bestand &quot;%1&quot; niet maken: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="275"/>
         <source>Failed to open file &quot;%1&quot;: %2</source>
-        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet openen: %2</translation>
+        <translation type="obsolete">Kon het bestand &quot;%1&quot; niet openen: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="281"/>
         <source>Failed to write file &quot;%1&quot;: %2</source>
-        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet schrijven: %2</translation>
+        <translation type="obsolete">Kon het bestand &quot;%1&quot; niet schrijven: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="287"/>
         <source>Failed to read file &quot;%1&quot;: %2</source>
-        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet lezen: %2</translation>
+        <translation type="obsolete">Kon het bestand &quot;%1&quot; niet lezen: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="293"/>
         <source>Unknown error type while copying files</source>
-        <translation type="unfinished">Onbekend probleem bij het kopieren van bestanden</translation>
+        <translation type="obsolete">Onbekend probleem bij het kopieren van bestanden</translation>
     </message>
 </context>
 <context>
@@ -2165,6 +2196,137 @@ Routers added: %4</source>
     <message>
         <source>Remote Computer</source>
         <translation type="obsolete">Computer op afstand</translation>
+    </message>
+</context>
+<context>
+    <name>FileTransferWidget</name>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="35"/>
+        <source>File Transfer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="43"/>
+        <source>Current Task:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="56"/>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="71"/>
+        <source>Creating a list of files to copy...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="63"/>
+        <source>From:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="76"/>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="96"/>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="116"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="83"/>
+        <source>To:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="103"/>
+        <source>Speed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="129"/>
+        <source>Total:</source>
+        <translation type="unfinished">Totaal:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="136"/>
+        <source>Item:</source>
+        <translation type="unfinished">Item:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="180"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="101"/>
+        <source>Cancel transfer of files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="137"/>
+        <source>Copying items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="184"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarschuwing</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="196"/>
+        <source>Skip</source>
+        <translation type="unfinished">Overslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="199"/>
+        <source>Skip All</source>
+        <translation type="unfinished">Alles overslaan</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="202"/>
+        <source>Replace</source>
+        <translation type="unfinished">Vervangen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="205"/>
+        <source>Replace All</source>
+        <translation type="unfinished">Alles vervangen</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="208"/>
+        <source>Abort</source>
+        <translation type="unfinished">Afbreken</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="264"/>
+        <source>An error occurred while building the file queue for copying</source>
+        <translation type="unfinished">Er is een fout opgetreden bij het maken van de bestands lijst voor kopieren</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="269"/>
+        <source>Failed to create directory &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon de map &quot;%1&quot; niet maken: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="276"/>
+        <source>Failed to create file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet maken: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="282"/>
+        <source>Failed to open file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet openen: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="288"/>
+        <source>Failed to write file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet schrijven: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="294"/>
+        <source>Failed to read file &quot;%1&quot;: %2</source>
+        <translation type="unfinished">Kon het bestand &quot;%1&quot; niet lezen: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="300"/>
+        <source>Unknown error type while copying files</source>
+        <translation type="unfinished">Onbekend probleem bij het kopieren van bestanden</translation>
     </message>
 </context>
 <context>
@@ -2180,7 +2342,7 @@ Routers added: %4</source>
         <translation type="unfinished">Computer op afstand</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="106"/>
+        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="149"/>
         <source>Session error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4191,7 +4353,7 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="266"/>
+        <location filename="../client/ui/settings_dialog.ui" line="268"/>
         <source>Write path:</source>
         <translation type="unfinished"></translation>
     </message>

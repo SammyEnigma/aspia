@@ -56,6 +56,7 @@ private:
 
     Ui::FileRemoveWidget ui;
     std::unique_ptr<QFontMetrics> label_metrics_;
+    bool queue_building_ = true;
     bool stopping_ = false;
     bool finished_ = false;
 

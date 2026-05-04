@@ -68,10 +68,10 @@ void FileTransferWidget::reset()
     stopping_ = false;
     finished_ = false;
 
-    ui.label_task->setText(tr("Current Task: Creating a list of files to copy..."));
-    ui.label_source->setText(tr("From: ..."));
-    ui.label_target->setText(tr("To: ..."));
-    ui.label_speed->setText(tr("Speed: ..."));
+    ui.label_task->setText(tr("Creating a list of files to copy..."));
+    ui.label_source->setText("...");
+    ui.label_target->setText("...");
+    ui.label_speed->setText("...");
 
     ui.progress_total->setRange(0, 0);
     ui.progress_total->setValue(0);
@@ -98,7 +98,7 @@ void FileTransferWidget::requestStop()
 
     stopping_ = true;
 
-    ui.label_task->setText(tr("Current Task: Cancel transfer of files."));
+    ui.label_task->setText(tr("Cancel transfer of files."));
     ui.button_cancel->setEnabled(false);
 
     emit sig_stop();
@@ -134,7 +134,7 @@ void FileTransferWidget::setCurrentItem(const QString& source_path, const QStrin
     if (task_queue_building_)
     {
         task_queue_building_ = false;
-        ui.label_task->setText(tr("Current Task: Copying items."));
+        ui.label_task->setText(tr("Copying items."));
 
         ui.progress_total->setRange(0, 100);
         ui.progress_current->setRange(0, 100);
@@ -145,14 +145,10 @@ void FileTransferWidget::setCurrentItem(const QString& source_path, const QStrin
 #endif
     }
 
-    QString source_text = label_metrics_->elidedText(
-        tr("From: %1").arg(source_path), Qt::ElideMiddle, ui.label_source->width());
-
-    QString target_text = label_metrics_->elidedText(
-        tr("To: %1").arg(target_path), Qt::ElideMiddle, ui.label_target->width());
-
-    ui.label_source->setText(source_text);
-    ui.label_target->setText(target_text);
+    ui.label_source->setText(label_metrics_->elidedText(
+        source_path, Qt::ElideMiddle, ui.label_source->width()));
+    ui.label_target->setText(label_metrics_->elidedText(
+        target_path, Qt::ElideMiddle, ui.label_target->width()));
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -170,7 +166,7 @@ void FileTransferWidget::setCurrentProgress(int total, int current)
 //--------------------------------------------------------------------------------------------------
 void FileTransferWidget::setCurrentSpeed(qint64 speed)
 {
-    ui.label_speed->setText(tr("Speed: %1").arg(Formatter::transferSpeedToString(speed)));
+    ui.label_speed->setText(Formatter::transferSpeedToString(speed));
 }
 
 //--------------------------------------------------------------------------------------------------

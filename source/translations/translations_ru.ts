@@ -1907,109 +1907,109 @@ Routers added: %4</source>
 <context>
     <name>FilePanel</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="165"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="151"/>
         <source>Up</source>
         <translation>Вверх</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="168"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="154"/>
         <source>Browse to parent folder (Backspace)</source>
         <translation>Перейти к родительской папке (Backspace)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="177"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="163"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="180"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="166"/>
         <source>Refresh (F5)</source>
         <translation>Обновить (F5)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="192"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="178"/>
         <source>New Folder</source>
         <translation>Новая папка</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="195"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="181"/>
         <source>Create a new folder</source>
         <translation>Создать новую папку</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="207"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="193"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="210"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="196"/>
         <source>Delete selected object(s) (Delete)</source>
         <translation>Удалить выбранные объекты (Delete)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="225"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="211"/>
         <source>Send selected object(s) (F11)</source>
         <translation>Отправить выбранные объекты (F11)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="222"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="208"/>
         <source>Send</source>
         <translation>Отправить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="102"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="200"/>
         <source>Failed to get list of drives: %1</source>
         <translation>Не удалось получить список дисков: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="119"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="217"/>
         <source>Failed to get list of files: %1</source>
         <translation>Не удалось получить список файлов: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="144"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="242"/>
         <source>Failed to create directory: %1</source>
         <translation>Не удалось создать директорию: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="156"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="254"/>
         <source>Failed to rename item: %1</source>
         <translation>Не удалось переименовать элемент: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="283"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="409"/>
         <source>%1 object(s) selected</source>
         <translation>Выбрано объектов: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="303"/>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="322"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="429"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="448"/>
         <source>Folder name can not be empty.</source>
         <translation>Имя папки не может быть пустым.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="309"/>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="328"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="435"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="454"/>
         <source>Name contains invalid characters.</source>
         <translation>Имя содержит некорректные символы.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="349"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="475"/>
         <source>&amp;Send	F11</source>
         <translation>&amp;Отправить	F11</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="350"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="476"/>
         <source>&amp;Delete	Delete</source>
         <translation>&amp;Удалить	Delete</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="360"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="486"/>
         <source>&amp;Create Folder</source>
         <translation>&amp;Создать папку</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.cc" line="423"/>
+        <location filename="../client/ui/file_transfer/file_panel.cc" line="549"/>
         <source>Are you sure you want to delete the selected items?</source>
         <translation>Вы действительно хотите удалить выбранные элементы?</translation>
     </message>
@@ -2017,47 +2017,112 @@ Routers added: %4</source>
 <context>
     <name>FileRemoveDialog</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.ui" line="14"/>
         <source>Deleting Items</source>
-        <translation>Удаление элементов</translation>
+        <translation type="vanished">Удаление элементов</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.ui" line="20"/>
+        <source>Creating a list of files to delete...</source>
+        <translation type="vanished">Создание списка файлов для удаления...</translation>
+    </message>
+    <message>
+        <source>Deleting: %1</source>
+        <translation type="vanished">Удаление: %1</translation>
+    </message>
+    <message>
+        <source>An error occurred while retrieving the list of files: %1</source>
+        <translation type="vanished">Произошла ошибка при получении списка файлов: %1</translation>
+    </message>
+    <message>
+        <source>Failed to delete &quot;%1&quot;: %2.</source>
+        <translation type="vanished">Не удалось удалить &quot;%1&quot;: %2.</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="vanished">Предупреждение</translation>
+    </message>
+    <message>
+        <source>Skip</source>
+        <translation type="vanished">Пропустить</translation>
+    </message>
+    <message>
+        <source>Skip All</source>
+        <translation type="vanished">Пропустить все</translation>
+    </message>
+    <message>
+        <source>Abort</source>
+        <translation type="vanished">Прервать</translation>
+    </message>
+</context>
+<context>
+    <name>FileRemoveWidget</name>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="35"/>
+        <source>File Removal</source>
+        <translation>Удаление файлов</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="43"/>
+        <source>Current Task:</source>
+        <translation>Текущая задача:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="56"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="67"/>
         <source>Creating a list of files to delete...</source>
         <translation>Создание списка файлов для удаления...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="88"/>
-        <source>Deleting: %1</source>
-        <translation>Удаление: %1</translation>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="63"/>
+        <source>Deleting:</source>
+        <translation>Удаление:</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="115"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="76"/>
+        <source>...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.ui" line="103"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="90"/>
+        <source>Cancel removal of files.</source>
+        <translation>Отмена удаления файлов.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="129"/>
+        <source>Deleting items.</source>
+        <translation>Удаление элементов.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="156"/>
         <source>An error occurred while retrieving the list of files: %1</source>
         <translation>Произошла ошибка при получении списка файлов: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="120"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="161"/>
         <source>Failed to delete &quot;%1&quot;: %2.</source>
         <translation>Не удалось удалить &quot;%1&quot;: %2.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="125"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="168"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="133"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="176"/>
         <source>Skip</source>
         <translation>Пропустить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="136"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="179"/>
         <source>Skip All</source>
         <translation>Пропустить все</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_remove_dialog.cc" line="139"/>
+        <location filename="../client/ui/file_transfer/file_remove_widget.cc" line="182"/>
         <source>Abort</source>
         <translation>Прервать</translation>
     </message>
@@ -2065,134 +2130,108 @@ Routers added: %4</source>
 <context>
     <name>FileTransferDialog</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="14"/>
         <source>File Transfer</source>
-        <translation>Передача файлов</translation>
+        <translation type="vanished">Передача файлов</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="26"/>
         <source>Current Task: Creating a list of files to copy...</source>
-        <translation>Текущая задача: создание списка файлов для копирования...</translation>
+        <translation type="vanished">Текущая задача: создание списка файлов для копирования...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="33"/>
         <source>From: ...</source>
-        <translation>Из: ...</translation>
+        <translation type="vanished">Из: ...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="40"/>
         <source>To: ...</source>
-        <translation>В: ...</translation>
+        <translation type="vanished">В: ...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="47"/>
         <source>Speed: ...</source>
-        <translation>Скорость: ...</translation>
+        <translation type="vanished">Скорость: ...</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="57"/>
         <source>Progress</source>
-        <translation>Ход выполнения</translation>
+        <translation type="vanished">Ход выполнения</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="65"/>
         <source>Total:</source>
-        <translation>Всего:</translation>
+        <translation type="vanished">Всего:</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.ui" line="72"/>
         <source>Item:</source>
-        <translation>Элемент:</translation>
+        <translation type="vanished">Элемент:</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="93"/>
         <source>Current Task: Copying items.</source>
-        <translation>Текущая задача: копирование элементов.</translation>
+        <translation type="vanished">Текущая задача: копирование элементов.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="105"/>
         <source>From: %1</source>
-        <translation>Из: %1</translation>
+        <translation type="vanished">Из: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="108"/>
         <source>To: %1</source>
-        <translation>В: %1</translation>
+        <translation type="vanished">В: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="129"/>
         <source>Speed: %1</source>
-        <translation>Скорость: %1</translation>
+        <translation type="vanished">Скорость: %1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="142"/>
         <source>Warning</source>
-        <translation>Предупреждение</translation>
+        <translation type="vanished">Предупреждение</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="154"/>
         <source>Skip</source>
-        <translation>Пропустить</translation>
+        <translation type="vanished">Пропустить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="157"/>
         <source>Skip All</source>
-        <translation>Пропустить все</translation>
+        <translation type="vanished">Пропустить все</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="160"/>
         <source>Replace</source>
-        <translation>Заменить</translation>
+        <translation type="vanished">Заменить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="163"/>
         <source>Replace All</source>
-        <translation>Заменить все</translation>
+        <translation type="vanished">Заменить все</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="166"/>
         <source>Abort</source>
-        <translation>Прервать</translation>
+        <translation type="vanished">Прервать</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="242"/>
         <source>Current Task: Cancel transfer of files.</source>
-        <translation>Текущая задача: Отмена передачи файлов.</translation>
+        <translation type="vanished">Текущая задача: Отмена передачи файлов.</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="257"/>
         <source>An error occurred while building the file queue for copying</source>
-        <translation>Произошла ошибка при построении очереди файлов для копирования</translation>
+        <translation type="vanished">Произошла ошибка при построении очереди файлов для копирования</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="262"/>
         <source>Failed to create directory &quot;%1&quot;: %2</source>
-        <translation>Не удалось создать директорию &quot;%1&quot;: %2</translation>
+        <translation type="vanished">Не удалось создать директорию &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="269"/>
         <source>Failed to create file &quot;%1&quot;: %2</source>
-        <translation>Не удалось создать файл &quot;%1&quot;: %2</translation>
+        <translation type="vanished">Не удалось создать файл &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="275"/>
         <source>Failed to open file &quot;%1&quot;: %2</source>
-        <translation>Не удалось открыть файл &quot;%1&quot;: %2</translation>
+        <translation type="vanished">Не удалось открыть файл &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="281"/>
         <source>Failed to write file &quot;%1&quot;: %2</source>
-        <translation>Не удалось выполнить запись файла &quot;%1&quot;: %2</translation>
+        <translation type="vanished">Не удалось выполнить запись файла &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="287"/>
         <source>Failed to read file &quot;%1&quot;: %2</source>
-        <translation>Не удалось прочитать файл &quot;%1&quot;: %2</translation>
+        <translation type="vanished">Не удалось прочитать файл &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="293"/>
         <source>Unknown error type while copying files</source>
-        <translation>Неизвестный тип ошибки при копировании файлов</translation>
+        <translation type="vanished">Неизвестный тип ошибки при копировании файлов</translation>
     </message>
     <message>
         <source>TB/s</source>
@@ -2231,6 +2270,137 @@ Routers added: %4</source>
     </message>
 </context>
 <context>
+    <name>FileTransferWidget</name>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="35"/>
+        <source>File Transfer</source>
+        <translation>Передача файлов</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="43"/>
+        <source>Current Task:</source>
+        <translation>Текущая задача:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="56"/>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="71"/>
+        <source>Creating a list of files to copy...</source>
+        <translation>Создание списка файлов для копирования...</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="63"/>
+        <source>From:</source>
+        <translation>Из:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="76"/>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="96"/>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="116"/>
+        <source>...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="83"/>
+        <source>To:</source>
+        <translation>В:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="103"/>
+        <source>Speed:</source>
+        <translation>Скорость:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="129"/>
+        <source>Total:</source>
+        <translation>Всего:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="136"/>
+        <source>Item:</source>
+        <translation>Элемент:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.ui" line="180"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="101"/>
+        <source>Cancel transfer of files.</source>
+        <translation>Отмена передачи файлов.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="137"/>
+        <source>Copying items.</source>
+        <translation>Копирование элементов.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="184"/>
+        <source>Warning</source>
+        <translation>Предупреждение</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="196"/>
+        <source>Skip</source>
+        <translation>Пропустить</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="199"/>
+        <source>Skip All</source>
+        <translation>Пропустить все</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="202"/>
+        <source>Replace</source>
+        <translation>Заменить</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="205"/>
+        <source>Replace All</source>
+        <translation>Заменить все</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="208"/>
+        <source>Abort</source>
+        <translation>Прервать</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="264"/>
+        <source>An error occurred while building the file queue for copying</source>
+        <translation>Произошла ошибка при построении очереди файлов для копирования</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="269"/>
+        <source>Failed to create directory &quot;%1&quot;: %2</source>
+        <translation>Не удалось создать директорию &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="276"/>
+        <source>Failed to create file &quot;%1&quot;: %2</source>
+        <translation>Не удалось создать файл &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="282"/>
+        <source>Failed to open file &quot;%1&quot;: %2</source>
+        <translation>Не удалось открыть файл &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="288"/>
+        <source>Failed to write file &quot;%1&quot;: %2</source>
+        <translation>Не удалось выполнить запись файла &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="294"/>
+        <source>Failed to read file &quot;%1&quot;: %2</source>
+        <translation>Не удалось прочитать файл &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/file_transfer/file_transfer_widget.cc" line="300"/>
+        <source>Unknown error type while copying files</source>
+        <translation>Неизвестный тип ошибки при копировании файлов</translation>
+    </message>
+</context>
+<context>
     <name>FileTransferWindow</name>
     <message>
         <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="44"/>
@@ -2243,7 +2413,7 @@ Routers added: %4</source>
         <translation>Удаленный компьютер</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="106"/>
+        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="149"/>
         <source>Session error: %1</source>
         <translation>Ошибка сессии: %1</translation>
     </message>
@@ -4360,7 +4530,7 @@ Routers added: %4</source>
         <translation>Автоматически начинать запись при подключении</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="266"/>
+        <location filename="../client/ui/settings_dialog.ui" line="268"/>
         <source>Write path:</source>
         <translation>Путь для записи:</translation>
     </message>

@@ -60,10 +60,12 @@ FileRemoveWidget::~FileRemoveWidget()
 //--------------------------------------------------------------------------------------------------
 void FileRemoveWidget::reset()
 {
+    queue_building_ = true;
     stopping_ = false;
     finished_ = false;
 
-    ui.label_current_item->setText(tr("Creating a list of files to delete..."));
+    ui.label_task->setText(tr("Creating a list of files to delete..."));
+    ui.label_current_item->setText("...");
     ui.progress->setValue(0);
 
     ui.button_cancel->setEnabled(true);
@@ -85,6 +87,7 @@ void FileRemoveWidget::requestStop()
 
     stopping_ = true;
 
+    ui.label_task->setText(tr("Cancel removal of files."));
     ui.button_cancel->setEnabled(false);
 
     emit sig_stop();
@@ -120,12 +123,14 @@ void FileRemoveWidget::stop()
 //--------------------------------------------------------------------------------------------------
 void FileRemoveWidget::setCurrentProgress(const QString& name, int percentage)
 {
-    QString elided_text = label_metrics_->elidedText(
-        tr("Deleting: %1").arg(name),
-        Qt::ElideMiddle,
-        ui.label_current_item->width());
+    if (queue_building_)
+    {
+        queue_building_ = false;
+        ui.label_task->setText(tr("Deleting items."));
+    }
 
-    ui.label_current_item->setText(elided_text);
+    ui.label_current_item->setText(label_metrics_->elidedText(
+        name, Qt::ElideMiddle, ui.label_current_item->width()));
     ui.progress->setValue(percentage);
 
 #if defined(Q_OS_WINDOWS)
