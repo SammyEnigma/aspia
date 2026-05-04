@@ -38,11 +38,8 @@
 #include "base/desktop/mouse_cursor.h"
 #include "client/client_desktop.h"
 #include "client/settings.h"
-#include "client/ui/chat/chat_window.h"
 #include "client/ui/desktop/desktop_toolbar.h"
 #include "client/ui/desktop/desktop_widget.h"
-#include "client/ui/file_transfer/file_transfer_window.h"
-#include "client/ui/sys_info/system_info_window.h"
 #include "client/ui/desktop/statistics_dialog.h"
 #include "client/ui/desktop/task_manager_window.h"
 #include "common/desktop_session_constants.h"
@@ -169,36 +166,8 @@ DesktopWindow::DesktopWindow(const proto::control::Config& desktop_config, QWidg
 
     connect(toolbar_, &DesktopToolBar::sig_startSession, this, [this](proto::peer::SessionType session_type)
     {
-        ClientWindow* client_window = nullptr;
-
-        switch (session_type)
-        {
-            case proto::peer::SESSION_TYPE_FILE_TRANSFER:
-                client_window = new FileTransferWindow();
-                break;
-            case proto::peer::SESSION_TYPE_TEXT_CHAT:
-                client_window = new ChatWindow();
-                break;
-            case proto::peer::SESSION_TYPE_SYSTEM_INFO:
-                client_window = new SystemInfoWindow();
-                break;
-            default:
-                NOTREACHED();
-                break;
-        }
-
-        if (!client_window)
-        {
-            LOG(ERROR) << "Session window not created";
-            return;
-        }
-
-        client_window->setAttribute(Qt::WA_DeleteOnClose);
-        if (!client_window->connectToHost(sessionState()->computer(), sessionState()->displayName()))
-        {
-            LOG(ERROR) << "Unable to connect to host";
-            client_window->close();
-        }
+        const ComputerConfig& computer = sessionState()->computer();
+        emit sig_connectRequested(computer.id, computer, session_type);
     });
 
     connect(toolbar_, &DesktopToolBar::sig_recordingStateChanged, this, [this](bool enable)

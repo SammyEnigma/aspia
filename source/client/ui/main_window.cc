@@ -312,9 +312,8 @@ void MainWindow::onSearchTextChanged(const QString& text)
 }
 
 //--------------------------------------------------------------------------------------------------
-void MainWindow::onConnect(qint64 /* computer_id */,
-                           const ComputerConfig& computer,
-                           proto::peer::SessionType session_type)
+void MainWindow::onConnect(
+    qint64 /* computer_id */, const ComputerConfig& computer, proto::peer::SessionType session_type)
 {
     if (isHostId(computer.address) && computer.router_id <= 0)
     {
@@ -324,6 +323,13 @@ void MainWindow::onConnect(qint64 /* computer_id */,
                "router in the properties of the address book."));
         return;
     }
+
+    // For sessions launched from another session (e.g. file transfer started from a desktop
+    // session), inherit the tabbed/detached mode of the parent tab. Otherwise (HostsTab or
+    // direct call) fall back to the global "open sessions in tabs" setting.
+    Tab* parent_tab = qobject_cast<Tab*>(sender());
+    bool detached = (parent_tab && parent_tab->tabType() == Tab::Type::SESSION) ?
+        parent_tab->isDetached() : !ui.action_sessions_in_tabs->isChecked();
 
     ClientWindow* client_window = nullptr;
 
@@ -362,7 +368,7 @@ void MainWindow::onConnect(qint64 /* computer_id */,
     ClientTab* client_tab = new ClientTab(client_window);
     addTab(client_tab, computer_name, icon);
 
-    if (!ui.action_sessions_in_tabs->isChecked())
+    if (detached)
     {
         int index = ui.tabs->indexOf(client_tab);
         ui.tabs->tabBar()->setTabVisible(index, false);
@@ -557,6 +563,7 @@ void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
     connect(tab, &Tab::sig_fullscreenRequested, this, &MainWindow::onTabFullscreenRequested);
     connect(tab, &Tab::sig_minimizeRequested, this, &MainWindow::onTabMinimizeRequested);
     connect(tab, &Tab::sig_showRequested, this, &MainWindow::onTabShowRequested);
+    connect(tab, &Tab::sig_connectRequested, this, &MainWindow::onConnect);
     connect(tab, &Tab::sig_actionsChanged, this, [this, tab]()
     {
         if (active_tab_ == tab)

@@ -24,7 +24,10 @@
 #include <QPair>
 #include <QWidget>
 
+#include "proto/peer.h"
+
 class QStatusBar;
+struct ComputerConfig;
 
 class Tab : public QWidget
 {
@@ -85,6 +88,11 @@ signals:
     // session-level toolbar discovered new monitors). The container (MainWindow) uses this to
     // re-install actions on the global toolbar/menus when this tab is currently active.
     void sig_actionsChanged();
+
+    // Emitted when this tab's ClientWindow asks to launch a secondary session (e.g. desktop
+    // launching a file transfer or system info session).
+    void sig_connectRequested(
+        qint64 computer_id, const ComputerConfig& computer, proto::peer::SessionType session_type);
 
 protected:
     void addActions(ActionRole group, const QList<QAction*>& actions);

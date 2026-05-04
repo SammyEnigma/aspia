@@ -32,7 +32,6 @@ class DesktopConfigDialog;
 class DesktopToolBar;
 class DesktopWidget;
 class StatisticsDialog;
-class SystemInfoWindow;
 class TaskManagerWindow;
 
 class DesktopWindow final : public ClientWindow

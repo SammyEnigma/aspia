@@ -61,6 +61,7 @@ ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
     connect(client_window_, &ClientWindow::sig_minimizeRequested, this, &Tab::sig_minimizeRequested);
     connect(client_window_, &ClientWindow::sig_showRequested, this, &Tab::sig_showRequested);
     connect(client_window_, &ClientWindow::sig_actionsChanged, this, &Tab::sig_actionsChanged);
+    connect(client_window_, &ClientWindow::sig_connectRequested, this, &Tab::sig_connectRequested);
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -101,6 +101,11 @@ signals:
     // global toolbar/menus.
     void sig_actionsChanged();
 
+    // Emitted when this client window asks to launch a secondary session (e.g. desktop launching
+    // a file transfer or system info session).
+    void sig_connectRequested(
+        qint64 computer_id, const ComputerConfig& computer, proto::peer::SessionType session_type);
+
 protected:
     virtual Client* createClient() = 0;
     virtual void onInternalReset() = 0;
