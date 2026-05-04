@@ -274,29 +274,24 @@ Routers added: %4</source>
         <translation type="unfinished">未知磁碟機</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="474"/>
         <source>TB</source>
-        <translation type="unfinished">TB</translation>
+        <translation type="obsolete">TB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="479"/>
         <source>GB</source>
-        <translation type="unfinished">GB</translation>
+        <translation type="obsolete">GB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="484"/>
         <source>MB</source>
-        <translation type="unfinished">MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="489"/>
         <source>kB</source>
-        <translation type="unfinished">kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/address_bar_model.cc" line="494"/>
         <source>B</source>
-        <translation type="unfinished">B</translation>
+        <translation type="obsolete">B</translation>
     </message>
 </context>
 <context>
@@ -800,62 +795,62 @@ Routers added: %4</source>
 <context>
     <name>ClientWindow</name>
     <message>
-        <location filename="../client/ui/client_window.cc" line="184"/>
+        <location filename="../client/ui/client_window.cc" line="202"/>
         <source>Session started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="192"/>
+        <location filename="../client/ui/client_window.cc" line="210"/>
         <source>Error requesting connection via router: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="196"/>
+        <location filename="../client/ui/client_window.cc" line="214"/>
         <source>The specified router is unavailable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="200"/>
+        <location filename="../client/ui/client_window.cc" line="218"/>
         <source>The specified router is offline.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="208"/>
+        <location filename="../client/ui/client_window.cc" line="226"/>
         <source>Connecting to host %1...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="212"/>
+        <location filename="../client/ui/client_window.cc" line="230"/>
         <source>Connecting to host %1:%2...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="223"/>
+        <location filename="../client/ui/client_window.cc" line="241"/>
         <source>Connection to host %1 established.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="227"/>
+        <location filename="../client/ui/client_window.cc" line="245"/>
         <source>Connection to host %1:%2 established.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="250"/>
+        <location filename="../client/ui/client_window.cc" line="268"/>
         <source>Host is unavailable yet. Waiting to reconnect...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="254"/>
+        <location filename="../client/ui/client_window.cc" line="272"/>
         <source>Timeout waiting for reconnection to host.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="262"/>
+        <location filename="../client/ui/client_window.cc" line="280"/>
         <source>The Host version is newer than the Client version (%1 &gt; %2). Please update the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/client_window.cc" line="268"/>
+        <location filename="../client/ui/client_window.cc" line="286"/>
         <source>Attempting to connect in compatibility mode...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1265,69 +1260,56 @@ Routers added: %4</source>
 <context>
     <name>DesktopConfigDialog</name>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="20"/>
         <source>Session Configuration</source>
-        <translation>工作階段配置</translation>
+        <translation type="vanished">工作階段配置</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="32"/>
         <source>Features</source>
-        <translation>功能</translation>
+        <translation type="vanished">功能</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="38"/>
         <source>Enable audio</source>
-        <translation>啟用音訊</translation>
+        <translation type="vanished">啟用音訊</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="45"/>
         <source>Enable clipboard</source>
-        <translation>啟用剪貼簿</translation>
+        <translation type="vanished">啟用剪貼簿</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="52"/>
         <source>Show shape of remote cursor</source>
-        <translation>顯示遠端游標形狀</translation>
+        <translation type="vanished">顯示遠端游標形狀</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="59"/>
         <source>Show position of remote cursor</source>
-        <translation>顯示遠端游標位置</translation>
+        <translation type="vanished">顯示遠端游標位置</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="75"/>
         <source>Appearance</source>
-        <translation>視覺效果</translation>
+        <translation type="vanished">視覺效果</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="81"/>
         <source>Disable desktop effects</source>
-        <translation>停用桌面特效</translation>
+        <translation type="vanished">停用桌面特效</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="88"/>
         <source>Disable desktop wallpaper</source>
-        <translation>停用桌布</translation>
+        <translation type="vanished">停用桌布</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="104"/>
         <source>Other</source>
-        <translation>其他</translation>
+        <translation type="vanished">其他</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="110"/>
         <source>Lock computer at disconnect</source>
-        <translation>在中斷連線時鎖定電腦</translation>
+        <translation type="vanished">在中斷連線時鎖定電腦</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="117"/>
         <source>Block remote input</source>
-        <translation>阻止遠端輸入</translation>
+        <translation type="vanished">阻止遠端輸入</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_config_dialog.ui" line="124"/>
         <source>Send key combinations</source>
-        <translation type="unfinished">發送按鍵組合</translation>
+        <translation type="obsolete">發送按鍵組合</translation>
     </message>
 </context>
 <context>
@@ -1354,68 +1336,66 @@ Routers added: %4</source>
         <translation type="unfinished">鎖定工具列</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="129"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="132"/>
         <source>Session configuration</source>
-        <translation type="unfinished">工作階段配置</translation>
+        <translation type="obsolete">工作階段配置</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="141"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="129"/>
         <source>Auto size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="144"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="132"/>
         <source>Automatic window size</source>
         <translation type="unfinished">自動視窗大小</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="156"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="144"/>
         <source>Full screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="159"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="147"/>
         <source>Switch to full screen mode or back</source>
         <translation type="unfinished">切換到全螢幕模式或返回</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="170"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="158"/>
         <source>Automatic scrolling</source>
         <translation type="unfinished">自動捲動</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="182"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="170"/>
         <source>Ctrl+Alt+Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="185"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="173"/>
         <source>Send Ctrl+Alt+Delete</source>
         <translation type="unfinished">發送 Ctrl+Alt+Delete</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="197"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="200"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="185"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="188"/>
         <source>Advanced menu</source>
         <translation type="unfinished">進階選單</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="205"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="208"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="211"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="193"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="196"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="199"/>
         <source>Save screenshot...</source>
         <translation type="unfinished">儲存螢幕截圖...</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="220"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="223"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="208"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="211"/>
         <source>File transfer</source>
         <translation type="unfinished">檔案傳輸</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="231"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="806"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="219"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="849"/>
         <source>Scale</source>
         <translation type="unfinished">縮放</translation>
     </message>
@@ -1424,170 +1404,170 @@ Routers added: %4</source>
         <translation type="obsolete">發送按鍵組合</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="240"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="243"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="228"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="231"/>
         <source>Power control</source>
         <translation type="unfinished">電源控制</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="251"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="239"/>
         <source>Shutdown</source>
         <translation type="unfinished">關機</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="256"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="244"/>
         <source>Reboot</source>
         <translation type="unfinished">重新開機</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="261"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="249"/>
         <source>Logoff</source>
         <translation type="unfinished">登出</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="266"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="254"/>
         <source>Lock</source>
         <translation type="unfinished">鎖定</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="275"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="263"/>
         <source>System Information</source>
         <translation type="unfinished">系統訊息</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="287"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="275"/>
         <source>Close</source>
         <translation type="unfinished">關閉</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="290"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="278"/>
         <source>Close session</source>
         <translation type="unfinished">關閉工作階段</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="349"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="337"/>
         <source>Fit window</source>
         <translation type="unfinished">符合視窗大小</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="358"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="346"/>
         <source>Minimize</source>
         <translation type="unfinished">最小化</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="361"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="349"/>
         <source>Minimize window</source>
         <translation type="unfinished">最小化視窗</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="366"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="369"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="354"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="357"/>
         <source>Statistics</source>
         <translation type="unfinished">統計</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="374"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="362"/>
         <source>Reboot (Safe mode)</source>
         <translation type="unfinished">重新啟動（安全模式）</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="377"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="365"/>
         <source>Reboot in safe mode</source>
         <translation type="unfinished">重新啟動至安全模式</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="382"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="374"/>
         <source>Paste clipboard as keystrokes</source>
         <translation type="unfinished">將剪貼簿作為按鍵動作貼上</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="391"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="394"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="383"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="386"/>
         <source>Text Chat</source>
         <translation type="unfinished">文字聊天</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="406"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="409"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="433"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="398"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="401"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="432"/>
         <source>Start recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="418"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="421"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="410"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="413"/>
         <source>Task Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="432"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="427"/>
         <source>Pause video when minimizing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="440"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="438"/>
         <source>Pause audio when minimizing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="449"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.ui" line="447"/>
         <source>Switch Session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="330"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="325"/>
         <source>Resolution selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="396"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="395"/>
         <source>Session %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="398"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="397"/>
         <source>Session %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="428"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="427"/>
         <source>Stop recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="626"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="678"/>
         <source>Are you sure you want to shutdown the remote computer?</source>
         <translation type="unfinished">您是否確定要關閉遠端電腦？</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="641"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="670"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="693"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="719"/>
         <source>Confirmation</source>
         <translation type="unfinished">確認</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="642"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="694"/>
         <source>Are you sure you want to reboot the remote computer?</source>
         <translation type="unfinished">您是否確定要重新啟動遠端電腦？</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="649"/>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="678"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="699"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="725"/>
         <source>Wait for host</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="671"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="720"/>
         <source>Are you sure you want to reboot the remote computer in Safe Mode?</source>
         <translation type="unfinished">您是否確定要重新啟動遠端電腦至安全模式？</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="699"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="745"/>
         <source>Are you sure you want to end the user session on the remote computer?</source>
         <translation type="unfinished">您是否確定要結束遠端電腦的使用者工作階段？</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="714"/>
+        <location filename="../client/ui/desktop/desktop_toolbar.cc" line="760"/>
         <source>Are you sure you want to lock the user session on the remote computer?</source>
         <translation type="unfinished">您是否確定要鎖定遠端電腦的使用者工作階段？</translation>
     </message>
@@ -1618,17 +1598,17 @@ Routers added: %4</source>
 <context>
     <name>DesktopWindow</name>
     <message>
-        <location filename="../client/ui/desktop/desktop_window.cc" line="928"/>
+        <location filename="../client/ui/desktop/desktop_window.cc" line="892"/>
         <source>Save File</source>
         <translation type="unfinished">儲存檔案</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_window.cc" line="930"/>
+        <location filename="../client/ui/desktop/desktop_window.cc" line="894"/>
         <source>PNG Image (*.png);;BMP Image (*.bmp)</source>
         <translation type="unfinished">PNG 影像 (*.png);;BMP 影像 (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_window.cc" line="961"/>
+        <location filename="../client/ui/desktop/desktop_window.cc" line="925"/>
         <source>Could not save image</source>
         <translation type="unfinished">無法儲存影像</translation>
     </message>
@@ -1833,54 +1813,49 @@ Routers added: %4</source>
 <context>
     <name>FileListModel</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="103"/>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="101"/>
         <source>Folder</source>
         <translation type="unfinished">資料夾</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="380"/>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="378"/>
         <source>Name</source>
         <translation type="unfinished">名稱</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="383"/>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="381"/>
         <source>Size</source>
         <translation type="unfinished">大小</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="386"/>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="384"/>
         <source>Type</source>
         <translation type="unfinished">類型</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="389"/>
+        <location filename="../client/ui/file_transfer/file_list_model.cc" line="387"/>
         <source>Modified</source>
         <translation type="unfinished">修改時間</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="556"/>
         <source>TB</source>
-        <translation type="unfinished">TB</translation>
+        <translation type="obsolete">TB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="561"/>
         <source>GB</source>
-        <translation type="unfinished">GB</translation>
+        <translation type="obsolete">GB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="566"/>
         <source>MB</source>
-        <translation type="unfinished">MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="571"/>
         <source>kB</source>
-        <translation type="unfinished">kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_list_model.cc" line="576"/>
         <source>B</source>
-        <translation type="unfinished">B</translation>
+        <translation type="obsolete">B</translation>
     </message>
 </context>
 <context>
@@ -2092,119 +2067,94 @@ Routers added: %4</source>
         <translation>項目：</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="92"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="93"/>
         <source>Current Task: Copying items.</source>
         <translation type="unfinished">目前工作：正在複製項目。</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="104"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="105"/>
         <source>From: %1</source>
         <translation type="unfinished">從：%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="107"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="108"/>
         <source>To: %1</source>
         <translation type="unfinished">到：%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="128"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="129"/>
         <source>Speed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="141"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="142"/>
         <source>Warning</source>
         <translation type="unfinished">警告</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="153"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="154"/>
         <source>Skip</source>
         <translation type="unfinished">略過</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="156"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="157"/>
         <source>Skip All</source>
         <translation type="unfinished">全部略過</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="159"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="160"/>
         <source>Replace</source>
         <translation type="unfinished">取代</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="162"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="163"/>
         <source>Replace All</source>
         <translation type="unfinished">全部取代</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="165"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="166"/>
         <source>Abort</source>
         <translation type="unfinished">中止</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="241"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="242"/>
         <source>Current Task: Cancel transfer of files.</source>
         <translation type="unfinished">目前工作：取消檔案傳輸。</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="256"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="257"/>
         <source>An error occurred while building the file queue for copying</source>
         <translation type="unfinished">建立用於複製的檔案佇列時出錯</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="261"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="262"/>
         <source>Failed to create directory &quot;%1&quot;: %2</source>
         <translation type="unfinished">無法建立資料夾 &quot;%1&quot;：%2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="268"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="269"/>
         <source>Failed to create file &quot;%1&quot;: %2</source>
         <translation type="unfinished">無法建立檔案 &quot;%1&quot;：%2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="274"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="275"/>
         <source>Failed to open file &quot;%1&quot;: %2</source>
         <translation type="unfinished">無法開啟檔案 &quot;%1&quot;：%2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="280"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="281"/>
         <source>Failed to write file &quot;%1&quot;: %2</source>
         <translation type="unfinished">無法寫入檔案 &quot;%1&quot;：%2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="286"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="287"/>
         <source>Failed to read file &quot;%1&quot;: %2</source>
         <translation type="unfinished">無法讀取檔案 &quot;%1&quot;：%2</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="292"/>
+        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="293"/>
         <source>Unknown error type while copying files</source>
         <translation type="unfinished">複製檔案時出現未知錯誤類型</translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="311"/>
-        <source>TB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="316"/>
-        <source>GB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="321"/>
-        <source>MB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="326"/>
-        <source>kB/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/file_transfer/file_transfer_dialog.cc" line="331"/>
-        <source>B/s</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2225,19 +2175,120 @@ Routers added: %4</source>
 <context>
     <name>FileTransferWindow</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="49"/>
+        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="44"/>
         <source>Local Computer</source>
         <translation type="unfinished">本地電腦</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="50"/>
+        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="45"/>
         <source>Remote Computer</source>
         <translation type="unfinished">遠端電腦</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="111"/>
+        <location filename="../client/ui/file_transfer/file_transfer_window.cc" line="106"/>
         <source>Session error: %1</source>
         <translation type="unfinished">工作階段錯誤：%1</translation>
+    </message>
+</context>
+<context>
+    <name>Formatter</name>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="49"/>
+        <source>TB</source>
+        <translation type="unfinished">TB</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="51"/>
+        <source>GB</source>
+        <translation type="unfinished">GB</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="53"/>
+        <source>MB</source>
+        <translation type="unfinished">MB</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="55"/>
+        <source>kB</source>
+        <translation type="unfinished">kB</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="57"/>
+        <source>B</source>
+        <translation type="unfinished">B</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../common/ui/formatter.cc" line="73"/>
+        <source>%n seconds</source>
+        <translation type="unfinished">
+            <numerusform>%n 秒</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../common/ui/formatter.cc" line="74"/>
+        <source>%n minutes</source>
+        <translation type="unfinished">
+            <numerusform>%n 分鐘</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../common/ui/formatter.cc" line="75"/>
+        <source>%n hours</source>
+        <translation type="unfinished">
+            <numerusform>%n 小時</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../common/ui/formatter.cc" line="79"/>
+        <source>%n days</source>
+        <translation type="unfinished">
+            <numerusform>%n 天</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="100"/>
+        <source>TB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="102"/>
+        <source>GB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="104"/>
+        <source>MB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="106"/>
+        <source>kB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="108"/>
+        <source>B/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="123"/>
+        <source>Gbps</source>
+        <translation type="unfinished">Gbps</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="125"/>
+        <source>Mbps</source>
+        <translation type="unfinished">Mbps</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="127"/>
+        <source>Kbps</source>
+        <translation type="unfinished">Kbps</translation>
+    </message>
+    <message>
+        <location filename="../common/ui/formatter.cc" line="129"/>
+        <source>bps</source>
+        <translation type="unfinished">bps</translation>
     </message>
 </context>
 <context>
@@ -2323,158 +2374,166 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/hosts_tab.ui" line="83"/>
-        <source>Add Computer</source>
-        <translation type="unfinished">新增電腦</translation>
+        <source>Add Router</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/hosts_tab.ui" line="92"/>
-        <source>Delete Computer</source>
-        <translation type="unfinished">刪除電腦</translation>
+        <source>Edit Router</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/hosts_tab.ui" line="101"/>
-        <source>Edit Computer</source>
+        <source>Delete Router</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/hosts_tab.ui" line="110"/>
+        <source>Router Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.ui" line="119"/>
+        <source>Add Computer</source>
+        <translation type="unfinished">新增電腦</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.ui" line="128"/>
+        <source>Delete Computer</source>
+        <translation type="unfinished">刪除電腦</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.ui" line="137"/>
+        <source>Edit Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.ui" line="146"/>
         <source>Copy Computer</source>
         <translation type="unfinished">複製電腦</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="122"/>
-        <location filename="../client/ui/hosts_tab.ui" line="167"/>
+        <location filename="../client/ui/hosts_tab.ui" line="158"/>
+        <location filename="../client/ui/hosts_tab.ui" line="203"/>
         <source>Desktop Management</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="134"/>
-        <location filename="../client/ui/hosts_tab.ui" line="176"/>
+        <location filename="../client/ui/hosts_tab.ui" line="170"/>
+        <location filename="../client/ui/hosts_tab.ui" line="212"/>
         <source>File Transfer</source>
         <translation type="unfinished">檔案傳輸</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="146"/>
-        <location filename="../client/ui/hosts_tab.ui" line="185"/>
+        <location filename="../client/ui/hosts_tab.ui" line="182"/>
+        <location filename="../client/ui/hosts_tab.ui" line="221"/>
         <source>Chat</source>
         <translation type="unfinished">聊天</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="158"/>
         <location filename="../client/ui/hosts_tab.ui" line="194"/>
+        <location filename="../client/ui/hosts_tab.ui" line="230"/>
         <source>System Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="203"/>
+        <location filename="../client/ui/hosts_tab.ui" line="239"/>
         <source>Add User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="212"/>
+        <location filename="../client/ui/hosts_tab.ui" line="248"/>
         <source>Edit User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="221"/>
+        <location filename="../client/ui/hosts_tab.ui" line="257"/>
         <source>Delete User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="230"/>
+        <location filename="../client/ui/hosts_tab.ui" line="266"/>
         <source>Disconnect</source>
         <translation type="unfinished">中斷連線</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="239"/>
+        <location filename="../client/ui/hosts_tab.ui" line="275"/>
         <source>Disconnect All</source>
         <translation type="unfinished">中斷所有連線</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="248"/>
+        <location filename="../client/ui/hosts_tab.ui" line="284"/>
         <source>Remove</source>
         <translation type="unfinished">移除</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="257"/>
+        <location filename="../client/ui/hosts_tab.ui" line="293"/>
         <source>Save...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="266"/>
+        <location filename="../client/ui/hosts_tab.ui" line="302"/>
         <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="275"/>
+        <location filename="../client/ui/hosts_tab.ui" line="311"/>
         <source>Import Old Address Book...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="283"/>
+        <location filename="../client/ui/hosts_tab.ui" line="319"/>
         <source>Auto-refresh Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="414"/>
         <source>Status</source>
-        <translation type="unfinished">狀態</translation>
+        <translation type="obsolete">狀態</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="415"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts_tab.cc" line="416"/>
         <source>Delete</source>
-        <translation type="unfinished">刪除</translation>
+        <translation type="obsolete">刪除</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="474"/>
-        <location filename="../client/ui/hosts_tab.cc" line="520"/>
+        <location filename="../client/ui/hosts_tab.cc" line="468"/>
+        <location filename="../client/ui/hosts_tab.cc" line="514"/>
         <source>Failed to retrieve computer information from the local database.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="767"/>
-        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts_tab.cc" line="806"/>
-        <location filename="../client/ui/hosts_tab.cc" line="831"/>
+        <location filename="../client/ui/hosts_tab.cc" line="775"/>
+        <location filename="../client/ui/hosts_tab.cc" line="800"/>
         <source>Copy Row</source>
         <translation type="unfinished">複製列</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="807"/>
-        <location filename="../client/ui/hosts_tab.cc" line="832"/>
+        <location filename="../client/ui/hosts_tab.cc" line="776"/>
+        <location filename="../client/ui/hosts_tab.cc" line="801"/>
         <source>Copy Value</source>
         <translation type="unfinished">複製值</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="897"/>
+        <location filename="../client/ui/hosts_tab.cc" line="879"/>
         <source>Import Old Address Book</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="899"/>
+        <location filename="../client/ui/hosts_tab.cc" line="881"/>
         <source>Address Book (*.aab);;All files (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="1010"/>
+        <location filename="../client/ui/hosts_tab.cc" line="992"/>
         <source>The router associated with this computer has been deleted. Edit the computer to select another router or switch to direct connection.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="1017"/>
+        <location filename="../client/ui/hosts_tab.cc" line="999"/>
         <source>The computer has an invalid host ID.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="1026"/>
+        <location filename="../client/ui/hosts_tab.cc" line="1008"/>
         <source>The computer has an incorrect address.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2737,51 +2796,51 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="329"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="327"/>
         <source>Failed to retrieve computer information from the local database.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="333"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="331"/>
         <source>(copy)</source>
         <translation type="unfinished">(複製)</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="337"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="335"/>
         <source>Failed to add the computer to the local database.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="367"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="365"/>
         <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
         <translation type="unfinished">您確定要刪除電腦「%1」嗎?</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="379"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="377"/>
         <source>Unable to remove computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="495"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="493"/>
         <source>%n child group(s)</source>
         <translation type="unfinished">
             <numerusform>%n 個子群組</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="497"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="495"/>
         <source>%n child computer(s)</source>
         <translation type="unfinished">
             <numerusform>%n 個子電腦</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="601"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="599"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="601"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="599"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2896,7 +2955,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/main_window.ui" line="14"/>
-        <location filename="../client/ui/main_window.cc" line="244"/>
+        <location filename="../client/ui/main_window.cc" line="253"/>
         <source>Aspia Client</source>
         <translation type="unfinished">Aspia Client</translation>
     </message>
@@ -2959,12 +3018,12 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.cc" line="139"/>
+        <location filename="../client/ui/main_window.cc" line="140"/>
         <source>Hosts</source>
         <translation type="unfinished">主機</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.cc" line="313"/>
+        <location filename="../client/ui/main_window.cc" line="322"/>
         <source>Connection by ID is specified in the properties of the computer, but the router is not configured. Check the parameters of the router in the properties of the address book.</source>
         <translation type="unfinished">指定使用 ID 連線，但未配置路由器。請在通訊錄的屬性中檢查路由器的參數。</translation>
     </message>
@@ -3640,230 +3699,221 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="644"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="645"/>
         <source>%n host(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="647"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="648"/>
         <source>%n relay(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="650"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="651"/>
         <source>%n user(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="667"/>
         <source>%n seconds</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 秒</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="668"/>
         <source>%n minutes</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 分鐘</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="669"/>
         <source>%n hours</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 小時</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/router_widget.cc" line="673"/>
         <source>%n days</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 天</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="699"/>
         <source>TB</source>
-        <translation type="unfinished">TB</translation>
+        <translation type="obsolete">TB</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="701"/>
         <source>GB</source>
-        <translation type="unfinished">GB</translation>
+        <translation type="obsolete">GB</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="703"/>
         <source>MB</source>
-        <translation type="unfinished">MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="705"/>
         <source>kB</source>
-        <translation type="unfinished">kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="707"/>
         <source>B</source>
-        <translation type="unfinished">B</translation>
+        <translation type="obsolete">B</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="794"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="741"/>
         <source>You cannot delete a built-in user.</source>
         <translation type="unfinished">您不能刪除內建使用者。</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="799"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="746"/>
         <source>Are you sure you want to delete user &quot;%1&quot;?</source>
         <translation type="unfinished">您確定要刪除使用者 &quot;%1&quot; 嗎？</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="820"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="767"/>
         <source>Are you sure you want to disconnect host &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="841"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="788"/>
         <source>Are you sure you want to disconnect all hosts?</source>
         <translation type="unfinished">您確定要中斷所有主機的連線嗎？</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="862"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="809"/>
         <source>Confirmation</source>
         <translation type="unfinished">確認</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="863"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="810"/>
         <source>Deleting a host will result in all its configuration for connecting to the router being deleted. This operation is irreversible. After deleting, the host will no longer connect to the router. Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="871"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="818"/>
         <source>Try to uninstall the application (result is not guaranteed)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="894"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="841"/>
         <source>Are you sure you want to disconnect relay &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="915"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="862"/>
         <source>Are you sure you want to disconnect all relays?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="995"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="942"/>
         <source>Disconnect</source>
         <translation type="unfinished">中斷連線</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="997"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="944"/>
         <source>Copy Row</source>
         <translation type="unfinished">複製列</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="998"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="945"/>
         <source>Copy Value</source>
         <translation type="unfinished">複製值</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1007"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="954"/>
         <source>Are you sure you want to disconnect peer &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1055"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1002"/>
         <source>Connecting to router %1...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1058"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1005"/>
         <source>Connection to router %1 established.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1061"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1008"/>
         <source>Disconnected from router %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1097"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1044"/>
         <source>Network error: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1234"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1181"/>
         <source>Invalid user request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1236"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1261"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1284"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1183"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1208"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1231"/>
         <source>Unknown internal error.</source>
         <translation type="unfinished">未知的內部錯誤。</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1238"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1185"/>
         <source>Invalid data was passed.</source>
         <translation type="unfinished">傳入了無效資料。</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1240"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1187"/>
         <source>A user with the specified name already exists.</source>
         <translation type="unfinished">具有指定名稱的使用者已存在。</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1242"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1265"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1288"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1189"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1212"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1235"/>
         <source>Unknown error type.</source>
         <translation type="unfinished">未知錯誤類型。</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1259"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1206"/>
         <source>Invalid host request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1263"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1286"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1210"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1233"/>
         <source>Invalid entry id.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1282"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1229"/>
         <source>Invalid relay request.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1303"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1365"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1250"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1312"/>
         <source>Save File</source>
         <translation type="unfinished">儲存檔案</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1303"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1365"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1250"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1312"/>
         <source>JSON files (*.json)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1314"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1376"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1261"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1323"/>
         <source>Could not open file for writing.</source>
         <translation type="unfinished">無法開啟檔案進行寫入。</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1353"/>
-        <location filename="../client/ui/hosts/router_widget.cc" line="1440"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1300"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="1387"/>
         <source>Unable to write file.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3894,12 +3944,12 @@ Routers added: %4</source>
         <translation type="unfinished">全螢幕</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/select_screen_action.h" line="47"/>
+        <location filename="../client/ui/desktop/select_screen_action.h" line="49"/>
         <source>Monitor %1 (primary)</source>
         <translation type="unfinished">顯示器 %1（主要）</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/select_screen_action.h" line="49"/>
+        <location filename="../client/ui/desktop/select_screen_action.h" line="51"/>
         <source>Monitor %1</source>
         <translation type="unfinished">顯示器 %1</translation>
     </message>
@@ -4052,117 +4102,114 @@ Routers added: %4</source>
         <translation type="unfinished">設定</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="133"/>
         <source>Router</source>
-        <translation type="unfinished">路由器</translation>
+        <translation type="obsolete">路由器</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="163"/>
         <source>Display Name</source>
-        <translation type="unfinished">顯示名稱</translation>
+        <translation type="obsolete">顯示名稱</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="219"/>
         <source>A router is required to connect to a computer if there is no direct connection (bypass NAT). Aspia does not provide a public router, but you can install your own. You can download the router on the &lt;a href=&quot;https://aspia.org&quot;&gt;official website&lt;/a&gt;.</source>
-        <translation type="unfinished">當無法直接連線（繞過 NAT）到電腦時，就需要透過路由器進行連接。Aspia 不提供公共路由，但您可以自行搭建。您可從&lt;a href=&quot;https://aspia.org&quot;&gt;官網&lt;/a&gt;下載路由器。</translation>
+        <translation type="obsolete">當無法直接連線（繞過 NAT）到電腦時，就需要透過路由器進行連接。Aspia 不提供公共路由，但您可以自行搭建。您可從&lt;a href=&quot;https://aspia.org&quot;&gt;官網&lt;/a&gt;下載路由器。</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="236"/>
+        <location filename="../client/ui/settings_dialog.ui" line="133"/>
         <source>Desktop</source>
         <translation type="unfinished">桌面</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="248"/>
+        <location filename="../client/ui/settings_dialog.ui" line="145"/>
         <source>Features</source>
         <translation type="unfinished">功能</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="254"/>
+        <location filename="../client/ui/settings_dialog.ui" line="151"/>
         <source>Enable audio</source>
         <translation type="unfinished">啟用音訊</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="261"/>
+        <location filename="../client/ui/settings_dialog.ui" line="158"/>
         <source>Enable clipboard</source>
         <translation type="unfinished">啟用剪貼簿</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="268"/>
+        <location filename="../client/ui/settings_dialog.ui" line="165"/>
         <source>Show shape of remote cursor</source>
         <translation type="unfinished">顯示遠端游標形狀</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="275"/>
+        <location filename="../client/ui/settings_dialog.ui" line="172"/>
         <source>Show position of remote cursor</source>
         <translation type="unfinished">顯示遠端游標位置</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="291"/>
+        <location filename="../client/ui/settings_dialog.ui" line="188"/>
         <source>Appearance</source>
         <translation type="unfinished">視覺效果</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="297"/>
+        <location filename="../client/ui/settings_dialog.ui" line="194"/>
         <source>Disable desktop effects</source>
         <translation type="unfinished">停用桌面特效</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="304"/>
+        <location filename="../client/ui/settings_dialog.ui" line="201"/>
         <source>Disable desktop wallpaper</source>
         <translation type="unfinished">停用桌布</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="326"/>
+        <location filename="../client/ui/settings_dialog.ui" line="223"/>
         <source>Lock computer at disconnect</source>
         <translation type="unfinished">在中斷連線時鎖定電腦</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="333"/>
+        <location filename="../client/ui/settings_dialog.ui" line="230"/>
         <source>Block remote input</source>
         <translation type="unfinished">阻止遠端輸入</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="340"/>
+        <location filename="../client/ui/settings_dialog.ui" line="237"/>
         <source>Send key combinations</source>
         <translation type="unfinished">發送按鍵組合</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="356"/>
+        <location filename="../client/ui/settings_dialog.ui" line="253"/>
         <source>Recording</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="362"/>
+        <location filename="../client/ui/settings_dialog.ui" line="259"/>
         <source>Automatically start recording sessions on connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="369"/>
+        <location filename="../client/ui/settings_dialog.ui" line="266"/>
         <source>Write path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="420"/>
+        <location filename="../client/ui/settings_dialog.ui" line="317"/>
         <source>Update</source>
         <translation type="unfinished">更新</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="426"/>
+        <location filename="../client/ui/settings_dialog.ui" line="323"/>
         <source>Check for updates on startup</source>
         <translation type="unfinished">啟動時檢查更新</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="433"/>
+        <location filename="../client/ui/settings_dialog.ui" line="330"/>
         <source>Use custom update server</source>
         <translation type="unfinished">使用自訂更新伺服器</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="442"/>
+        <location filename="../client/ui/settings_dialog.ui" line="339"/>
         <source>Server:</source>
         <translation type="unfinished">伺服器：</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="320"/>
+        <location filename="../client/ui/settings_dialog.ui" line="217"/>
         <source>Other</source>
         <translation type="unfinished">其他</translation>
     </message>
@@ -4193,13 +4240,13 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="82"/>
-        <location filename="../client/ui/settings_dialog.cc" line="361"/>
+        <location filename="../client/ui/settings_dialog.cc" line="259"/>
         <source>Status: not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="102"/>
-        <location filename="../client/ui/settings_dialog.cc" line="362"/>
+        <location filename="../client/ui/settings_dialog.cc" line="260"/>
         <source>Set...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4209,37 +4256,19 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="158"/>
         <source>Address</source>
-        <translation type="unfinished">位址</translation>
+        <translation type="obsolete">位址</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="168"/>
-        <source>Access Level</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.ui" line="173"/>
         <source>User Name</source>
-        <translation type="unfinished">使用者名稱</translation>
+        <translation type="obsolete">使用者名稱</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="183"/>
-        <source>Add...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.ui" line="190"/>
-        <source>Edit...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.ui" line="197"/>
         <source>Remove</source>
-        <translation type="unfinished">移除</translation>
+        <translation type="obsolete">移除</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="482"/>
+        <location filename="../client/ui/settings_dialog.ui" line="379"/>
         <source>Check for updates</source>
         <translation type="unfinished">檢查更新</translation>
     </message>
@@ -4254,42 +4283,29 @@ Routers added: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="56"/>
         <source>Administrator</source>
-        <translation type="unfinished">管理員</translation>
+        <translation type="obsolete">管理員</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="58"/>
-        <source>Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="60"/>
         <source>Client</source>
-        <translation type="unfinished">客戶端</translation>
+        <translation type="obsolete">客戶端</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="62"/>
         <source>Unknown</source>
-        <translation type="unfinished">未知</translation>
+        <translation type="obsolete">未知</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="281"/>
-        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/settings_dialog.cc" line="336"/>
+        <location filename="../client/ui/settings_dialog.cc" line="234"/>
         <source>Choose path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="356"/>
+        <location filename="../client/ui/settings_dialog.cc" line="254"/>
         <source>Status: set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="357"/>
+        <location filename="../client/ui/settings_dialog.cc" line="255"/>
         <source>Change...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4345,37 +4361,42 @@ Routers added: %4</source>
 <context>
     <name>Sidebar</name>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="60"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="61"/>
         <source>Local</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="315"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="316"/>
         <source>Are you sure you want to delete group &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="327"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="328"/>
         <source>Unable to remove group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="499"/>
-        <source>A group with this name already exists in the selected parent group.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="509"/>
-        <source>Failed to move the group.</source>
+        <location filename="../client/ui/hosts/sidebar.cc" line="390"/>
+        <source>Are you sure you want to delete router &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../client/ui/hosts/sidebar.cc" line="565"/>
+        <source>A group with this name already exists in the selected parent group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="575"/>
+        <source>Failed to move the group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/sidebar.cc" line="631"/>
         <source>A computer with this name already exists in the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="585"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="651"/>
         <source>Failed to move the computer to the selected group.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5115,77 +5136,64 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidget</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="95"/>
         <source>TB</source>
-        <translation type="unfinished">TB</translation>
+        <translation type="obsolete">TB</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="97"/>
         <source>GB</source>
-        <translation type="unfinished">GB</translation>
+        <translation type="obsolete">GB</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="99"/>
         <source>MB</source>
-        <translation type="unfinished">MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="101"/>
         <source>kB</source>
-        <translation type="unfinished">kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="103"/>
         <source>B</source>
-        <translation type="unfinished">B</translation>
+        <translation type="obsolete">B</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="118"/>
         <source>%n seconds</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 秒</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="119"/>
         <source>%n minutes</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 分鐘</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="120"/>
         <source>%n hours</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 小時</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="124"/>
         <source>%n days</source>
-        <translation type="unfinished">
+        <translation type="obsolete">
             <numerusform>%n 天</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="149"/>
         <source>Gbps</source>
-        <translation type="unfinished">Gbps</translation>
+        <translation type="obsolete">Gbps</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="151"/>
         <source>Mbps</source>
-        <translation type="unfinished">Mbps</translation>
+        <translation type="obsolete">Mbps</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="153"/>
         <source>Kbps</source>
-        <translation type="unfinished">Kbps</translation>
+        <translation type="obsolete">Kbps</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget.cc" line="155"/>
         <source>bps</source>
-        <translation type="unfinished">bps</translation>
+        <translation type="obsolete">bps</translation>
     </message>
 </context>
 <context>
@@ -5260,52 +5268,52 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetEventLogs</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="65"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="66"/>
         <source>Application</source>
         <translation type="unfinished">應用程式</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="67"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="68"/>
         <source>Security</source>
         <translation type="unfinished">安全性</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="70"/>
         <source>System</source>
         <translation type="unfinished">系統</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="192"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="193"/>
         <source>Page %1/%2</source>
         <translation type="unfinished">頁面 %1/%2</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="307"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="308"/>
         <source>Information</source>
         <translation type="unfinished">詳細資訊</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="309"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="310"/>
         <source>Warning</source>
         <translation type="unfinished">警告</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="311"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="312"/>
         <source>Error</source>
         <translation type="unfinished">錯誤</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="313"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="314"/>
         <source>Audit Success</source>
         <translation type="unfinished">稽核成功</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="315"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="316"/>
         <source>Audit Failure</source>
         <translation type="unfinished">稽核失敗</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="317"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="318"/>
         <source>Unknown</source>
         <translation type="unfinished">未知</translation>
     </message>
@@ -5351,85 +5359,85 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetLocalUsers</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="143"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="144"/>
         <source>Full Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="146"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="147"/>
         <source>Description</source>
         <translation type="unfinished">描述</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="149"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="150"/>
         <source>Home Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
         <source>Disabled</source>
         <translation type="unfinished">已停用</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="156"/>
         <source>Yes</source>
         <translation type="unfinished">是</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="151"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
         <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="156"/>
         <source>No</source>
         <translation type="unfinished">否</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="152"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
         <source>Password Can&apos;t Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="153"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
         <source>Password Expired</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="154"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
         <source>Don&apos;t Expire Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="155"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="156"/>
         <source>Lockout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="159"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="160"/>
         <source>Never</source>
         <translation type="unfinished">永不</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="163"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="164"/>
         <source>Last Logon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="164"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="165"/>
         <source>Number Logons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="165"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="166"/>
         <source>Bad Password Count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="177"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.cc" line="178"/>
         <source>Groups</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5591,67 +5599,67 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetNetAdapters</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="136"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="137"/>
         <source>Adapter Name</source>
         <translation type="unfinished">介面卡名稱</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="139"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="140"/>
         <source>Interface Type</source>
         <translation type="unfinished">介面類型</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="142"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="143"/>
         <source>Connection Speed</source>
         <translation type="unfinished">連線速度</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="145"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="146"/>
         <source>MAC Address</source>
         <translation type="unfinished">MAC 位址</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="148"/>
         <source>DHCP Enabled</source>
         <translation type="unfinished">DHCP 已啟用</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="148"/>
         <source>Yes</source>
         <translation type="unfinished">是</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="147"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="148"/>
         <source>No</source>
         <translation type="unfinished">否</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="152"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="153"/>
         <source>DHCP Server #%1</source>
         <translation type="unfinished">DHCP 伺服器 #%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="152"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="153"/>
         <source>DHCP Server</source>
         <translation type="unfinished">DHCP 伺服器</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="164"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="165"/>
         <source>Address #%1</source>
         <translation type="unfinished">位址 #%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="164"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="165"/>
         <source>Address</source>
         <translation type="unfinished">位址</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="172"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="173"/>
         <source>Gateway #%1</source>
         <translation type="unfinished">閘道 #%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="172"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.cc" line="173"/>
         <source>Gateway</source>
         <translation type="unfinished">閘道</translation>
     </message>
@@ -5692,170 +5700,170 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetPowerOptions</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="143"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="144"/>
         <source>Power Source</source>
         <translation type="unfinished">電力來源</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="145"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="146"/>
         <source>Battery Status</source>
         <translation type="unfinished">電池狀態</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="151"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="152"/>
         <source>Battery Life Percent</source>
         <translation type="unfinished">電池壽命百分比</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="157"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="158"/>
         <source>Full Battery Life Time</source>
         <translation type="unfinished">全滿電池壽命</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="164"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="165"/>
         <source>Remaining Battery Life Time</source>
         <translation type="unfinished">剩餘電池壽命</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="180"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="181"/>
         <source>Device Name</source>
         <translation type="unfinished">裝置名稱</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="183"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="184"/>
         <source>Manufacturer</source>
         <translation type="unfinished">製造商</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="186"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="187"/>
         <source>Manufacture Date</source>
         <translation type="unfinished">製造日期</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="189"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="190"/>
         <source>Unique Id</source>
         <translation type="unfinished">唯一 ID</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="192"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="193"/>
         <source>Serial Number</source>
         <translation type="unfinished">序號</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="195"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="196"/>
         <source>Tempareture</source>
         <translation type="unfinished">溫度</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="198"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="199"/>
         <source>Design Capacity</source>
         <translation type="unfinished">設計容量</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="198"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="204"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="210"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="199"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="205"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="211"/>
         <source>%1 mWh</source>
         <translation type="unfinished">%1 mWh</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="201"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="202"/>
         <source>Type</source>
         <translation type="unfinished">類型</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="204"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="205"/>
         <source>Full Charged Capacity</source>
         <translation type="unfinished">全滿容量</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="207"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="208"/>
         <source>Depreciation</source>
         <translation type="unfinished">衰減</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="210"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="211"/>
         <source>Current Capacity</source>
         <translation type="unfinished">目前容量</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="213"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="214"/>
         <source>Voltage</source>
         <translation type="unfinished">電壓</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="213"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="214"/>
         <source>%1 mV</source>
         <translation type="unfinished">%1 mV</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="219"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="302"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="220"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="303"/>
         <source>Charging</source>
         <translation type="unfinished">正在充電</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="219"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="222"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="225"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="228"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="220"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="223"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="226"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="229"/>
         <source>Yes</source>
         <translation type="unfinished">是</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="222"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="300"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="223"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="301"/>
         <source>Critical</source>
         <translation type="unfinished">電量不足</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="225"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="226"/>
         <source>Discharging</source>
         <translation type="unfinished">放電中</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="228"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="229"/>
         <source>Power OnLine</source>
         <translation type="unfinished">已接上 AC 電源</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="232"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="233"/>
         <source>State</source>
         <translation type="unfinished">狀態</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="237"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="238"/>
         <source>Battery #%1</source>
         <translation type="unfinished">電池 #%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="278"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="279"/>
         <source>DC Battery</source>
         <translation type="unfinished">DC 電池</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="281"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="282"/>
         <source>AC Line</source>
         <translation type="unfinished">AC 電源</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="284"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="306"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="285"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="307"/>
         <source>Unknown</source>
         <translation type="unfinished">未知</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="296"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="297"/>
         <source>High</source>
         <translation type="unfinished">高</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="298"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="299"/>
         <source>Low</source>
         <translation type="unfinished">低</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="304"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="305"/>
         <source>No Battery</source>
         <translation type="unfinished">無電池</translation>
     </message>
@@ -5908,12 +5916,12 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetProcesses</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="140"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="141"/>
         <source>System Idle Process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="142"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="143"/>
         <source>Unknown Process</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5990,178 +5998,178 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetSummary</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="132"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="163"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="133"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="164"/>
         <source>Name</source>
         <translation type="unfinished">名稱</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="135"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="136"/>
         <source>Domain</source>
         <translation type="unfinished">網域</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="138"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="139"/>
         <source>Workgroup</source>
         <translation type="unfinished">工作群組</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="141"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="142"/>
         <source>Uptime</source>
         <translation type="unfinished">正常運作時間</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="144"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="145"/>
         <source>Computer</source>
         <translation type="unfinished">電腦</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="150"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="151"/>
         <source>Host Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="151"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="152"/>
         <source>Client Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="152"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="153"/>
         <source>Router Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="154"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="155"/>
         <source>Aspia Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="166"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="238"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="167"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="239"/>
         <source>Version</source>
         <translation type="unfinished">版本</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="169"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="170"/>
         <source>Architecture</source>
         <translation type="unfinished">架構</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="172"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="173"/>
         <source>License Key</source>
         <translation type="unfinished">產品金鑰</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="175"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="176"/>
         <source>Install Date</source>
         <translation type="unfinished">安裝日期</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="180"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="181"/>
         <source>Operating System</source>
         <translation type="unfinished">作業系統</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="190"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="262"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="191"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="263"/>
         <source>Manufacturer</source>
         <translation type="unfinished">製造商</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="193"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="208"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="194"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="209"/>
         <source>Model</source>
         <translation type="unfinished">型號</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="198"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="199"/>
         <source>Motherboard</source>
         <translation type="unfinished">主機板</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="211"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="235"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="212"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="236"/>
         <source>Vendor</source>
         <translation type="unfinished">供應商</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="214"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="215"/>
         <source>Packages</source>
         <translation type="unfinished">個數</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="217"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="218"/>
         <source>Cores</source>
         <translation type="unfinished">核心數</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="220"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="221"/>
         <source>Threads</source>
         <translation type="unfinished">執行緒數</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="225"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="226"/>
         <source>Processor</source>
         <translation type="unfinished">處理器</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="241"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="242"/>
         <source>Date</source>
         <translation type="unfinished">日期</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="265"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="266"/>
         <source>Size</source>
         <translation type="unfinished">大小</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="268"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="269"/>
         <source>Speed</source>
         <translation type="unfinished">速度</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="268"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="269"/>
         <source>%1 MHz</source>
         <translation type="unfinished">%1 MHz</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="271"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="272"/>
         <source>Type</source>
         <translation type="unfinished">類型</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="274"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="275"/>
         <source>Form Factor</source>
         <translation type="unfinished">尺寸</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="277"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="278"/>
         <source>Part Number</source>
         <translation type="unfinished">型號</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="281"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="282"/>
         <source>Installed</source>
         <translation type="unfinished">已安裝</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="281"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="352"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="282"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="353"/>
         <source>No</source>
         <translation type="unfinished">否</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="291"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="292"/>
         <source>Memory</source>
         <translation type="unfinished">記憶體</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="320"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="321"/>
         <source>%1 (%2 free)</source>
         <translation type="unfinished">%1（%2 可用）</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="330"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="331"/>
         <source>Logical Drives</source>
         <translation type="unfinished">邏輯磁碟機</translation>
     </message>
@@ -7113,27 +7121,27 @@ Routers added: %4</source>
 <context>
     <name>UserTreeItem</name>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="215"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="216"/>
         <source>Yes</source>
         <translation type="unfinished">是</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="215"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="216"/>
         <source>No</source>
         <translation type="unfinished">否</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="247"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="248"/>
         <source>Administrator</source>
         <translation type="unfinished">管理員</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="251"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="252"/>
         <source>Client</source>
         <translation type="unfinished">客戶端</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/router_widget.cc" line="249"/>
+        <location filename="../client/ui/hosts/router_widget.cc" line="250"/>
         <source>Manager</source>
         <translation type="unfinished"></translation>
     </message>

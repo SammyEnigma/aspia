@@ -140,6 +140,9 @@ public slots:
     void onAddGroup();
     void onEditGroup();
     void onRemoveGroup();
+    void onAddRouter();
+    void onEditRouter();
+    void onRemoveRouter();
 
 protected:
     // QObject implementation.
@@ -149,6 +152,7 @@ signals:
     void sig_switchContent(Sidebar::Item::Type type);
     void sig_contextMenu(Sidebar::Item::Type type, const QPoint& pos);
     void sig_itemDropped();
+    void sig_routersChanged();
 
 private slots:
     void onCurrentItemChanged(QTreeWidgetItem* current, QTreeWidgetItem* previous);

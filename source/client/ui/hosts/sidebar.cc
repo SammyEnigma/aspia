@@ -34,6 +34,7 @@
 #include "client/database.h"
 #include "client/ui/hosts/local_group_dialog.h"
 #include "client/ui/hosts/local_group_widget.h"
+#include "client/ui/router_dialog.h"
 #include "common/ui/msg_box.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -330,6 +331,71 @@ void Sidebar::onRemoveGroup()
     }
 
     reloadGroups(parent_id);
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onAddRouter()
+{
+    LOG(INFO) << "[ACTION] Add router";
+
+    RouterDialog dialog(-1, this);
+    if (dialog.exec() != QDialog::Accepted)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
+
+    emit sig_routersChanged();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onEditRouter()
+{
+    Item* item = currentItem();
+    if (!item || item->itemType() != Item::ROUTER)
+        return;
+
+    qint64 router_id = static_cast<Router*>(item)->routerId();
+    LOG(INFO) << "[ACTION] Edit router" << router_id;
+
+    RouterDialog dialog(router_id, this);
+    if (dialog.exec() != QDialog::Accepted)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
+
+    emit sig_routersChanged();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onRemoveRouter()
+{
+    Item* item = currentItem();
+    if (!item || item->itemType() != Item::ROUTER)
+        return;
+
+    Router* router_item = static_cast<Router*>(item);
+    qint64 router_id = router_item->routerId();
+    LOG(INFO) << "[ACTION] Delete router" << router_id;
+
+    Database& db = Database::instance();
+    std::optional<RouterConfig> existing = db.findRouter(router_id);
+    if (!existing)
+    {
+        LOG(ERROR) << "Router not found for id:" << router_id;
+        return;
+    }
+
+    QString message = tr("Are you sure you want to delete router \"%1\"?").arg(existing->display_name);
+    if (MsgBox::question(this, message) == MsgBox::No)
+    {
+        LOG(INFO) << "Action is rejected by user";
+        return;
+    }
+
+    db.removeRouter(router_id);
+    emit sig_routersChanged();
 }
 
 //--------------------------------------------------------------------------------------------------

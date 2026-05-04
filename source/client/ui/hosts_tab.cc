@@ -41,7 +41,6 @@
 #include "client/ui/hosts/router_widget.h"
 #include "client/ui/hosts/router_group_widget.h"
 #include "client/ui/hosts/search_widget.h"
-#include "client/ui/router_dialog.h"
 
 //--------------------------------------------------------------------------------------------------
 HostsTab::HostsTab(QWidget* parent)
@@ -91,6 +90,8 @@ HostsTab::HostsTab(QWidget* parent)
 
     ui.action_import_old_book->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_online_check->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_add_router->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_delete_router->setProperty(Tab::kMenuOnlyProperty, true);
 
     // Create content widgets.
     local_group_widget_ = new LocalGroupWidget(this);
@@ -128,6 +129,11 @@ HostsTab::HostsTab(QWidget* parent)
     connect(ui.action_add_group, &QAction::triggered, ui.sidebar, &Sidebar::onAddGroup);
     connect(ui.action_edit_group, &QAction::triggered, ui.sidebar, &Sidebar::onEditGroup);
     connect(ui.action_delete_group, &QAction::triggered, ui.sidebar, &Sidebar::onRemoveGroup);
+    connect(ui.action_add_router, &QAction::triggered, ui.sidebar, &Sidebar::onAddRouter);
+    connect(ui.action_edit_router, &QAction::triggered, ui.sidebar, &Sidebar::onEditRouter);
+    connect(ui.action_delete_router, &QAction::triggered, ui.sidebar, &Sidebar::onRemoveRouter);
+    connect(ui.action_router_status, &QAction::triggered, this, &HostsTab::onRouterStatus);
+    connect(ui.sidebar, &Sidebar::sig_routersChanged, this, &HostsTab::reloadRouters);
     connect(ui.action_add_user, &QAction::triggered, this, &HostsTab::onAddUserAction);
     connect(ui.action_edit_user, &QAction::triggered, this, &HostsTab::onEditUserAction);
     connect(ui.action_delete_user, &QAction::triggered, this, &HostsTab::onDeleteUserAction);
@@ -143,6 +149,7 @@ HostsTab::HostsTab(QWidget* parent)
     // Register actions for toolbar and menus.
     addActions(ActionRole::FILE, { ui.action_save, ui.action_import_old_book });
     addActions(ActionRole::EDIT, { ui.action_add_user, ui.action_edit_user, ui.action_delete_user });
+    addActions(ActionRole::EDIT, { ui.action_add_router, ui.action_edit_router, ui.action_delete_router, ui.action_router_status });
     addActions(ActionRole::EDIT, { ui.action_add_group, ui.action_edit_group, ui.action_delete_group });
     addActions(ActionRole::EDIT, { ui.action_add_computer, ui.action_edit_computer, ui.action_copy_computer, ui.action_delete_computer });
     addActions(ActionRole::EDIT, { ui.action_host_remove, ui.action_disconnect, ui.action_disconnect_all });
@@ -409,23 +416,10 @@ void HostsTab::onSidebarContextMenu(Sidebar::Item::Type type, const QPoint& pos)
         if (!item || item->itemType() != Sidebar::Item::Type::ROUTER)
             return;
 
-        qint64 router_id = static_cast<Sidebar::Router*>(item)->routerId();
-
-        QAction* status_action = menu.addAction(QIcon(":/img/info.svg"), tr("Status"));
-        QAction* edit_action = menu.addAction(QIcon(":/img/pencil-drawing.svg"), tr("Edit"));
-        QAction* delete_action = menu.addAction(QIcon(":/img/cancel.svg"), tr("Delete"));
-
-        QAction* result = menu.exec(pos);
-        if (result == status_action)
-        {
-            RouterWidget* widget = router_widgets_.value(router_id);
-            if (widget)
-                widget->showStatusDialog();
-        }
-        else if (result == edit_action)
-            editRouter(router_id);
-        else if (result == delete_action)
-            deleteRouter(router_id);
+        menu.addAction(ui.action_router_status);
+        menu.addAction(ui.action_edit_router);
+        menu.addAction(ui.action_delete_router);
+        menu.exec(pos);
         return;
     }
     else
@@ -576,6 +570,11 @@ void HostsTab::updateActionsState()
     ui.action_delete_group->setVisible(false);
     ui.action_edit_group->setVisible(false);
 
+    ui.action_add_router->setVisible(true);
+    ui.action_edit_router->setVisible(false);
+    ui.action_delete_router->setVisible(false);
+    ui.action_router_status->setVisible(false);
+
     ui.action_add_computer->setVisible(false);
     ui.action_delete_computer->setVisible(false);
     ui.action_edit_computer->setVisible(false);
@@ -619,6 +618,10 @@ void HostsTab::updateActionsState()
 
     if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::ROUTER)
     {
+        ui.action_edit_router->setVisible(true);
+        ui.action_delete_router->setVisible(true);
+        ui.action_router_status->setVisible(true);
+
         Sidebar::Router* router = static_cast<Sidebar::Router*>(sidebar_item);
         RouterWidget* widget = router_widgets_.value(router->routerId());
 
@@ -742,40 +745,6 @@ RouterWidget* HostsTab::createRouterWidget(const RouterConfig& config)
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::editRouter(qint64 router_id)
-{
-    LOG(INFO) << "[ACTION] Edit router" << router_id;
-
-    RouterDialog dialog(router_id, this);
-    if (dialog.exec() == QDialog::Accepted)
-        reloadRouters();
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::deleteRouter(qint64 router_id)
-{
-    LOG(INFO) << "[ACTION] Delete router" << router_id;
-
-    Database& db = Database::instance();
-    std::optional<RouterConfig> existing = db.findRouter(router_id);
-    if (!existing)
-    {
-        LOG(ERROR) << "Router not found for id:" << router_id;
-        return;
-    }
-
-    QString message = tr("Are you sure you want to delete router \"%1\"?").arg(existing->display_name);
-    if (MsgBox::question(this, message) == MsgBox::No)
-    {
-        LOG(INFO) << "Action is rejected by user";
-        return;
-    }
-
-    db.removeRouter(router_id);
-    reloadRouters();
-}
-
-//--------------------------------------------------------------------------------------------------
 void HostsTab::onUserContextMenu(qint64 /* router_id */, const User& user, const QPoint& pos)
 {
     QMenu menu;
@@ -878,6 +847,19 @@ void HostsTab::onDeleteUserAction()
     RouterWidget* widget = router_widgets_.value(router->routerId());
     if (widget)
         widget->onDeleteUser();
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::onRouterStatus()
+{
+    Sidebar::Item* sidebar_item = ui.sidebar->currentItem();
+    if (!sidebar_item || sidebar_item->itemType() != Sidebar::Item::ROUTER)
+        return;
+
+    Sidebar::Router* router = static_cast<Sidebar::Router*>(sidebar_item);
+    RouterWidget* widget = router_widgets_.value(router->routerId());
+    if (widget)
+        widget->showStatusDialog();
 }
 
 //--------------------------------------------------------------------------------------------------

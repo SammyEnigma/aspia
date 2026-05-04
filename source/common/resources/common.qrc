@@ -138,5 +138,6 @@
         <file>computer-offline.svg</file>
         <file>computer-online.svg</file>
         <file>paste.svg</file>
+        <file>router-status.svg</file>
     </qresource>
 </RCC>

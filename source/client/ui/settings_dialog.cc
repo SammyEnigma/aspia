@@ -19,7 +19,6 @@
 #include "client/ui/settings_dialog.h"
 
 #include <QAbstractButton>
-#include <QCoreApplication>
 #include <QFileDialog>
 #include <QPushButton>
 #include <QTimer>
@@ -27,43 +26,13 @@
 #include "base/gui_application.h"
 #include "base/logging.h"
 #include "common/ui/msg_box.h"
-#include "base/peer/user.h"
 #include "build/build_config.h"
-#include "client/config.h"
 #include "client/database.h"
 #include "client/master_password.h"
 #include "client/settings.h"
 #include "client/ui/application.h"
 #include "client/ui/master_password_dialog.h"
-#include "client/ui/router_dialog.h"
 #include "common/ui/update_dialog.h"
-
-namespace {
-
-const int kColumnAddress     = 0;
-const int kColumnName        = 1;
-const int kColumnSessionType = 2;
-const int kColumnUserName    = 3;
-
-const int kRoleId = Qt::UserRole;
-
-//--------------------------------------------------------------------------------------------------
-QString sessionTypeToString(proto::router::SessionType session_type)
-{
-    switch (session_type)
-    {
-        case proto::router::SESSION_TYPE_ADMIN:
-            return QCoreApplication::translate("SettingsDialog", "Administrator");
-        case proto::router::SESSION_TYPE_MANAGER:
-            return QCoreApplication::translate("SettingsDialog", "Manager");
-        case proto::router::SESSION_TYPE_CLIENT:
-            return QCoreApplication::translate("SettingsDialog", "Client");
-        default:
-            return QCoreApplication::translate("SettingsDialog", "Unknown");
-    }
-}
-
-} // namespace
 
 //--------------------------------------------------------------------------------------------------
 SettingsDialog::SettingsDialog(QWidget* parent)
@@ -73,21 +42,6 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     ui.setupUi(this);
 
     Settings settings;
-
-    // Router tab.
-    reloadRouterList();
-
-    ui.tree_routers->header()->setStretchLastSection(true);
-    ui.tree_routers->header()->setSectionResizeMode(kColumnAddress, QHeaderView::Stretch);
-    ui.tree_routers->header()->setSectionResizeMode(kColumnName, QHeaderView::Stretch);
-
-    connect(ui.button_add_router, &QPushButton::clicked, this, &SettingsDialog::onAddRouter);
-    connect(ui.button_edit_router, &QPushButton::clicked, this, &SettingsDialog::onEditRouter);
-    connect(ui.button_remove_router, &QPushButton::clicked, this, &SettingsDialog::onRemoveRouter);
-    connect(ui.tree_routers, &QTreeWidget::doubleClicked, this, &SettingsDialog::onEditRouter);
-    connect(ui.tree_routers, &QTreeWidget::itemSelectionChanged, this, &SettingsDialog::updateRouterButtons);
-
-    updateRouterButtons();
 
     // General tab.
     QString current_locale = settings.locale();
@@ -242,65 +196,9 @@ void SettingsDialog::onButtonBoxClicked(QAbstractButton* button)
 }
 
 //--------------------------------------------------------------------------------------------------
-void SettingsDialog::onAddRouter()
-{
-    LOG(INFO) << "[ACTION] Add router";
-
-    RouterDialog dialog(-1, this);
-    if (dialog.exec() == QDialog::Accepted)
-        reloadRouterList();
-}
-
-//--------------------------------------------------------------------------------------------------
-void SettingsDialog::onEditRouter()
-{
-    LOG(INFO) << "[ACTION] Edit router";
-
-    QTreeWidgetItem* item = ui.tree_routers->currentItem();
-    if (!item)
-        return;
-
-    qint64 router_id = item->data(kColumnAddress, kRoleId).toLongLong();
-
-    RouterDialog dialog(router_id, this);
-    if (dialog.exec() == QDialog::Accepted)
-        reloadRouterList();
-}
-
-//--------------------------------------------------------------------------------------------------
-void SettingsDialog::onRemoveRouter()
-{
-    LOG(INFO) << "[ACTION] Remove router";
-
-    QTreeWidgetItem* item = ui.tree_routers->currentItem();
-    if (!item)
-        return;
-
-    QString display_name = item->text(kColumnName).isEmpty()
-        ? item->text(kColumnAddress) : item->text(kColumnName);
-    if (MsgBox::question(this, tr("Are you sure you want to delete router \"%1\"?")
-            .arg(display_name)) != MsgBox::Yes)
-    {
-        return;
-    }
-
-    qint64 router_id = item->data(kColumnAddress, kRoleId).toLongLong();
-    Database::instance().removeRouter(router_id);
-    reloadRouterList();
-}
-
-//--------------------------------------------------------------------------------------------------
 void SettingsDialog::showError(const QString& message)
 {
     MsgBox::warning(this, message);
-}
-
-//--------------------------------------------------------------------------------------------------
-void SettingsDialog::updateRouterButtons()
-{
-    bool has_selection = ui.tree_routers->currentItem() != nullptr;
-    ui.button_edit_router->setEnabled(has_selection);
-    ui.button_remove_router->setEnabled(has_selection);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -363,24 +261,4 @@ void SettingsDialog::updateMasterPasswordUi()
     }
 
     ui.button_remove_master_password->setEnabled(is_set);
-}
-
-//--------------------------------------------------------------------------------------------------
-void SettingsDialog::reloadRouterList()
-{
-    ui.tree_routers->clear();
-
-    const QList<RouterConfig> routers = Database::instance().routerList();
-    for (const RouterConfig& router : std::as_const(routers))
-    {
-        QTreeWidgetItem* item = new QTreeWidgetItem(ui.tree_routers);
-        item->setText(kColumnAddress, router.address);
-        item->setIcon(kColumnAddress, QIcon(":/img/stack.svg"));
-        item->setText(kColumnName, router.display_name);
-        item->setText(kColumnSessionType, sessionTypeToString(router.session_type));
-        item->setText(kColumnUserName, router.username);
-        item->setData(kColumnAddress, kRoleId, router.router_id);
-    }
-
-    updateRouterButtons();
 }

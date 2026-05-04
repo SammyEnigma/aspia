@@ -39,17 +39,12 @@ protected:
 
 private slots:
     void onButtonBoxClicked(QAbstractButton* button);
-    void onAddRouter();
-    void onEditRouter();
-    void onRemoveRouter();
     void onSetOrChangeMasterPassword();
     void onRemoveMasterPassword();
     void onSelectRecordingPath();
 
 private:
     void showError(const QString& message);
-    void updateRouterButtons();
-    void reloadRouterList();
     void updateMasterPasswordUi();
 
     Ui::SettingsDialog ui;

@@ -72,6 +72,7 @@ private slots:
     void onAddUserAction();
     void onEditUserAction();
     void onDeleteUserAction();
+    void onRouterStatus();
     void onImportOldBookAction();
     void onReloadAction();
     void onSaveAction();
@@ -88,9 +89,6 @@ private:
     void destroyAllRouterWidgets();
     void destroyRouterWidget(qint64 router_id);
     RouterWidget* createRouterWidget(const RouterConfig& config);
-
-    void editRouter(qint64 router_id);
-    void deleteRouter(qint64 router_id);
 
     bool validateComputerForConnect(const ComputerConfig& computer);
 
