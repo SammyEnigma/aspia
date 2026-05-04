@@ -84,6 +84,10 @@ public:
     QByteArray tabState(const QString& name) const;
     void setTabState(const QString& name, const QByteArray& state);
 
+    bool isGroupExpanded(qint64 group_id) const;
+    void setGroupExpanded(qint64 group_id, bool expanded);
+    void removeGroupExpanded(qint64 group_id);
+
 private:
     QSettings settings_;
     Q_DISABLE_COPY_MOVE(Settings)

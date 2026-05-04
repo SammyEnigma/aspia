@@ -157,6 +157,8 @@ signals:
 private slots:
     void onCurrentItemChanged(QTreeWidgetItem* current, QTreeWidgetItem* previous);
     void onContextMenu(const QPoint& pos);
+    void onItemExpanded(QTreeWidgetItem* item);
+    void onItemCollapsed(QTreeWidgetItem* item);
 
 private:
     bool onMousePress(QMouseEvent* event);

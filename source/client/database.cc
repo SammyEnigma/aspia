@@ -73,7 +73,6 @@ GroupConfig readGroup(const QSqlQuery& query)
     group.parent_id = query.value(1).toLongLong();
     group.name = query.value(2).toString();
     group.comment = query.value(3).toString();
-    group.expanded = query.value(4).toBool();
     return group;
 }
 
@@ -104,7 +103,6 @@ bool createTables(QSqlDatabase& db)
                     "\"parent_id\" INTEGER NOT NULL DEFAULT 0,"
                     "\"name\" TEXT NOT NULL DEFAULT '',"
                     "\"comment\" TEXT NOT NULL DEFAULT '',"
-                    "\"expanded\" INTEGER NOT NULL DEFAULT 0,"
                     "PRIMARY KEY(\"id\" AUTOINCREMENT))"))
     {
         LOG(ERROR) << "Unable to create groups table:" << query.lastError();
@@ -438,7 +436,7 @@ QList<GroupConfig> Database::groupList(qint64 parent_id) const
     }
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("SELECT id, parent_id, name, comment, expanded FROM groups WHERE parent_id=?");
+    query.prepare("SELECT id, parent_id, name, comment FROM groups WHERE parent_id=?");
     query.addBindValue(parent_id);
 
     if (!query.exec())
@@ -464,7 +462,7 @@ QList<GroupConfig> Database::allGroups() const
     }
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    if (!query.exec("SELECT id, parent_id, name, comment, expanded FROM groups"))
+    if (!query.exec("SELECT id, parent_id, name, comment FROM groups"))
     {
         LOG(ERROR) << "Unable to get all groups:" << query.lastError();
         return {};
@@ -487,12 +485,11 @@ bool Database::addGroup(GroupConfig& group)
     }
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("INSERT INTO groups (id, parent_id, name, comment, expanded) "
-                  "VALUES (NULL, ?, ?, ?, ?)");
+    query.prepare("INSERT INTO groups (id, parent_id, name, comment) "
+                  "VALUES (NULL, ?, ?, ?)");
     query.addBindValue(group.parent_id);
     query.addBindValue(group.name);
     query.addBindValue(group.comment);
-    query.addBindValue(group.expanded ? 1 : 0);
 
     if (!query.exec())
     {
@@ -514,11 +511,10 @@ bool Database::modifyGroup(const GroupConfig& group)
     }
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("UPDATE groups SET parent_id=?, name=?, comment=?, expanded=? WHERE id=?");
+    query.prepare("UPDATE groups SET parent_id=?, name=?, comment=? WHERE id=?");
     query.addBindValue(group.parent_id);
     query.addBindValue(group.name);
     query.addBindValue(group.comment);
-    query.addBindValue(group.expanded ? 1 : 0);
     query.addBindValue(group.id);
 
     if (!query.exec())
@@ -585,7 +581,7 @@ std::optional<GroupConfig> Database::findGroup(qint64 group_id) const
     }
 
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
-    query.prepare("SELECT id, parent_id, name, comment, expanded FROM groups WHERE id=?");
+    query.prepare("SELECT id, parent_id, name, comment FROM groups WHERE id=?");
     query.addBindValue(group_id);
 
     if (!query.exec())

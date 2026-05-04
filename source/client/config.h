@@ -75,7 +75,6 @@ struct GroupConfig
     qint64 parent_id = 0;
     QString name;
     QString comment;
-    bool expanded = false;
 };
 
 #endif // CLIENT_CONFIG_H

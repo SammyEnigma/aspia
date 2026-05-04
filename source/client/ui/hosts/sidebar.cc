@@ -32,6 +32,7 @@
 #include "base/logging.h"
 #include "client/config.h"
 #include "client/database.h"
+#include "client/settings.h"
 #include "client/ui/hosts/local_group_dialog.h"
 #include "client/ui/hosts/local_group_widget.h"
 #include "client/ui/router_dialog.h"
@@ -62,7 +63,7 @@ Sidebar::Sidebar(QWidget* parent)
 
     // Create local root after routers so it appears at the bottom.
     local_root_ = new LocalGroup(local_root_data, tree_widget_);
-    local_root_->setExpanded(true);
+    local_root_->setExpanded(Settings().isGroupExpanded(local_root_data.id));
 
     // Setup drag-and-drop.
     tree_widget_->setAcceptDrops(true);
@@ -73,6 +74,8 @@ Sidebar::Sidebar(QWidget* parent)
 
     connect(tree_widget_, &QTreeWidget::currentItemChanged, this, &Sidebar::onCurrentItemChanged);
     connect(tree_widget_, &QTreeWidget::customContextMenuRequested, this, &Sidebar::onContextMenu);
+    connect(tree_widget_, &QTreeWidget::itemExpanded, this, &Sidebar::onItemExpanded);
+    connect(tree_widget_, &QTreeWidget::itemCollapsed, this, &Sidebar::onItemCollapsed);
 
     // Load groups from database under Local root.
     loadGroups(0, local_root_);
@@ -87,10 +90,12 @@ void Sidebar::loadGroups(qint64 parent_id, QTreeWidgetItem* parent_item)
 {
     QList<GroupConfig> groups = Database::instance().groupList(parent_id);
 
+    Settings settings;
+
     for (const GroupConfig& group : std::as_const(groups))
     {
         LocalGroup* item = new LocalGroup(group, parent_item);
-        item->setExpanded(group.expanded);
+        item->setExpanded(settings.isGroupExpanded(group.id));
 
         // Load child groups recursively.
         loadGroups(group.id, item);
@@ -106,7 +111,7 @@ void Sidebar::reloadGroups(qint64 selected_group_id)
 
     // Reload from database.
     loadGroups(0, local_root_);
-    local_root_->setExpanded(true);
+    local_root_->setExpanded(Settings().isGroupExpanded(0));
 
     // Find and select the requested group.
     QTreeWidgetItem* selected = nullptr;
@@ -322,13 +327,16 @@ void Sidebar::onRemoveGroup()
     }
 
     qint64 parent_id = local_group->parentId();
+    qint64 group_id = local_group->groupId();
 
-    if (!Database::instance().removeGroup(local_group->groupId()))
+    if (!Database::instance().removeGroup(group_id))
     {
         MsgBox::warning(this, tr("Unable to remove group"));
-        LOG(INFO) << "Unable to remove group with id" << local_group->groupId();
+        LOG(INFO) << "Unable to remove group with id" << group_id;
         return;
     }
+
+    Settings().removeGroupExpanded(group_id);
 
     reloadGroups(parent_id);
 }
@@ -783,6 +791,30 @@ void Sidebar::onContextMenu(const QPoint& pos)
     tree_widget_->setCurrentItem(item);
 
     emit sig_contextMenu(item->itemType(), tree_widget_->viewport()->mapToGlobal(pos));
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onItemExpanded(QTreeWidgetItem* item)
+{
+    CHECK(item);
+
+    Item* sidebar_item = static_cast<Item*>(item);
+    if (sidebar_item->itemType() != Item::LOCAL_GROUP)
+        return;
+
+    Settings().setGroupExpanded(sidebar_item->groupId(), true);
+}
+
+//--------------------------------------------------------------------------------------------------
+void Sidebar::onItemCollapsed(QTreeWidgetItem* item)
+{
+    CHECK(item);
+
+    Item* sidebar_item = static_cast<Item*>(item);
+    if (sidebar_item->itemType() != Item::LOCAL_GROUP)
+        return;
+
+    Settings().setGroupExpanded(sidebar_item->groupId(), false);
 }
 
 //--------------------------------------------------------------------------------------------------

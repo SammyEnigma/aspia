@@ -48,6 +48,7 @@ const QString kRecordingPathParam = "recording_path";
 const QString kRecordSessionsParam = "record_sessions";
 const QString kSendKeyCombinationsParam = "send_key_combinations";
 const QString kTabStateParam = "tab_state";
+const QString kGroupExpandedParam = "group_expanded";
 
 } // namespace
 
@@ -280,4 +281,28 @@ QByteArray Settings::tabState(const QString& name) const
 void Settings::setTabState(const QString& name, const QByteArray& state)
 {
     settings_.setValue(kTabStateParam + "/" + name, state);
+}
+
+//--------------------------------------------------------------------------------------------------
+bool Settings::isGroupExpanded(qint64 group_id) const
+{
+    return settings_.value(kGroupExpandedParam + "/" + QString::number(group_id), true).toBool();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Settings::setGroupExpanded(qint64 group_id, bool expanded)
+{
+    QString key = kGroupExpandedParam + "/" + QString::number(group_id);
+
+    // Default is true: store only the deviation from the default to keep the settings file small.
+    if (expanded)
+        settings_.remove(key);
+    else
+        settings_.setValue(key, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+void Settings::removeGroupExpanded(qint64 group_id)
+{
+    settings_.remove(kGroupExpandedParam + "/" + QString::number(group_id));
 }

@@ -213,7 +213,6 @@ void importGroup(const proto::address_book::ComputerGroup& proto_group,
         group_config.parent_id = parent_group_id;
         group_config.name = group_name;
         group_config.comment = sanitizedComment(QString::fromStdString(proto_group.comment()));
-        group_config.expanded = proto_group.expanded();
 
         if (!Database::instance().addGroup(group_config))
         {
