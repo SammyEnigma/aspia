@@ -63,7 +63,7 @@ QString commonParentDir(const QStringList& paths)
 }
 
 //--------------------------------------------------------------------------------------------------
-struct FileInfo
+struct LocalFileInfo
 {
     bool is_directory = false;
     qint64 file_size = 0;
@@ -81,7 +81,7 @@ qint64 nsDateToUnixTime(NSDate* date)
 }
 
 //--------------------------------------------------------------------------------------------------
-bool fileInfo(const QString& path, FileInfo* file_info)
+bool fileInfo(const QString& path, LocalFileInfo* file_info)
 {
     if (path.isEmpty() || !file_info)
     {
@@ -137,7 +137,7 @@ void addDirectoryContent(const QString& path, QVector<LocalFileEntry>* entries)
 
             QString full_path = current_path + '/' + QString::fromNSString(name);
 
-            FileInfo fi;
+            LocalFileInfo fi;
             if (!fileInfo(full_path, &fi))
                 continue;
 
@@ -286,7 +286,7 @@ void ClipboardMac::onClipboardFiles()
 
     for (const auto& path : std::as_const(files))
     {
-        FileInfo fi;
+        LocalFileInfo fi;
         if (!fileInfo(path, &fi))
             continue;
 
