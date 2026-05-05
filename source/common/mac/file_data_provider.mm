@@ -41,7 +41,7 @@
 
 - (instancetype)initWithFileURL:(NSURL*)url
                       fileIndex:(int)fileIndex
-                       provider:(common::FileDataProvider*)provider;
+                       provider:(FileDataProvider*)provider;
 - (void)stopPresenting;
 
 @end
@@ -50,13 +50,13 @@
 {
     NSURL* _url;
     int _file_index;
-    common::FileDataProvider* _provider;
+    FileDataProvider* _provider;
     NSOperationQueue* _queue;
 }
 
 - (instancetype)initWithFileURL:(NSURL*)url
                       fileIndex:(int)fileIndex
-                       provider:(common::FileDataProvider*)provider
+                       provider:(FileDataProvider*)provider
 {
     self = [super init];
     if (self)
@@ -96,7 +96,7 @@
               << "path:" << QString::fromStdString(file.path());
 
     // Create a writer that will block until all data is received.
-    auto* writer = new common::FilePromiseWriter(file.file_size());
+    auto* writer = new FilePromiseWriter(file.file_size());
 
     // Signal ClipboardMac to request data from the remote side.
     _provider->onFileRequested(_file_index, writer);
