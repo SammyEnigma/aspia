@@ -65,5 +65,3 @@ XErrorTrap::~XErrorTrap()
     if (enabled_)
         lastErrorAndDisable();
 }
-
-}  // namespace webrtc

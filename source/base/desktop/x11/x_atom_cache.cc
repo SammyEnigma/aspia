@@ -72,5 +72,3 @@ Atom XAtomCache::createIfNotExist(Atom* atom, const char* name)
 
     return *atom;
 }
-
-}  // namespace base
