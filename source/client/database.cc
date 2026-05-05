@@ -84,7 +84,8 @@ ComputerConfig readComputer(const QSqlQuery& query)
     computer.name = query.value(3).toString();
     computer.comment = query.value(4).toString();
     computer.address = query.value(5).toString();
-    computer.username = query.value(6).toString();
+    computer.username = QString::fromUtf8(
+        cryptor.decrypt(query.value(6).toByteArray()).value_or(QByteArray()));
     computer.password = QString::fromUtf8(
         cryptor.decrypt(query.value(7).toByteArray()).value_or(QByteArray()));
     computer.create_time = query.value(8).toLongLong();
@@ -116,7 +117,8 @@ RouterConfig readRouter(const QSqlQuery& query)
     router.display_name = query.value(1).toString();
     router.address = query.value(2).toString();
     router.session_type = static_cast<proto::router::SessionType>(query.value(3).toUInt());
-    router.username = query.value(4).toString();
+    router.username = QString::fromUtf8(
+        cryptor.decrypt(query.value(4).toByteArray()).value_or(QByteArray()));
     router.password = QString::fromUtf8(
         cryptor.decrypt(query.value(5).toByteArray()).value_or(QByteArray()));
 
@@ -146,7 +148,7 @@ bool createTables(QSqlDatabase& db)
                     "\"name\" TEXT NOT NULL DEFAULT '',"
                     "\"comment\" TEXT DEFAULT '',"
                     "\"address\" TEXT NOT NULL DEFAULT '',"
-                    "\"username\" TEXT DEFAULT '',"
+                    "\"username\" BLOB DEFAULT X'',"
                     "\"password\" BLOB DEFAULT X'',"
                     "\"create_time\" INTEGER NOT NULL DEFAULT 0,"
                     "\"modify_time\" INTEGER NOT NULL DEFAULT 0,"
@@ -163,7 +165,7 @@ bool createTables(QSqlDatabase& db)
                     "\"name\" TEXT NOT NULL DEFAULT '',"
                     "\"address\" TEXT NOT NULL DEFAULT '',"
                     "\"session_type\" INTEGER NOT NULL DEFAULT 0,"
-                    "\"username\" TEXT NOT NULL DEFAULT '',"
+                    "\"username\" BLOB NOT NULL DEFAULT X'',"
                     "\"password\" BLOB NOT NULL DEFAULT X'',"
                     "PRIMARY KEY(\"id\" AUTOINCREMENT))"))
     {
@@ -299,7 +301,7 @@ bool Database::addComputer(ComputerConfig& computer)
     query.addBindValue(computer.name);
     query.addBindValue(computer.comment);
     query.addBindValue(computer.address);
-    query.addBindValue(computer.username);
+    query.addBindValue(cryptor.encrypt(computer.username.toUtf8()).value_or(QByteArray()));
     query.addBindValue(cryptor.encrypt(computer.password.toUtf8()).value_or(QByteArray()));
     query.addBindValue(computer.create_time);
     query.addBindValue(computer.modify_time);
@@ -337,7 +339,7 @@ bool Database::modifyComputer(ComputerConfig& computer)
     query.addBindValue(computer.name);
     query.addBindValue(computer.comment);
     query.addBindValue(computer.address);
-    query.addBindValue(computer.username);
+    query.addBindValue(cryptor.encrypt(computer.username.toUtf8()).value_or(QByteArray()));
     query.addBindValue(cryptor.encrypt(computer.password.toUtf8()).value_or(QByteArray()));
     query.addBindValue(computer.modify_time);
     query.addBindValue(computer.data);
@@ -674,7 +676,7 @@ bool Database::addRouter(RouterConfig& router)
     query.addBindValue(router.display_name);
     query.addBindValue(router.address);
     query.addBindValue(static_cast<quint32>(router.session_type));
-    query.addBindValue(router.username);
+    query.addBindValue(cryptor.encrypt(router.username.toUtf8()).value_or(QByteArray()));
     query.addBindValue(cryptor.encrypt(router.password.toUtf8()).value_or(QByteArray()));
 
     if (!query.exec())
@@ -704,7 +706,7 @@ bool Database::modifyRouter(const RouterConfig& router)
     query.addBindValue(router.display_name);
     query.addBindValue(router.address);
     query.addBindValue(static_cast<quint32>(router.session_type));
-    query.addBindValue(router.username);
+    query.addBindValue(cryptor.encrypt(router.username.toUtf8()).value_or(QByteArray()));
     query.addBindValue(cryptor.encrypt(router.password.toUtf8()).value_or(QByteArray()));
     query.addBindValue(router.router_id);
 
