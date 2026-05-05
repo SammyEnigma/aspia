@@ -49,10 +49,15 @@ public:
     QList<ActionGroupEntry> actionGroups() const final;
 
 protected:
+    // QWidget implementation.
+    void showEvent(QShowEvent* event) final;
+
     // QObject implementation.
     bool eventFilter(QObject* object, QEvent* event) final;
 
 private:
+    void scheduleRepaint();
+
     ScopedQPointer<ClientWindow> client_window_;
     bool closing_ = false;
 

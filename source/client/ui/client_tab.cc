@@ -19,6 +19,9 @@
 #include "client/ui/client_tab.h"
 
 #include <QEvent>
+#include <QPointer>
+#include <QShowEvent>
+#include <QTimer>
 #include <QVBoxLayout>
 
 #include "client/ui/client_window.h"
@@ -46,6 +49,8 @@ ClientTab::ClientTab(ClientWindow* client_window, QWidget* parent)
     : Tab(Type::SESSION, tabObjectName(client_window), parent),
       client_window_(client_window)
 {
+    setAutoFillBackground(true);
+
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
@@ -138,8 +143,11 @@ void ClientTab::restoreState(const QByteArray& state)
 //--------------------------------------------------------------------------------------------------
 void ClientTab::activate(QStatusBar* /* statusbar */)
 {
-    if (client_window_)
-        client_window_->setSessionPaused(false);
+    if (!client_window_)
+        return;
+
+    client_window_->setSessionPaused(false);
+    scheduleRepaint();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -164,10 +172,38 @@ QList<Tab::ActionGroupEntry> ClientTab::actionGroups() const
 }
 
 //--------------------------------------------------------------------------------------------------
+void ClientTab::showEvent(QShowEvent* event)
+{
+    Tab::showEvent(event);
+    scheduleRepaint();
+}
+
+//--------------------------------------------------------------------------------------------------
 bool ClientTab::eventFilter(QObject* object, QEvent* event)
 {
     if (object == client_window_ && event->type() == QEvent::Close && !closing_)
         emit sig_closeRequested();
 
     return Tab::eventFilter(object, event);
+}
+
+//--------------------------------------------------------------------------------------------------
+void ClientTab::scheduleRepaint()
+{
+    if (!client_window_)
+        return;
+
+    // Force a synchronous repaint of the whole window and all its children so any residual pixels
+    // left by previously active widgets (or by the just created session) are cleared.
+    // Using QWidget::repaint() bypasses Qt's update batching which sometimes misses native child
+    // viewports (header views, etc).
+    QPointer<ClientWindow> guarded(client_window_.get());
+    QTimer::singleShot(0, guarded, [guarded]()
+    {
+        if (!guarded)
+            return;
+        guarded->repaint();
+        for (QWidget* child : guarded->findChildren<QWidget*>())
+            child->repaint();
+    });
 }
