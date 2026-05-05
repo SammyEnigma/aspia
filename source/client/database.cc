@@ -27,9 +27,12 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QSqlDatabase>
+#include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>
+
+#include <sqlite3.h>
 
 namespace {
 
@@ -41,6 +44,33 @@ constexpr auto kSettingUpdateServer   = "update_server";
 constexpr auto kSettingSalt           = "master_password_salt";
 constexpr auto kSettingVerifier       = "master_password_verifier";
 constexpr auto kSettingVersion        = "master_password_version";
+
+//--------------------------------------------------------------------------------------------------
+void qtLowerImpl(sqlite3_context* ctx, int argc, sqlite3_value** argv)
+{
+    if (argc != 1)
+    {
+        sqlite3_result_null(ctx);
+        return;
+    }
+
+    const char16_t* text = static_cast<const char16_t*>(sqlite3_value_text16(argv[0]));
+    if (!text)
+    {
+        sqlite3_result_null(ctx);
+        return;
+    }
+
+    int bytes = sqlite3_value_bytes16(argv[0]);
+    if (bytes <= 0)
+    {
+        sqlite3_result_null(ctx);
+        return;
+    }
+
+    QString result = QString::fromRawData(text, bytes / sizeof(char16_t)).toLower();
+    sqlite3_result_text16(ctx, result.utf16(), int(result.size() * sizeof(char16_t)), SQLITE_TRANSIENT);
+}
 
 //--------------------------------------------------------------------------------------------------
 ComputerConfig readComputer(const QSqlQuery& query)
@@ -406,7 +436,9 @@ QList<ComputerConfig> Database::searchComputers(const QString& query_text) const
     QSqlQuery query(QSqlDatabase::database(kConnectionName, false));
     query.prepare("SELECT id, group_id, router_id, name, comment, address, username, password, "
                   "create_time, modify_time, connect_time, data FROM computers "
-                  "WHERE name LIKE ? OR address LIKE ? OR comment LIKE ?");
+                  "WHERE qt_lower(name) LIKE qt_lower(?) "
+                  "OR qt_lower(address) LIKE qt_lower(?) "
+                  "OR qt_lower(comment) LIKE qt_lower(?)");
 
     QString pattern = QString("%%1%").arg(query_text);
     query.addBindValue(pattern);
@@ -856,6 +888,18 @@ bool Database::openDatabase()
     {
         LOG(ERROR) << "QSqlDatabase::open failed:" << db.lastError();
         return false;
+    }
+
+    QVariant handle = db.driver()->handle();
+    if (handle.isValid() && qstrcmp(handle.typeName(), "sqlite3*") == 0)
+    {
+        sqlite3* sqlite_handle = *static_cast<sqlite3* const*>(handle.constData());
+        if (sqlite_handle)
+        {
+            sqlite3_create_function(sqlite_handle, "qt_lower", 1,
+                                    SQLITE_UTF16 | SQLITE_DETERMINISTIC, nullptr,
+                                    &qtLowerImpl, nullptr, nullptr);
+        }
     }
 
     if (!createTables(db))
