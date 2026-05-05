@@ -21,6 +21,7 @@
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>
 #include <QDataStream>
+#include <QFontMetrics>
 #include <QHash>
 #include <QHeaderView>
 #include <QIODevice>
@@ -30,6 +31,7 @@
 #include <QStatusBar>
 #include <QStyledItemDelegate>
 #include <QTextDocument>
+#include <QTextOption>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
@@ -172,24 +174,35 @@ public:
 
         QRect text_rect = style->subElementRect(QStyle::SE_ItemViewItemText, &opt, widget);
 
+        QString elided = QFontMetrics(opt.font).elidedText(text, opt.textElideMode, text_rect.width());
+
+        QPalette::ColorGroup cg = QPalette::Normal;
+        if (!(opt.state & QStyle::State_Enabled))
+            cg = QPalette::Disabled;
+        else if (!(opt.state & QStyle::State_Active))
+            cg = QPalette::Inactive;
+
+        QPalette::ColorRole role = (opt.state & QStyle::State_Selected) ?
+            QPalette::HighlightedText : QPalette::Text;
+        QColor base_color = opt.palette.color(cg, role);
+
+        QTextOption text_option;
+        text_option.setWrapMode(QTextOption::NoWrap);
+
         QTextDocument doc;
         doc.setDefaultFont(opt.font);
         doc.setDocumentMargin(0);
-        doc.setHtml(buildHighlightedHtml(text, query_));
+        doc.setDefaultTextOption(text_option);
+        doc.setDefaultStyleSheet(QString("body { color: %1; }").arg(base_color.name(QColor::HexRgb)));
+        doc.setHtml(buildHighlightedHtml(elided, query_));
         doc.setTextWidth(text_rect.width());
-
-        QAbstractTextDocumentLayout::PaintContext ctx;
-        if (opt.state & QStyle::State_Selected)
-            ctx.palette.setColor(QPalette::Text, opt.palette.color(QPalette::HighlightedText));
-        else
-            ctx.palette.setColor(QPalette::Text, opt.palette.color(QPalette::Text));
 
         const qreal y_offset = (text_rect.height() - doc.size().height()) / 2.0;
 
         painter->save();
+        painter->setClipRect(text_rect);
         painter->translate(text_rect.left(), text_rect.top() + qMax(qreal(0), y_offset));
-        ctx.clip = QRectF(0, 0, text_rect.width(), text_rect.height());
-        doc.documentLayout()->draw(painter, ctx);
+        doc.documentLayout()->draw(painter, QAbstractTextDocumentLayout::PaintContext());
         painter->restore();
     }
 
@@ -218,15 +231,20 @@ SearchWidget::SearchWidget(QWidget* parent)
     headers << tr("Name") << tr("Address / ID") << tr("Group") << tr("Comment");
     tree_computer_->setHeaderLabels(headers);
 
+    QHeaderView* header = tree_computer_->header();
+    header->resizeSection(kColumnName, 200);
+    header->resizeSection(kColumnAddress, 180);
+    header->resizeSection(kColumnGroup, 150);
+    header->resizeSection(kColumnComment, 250);
+
     highlight_delegate_ = new HighlightDelegate(this);
     tree_computer_->setItemDelegateForColumn(kColumnName, highlight_delegate_);
     tree_computer_->setItemDelegateForColumn(kColumnAddress, highlight_delegate_);
     tree_computer_->setItemDelegateForColumn(kColumnGroup, highlight_delegate_);
     tree_computer_->setItemDelegateForColumn(kColumnComment, highlight_delegate_);
 
-    tree_computer_->header()->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(tree_computer_->header(), &QHeaderView::customContextMenuRequested,
-            this, &SearchWidget::onHeaderContextMenu);
+    header->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(header, &QHeaderView::customContextMenuRequested, this, &SearchWidget::onHeaderContextMenu);
 
     connect(tree_computer_, &QTreeWidget::itemDoubleClicked,
             this, [this](QTreeWidgetItem* item, int /* column */)
@@ -252,8 +270,7 @@ SearchWidget::SearchWidget(QWidget* parent)
         emit sig_currentChanged(computer_id);
     });
 
-    connect(tree_computer_, &QTreeWidget::customContextMenuRequested,
-            this, [this](const QPoint& pos)
+    connect(tree_computer_, &QTreeWidget::customContextMenuRequested, this, [this](const QPoint& pos)
     {
         qint64 computer_id = 0;
         Item* item = static_cast<Item*>(tree_computer_->itemAt(pos));
