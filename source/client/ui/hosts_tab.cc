@@ -37,6 +37,7 @@
 #include "client/settings.h"
 #include "client/ui/hosts/content_widget.h"
 #include "client/ui/hosts/sidebar.h"
+#include "client/ui/hosts/local_computer_dialog.h"
 #include "client/ui/hosts/local_group_widget.h"
 #include "client/ui/hosts/router_widget.h"
 #include "client/ui/hosts/router_group_widget.h"
@@ -122,10 +123,13 @@ HostsTab::HostsTab(QWidget* parent)
         if (computer_id != -1)
             local_group_widget_->setConnectTime(computer_id, QDateTime::currentSecsSinceEpoch());
     });
-    connect(ui.action_add_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onAddComputer);
-    connect(ui.action_edit_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onEditComputer);
-    connect(ui.action_copy_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onCopyComputer);
-    connect(ui.action_delete_computer, &QAction::triggered, local_group_widget_, &LocalGroupWidget::onRemoveComputer);
+    connect(ui.action_add_computer, &QAction::triggered, this, &HostsTab::onAddComputer);
+    connect(ui.action_edit_computer, &QAction::triggered, this, &HostsTab::onEditComputer);
+    connect(ui.action_copy_computer, &QAction::triggered, this, &HostsTab::onCopyComputer);
+    connect(ui.action_delete_computer, &QAction::triggered, this, &HostsTab::onRemoveComputer);
+    connect(search_widget_, &SearchWidget::sig_currentChanged, this, &HostsTab::onCurrentComputerChanged);
+    connect(search_widget_, &SearchWidget::sig_doubleClicked, this, &HostsTab::onLocalConnect);
+    connect(search_widget_, &SearchWidget::sig_contextMenu, this, &HostsTab::onLocalComputerContextMenu);
     connect(ui.action_add_group, &QAction::triggered, ui.sidebar, &Sidebar::onAddGroup);
     connect(ui.action_edit_group, &QAction::triggered, ui.sidebar, &Sidebar::onEditGroup);
     connect(ui.action_delete_group, &QAction::triggered, ui.sidebar, &Sidebar::onRemoveGroup);
@@ -189,6 +193,7 @@ QByteArray HostsTab::saveState()
 
         stream << local_group_widget_->saveState();
         stream << router_group_widget_->saveState();
+        stream << search_widget_->saveState();
         stream << ui.splitter->saveState();
 
         QByteArray routers_buffer;
@@ -217,11 +222,13 @@ void HostsTab::restoreState(const QByteArray& state)
 
     QByteArray local_group_state;
     QByteArray router_group_state;
+    QByteArray search_state;
     QByteArray splitter_state;
     QByteArray routers_buffer;
 
     stream >> local_group_state;
     stream >> router_group_state;
+    stream >> search_state;
     stream >> splitter_state;
     stream >> routers_buffer;
 
@@ -230,6 +237,9 @@ void HostsTab::restoreState(const QByteArray& state)
 
     if (!router_group_state.isEmpty())
         router_group_widget_->restoreState(router_group_state);
+
+    if (!search_state.isEmpty())
+        search_widget_->restoreState(search_state);
 
     if (!splitter_state.isEmpty())
     {
@@ -295,6 +305,33 @@ bool HostsTab::hasSearchField() const
 }
 
 //--------------------------------------------------------------------------------------------------
+void HostsTab::onSearchTextChanged(const QString& text)
+{
+    if (text.isEmpty())
+    {
+        // Return to the previous content widget.
+        if (previous_content_)
+        {
+            switchContent(previous_content_);
+            previous_content_ = nullptr;
+        }
+
+        search_widget_->clear();
+    }
+    else
+    {
+        // Save the current content widget before switching to search.
+        if (current_content_ != search_widget_)
+            previous_content_ = current_content_;
+
+        switchContent(search_widget_);
+        search_widget_->search(text);
+    }
+
+    updateActionsState();
+}
+
+//--------------------------------------------------------------------------------------------------
 void HostsTab::reloadRouters()
 {
     const QList<qint64> old_ids = router_widgets_.keys();
@@ -334,25 +371,23 @@ void HostsTab::reloadRouters()
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::onSearchTextChanged(const QString& text)
+void HostsTab::onRouterStatusChanged(qint64 router_id, Router::Status status)
 {
-    if (text.isEmpty())
-    {
-        // Return to the previous content widget.
-        if (previous_content_)
-        {
-            switchContent(previous_content_);
-            previous_content_ = nullptr;
-        }
-    }
-    else
-    {
-        // Save the current content widget before switching to search.
-        if (current_content_ != search_widget_)
-            previous_content_ = current_content_;
+    Sidebar::Router* router = ui.sidebar->routerById(router_id);
+    if (!router)
+        return;
 
-        switchContent(search_widget_);
-        search_widget_->search(text);
+    switch (status)
+    {
+        case Router::Status::OFFLINE:
+            router->setStatus(Sidebar::Router::Status::OFFLINE);
+            break;
+        case Router::Status::CONNECTING:
+            router->setStatus(Sidebar::Router::Status::CONNECTING);
+            break;
+        case Router::Status::ONLINE:
+            router->setStatus(Sidebar::Router::Status::ONLINE);
+            break;
     }
 }
 
@@ -387,6 +422,12 @@ void HostsTab::onSwitchContent(Sidebar::Item::Type type)
             router_group_widget_->showGroup(ui.sidebar->currentGroupId());
         }
         break;
+    }
+
+    if (current_content_ != search_widget_)
+    {
+        previous_content_ = nullptr;
+        emit sig_clearSearch();
     }
 
     updateActionsState();
@@ -431,7 +472,7 @@ void HostsTab::onSidebarContextMenu(Sidebar::Item::Type type, const QPoint& pos)
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::onCurrentComputerChanged(qint64 computer_id)
+void HostsTab::onCurrentComputerChanged(qint64 /* computer_id */)
 {
     updateActionsState();
 }
@@ -455,13 +496,25 @@ void HostsTab::onConnectAction(QAction* action)
     ComputerConfig computer;
     qint64 source_computer_id = -1;
 
-    if (current_content_ == local_group_widget_)
+    if (current_content_ == local_group_widget_ || current_content_ == search_widget_)
     {
-        LocalGroupWidget::Item* item = local_group_widget_->currentItem();
-        if (!item)
-            return;
+        qint64 computer_id = -1;
+        if (current_content_ == local_group_widget_)
+        {
+            LocalGroupWidget::Item* item = local_group_widget_->currentItem();
+            if (!item)
+                return;
+            computer_id = item->computerId();
+        }
+        else
+        {
+            SearchWidget::Item* item = search_widget_->currentItem();
+            if (!item)
+                return;
+            computer_id = item->computerId();
+        }
 
-        std::optional<ComputerConfig> found = Database::instance().findComputer(item->computerId());
+        std::optional<ComputerConfig> found = Database::instance().findComputer(computer_id);
         if (!found.has_value())
         {
             MsgBox::warning(this,
@@ -548,200 +601,138 @@ void HostsTab::onLocalComputerContextMenu(qint64 computer_id, const QPoint& pos)
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::switchContent(ContentWidget* new_widget)
+void HostsTab::onAddComputer()
 {
-    if (!new_widget || new_widget == current_content_)
+    LOG(INFO) << "[ACTION] Add computer";
+
+    qint64 group_id = ui.sidebar->currentGroupId();
+    if (group_id < 0)
+    {
+        LOG(INFO) << "No current group";
         return;
+    }
 
-    if (current_content_ && statusbar_)
-        current_content_->deactivate(statusbar_);
+    LocalComputerDialog dialog(-1, group_id, this);
+    if (dialog.exec() == LocalComputerDialog::Rejected)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
 
-    current_content_ = new_widget;
-    ui.content_stack->setCurrentWidget(new_widget);
-
-    if (statusbar_)
-        current_content_->activate(statusbar_);
+    qint64 new_id = dialog.computerId();
+    local_group_widget_->showGroup(group_id);
+    local_group_widget_->setCurrentComputer(new_id);
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::updateActionsState()
+void HostsTab::onEditComputer()
 {
-    ui.action_add_group->setVisible(false);
-    ui.action_delete_group->setVisible(false);
-    ui.action_edit_group->setVisible(false);
+    LOG(INFO) << "[ACTION] Edit computer";
 
-    ui.action_add_router->setVisible(true);
-    ui.action_edit_router->setVisible(false);
-    ui.action_delete_router->setVisible(false);
-    ui.action_router_status->setVisible(false);
-
-    ui.action_add_computer->setVisible(false);
-    ui.action_delete_computer->setVisible(false);
-    ui.action_edit_computer->setVisible(false);
-    ui.action_copy_computer->setVisible(false);
-
-    ui.action_desktop->setVisible(false);
-    ui.action_file_transfer->setVisible(false);
-    ui.action_chat->setVisible(false);
-    ui.action_system_info->setVisible(false);
-
-    ui.action_add_user->setVisible(false);
-    ui.action_edit_user->setVisible(false);
-    ui.action_delete_user->setVisible(false);
-
-    ui.action_reload->setVisible(false);
-    ui.action_save->setVisible(false);
-    ui.action_import_old_book->setVisible(false);
-    ui.action_disconnect->setVisible(false);
-    ui.action_disconnect_all->setVisible(false);
-    ui.action_host_remove->setVisible(false);
-    ui.action_online_check->setVisible(false);
-
-    Sidebar::Item* sidebar_item = ui.sidebar->currentItem();
-
-    if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::Type::LOCAL_GROUP)
+    qint64 computer_id = currentComputerId();
+    if (computer_id <= 0)
     {
-        ui.action_online_check->setVisible(true);
-        ui.action_import_old_book->setVisible(true);
-
-        ui.action_add_group->setVisible(true);
-        ui.action_delete_group->setVisible(sidebar_item->groupId() != 0);
-        ui.action_edit_group->setVisible(sidebar_item->groupId() != 0);
-
-        LocalGroupWidget::Item* computer_item = local_group_widget_->currentItem();
-
-        ui.action_add_computer->setVisible(true);
-        ui.action_delete_computer->setVisible(computer_item != nullptr);
-        ui.action_edit_computer->setVisible(computer_item != nullptr);
-        ui.action_copy_computer->setVisible(computer_item != nullptr);
+        LOG(INFO) << "No current computer";
+        return;
     }
 
-    if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::ROUTER)
+    std::optional<ComputerConfig> computer = Database::instance().findComputer(computer_id);
+    if (!computer.has_value())
     {
-        ui.action_edit_router->setVisible(true);
-        ui.action_delete_router->setVisible(true);
-        ui.action_router_status->setVisible(true);
+        MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
+        return;
+    }
 
-        Sidebar::Router* router = static_cast<Sidebar::Router*>(sidebar_item);
-        RouterWidget* widget = router_widgets_.value(router->routerId());
+    LocalComputerDialog dialog(computer_id, computer->group_id, this);
+    if (dialog.exec() == LocalComputerDialog::Rejected)
+    {
+        LOG(INFO) << "[ACTION] Rejected by user";
+        return;
+    }
 
-        bool on_users_tab = widget && widget->currentTabType() == RouterWidget::TabType::USERS;
-        bool has_selection = on_users_tab && widget->hasSelectedUser();
+    refreshItem(computer_id);
+}
 
-        ui.action_add_user->setVisible(on_users_tab);
-        ui.action_edit_user->setVisible(has_selection);
-        ui.action_delete_user->setVisible(has_selection);
+//--------------------------------------------------------------------------------------------------
+void HostsTab::onCopyComputer()
+{
+    LOG(INFO) << "[ACTION] Copy computer";
 
-        bool on_hosts_tab = widget && widget->currentTabType() == RouterWidget::TabType::HOSTS;
-        bool on_relays_tab = widget && widget->currentTabType() == RouterWidget::TabType::RELAYS;
+    qint64 computer_id = currentComputerId();
+    if (computer_id <= 0)
+    {
+        LOG(INFO) << "No current computer";
+        return;
+    }
 
-        bool has_target = (on_hosts_tab && widget->hasSelectedHost()) ||
-                          (on_relays_tab && widget->hasSelectedRelay());
-        bool has_any = (on_hosts_tab && widget->hostCount() > 0) ||
-                       (on_relays_tab && widget->relayCount() > 0);
+    Database& db = Database::instance();
 
-        ui.action_disconnect->setVisible(has_target);
-        ui.action_disconnect_all->setVisible(has_any);
-        ui.action_host_remove->setVisible(on_hosts_tab && widget->hasSelectedHost());
+    std::optional<ComputerConfig> computer = db.findComputer(computer_id);
+    if (!computer.has_value())
+    {
+        MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
+        return;
+    }
+
+    computer->name += " " + tr("(copy)");
+
+    if (!db.addComputer(*computer))
+    {
+        MsgBox::warning(this, tr("Failed to add the computer to the local database."));
+        return;
+    }
+
+    qint64 new_id = computer->id;
+
+    LocalComputerDialog(new_id, computer->group_id, this).exec();
+
+    if (current_content_ == search_widget_)
+    {
+        search_widget_->search(search_widget_->currentQuery());
+        search_widget_->setCurrentComputer(new_id);
     }
     else
     {
-        ui.action_desktop->setVisible(true);
-        ui.action_file_transfer->setVisible(true);
-        ui.action_chat->setVisible(true);
-        ui.action_system_info->setVisible(true);
+        local_group_widget_->showGroup(local_group_widget_->currentGroupId());
+        local_group_widget_->setCurrentComputer(new_id);
     }
-
-    ui.action_reload->setVisible(current_content_ && current_content_->canReload());
-    ui.action_save->setVisible(current_content_ && current_content_->canSave());
 }
 
 //--------------------------------------------------------------------------------------------------
-proto::peer::SessionType HostsTab::defaultSessionType() const
+void HostsTab::onRemoveComputer()
 {
-    if (ui.action_desktop->isChecked())
-        return proto::peer::SESSION_TYPE_DESKTOP;
-    else if (ui.action_file_transfer->isChecked())
-        return proto::peer::SESSION_TYPE_FILE_TRANSFER;
-    else if (ui.action_chat->isChecked())
-        return proto::peer::SESSION_TYPE_TEXT_CHAT;
-    else if (ui.action_system_info->isChecked())
-        return proto::peer::SESSION_TYPE_SYSTEM_INFO;
-    else
-        return proto::peer::SESSION_TYPE_UNKNOWN;
-}
+    LOG(INFO) << "[ACTION] Delete computer";
 
-//--------------------------------------------------------------------------------------------------
-void HostsTab::onRouterStatusChanged(qint64 router_id, Router::Status status)
-{
-    Sidebar::Router* router = ui.sidebar->routerById(router_id);
-    if (!router)
-        return;
-
-    switch (status)
+    qint64 computer_id = currentComputerId();
+    if (computer_id <= 0)
     {
-        case Router::Status::OFFLINE:
-            router->setStatus(Sidebar::Router::Status::OFFLINE);
-            break;
-        case Router::Status::CONNECTING:
-            router->setStatus(Sidebar::Router::Status::CONNECTING);
-            break;
-        case Router::Status::ONLINE:
-            router->setStatus(Sidebar::Router::Status::ONLINE);
-            break;
-    }
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::destroyAllRouterWidgets()
-{
-    const QList<qint64> ids = router_widgets_.keys();
-    for (qint64 id : ids)
-        destroyRouterWidget(id);
-}
-
-//--------------------------------------------------------------------------------------------------
-void HostsTab::destroyRouterWidget(qint64 router_id)
-{
-    auto it = router_widgets_.find(router_id);
-    if (it == router_widgets_.end())
+        LOG(INFO) << "No current computer";
         return;
+    }
 
-    RouterWidget* widget = it.value();
-    router_widgets_.erase(it);
+    std::optional<ComputerConfig> computer = Database::instance().findComputer(computer_id);
+    if (!computer.has_value())
+    {
+        MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
+        return;
+    }
 
-    if (current_content_ == widget)
-        current_content_ = nullptr;
-    if (previous_content_ == widget)
-        previous_content_ = nullptr;
+    QString message = tr("Are you sure you want to delete computer \"%1\"?").arg(computer->name);
 
-    ui.content_stack->removeWidget(widget);
-    widget->deleteLater();
-}
+    if (MsgBox::question(this, message) == MsgBox::No)
+    {
+        LOG(INFO) << "Action is rejected by user";
+        return;
+    }
 
-//--------------------------------------------------------------------------------------------------
-RouterWidget* HostsTab::createRouterWidget(const RouterConfig& config)
-{
-    RouterWidget* widget = new RouterWidget(config, this);
+    if (!Database::instance().removeComputer(computer_id))
+    {
+        MsgBox::warning(this, tr("Unable to remove computer"));
+        LOG(INFO) << "Unable to remove computer with id" << computer_id;
+        return;
+    }
 
-    router_widgets_.insert(config.router_id, widget);
-    ui.content_stack->addWidget(widget);
-
-    connect(widget, &RouterWidget::sig_statusChanged, this, &HostsTab::onRouterStatusChanged);
-    connect(widget, &RouterWidget::sig_currentTabTypeChanged,
-            this, [this](qint64, RouterWidget::TabType) { updateActionsState(); });
-    connect(widget, &RouterWidget::sig_currentUserChanged,
-            this, [this](qint64) { updateActionsState(); });
-    connect(widget, &RouterWidget::sig_currentHostChanged,
-            this, [this](qint64) { updateActionsState(); });
-    connect(widget, &RouterWidget::sig_currentRelayChanged,
-            this, [this](qint64) { updateActionsState(); });
-    connect(widget, &RouterWidget::sig_userContextMenu, this, &HostsTab::onUserContextMenu);
-    connect(widget, &RouterWidget::sig_hostContextMenu, this, &HostsTab::onHostContextMenu);
-    connect(widget, &RouterWidget::sig_relayContextMenu, this, &HostsTab::onRelayContextMenu);
-
-    widget->connectToRouter();
-    return widget;
+    removeItem(computer_id);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -976,9 +967,191 @@ void HostsTab::onOnlineCheckToggled(bool checked)
 {
     Settings settings;
     settings.setOnlineCheckEnabled(checked);
+    local_group_widget_->setOnlineCheckEnabled(checked);
+}
 
-    if (local_group_widget_)
-        local_group_widget_->setOnlineCheckEnabled(checked);
+//--------------------------------------------------------------------------------------------------
+void HostsTab::switchContent(ContentWidget* new_widget)
+{
+    if (!new_widget || new_widget == current_content_)
+        return;
+
+    if (current_content_ && statusbar_)
+        current_content_->deactivate(statusbar_);
+
+    current_content_ = new_widget;
+    ui.content_stack->setCurrentWidget(new_widget);
+
+    if (statusbar_)
+        current_content_->activate(statusbar_);
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::updateActionsState()
+{
+    ui.action_add_group->setVisible(false);
+    ui.action_delete_group->setVisible(false);
+    ui.action_edit_group->setVisible(false);
+
+    ui.action_add_router->setVisible(true);
+    ui.action_edit_router->setVisible(false);
+    ui.action_delete_router->setVisible(false);
+    ui.action_router_status->setVisible(false);
+
+    ui.action_add_computer->setVisible(false);
+    ui.action_delete_computer->setVisible(false);
+    ui.action_edit_computer->setVisible(false);
+    ui.action_copy_computer->setVisible(false);
+
+    ui.action_desktop->setVisible(false);
+    ui.action_file_transfer->setVisible(false);
+    ui.action_chat->setVisible(false);
+    ui.action_system_info->setVisible(false);
+
+    ui.action_add_user->setVisible(false);
+    ui.action_edit_user->setVisible(false);
+    ui.action_delete_user->setVisible(false);
+
+    ui.action_reload->setVisible(false);
+    ui.action_save->setVisible(false);
+    ui.action_import_old_book->setVisible(false);
+    ui.action_disconnect->setVisible(false);
+    ui.action_disconnect_all->setVisible(false);
+    ui.action_host_remove->setVisible(false);
+    ui.action_online_check->setVisible(false);
+
+    Sidebar::Item* sidebar_item = ui.sidebar->currentItem();
+
+    if (current_content_ == search_widget_)
+    {
+        SearchWidget::Item* computer_item = search_widget_->currentItem();
+
+        ui.action_delete_computer->setVisible(computer_item != nullptr);
+        ui.action_edit_computer->setVisible(computer_item != nullptr);
+        ui.action_copy_computer->setVisible(computer_item != nullptr);
+    }
+    else if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::Type::LOCAL_GROUP)
+    {
+        ui.action_online_check->setVisible(true);
+        ui.action_import_old_book->setVisible(true);
+
+        ui.action_add_group->setVisible(true);
+        ui.action_delete_group->setVisible(sidebar_item->groupId() != 0);
+        ui.action_edit_group->setVisible(sidebar_item->groupId() != 0);
+
+        LocalGroupWidget::Item* computer_item = local_group_widget_->currentItem();
+
+        ui.action_add_computer->setVisible(true);
+        ui.action_delete_computer->setVisible(computer_item != nullptr);
+        ui.action_edit_computer->setVisible(computer_item != nullptr);
+        ui.action_copy_computer->setVisible(computer_item != nullptr);
+    }
+
+    if (sidebar_item && sidebar_item->itemType() == Sidebar::Item::ROUTER)
+    {
+        ui.action_edit_router->setVisible(true);
+        ui.action_delete_router->setVisible(true);
+        ui.action_router_status->setVisible(true);
+
+        Sidebar::Router* router = static_cast<Sidebar::Router*>(sidebar_item);
+        RouterWidget* widget = router_widgets_.value(router->routerId());
+
+        bool on_users_tab = widget && widget->currentTabType() == RouterWidget::TabType::USERS;
+        bool has_selection = on_users_tab && widget->hasSelectedUser();
+
+        ui.action_add_user->setVisible(on_users_tab);
+        ui.action_edit_user->setVisible(has_selection);
+        ui.action_delete_user->setVisible(has_selection);
+
+        bool on_hosts_tab = widget && widget->currentTabType() == RouterWidget::TabType::HOSTS;
+        bool on_relays_tab = widget && widget->currentTabType() == RouterWidget::TabType::RELAYS;
+
+        bool has_target = (on_hosts_tab && widget->hasSelectedHost()) ||
+                          (on_relays_tab && widget->hasSelectedRelay());
+        bool has_any = (on_hosts_tab && widget->hostCount() > 0) ||
+                       (on_relays_tab && widget->relayCount() > 0);
+
+        ui.action_disconnect->setVisible(has_target);
+        ui.action_disconnect_all->setVisible(has_any);
+        ui.action_host_remove->setVisible(on_hosts_tab && widget->hasSelectedHost());
+    }
+    else
+    {
+        ui.action_desktop->setVisible(true);
+        ui.action_file_transfer->setVisible(true);
+        ui.action_chat->setVisible(true);
+        ui.action_system_info->setVisible(true);
+    }
+
+    ui.action_reload->setVisible(current_content_ && current_content_->canReload());
+    ui.action_save->setVisible(current_content_ && current_content_->canSave());
+}
+
+//--------------------------------------------------------------------------------------------------
+proto::peer::SessionType HostsTab::defaultSessionType() const
+{
+    if (ui.action_desktop->isChecked())
+        return proto::peer::SESSION_TYPE_DESKTOP;
+    else if (ui.action_file_transfer->isChecked())
+        return proto::peer::SESSION_TYPE_FILE_TRANSFER;
+    else if (ui.action_chat->isChecked())
+        return proto::peer::SESSION_TYPE_TEXT_CHAT;
+    else if (ui.action_system_info->isChecked())
+        return proto::peer::SESSION_TYPE_SYSTEM_INFO;
+    else
+        return proto::peer::SESSION_TYPE_UNKNOWN;
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::destroyAllRouterWidgets()
+{
+    const QList<qint64> ids = router_widgets_.keys();
+    for (qint64 id : ids)
+        destroyRouterWidget(id);
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::destroyRouterWidget(qint64 router_id)
+{
+    auto it = router_widgets_.find(router_id);
+    if (it == router_widgets_.end())
+        return;
+
+    RouterWidget* widget = it.value();
+    router_widgets_.erase(it);
+
+    if (current_content_ == widget)
+        current_content_ = nullptr;
+    if (previous_content_ == widget)
+        previous_content_ = nullptr;
+
+    ui.content_stack->removeWidget(widget);
+    widget->deleteLater();
+}
+
+//--------------------------------------------------------------------------------------------------
+RouterWidget* HostsTab::createRouterWidget(const RouterConfig& config)
+{
+    RouterWidget* widget = new RouterWidget(config, this);
+
+    router_widgets_.insert(config.router_id, widget);
+    ui.content_stack->addWidget(widget);
+
+    connect(widget, &RouterWidget::sig_statusChanged, this, &HostsTab::onRouterStatusChanged);
+    connect(widget, &RouterWidget::sig_currentTabTypeChanged,
+            this, [this](qint64, RouterWidget::TabType) { updateActionsState(); });
+    connect(widget, &RouterWidget::sig_currentUserChanged,
+            this, [this](qint64) { updateActionsState(); });
+    connect(widget, &RouterWidget::sig_currentHostChanged,
+            this, [this](qint64) { updateActionsState(); });
+    connect(widget, &RouterWidget::sig_currentRelayChanged,
+            this, [this](qint64) { updateActionsState(); });
+    connect(widget, &RouterWidget::sig_userContextMenu, this, &HostsTab::onUserContextMenu);
+    connect(widget, &RouterWidget::sig_hostContextMenu, this, &HostsTab::onHostContextMenu);
+    connect(widget, &RouterWidget::sig_relayContextMenu, this, &HostsTab::onRelayContextMenu);
+
+    widget->connectToRouter();
+    return widget;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1011,4 +1184,40 @@ bool HostsTab::validateComputerForConnect(const ComputerConfig& computer)
     }
 
     return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+qint64 HostsTab::currentComputerId() const
+{
+    if (current_content_ == local_group_widget_)
+    {
+        LocalGroupWidget::Item* item = local_group_widget_->currentItem();
+        return item ? item->computerId() : -1;
+    }
+
+    if (current_content_ == search_widget_)
+    {
+        SearchWidget::Item* item = search_widget_->currentItem();
+        return item ? item->computerId() : -1;
+    }
+
+    return -1;
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::refreshItem(qint64 computer_id)
+{
+    if (current_content_ == local_group_widget_)
+        local_group_widget_->refreshItem(computer_id);
+    else if (current_content_ == search_widget_)
+        search_widget_->refreshItem(computer_id);
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::removeItem(qint64 computer_id)
+{
+    if (current_content_ == local_group_widget_)
+        local_group_widget_->removeItem(computer_id);
+    else if (current_content_ == search_widget_)
+        search_widget_->removeItem(computer_id);
 }

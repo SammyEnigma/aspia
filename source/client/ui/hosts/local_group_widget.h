@@ -99,9 +99,13 @@ public:
     };
 
     Item* currentItem();
+    qint64 currentGroupId() const { return current_group_id_; }
     void showGroup(qint64 group_id);
     void setConnectTime(qint64 computer_id, qint64 connect_time);
     void setOnlineCheckEnabled(bool enable);
+    void setCurrentComputer(qint64 computer_id);
+    void refreshItem(qint64 computer_id);
+    void removeItem(qint64 computer_id);
 
     // ContentWidget implementation.
     QByteArray saveState() final;
@@ -112,12 +116,6 @@ public:
     void deactivate(QStatusBar* statusbar) final;
 
     QString mimeType() const { return mime_type_; }
-
-public slots:
-    void onAddComputer();
-    void onEditComputer();
-    void onCopyComputer();
-    void onRemoveComputer();
 
 protected:
     // QObject implementation.
@@ -140,7 +138,6 @@ private:
     void stopOnlineChecker();
     void clearOnlineStatuses();
     Item* findItemByComputerId(qint64 computer_id) const;
-    void setCurrentComputer(qint64 computer_id);
 
     Ui::LocalGroupWidget ui;
     QString mime_type_;

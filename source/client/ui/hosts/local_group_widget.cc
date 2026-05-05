@@ -28,10 +28,10 @@
 #include <QStatusBar>
 #include <QUuid>
 
+#include <optional>
+
 #include "base/logging.h"
 #include "client/database.h"
-#include "client/ui/hosts/local_computer_dialog.h"
-#include "common/ui/msg_box.h"
 
 namespace {
 
@@ -184,6 +184,55 @@ void LocalGroupWidget::setOnlineCheckEnabled(bool enable)
 }
 
 //--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::setCurrentComputer(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    ui.tree_computer->setCurrentItem(item);
+    ui.tree_computer->setFocus();
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::refreshItem(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    std::optional<ComputerConfig> updated = Database::instance().findComputer(computer_id);
+    if (!updated.has_value())
+    {
+        removeItem(computer_id);
+        return;
+    }
+
+    item->updateFrom(*updated);
+}
+
+//--------------------------------------------------------------------------------------------------
+void LocalGroupWidget::removeItem(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    int row = ui.tree_computer->indexOfTopLevelItem(item);
+    delete ui.tree_computer->takeTopLevelItem(row);
+
+    int count = ui.tree_computer->topLevelItemCount();
+    if (count > 0)
+    {
+        int next_row = qMin(row, count - 1);
+        ui.tree_computer->setCurrentItem(ui.tree_computer->topLevelItem(next_row));
+        ui.tree_computer->setFocus();
+    }
+
+    updateStatusLabels();
+}
+
+//--------------------------------------------------------------------------------------------------
 QByteArray LocalGroupWidget::saveState()
 {
     QByteArray buffer;
@@ -248,149 +297,6 @@ void LocalGroupWidget::deactivate(QStatusBar* statusbar)
 
     statusbar->removeWidget(status_check_label_);
     status_check_label_->setParent(this);
-}
-
-//--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::onAddComputer()
-{
-    LOG(INFO) << "[ACTION] Add computer";
-
-    if (current_group_id_ < 0)
-    {
-        LOG(INFO) << "No current group";
-        return;
-    }
-
-    LocalComputerDialog dialog(-1, current_group_id_, this);
-    if (dialog.exec() == LocalComputerDialog::Rejected)
-    {
-        LOG(INFO) << "[ACTION] Rejected by user";
-        return;
-    }
-
-    qint64 new_id = dialog.computerId();
-    showGroup(current_group_id_);
-    setCurrentComputer(new_id);
-}
-
-//--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::onEditComputer()
-{
-    LOG(INFO) << "[ACTION] Edit computer";
-
-    Item* item = currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local item";
-        return;
-    }
-
-    qint64 computer_id = item->computerId();
-
-    LocalComputerDialog dialog(computer_id, item->groupId(), this);
-    if (dialog.exec() == LocalComputerDialog::Rejected)
-    {
-        LOG(INFO) << "[ACTION] Rejected by user";
-        return;
-    }
-
-    std::optional<ComputerConfig> updated = Database::instance().findComputer(computer_id);
-    if (!updated.has_value())
-    {
-        // Row disappeared while the dialog was open - fall back to a full reload.
-        showGroup(current_group_id_);
-        return;
-    }
-
-    Item* refreshed = findItemByComputerId(computer_id);
-    if (refreshed)
-        refreshed->updateFrom(*updated);
-}
-
-//--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::onCopyComputer()
-{
-    LOG(INFO) << "[ACTION] Copy computer";
-
-    Item* item = currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local item";
-        return;
-    }
-
-    Database& db = Database::instance();
-
-    std::optional<ComputerConfig> computer = db.findComputer(item->computerId());
-    if (!computer.has_value())
-    {
-        MsgBox::warning(this, tr("Failed to retrieve computer information from the local database."));
-        return;
-    }
-
-    computer->name += " " + tr("(copy)");
-
-    if (!db.addComputer(*computer))
-    {
-        MsgBox::warning(this, tr("Failed to add the computer to the local database."));
-        return;
-    }
-
-    showGroup(current_group_id_);
-    setCurrentComputer(computer->id);
-
-    LocalComputerDialog(computer->id, computer->group_id, this).exec();
-
-    std::optional<ComputerConfig> updated = db.findComputer(computer->id);
-    if (!updated.has_value())
-        return;
-
-    Item* refreshed = findItemByComputerId(computer->id);
-    if (refreshed)
-        refreshed->updateFrom(*updated);
-}
-
-//--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::onRemoveComputer()
-{
-    LOG(INFO) << "[ACTION] Delete computer";
-
-    Item* item = currentItem();
-    if (!item)
-    {
-        LOG(INFO) << "No current local item";
-        return;
-    }
-
-    QString message = tr("Are you sure you want to delete computer \"%1\"?").arg(item->computerName());
-
-    if (MsgBox::question(this, message) == MsgBox::No)
-    {
-        LOG(INFO) << "Action is rejected by user";
-        return;
-    }
-
-    qint64 computer_id = item->computerId();
-
-    if (!Database::instance().removeComputer(computer_id))
-    {
-        MsgBox::warning(this, tr("Unable to remove computer"));
-        LOG(INFO) << "Unable to remove computer with id" << computer_id;
-        return;
-    }
-
-    int row = ui.tree_computer->indexOfTopLevelItem(item);
-    delete ui.tree_computer->takeTopLevelItem(row);
-
-    int count = ui.tree_computer->topLevelItemCount();
-    if (count > 0)
-    {
-        int next_row = qMin(row, count - 1);
-        ui.tree_computer->setCurrentItem(ui.tree_computer->topLevelItem(next_row));
-        ui.tree_computer->setFocus();
-    }
-
-    updateStatusLabels();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -565,17 +471,6 @@ LocalGroupWidget::Item* LocalGroupWidget::findItemByComputerId(qint64 computer_i
             return item;
     }
     return nullptr;
-}
-
-//--------------------------------------------------------------------------------------------------
-void LocalGroupWidget::setCurrentComputer(qint64 computer_id)
-{
-    Item* item = findItemByComputerId(computer_id);
-    if (!item)
-        return;
-
-    ui.tree_computer->setCurrentItem(item);
-    ui.tree_computer->setFocus();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -564,6 +564,11 @@ void MainWindow::addTab(Tab* tab, const QString& title, const QIcon& icon)
     connect(tab, &Tab::sig_minimizeRequested, this, &MainWindow::onTabMinimizeRequested);
     connect(tab, &Tab::sig_showRequested, this, &MainWindow::onTabShowRequested);
     connect(tab, &Tab::sig_connectRequested, this, &MainWindow::onConnect);
+    connect(tab, &Tab::sig_clearSearch, this, [this, tab]()
+    {
+        if (active_tab_ == tab)
+            search_field_->clear();
+    });
     connect(tab, &Tab::sig_actionsChanged, this, [this, tab]()
     {
         if (active_tab_ == tab)

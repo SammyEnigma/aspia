@@ -18,16 +18,189 @@
 
 #include "client/ui/hosts/search_widget.h"
 
-#include "base/logging.h"
-#include "client/database.h"
-
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
+#include <QDataStream>
+#include <QHash>
 #include <QHeaderView>
+#include <QIODevice>
+#include <QLabel>
+#include <QMenu>
+#include <QPainter>
+#include <QStatusBar>
+#include <QStyledItemDelegate>
+#include <QTextDocument>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
+#include <optional>
+
+#include "base/logging.h"
+#include "client/database.h"
+
+namespace {
+
+const int kColumnName    = 0;
+const int kColumnAddress = 1;
+const int kColumnGroup   = 2;
+const int kColumnComment = 3;
+
+class ColumnAction : public QAction
+{
+public:
+    ColumnAction(const QString& text, int index, QObject* parent)
+        : QAction(text, parent),
+          index_(index)
+    {
+        setCheckable(true);
+    }
+
+    int columnIndex() const { return index_; }
+
+private:
+    const int index_;
+    Q_DISABLE_COPY_MOVE(ColumnAction)
+};
+
+//--------------------------------------------------------------------------------------------------
+QString buildHighlightedHtml(const QString& text, const QString& query)
+{
+    QString result;
+
+    int from = 0;
+    const int query_len = query.length();
+
+    while (from < text.length())
+    {
+        int idx = text.indexOf(query, from, Qt::CaseInsensitive);
+        if (idx < 0)
+        {
+            result += text.mid(from).toHtmlEscaped();
+            break;
+        }
+
+        result += text.mid(from, idx - from).toHtmlEscaped();
+        result += "<span style=\"background-color:#ffeb3b;color:#000000\">";
+        result += text.mid(idx, query_len).toHtmlEscaped();
+        result += "</span>";
+
+        from = idx + query_len;
+    }
+
+    return result;
+}
+
+//--------------------------------------------------------------------------------------------------
+QString buildGroupPath(qint64 group_id, const QHash<qint64, GroupConfig>& groups)
+{
+    QStringList parts;
+    qint64 current = group_id;
+
+    while (current > 0)
+    {
+        auto it = groups.find(current);
+        if (it == groups.end())
+            break;
+
+        parts.prepend(it.value().name);
+        current = it.value().parent_id;
+    }
+
+    return parts.join(" / ");
+}
+
+} // namespace
+
+//--------------------------------------------------------------------------------------------------
+SearchWidget::Item::Item(const ComputerConfig& computer, const QString& group_path, QTreeWidget* parent)
+    : QTreeWidgetItem(parent)
+{
+    setIcon(kColumnName, QIcon(":/img/computer.svg"));
+    updateFrom(computer, group_path);
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::Item::updateFrom(const ComputerConfig& computer, const QString& group_path)
+{
+    computer_ = computer;
+
+    QString single_line_comment = computer.comment;
+    single_line_comment.replace('\n', ' ').replace('\r', ' ');
+
+    setText(kColumnName, computer.name);
+    setText(kColumnAddress, computer.address);
+    setText(kColumnGroup, group_path);
+    setToolTip(kColumnGroup, group_path);
+    setText(kColumnComment, single_line_comment);
+    setToolTip(kColumnComment, computer.comment);
+}
+
+class SearchWidget::HighlightDelegate final : public QStyledItemDelegate
+{
+public:
+    explicit HighlightDelegate(QObject* parent = nullptr)
+        : QStyledItemDelegate(parent)
+    {
+        // Nothing
+    }
+
+    ~HighlightDelegate() final = default;
+
+    void setQuery(const QString& query) { query_ = query; }
+
+    // QStyledItemDelegate implementation.
+    void paint(QPainter* painter, const QStyleOptionViewItem& option,
+               const QModelIndex& index) const final
+    {
+        const QString text = index.data(Qt::DisplayRole).toString();
+
+        if (query_.isEmpty() || !text.contains(query_, Qt::CaseInsensitive))
+        {
+            QStyledItemDelegate::paint(painter, option, index);
+            return;
+        }
+
+        QStyleOptionViewItem opt = option;
+        initStyleOption(&opt, index);
+
+        const QWidget* widget = opt.widget;
+        QStyle* style = widget ? widget->style() : QApplication::style();
+
+        // Draw the standard background, focus and icon, but not the text.
+        opt.text.clear();
+        style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
+
+        QRect text_rect = style->subElementRect(QStyle::SE_ItemViewItemText, &opt, widget);
+
+        QTextDocument doc;
+        doc.setDefaultFont(opt.font);
+        doc.setDocumentMargin(0);
+        doc.setHtml(buildHighlightedHtml(text, query_));
+        doc.setTextWidth(text_rect.width());
+
+        QAbstractTextDocumentLayout::PaintContext ctx;
+        if (opt.state & QStyle::State_Selected)
+            ctx.palette.setColor(QPalette::Text, opt.palette.color(QPalette::HighlightedText));
+        else
+            ctx.palette.setColor(QPalette::Text, opt.palette.color(QPalette::Text));
+
+        const qreal y_offset = (text_rect.height() - doc.size().height()) / 2.0;
+
+        painter->save();
+        painter->translate(text_rect.left(), text_rect.top() + qMax(qreal(0), y_offset));
+        ctx.clip = QRectF(0, 0, text_rect.width(), text_rect.height());
+        doc.documentLayout()->draw(painter, ctx);
+        painter->restore();
+    }
+
+private:
+    QString query_;
+};
+
 //--------------------------------------------------------------------------------------------------
 SearchWidget::SearchWidget(QWidget* parent)
-    : ContentWidget(Type::SEARCH, parent)
+    : ContentWidget(Type::SEARCH, parent),
+      status_results_label_(new QLabel(this))
 {
     LOG(INFO) << "Ctor";
 
@@ -39,11 +212,58 @@ SearchWidget::SearchWidget(QWidget* parent)
     tree_computer_->setSelectionBehavior(QAbstractItemView::SelectRows);
     tree_computer_->setIndentation(0);
     tree_computer_->setSortingEnabled(true);
-    tree_computer_->setColumnCount(3);
+    tree_computer_->setColumnCount(4);
 
     QStringList headers;
-    headers << tr("Name") << tr("Address / ID") << tr("Comment");
+    headers << tr("Name") << tr("Address / ID") << tr("Group") << tr("Comment");
     tree_computer_->setHeaderLabels(headers);
+
+    highlight_delegate_ = new HighlightDelegate(this);
+    tree_computer_->setItemDelegateForColumn(kColumnName, highlight_delegate_);
+    tree_computer_->setItemDelegateForColumn(kColumnAddress, highlight_delegate_);
+    tree_computer_->setItemDelegateForColumn(kColumnGroup, highlight_delegate_);
+    tree_computer_->setItemDelegateForColumn(kColumnComment, highlight_delegate_);
+
+    tree_computer_->header()->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(tree_computer_->header(), &QHeaderView::customContextMenuRequested,
+            this, &SearchWidget::onHeaderContextMenu);
+
+    connect(tree_computer_, &QTreeWidget::itemDoubleClicked,
+            this, [this](QTreeWidgetItem* item, int /* column */)
+    {
+        if (!item)
+            return;
+
+        Item* computer_item = static_cast<Item*>(item);
+        emit sig_doubleClicked(computer_item->computerId());
+    });
+
+    connect(tree_computer_, &QTreeWidget::currentItemChanged,
+            this, [this](QTreeWidgetItem* current, QTreeWidgetItem* /* previous */)
+    {
+        qint64 computer_id = -1;
+
+        if (current)
+        {
+            Item* computer_item = static_cast<Item*>(current);
+            computer_id = computer_item->computerId();
+        }
+
+        emit sig_currentChanged(computer_id);
+    });
+
+    connect(tree_computer_, &QTreeWidget::customContextMenuRequested,
+            this, [this](const QPoint& pos)
+    {
+        qint64 computer_id = 0;
+        Item* item = static_cast<Item*>(tree_computer_->itemAt(pos));
+        if (item)
+        {
+            tree_computer_->setCurrentItem(item);
+            computer_id = item->computerId();
+        }
+        emit sig_contextMenu(computer_id, tree_computer_->viewport()->mapToGlobal(pos));
+    });
 
     layout->addWidget(tree_computer_);
 }
@@ -57,28 +277,187 @@ SearchWidget::~SearchWidget()
 //--------------------------------------------------------------------------------------------------
 void SearchWidget::search(const QString& query)
 {
+    current_query_ = query;
+    highlight_delegate_->setQuery(query);
     tree_computer_->clear();
 
-    //QList<ComputerConfig> results = Database::instance().searchComputers(query);
+    if (query.isEmpty())
+    {
+        updateStatusLabels();
+        return;
+    }
 
-    //for (const ComputerConfig& computer : std::as_const(results))
-    //    new SearchComputerItem(computer, tree_computer_);
+    Database& db = Database::instance();
+
+    QHash<qint64, GroupConfig> groups;
+    const QList<GroupConfig> all_groups = db.allGroups();
+    groups.reserve(all_groups.size());
+    for (const GroupConfig& group : std::as_const(all_groups))
+        groups.insert(group.id, group);
+
+    const QList<ComputerConfig> results = db.searchComputers(query);
+
+    for (const ComputerConfig& computer : std::as_const(results))
+        new Item(computer, buildGroupPath(computer.group_id, groups), tree_computer_);
+
+    updateStatusLabels();
 }
 
 //--------------------------------------------------------------------------------------------------
 void SearchWidget::clear()
 {
+    current_query_.clear();
+    highlight_delegate_->setQuery(QString());
     tree_computer_->clear();
+    updateStatusLabels();
+}
+
+//--------------------------------------------------------------------------------------------------
+SearchWidget::Item* SearchWidget::currentItem()
+{
+    return static_cast<Item*>(tree_computer_->currentItem());
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::setCurrentComputer(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    tree_computer_->setCurrentItem(item);
+    tree_computer_->setFocus();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::refreshItem(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    std::optional<ComputerConfig> updated = Database::instance().findComputer(computer_id);
+    if (!updated.has_value())
+    {
+        removeItem(computer_id);
+        return;
+    }
+
+    QHash<qint64, GroupConfig> groups;
+    const QList<GroupConfig> all_groups = Database::instance().allGroups();
+    groups.reserve(all_groups.size());
+    for (const GroupConfig& group : std::as_const(all_groups))
+        groups.insert(group.id, group);
+
+    item->updateFrom(*updated, buildGroupPath(updated->group_id, groups));
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::removeItem(qint64 computer_id)
+{
+    Item* item = findItemByComputerId(computer_id);
+    if (!item)
+        return;
+
+    int row = tree_computer_->indexOfTopLevelItem(item);
+    delete tree_computer_->takeTopLevelItem(row);
+
+    int count = tree_computer_->topLevelItemCount();
+    if (count > 0)
+    {
+        int next_row = qMin(row, count - 1);
+        tree_computer_->setCurrentItem(tree_computer_->topLevelItem(next_row));
+        tree_computer_->setFocus();
+    }
+
+    updateStatusLabels();
 }
 
 //--------------------------------------------------------------------------------------------------
 QByteArray SearchWidget::saveState()
 {
-    return QByteArray();
+    QByteArray buffer;
+
+    {
+        QDataStream stream(&buffer, QIODevice::WriteOnly);
+        stream.setVersion(QDataStream::Qt_6_10);
+
+        stream << tree_computer_->header()->saveState();
+    }
+
+    return buffer;
 }
 
 //--------------------------------------------------------------------------------------------------
-void SearchWidget::restoreState(const QByteArray& /* state */)
+void SearchWidget::restoreState(const QByteArray& state)
 {
+    QDataStream stream(state);
+    stream.setVersion(QDataStream::Qt_6_10);
 
+    QByteArray columns_state;
+    stream >> columns_state;
+
+    if (!columns_state.isEmpty())
+        tree_computer_->header()->restoreState(columns_state);
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::activate(QStatusBar* statusbar)
+{
+    if (!statusbar)
+        return;
+
+    updateStatusLabels();
+
+    statusbar->addWidget(status_results_label_);
+    status_results_label_->show();
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::deactivate(QStatusBar* statusbar)
+{
+    if (!statusbar)
+        return;
+
+    statusbar->removeWidget(status_results_label_);
+    status_results_label_->setParent(this);
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::onHeaderContextMenu(const QPoint& pos)
+{
+    QHeaderView* header = tree_computer_->header();
+    QMenu menu;
+
+    for (int i = 1; i < header->count(); ++i)
+    {
+        ColumnAction* action = new ColumnAction(tree_computer_->headerItem()->text(i), i, &menu);
+        action->setChecked(!header->isSectionHidden(i));
+        menu.addAction(action);
+    }
+
+    ColumnAction* action = dynamic_cast<ColumnAction*>(menu.exec(header->viewport()->mapToGlobal(pos)));
+    if (!action)
+        return;
+
+    header->setSectionHidden(action->columnIndex(), !action->isChecked());
+}
+
+//--------------------------------------------------------------------------------------------------
+SearchWidget::Item* SearchWidget::findItemByComputerId(qint64 computer_id) const
+{
+    const int count = tree_computer_->topLevelItemCount();
+    for (int i = 0; i < count; ++i)
+    {
+        Item* item = static_cast<Item*>(tree_computer_->topLevelItem(i));
+        if (item->computerId() == computer_id)
+            return item;
+    }
+    return nullptr;
+}
+
+//--------------------------------------------------------------------------------------------------
+void SearchWidget::updateStatusLabels()
+{
+    status_results_label_->setText(tr("%n result(s)", "", tree_computer_->topLevelItemCount()));
 }

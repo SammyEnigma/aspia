@@ -19,8 +19,14 @@
 #ifndef CLIENT_UI_HOSTS_SEARCH_WIDGET_H
 #define CLIENT_UI_HOSTS_SEARCH_WIDGET_H
 
+#include <QPoint>
+#include <QTreeWidgetItem>
+
+#include "client/config.h"
 #include "client/ui/hosts/content_widget.h"
 
+class QLabel;
+class QStatusBar;
 class QTreeWidget;
 
 class SearchWidget final : public ContentWidget
@@ -31,15 +37,53 @@ public:
     explicit SearchWidget(QWidget* parent = nullptr);
     ~SearchWidget() final;
 
+    class Item final : public QTreeWidgetItem
+    {
+    public:
+        Item(const ComputerConfig& computer, const QString& group_path, QTreeWidget* parent);
+
+        qint64 computerId() const { return computer_.id; }
+        qint64 groupId() const { return computer_.group_id; }
+        QString computerName() const { return computer_.name; }
+
+        void updateFrom(const ComputerConfig& computer, const QString& group_path);
+
+    private:
+        ComputerConfig computer_;
+    };
+
     void search(const QString& query);
     void clear();
+    Item* currentItem();
+    QString currentQuery() const { return current_query_; }
+    void setCurrentComputer(qint64 computer_id);
+    void refreshItem(qint64 computer_id);
+    void removeItem(qint64 computer_id);
 
     // ContentWidget implementation.
     QByteArray saveState() final;
     void restoreState(const QByteArray& state) final;
+    void activate(QStatusBar* statusbar) final;
+    void deactivate(QStatusBar* statusbar) final;
+
+signals:
+    void sig_doubleClicked(qint64 computer_id);
+    void sig_currentChanged(qint64 computer_id);
+    void sig_contextMenu(qint64 computer_id, const QPoint& pos);
+
+private slots:
+    void onHeaderContextMenu(const QPoint& pos);
 
 private:
+    class HighlightDelegate;
+
+    Item* findItemByComputerId(qint64 computer_id) const;
+    void updateStatusLabels();
+
     QTreeWidget* tree_computer_ = nullptr;
+    QLabel* status_results_label_ = nullptr;
+    HighlightDelegate* highlight_delegate_ = nullptr;
+    QString current_query_;
 
     Q_DISABLE_COPY_MOVE(SearchWidget)
 };

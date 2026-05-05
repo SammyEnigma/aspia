@@ -94,6 +94,9 @@ signals:
     void sig_connectRequested(
         qint64 computer_id, const ComputerConfig& computer, proto::peer::SessionType session_type);
 
+    // Emitted when the tab wants the container to clear the search field.
+    void sig_clearSearch();
+
 protected:
     void addActions(ActionRole group, const QList<QAction*>& actions);
 

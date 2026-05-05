@@ -66,6 +66,10 @@ private slots:
     void onConnectAction(QAction* action);
     void onLocalConnect(qint64 computer_id);
     void onLocalComputerContextMenu(qint64 computer_id, const QPoint& pos);
+    void onAddComputer();
+    void onEditComputer();
+    void onCopyComputer();
+    void onRemoveComputer();
     void onUserContextMenu(qint64 router_id, const User& user, const QPoint& pos);
     void onHostContextMenu(qint64 router_id, const QPoint& pos, int column);
     void onRelayContextMenu(qint64 router_id, const QPoint& pos, int column);
@@ -91,6 +95,9 @@ private:
     RouterWidget* createRouterWidget(const RouterConfig& config);
 
     bool validateComputerForConnect(const ComputerConfig& computer);
+    qint64 currentComputerId() const;
+    void refreshItem(qint64 computer_id);
+    void removeItem(qint64 computer_id);
 
     Ui::HostsTab ui;
 
