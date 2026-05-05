@@ -34,6 +34,8 @@
 #include "build/build_config.h"
 #include "client/aab_importer.h"
 #include "client/database.h"
+#include "client/json_exporter.h"
+#include "client/json_importer.h"
 #include "client/settings.h"
 #include "client/ui/hosts/content_widget.h"
 #include "client/ui/hosts/sidebar.h"
@@ -90,6 +92,8 @@ HostsTab::HostsTab(QWidget* parent)
     ui.action_online_check->setChecked(settings.isOnlineCheckEnabled());
 
     ui.action_import_old_book->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_export_book->setProperty(Tab::kMenuOnlyProperty, true);
+    ui.action_import_book->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_online_check->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_add_router->setProperty(Tab::kMenuOnlyProperty, true);
     ui.action_delete_router->setProperty(Tab::kMenuOnlyProperty, true);
@@ -144,6 +148,8 @@ HostsTab::HostsTab(QWidget* parent)
     connect(ui.action_reload, &QAction::triggered, this, &HostsTab::onReloadAction);
     connect(ui.action_save, &QAction::triggered, this, &HostsTab::onSaveAction);
     connect(ui.action_import_old_book, &QAction::triggered, this, &HostsTab::onImportOldBookAction);
+    connect(ui.action_export_book, &QAction::triggered, this, &HostsTab::onExportBookAction);
+    connect(ui.action_import_book, &QAction::triggered, this, &HostsTab::onImportBookAction);
     connect(ui.action_disconnect, &QAction::triggered, this, &HostsTab::onDisconnectAction);
     connect(ui.action_disconnect_all, &QAction::triggered, this, &HostsTab::onDisconnectAllAction);
     connect(ui.action_host_remove, &QAction::triggered, this, &HostsTab::onRemoveHostAction);
@@ -151,7 +157,7 @@ HostsTab::HostsTab(QWidget* parent)
     connect(session_connect_group, &QActionGroup::triggered, this, &HostsTab::onConnectAction);
 
     // Register actions for toolbar and menus.
-    addActions(ActionRole::FILE, { ui.action_save, ui.action_import_old_book });
+    addActions(ActionRole::FILE, { ui.action_save, ui.action_import_old_book, ui.action_export_book, ui.action_import_book });
     addActions(ActionRole::EDIT, { ui.action_add_user, ui.action_edit_user, ui.action_delete_user });
     addActions(ActionRole::EDIT, { ui.action_add_router, ui.action_edit_router, ui.action_delete_router, ui.action_router_status });
     addActions(ActionRole::EDIT, { ui.action_add_group, ui.action_edit_group, ui.action_delete_group });
@@ -892,6 +898,58 @@ void HostsTab::onImportOldBookAction()
 }
 
 //--------------------------------------------------------------------------------------------------
+void HostsTab::onExportBookAction()
+{
+    LOG(INFO) << "[ACTION] Export address book";
+
+    QString file_path = QFileDialog::getSaveFileName(
+        this,
+        tr("Export Address Book"),
+        QString(),
+        tr("Address Book (*.json);;All files (*)"));
+
+    if (file_path.isEmpty())
+    {
+        LOG(INFO) << "[ACTION] Cancelled by user";
+        return;
+    }
+
+    JsonExporter::exportToFile(this, file_path);
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::onImportBookAction()
+{
+    LOG(INFO) << "[ACTION] Import address book (json)";
+
+    Sidebar::Item* sidebar_item = ui.sidebar->currentItem();
+    if (!sidebar_item || sidebar_item->itemType() != Sidebar::Item::Type::LOCAL_GROUP)
+    {
+        LOG(INFO) << "No current local group item";
+        return;
+    }
+
+    QString file_path = QFileDialog::getOpenFileName(
+        this,
+        tr("Import Address Book"),
+        QString(),
+        tr("Address Book (*.json);;All files (*)"));
+
+    if (file_path.isEmpty())
+    {
+        LOG(INFO) << "[ACTION] Cancelled by user";
+        return;
+    }
+
+    if (!JsonImporter::importFromFile(this, file_path))
+        return;
+
+    reloadRouters();
+    ui.sidebar->reloadGroups();
+    updateActionsState();
+}
+
+//--------------------------------------------------------------------------------------------------
 void HostsTab::onReloadAction()
 {
     if (current_content_ && current_content_->canReload())
@@ -1021,6 +1079,8 @@ void HostsTab::updateActionsState()
     ui.action_reload->setVisible(false);
     ui.action_save->setVisible(false);
     ui.action_import_old_book->setVisible(false);
+    ui.action_export_book->setVisible(false);
+    ui.action_import_book->setVisible(false);
     ui.action_disconnect->setVisible(false);
     ui.action_disconnect_all->setVisible(false);
     ui.action_host_remove->setVisible(false);
@@ -1040,6 +1100,8 @@ void HostsTab::updateActionsState()
     {
         ui.action_online_check->setVisible(true);
         ui.action_import_old_book->setVisible(true);
+        ui.action_export_book->setVisible(true);
+        ui.action_import_book->setVisible(true);
 
         ui.action_add_group->setVisible(true);
         ui.action_delete_group->setVisible(sidebar_item->groupId() != 0);

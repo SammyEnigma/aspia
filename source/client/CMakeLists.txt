@@ -43,6 +43,10 @@ list(APPEND SOURCE_CLIENT_CORE
     file_transfer.h
     file_transfer_queue_builder.cc
     file_transfer_queue_builder.h
+    json_exporter.cc
+    json_exporter.h
+    json_importer.cc
+    json_importer.h
     master_password.cc
     master_password.h
     router.cc
@@ -71,6 +75,9 @@ list(APPEND SOURCE_CLIENT_CORE_UI
     ui/client_tab.h
     ui/client_window.cc
     ui/client_window.h
+    ui/export_password_dialog.cc
+    ui/export_password_dialog.h
+    ui/export_password_dialog.ui
     ui/hosts_tab.cc
     ui/hosts_tab.h
     ui/hosts_tab.ui

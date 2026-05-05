@@ -78,6 +78,8 @@ private slots:
     void onDeleteUserAction();
     void onRouterStatus();
     void onImportOldBookAction();
+    void onExportBookAction();
+    void onImportBookAction();
     void onReloadAction();
     void onSaveAction();
     void onDisconnectAction();

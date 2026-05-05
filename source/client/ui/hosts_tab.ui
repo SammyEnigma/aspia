@@ -311,6 +311,24 @@
     <string>Import Old Address Book...</string>
    </property>
   </action>
+  <action name="action_export_book">
+   <property name="icon">
+    <iconset resource="../../common/resources/common.qrc">
+     <normaloff>:/img/export.svg</normaloff>:/img/export.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Export Address Book...</string>
+   </property>
+  </action>
+  <action name="action_import_book">
+   <property name="icon">
+    <iconset resource="../../common/resources/common.qrc">
+     <normaloff>:/img/import.svg</normaloff>:/img/import.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Import Address Book...</string>
+   </property>
+  </action>
   <action name="action_online_check">
    <property name="checkable">
     <bool>true</bool>
