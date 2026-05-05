@@ -29,6 +29,7 @@
 #include "client/ui/file_transfer/file_transfer_widget.h"
 
 #include "common/ui/msg_box.h"
+#include "common/ui/session_type.h"
 
 //--------------------------------------------------------------------------------------------------
 FileTransferWindow::FileTransferWindow(QWidget* parent)
@@ -48,6 +49,21 @@ FileTransferWindow::FileTransferWindow(QWidget* parent)
             this, &FileTransferWindow::onTransferWidgetFinished);
     connect(ui->remove_widget, &FileRemoveWidget::sig_finished,
             this, &FileTransferWindow::onRemoveWidgetFinished);
+
+    auto make_action = [this](proto::peer::SessionType type)
+    {
+        QAction* action = new QAction(sessionIcon(type), sessionName(type), this);
+        connect(action, &QAction::triggered, this, [this, type]()
+        {
+            const ComputerConfig& computer = sessionState()->computer();
+            emit sig_connectRequested(computer.id, computer, type);
+        });
+        return action;
+    };
+
+    action_desktop_ = make_action(proto::peer::SESSION_TYPE_DESKTOP);
+    action_text_chat_ = make_action(proto::peer::SESSION_TYPE_TEXT_CHAT);
+    action_system_info_ = make_action(proto::peer::SESSION_TYPE_SYSTEM_INFO);
 
     ui->local_panel->setFocus();
 }
@@ -92,6 +108,12 @@ Client* FileTransferWindow::createClient()
             Qt::QueuedConnection);
 
     return client;
+}
+
+//--------------------------------------------------------------------------------------------------
+QList<QPair<Tab::ActionRole, QList<QAction*>>> FileTransferWindow::tabActionGroups() const
+{
+    return {{ Tab::ActionRole::ACTION, { action_desktop_, action_text_chat_, action_system_info_ }}};
 }
 
 //--------------------------------------------------------------------------------------------------

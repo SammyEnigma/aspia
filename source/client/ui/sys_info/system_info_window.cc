@@ -52,6 +52,7 @@
 #include "client/ui/sys_info/sys_info_widget_video_adapters.h"
 #include "client/ui/sys_info/tree_to_html.h"
 #include "common/system_info_constants.h"
+#include "common/ui/session_type.h"
 #include "ui_system_info_window.h"
 
 namespace {
@@ -295,6 +296,21 @@ SystemInfoWindow::SystemInfoWindow(QWidget* parent)
     layout_ = new QHBoxLayout(ui->widget);
     layout_->setContentsMargins(0, 0, 0, 0);
     layout_->addWidget(sys_info_widgets_[current_widget_]);
+
+    auto make_action = [this](proto::peer::SessionType type)
+    {
+        QAction* action = new QAction(sessionIcon(type), sessionName(type), this);
+        connect(action, &QAction::triggered, this, [this, type]()
+        {
+            const ComputerConfig& computer = sessionState()->computer();
+            emit sig_connectRequested(computer.id, computer, type);
+        });
+        return action;
+    };
+
+    action_desktop_ = make_action(proto::peer::SESSION_TYPE_DESKTOP);
+    action_file_transfer_ = make_action(proto::peer::SESSION_TYPE_FILE_TRANSFER);
+    action_text_chat_ = make_action(proto::peer::SESSION_TYPE_TEXT_CHAT);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -332,7 +348,8 @@ QList<QPair<Tab::ActionRole, QList<QAction*>>> SystemInfoWindow::tabActionGroups
 {
     return {
         { Tab::ActionRole::FILE, { ui->action_save, ui->action_print } },
-        { Tab::ActionRole::VIEW, { ui->action_refresh } }
+        { Tab::ActionRole::VIEW, { ui->action_refresh } },
+        { Tab::ActionRole::ACTION, { action_desktop_, action_file_transfer_, action_text_chat_ } }
     };
 }
 

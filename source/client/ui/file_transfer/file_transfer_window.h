@@ -39,6 +39,7 @@ public:
 
     // ClientWindow implementation.
     Client* createClient() final;
+    QList<QPair<Tab::ActionRole, QList<QAction*>>> tabActionGroups() const final;
     QByteArray saveState() const final;
     void restoreState(const QByteArray& state) final;
 
@@ -95,6 +96,9 @@ private:
     void setFilePanelsEnabled(bool enabled);
 
     std::unique_ptr<Ui::FileTransferWindow> ui;
+    QAction* action_desktop_ = nullptr;
+    QAction* action_text_chat_ = nullptr;
+    QAction* action_system_info_ = nullptr;
 
     Q_DISABLE_COPY_MOVE(FileTransferWindow)
 };
