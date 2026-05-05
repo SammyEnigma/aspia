@@ -19,6 +19,7 @@
 #ifndef BASE_SCOPED_QPOINTER_H
 #define BASE_SCOPED_QPOINTER_H
 
+#include <QObject>
 #include <QPointer>
 
 #include <type_traits>
@@ -120,6 +121,27 @@ public:
         if (ptr_ && ptr_.data() != new_ptr)
             ptr_->deleteLater();
         ptr_ = new_ptr;
+    }
+
+    // Asynchronous reset that calls |on_destroyed| once the held object has been fully torn down.
+    // If no object is held, |on_destroyed| runs immediately. Otherwise the callback is connected
+    // to the held object's QObject::destroyed signal (with |context| as the receiver, so Qt
+    // auto-disconnects if |context| dies first), deleteLater() is scheduled, and the internal
+    // pointer is cleared right away.
+    template <typename F, typename = std::enable_if_t<std::is_invocable_v<F&>>>
+    void resetThen(const QObject* context, F&& on_destroyed)
+    {
+        if (!ptr_)
+        {
+            std::forward<F>(on_destroyed)();
+            return;
+        }
+
+        T* p = ptr_.data();
+        QObject::connect(p, &QObject::destroyed, context,
+                         [cb = std::forward<F>(on_destroyed)]() mutable { cb(); });
+        p->deleteLater();
+        ptr_ = nullptr;
     }
 
 private:
