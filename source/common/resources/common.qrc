@@ -21,11 +21,9 @@
         <file>workstation.svg</file>
         <file>imac.svg</file>
         <file>save.svg</file>
-        <file>save-all.svg</file>
         <file>replay.svg</file>
         <file>help.svg</file>
         <file>file.svg</file>
-        <file>opened-folder.svg</file>
         <file>connected.svg</file>
         <file>network-card.svg</file>
         <file>memory-slot.svg</file>
@@ -40,8 +38,6 @@
         <file>add-computer.svg</file>
         <file>remove-computer.svg</file>
         <file>copy-computer.svg</file>
-        <file>change-file.svg</file>
-        <file>pin-file.svg</file>
         <file>show-password.svg</file>
         <file>add.svg</file>
         <file>pencil-drawing.svg</file>
@@ -52,7 +48,6 @@
         <file>stop.svg</file>
         <file>love.svg</file>
         <file>pause.svg</file>
-        <file>clouds.svg</file>
         <file>restart.svg</file>
         <file>pin.svg</file>
         <file>user.svg</file>
@@ -60,11 +55,8 @@
         <file>minimize-window.svg</file>
         <file>close-window.svg</file>
         <file>expand.svg</file>
-        <file>application-window.svg</file>
         <file>done.svg</file>
-        <file>key-security.svg</file>
         <file>settings.svg</file>
-        <file>virtual-machine.svg</file>
         <file>monitor-1.svg</file>
         <file>monitor-2.svg</file>
         <file>monitor-3.svg</file>
@@ -79,12 +71,9 @@
         <file>stack.svg</file>
         <file>menu.svg</file>
         <file>home.svg</file>
-        <file>shutdown.svg</file>
         <file>electrical.svg</file>
-        <file>slider.svg</file>
         <file>export.svg</file>
         <file>import.svg</file>
-        <file>ethernet-off.svg</file>
         <file>desktop.svg</file>
         <file>locked-user.svg</file>
         <file>close.svg</file>
@@ -92,24 +81,18 @@
         <file>log.svg</file>
         <file>processor.svg</file>
         <file>print.svg</file>
-        <file>cloud-file.svg</file>
-        <file>search.svg</file>
-        <file>recycle-bin.svg</file>
-        <file>laptop.svg</file>
         <file>forward.svg</file>
         <file>ctrl-alt-del.svg</file>
         <file>day-view.svg</file>
         <file>operating-system.svg</file>
         <file>nas.svg</file>
         <file>heart-monitor.svg</file>
-        <file>expand-arrow.svg</file>
         <file>flow-chart.svg</file>
         <file>check-all.svg</file>
         <file>uncheck-all.svg</file>
         <file>software.svg</file>
         <file>flash-on.svg</file>
         <file>move.svg</file>
-        <file>tools.svg</file>
         <file>chat.svg</file>
         <file>browse-page.svg</file>
         <file>web.svg</file>
@@ -127,11 +110,6 @@
         <file>workspace-add.svg</file>
         <file>workspace-delete.svg</file>
         <file>workspace-edit.svg</file>
-        <file>workspace-locked.svg</file>
-        <file>workspace-reload.svg</file>
-        <file>workspace-search.svg</file>
-        <file>workspace-settings.svg</file>
-        <file>workspace-unlocked.svg</file>
         <file>host-disconnect.svg</file>
         <file>host-disconnect-all.svg</file>
         <file>connect.svg</file>
@@ -141,9 +119,6 @@
         <file>router-status.svg</file>
         <file>arrow-left.svg</file>
         <file>arrow-right.svg</file>
-        <file>copy.svg</file>
-        <file>cut.svg</file>
-        <file>rename.svg</file>
         <file>clean.svg</file>
     </qresource>
 </RCC>
