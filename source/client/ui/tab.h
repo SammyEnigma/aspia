@@ -63,7 +63,8 @@ public:
     virtual void deactivate(QStatusBar* statusbar) = 0;
     virtual bool hasSearchField() const;
     virtual bool hasStatusBar() const;
-    virtual void onSearchTextChanged(const QString& text);
+    virtual QString searchText() const;
+    virtual void searchTextChanged(const QString& text);
 
     using ActionGroupEntry = QPair<ActionRole, QList<QAction*>>;
     virtual QList<ActionGroupEntry> actionGroups() const;

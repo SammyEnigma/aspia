@@ -49,14 +49,14 @@ public:
     void activate(QStatusBar* statusbar) final;
     void deactivate(QStatusBar* statusbar) final;
     bool hasSearchField() const final;
-    void onSearchTextChanged(const QString& text) final;
+    QString searchText() const final;
+    void searchTextChanged(const QString& text) final;
 
     void reloadRouters();
 
 signals:
-    void sig_connect(qint64 computer_id,
-                     const ComputerConfig& computer,
-                     proto::peer::SessionType session_type);
+    void sig_connect(
+        qint64 computer_id, const ComputerConfig& computer, proto::peer::SessionType session_type);
 
 private slots:
     void onRouterStatusChanged(qint64 router_id, Router::Status status);

@@ -21,6 +21,7 @@
 #include <QDesktopServices>
 #include <QLineEdit>
 #include <QScreen>
+#include <QSignalBlocker>
 #include <QStyle>
 #include <QTabBar>
 #include <QTimer>
@@ -308,7 +309,7 @@ void MainWindow::onCloseTab(int index)
 void MainWindow::onSearchTextChanged(const QString& text)
 {
     if (active_tab_)
-        active_tab_->onSearchTextChanged(text);
+        active_tab_->searchTextChanged(text);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -617,6 +618,16 @@ void MainWindow::updateSearchFieldVisibility()
 
     if (!show_search && search_field_->isVisible())
         search_field_->clear();
+
+    if (show_search)
+    {
+        QString text = active_tab_->searchText();
+        if (search_field_->text() != text)
+        {
+            QSignalBlocker blocker(search_field_);
+            search_field_->setText(text);
+        }
+    }
 
     search_action_->setVisible(show_search);
 }

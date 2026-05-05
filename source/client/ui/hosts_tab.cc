@@ -305,7 +305,13 @@ bool HostsTab::hasSearchField() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void HostsTab::onSearchTextChanged(const QString& text)
+QString HostsTab::searchText() const
+{
+    return search_widget_->currentQuery();
+}
+
+//--------------------------------------------------------------------------------------------------
+void HostsTab::searchTextChanged(const QString& text)
 {
     if (text.isEmpty())
     {

@@ -97,7 +97,13 @@ bool Tab::hasStatusBar() const
 }
 
 //--------------------------------------------------------------------------------------------------
-void Tab::onSearchTextChanged(const QString& /* text */)
+QString Tab::searchText() const
+{
+    return QString();
+}
+
+//--------------------------------------------------------------------------------------------------
+void Tab::searchTextChanged(const QString& /* text */)
 {
     // Nothing
 }
