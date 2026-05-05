@@ -9,43 +9,43 @@
         <translation>%1 (импортирован)</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="267"/>
+        <location filename="../client/aab_importer.cc" line="266"/>
         <source>Unable to open file &quot;%1&quot;: %2</source>
         <translation>Не удалось открыть файл &quot;%1&quot;: %2</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="276"/>
+        <location filename="../client/aab_importer.cc" line="275"/>
         <source>Selected file is empty.</source>
         <translation>Выбранный файл пуст.</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="284"/>
-        <location filename="../client/aab_importer.cc" line="331"/>
+        <location filename="../client/aab_importer.cc" line="283"/>
+        <location filename="../client/aab_importer.cc" line="330"/>
         <source>The address book file is corrupted or has an unknown format.</source>
         <translation>Файл адресной книги поврежден или имеет неизвестный формат.</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="297"/>
+        <location filename="../client/aab_importer.cc" line="296"/>
         <source>ChaCha20 + Poly1305 (256-bit key)</source>
         <translation>ChaCha20 + Poly1305 (256-битный ключ)</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="310"/>
+        <location filename="../client/aab_importer.cc" line="309"/>
         <source>The address book file is encrypted with an unsupported encryption type.</source>
         <translation>Файл адресной книги зашифрован неподдерживаемым методом шифрования.</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="321"/>
+        <location filename="../client/aab_importer.cc" line="320"/>
         <source>Unable to decrypt the address book with the specified password.</source>
         <translation>Не удалось расшифровать адресную книгу с указанным паролем.</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="354"/>
+        <location filename="../client/aab_importer.cc" line="353"/>
         <source>Nothing was imported.</source>
         <translation>Ничего не было импортировано.</translation>
     </message>
     <message>
-        <location filename="../client/aab_importer.cc" line="359"/>
+        <location filename="../client/aab_importer.cc" line="358"/>
         <source>Import completed successfully.
 Groups added: %1
 Computers added: %2
@@ -509,47 +509,47 @@ Routers added: %4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="146"/>
+        <location filename="../common/ui/chat_widget.cc" line="130"/>
         <source>Save chat...</source>
         <translation>Сохранить чат...</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="147"/>
+        <location filename="../common/ui/chat_widget.cc" line="131"/>
         <source>Clear chat</source>
         <translation>Очистить чат</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="196"/>
+        <location filename="../common/ui/chat_widget.cc" line="194"/>
         <source>%1 is typing...</source>
         <translation>%1 печатает...</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="200"/>
+        <location filename="../common/ui/chat_widget.cc" line="198"/>
         <source>User %1 has joined the chat (%2)</source>
         <translation>Пользователь %1 вошел в чат (%2)</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="204"/>
+        <location filename="../common/ui/chat_widget.cc" line="202"/>
         <source>User %1 has left the chat (%2)</source>
         <translation>Пользователь %1 покинул чат (%2)</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="208"/>
+        <location filename="../common/ui/chat_widget.cc" line="206"/>
         <source>User %1 is logged in (%2)</source>
         <translation>Пользователь %1 вошел в систему (%2)</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="212"/>
+        <location filename="../common/ui/chat_widget.cc" line="210"/>
         <source>User %1 is not logged in (%2)</source>
         <translation>Пользователь %1 не в системе (%2)</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="216"/>
+        <location filename="../common/ui/chat_widget.cc" line="214"/>
         <source>There are no connected users (%1)</source>
         <translation>Нет подключенных пользователей (%1)</translation>
     </message>
     <message numerus="yes">
-        <location filename="../common/ui/chat_widget.cc" line="514"/>
+        <location filename="../common/ui/chat_widget.cc" line="524"/>
         <source>The message is too long. The maximum message length is %n characters.</source>
         <translation>
             <numerusform>Введенное сообщение слишком длинное. Максимальная длина сообщения %n символ.</numerusform>
@@ -558,17 +558,17 @@ Routers added: %4</source>
         </translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="562"/>
+        <location filename="../common/ui/chat_widget.cc" line="572"/>
         <source>Save File</source>
         <translation>Сохранить файл</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="564"/>
+        <location filename="../common/ui/chat_widget.cc" line="574"/>
         <source>TXT files (*.txt)</source>
         <translation>Файлы TXT (*.txt)</translation>
     </message>
     <message>
-        <location filename="../common/ui/chat_widget.cc" line="579"/>
+        <location filename="../common/ui/chat_widget.cc" line="589"/>
         <source>Could not open file for writing.</source>
         <translation>Не удалось открыть файл для записи.</translation>
     </message>
@@ -662,132 +662,132 @@ Routers added: %4</source>
 <context>
     <name>Client</name>
     <message>
-        <location filename="../client/main.cc" line="43"/>
+        <location filename="../client/main.cc" line="44"/>
         <source>Incorrect value for &quot;%1&quot;. Possible values: %2.</source>
         <translation>Некорректное значение для &quot;%1&quot;. Возможные значения: %2.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="299"/>
+        <location filename="../client/main.cc" line="300"/>
         <source>Connecting to router %1...</source>
         <translation>Подключение к маршрутизатору %1...</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="304"/>
+        <location filename="../client/main.cc" line="305"/>
         <source>Connection to router %1 established.</source>
         <translation>Соединение с маршрутизатором %1 установлено.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="313"/>
+        <location filename="../client/main.cc" line="314"/>
         <source>Disconnected from router %1.</source>
         <translation>Отключено от маршрутизатора %1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="325"/>
+        <location filename="../client/main.cc" line="326"/>
         <source>Network error: %1.</source>
         <translation>Сетевая ошибка: %1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="363"/>
+        <location filename="../client/main.cc" line="364"/>
         <source>Remote computer address.</source>
         <translation>Адрес удаленного компьютера.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="558"/>
+        <location filename="../client/main.cc" line="559"/>
         <source>Connection parameters to the router are not specified.</source>
         <translation>Параметры подключения к маршрутизатору не указаны.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="571"/>
+        <location filename="../client/main.cc" line="572"/>
         <source>Incorrect data for connecting to the router.</source>
         <translation>Неверные данные для подключения к маршрутизатору.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="618"/>
+        <location filename="../client/main.cc" line="619"/>
         <source>Invalid master password.</source>
         <translation>Неверный мастер-пароль.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="367"/>
+        <location filename="../client/main.cc" line="368"/>
         <source>Name of host.</source>
         <translation>Имя хоста.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="371"/>
+        <location filename="../client/main.cc" line="372"/>
         <source>Name of user.</source>
         <translation>Имя пользователя.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="375"/>
+        <location filename="../client/main.cc" line="376"/>
         <source>Password of user.</source>
         <translation>Пароль пользователя.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="379"/>
+        <location filename="../client/main.cc" line="380"/>
         <source>Display name when connected</source>
         <translation>Имя отображаемое при подключении</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="388"/>
+        <location filename="../client/main.cc" line="389"/>
         <source>Enable or disable audio. Possible values: 0 or 1.</source>
         <translation>Включить или отключить звук. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="392"/>
+        <location filename="../client/main.cc" line="393"/>
         <source>Enable or disable cursor shape. Possible values: 0 or 1.</source>
         <translation>Включить или отключить изображение курсора мыши. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="396"/>
+        <location filename="../client/main.cc" line="397"/>
         <source>Enable or disable cursor position. Possible values: 0 or 1.</source>
         <translation>Включить или отключить положение курсора. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="400"/>
+        <location filename="../client/main.cc" line="401"/>
         <source>Enable or disable clipboard. Possible values: 0 or 1.</source>
         <translation>Включить или отключить буфер обмена. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="404"/>
+        <location filename="../client/main.cc" line="405"/>
         <source>Enable or disable desktop effects. Possible values: 0 or 1.</source>
         <translation>Включить или отключить эффекты рабочего стола. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="408"/>
+        <location filename="../client/main.cc" line="409"/>
         <source>Enable or disable desktop wallpaper. Possible values: 0 or 1.</source>
         <translation>Включить или отключить обои рабочего стола. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="383"/>
+        <location filename="../client/main.cc" line="384"/>
         <source>Session type. Possible values: desktop, file-transfer, system-info, text-chat.</source>
         <translation>Тип сессии. Возможные значения: desktop, file-transfer, system-info, text-chat.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="412"/>
+        <location filename="../client/main.cc" line="413"/>
         <source>Lock computer at disconnect. Possible values: 0 or 1.</source>
         <translation>Блокировать компьютер при отключении. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="416"/>
+        <location filename="../client/main.cc" line="417"/>
         <source>Block remote input. Possible values: 0 or 1.</source>
         <translation>Блокировать удаленный ввод. Возможные значения: 0 или 1.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="420"/>
+        <location filename="../client/main.cc" line="421"/>
         <source>Router address.</source>
         <translation>Адрес маршрутизатора.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="424"/>
+        <location filename="../client/main.cc" line="425"/>
         <source>Router name of user.</source>
         <translation>Имя пользователя маршрутизатора.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="428"/>
+        <location filename="../client/main.cc" line="429"/>
         <source>Router password of user.</source>
         <translation>Пароль маршрутизатора.</translation>
     </message>
     <message>
-        <location filename="../client/main.cc" line="432"/>
+        <location filename="../client/main.cc" line="433"/>
         <source>Aspia Client</source>
         <translation>Клиент Aspia</translation>
     </message>
@@ -1636,17 +1636,17 @@ Routers added: %4</source>
 <context>
     <name>DesktopWindow</name>
     <message>
-        <location filename="../client/ui/desktop/desktop_window.cc" line="892"/>
+        <location filename="../client/ui/desktop/desktop_window.cc" line="861"/>
         <source>Save File</source>
         <translation>Сохранить файл</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_window.cc" line="894"/>
+        <location filename="../client/ui/desktop/desktop_window.cc" line="863"/>
         <source>PNG Image (*.png);;BMP Image (*.bmp)</source>
         <translation>PNG изображение (*.png);;BMP изображение (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../client/ui/desktop/desktop_window.cc" line="925"/>
+        <location filename="../client/ui/desktop/desktop_window.cc" line="894"/>
         <source>Could not save image</source>
         <translation>Не удалось сохранить изображение</translation>
     </message>
@@ -1760,6 +1760,59 @@ Routers added: %4</source>
         <location filename="../common/ui/download_dialog.cc" line="64"/>
         <source>An error occurred while downloading the update: %1</source>
         <translation>Произошла ошибка при загрузке обновления: %1</translation>
+    </message>
+</context>
+<context>
+    <name>ExportPasswordDialog</name>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="23"/>
+        <source>Export Address Book</source>
+        <translation>Экспорт адресной книги</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="53"/>
+        <source>Enter a password to encrypt user names and passwords. Press &quot;Skip&quot; to export without them.</source>
+        <translation>Введите пароль для шифрования имён пользователей и паролей. Нажмите &quot;Пропустить&quot;, чтобы выполнить экспорт без них.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="67"/>
+        <source>Password:</source>
+        <translation>Пароль:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="107"/>
+        <source>Confirm password:</source>
+        <translation>Подтвердите пароль:</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="141"/>
+        <source>Encrypt</source>
+        <translation>Шифрование</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="151"/>
+        <source>Skip</source>
+        <translation>Пропустить</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.ui" line="158"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.cc" line="86"/>
+        <source>Password cannot be empty.</source>
+        <translation>Пароль не может быть пустым.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.cc" line="92"/>
+        <source>Passwords do not match.</source>
+        <translation>Пароли не совпадают.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/export_password_dialog.cc" line="104"/>
+        <source>Without a password, user names and passwords will not be exported. Continue?</source>
+        <translation>Без пароля имена пользователей и пароли не будут экспортированы. Продолжить?</translation>
     </message>
 </context>
 <context>
@@ -1907,52 +1960,52 @@ Routers added: %4</source>
 <context>
     <name>FilePanel</name>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="151"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="145"/>
         <source>Up</source>
         <translation>Вверх</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="154"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="148"/>
         <source>Browse to parent folder (Backspace)</source>
         <translation>Перейти к родительской папке (Backspace)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="163"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="157"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="166"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="160"/>
         <source>Refresh (F5)</source>
         <translation>Обновить (F5)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="178"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="172"/>
         <source>New Folder</source>
         <translation>Новая папка</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="181"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="175"/>
         <source>Create a new folder</source>
         <translation>Создать новую папку</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="193"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="187"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="196"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="190"/>
         <source>Delete selected object(s) (Delete)</source>
         <translation>Удалить выбранные объекты (Delete)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="211"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="205"/>
         <source>Send selected object(s) (F11)</source>
         <translation>Отправить выбранные объекты (F11)</translation>
     </message>
     <message>
-        <location filename="../client/ui/file_transfer/file_panel.ui" line="208"/>
+        <location filename="../client/ui/file_transfer/file_panel.ui" line="202"/>
         <source>Send</source>
         <translation>Отправить</translation>
     </message>
@@ -2718,7 +2771,17 @@ Routers added: %4</source>
         <translation>Импорт старой адресной книги...</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.ui" line="319"/>
+        <location filename="../client/ui/hosts_tab.ui" line="320"/>
+        <source>Export Address Book...</source>
+        <translation>Экспорт адресной книги...</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.ui" line="329"/>
+        <source>Import Address Book...</source>
+        <translation>Импорт адресной книги...</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.ui" line="337"/>
         <source>Auto-refresh Status</source>
         <translation>Автообновление состояния</translation>
     </message>
@@ -2735,8 +2798,11 @@ Routers added: %4</source>
         <translation type="vanished">Удалить</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="468"/>
-        <location filename="../client/ui/hosts_tab.cc" line="514"/>
+        <location filename="../client/ui/hosts_tab.cc" line="533"/>
+        <location filename="../client/ui/hosts_tab.cc" line="579"/>
+        <location filename="../client/ui/hosts_tab.cc" line="654"/>
+        <location filename="../client/ui/hosts_tab.cc" line="685"/>
+        <location filename="../client/ui/hosts_tab.cc" line="728"/>
         <source>Failed to retrieve computer information from the local database.</source>
         <translation>Не удалось получить информацию о компьютере из локальной базы данных.</translation>
     </message>
@@ -2745,41 +2811,179 @@ Routers added: %4</source>
         <translation type="vanished">Вы уверены, что хотите удалить маршрутизатор &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="775"/>
-        <location filename="../client/ui/hosts_tab.cc" line="800"/>
+        <location filename="../client/ui/hosts_tab.cc" line="689"/>
+        <source>(copy)</source>
+        <translation>(копия)</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="693"/>
+        <source>Failed to add the computer to the local database.</source>
+        <translation>Не удалось добавить компьютер в локальную базу данных.</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="732"/>
+        <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
+        <translation>Вы действительно хотите удалить компьютер &quot;%1&quot;?</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="742"/>
+        <source>Unable to remove computer</source>
+        <translation>Не удалось удалить компьютер</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="778"/>
+        <location filename="../client/ui/hosts_tab.cc" line="803"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="776"/>
-        <location filename="../client/ui/hosts_tab.cc" line="801"/>
+        <location filename="../client/ui/hosts_tab.cc" line="779"/>
+        <location filename="../client/ui/hosts_tab.cc" line="804"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="879"/>
+        <location filename="../client/ui/hosts_tab.cc" line="882"/>
         <source>Import Old Address Book</source>
         <translation>Импорт старой адресной книги</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="881"/>
+        <location filename="../client/ui/hosts_tab.cc" line="884"/>
         <source>Address Book (*.aab);;All files (*)</source>
         <translation>Адресная книга (*.aab);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="992"/>
+        <location filename="../client/ui/hosts_tab.cc" line="907"/>
+        <source>Export Address Book</source>
+        <translation>Экспорт адресной книги</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="909"/>
+        <location filename="../client/ui/hosts_tab.cc" line="936"/>
+        <source>Address Book (*.json);;All files (*)</source>
+        <translation>Адресная книга (*.json);;Все файлы (*)</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="934"/>
+        <source>Import Address Book</source>
+        <translation>Импорт адресной книги</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts_tab.cc" line="1233"/>
         <source>The router associated with this computer has been deleted. Edit the computer to select another router or switch to direct connection.</source>
         <translation>Маршрутизатор, связанный с этим компьютером, был удален. Измените настройки компьютера, чтобы выбрать другой маршрутизатор или переключитесь на прямое подключение.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="999"/>
+        <location filename="../client/ui/hosts_tab.cc" line="1240"/>
         <source>The computer has an invalid host ID.</source>
         <translation>Компьютер имеет некорретный ID хоста.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts_tab.cc" line="1008"/>
+        <location filename="../client/ui/hosts_tab.cc" line="1249"/>
         <source>The computer has an incorrect address.</source>
         <translation>Компьютер имеет неверный адрес.</translation>
+    </message>
+</context>
+<context>
+    <name>JsonExporter</name>
+    <message>
+        <location filename="../client/json_exporter.cc" line="121"/>
+        <source>Address book database is not available.</source>
+        <translation>База данных адресной книги недоступна.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_exporter.cc" line="151"/>
+        <source>Failed to generate verifier.</source>
+        <translation>Не удалось сгенерировать верификатор.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_exporter.cc" line="187"/>
+        <source>Unable to open file &quot;%1&quot;: %2</source>
+        <translation>Не удалось открыть файл &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/json_exporter.cc" line="193"/>
+        <source>Unable to write file &quot;%1&quot;: %2</source>
+        <translation>Не удалось записать файл &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/json_exporter.cc" line="198"/>
+        <source>Export completed successfully.
+Routers exported: %1
+Groups exported: %2
+Computers exported: %3</source>
+        <translation>Экспорт успешно завершен.
+Маршрутизаторов экспортировано: %1
+Групп экспортировано: %2
+Компьютеров экспортировано: %3</translation>
+    </message>
+</context>
+<context>
+    <name>JsonImporter</name>
+    <message>
+        <location filename="../client/json_importer.cc" line="289"/>
+        <source>Unable to open file &quot;%1&quot;: %2</source>
+        <translation>Не удалось открыть файл &quot;%1&quot;: %2</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="298"/>
+        <source>Selected file is empty.</source>
+        <translation>Выбранный файл пуст.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="306"/>
+        <source>The file is not a valid JSON document: %1</source>
+        <translation>Файл не является допустимым документом в формате JSON: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="315"/>
+        <source>Unsupported file format version: %1</source>
+        <translation>Неподдерживаемая версия формата файла: %1</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="327"/>
+        <source>Encrypted file is missing salt.</source>
+        <translation>В зашифрованном файле отсутствует соль.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="332"/>
+        <source>The file contains encrypted usernames and passwords. To import them, you need to enter a password (if no password is entered, they will be imported without them). Do you want to enter the password?</source>
+        <translation>В указанном файле зашифрованы имена пользователей и пароли. Для их импортирования необходимо ввести пароль (без ввода пароля импорт будет произведен без них). Вы хотите ввести пароль?</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="342"/>
+        <source>ChaCha20 + Poly1305 (256-bit key)</source>
+        <translation>ChaCha20 + Poly1305 (256-битный ключ)</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="352"/>
+        <source>Unable to decrypt the file with the specified password.</source>
+        <translation>Не удается расшифровать файл с помощью указанного пароля.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="361"/>
+        <source>Address book database is not available.</source>
+        <translation>База данных адресной книги недоступна.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="392"/>
+        <source>Nothing was imported.</source>
+        <translation>Ничего не было импортировано.</translation>
+    </message>
+    <message>
+        <location filename="../client/json_importer.cc" line="397"/>
+        <source>Import completed successfully.
+Routers added: %1
+Routers skipped: %2
+Groups added: %3
+Computers added: %4
+Computers skipped: %5</source>
+        <translation>Импорт успешно завершён.
+Добавлено роутеров: %1
+Пропущено роутеров: %2
+Добавлено групп: %3
+Добавлено компьютеров: %4
+Пропущено компьютеров: %5</translation>
     </message>
 </context>
 <context>
@@ -3048,32 +3252,27 @@ Routers added: %4</source>
         <translation>Обновление состояния...</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="327"/>
         <source>Failed to retrieve computer information from the local database.</source>
-        <translation>Не удалось получить информацию о компьютере из локальной базы данных.</translation>
+        <translation type="vanished">Не удалось получить информацию о компьютере из локальной базы данных.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="331"/>
         <source>(copy)</source>
-        <translation>(копия)</translation>
+        <translation type="vanished">(копия)</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="335"/>
         <source>Failed to add the computer to the local database.</source>
-        <translation>Не удалось добавить компьютер в локальную базу данных.</translation>
+        <translation type="vanished">Не удалось добавить компьютер в локальную базу данных.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="365"/>
         <source>Are you sure you want to delete computer &quot;%1&quot;?</source>
-        <translation>Вы действительно хотите удалить компьютер &quot;%1&quot;?</translation>
+        <translation type="vanished">Вы действительно хотите удалить компьютер &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="377"/>
         <source>Unable to remove computer</source>
-        <translation>Не удалось удалить компьютер</translation>
+        <translation type="vanished">Не удалось удалить компьютер</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="493"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="399"/>
         <source>%n child group(s)</source>
         <translation>
             <numerusform>%n дочерняя группа</numerusform>
@@ -3082,7 +3281,7 @@ Routers added: %4</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="495"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="401"/>
         <source>%n child computer(s)</source>
         <translation>
             <numerusform>%n дочерний компьютер</numerusform>
@@ -3091,12 +3290,12 @@ Routers added: %4</source>
         </translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="599"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="494"/>
         <source>Online</source>
         <translation>В сети</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/local_group_widget.cc" line="599"/>
+        <location filename="../client/ui/hosts/local_group_widget.cc" line="494"/>
         <source>Offline</source>
         <translation>Не в сети</translation>
     </message>
@@ -3127,13 +3326,13 @@ Routers added: %4</source>
         <translation>Тема</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="115"/>
-        <location filename="../client/ui/main_window.ui" line="177"/>
+        <location filename="../client/ui/main_window.ui" line="109"/>
+        <location filename="../client/ui/main_window.ui" line="171"/>
         <source>Tool Bar</source>
         <translation>Панель инструментов</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="142"/>
+        <location filename="../client/ui/main_window.ui" line="136"/>
         <location filename="../host/ui/main_window.ui" line="298"/>
         <source>F1</source>
         <translation></translation>
@@ -3176,13 +3375,13 @@ Routers added: %4</source>
         <translation>Маршрутизатор отключен</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="76"/>
+        <location filename="../client/ui/main_window.ui" line="70"/>
         <location filename="../host/ui/main_window.ui" line="251"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="88"/>
+        <location filename="../client/ui/main_window.ui" line="82"/>
         <location filename="../host/ui/main_window.ui" line="268"/>
         <source>View</source>
         <translation>Вид</translation>
@@ -3198,66 +3397,66 @@ Routers added: %4</source>
         <translation>Доступ</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="169"/>
+        <location filename="../client/ui/main_window.ui" line="163"/>
         <location filename="../host/ui/main_window.ui" line="290"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="139"/>
+        <location filename="../client/ui/main_window.ui" line="133"/>
         <location filename="../host/ui/main_window.ui" line="295"/>
         <source>Online Help...</source>
         <translation>Онлайн справка...</translation>
     </message>
     <message>
         <location filename="../client/ui/main_window.ui" line="14"/>
-        <location filename="../client/ui/main_window.cc" line="253"/>
+        <location filename="../client/ui/main_window.cc" line="254"/>
         <source>Aspia Client</source>
         <translation>Клиент Aspia</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="68"/>
+        <location filename="../client/ui/main_window.ui" line="62"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="83"/>
+        <location filename="../client/ui/main_window.ui" line="77"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="98"/>
+        <location filename="../client/ui/main_window.ui" line="92"/>
         <source>Session Type</source>
         <translation>Тип сессии</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="185"/>
+        <location filename="../client/ui/main_window.ui" line="179"/>
         <source>Status Bar</source>
         <translation>Строка состояния</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="193"/>
+        <location filename="../client/ui/main_window.ui" line="187"/>
         <source>Large icons</source>
         <translation>Большие иконки</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="201"/>
+        <location filename="../client/ui/main_window.ui" line="195"/>
         <source>Open Sessions in Tabs</source>
         <translation>Открывать сессии во вкладках</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="151"/>
+        <location filename="../client/ui/main_window.ui" line="145"/>
         <location filename="../host/ui/main_window.ui" line="303"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="103"/>
+        <location filename="../client/ui/main_window.ui" line="97"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.ui" line="160"/>
+        <location filename="../client/ui/main_window.ui" line="154"/>
         <location filename="../host/ui/main_window.ui" line="308"/>
         <source>Settings...</source>
         <translation>Параметры...</translation>
@@ -3269,12 +3468,12 @@ Routers added: %4</source>
         <translation>Спрятать</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.cc" line="74"/>
+        <location filename="../client/ui/main_window.cc" line="75"/>
         <source>Search...</source>
         <translation>Поиск...</translation>
     </message>
     <message>
-        <location filename="../client/ui/main_window.cc" line="140"/>
+        <location filename="../client/ui/main_window.cc" line="141"/>
         <source>Hosts</source>
         <translation>Хосты</translation>
     </message>
@@ -3394,24 +3593,22 @@ Routers added: %4</source>
         <translation>Введите свой текущий пароль и выберите новый.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="54"/>
         <source>Remove Master Password</source>
-        <translation>Удаление мастер-пароля</translation>
+        <translation type="vanished">Удаление мастер-пароля</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="55"/>
         <source>Enter your current password to remove encryption from the address book.</source>
-        <translation>Введите ваш текущий пароль для удаления шифрования адресной книги.</translation>
+        <translation type="vanished">Введите ваш текущий пароль для удаления шифрования адресной книги.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="111"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="156"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="98"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="143"/>
         <source>Password you entered does not meet the security requirements!</source>
         <translation>Введенный пароль не отвечает требованиям безопасности!</translation>
     </message>
     <message numerus="yes">
-        <location filename="../client/ui/master_password_dialog.cc" line="112"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="157"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="99"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="144"/>
         <source>The password must contain lowercase and uppercase characters, numbers and should not be shorter than %n characters.</source>
         <translation>
             <numerusform>Пароль должен содержать строчные и прописные символы, цифры и не должен быть короче %n символа.</numerusform>
@@ -3420,47 +3617,45 @@ Routers added: %4</source>
         </translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="115"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="160"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="102"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="147"/>
         <source>Do you want to enter a different password?</source>
         <translation>Вы хотите ввести другой пароль?</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="118"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="163"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="105"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="150"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="128"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="115"/>
         <source>Passwords do not match.</source>
         <translation>Пароли не совпадают.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="134"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="121"/>
         <source>Unable to set master password.</source>
         <translation>Не удалось установить мастер-пароль.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="150"/>
-        <location filename="../client/ui/master_password_dialog.cc" line="193"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="137"/>
         <source>Enter the current password.</source>
         <translation>Введите текущий пароль.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="173"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="160"/>
         <source>New passwords do not match.</source>
         <translation>Новые пароли не совпадают.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="179"/>
+        <location filename="../client/ui/master_password_dialog.cc" line="166"/>
         <source>Invalid current password or unable to change it.</source>
         <translation>Неверный текущий пароль или невозможно изменить его.</translation>
     </message>
     <message>
-        <location filename="../client/ui/master_password_dialog.cc" line="199"/>
         <source>Invalid current password or unable to remove it.</source>
-        <translation>Неверный текущий пароль или невозможно удалить его.</translation>
+        <translation type="vanished">Неверный текущий пароль или невозможно удалить его.</translation>
     </message>
 </context>
 <context>
@@ -4216,19 +4411,33 @@ Routers added: %4</source>
 <context>
     <name>SearchWidget</name>
     <message>
-        <location filename="../client/ui/hosts/search_widget.cc" line="45"/>
+        <location filename="../client/ui/hosts/search_widget.cc" line="231"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/search_widget.cc" line="45"/>
+        <location filename="../client/ui/hosts/search_widget.cc" line="231"/>
         <source>Address / ID</source>
         <translation>Адрес / ID</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/search_widget.cc" line="45"/>
+        <location filename="../client/ui/hosts/search_widget.cc" line="231"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
+    </message>
+    <message>
+        <location filename="../client/ui/hosts/search_widget.cc" line="231"/>
+        <source>Group</source>
+        <translation>Группа</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../client/ui/hosts/search_widget.cc" line="479"/>
+        <source>%n result(s)</source>
+        <translation>
+            <numerusform>%n результат</numerusform>
+            <numerusform>%n результата</numerusform>
+            <numerusform>%n результатов</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -4460,104 +4669,102 @@ Routers added: %4</source>
         <translation type="vanished">Маршрутизатор необходим для подключения к компьютеру при невозможности прямого подключения (обхода NAT). Aspia не предоставляет публичного маршрутизатора, но вы можете установить свой собственный. Загрузить маршрутизатор вы можете на &lt;a href=&quot;https://aspia.org&quot;&gt;официальном сайте&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="133"/>
+        <location filename="../client/ui/settings_dialog.ui" line="119"/>
         <source>Desktop</source>
         <translation>Рабочий стол</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="145"/>
+        <location filename="../client/ui/settings_dialog.ui" line="131"/>
         <source>Features</source>
         <translation>Возможности</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="151"/>
+        <location filename="../client/ui/settings_dialog.ui" line="137"/>
         <source>Enable audio</source>
         <translation>Включить звук</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="158"/>
+        <location filename="../client/ui/settings_dialog.ui" line="144"/>
         <source>Enable clipboard</source>
         <translation>Включить буфер обмена</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="165"/>
+        <location filename="../client/ui/settings_dialog.ui" line="151"/>
         <source>Show shape of remote cursor</source>
         <translation>Показывать форму удаленного курсора</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="172"/>
+        <location filename="../client/ui/settings_dialog.ui" line="158"/>
         <source>Show position of remote cursor</source>
         <translation>Показывать положение удаленного курсора</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="188"/>
         <source>Appearance</source>
-        <translation>Внешний вид</translation>
+        <translation type="vanished">Внешний вид</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="194"/>
+        <location filename="../client/ui/settings_dialog.ui" line="165"/>
         <source>Disable desktop effects</source>
         <translation>Отключить эффекты рабочего стола</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="201"/>
+        <location filename="../client/ui/settings_dialog.ui" line="172"/>
         <source>Disable desktop wallpaper</source>
         <translation>Отключить обои рабочего стола</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="223"/>
+        <location filename="../client/ui/settings_dialog.ui" line="179"/>
         <source>Lock computer at disconnect</source>
         <translation>Блокировать компьютер при отключении</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="230"/>
+        <location filename="../client/ui/settings_dialog.ui" line="186"/>
         <source>Block remote input</source>
         <translation>Блокировать удаленный ввод</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="237"/>
+        <location filename="../client/ui/settings_dialog.ui" line="193"/>
         <source>Send key combinations</source>
         <translation>Отправлять комбинации клавиш</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="253"/>
+        <location filename="../client/ui/settings_dialog.ui" line="209"/>
         <source>Recording</source>
         <translation>Запись</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="259"/>
+        <location filename="../client/ui/settings_dialog.ui" line="215"/>
         <source>Automatically start recording sessions on connection</source>
         <translation>Автоматически начинать запись при подключении</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="268"/>
+        <location filename="../client/ui/settings_dialog.ui" line="224"/>
         <source>Write path:</source>
         <translation>Путь для записи:</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="317"/>
+        <location filename="../client/ui/settings_dialog.ui" line="273"/>
         <source>Update</source>
         <translation>Обновление</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="323"/>
+        <location filename="../client/ui/settings_dialog.ui" line="279"/>
         <source>Check for updates on startup</source>
         <translation>Проверять обновления при запуске</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="330"/>
+        <location filename="../client/ui/settings_dialog.ui" line="286"/>
         <source>Use custom update server</source>
         <translation>Использовать свой сервер обновлений</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="339"/>
+        <location filename="../client/ui/settings_dialog.ui" line="295"/>
         <source>Server:</source>
         <translation>Сервер:</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="217"/>
         <source>Other</source>
-        <translation>Разное</translation>
+        <translation type="vanished">Разное</translation>
     </message>
     <message>
         <location filename="../client/ui/settings_dialog.ui" line="24"/>
@@ -4585,21 +4792,16 @@ Routers added: %4</source>
         <translation>Мастер-пароль</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="82"/>
-        <location filename="../client/ui/settings_dialog.cc" line="259"/>
         <source>Status: not set</source>
-        <translation>Состояние: не установлен</translation>
+        <translation type="vanished">Состояние: не установлен</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="102"/>
-        <location filename="../client/ui/settings_dialog.cc" line="260"/>
         <source>Set...</source>
-        <translation>Установить...</translation>
+        <translation type="vanished">Установить...</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="109"/>
         <source>Remove...</source>
-        <translation>Удалить...</translation>
+        <translation type="vanished">Удалить...</translation>
     </message>
     <message>
         <source>Address</source>
@@ -4626,7 +4828,7 @@ Routers added: %4</source>
         <translation type="vanished">Удалить</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.ui" line="379"/>
+        <location filename="../client/ui/settings_dialog.ui" line="335"/>
         <source>Check for updates</source>
         <translation>Проверить обновления</translation>
     </message>
@@ -4661,17 +4863,16 @@ Routers added: %4</source>
         <translation type="vanished">Вы уверены, что хотите удалить маршрутизатор &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="234"/>
+        <location filename="../client/ui/settings_dialog.cc" line="215"/>
         <source>Choose path</source>
         <translation>Выбор пути</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="254"/>
         <source>Status: set</source>
-        <translation>Состояние: установлен</translation>
+        <translation type="vanished">Состояние: установлен</translation>
     </message>
     <message>
-        <location filename="../client/ui/settings_dialog.cc" line="255"/>
+        <location filename="../client/ui/settings_dialog.ui" line="95"/>
         <source>Change...</source>
         <translation>Изменить...</translation>
     </message>
@@ -4727,42 +4928,42 @@ Routers added: %4</source>
 <context>
     <name>Sidebar</name>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="61"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="62"/>
         <source>Local</source>
         <translation>Локальные</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="316"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="321"/>
         <source>Are you sure you want to delete group &quot;%1&quot;?</source>
         <translation>Вы уверены, что хотите удалить группу &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="328"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="334"/>
         <source>Unable to remove group</source>
         <translation>Не удалось удалить группу</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="390"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="398"/>
         <source>Are you sure you want to delete router &quot;%1&quot;?</source>
         <translation>Вы уверены, что хотите удалить маршрутизатор &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="565"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="573"/>
         <source>A group with this name already exists in the selected parent group.</source>
         <translation>Группа с таким именем уже существует в выбранной родительской группе.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="575"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="583"/>
         <source>Failed to move the group.</source>
         <translation>Не удалось переместить группу.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="631"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="639"/>
         <source>A computer with this name already exists in the selected group.</source>
         <translation>Компьютер с таким именем уже существует в выбранной группе.</translation>
     </message>
     <message>
-        <location filename="../client/ui/hosts/sidebar.cc" line="651"/>
+        <location filename="../client/ui/hosts/sidebar.cc" line="659"/>
         <source>Failed to move the computer to the selected group.</source>
         <translation>Не удалось переместить компьютер в выбранную группу.</translation>
     </message>
@@ -4796,42 +4997,42 @@ Routers added: %4</source>
 <context>
     <name>SysInfoApplications</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="48"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="53"/>
         <source>Version</source>
         <translation>Версия</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="58"/>
         <source>Publisher</source>
         <translation>Издатель</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="63"/>
         <source>Install Date</source>
         <translation>Дата установки</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="74"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="68"/>
         <source>Install Location</source>
         <translation>Место установки</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="82"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="76"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="87"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="81"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="92"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_applications.ui" line="86"/>
         <source>Search in Google</source>
         <translation>Искать в Google</translation>
     </message>
@@ -4839,47 +5040,47 @@ Routers added: %4</source>
 <context>
     <name>SysInfoConnections</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="48"/>
         <source>Process Name</source>
         <translation>Имя процесса</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="53"/>
         <source>Protocol</source>
         <translation>Протокол</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="58"/>
         <source>Local Address</source>
         <translation>Локальный адрес</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="63"/>
         <source>Local Port</source>
         <translation>Локальный порт</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="74"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="68"/>
         <source>Remote Address</source>
         <translation>Удаленный адрес</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="79"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="73"/>
         <source>Remote Port</source>
         <translation>Удаленный порт</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="84"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="78"/>
         <source>State</source>
         <translation>Состояние</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="92"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="86"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="97"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_connections.ui" line="91"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -4887,42 +5088,42 @@ Routers added: %4</source>
 <context>
     <name>SysInfoDevices</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="48"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="53"/>
         <source>Driver Version</source>
         <translation>Версия драйвера</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="58"/>
         <source>Driver Date</source>
         <translation>Дата драйвера</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="63"/>
         <source>Driver Vendor</source>
         <translation>Поставщик</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="74"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="68"/>
         <source>Device ID</source>
         <translation>ID устройства</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="82"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="76"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="92"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="86"/>
         <source>Search in Google</source>
         <translation>Искать в Google</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="87"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_devices.ui" line="81"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -4930,42 +5131,42 @@ Routers added: %4</source>
 <context>
     <name>SysInfoDrivers</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="48"/>
         <source>Display Name</source>
         <translation>Отображаемое имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="53"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="58"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="63"/>
         <source>Status</source>
         <translation>Состояние</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="74"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="68"/>
         <source>Startup Type</source>
         <translation>Тип запуска</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="79"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="73"/>
         <source>Executable File</source>
         <translation>Исполняемый файл</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="87"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="81"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="92"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_drivers.ui" line="86"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -4973,27 +5174,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoEnvVars</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="51"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="45"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="56"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="50"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="58"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="63"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="74"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_env_vars.ui" line="68"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5016,43 +5217,43 @@ Routers added: %4</source>
         <translation>Тип событий</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="130"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="124"/>
         <source>Level</source>
         <translation>Уровень</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="125"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="119"/>
         <source>Time</source>
         <translation>Время</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="135"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="129"/>
         <source>Category</source>
         <translation>Категория</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="140"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="134"/>
         <source>Event ID</source>
         <translation>ID события</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="145"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="139"/>
         <source>Source</source>
         <translation>Источник</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="150"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="177"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="144"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="171"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="195"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="189"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="200"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.ui" line="194"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5060,27 +5261,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoLicenses</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_licenses.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5088,27 +5289,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoLocalUserGroups</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="48"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="42"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="53"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="47"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="61"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="55"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="66"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="60"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="71"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_user_groups.ui" line="65"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5116,27 +5317,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoLocalUsers</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_local_users.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5144,27 +5345,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoMonitors</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5172,27 +5373,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoNetAdapters</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_adapters.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5200,27 +5401,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoNetShares</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_net_shares.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5228,27 +5429,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoOpenFiles</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="53"/>
         <source>User Name</source>
         <translation>Имя пользователя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="58"/>
         <source>Lock Count</source>
         <translation>Блокировок</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="48"/>
         <source>File Path</source>
         <translation>Путь к файлу</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="72"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="66"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="77"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_open_files.ui" line="71"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5256,27 +5457,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoPowerOptions</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="48"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="42"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="53"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="47"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="61"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="55"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="66"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="60"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="71"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.ui" line="65"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5284,27 +5485,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoPrinters</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_printers.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5312,52 +5513,52 @@ Routers added: %4</source>
 <context>
     <name>SysInfoProcesses</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="51"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="45"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="56"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="50"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="61"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="55"/>
         <source>CPU</source>
         <translation>ЦП</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="66"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="60"/>
         <source>Memory</source>
         <translation>Память</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="71"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="65"/>
         <source>Session ID</source>
         <translation>Код сеанса</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="76"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="70"/>
         <source>User Name</source>
         <translation>Имя пользователя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="81"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="75"/>
         <source>Path</source>
         <translation>Путь</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="89"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="83"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="94"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="88"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="99"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.ui" line="93"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5365,32 +5566,32 @@ Routers added: %4</source>
 <context>
     <name>SysInfoRoutes</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="48"/>
         <source>Destonation</source>
         <translation>Назначение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="53"/>
         <source>Mask</source>
         <translation>Маска</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="58"/>
         <source>Gateway</source>
         <translation>Шлюз</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="63"/>
         <source>Metric</source>
         <translation>Метрика</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="77"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="71"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="82"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_routes.ui" line="76"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5398,47 +5599,47 @@ Routers added: %4</source>
 <context>
     <name>SysInfoServices</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="54"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="48"/>
         <source>Display Name</source>
         <translation>Отображаемое имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="59"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="53"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="64"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="58"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="69"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="63"/>
         <source>Status</source>
         <translation>Состояние</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="74"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="68"/>
         <source>Startup Type</source>
         <translation>Тип запуска</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="79"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="73"/>
         <source>Account</source>
         <translation>Пользователь</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="84"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="78"/>
         <source>Executable File</source>
         <translation>Исполняемый файл</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="92"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="86"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="97"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_services.ui" line="91"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5446,27 +5647,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoSummary</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5474,27 +5675,27 @@ Routers added: %4</source>
 <context>
     <name>SysInfoVideoAdapters</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="45"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="39"/>
         <source>Parameter</source>
         <translation>Параметр</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="50"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="44"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="58"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="52"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="63"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="57"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="68"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_video_adapters.ui" line="62"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
@@ -5657,7 +5858,7 @@ Routers added: %4</source>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="193"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_event_logs.cc" line="199"/>
         <source>Page %1/%2</source>
         <translation>Страница %1/%2</translation>
     </message>
@@ -5955,17 +6156,17 @@ Routers added: %4</source>
         <translation>Поддерживаемые видеорежимы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="291"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="292"/>
         <source>Digital</source>
         <translation>Цифровой</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="293"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="294"/>
         <source>Analog</source>
         <translation>Аналоговый</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="295"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_monitors.cc" line="296"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
@@ -6172,7 +6373,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="220"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="303"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="304"/>
         <source>Charging</source>
         <translation>Зарядка</translation>
     </message>
@@ -6186,7 +6387,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="223"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="301"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="302"/>
         <source>Critical</source>
         <translation>Критическое</translation>
     </message>
@@ -6211,33 +6412,33 @@ Routers added: %4</source>
         <translation>Батарея #%1</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="279"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="280"/>
         <source>DC Battery</source>
         <translation>Батарея постоянного тока</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="282"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="283"/>
         <source>AC Line</source>
         <translation>Линия переменного тока</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="285"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="307"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="286"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="308"/>
         <source>Unknown</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="297"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="298"/>
         <source>High</source>
         <translation>Высокая</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="299"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="300"/>
         <source>Low</source>
         <translation>Низкая</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="305"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_power_options.cc" line="306"/>
         <source>No Battery</source>
         <translation>Нет батареи</translation>
     </message>
@@ -6290,12 +6491,12 @@ Routers added: %4</source>
 <context>
     <name>SysInfoWidgetProcesses</name>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="141"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="148"/>
         <source>System Idle Process</source>
         <translation>Бездействие системы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="143"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_processes.cc" line="150"/>
         <source>Unknown Process</source>
         <translation>Неизвестный процесс</translation>
     </message>
@@ -6528,7 +6729,7 @@ Routers added: %4</source>
     </message>
     <message>
         <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="282"/>
-        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="353"/>
+        <location filename="../client/ui/sys_info/sys_info_widget_summary.cc" line="354"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
@@ -6760,197 +6961,197 @@ Routers added: %4</source>
         <translation>Информация о системе</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="108"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="102"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="111"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="105"/>
         <source>Save (Ctrl+S)</source>
         <translation>Сохранить (Ctrl+S)</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="114"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="108"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="123"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="117"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="126"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="120"/>
         <source>Print (Ctrl+P)</source>
         <translation>Печать (Ctrl+P)</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="129"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="123"/>
         <source>Ctrl+P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="134"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="128"/>
         <source>Copy Row</source>
         <translation>Копировать строку</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="139"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="133"/>
         <source>Copy Name</source>
         <translation>Копировать имя</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="144"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="138"/>
         <source>Copy Value</source>
         <translation>Копировать значение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="153"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="147"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="156"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="150"/>
         <source>Refresh (F5)</source>
         <translation>Обновить (F5)</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.ui" line="159"/>
+        <location filename="../client/ui/sys_info/system_info_window.ui" line="153"/>
         <source>F5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="130"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="131"/>
         <source>Summary</source>
         <translation>Сводка</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="137"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="138"/>
         <source>Hardware</source>
         <translation>Оборудование</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="140"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="141"/>
         <source>Devices</source>
         <translation>Устройства</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="143"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="144"/>
         <source>Video Adapters</source>
         <translation>Видеоадаптеры</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="146"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="147"/>
         <source>Monitors</source>
         <translation>Мониторы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="149"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="150"/>
         <source>Printers</source>
         <translation>Принтеры</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="152"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="153"/>
         <source>Power Options</source>
         <translation>Параметры питания</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="165"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="166"/>
         <source>Software</source>
         <translation>Программное обеспечение</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="168"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="169"/>
         <source>Applications</source>
         <translation>Приложения</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="171"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="172"/>
         <source>Drivers</source>
         <translation>Драйверы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="174"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="175"/>
         <source>Services</source>
         <translation>Службы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="177"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="178"/>
         <source>Processes</source>
         <translation>Процессы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="180"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="181"/>
         <source>Licenses</source>
         <translation>Лицензии</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="193"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="194"/>
         <source>Network</source>
         <translation>Сеть</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="196"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="197"/>
         <source>Network Adapters</source>
         <translation>Сетевые адаптеры</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="199"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="200"/>
         <source>Routes</source>
         <translation>Маршруты</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="202"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="203"/>
         <source>Connections</source>
         <translation>Подключения</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="205"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="206"/>
         <source>Network Shares</source>
         <translation>Сетевые ресурсы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="208"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="209"/>
         <source>Open Files</source>
         <translation>Открытые файлы</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="221"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="222"/>
         <source>Operating System</source>
         <translation>Операционная система</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="224"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="225"/>
         <source>Environment Variables</source>
         <translation>Переменные окружения</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="227"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="228"/>
         <source>Event Logs</source>
         <translation>Журнал событий</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="230"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="231"/>
         <source>Users</source>
         <translation>Пользователи</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="233"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="234"/>
         <source>User Groups</source>
         <translation>Группы пользователей</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="258"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="259"/>
         <source>HTML File</source>
         <translation>HTML-файл</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="258"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="259"/>
         <source>HTML File (*.html)</source>
         <translation>HTML-файл (*.html)</translation>
     </message>
     <message>
-        <location filename="../client/ui/sys_info/system_info_window.cc" line="269"/>
+        <location filename="../client/ui/sys_info/system_info_window.cc" line="270"/>
         <source>Failed to save file: %1</source>
         <translation>Не удалось сохранить файл: %1</translation>
     </message>

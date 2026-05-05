@@ -329,7 +329,9 @@ bool JsonImporter::importFromFile(QWidget* parent, const QString& file_path)
         }
 
         int answer = MsgBox::question(parent,
-            tr("The file is encrypted. Enter the password to import user names and passwords?"),
+            tr("The file contains encrypted usernames and passwords. To import them, you need to "
+               "enter a password (if no password is entered, they will be imported without them). "
+               "Do you want to enter the password?"),
             MsgBox::Yes | MsgBox::No | MsgBox::Cancel);
 
         if (answer == MsgBox::Cancel)
